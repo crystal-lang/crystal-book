@@ -1,6 +1,6 @@
 Although Crystal has a Ruby-like syntax, Crystal is a different language, not another Ruby implementation. For this reason, and mostly because it's a compiled, statically typed language, the language has some big differences when compared to Ruby.
 
-## Crystal is a compiled language
+## Crystal as a compiled language
 
 ### Using the `crystal` program
 
