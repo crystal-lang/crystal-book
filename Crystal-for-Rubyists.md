@@ -112,3 +112,5 @@ h[3]? || (h[3] = 4)
 That is, the `[]?` method is used to check for the presence of an index/key.
 
 Just as `[]` doesn't return `nil`, some Array and Hash methods also don't return nil and raise an exception if the element is not found: `first`, `last`, `shift`, `pop`, etc. For these a question-method is also provided to get the `nil` behaviour: `first?`, `last?`, `shift?`, `pop?`, etc.
+
+***
