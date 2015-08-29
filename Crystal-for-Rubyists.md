@@ -53,6 +53,10 @@ Specifically:
     -----------------   --------------
     Enumerable#detect   Enumerable#find
 
+## Omitted Language Constructs
+
+* [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]
+
 ## Semantic differences
 ### single- versus double-quoted strings
 
