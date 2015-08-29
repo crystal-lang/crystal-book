@@ -55,7 +55,7 @@ In sum:
 
 ```ruby
 X = "ho"
-puts '"' # Not valid in crystal use "\""
+puts '"cute"' # Not valid in crystal use "\"cute\""
 puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
 
