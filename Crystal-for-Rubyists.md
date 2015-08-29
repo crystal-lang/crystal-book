@@ -45,6 +45,19 @@ When writing benchmarks or testing performance, always remember to compile in re
 You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command).
 
 ## Semantic differences
+### single- versus double-quoted strings
+
+In Ruby, string literals can be delimited with single- or double-quoted strings. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not. 
+
+In Crystal, strings literals are delimited with double quotes only. Single quotes act as character literals the same as say C-like languages. As with Ruby, there is style, interpolation.
+
+In sum:
+
+```ruby
+X = "ho"
+puts 'foo' # Not valid in crystal, use "foo"
+puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
+```
 
 ### The `[]` and `[]?` methods
 
