@@ -44,6 +44,15 @@ When writing benchmarks or testing performance, always remember to compile in re
 
 You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command).
 
+## Paired-down instance methods
+
+In Ruby where there are several methods for doing the same thing, in Crystal there may be only one. 
+Specifically: 
+
+    Ruby Method         Crystal Method
+    -----------------   --------------
+    Enumerable#detect   Enumerable#find
+
 ## Semantic differences
 ### single- versus double-quoted strings
 
