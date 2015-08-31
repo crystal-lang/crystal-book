@@ -48,7 +48,7 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 ### Bool
 
-`true` and `false` are values in the Bool class rather than values in classes TrueClass or FalseClass.
+`true` and `false` are values in the _Bool_ class rather than values in classes _TrueClass_ or _FalseClass_.
 ## Paired-down instance methods
 
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one. 
