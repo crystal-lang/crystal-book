@@ -49,6 +49,11 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 ### Bool
 
 `true` and `false` are values in the _Bool_ class rather than values in classes _TrueClass_ or _FalseClass_.
+
+### Regex
+
+Global variables ``$` `` and `$'` are missing (yet $~ and $1 are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
+
 ## Paired-down instance methods
 
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one. 
