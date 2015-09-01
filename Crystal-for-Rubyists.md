@@ -66,8 +66,11 @@ Specifically:
 
 ## Omitted Language Constructs
 
-* [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]
-* `and` and `or` : use `&&` and `||` instead with suitable parenthesis to indicate precidence
+Where Ruby has a a couple of alternative constructs, Crystal has one.
+
+* [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
+* `and` and `or` : use `&&` and `||` instead with suitable parenthesis to indicate precedence
+* Ruby has `Proc` and `->`, while Crystal uses just `->`
 
 ## Reflection and Dynamic Evaluation
 
