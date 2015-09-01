@@ -65,7 +65,7 @@ Specifically:
 
 ## Reflection and Dynamic Evaluation
 
-_Kernel#eval()_ and the weird _Kernel#autoload()_ are not omitted. Object and class introspection methods _Object#kind_of?()_,  _Object#respond_to?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted. 
+_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_,  _Object#respond_to?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted. 
 
 In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection. 
 
