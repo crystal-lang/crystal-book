@@ -62,7 +62,7 @@ Specifically:
     Ruby Method         Crystal Method
     -----------------   --------------
     Enumerable#detect   Enumerable#find
-    Object#respond_to?  Object#resonds_to? 
+    Object#respond_to?  Object#responds_to? 
 
 ## Omitted Language Constructs
 
