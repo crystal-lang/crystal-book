@@ -61,6 +61,13 @@ Specifically:
 ## Omitted Language Constructs
 
 * [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]
+* `and` and `or` : use `&&` and `||` instead with suitable parenthesis to indicate precidence
+
+## Reflection and Dynamic Evaluation
+
+_Kernel#eval()_ and the weird _Kernel#autoload()_ are not omitted. Object and class introspection methods _Object#kind_of?()_,  _Object#respond_to?()_, _Object#methods_, _#Object._instance_eval()_, _Class#constants_, and _Class#instance_variables()_ are omitted. 
+
+In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection. 
 
 ## Semantic differences
 ### single- versus double-quoted strings
