@@ -50,19 +50,34 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 `true` and `false` are values in the _Bool_ class rather than values in classes _TrueClass_ or _FalseClass_.
 
+### Integers
+
+For Ruby's `Fixnum` type, use one of Crystal's Integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
+
+If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a Bignum. Crystal will use modular arithmatic on overflow. For example:
+
+```crystal
+x = 127_i8  # An Int8 type
+puts x # 127
+x += 1 # -128
+x += 1 # -127
+```
+
+See [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/integers.html)
+
 ### Regex
 
 Global variables ``$` `` and `$'` are missing (yet $~ and $1 are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
 
 ## Paired-down instance methods
 
-In Ruby where there are several methods for doing the same thing, in Crystal there may be only one. 
-Specifically: 
+In Ruby where there are several methods for doing the same thing, in Crystal there may be only one.
+Specifically:
 
     Ruby Method         Crystal Method
     -----------------   --------------
     Enumerable#detect   Enumerable#find
-    Object#respond_to?  Object#responds_to? 
+    Object#respond_to?  Object#responds_to?
 
 ## Omitted Language Constructs
 
@@ -74,14 +89,14 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 
 ## Reflection and Dynamic Evaluation
 
-_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted. 
+_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted.
 
-In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection. 
+In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection.
 
 ## Semantic differences
 ### single- versus double-quoted strings
 
-In Ruby, string literals can be delimited with single or double quotes. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not. 
+In Ruby, string literals can be delimited with single or double quotes. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not.
 
 In Crystal, strings literals are delimited with double quotes only. Single quotes act as character literals the same as say C-like languages. As with Ruby, there is variable interpolation inside string literals.
 
@@ -92,7 +107,7 @@ X = "ho"
 puts '"cute"' # Not valid in crystal use "\"cute\"", %{"cute"}, or %("cute")
 puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
-Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them: 
+Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them:
 
 ```
 """Now,
