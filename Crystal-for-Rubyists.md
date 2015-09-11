@@ -74,10 +74,11 @@ Global variables ``$` `` and `$'` are missing (yet $~ and $1 are present). Use `
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one.
 Specifically:
 
-    Ruby Method         Crystal Method
-    -----------------   --------------
-    Enumerable#detect   Enumerable#find
-    Object#respond_to?  Object#responds_to?
+    Ruby Method          Crystal Method
+    -----------------    --------------
+    Enumerable#detect    Enumerable#find
+    Object#respond_to?   Object#responds_to?
+    length, size, count  size
 
 ## Omitted Language Constructs
 
