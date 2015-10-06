@@ -87,7 +87,7 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 
 * [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
 * `and` and `or` : use `&&` and `||` instead with suitable parenthesis to indicate precedence
-* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses just `->`
+* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` `lambda`, and `->`, while Crystal uses just `->`
 
 ## No autosplat
     [[1,"A"],[2,"B"]].each do |a,b|
