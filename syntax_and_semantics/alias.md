@@ -1,6 +1,6 @@
 # alias
 
-透過 `alias` （別名）你可以給一個型別不同的名子：
+透過別名 `alias` 我們可以賦予型別一個不同的名子：
 
 ```crystal
 alias PInt32 = Pointer(Int32)
@@ -8,9 +8,9 @@ alias PInt32 = Pointer(Int32)
 ptr = PInt32.malloc(1) # :: Pointer(Int32)
 ```
 
-每當你使用一次別名時編譯器會將之取代為其所指稱的型別。
+每當別名被使用時，編譯器都將其替換回原來的型別。
 
-別名在避免寫過長的型別名稱時非常方便，同時也能描述遞迴型別。
+使用別名來避免撰寫過長的型別名稱時非常方便，別名也能夠用來描述遞迴型別。
 
 ```crystal
 alias RecArray = Array(Int32) | Array(RecArray)
@@ -21,7 +21,7 @@ ary.push ary
 ary #=> [[1, 2, 3], [...]]
 ```
 
-一個真實世界的遞迴型別範例是 json ：
+Json 是一個常見的遞迴型別範例：
 
 ```crystal
 module Json
