@@ -1,52 +1,54 @@
-# Using the compiler
+# 使用編譯器
 
-Once you [install](../installation/README.md) the compiler you will have a `crystal` binary at your disposal.
+一旦你 [安裝](../installation/README.md) 了編譯器你就有了個 `crystal` 二進位檔在你的配置當中。
 
-In the next sections a dollar sign (`$`) denotes the command line.
+在接下來的部分，錢字號 (`$`) 表示命令列。
 
-## Compiling and running at once
+## 編譯並執行
 
-To compile and run a program in a single shot you can invoke `crystal` with a single filename:
+想要編譯並且直接執行程式你可以執行 `crystal` 並在後面加上檔案名稱:
+
 
 ```
 $ crystal some_program.cr
 ```
 
-Crystal files end with the `.cr` extension.
+Crystal 檔案以 `.cr` 作為副檔名。
 
-Alternative you can use the `run` command:
+你也可以使用 `run` :
 
 ```
 $ crystal run some_program.cr
 ```
 
-## Creating an executable
+## 產生一個執行檔
 
-To create an executable use the `build` command:
+使用 `build` 命令產生一個執行檔:
 
 ```
 $ crystal build some_program.cr
 ```
 
-This will create a `some_program` file that you can execute:
+這會產生一個可供執行的 `some_program` 檔案:
 
 ```
 $ ./some_program
 ```
 
-**Note:** By default the generated executables **are not fully optimized**. To turn optimizations on, use the `--release` flag:
+**注意 :** 在預設情況下產生的執行檔 **並沒有被完全優化**。 使用 `--release` 參數來啟用優化功能:
 
 ```
 $ crystal build some_program.cr --release
 ```
 
-Make sure to always use `--release` for production-ready executables and when performing benchmarks.
+確保在編譯準備發行( production-ready )的執行檔及評效( benchmarks )時每次都有使用 `--release`。
 
-The reason for this is that performance without full optimizations is still pretty good and provides fast compile times, so you can use the `crystal` command almost as if it were an interpreter.
+這麼做的原因是因為就算沒有完全優化，它的表現還是非常好而且編譯的較快，所以你可以像使用直譯器一樣使用 `crystal` 命令。
 
-## Creating a project or library
+## 產生一個專案或是函式庫
 
-Use the `init` command to create a Crystal project with the standard directory structure.
+
+使用 `init` 命令來產生一個擁有標準目錄結構的 Crystal 專案。
 
 ```
 $ crystal init lib MyCoolLib
@@ -62,9 +64,9 @@ $ crystal init lib MyCoolLib
 Initialized empty Git repository in ~/MyCoolLib/.git/
 ```
 
-## Other commands and options
+## 其他命令及選項
 
-To see the full set of commands, invoke `crystal` without arguments.
+輸入  `crystal` 並且不加上任何參數來瀏覽所有可用的命令:
 
 ```
 $ crystal
@@ -83,7 +85,8 @@ Command:
     --version, -v            show version
 ```
 
-To see the available options for a particuar command, use `--help` after a command:
+在命令後使用 `--help` 來查看該命令所有可用的選項:
+
 
 ```
 $ crystal build --help

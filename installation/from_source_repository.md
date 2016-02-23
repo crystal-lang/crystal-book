@@ -1,19 +1,20 @@
-# From sources
+# 使用原始碼安裝
 
-If you want to contribute then you might want to install Crystal from sources. But Crystal is written in Crystal itself! So you first need to use one of the previous described methods to have a running compiler.
+如果你想貢獻 Crystal 那你可能會想使用原始碼進行安裝，但是 Crystal 就是用 Crystal 寫的 ! 所以你必須使用前述的方法先取得一個可以執行的編譯器。
 
-You will also need LLVM 3.5 or 3.6 present in the path. If you are using Mac and the Homebrew formula, this will be automatically configured for you if you install Crystal adding `--with-llvm` flag.
+該路徑中也必須存在 LLVM 3.5 或 3.6，如果是使用 MAC 中 Homebrew 的套件( formula )，只要在安裝時加上 `--with-llvm` 參數，LLVM 就會被自動配置。
 
-Then clone the repository:
+然後複製 repository:
 
 ```
 git clone https://github.com/manastech/crystal.git
 ```
 
-and you're ready to start hacking.
+然後你就可以開始 hacking 了
 
-To build your own version of the compiler, run `make`. The new compiler will be placed at `.build/crystal`.
+使用`make`來建立你自己版本的編譯器。新的編譯器會被放在`.build/crystal`。
 
-Make sure to install [all the required libraries](https://github.com/manastech/crystal/wiki/All-required-libraries). You might also want to read the [contributing guide](https://github.com/manastech/crystal/blob/master/Contributing.md).
+確認你已經安裝了 [全部所需的函式庫](https://github.com/manastech/crystal/wiki/All-required-libraries)。 你可能也會想要看看 [貢獻指南](https://github.com/manastech/crystal/blob/master/Contributing.md).
 
-Inside the repository you will also find a wrapper script at `bin/crystal`. This script will execute the global installed compiler or the one that you just compiled (if present).
+在 repository　中你可以在　`bin/crystal`　找到包裝器腳本( wrapper script)。
+這個腳本會執行已經安裝的公用編譯器，或是你剛編譯的編譯器（如果存在）。

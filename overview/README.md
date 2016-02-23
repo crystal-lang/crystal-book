@@ -1,19 +1,20 @@
-# Overview
+# 概要
 
-You can read this document from top to bottom, but it’s advisable to jump through sections because some concepts are interrelated and can’t be explained in isolation.
+你可以照著順序閱讀這份文件，但是更推薦跳著閱讀，因為某些觀念是相關的而且無法單獨解釋。
 
-In code examples, the comment `#=>` is used to show the value of an expression. For example:
+在程式範例中，註解 `#=>` 用來說明一個敘述的值。例如:
 
-```crystal
+```
 a = 1 + 2
 a #=> 3
 ```
 
-A comment using `::` is used for showing the type of a variable.
+註解 `::` 用來說明變數的型態。
 
-```crystal
+```
 s = "hello"
 # s :: String
 ```
 
-Let's start with two examples to familiarize ourselves with the language.
+讓我們從之後的兩個例子來熟悉這個語言。
+
