@@ -1,6 +1,6 @@
-# alias
+# 別名 (alias)
 
-透過別名 `alias` 我們可以賦予型別一個不同的名子：
+透過 `alias` 我們可以賦予型別一個不同的名子：
 
 ```crystal
 alias PInt32 = Pointer(Int32)
