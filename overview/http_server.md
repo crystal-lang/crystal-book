@@ -31,6 +31,16 @@ server.listen
 
 * 你可以呼叫物件的[方法](../syntax_and_semantics/classes_and_methods.html) ( 或傳送訊息 )來撰寫程式:
 
+```
+    HTTP::Server.new(8000) ...
+    ...
+    Time.now
+    ...
+    puts "Listening on http://0.0.0.0:8080"
+    ...
+    server.listen
+```
+
 * 你可以使用[區塊碼( blocks )](../syntax_and_semantics/blocks_and_procs.html)，而這是個重複利用程式碼的好方法也是函式化的特色之一。
 
     ```
