@@ -1,7 +1,7 @@
-# Comments
+# 註解
 
-Comments start with the sharp (`#`) character. Only one-line comments are supported for now.
+註解使用井字號(`#`)做為開頭，目前只支援單行註解。
 
 ```crystal
-# This is a comment
+# 這是註解
 ```
