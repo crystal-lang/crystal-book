@@ -1,6 +1,6 @@
-# As an expression
+# 作為表達式時
 
-The value of an `if` is the value of the last expression found in each of its branches:
+`if` 的回傳值是在各項分支中最後一個發現的表達式的值 :
 
 ```crystal
 a = if 2 > 1
@@ -11,27 +11,27 @@ a = if 2 > 1
 a #=> 3
 ```
 
-If an `if` branch is empty, or it’s missing, it’s considered as if it had `nil` in it:
+如果 `if` 的分支是空的，或是缺乏分支，會被視為 `nil` :
 
 ```crystal
 if 1 > 2
   3
 end
 
-# The above is the same as:
+# 上方等價於 :
 if 1 > 2
   3
 else
   nil
 end
 
-# Another example:
+# 另一個範例 :
 if 1 > 2
 else
   3
 end
 
-# The above is the same as:
+# 上方等價於 :
 if 1 > 2
   nil
 else
