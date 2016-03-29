@@ -1,14 +1,11 @@
-# Floats
+# 浮點數
 
-There are two floating point types, [Float32](http://crystal-lang.org/api/Float32.html) and [Float64](http://crystal-lang.org/api/Float64.html),
-which correspond to the [binary32](http://en.wikipedia.org/wiki/Single_precision_floating-point_format)
-and [binary64](http://en.wikipedia.org/wiki/Double_precision_floating-point_format)
-types defined by IEEE.
+有兩種浮點數型別，[Float32](http://crystal-lang.org/api/Float32.html) 及 [Float64](http://crystal-lang.org/api/Float64.html)，
+分別對應於IEEE定義的型別 [單精度浮點數(binary32)](https://zh.wikipedia.org/wiki/單精度浮點數)
+和 [雙精度浮點數(binary64)](https://zh.wikipedia.org/wiki/雙精度浮點數)。
 
-A floating point literal is an optional `+` or `-` sign, followed by
-a sequence of numbers or underscores, followed by a dot,
-followed by numbers or underscores, followed by an optional exponent suffix,
-followed by an optional type suffix. If no suffix is present, the literal's type is `Float64`.
+浮點數字面常數由可選的 `+` 或 `-` 號，接著是一連串的數字或底線、小數點、數字或底線，
+有可能有指數後綴，以及可選的型態後綴所構成。若無後綴，該字面常數型別為 `Float64`。
 
 ```crystal
 1.0      # Float64
@@ -23,10 +20,10 @@ followed by an optional type suffix. If no suffix is present, the literal's type
 -0.5     # Float64
 ```
 
-The underscore `_` before the suffix is optional.
+底線 `_` 可出現在後綴之前。
 
-Underscores can be used to make some numbers more readable:
+底線可使某些數字更有可讀性:
 
 ```crystal
-1_000_000.111_111 # better than 1000000.111111
+1_000_000.111_111 # 優於 1000000.111111
 ```
