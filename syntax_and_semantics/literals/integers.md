@@ -1,4 +1,4 @@
-# Integers
+# 整數
 
 有4種有號整數: [Int8](http://crystal-lang.org/api/Int8.html)、[Int16](http://crystal-lang.org/api/Int16.html)、[Int32](http://crystal-lang.org/api/Int32.html) 及 [Int64](http://crystal-lang.org/api/Int64.html)，可以分別表示8、16、32和64位元。
 

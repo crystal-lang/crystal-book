@@ -1,4 +1,4 @@
-# Bool
+# 布林值
 
 [布林值(Bool)](http://crystal-lang.org/api/Bool.html) 只有兩種可能的值: `true` 和 `false`。 它們可用這些字面常數建構:
 
