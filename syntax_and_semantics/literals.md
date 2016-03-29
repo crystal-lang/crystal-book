@@ -1,3 +1,3 @@
-# Literals
+# 字面常數
 
-Several literals are available for creating many basic types in the language.
+語言中有數個字面常數可用來表達許多基本型別
