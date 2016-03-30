@@ -4,8 +4,8 @@
 
 還有4種無號整數: [UInt8](http://crystal-lang.org/api/UInt8.html)、[UInt16](http://crystal-lang.org/api/UInt16.html)、[UInt32](http://crystal-lang.org/api/UInt32.html) 及 [UInt64](http://crystal-lang.org/api/UInt64.html)。
 
-整數字面常數可選擇性帶有 `+` 或 `-` 號，接著是一連串的數字和底線，也可以加上後綴。
-若無後綴，該字面常數的型別為 `Int32`、`Int64` 或 `UInt64` 最低者。
+整數常值可選擇性帶有 `+` 或 `-` 號，接著是一連串的數字和底線，也可以加上後綴。
+若無後綴，該常值的型別為 `Int32`、`Int64` 或 `UInt64` 最低者。
 數字符合以下規則:
 
 ```crystal
