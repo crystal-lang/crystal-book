@@ -26,7 +26,7 @@ Hello world
 
 It looks like `crystal` interprets the file, but what actually happens is that the file `foo.cr` is first compiled to a temporary executable and then this executable is run. This behaviour is very useful in the development cycle as you normally compile a file and want to immediately execute it.
 
-If you want to compile it you can use the `build` command:
+If you just want to compile it you can use the `build` command:
 
 ```
 crystal build foo.cr
