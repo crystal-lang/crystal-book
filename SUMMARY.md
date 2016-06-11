@@ -24,7 +24,7 @@
        * [符號 (Symbol)](syntax_and_semantics/literals/symbol.md)
        * [陣列 (Array)](syntax_and_semantics/literals/array.md)
        * [雜湊 (Hash)](syntax_and_semantics/literals/hash.md)
-       * [Range](syntax_and_semantics/literals/range.md)
+       * [範圍 (Range)](syntax_and_semantics/literals/range.md)
        * [Regex](syntax_and_semantics/literals/regex.md)
        * [Tuple](syntax_and_semantics/literals/tuple.md)
        * [NamedTuple](syntax_and_semantics/literals/named_tuple.md)
