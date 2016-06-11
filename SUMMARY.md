@@ -21,7 +21,7 @@
        * [浮點數 (Floats)](syntax_and_semantics/literals/floats.md)
        * [字元 (Char)](syntax_and_semantics/literals/char.md)
        * [字串 (String)](syntax_and_semantics/literals/string.md)
-       * [Symbol](syntax_and_semantics/literals/symbol.md)
+       * [符號 (Symbol)](syntax_and_semantics/literals/symbol.md)
        * [Array](syntax_and_semantics/literals/array.md)
        * [Hash](syntax_and_semantics/literals/hash.md)
        * [Range](syntax_and_semantics/literals/range.md)

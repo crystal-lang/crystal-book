@@ -1,19 +1,21 @@
-# Symbol
+# 符號 <small>Symbol</small>
 
-A [Symbol](http://crystal-lang.org/api/Symbol.html) is a constant that is identified by a name without you having to give it a numeric value.
+符號（[Symbol](http://crystal-lang.org/api/Symbol.html)）是以名稱來區別的常數，在編譯時期會轉換為整數（但你不需要為它填上數值）。
+
+你不能動態建立符號，當你編譯你的程式時，編譯器會自動為每一個不同的符號配置一個唯一的數值。
 
 ```crystal
 :hello
 :good_bye
 
-# With spaces and symbols
+# 包含空白或其他符號時，可以使用雙引號括起
 :"symbol with spaces"
 
-# Ending with question and exclamation marks
+# 符號允許由驚歎號及問號作為結尾
 :question?
 :exclamation!
 
-# For the operators
+# 符號也可以用來表達運算符
 :+
 :-
 :*
@@ -42,4 +44,4 @@ A [Symbol](http://crystal-lang.org/api/Symbol.html) is a constant that is identi
 :===
 ```
 
-Internally a symbol is represented as an `Int32`.
+內部實作時，會將符號視為一種 `Int32`。
