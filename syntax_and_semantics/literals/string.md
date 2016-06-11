@@ -1,95 +1,94 @@
-# String
+# 字串 <small>String</small>
 
-A [String](http://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
+字串（[String](http://crystal-lang/api/String.html)）相當於一組不可變<small>(Immutable)</small>的 UTF-8 字元序列。
 
-A String is typically created with a string literal, enclosing UTF-8 characters in double quotes:
+字串通常由字串常值來表達——即由一對雙引號(`"`)括住數個 UTF-8 字元：
 
 ```crystal
 "hello world"
 ```
 
-A backslash can be used to denote some characters inside the string:
+如同[字元](./char.md)，反斜線(`\`)也可以拿來表達一些特定的字元：
 
 ```crystal
-"\"" # double quote
-"\\" # backslash
-"\e" # escape
-"\f" # form feed
-"\n" # newline
-"\r" # carriage return
-"\t" # tab
-"\v" # vertical tab
+"\"" # 雙引號
+"\\" # 反斜線
+"\e" # 跳脫
+"\f" # 換頁
+"\n" # 換行
+"\r" # 輸入鍵 (Enter)
+"\t" # Tab
+"\v" # 垂直 Tab
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
+你也可以使用反斜線搭配*最多 3 個*數字表達 8 進位編碼的字元：
 
 ```crystal
 "\101" # == "A"
 "\123" # == "S"
 "\12"  # == "\n"
-"\1"   # string with one character with code point 1
+"\1"   # 包含一個編碼位置 1 之字元的字串
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+你還可以使用反斜線搭配一個 *u* 跟著 4 個十六進位數字來表達一個萬國碼碼位：
 
 ```crystal
 "\u0041" # == "A"
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+當然，你也可以用大括號（`{}`）括住*最多 6 個*十六進位數字（從 0 到 10FFFF）來表達一個萬國碼碼位：
 
 ```crystal
 "\u{41}"    # == "A"
 "\u{1F52E}" # == "🔮"
 ```
 
-A string can span multiple lines:
+字串能夠橫跨多行文字：
 
 ```crystal
 "hello
-      world" # same as "hello\n      world"
+      world" # 相當於 "hello\n      world"
 ```
 
-Note that in the above example trailing and leading spaces, as well as newlines,
-end up in the resulting string. To avoid this, you can split a string into multiple lines
-by joining multiple literals with a backslash:
+注意上面的例子中，我們可以看到產生的字串中包含了換行以及空白。
+
+如果想要避免產生換行及空白，但還是想要將字串切割成好幾行表達的話，可以使用反斜線來串聯各個部分：
 
 ```crystal
 "hello " \
 "world, " \
-"no newlines" # same as "hello world, no newlines"
+"no newlines" # 相當於 "hello world, no newlines"
 ```
 
-Alternatively, a backlash followed by a newline can be inserted inside the string literal:
+或是你也可以將反斜線直接插在字串裡面：
 
 ```crystal
 "hello \
      world, \
-     no newlines" # same as "hello world, no newlines"
+     no newlines" # 相當於 "hello world, no newlines"
 ```
 
-In this case, leading whitespace is not included in the resulting string.
+在這個範例中，我們可以看到行首空白是**不會**被包含在字串中的。
 
-If you need to write a string that has many double quotes, parenthesis, or similar
-characters, you can use alternative literals:
+如果你需要在字串中大量的使用雙引號時，可以改用括號來表達字串：
 
 ```crystal
-# Supports double quotes and nested parenthesis
-%(hello ("world")) # same as "hello (\"world\")"
+# 支援在字串中直接使用雙引號以及嵌套的小括號
+%(hello ("world")) # 相當於 "hello (\"world\")"
 
-# Supports double quotes and nested brackets
-%[hello ["world"]] # same as "hello [\"world\"]"
+# 支援在字串中直接使用雙引號以及嵌套的中括號
+%[hello ["world"]] # 相當於 "hello [\"world\"]"
 
-# Supports double quotes and nested curlies
-%{hello {"world"}} # same as "hello {\"world\"}"
+# 支援在字串中直接使用雙引號以及嵌套的大括號
+%{hello {"world"}} # 相當於 "hello {\"world\"}"
 
-# Supports double quotes and nested angles
-%<hello <"world">> # same as "hello <\"world\">"
+# 支援在字串中直接使用雙引號以及嵌套的角括號
+%<hello <"world">> # 相當於 "hello <\"world\">"
 ```
 
 ## Heredoc
 
-You can also use a "heredoc" for creating string:
+你也可以使用「[Heredoc](https://zh.wikipedia.org/zh-tw/Here文檔)」來建立字串：
 
 ```crystal
 <<-XML
@@ -99,27 +98,33 @@ You can also use a "heredoc" for creating string:
 XML
 ```
 
-A "heredoc" is written with `<<-IDENT`, where `IDENT` is an identifier, a sequence of letters and numbers that must start with a letter. The "heredoc" finishes in the line that starts with `IDENT`, ignoring leading whitespace.
+一個 Heredoc 起始於 `<<-IDENT`，`IDENT` 是一個標識符（由字母開頭且只包含字母與數字），並結束於開頭為 `IDENT` 的某行（略過行首空白）。
 
-Leading whitespace is removed from the heredoc contents according to the number of whitespace that this last `IDENT` has. For example:
+與結束標識符之相同數量的行首空白將自動被忽略。如：
 
 ```crystal
-# Same as "Hello\n  world"
+# 相當於 "  Hello\n    world"
+<<-STRING
+  Hello
+    world
+STRING
+
+# 相當於 "Hello\n  world"
 <<-STRING
   Hello
     world
   STRING
 
-# Same as "  Hello\n    world"
+# 相當於 "  Hello\n    world"
 <<-STRING
     Hello
       world
   STRING
 ```
 
-## Interpolation
+## 內插表達式
 
-To create a String with embedded expressions, you can use string interpolation:
+建立字串時，你可以使用內插表達式來混合並嵌入表達式。
 
 ```crystal
 a = 1
@@ -127,21 +132,22 @@ b = 2
 "sum = #{a + b}"        # "sum = 3"
 ```
 
-This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
+每個內插表達式（`#{...}`）內的的值都會被呼叫 `Object#to_s(IO)` 來取得要填入的字串。
 
-## Without interpolation nor escapes
+## 忽略跳脫字元以及內插表達式
 
-To create a String without interpolation nor escapes use `%q`:
+你也可以使用 `%q` 來建立不執行跳脫字元以及內插表達式的字串：
 
 ```crystal
 %q(hello \n #{world}) # => "hello \\n \#{world}"
 ```
 
-Delimiters for `%q(...)` can also be `{}`, `[]` and `<>`.
+所使用的括號也可以替換成 `{}`、`[]` 以及 `<>`。
 
-Heredoc without interpolation nor escapes is also possible, simply enclose the heredoc delimiter in single quotes:
+同時，只要將 Heredoc 的標識符用單引號（`'`）括起就能不執行跳脫及內插：
 
 ```crystal
+# 相當於 "hello \\n \#{world}"
 <<-'HERE'
 hello \n #{world}
 HERE
