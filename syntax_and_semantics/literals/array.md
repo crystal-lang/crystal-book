@@ -1,46 +1,49 @@
-# Array
+# 陣列 <small>Array</small>
 
-An [Array](http://crystal-lang.org/api/Array.html) is a generic type containing elements of a type `T`. It is typically created with an array literal:
+陣列（[Array](http://crystal-lang.org/api/Array.html)）為一泛型<small>(Generic type)</small>型別，其中包含型別為 `T` 的元素。
+
+通常我們可以這樣表達一個陣列：
 
 ```crystal
 [1, 2, 3]         # Array(Int32)
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-An Array can have mixed types, meaning `T` will be a union of types, but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
+陣列可以混合多種型別，這表示 `T` 可以是一個型別的集合，但 `T` 所代表的型別必須在陣列建立的時候就指定、或是從陣列常值中提取出來。
+剛剛的範例中可以看到，第二行陣列的 `T` 是一個從陣列常值中提取出來的型別集合。
 
-When creating an empty array you must always specify T:
+建立空白陣列時，需要手動指定 `T` 的型別：
 
 ```crystal
-[] of Int32 # same as Array(Int32).new
-[]          # syntax error
+[] of Int32 # 相當於 Array(Int32).new
+[]          # 語法錯誤 (syntax error)
 ```
 
-## Array of String
+## 字串陣列
 
-Arrays of strings can be created with a special syntax:
+當要描述的陣列常值皆由字串常值所組成時，我們可以使用以下的語法：
 
 ```crystal
 %w(one two three) # ["one", "two", "three"]
 ```
 
-## Array of Symbol
+## 符號陣列
 
-Arrays of symbols can be created with a special syntax:
+當要描述的陣列常值皆由符號常值所組成時，我們可以使用以下的語法：
 
 ```crystal
 %i(one two three) # [:one, :two, :three]
 ```
 
-## Array-like types
+## 類·陣列 型別
 
-You can use a special array literal syntax with other types too, as long as they define an argless `new` method and a `<<` method:
+只要型別中有定義不需要參數的 `new` 方法以及定義 `<<` 方法，我們就可以使用一種特化的陣列常值語法來建立該描述該型別的常值：
 
 ```crystal
 MyType{1, 2, 3}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+若 `MyType` 不是泛型的話，上方表達式等義於：
 
 ```crystal
 tmp = MyType.new
@@ -50,7 +53,7 @@ tmp << 3
 tmp
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+反之，若 `MyType` 是泛型，則上方表達式等義於：
 
 ```crystal
 tmp = MyType(typeof(1, 2, 3)).new
@@ -60,7 +63,7 @@ tmp << 3
 tmp
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+在泛型的應用上我們也可以手動指定型別：
 
 ```crystal
 MyType(Int32 | String) {1, 2, "foo"}
