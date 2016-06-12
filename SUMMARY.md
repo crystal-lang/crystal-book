@@ -27,7 +27,7 @@
        * [範圍 (Range)](syntax_and_semantics/literals/range.md)
        * [正規表示式 (Regex)](syntax_and_semantics/literals/regex.md)
        * [序組 (Tuple)](syntax_and_semantics/literals/tuple.md)
-       * [NamedTuple](syntax_and_semantics/literals/named_tuple.md)
+       * [命名序組 (NamedTuple)](syntax_and_semantics/literals/named_tuple.md)
        * [Proc](syntax_and_semantics/literals/proc.md)
    * [Local variables](syntax_and_semantics/local_variables.md)
    * [Global variables](syntax_and_semantics/global_variables.md)
