@@ -8,7 +8,7 @@ heeello    = /h(e+)llo/
 integer    = /\d+/
 ```
 
-正規表示式的常值以 `/` 標示，且使用 [PCRE](http://pcre.org/pcre.txt) 語法。
+正規表示式的常值以 `/` 夾住，且使用 [PCRE](http://pcre.org/pcre.txt) 語法。
 
 此外，還可以使用以下的模式修飾字：
 

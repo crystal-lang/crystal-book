@@ -2,13 +2,13 @@
 
 字串（[String](http://crystal-lang/api/String.html)）相當於一組不可變<small>(Immutable)</small>的 UTF-8 字元序列。
 
-字串通常由字串常值來表達——即由一對雙引號(`"`)括住數個 UTF-8 字元：
+字串通常由字串常值來表達——即由一對雙引號（`"`）括住數個 UTF-8 字元：
 
 ```crystal
 "hello world"
 ```
 
-如同[字元](./char.md)，反斜線(`\`)也可以拿來表達一些特定的字元：
+如同[字元](./char.md)，反斜線（`\`）也可以拿來表達一些特定的字元：
 
 ```crystal
 "\"" # 雙引號

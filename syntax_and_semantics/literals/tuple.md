@@ -1,6 +1,6 @@
 # 序組 <small>Tuple</small>
 
-我們通常用以下的語法建立一個序組（[Tuple](http://crystal-lang.org/api/Tuple.html)）：
+我們通常用以下的常值語法建立一個序組（[Tuple](http://crystal-lang.org/api/Tuple.html)）：
 
 ```crystal
 tuple = {1, "hello", 'x'} # Tuple(Int32, String, Char)

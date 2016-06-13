@@ -1,6 +1,6 @@
 # 範圍 <small>Range</small>
 
-通常以下面的語法建立一個範圍（[Range](http://crystal-lang.org/api/Range.html)）：
+通常以下面的常值語法建立一個範圍（[Range](http://crystal-lang.org/api/Range.html)）：
 
 ```crystal
 x..y  # 建立一個閉區間，在數學上我們用 [x, y] 表示

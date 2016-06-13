@@ -14,7 +14,7 @@
    * [HTTP伺服器](overview/http_server.md)
 * [語法及語意](syntax_and_semantics/README.md)
    * [註解](syntax_and_semantics/comments.md)
-   * [常值](syntax_and_semantics/literals.md)
+   * [常值 (Literals)](syntax_and_semantics/literals.md)
        * [空值 (Nil)](syntax_and_semantics/literals/nil.md)
        * [布林值 (Bool)](syntax_and_semantics/literals/bool.md)
        * [整數 (Integers)](syntax_and_semantics/literals/integers.md)

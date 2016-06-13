@@ -2,7 +2,7 @@
 
 陣列（[Array](http://crystal-lang.org/api/Array.html)）為一泛型<small>(Generic type)</small>型別，其中包含型別為 `T` 的元素。
 
-通常我們可以這樣表達一個陣列：
+通常我們可以這樣表達一個陣列常值：
 
 ```crystal
 [1, 2, 3]         # Array(Int32)

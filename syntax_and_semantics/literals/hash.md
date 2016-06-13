@@ -2,7 +2,7 @@
 
 雜湊（[Hash](http://crystal-lang.org/api/Hash.html)）用來表示索引鍵<small>(Key)</small>與值<small>(Value)</small>之間的對應關係，其中索引鍵為 `K` 型別、值為 `V` 型別。
 
-通常我們可以這樣表達一個雜湊：
+通常我們可以這樣表達一個雜湊常值：
 
 ```crystal
 {1 => 2, 3 => 4}     # Hash(Int32, Int32)

@@ -1,6 +1,6 @@
 # 整數
 
-有4種有號整數: [Int8](http://crystal-lang.org/api/Int8.html)、[Int16](http://crystal-lang.org/api/Int16.html)、[Int32](http://crystal-lang.org/api/Int32.html) 及 [Int64](http://crystal-lang.org/api/Int64.html)，可以分別表示8、16、32和64位元。
+共有 4 種有號整數（[Int](http://crystal-lang.org/api/Int.html)）：[Int8](http://crystal-lang.org/api/Int8.html)、[Int16](http://crystal-lang.org/api/Int16.html)、[Int32](http://crystal-lang.org/api/Int32.html) 及 [Int64](http://crystal-lang.org/api/Int64.html)，可分別表示 8、16、32 和 64 位元的有號整數。
 
 還有4種無號整數: [UInt8](http://crystal-lang.org/api/UInt8.html)、[UInt16](http://crystal-lang.org/api/UInt16.html)、[UInt32](http://crystal-lang.org/api/UInt32.html) 及 [UInt64](http://crystal-lang.org/api/UInt64.html)。
 
