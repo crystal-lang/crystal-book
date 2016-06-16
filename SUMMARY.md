@@ -31,7 +31,7 @@
        * [程序 (Proc)](syntax_and_semantics/literals/proc.md)
    * [區域變數](syntax_and_semantics/local_variables.md)
    * [全域變數](syntax_and_semantics/global_variables.md)
-   * [Assignment](syntax_and_semantics/assignment.md)
+   * [賦值](syntax_and_semantics/assignment.md)
        * [Multiple assignment](syntax_and_semantics/multiple_assignment.md)
    * [Union types](syntax_and_semantics/union_types.md)
    * [Control expressions](syntax_and_semantics/control_expressions.md)
