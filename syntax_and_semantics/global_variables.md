@@ -1,11 +1,11 @@
-# Global variables
+# 全域變數
 
-Global variables start with a dollar sign (`$`). They are declared when you first assign them a value.
+全域變數以金錢符號（`$`）開頭，在我們第一次賦值的時候會同時被宣告。
 
 ```crystal
 $year = 2014
 ```
 
-Their type is inferred using the [global type inference algorithm](type_inference.html)
+他們的型別會根據[型別推導](type_inference.md)一章的內容進行推測。
 
-Additionally, if your program reads a global variable before it was ever assigned a value it will also have the `Nil` type.
+另外，如果一個全域變數還沒有進行任何賦值的話，他們會是 `Nil` 型別。
