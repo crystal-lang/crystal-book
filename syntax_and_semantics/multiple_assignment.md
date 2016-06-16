@@ -1,18 +1,18 @@
-# Multiple assignment
+# 多項賦值
 
-You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`):
+我們可以使用逗號（`,`）來同時進行多項變數的賦值（當然，也包括宣告）：
 
 ```crystal
 name, age = "Crystal", 1
 
-# The above is the same as this:
+# 相當於：
 temp1 = "Crystal"
 temp2 = 1
 name  = temp1
 age   = temp2
 ```
 
-Note that because expressions are assigned to temporary variables it is possible to exchange variables’ contents in a single line:
+我們可以發現在過程中使用了一些變數來暫存這些右值（也就是即將被賦予的值），所以多項賦值也可以用來交換變數的內容：
 
 ```crystal
 a = 1
@@ -22,45 +22,45 @@ a #=> 2
 b #=> 1
 ```
 
-If the right-hand side contains just one expression, it is considered an indexed type and the following syntax sugar applies:
+如果右側只有一個表達式的話，將會套用下面介紹的語法糖：（注意：我們假定右值一定是可索引的型別）
 
 ```crystal
 name, age, source = "Crystal,1,github".split(",")
 
-# The above is the same as this:
+# 等同於下面的做法：
 temp = "Crystal,1,github".split(",")
 name   = temp[0]
 age    = temp[1]
 source = temp[2]
 ```
 
-If the left-hand side contains just one variable, the right-hand side is considered an array:
+如果左側只有一個變數的話，那麼右側將會被視為一個陣列：
 
 ```crystal
 names = "John", "Peter", "Jack"
 
-# The above is the same as:
+# 意思與下面相同：
 names = ["John", "Peter", "Jack"]
 ```
 
-Multiple assignment is also available to methods that end with `=`:
+在對於結尾帶有等號的方法上也可以進行多項賦值：
 
 ```crystal
 person.name, person.age = "John", 32
 
-# Same as:
+# 等同於：
 temp1 = "John"
 temp2 = 32
 person.name = temp1
 person.age = temp2
 ```
 
-And it is also available to indexers (`[]=`):
+當然，在索引存取子上（`[]=`）也可以如此應用：
 
 ```crystal
 objects[1], objects[2] = 3, 4
 
-# Same as:
+# 等同於：
 temp1 = 3
 temp2 = 4
 objects[1] = temp1
