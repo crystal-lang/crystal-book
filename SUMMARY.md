@@ -29,7 +29,7 @@
        * [序組 (Tuple)](syntax_and_semantics/literals/tuple.md)
        * [命名序組 (NamedTuple)](syntax_and_semantics/literals/named_tuple.md)
        * [程序 (Proc)](syntax_and_semantics/literals/proc.md)
-   * [Local variables](syntax_and_semantics/local_variables.md)
+   * [區域變數](syntax_and_semantics/local_variables.md)
    * [Global variables](syntax_and_semantics/global_variables.md)
    * [Assignment](syntax_and_semantics/assignment.md)
        * [Multiple assignment](syntax_and_semantics/multiple_assignment.md)
