@@ -4,8 +4,8 @@
 
 Crystal is a programming language with the following goals:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal)
-* Statically type-checked but without having to specify the type of variables or method arguments.
-* Be able to call C code by writing bindings to it in Crystal.
-* Have compile-time evaluation and generation of code, to avoid boilerplate code.
-* Compile to efficient native code.
+* Ruby 風格語法（但不會完全相容 Ruby）
+* 自動型別推導以及靜態型別檢查
+* 容易撰寫 C 函式庫綁紮<small>(Binding)</small>
+* 編譯時期展開巨集並產生最佳化程式碼
+* 產生高效原生碼

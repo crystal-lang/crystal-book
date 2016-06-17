@@ -1,11 +1,10 @@
 # Hello World!
 
-經典的 "hello world" 在 Crystal 中看起來是這樣: 
+經典的 "hello world" 在 Crystal 中看起來是這樣： 
 
 ```crystal
 puts "Hello world!"
 ```
 
-
-從這裡你可以發現，輸出 "Hello world!" 這個例行事項就是程式的全部，你並不需要定義一個 "main" 函式或是其他類似的東西。
+從這裡我們可以發現，整個程式的入口點就是程式自己（從頭開始），我們並不需要額外定義一個 "main" 函數或其他類似的東西。
 

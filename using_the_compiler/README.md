@@ -1,13 +1,12 @@
 # 使用編譯器
 
-一旦你 [安裝](../installation/README.md) 了編譯器你就有了個 `crystal` 二進位檔在你的配置當中。
+一旦我們[安裝](../installation/README.md)了編譯器之後，我們就有了 `crystal` 執行檔可以使用。
 
-在接下來的部分，錢字號 (`$`) 表示命令列。
+在接下來的內容裡，金錢符號（`$`）會被用來表示命令列。
 
 ## 編譯並執行
 
-想要編譯並且直接執行程式你可以執行 `crystal` 並在後面加上檔案名稱:
-
+想要編譯並且直接執行程式，我們可以執行 `crystal` 並在後面加上檔案名稱：
 
 ```
 $ crystal some_program.cr
@@ -15,38 +14,37 @@ $ crystal some_program.cr
 
 Crystal 檔案以 `.cr` 作為副檔名。
 
-你也可以使用 `run` :
+我們也可以使用 `run`：
 
 ```
 $ crystal run some_program.cr
 ```
 
-## 產生一個執行檔
+## 產生執行檔
 
-To create an executable use the `compile` command:
+使用 `compile` 命令來產生一個執行檔：
 
 ```
 $ crystal compile some_program.cr
 ```
 
-這會產生一個可供執行的 `some_program` 檔案:
+這會產生一個可供執行的 `some_program` 檔案：
 
 ```
 $ ./some_program
 ```
 
-**注意 :** 在預設情況下產生的執行檔 **並沒有被完全優化**。 使用 `--release` 參數來啟用優化功能:
+**注意：** 在預設情況下產生的執行檔**並沒有被完全優化**。我們可以使用 `--release` 參數來啟用優化功能：
 
 ```
 $ crystal compile some_program.cr --release
 ```
 
-確保在編譯準備發行( production-ready )的執行檔及評效( benchmarks )時每次都有使用 `--release`。
+請確保在每次編譯發行版本<small>(Production-ready)</small>的執行檔或是用來評比效能<small>(Benchmarks)</small>時都使用 `--release`。
 
-這麼做的原因是因為就算沒有完全優化，它的表現還是非常好而且編譯的較快，所以你可以像使用直譯器一樣使用 `crystal` 命令。
+要這麼做的原因是就算沒有進行完全優化，它的表現還是非常好而且編譯的速度會比較快，讓我們可以像使用直譯器一樣使用 `crystal` 命令。
 
-## 產生一個專案或是函式庫
-
+## 產生一個專案或函式庫
 
 使用 `init` 命令來產生一個擁有標準目錄結構的 Crystal 專案。
 
@@ -66,7 +64,7 @@ Initialized empty Git repository in ~/MyCoolLib/.git/
 
 ## 其他命令及選項
 
-輸入  `crystal` 並且不加上任何參數來瀏覽所有可用的命令:
+輸入 `crystal` 並且不加上任何參數來瀏覽所有可用的命令：
 
 ```
 $ crystal
@@ -87,7 +85,7 @@ Command:
     version, --version, -v   show version
 ```
 
-在命令後使用 `--help` 來查看該命令所有可用的選項:
+在命令後使用 `--help` 來查看該命令所有可用的選項：
 
 ```
 $ crystal compile --help

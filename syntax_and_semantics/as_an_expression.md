@@ -31,7 +31,7 @@ else
   3
 end
 
-# 上方等價於 :
+# 上方等價於：
 if 1 > 2
   nil
 else
