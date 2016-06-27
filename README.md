@@ -9,3 +9,12 @@ Crystal is a programming language with the following goals:
 * Be able to call C code by writing bindings to it in Crystal.
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
+
+## Build
+
+```
+$ npm install -g gitbook-cli
+$ gitbook build ./_gitbook --gitbook=2.3.2
+```
+
+Html output will be in `_book` folder.
