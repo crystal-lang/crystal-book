@@ -14,7 +14,7 @@ Crystal is a programming language with the following goals:
 
 ```
 $ npm install -g gitbook-cli
-$ gitbook build ./_gitbook --gitbook=2.3.2
+$ gitbook build --gitbook=2.3.2
 ```
 
 Html output will be in `_book` folder.

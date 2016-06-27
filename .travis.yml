@@ -1,0 +1,17 @@
+sudo: false
+cache:
+  directories:
+    - $HOME/.npm
+before_install: |
+  npm install -g gitbook-cli
+script: test $TRAVIS_PULL_REQUEST != "false" || gitbook build --gitbook=2.3.2
+branches:
+  only:
+    - master
+deploy:
+  provider: s3
+  access_key_id: AKIAIRL4BWFPN7P54TBQ
+  secret_access_key:
+    secure: KPvsij3ZsnlEF+LnaZaP3Iz6sm0sIb7FsomOUMh3+sFRsAQECeFSaUEBNxlRkLi68lOI5tS1huiK8BU8zPDkB3Ynig1b8PH5v3LhdNnwawI+/m+/DOBg1FsHijOiCUn5Q2+XaXZAvHAsE/3jq/Carby6WLZDPMWQ+XU1PSC3yKpS8t6TLJ0P0V4EY6cIVE0m1fVMD0LF+XF/z3XlYMPt6rnstDHjs0OzOA0IXAtmBvfi7E7lI5Z+EacyfPE46BjfYO7jJ+tdfe/BieNJZFIoE5rxRhVgHCDkI0KSfpub2cpEeTuHH789kI9OJ3Z7eaGts5jRSvj8E19qfZVdQtHcF2gZx+DvcmbDiAsU5aRG+rBSuHozXBIeNEqgfzCw4rvD3D4tO3UIjk7qYiQm69QKypIZzFxg/guE2bzfuBylLNSFkg0VYh5+dYJnI+FQbr2AthjmsEVElN6kBCVl9kB5vYgnK9O4A/EPyP42tKj6PL3dABhIP9dVarL+svRduvnNQK79jeRxBxFmnrrlkHMKbxIN3ItEAWS9y1rM6d5bGrkdXawZyf2Bz3yQFcB6GkjzTZtNxbCyOYw5Xpj3aAoOAw0s/AIxeZHSWJYTOQWTkG27e9hC7f/83r4/iVt6BHbki2U8C7NUojWrYvEDgL6ca1u8ZFYE3dqL0Tz0Fum0RhA=
+  bucket: "crystal-book"
+  local_dir: _book
