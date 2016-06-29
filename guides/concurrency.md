@@ -339,7 +339,7 @@ After yield
 
 Here `channel.send` is executed first, but since there's no one waiting for a value (yet), execution continues in other fibers. The second fiber is executed, there's a value on the channel, it's obtained, and execution continues, first with the first fiber, and then with the main fiber, because `Fiber.yield` puts a fiber at the end of the execution queue.
 
-### Unbuffered channels
+### Buffered channels
 
 The above examples use unbuffered channels: when sending a value, if a fiber is waiting on that channel then execution continues on that fiber.
 
