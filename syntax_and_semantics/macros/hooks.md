@@ -27,8 +27,8 @@ Child.new.child #=> 1
 Example of `method_missing`:
 
 ```crystal
-macro method_missing(name, args, block)
-  print "Got ", {{name.id.stringify}}, " with ", {{args.size}}, " arguments", '\n'
+macro method_missing(call)
+  print "Got ", {{call.name.id.stringify}}, " with ", {{call.args.size}}, " arguments", '\n'
 end
 
 foo          # Prints: Got foo with 0 arguments
