@@ -22,10 +22,10 @@ $ crystal run some_program.cr
 
 ## Creating an executable
 
-To create an executable use the `compile` command:
+To create an executable use the `build` command:
 
 ```
-$ crystal compile some_program.cr
+$ crystal build some_program.cr
 ```
 
 This will create a `some_program` file that you can execute:
@@ -37,7 +37,7 @@ $ ./some_program
 **Note:** By default the generated executables **are not fully optimized**. To turn optimizations on, use the `--release` flag:
 
 ```
-$ crystal compile some_program.cr --release
+$ crystal build some_program.cr --release
 ```
 
 Make sure to always use `--release` for production-ready executables and when performing benchmarks.
@@ -72,7 +72,7 @@ Usage: crystal [command] [switches] [program file] [--] [arguments]
 
 Command:
     init                     generate a new project
-    compile                  compile program
+    build                    build an executable
     deps                     install project dependencies
     docs                     generate documentation
     env                      print Crystal environment information
@@ -88,8 +88,8 @@ Command:
 To see the available options for a particular command, use `--help` after a command:
 
 ```
-$ crystal compile --help
-Usage: crystal compile [options] [programfile] [--] [arguments]
+$ crystal build --help
+Usage: crystal build [options] [programfile] [--] [arguments]
 
 Options:
     --cross-compile                  cross-compile
