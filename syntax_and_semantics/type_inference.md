@@ -1,7 +1,5 @@
 # Type inference
 
-**Note**: this applies to the next version of Crystal (0.16.0). Before this version global type inference takes the whole program and all uses into account.
-
 Crystal's philosophy is to require as few type annotations as possible. However, some type annotatinos are required.
 
 Consider a class definition like this:
