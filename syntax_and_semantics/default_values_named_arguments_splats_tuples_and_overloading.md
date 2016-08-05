@@ -42,7 +42,7 @@ foo(
 )
 ```
 
-Additionally, a call argument can have a splat (`*`) or double splat (`**`). A splat expands a [literals/tuple.html](Tuple) into positional arguments, while a double splat expands a [literals/named_tuple.html](NamedTuple) into named arguments. Multiple argument splats and double splats are allowed.
+Additionally, a call argument can have a splat (`*`) or double splat (`**`). A splat expands a [Tuple](literals/tuple.html) into positional arguments, while a double splat expands a [NamedTuple](literals/named_tuple.html) into named arguments. Multiple argument splats and double splats are allowed.
 
 ## How call arguments are matched to method arguments
 
@@ -50,7 +50,7 @@ When invoking a method, the algorithm to match call arguments to method argument
 
 * First positional arguments are matched with positional method arguments. The number of these must be at least the number of positional arguments without a default value. If there's a splat method argument with a name (the case without a name is explained below), more positional arguments are allowed and they are captured as a tuple. Positional arguments never match past the splat method argument.
 * Then named arguments are matched, by name, with any argument in the method (it can be before or after the splat method argument). If an argument was already filled by a positional argument then it's an error.
-* Extra named arguments are placed in the double splat method argument, as a [literals/named_tuple.html](NamedTuple), if it exists, otherwise it's an error.
+* Extra named arguments are placed in the double splat method argument, as a [NamedTuple](literals/named_tuple.html), if it exists, otherwise it's an error.
 
 When a splat method argument has no name, it means no more positional arguments can be passed, and next arguments must be passed as named arguments. For example:
 
