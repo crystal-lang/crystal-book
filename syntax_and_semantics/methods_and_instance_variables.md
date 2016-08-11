@@ -4,11 +4,20 @@ We can simplify our constructor by using a shorter syntax for assigning a method
 
 ```crystal
 class Person
+  getter name
+  getter age
+
   def initialize(@name : String)
     @age = 0
   end
 end
+
+jen = Person.new "Jen"
+jen.name #=> "Jen"
+jen.age #=> 0
 ```
+
+Notice how we also added two getters to be able to get a person's name and age. [`getter`](https://crystal-lang.org/api/Object.html#getter%28%2Anames%29-macro) is a [macro method](macros/macro_methods.html) and saves you from having to type out the full method definition for `#name` and `#age`. In the same fashion, Object also also defines `setter` (providing you with a method like `#name=(new_name)`) and `property`, which gives you both at once.
 
 Right now, we can't do much with a person: create it with a name, ask for its name and for its age, which will always be zero. So lets add a method that makes a person become older:
 
