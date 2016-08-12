@@ -90,17 +90,25 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 * Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses just `->`
 * For `require_relative "foo"` use `require "./foo"`
 
-## No autosplat
-    [[1,"A"],[2,"B"]].each do |a,b|
+## No autosplat for arrays and enforced maximum block arity
+    [[1,"A"],[2,"B"]].each do |a, b|
       pp a
       pp b
     end
-will generate
+will generate an error message like
 
-    a = [1, "A"]
-    b = nil
-    a = [2, "B"]
-    b = nil
+    in line 1: too many block arguments (given 2, expected maximum 1)
+
+However omitting unneeded arguments is fine.
+
+There is autosplat for tuples:
+
+  [{1,"A"},{2,"B"}].each do |a, b|
+    pp a
+    pp b
+  end
+
+will return the result you expect.
 
 ## Reflection and Dynamic Evaluation
 
