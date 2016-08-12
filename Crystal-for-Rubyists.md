@@ -67,7 +67,7 @@ See [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/intege
 
 ### Regex
 
-Global variables ``$` `` and `$'` are missing (yet $~ and $1 are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
+Global variables ``$` `` and `$'` are missing (yet `$~` and `$1`, `$2`, ... are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
 
 ## Paired-down instance methods
 
