@@ -93,7 +93,7 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 ## No autosplat for arrays and enforced maximum block arity
 
 ```cr
-[[1, "A"],[2, "B"]].each do |a, b|
+[[1, "A"], [2, "B"]].each do |a, b|
   pp a
   pp b
 end
@@ -108,7 +108,7 @@ However omitting unneeded arguments is fine.
 There is autosplat for tuples:
 
 ```cr
-[{1, "A"},{2, "B"}].each do |a, b|
+[{1, "A"}, {2, "B"}].each do |a, b|
   pp a
   pp b
 end
