@@ -14,6 +14,16 @@ puts "Listening on http://0.0.0.0:8080"
 server.listen
 ```
 
+When we run this program, it will start a HTTP server listening on port ``8080``:
+
+```
+Listening on http://0.0.0.0:8080
+```
+
+If we send a request, we will get ``"Hello World! The time is 2016-08-12 19:52:41 +1000``. We should note that
+Crystal serves each request in a separate [fiber](../guides/concurrency.md), hence this server is capable of
+serving incoming requests concurrently.
+
 The above code will make sense once you read the whole documentation, but we can already learn some things.
 
 * You can [require](../syntax_and_semantics/requiring_files.html) code defined in other files:
