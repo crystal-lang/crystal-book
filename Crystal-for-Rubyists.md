@@ -91,10 +91,14 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 * For `require_relative "foo"` use `require "./foo"`
 
 ## No autosplat for arrays and enforced maximum block arity
-    [[1,"A"],[2,"B"]].each do |a, b|
-      pp a
-      pp b
-    end
+
+```cr
+[[1, "A"],[2, "B"]].each do |a, b|
+  pp a
+  pp b
+end
+```
+
 will generate an error message like
 
     in line 1: too many block arguments (given 2, expected maximum 1)
@@ -103,10 +107,12 @@ However omitting unneeded arguments is fine.
 
 There is autosplat for tuples:
 
-  [{1,"A"},{2,"B"}].each do |a, b|
-    pp a
-    pp b
-  end
+```cr
+[{1, "A"},{2, "B"}].each do |a, b|
+  pp a
+  pp b
+end
+```
 
 will return the result you expect.
 
@@ -132,7 +138,7 @@ puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
 Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them:
 
-```
+```rb
 """Now,
 what?""" # Invalid Crystal use:
 "Now,
