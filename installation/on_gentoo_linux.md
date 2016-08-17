@@ -1,4 +1,4 @@
-# On Arch Linux
+# On Gentoo Linux
 
 Gentoo Linux includes the Crystal compiler in the main overlay.
 
