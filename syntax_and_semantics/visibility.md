@@ -50,6 +50,18 @@ end
 Foo::Bar # Error
 ```
 
+`private` can be used with `class`, `module`, `lib`, `enum`, `alias` and constants:
+
+```crystal
+class Foo
+  private ONE = 1
+
+  ONE # => 1
+end
+
+Foo::ONE # Error
+```
+
 ## Protected methods
 
 A `protected` method can only be invoked on:
