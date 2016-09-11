@@ -40,7 +40,7 @@ Private types can only be referenced inside the namespace where they are defined
 
 ```crystal
 class Foo
-  privte class Bar
+  private class Bar
   end
 
   Bar      # OK
