@@ -19,7 +19,7 @@ We can quickly see that `@age` is an integer, but we don't know what's the type 
 
 As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance, [class](class_variables.html) and [global](global_variables.html) variables.
+For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance, [class](class_variables.html) variables.
 
 There are several ways to let Crystal know this.
 
@@ -40,13 +40,13 @@ end
 
 ## Don't use an explicit type annotation
 
-If you omit an explicit type annotation the compiler will try to infer the type of instance, class and global variables using a bunch of syntactic rules.
+If you omit an explicit type annotation the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
 
-For a given instance/class/global variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
+For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
 
 The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type annotation.
 
-The following rules only mention instance variables, but they apply to class and global variables as well. They are:
+The following rules only mention instance variables, but they apply to class variables as well. They are:
 
 ### 1. Assigning a literal value
 

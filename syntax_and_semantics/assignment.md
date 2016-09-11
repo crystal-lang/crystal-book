@@ -11,9 +11,6 @@ local = 1
 
 # Assigns to a class variable
 @@class = 3
-
-# Assigns to a global variable
-$global = 4
 ```
 
 Each of the above kinds of variables will be explained later on.

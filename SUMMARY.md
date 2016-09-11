@@ -32,7 +32,6 @@
    * [Assignment](syntax_and_semantics/assignment.md)
        * [Multiple assignment](syntax_and_semantics/multiple_assignment.md)
    * [Local variables](syntax_and_semantics/local_variables.md)
-   * [Global variables](syntax_and_semantics/global_variables.md)
    * [Union types](syntax_and_semantics/union_types.md)
    * [Control expressions](syntax_and_semantics/control_expressions.md)
        * [Truthy and falsey values](syntax_and_semantics/truthy_and_falsey_values.md)
