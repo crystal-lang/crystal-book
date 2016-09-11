@@ -8,13 +8,18 @@ Tells the compiler how to link a C library. This is explained in the [lib](c_bin
 
 ## ThreadLocal
 
-The `@[ThreadLocal]` attribute can be applied to global variables and class variables. It makes them be thread local.
+The `@[ThreadLocal]` attribute can be applied to class variables and C external variables. It makes them be thread local.
 
 ```crystal
-# One for each thread
-@[ThreadLocal]
-$values = [] of Int32
+class DontUseThis
+  # One for each thread
+  @[ThreadLocal]
+  @@values = [] of Int32
+end
 ```
+
+ThreadLocal is used in the standard library to implement the runtime and shouldn't be
+needed or used outside it.
 
 ## Packed
 
