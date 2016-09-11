@@ -99,7 +99,23 @@ You can also use a "heredoc" for creating string:
 XML
 ```
 
-A "heredoc" is written with `<<-IDENT`, where `IDENT` is an identifier, a sequence of letters and numbers that must start with a letter. The "heredoc" finishes in the line that starts with `IDENT`, ignoring leading whitespace.
+A "heredoc" is written with `<<-IDENT`, where `IDENT` is an identifier, a sequence of letters and numbers that must start with a letter. The "heredoc" finishes in the line that starts with `IDENT`, ignoring leading whitespace, and is either followed by a newline or by a non-alphanumeric character.
+
+The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
+
+```crystal
+<<-SOME
+hello
+SOME.upcase # => "HELLO"
+
+def upcase(string)
+  string.upcase
+end
+
+upcase(<<-SOME
+  hello
+  SOME) # => "HELLO"
+```
 
 Leading whitespace is removed from the heredoc contents according to the number of whitespace that this last `IDENT` has. For example:
 
