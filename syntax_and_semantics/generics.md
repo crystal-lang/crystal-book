@@ -30,7 +30,12 @@ class MyDictionary(K, V)
 end
 ```
 
-Only single letter names are allowed as names of type arguments.
+Any name can be used for type arguments:
+
+```crystal
+class MyDictionary(KeyType, ValueType)
+end
+```
 
 ## Type variables inference
 
@@ -44,8 +49,7 @@ MyBox.new("hello") # : MyBox(String)
 In the above code we didn't have to specify the type arguments of `MyBox`, the compiler inferred them following this process:
 
 * `MyBox.new(value)` delegates to `initialize(@value : T)`
-* `T` doesn't exist, so it's used as a free var
-* Because `MyBox` is actually `MyBox(T)`, and `T` is both a free variable and a type argument, `T` becomes the type of the passed value
+* `T` isn't bound to a type yet, so the compiler binds it to the type of the given argument
 
 In this way generic types are less tedious to work with.
 
