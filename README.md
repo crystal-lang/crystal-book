@@ -18,3 +18,12 @@ $ gitbook build --gitbook=2.3.2
 ```
 
 Html output will be in `_book` folder.
+
+## Contribute
+
+Do you consider yourself a helpful person? If you find bugs or sections
+which need more clarification you're welcome to contribute to this
+documentation. You can submit a pull request to this repository:
+https://github.com/crystal-lang/crystal-book
+
+Thank you very much!
