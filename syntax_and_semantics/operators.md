@@ -18,7 +18,7 @@ You can define an operator for a type like this:
 struct Vector2
   getter x, y
 
-  def initialize(@x, @y)
+  def initialize(@x : Int32, @y : Int32)
   end
 
   def +(other)
@@ -55,6 +55,8 @@ v1 = Vector2.new(1, 2)
 -v1                    #=> Vector2(@x=-1, @y=-2)
 ```
 
+**Note:** `!` (not) cannot be defined as a method (its meaning can't be changed).
+
 ## Binary operators
 
 ```crystal
@@ -63,7 +65,6 @@ v1 = Vector2.new(1, 2)
 *   # multiplication
 /   # division
 %   # modulo
-!   # negation
 &   # bitwise and
 |   # bitwise or
 ^   # bitwise xor

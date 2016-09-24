@@ -27,10 +27,10 @@ This allocates the union on the stack.
 
 A C union starts with all its fields set to "zero": integers and floats start at zero, pointers start with an address of zero, etc.
 
-To avoid this initialization you can use `::`:
+To avoid this initialization you can use `uninitialized`:
 
 ```crystal
-value :: U::IntOrFlaot
+value = uninitialized U::IntOrFlaot
 value.some_int #=> some garbage value
 ```
 
@@ -42,6 +42,8 @@ value.some_int = 1
 value.some_int #=> 1
 value.some_float #=> 4.94066e-324
 ```
+
+If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
 
 A C union is passed by value (as a copy) to functions and methods, and also passed by value when it is returned from a method:
 

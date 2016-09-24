@@ -51,10 +51,10 @@ This allocates the struct on the stack.
 
 A C struct starts with all its fields set to "zero": integers and floats start at zero, pointers start with an address of zero, etc.
 
-To avoid this initialization you can use `::`:
+To avoid this initialization you can use `uninitialized`:
 
 ```crystal
-tz :: C::TimeZone
+tz = uninitialized C::TimeZone
 tz.minutes_west #=> some garbage value
 ```
 
@@ -65,6 +65,8 @@ tz = C::TimeZone.new
 tz.minutes_west = 1
 tz.minutes_west #=> 1
 ```
+
+If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
 
 You can also initialize some fields with a syntax similar to [named arguments](../default_and_named_arguments.html):
 

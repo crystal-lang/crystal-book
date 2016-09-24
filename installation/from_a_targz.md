@@ -2,7 +2,7 @@
 
 如果你無法或是不想要使用前面的方法安裝，你還是可以下載單獨的 .tar.gz 檔案來取得安裝 Crystal 所需要的所有東西。
 
-最新的檔案可以在 GitHub 上的發佈頁面找到: https://github.com/manastech/crystal/releases
+最新的檔案可以在 GitHub 上的發佈頁面找到: https://github.com/crystal-lang/crystal/releases
 
 下載你的系統所對應的檔案並且解壓縮，裡面有 `bin/crystal` 可供執行。
 

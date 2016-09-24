@@ -5,7 +5,7 @@
 ```crystal
 alias PInt32 = Pointer(Int32)
 
-ptr = PInt32.malloc(1) # :: Pointer(Int32)
+ptr = PInt32.malloc(1) # : Pointer(Int32)
 ```
 
 每當別名被使用時，編譯器都將其替換回原來的型別。

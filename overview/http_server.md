@@ -5,8 +5,9 @@
 ```crystal
 require "http/server"
 
-server = HTTP::Server.new(8080) do |request|
-  HTTP::Response.ok "text/plain", "Hello world! The time is #{Time.now}"
+server = HTTP::Server.new(8080) do |context|
+  context.response.content_type = "text/plain"
+  context.response.print "Hello world! The time is #{Time.now}"
 end
 
 puts "Listening on http://0.0.0.0:8080"
@@ -43,8 +44,8 @@ server.listen
 
 * 你可以使用[區塊碼( blocks )](../syntax_and_semantics/blocks_and_procs.html)，而這是個重複利用程式碼的好方法也是函式化的特色之一。
 
-    ```
-    HTTP::Server.new(8080) do |request|
+    ```ruby
+    HTTP::Server.new(8080) do |context|
       ...
     end
     ```

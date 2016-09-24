@@ -11,13 +11,12 @@
   
 ```
 
-這將加入簽章金鑰和軟體源的設定。
-
-當然，你也可以手動執行：
+That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands as *root*:
 
 ```
 apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54
 echo "deb http://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.list
+apt-get update
 ```
 
 ## 安裝

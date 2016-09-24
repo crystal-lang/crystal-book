@@ -28,5 +28,3 @@ end
 
 TEN #=> 10
 ```
-
-If a constant is not used, its initializer is never included in the final executable.

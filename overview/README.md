@@ -9,11 +9,11 @@ a = 1 + 2
 a #=> 3
 ```
 
-註解 `::` 用來說明變數的型態。
+A comment using `:` is used for showing the type of a variable.
 
 ```
 s = "hello"
-# s :: String
+# s : String
 ```
 
 讓我們從之後的兩個例子來熟悉這個語言。

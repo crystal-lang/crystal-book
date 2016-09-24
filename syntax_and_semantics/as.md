@@ -1,6 +1,6 @@
 # as
 
-`as` 能夠限制一個表達式的型別。例如：
+The `as` pseudo-method restricts the types of an expression. For example:
 
 ```crystal
 if some_condition
@@ -9,7 +9,7 @@ else
   a = "hello"
 end
 
-# a :: Int32 | String
+# a : Int32 | String
 ```
 
 上述的程式碼中，`a` 是一個 `Int32 | String` 的混合型別。
@@ -28,7 +28,7 @@ a_as_int.abs          # 可行，編譯器知道 a_as_int 是 Int32
 另外，不能夠將任一種型別限制為另一種型別，這將在編譯時期發出錯誤：
 
 ```crystal
-1 as String # Error
+1.as(String) # Compile-time error
 ```
 
 **注意：** 你不能使用 `as` 將一個型別轉換為另一個不相關的型別 —— `as` 並不像其他語言裡的 `cast`（轉型）。而在整數、浮點數與字元中有另外提供轉型的方法，或著我們也能照下方說明的指標來轉型。
@@ -39,7 +39,7 @@ a_as_int.abs          # 可行，編譯器知道 a_as_int 是 Int32
 
 ```crystal
 ptr = Pointer(Int32).malloc(1)
-ptr as Int8*                    #:: Pointer(Int8)
+ptr.as(Int8*)                    #:: Pointer(Int8)
 ```
 
 在上方的例子中，並沒有進行檢查 —— 指標非常的不安全，而這類型的轉型通常只在 C 語言繫結或是更底層的程式碼中才需要。
@@ -71,7 +71,7 @@ array2.same?(array) #=> true
 
 ```crystal
 a = 1
-b = a as Int32 | Float64
+b = a.as(Int32 | Float64)
 b #:: Int32 | Float64
 ```
 
@@ -91,36 +91,8 @@ ary2 << 1.5 # OK
 
 ## 當編譯器無法推斷區塊的型別時
 
-有時編譯器並不能推斷區塊的型別，如：
+Sometimes the compiler can't infer the type of a block. This can happen in recursive calls that depend on each other. In those cases you can use `as` to let it know the type:
 
 ```crystal
-class Person
-  def initialize(@name)
-  end
-
-  def name
-    @name
-  end
-end
-
-a = [] of Person
-x = a.map { |f| f.name } # Error: can't infer block return type
-```
-
-編譯器需要知道區塊的型別來作為 `Array#map` 所建立的陣列之泛型型別，但 `Person` 從未被實例化過，編譯器則無從推斷 `@name` 的型別。
-
-在這個案例中你可以透過 `as` 來協助編譯器：
-
-```crystal
-a = [] of Person
-x = a.map { |f| f.name as String } # OK
-```
-
-這個狀況並不是很容易發生，因為在 `map` 被呼叫以前如果有任意的 `Person` 被實例化，這個錯誤通常就會消失：
-
-```crystal
-Person.new "John"
-
-a = [] of Person
-x = a.map { |f| f.name } # OK
+some_call { |v| v.method.as(ExpectedType) }
 ```

@@ -7,15 +7,15 @@
 接下來只要複製 Crystal 的 Git 儲存庫 (repository):
 
 ```
-git clone https://github.com/manastech/crystal.git
+git clone https://github.com/crystal-lang/crystal.git
 ```
 
 然後就可以開始 hacking 了 : )
 
 透過 `make` 來建置自己版本的編譯器。新的編譯器會被放在 `.build/crystal`。
 
-請確認你已經安裝了[全部所需的函式庫](https://github.com/manastech/crystal/wiki/All-required-libraries)。
+請確認你已經安裝了[全部所需的函式庫](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)。
 
-當然，你可能也會想要看看[貢獻指南](https://github.com/manastech/crystal/blob/master/Contributing.md)。
+當然，你可能也會想要看看[貢獻指南](https://github.com/crystal-lang/crystal/blob/master/Contributing.md)。
 
 在儲存庫中你可以從 `bin/crystal` 找到包裝好的腳本 (wrapper script)。這個腳本會執行優先執行你剛編譯好的編譯器，或是安裝在系統中的編譯器。

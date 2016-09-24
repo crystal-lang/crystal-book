@@ -87,7 +87,6 @@ Command:
 
 在命令後使用 `--help` 來查看該命令所有可用的選項:
 
-
 ```
 $ crystal build --help
 Usage: crystal build [options] [programfile] [--] [arguments]

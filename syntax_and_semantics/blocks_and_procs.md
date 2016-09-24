@@ -39,6 +39,44 @@ end
 twice { puts "Hello!" }
 ```
 
+The difference between using `do ... end` and `{ ... }` is that `do ... end` binds to the left-most call, while `{ ... }` binds to the right-most call:
+
+```crystal
+foo bar do
+  something
+end
+
+# The above is the same as
+foo(bar) do
+  something
+end
+
+foo bar { something }
+
+# The above is the same as
+
+foo(bar { something })
+```
+
+The reason for this is to allow creating Domain Specific Languages (DSLs) using `do ... end` to have them be read as plain English:
+
+```crystal
+open file "foo.cr" do
+  something
+end
+
+# Same as:
+open(file("foo.cr")) do
+end
+```
+
+You wouldn't want the above to be:
+
+```crystal
+open(file("foo.cr") do
+end)
+```
+
 ## Overloads
 
 Two methods, one that yields and another that doesn't, are considered different overloads, as explained in the [overloading](overloading.html) section.
@@ -125,6 +163,43 @@ end
 ```
 
 The block variable `second` also includes the `Nil` type because the last `yield` expression didn't include a second argument.
+
+## Short one-argument syntax
+
+A short syntax exists for specifying a block that receives a single argument and invokes a method on it. This:
+
+```crystal
+method do |argument|
+  argument.some_method
+end
+```
+
+Can be written as this:
+
+```crystal
+method &.some_method
+```
+
+Or like this:
+
+```crystal
+method(&.some_method)
+```
+
+The above is just syntax sugar and doesn't have any performance penalty.
+
+Arguments can be passed to `some_method` as well:
+
+```crystal
+method &.some_method(arg1, arg2)
+```
+
+And operators can be invoked too:
+
+```crystal
+method &.+(2)
+method &.[index]
+```
 
 ## yield value
 
@@ -306,6 +381,30 @@ end
 Foo.new.yield_with_self { one } # => 1
 Foo.new.yield_normally { one }  # => "one"
 ```
+
+## Unpacking block arguments
+
+A block argument can specify sub-arguments enclosed in parentheses:
+
+```crystal
+array = [{1, "one"}, {2, "two"}]
+array.each do |(number, word)|
+  puts "#{number}: #{word}"
+end
+```
+
+The above is simply syntax sugar of this:
+
+```crystal
+array = [{1, "one"}, {2, "two"}]
+array.each do |arg|
+  number = arg[0]
+  word = arg[1]
+  puts "#{number}: #{word}"
+end
+```
+
+That means that any type that responds to `[]` with integers can be unpacked in a block argument.
 
 ## Performance
 

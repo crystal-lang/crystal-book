@@ -82,3 +82,22 @@ Parentheses in method invocations are optional:
 ```crystal
 add 1, 2 # same as add(1, 2)
 ```
+
+## Main code
+
+Main code, the code that is run when you compile and run a program, can be written directly in a source file without the need to put it in a special "main" method:
+
+```crystal
+# This is a program that prints "Hello Crystal!"
+puts "Hello Crystal!"
+```
+
+Main code can also be inside type declarations:
+
+```crystal
+# This is a program that prints "Hello"
+class Hello
+  # 'self' here is the Hello class
+  puts self
+end
+```

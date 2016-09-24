@@ -2,4 +2,10 @@
 
 這裡是 Crystal 語言的教學文件，由 [Crystal-TW](http://crystal-tw.github.io) 翻譯，原文連接[在此](http://crystal-lang.org/docs)。
 
-Crystal 是一個類似於 Ruby 的語言，但能編譯成原生碼 (native code) 並嘗試移除 Ruby 的某些動態面向 (dynamic aspects) 功能來獲得更高的效率。
+Crystal is a programming language with the following goals:
+
+* Have a syntax similar to Ruby (but compatibility with it is not a goal)
+* Statically type-checked but without having to specify the type of variables or method arguments.
+* Be able to call C code by writing bindings to it in Crystal.
+* Have compile-time evaluation and generation of code, to avoid boilerplate code.
+* Compile to efficient native code.
