@@ -22,20 +22,12 @@
 {}                   # 語法錯誤 (syntax error)
 ```
 
-## 字串索引鍵
-
-當索引鍵為字串時，可以使用下列寫法：
-
-```crystal
-{"key1": 'a', "key2": 'b'} # Hash(String, Char)
-```
-
 ## 類·雜湊<small>(Hash-like)</small>型別
 
 只要型別中有定義不需要參數的 `new` 方法以及定義 `[]=` 方法，我們就可以使用類似雜湊常值的語法來建立該描述該型別的常值：
 
 ```crystal
-MyType{"foo": "bar"}
+MyType{"foo" => "bar"}
 ```
 
 若 `MyType` 不是泛型的話，上方表達式等義於：
@@ -57,5 +49,5 @@ tmp
 在泛型的應用上我們也可以手動指定型別：
 
 ```crystal
-MyType(String, String) {"foo": "bar"}
+MyType(String, String) {"foo" => "bar"}
 ```

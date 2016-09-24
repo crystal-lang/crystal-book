@@ -21,3 +21,9 @@ NamedTuple(x: Int32, y: String)
 # 以下語句表示了這個陣列的元素皆是 x 為 Int32、y 為 String 的命名序組
 Array({x: Int32, y: String})
 ```
+
+A named tuple key can also be a string literal:
+
+```crystal
+{"this is a key": 1}
+```
