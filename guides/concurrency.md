@@ -52,7 +52,7 @@ The scheduler has a queue of :
 
 ### Communicating data
 
-Because at this moment there's only a single thread executing your code, accessing and modifying a global variable in different fibers will work just fine. However, once multiple threads (parallelism) is introduced in the language, it might break. That's why the recommended mechanism to communicate data is using channels and sending messages between them. Internally, a channel implements all the locking mechanisms to avoid data races, but from the outside you use them as communication primitives, so you (the user) don't have to use locks.
+Because at this moment there's only a single thread executing your code, accessing and modifying a class variable in different fibers will work just fine. However, once multiple threads (parallelism) is introduced in the language, it might break. That's why the recommended mechanism to communicate data is using channels and sending messages between them. Internally, a channel implements all the locking mechanisms to avoid data races, but from the outside you use them as communication primitives, so you (the user) don't have to use locks.
 
 ## Sample code
 
@@ -339,7 +339,7 @@ After yield
 
 Here `channel.send` is executed first, but since there's no one waiting for a value (yet), execution continues in other fibers. The second fiber is executed, there's a value on the channel, it's obtained, and execution continues, first with the first fiber, and then with the main fiber, because `Fiber.yield` puts a fiber at the end of the execution queue.
 
-### Unbuffered channels
+### Buffered channels
 
 The above examples use unbuffered channels: when sending a value, if a fiber is waiting on that channel then execution continues on that fiber.
 

@@ -73,10 +73,11 @@ The valid types to use in C bindings are:
 * Other `struct`, `union`, `enum`, `type` or `alias` declared previously.
 * `Void`: the absence of a return value.
 * `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
+* Crystal structs marked with the `@[Extern]` attribute
 
 Refer to the [type gammar](../type_grammar.html) for the notation used in fun types.
 
-The standard library defines the [LibC](https://github.com/crystal-lang/crystal/blob/master/src/libc.cr) lib with aliases for common C types, like `int`, `short`, `size_t`. Use them in bindings like this:
+The standard library defines the [LibC](https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr) lib with aliases for common C types, like `int`, `short`, `size_t`. Use them in bindings like this:
 
 ```crystal
 lib MyLib

@@ -30,7 +30,7 @@ A C union starts with all its fields set to "zero": integers and floats start at
 To avoid this initialization you can use `uninitialized`:
 
 ```crystal
-value = uninitialized U::IntOrFlaot
+value = uninitialized U::IntOrFloat
 value.some_int #=> some garbage value
 ```
 

@@ -7,7 +7,7 @@
 首先必須在 YUM 的設定中新增套件資料庫，我們可以使用下列指令來設定：
 
 ```
-curl http://dist.crystal-lang.org/rpm/setup.sh | sudo bash
+  curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash
 ```
 
 這將加入簽章金鑰及套件資料庫的設定。
@@ -15,12 +15,12 @@ curl http://dist.crystal-lang.org/rpm/setup.sh | sudo bash
 當然，我們也可以手動執行：
 
 ```
-rpm --import http://dist.crystal-lang.org/rpm/RPM-GPG-KEY
+rpm --import https://dist.crystal-lang.org/rpm/RPM-GPG-KEY
 
 cat > /etc/yum.repos.d/crystal.repo <<END
 [crystal]
 name = Crystal
-baseurl = http://dist.crystal-lang.org/rpm/
+baseurl = https://dist.crystal-lang.org/rpm/
 END
 ```
 

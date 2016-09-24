@@ -21,7 +21,7 @@ else
 end
 ```
 
-The above **doesn’t** work with instance variables, class variables or global variables. To work with these, first assign them to a variable:
+The above **doesn’t** work with instance variables or class variables. To work with these, first assign them to a variable:
 
 ```crystal
 if @a.responds_to?(:abs)

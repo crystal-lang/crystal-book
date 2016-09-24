@@ -32,7 +32,6 @@
    * [賦值](syntax_and_semantics/assignment.md)
        * [多項賦值](syntax_and_semantics/multiple_assignment.md)
    * [區域變數](syntax_and_semantics/local_variables.md)
-   * [全域變數](syntax_and_semantics/global_variables.md)
    * [Union types](syntax_and_semantics/union_types.md)
    * [Control expressions](syntax_and_semantics/control_expressions.md)
        * [Truthy and falsey values](syntax_and_semantics/truthy_and_falsey_values.md)
@@ -123,5 +122,6 @@
    * [Coding style](conventions/coding_style.md)
    * [Documenting code](conventions/documenting_code.md)
 * [Guides](guides/README.md)
+   * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
 

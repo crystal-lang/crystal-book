@@ -52,7 +52,7 @@ class Person
     instance.initialize(name)
     instance
   end
- end
+end
 ```
 
 First, note the `self.new` notation. This means that the method belongs to the **class** `Person`, not to particular instances of that class. This is why we can do `Person.new`.

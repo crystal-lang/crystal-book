@@ -22,10 +22,10 @@ $ crystal run some_program.cr
 
 ## 產生執行檔
 
-使用 `compile` 命令來產生一個執行檔：
+使用 `build` 命令來產生一個執行檔：
 
 ```
-$ crystal compile some_program.cr
+$ crystal build some_program.cr
 ```
 
 這會產生一個可供執行的 `some_program` 檔案：
@@ -37,7 +37,7 @@ $ ./some_program
 **注意：** 在預設情況下產生的執行檔**並沒有被完全優化**。我們可以使用 `--release` 參數來啟用優化功能：
 
 ```
-$ crystal compile some_program.cr --release
+$ crystal build some_program.cr --release
 ```
 
 請確保在每次編譯發行版本<small>(Production-ready)</small>的執行檔或是用來評比效能<small>(Benchmarks)</small>時都使用 `--release`。
@@ -49,17 +49,17 @@ $ crystal compile some_program.cr --release
 使用 `init` 命令來產生一個擁有標準目錄結構的 Crystal 專案。
 
 ```
-$ crystal init lib MyCoolLib
-      create  MyCoolLib/.gitignore
-      create  MyCoolLib/LICENSE
-      create  MyCoolLib/README.md
-      create  MyCoolLib/.travis.yml
-      create  MyCoolLib/shard.yml
-      create  MyCoolLib/src/MyCoolLib.cr
-      create  MyCoolLib/src/MyCoolLib/version.cr
-      create  MyCoolLib/spec/spec_helper.cr
-      create  MyCoolLib/spec/MyCoolLib_spec.cr
-Initialized empty Git repository in ~/MyCoolLib/.git/
+$ crystal init lib my_cool_lib
+      create  my_cool_lib/.gitignore
+      create  my_cool_lib/LICENSE
+      create  my_cool_lib/README.md
+      create  my_cool_lib/.travis.yml
+      create  my_cool_lib/shard.yml
+      create  my_cool_lib/src/my_cool_lib.cr
+      create  my_cool_lib/src/my_cool_lib/version.cr
+      create  my_cool_lib/spec/spec_helper.cr
+      create  my_cool_lib/spec/my_cool_lib_spec.cr
+Initialized empty Git repository in ~/my_cool_lib/.git/
 ```
 
 ## 其他命令及選項
@@ -72,7 +72,7 @@ Usage: crystal [command] [switches] [program file] [--] [arguments]
 
 Command:
     init                     generate a new project
-    compile                  compile program
+    build                    build an executable
     deps                     install project dependencies
     docs                     generate documentation
     env                      print Crystal environment information
@@ -88,8 +88,8 @@ Command:
 在命令後使用 `--help` 來查看該命令所有可用的選項：
 
 ```
-$ crystal compile --help
-Usage: crystal compile [options] [programfile] [--] [arguments]
+$ crystal build --help
+Usage: crystal build [options] [programfile] [--] [arguments]
 
 Options:
     --cross-compile                  cross-compile

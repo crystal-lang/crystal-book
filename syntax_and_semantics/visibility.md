@@ -4,7 +4,7 @@ Methods are public by default: the compiler will always let you invoke them. Bec
 
 Methods can be marked as `private` or `protected`.
 
-## private
+## Private methods
 
 A `private` method can only be invoked without a receiver, that is, without something before the dot:
 
@@ -34,7 +34,35 @@ class Employee < Person
 end
 ```
 
-## protected
+## Private types
+
+Private types can only be referenced inside the namespace where they are defined, and never be fully qualified.
+
+```crystal
+class Foo
+  private class Bar
+  end
+
+  Bar      # OK
+  Foo::Bar # Error
+end
+
+Foo::Bar # Error
+```
+
+`private` can be used with `class`, `module`, `lib`, `enum`, `alias` and constants:
+
+```crystal
+class Foo
+  private ONE = 1
+
+  ONE # => 1
+end
+
+Foo::ONE # Error
+```
+
+## Protected methods
 
 A `protected` method can only be invoked on:
 
@@ -123,3 +151,23 @@ greet # undefined local variable or method 'greet'
 ```
 
 This allows you to define helper methods in a file that will only be known in that file.
+
+## Private top-level types
+
+A `private` top-level type is only visibile in the current file.
+
+```crystal
+# In file one.cr
+private class Greeter
+  def self.greet
+    "Hello"
+  end
+end
+
+Greeter.greet #=> "Hello"
+
+# In file two.cr
+require "./one"
+
+Greeter.greet # undefined constant 'Greeter'
+```

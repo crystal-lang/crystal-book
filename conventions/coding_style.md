@@ -45,8 +45,6 @@ end
 __Variable names__ are underscore-cased. For example:
 
 ```crystal
-$global_greeting = "Hello world"
-
 class Greeting
   @@default_greeting = "Hello world"
 

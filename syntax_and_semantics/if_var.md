@@ -33,7 +33,7 @@ Here, the right-hand side of the `&&` expression is also guaranteed to have `a` 
 
 Of course, reassigning a variable inside the `then` branch makes that variable have a new type based on the expression assigned.
 
-The above logic **doesn’t** work with instance variables, class variables or global variables:
+The above logic **doesn’t** work with instance variables or class variables:
 
 ```crystal
 if @a

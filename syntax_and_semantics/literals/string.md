@@ -99,6 +99,23 @@ XML
 ```
 
 一個 Heredoc 起始於 `<<-IDENT`，`IDENT` 是一個標識符（由字母開頭且只包含字母與數字），並結束於開頭為 `IDENT` 的某行（略過行首空白）。
+and is either followed by a newline or by a non-alphanumeric character.
+
+The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
+
+```crystal
+<<-SOME
+hello
+SOME.upcase # => "HELLO"
+
+def upcase(string)
+  string.upcase
+end
+
+upcase(<<-SOME
+  hello
+  SOME) # => "HELLO"
+```
 
 與結束標識符之相同數量的行首空白將自動被忽略。如：
 
