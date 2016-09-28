@@ -47,9 +47,10 @@ server.listen
     end
     ```
 
-* 我們可以輕鬆地建立並嵌入內容到一個字串，稱作字串內插<small>(String interpolation)</small>。同時 Crystal 也能使用其他[語法](../syntax_and_semantics/literals.md)來產生陣列、雜湊<small>(Hash)</small>、範圍<small>(Range)</small>、序組<small>(Tuple)</small>……等：
+* 我們可以輕鬆地建立並嵌入內容到一個字串，稱作字串內插<small>(String interpolation)</small>：
 
     ```
     "Hello world! The time is #{Time.now}"
     ```
 
+    同時 Crystal 也能使用其他[語法](../syntax_and_semantics/literals.md)來產生陣列、雜湊<small>(Hash)</small>、範圍<small>(Range)</small>、序組<small>(Tuple)</small>……等物件。
