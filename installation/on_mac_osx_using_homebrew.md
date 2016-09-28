@@ -13,15 +13,13 @@ brew install crystal-lang
 brew install crystal-lang --with-llvm
 ```
 
-## Troubleshooting on OSX 10.11 (El Capitan)
+## 疑難排解
 
-If you get an error like:
+### Mac OS X 10.11 (El Capitan)
 
-```
-ld: library not found for -levent
-```
+* 出現 `ld: library not found for -levent` 錯誤
 
-you need to reinstall the command line tools and then select the default active toolchain:
+請嘗試重新安裝 Xcode 命令列工具並指定預設 Toolchain：
 
 ```
 $ xcode-select --install
