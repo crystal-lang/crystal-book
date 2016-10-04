@@ -13,7 +13,7 @@ It is created by enclosing an UTF-8 character in single quotes.
 'あ'
 ```
 
-You can use a backslash to denote some characters:
+You can use a backslash to denote some special characters:
 
 ```crystal
 '\'' # single quote
