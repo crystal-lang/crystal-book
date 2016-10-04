@@ -283,7 +283,7 @@ end
 end
 ```
 
-The above program spawns two fibers. The first one creates a TCPServer, accepts one connection and the read lines from there, sending them to the channel. There's a second fiber that reads lines from standard input. The main fibers reads the first 3 messages that are sent to the channel, eihter from the socket or stdin, and then the program exits. The `gets` calls will block the fibers and tell the Event Loop to continue from there if data comes.
+The above program spawns two fibers. The first one creates a TCPServer, accepts one connection and the read lines from there, sending them to the channel. There's a second fiber that reads lines from standard input. The main fibers reads the first 3 messages that are sent to the channel, either from the socket or stdin, and then the program exits. The `gets` calls will block the fibers and tell the Event Loop to continue from there if data comes.
 
 Likewise, we can wait for multiple fibers to complete execution, and gather their values:
 
