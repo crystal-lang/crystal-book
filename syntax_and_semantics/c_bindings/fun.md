@@ -45,7 +45,7 @@ end
 X.variadic(1, 2, 3, 4)
 ```
 
-Note that there are no implicit conversions (except `to_unsafe`, explained later) when invoking a C function: you must pass the exact type that is expected. For integers and floats you can use the various `to_...` methods.
+Note that there are no implicit conversions (except `to_unsafe`, which is explained later) when invoking a C function: you must pass the exact type that is expected. For integers and floats you can use the various `to_...` methods.
 
 Because method names in Crystal must start with a lowercase letter, `fun` names must also start with a lowercase letter. If you need to bind to a C function that starts with a capital letter you can give the function another name for Crystal:
 
@@ -63,7 +63,7 @@ lib LLVMIntrinsics
 end
 ```
 
-This can also be used to give shorter, nicer names to C functions, as these tend to be long and usually be prefixed with the library name.
+This can also be used to give shorter, nicer names to C functions, as these tend to be long and usually prefixed with the library name.
 
 The valid types to use in C bindings are:
 * Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
@@ -75,7 +75,7 @@ The valid types to use in C bindings are:
 * `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
 * Crystal structs marked with the `@[Extern]` attribute
 
-Refer to the [type gammar](../type_grammar.html) for the notation used in fun types.
+Refer to the [type grammar](../type_grammar.html) for the notation used in fun types.
 
 The standard library defines the [LibC](https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr) lib with aliases for common C types, like `int`, `short`, `size_t`. Use them in bindings like this:
 
