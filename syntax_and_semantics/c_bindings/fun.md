@@ -63,7 +63,7 @@ lib LLVMIntrinsics
 end
 ```
 
-This can also be used to give shorter, nicer names to C functions, as these tend to be long and usually prefixed with the library name.
+This can also be used to give shorter, nicer names to C functions, as these tend to be long and are usually prefixed with the library name.
 
 The valid types to use in C bindings are:
 * Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
