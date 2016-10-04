@@ -154,7 +154,7 @@ This allows you to define helper methods in a file that will only be known in th
 
 ## Private top-level types
 
-A `private` top-level type is only visibile in the current file.
+A `private` top-level type is only visible in the current file.
 
 ```crystal
 # In file one.cr

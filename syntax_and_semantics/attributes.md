@@ -55,7 +55,7 @@ needed or used outside it.
 
 ## Packed
 
-Allows marking a [C struct](c_bindings/struct.html) as packed, which makes the alignment of the struct to be one byte, and that there is no padding between the elements. In non-packed structs, padding between field types is inserted according to the target system.
+Marks a [C struct](c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields in order to align the fields. This is typically only needed if the C library explicitly uses packed structs.
 
 ## AlwaysInline
 
@@ -70,7 +70,7 @@ end
 
 ## NoInline
 
-Tells the compiler to never inline a method call. This has no effect if the method yields.
+Tells the compiler to never inline a method call. This has no effect if the method yields, since functions with yield are always inlined.
 
 ```crystal
 @[NoInline]
