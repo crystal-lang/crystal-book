@@ -234,3 +234,6 @@ macro for(expr)
   end
 end
 ```
+
+### Properties
+The strange (un)ruby attr_accessor and attr_getter methods are replaced with a nice `property` keyword
