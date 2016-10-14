@@ -224,3 +224,13 @@ Examples for all of the above:
 * `Hash#[](key)` raises if the key is not in the hash, `Hash#[]?(key)` returns nil in that case.
 * `Array#first` raises if the Array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
 * There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
+
+### for loops
+for loops are currently missing but you can add them via macro:
+```
+macro for(expr)
+  {{expr.args.first.args.first}}.each do |{{expr.name.id}}|
+    {{expr.args.first.block.body}}
+  end
+end
+```
