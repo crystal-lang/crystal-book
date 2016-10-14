@@ -250,6 +250,7 @@ Nice english operators for '&&' and '||' are currently not supported
 ### Verbose brackets()
 In general you need some more brackets to compile
 ```crystal
-def brackets()
+def brackets_needed(a)
+ a.is_a?(Array)
 end
 ```
