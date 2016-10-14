@@ -35,6 +35,14 @@ a.to_s # => String
 a + 1 # Error, because String#+(Int32) isn't defined
 ```
 
+If necessary a variable can be defined as a union type at compile time
+
+```
+# set the compile-time type
+a = 0.as(Int32|Nil|String)
+typeof(a) # => Int32 | Nil | String
+```
+
 ## Union types rules
 
 In the general case, when two types `T1` and `T2` are combined, the result is a union `T1 | T2`. However, there are a few cases where the resulting type is a different type.
