@@ -233,6 +233,12 @@ macro for(expr)
     {{expr.args.first.block.body}}
   end
 end
+
+for i in [1,2,3] do
+ puts i
+end
+# note the trailing 'do' as block-opener!
+
 ```
 
 ### Properties
