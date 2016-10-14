@@ -243,3 +243,13 @@ end
 
 ### Properties
 The strange (un)ruby attr_accessor and attr_getter methods are replaced with a nice `property` keyword
+
+### And && or ||
+Nice english operators for '&&' and '||' are currently not supported
+
+### Verbose brackets()
+In general you need some more brackets to compile
+```crystal
+def brackets()
+end
+```
