@@ -227,7 +227,7 @@ Examples for all of the above:
 
 ### for loops
 for loops are currently missing but you can add them via macro:
-```
+```crystal
 macro for(expr)
   {{expr.args.first.args.first}}.each do |{{expr.name.id}}|
     {{expr.args.first.block.body}}
