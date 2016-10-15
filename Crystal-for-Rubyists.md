@@ -254,3 +254,6 @@ def brackets_needed(a)
  a.is_a?(Array)
 end
 ```
+
+### Consistent dot notation
+Ruby `File::exists?` becomes crystal `File.exists?` etc...
