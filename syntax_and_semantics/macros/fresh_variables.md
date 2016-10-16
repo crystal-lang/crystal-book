@@ -14,7 +14,7 @@ update_x
 x #=> 1
 ```
 
-This can sometimes be useful to avoid repetitive code by deliberately accessing and reading/writing local variables, but can also overwrite local variables by mistake. To avoid this, fresh variables can be declared with `%name`:
+This can sometimes be useful to avoid repetitive code by deliberately reading/writing local variables, but can also overwrite local variables by mistake. To avoid this, fresh variables can be declared with `%name`:
 
 ```crystal
 macro dont_update_x
