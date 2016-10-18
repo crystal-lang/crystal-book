@@ -242,7 +242,13 @@ end
 ```
 
 ### Properties
-The strange (un)ruby attr_accessor and attr_getter methods are replaced with a nice `property` keyword
+The ruby attr_accessor, attr_getter and attr_setter methods are replaced with new keywords:
+
+    Ruby Keyword     Crystal Keyword
+    -------------    ---------------
+    attr_accessor    property
+    attr_getter      getter
+    attr_setter      setter
 
 ### And && or ||
 Nice english operators for '&&' and '||' are currently not supported
