@@ -7,7 +7,7 @@ In Debian derived distributions, you can use the official Crystal repository.
 First you have to add the repository to your APT configuration. For easy setup just run in your command line:
 
 ```
-  curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 ```
 
 That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands as *root*:
