@@ -10,15 +10,15 @@ Donald Knuth once said:
 
 However, if you are writing a program and you realize that writing a semantically equivalent, faster version involves just minor changes, you shouldn't miss that opportunity.
 
-And always be sure to profile your program to learn what are its bottlenecks. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html) that comes with XCode. On Linux, and program that can profile C/C++ programs, like [gprof](https://sourceware.org/binutils/docs/gprof/), should work.
+And always be sure to profile your program to learn what are its bottlenecks. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html) that comes with XCode. On Linux, a program that can profile C/C++ programs, like [gprof](https://sourceware.org/binutils/docs/gprof/), should work.
 
-Make sure to always profile programs with by compiling or running programs with the `--release` flag, which turns on optimizations.
+Make sure to always profile programs by compiling or running programs with the `--release` flag, which turns on optimizations.
 
 ## Avoiding memory allocations
 
-One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't have a performance penantly. If you don't know what's the difference between stack and heap memory, be sure to [read this](https://www.google.com.ar/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=stack%20vs%20heap%20memory).
+One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't have a performance penalty. If you don't know what's the difference between stack and heap memory, be sure to [read this](https://www.google.com.ar/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=stack%20vs%20heap%20memory).
 
-Allocating heap memory is slow, and it puts more pressure on the the Garabge Collector (GC) as it will later have to free that memory.
+Allocating heap memory is slow, and it puts more pressure on the the Garbage Collector (GC) as it will later have to free that memory.
 
 There are several ways to avoid heap memory allocations. The standard library is designed in a way to help you do that.
 
@@ -148,7 +148,7 @@ Explicit array literals in loops is one way to create temporary objects, but the
 
 ### Use structs when possible
 
-If you declare you type as a **struct** instead of a **class**, creating an instance of it will use stack memory, which is much cheaper than heap memory and doesn't put pressure on the GC.
+If you declare your type as a **struct** instead of a **class**, creating an instance of it will use stack memory, which is much cheaper than heap memory and doesn't put pressure on the GC.
 
 You shouldn't always use a struct, though. Structs are passed by value, so if you pass one to a method and the method makes changes to it, the caller won't see those changes, so they can be bug-prone. The best thing to do is to only use structs with immutable objects, specially if they are small.
 
