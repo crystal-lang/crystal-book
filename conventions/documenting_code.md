@@ -113,6 +113,41 @@ class Unicorn
 end
 ```
 
+### Flagging Classes, Modules, and Methods
+
+Given a valid keyword, Crystal will automatically generate visual flags that help highlight problems, notes and/or possible issues.
+
+The supported flag keywords are:
+
+- BUG
+- DEPRECATED
+- FIXME
+- NOTE
+- OPTIMIZE
+- TODO
+
+Flag keywords must be the first word in their respective line and must be in all caps.
+
+Although a trailing colon can help with readability in the code, it will be removed in the generated doc. A trailing description of the flag is optional (but helpful).
+
+``````crystal
+# Makes the unicorn speak to STDOUT
+#
+# NOTE: Although unicorns don't normally talk, this one is special
+# TODO: Check if unicorn is asleep and raise exception if not able to speak
+# TODO: Create another `speak` method that takes and prints a string
+def speak
+  puts "I'm a unicorn"
+end
+
+# Makes the unicorn talk to STDOUT
+#
+# DEPRECATED: Use `speak`
+def talk
+  puts "I'm a unicorn"
+end
+``````
+
 ### Use Crystal's code formatter
 
 Crystal's built-in code formatter can be used not just to format your code,
