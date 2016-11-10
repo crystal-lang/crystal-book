@@ -126,9 +126,7 @@ The supported flag keywords are:
 - OPTIMIZE
 - TODO
 
-Flag keywords must be the first word in their respective line and must be in all caps.
-
-Although a trailing colon can help with readability in the code, it will be removed in the generated doc. A trailing description of the flag is optional (but helpful).
+Flag keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
 ``````crystal
 # Makes the unicorn speak to STDOUT
