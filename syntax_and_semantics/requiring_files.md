@@ -10,7 +10,7 @@ Once a file is required, the compiler remembers its absolute path and later `req
 
 This looks up "filename" in the require path.
 
-By default the require path is the location of the standard library that comes with the compiler, and the "libs" directory relative to the current working directory (given by `pwd` in a unix shell). These are the only places that are looked up.
+By default the require path is the location of the standard library that comes with the compiler, and the "libs" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
 
 The lookup goes like this:
 

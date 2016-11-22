@@ -8,7 +8,7 @@ A String is typically created with a string literal, enclosing UTF-8 characters 
 "hello world"
 ```
 
-A backslash can be used to denote some characters inside the string:
+A backslash can be used to denote various special characters inside the string:
 
 ```crystal
 "\"" # double quote
@@ -30,7 +30,7 @@ You can use a backslash followed by at most three digits to denote a code point 
 "\1"   # string with one character with code point 1
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint:
 
 ```crystal
 "\u0041" # == "A"

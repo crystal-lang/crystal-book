@@ -148,6 +148,6 @@ end
 paint :red
 ```
 
-However, if the programmer makes a typo, say `:reed`, the error will only be caught at runtime, but writing `Color::Reed` will result in a compile-time error.
+However, if the programmer makes a typo, say `:reed`, the error will only be caught at runtime, while attempting to use `Color::Reed` will result in a compile-time error.
 
 The recommended thing to do is to use enums whenever possible, only use symbols for the internal implementation of an API, and avoid symbols for public APIs. But you are free to do what you want.

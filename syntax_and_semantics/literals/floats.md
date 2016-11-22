@@ -28,5 +28,5 @@ The underscore `_` before the suffix is optional.
 Underscores can be used to make some numbers more readable:
 
 ```crystal
-1_000_000.111_111 # better than 1000000.111111
+1_000_000.111_111 # a lot more readable than 1000000.111111, yet functionally the same
 ```
