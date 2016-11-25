@@ -1,6 +1,6 @@
 # Type inference
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotatinos are required.
+Crystal's philosophy is to require as few type annotations as possible. However, some type annotations are required.
 
 Consider a class definition like this:
 
