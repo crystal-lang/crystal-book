@@ -13,11 +13,32 @@ Crystal is a programming language with the following goals:
 ## Build
 
 ```
-$ npm install -g gitbook-cli
-$ gitbook build --gitbook=2.3.2
+$ npm install -g gitbook-cli@2.3.0
+$ npm install
+$ gitbook serve
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 8 plugins are installed
+info: loading plugin "ga"... OK
+...
+Starting server ...
+Serving book on http://localhost:4000
+
 ```
 
-Html output will be in `_book` folder.
+Html output will be in `_book` folder (some links wont work if opening the files locally).
+There is also a docker environment to avoid installing dependencies globally:
+
+```
+$ docker-compose up
+...
+gitbook_1  | Starting server ...
+gitbook_1  | Serving book on http://localhost:4000
+gitbook_1  | Restart after change in file node_modules/.bin
+...
+```
+
 
 ## Contribute
 

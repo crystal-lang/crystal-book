@@ -1,0 +1,9 @@
+{
+  "name": "crystal-book",
+  "version": "1.0.0",
+  "license" : "CC0",
+  "repository": "github:crystal-lang/crystal-book",
+  "devDependencies": {
+    "gitbook-plugin-ga": "^1.0.1"
+  }
+}
