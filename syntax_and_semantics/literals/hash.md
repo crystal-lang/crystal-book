@@ -7,7 +7,7 @@ A [Hash](http://crystal-lang.org/api/Hash.html) representing a mapping of keys o
 {1 => 2, 'a' => 3}   # Hash(Int32 | Char, Int32)
 ```
 
-A Hash can have mixed types, both for the keys and values, meaning `K`/`V` will be union types. These types are determined when the hash is created, either by specifying `K` and `V` or by using a hash literal. In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
+A Hash can have mixed types, both for the keys and values, meaning `K`/`V` will be [union types](../syntax_and_semantics/union_types.html). These types are determined when the hash is created, either by specifying `K` and `V` or by using a hash literal. In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
 
 When creating an empty hash you must always specify `K` and `V`:
 
@@ -18,7 +18,7 @@ When creating an empty hash you must always specify `K` and `V`:
 
 ## Hash-like types
 
-You can use a special hash literal syntax with other types too, as long as they define an argless `new` method and a `[]=` method:
+You can use a special hash literal syntax with other types too, as long as they define an argument-less `new` method and a `[]=` method:
 
 ```crystal
 MyType{"foo" => "bar"}

@@ -3,8 +3,8 @@
 The classic "hello world" program looks like this in Crystal:
 
 ```crystal
-puts "Hello world!"
+puts "Hello world!" #=> Hello world!
 ```
 
-From this you can see that the main routine is simply the program itself: there's no need to define a "main" function or something similar.
+From this you can see that the main routine is simply the program itself; there's no need to define a "main" function or something similar.
 

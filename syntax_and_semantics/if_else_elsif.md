@@ -1,4 +1,4 @@
-# if
+# if / else / elsif
 
 An `if` evaluates the `then` branch if its condition is *truthy*, and evaluates the `else` branch, if there’s any, otherwise.
 

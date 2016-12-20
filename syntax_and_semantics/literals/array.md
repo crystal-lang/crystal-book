@@ -7,7 +7,7 @@ An [Array](http://crystal-lang.org/api/Array.html) is a generic type containing 
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-An Array can have mixed types, meaning `T` will be a union of types, but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
+An Array can have mixed types, meaning `T` will be a [union of types](../syntax_and_semantics/union_types.html), but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
 
 When creating an empty array you must always specify T:
 
@@ -34,7 +34,7 @@ Arrays of symbols can be created with a special syntax:
 
 ## Array-like types
 
-You can use a special array literal syntax with other types too, as long as they define an argless `new` method and a `<<` method:
+You can use a special array literal syntax with other types too, as long as they define an argument-less `new` method and a `<<` method:
 
 ```crystal
 MyType{1, 2, 3}
