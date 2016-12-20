@@ -13,6 +13,8 @@ Crystal is a programming language with the following goals:
 ## Build
 
 ```
+$ git clone https://github.com/crystal-lang/crystal-book.git
+$ cd crystal-book
 $ npm install -g gitbook-cli@2.3.0
 $ npm install
 $ gitbook serve
