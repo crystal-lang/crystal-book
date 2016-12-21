@@ -14,5 +14,5 @@ Several literals are available for creating many basic types in the language:
 * [Range](../literals/range.md)
 * [Regex](../literals/regex.md)
 * [Tuple](../literals/tuple.md)
-* [NamedTuple](../literals/namedtuple.md)
+* [NamedTuple](../literals/named_tuple.md)
 * [Proc](../literals/proc.md)

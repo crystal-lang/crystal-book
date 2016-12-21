@@ -16,4 +16,4 @@ The program’s source code must be encoded in UTF-8.
 * [Exception handling](exception_handling.html)
 * [Compile-time flags](compile_time_flags.html)
 * [Macros](macros.html)
-* [C bindings](c_bindings.html)
+* [C bindings](../c_bindings/README.md)
