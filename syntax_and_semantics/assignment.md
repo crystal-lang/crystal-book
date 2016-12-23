@@ -13,7 +13,7 @@ local = 1
 @@class = 3
 ```
 
-Each of the above kinds of variables will be explained later on.
+Each of the above kinds of variables will be explained in the [Local variables](local_variables.html), [Methods and instance variables](methods_and_instance_variables.html) and [Class variables](class_variables.html) pages.
 
 Some syntax sugar that contains the `=` character is available:
 
@@ -49,7 +49,7 @@ objects.[](2, 3)
 objects[2, 3]
 ```
 
-The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key prescence.
+The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key presence.
 
 ```crystal
 person.age += 1        # same as: person.age = person.age + 1

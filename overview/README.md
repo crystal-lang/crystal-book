@@ -16,4 +16,7 @@ s = "hello"
 # s : String
 ```
 
-Let's start with two examples to familiarize ourselves with the language.
+Let's start with two examples to familiarize ourselves with the language:
+
+* [Hello World!](hello_world.html)
+* [HTTP Server](http_server.html)

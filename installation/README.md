@@ -9,4 +9,4 @@ Once you install the compiler using one of the following methods, make sure to r
 * [From a tar.gz](from_a_targz.html)
 * [From sources](from_source_repository.html)
 
-
+If you need help installing the compiler, please find us through our [Community](https://crystal-lang.org/community/) page.

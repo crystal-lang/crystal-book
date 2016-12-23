@@ -10,7 +10,20 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
-## Build
+If you are new to Crystal, welcome! We recommend you get started by [installing the compiler](../installation/README.md) and learning [how to use it](../using_the_compiler/README.md).
+
+If you have any questions, please find us through our [Community](https://crystal-lang.org/community/) page.
+
+## Contribute
+
+Do you consider yourself a helpful person? If you find bugs or sections
+which need more clarification you're welcome to contribute to this
+documentation. You can submit a pull request to this repository:
+https://github.com/crystal-lang/crystal-book
+
+Thank you very much!
+
+## Building docs
 
 ```
 $ npm install -g gitbook-cli@2.3.0
@@ -40,11 +53,3 @@ gitbook_1  | Restart after change in file node_modules/.bin
 ```
 
 
-## Contribute
-
-Do you consider yourself a helpful person? If you find bugs or sections
-which need more clarification you're welcome to contribute to this
-documentation. You can submit a pull request to this repository:
-https://github.com/crystal-lang/crystal-book
-
-Thank you very much!
