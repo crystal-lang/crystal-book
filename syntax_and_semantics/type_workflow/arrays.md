@@ -30,8 +30,6 @@ my_array[1..3] # => ['b', 'c', 'd'] : Array(Char)
 
 # Start at an element in the array and continue for X elements
 my_array[2, 2] # => ['c', 'd']
-
-
 ```
 
 <!-- TODO: show examples of replacing a range of elements with a new value -->
