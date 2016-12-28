@@ -16,6 +16,12 @@
 "abcd".match(/b/) # => #<Regex::MatchData "b"> : (Regex::MatchData | Nil)
 # Will be evaluated as truthy in a conditional statement
 
-# Multiple replacements with regex
+# a single replacement or "substitution"
+"wow".sub("w", "m") # => "mow"
+
+# a global replacement or "substitution" (hence gsub)
+"wow".gsub("w", "m") # => "mom"
+
+# global substitution with regex
 "how now brown cow".gsub(/w/, "www") # => "howww nowww browwwn cowww"
 ```
