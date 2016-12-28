@@ -37,6 +37,7 @@
        * [Working with Strings](syntax_and_semantics/type_workflow/strings.md)
        * [Working with Arrays](syntax_and_semantics/type_workflow/arrays.md)
    * [Union types](syntax_and_semantics/union_types.md)
+   * [Comparisons](syntax_and_semantics/comparisons.md)
    * [Control expressions](syntax_and_semantics/control_expressions.md)
        * [Truthy and falsey values](syntax_and_semantics/truthy_and_falsey_values.md)
        * [if](syntax_and_semantics/if.md)
