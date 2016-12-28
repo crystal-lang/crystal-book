@@ -8,6 +8,12 @@ Comparing Strings
 "a" == "b"		# false : Bool
 "a" === "b"		# false : Bool
 
+"a" =~ /a/ # => 0
+"a" =~ /b/ # => nil
+
+"a" !~ /a/ # => false
+"a" !~ /b/ # => true
+
 "a" <=> "b"		# -1 : Int32
 "a" <=> "a"		# 0 : Int32
 "b" <=> "a"		# 1 : Int32
