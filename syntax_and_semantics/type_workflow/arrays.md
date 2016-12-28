@@ -14,6 +14,11 @@ my_array.push('d')
 
 my_array # => ['a', 'b', 'c', 'd'] : Array(Char)
 
+# Removing an element from an array
+my_words = ["wow", "great", "super"] # => ["wow", "great", "super"] : Array(String)
+my_words.delete_at(1) # => "great" : String
+my_words # => ["wow", "super"] : Array(String)
+
 # Access a single element
 my_array[0] # => 'a' : Char
 
@@ -25,6 +30,8 @@ my_array[1..3] # => ['b', 'c', 'd'] : Array(Char)
 
 # Start at an element in the array and continue for X elements
 my_array[2, 2] # => ['c', 'd']
+
+
 ```
 
 <!-- TODO: show examples of replacing a range of elements with a new value -->
