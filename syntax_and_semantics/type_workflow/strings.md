@@ -15,6 +15,9 @@
 # Regex Match (will be evaluated as truthy in a conditional statement if a match is found)
 "abcd".match(/b/) # => #<Regex::MatchData "b"> : (Regex::MatchData | Nil)
 
+# Scan a string using regex (capturing each word in this case)
+"Hello world".scan(/\w+/) # => [#<Regex::MatchData "Hello">, #<Regex::MatchData "world">] : Array(Regex::MatchData)
+
 # a single replacement or "substitution"
 "wow".sub("w", "m") # => "mow"
 
