@@ -12,9 +12,8 @@
 # Concatenate strings
 "abcd" + "e" # => "abcde"
 
-# 
+# Regex Match (will be evaluated as truthy in a conditional statement if a match is found)
 "abcd".match(/b/) # => #<Regex::MatchData "b"> : (Regex::MatchData | Nil)
-# Will be evaluated as truthy in a conditional statement
 
 # a single replacement or "substitution"
 "wow".sub("w", "m") # => "mow"
