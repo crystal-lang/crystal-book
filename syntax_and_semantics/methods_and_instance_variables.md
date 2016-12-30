@@ -7,6 +7,7 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
+  
   def age
     @age
   end
@@ -20,9 +21,11 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
+  
   def age
     @age
   end
+  
   def become_older
     @age += 1
   end
