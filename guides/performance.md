@@ -18,7 +18,7 @@ Make sure to always profile programs by compiling or running programs with the `
 
 One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't have a performance penalty. If you don't know what's the difference between stack and heap memory, be sure to [read this](https://www.google.com.ar/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=stack%20vs%20heap%20memory).
 
-Allocating heap memory is slow, and it puts more pressure on the the Garbage Collector (GC) as it will later have to free that memory.
+Allocating heap memory is slow, and it puts more pressure on the Garbage Collector (GC) as it will later have to free that memory.
 
 There are several ways to avoid heap memory allocations. The standard library is designed in a way to help you do that.
 
