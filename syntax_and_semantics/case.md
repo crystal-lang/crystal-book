@@ -71,7 +71,7 @@ elsif tmp.odd?
 end
 ```
 
-Finally, you can ommit the `case`'s value:
+Finally, you can omit the `case`'s value:
 
 ```crystal
 case

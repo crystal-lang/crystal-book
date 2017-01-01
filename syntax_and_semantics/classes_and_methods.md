@@ -7,4 +7,4 @@ class Person
 end
 ```
 
-Class names, and every type name, begin with a capital letter in Crystal.
+Class names, and indeed all type names, begin with a capital letter in Crystal.

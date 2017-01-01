@@ -101,4 +101,4 @@ class Employee < Person
 end
 ```
 
-Without arguments nor parenthesis, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
