@@ -380,7 +380,7 @@ Note that the first 2 sends are executed without switching to another fiber. How
 
 ### Futures
 
-Futures are also available (as syntatic sugar, built on top of channels). They provide a simple alternative workflow for concurrent tasks.
+[Futures](https://en.wikipedia.org/wiki/Futures_and_promises) are also available. They are built on top of channels) and provide a simple alternative workflow for concurrent tasks.
 
 ```crystal
 request1 = future do
