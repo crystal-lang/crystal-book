@@ -91,7 +91,7 @@ person.become_older
 person.age #=> 3
 ```
 
-Without arguments nor parenthesis, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
 
 ## Catch-all initialization
 

@@ -41,7 +41,7 @@ end
 x # : Int32 | String
 ```
 
-The compiler knows that after the block, `x` can be Int32 or String (it could know that it will always be String because the method always yields, this will maybe improve in the future).
+The compiler knows that after the block, `x` can be Int32 or String (it could know that it will always be String because the method always yields; this may improve in the future).
 
 If `x` is assigned something else after the block, the compiler knows the type changed:
 
