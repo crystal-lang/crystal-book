@@ -99,9 +99,8 @@ XML
 ```
 
 一個 Heredoc 起始於 `<<-IDENT`，`IDENT` 是一個標識符（由字母開頭且只包含字母與數字），並結束於開頭為 `IDENT` 的某行（略過行首空白）。
-and is either followed by a newline or by a non-alphanumeric character.
 
-The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
+（後方可以直接接著非字母的字元（如 `.`, `)`）來方便對 Heredoc 呼叫方法或用來關閉成對的括號。）
 
 ```crystal
 <<-SOME
