@@ -1,6 +1,6 @@
 # case
 
-A `case` is a control expression that allows a sort of pattern matching. It allows writing a chain of if-else-if with a small change in semantic and some more powerful constructs.
+A `case` is a control expression which functions a bit like pattern matching. It allows writing a chain of if-else-if with a small change in semantic and some more powerful constructs.
 
 In its basic form, it allows matching a value against other values:
 
@@ -71,7 +71,7 @@ elsif tmp.odd?
 end
 ```
 
-Finally, you can ommit the `case`'s value:
+Finally, you can omit the `case`'s value:
 
 ```crystal
 case

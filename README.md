@@ -25,14 +25,35 @@ https://github.com/crystal-tw/docs
 
 本文件使用 Markdown 語法編寫，並使用 [GitBook Toolchain](http://toolchain.gitbook.com) 輸出 HTML（請先安裝 [Node.js](https://nodejs.org) 及 [npm](https://www.npmjs.com)）。
 
-```
-$ npm install -g gitbook-cli
-$ gitbook build --gitbook=2.3.2
-```
-
 Markdown 語法及規則可以參考 [Markdown 文件](http://markdown.tw)。
 
+```
+$ npm install -g gitbook-cli@2.3.0
+$ npm install
+$ gitbook serve
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 8 plugins are installed
+info: loading plugin "ga"... OK
+...
+Starting server ...
+Serving book on http://localhost:4000
+
+```
+
 產生的 HTML 將放置於 `_book` 目錄下。
+
+There is also a docker environment to avoid installing dependencies globally:
+
+```
+$ docker-compose up
+...
+gitbook_1  | Starting server ...
+gitbook_1  | Serving book on http://localhost:4000
+gitbook_1  | Restart after change in file node_modules/.bin
+...
+```
 
 ### 已知慣例
 

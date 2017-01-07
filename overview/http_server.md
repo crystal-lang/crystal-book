@@ -10,7 +10,7 @@ server = HTTP::Server.new(8080) do |context|
   context.response.print "Hello world! The time is #{Time.now}"
 end
 
-puts "Listening on http://0.0.0.0:8080"
+puts "Listening on http://127.0.0.1:8080"
 server.listen
 ```
 
@@ -34,7 +34,7 @@ server.listen
     ...
     Time.now
     ...
-    puts "Listening on http://0.0.0.0:8080"
+    puts "Listening on http://127.0.0.1:8080"
     ...
     server.listen
     ```

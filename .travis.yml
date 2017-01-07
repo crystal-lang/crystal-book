@@ -3,7 +3,7 @@ cache:
   directories:
     - $HOME/.npm
 before_install: |
-  npm install -g gitbook-cli
+  npm install -g gitbook-cli@2.3.0
 script: test $TRAVIS_PULL_REQUEST != "false" || ./.travis_build.sh
 branches:
   only:

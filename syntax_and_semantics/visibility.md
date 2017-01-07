@@ -1,6 +1,6 @@
 # Visibility
 
-Methods are public by default: the compiler will always let you invoke them. Because public is the default if there is no `public` keyword.
+Methods are public by default: the compiler will always let you invoke them, even if there is no `public` keyword.
 
 Methods can be marked as `private` or `protected`.
 
@@ -154,7 +154,7 @@ This allows you to define helper methods in a file that will only be known in th
 
 ## Private top-level types
 
-A `private` top-level type is only visibile in the current file.
+A `private` top-level type is only visible in the current file.
 
 ```crystal
 # In file one.cr

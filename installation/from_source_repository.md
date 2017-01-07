@@ -4,18 +4,20 @@
 
 在 $PATH 中也必須提供 LLVM 3.5 或 3.6，如果是使用 Mac 中的 Homebrew 套件<small>(Formula)</small>，只要在安裝時加上 `--with-llvm` 參數，LLVM 的路徑就會自動被設定。
 
-接下來只要複製 Crystal 的 Git 儲存庫<small>(Repository)</small>：
+1. 請確認我們已經安裝了[全部所需的函式庫](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)。當然，我們也可以先來看看[貢獻指南](https://github.com/crystal-lang/crystal/blob/master/Contributing.md)。
 
-```
-git clone https://github.com/crystal-lang/crystal.git
-```
+2. 複製 Crystal 的 Git 儲存庫<small>(Repository)</small>：
 
-然後就可以開始 hacking 了 : )
+	```
+	git clone https://github.com/crystal-lang/crystal.git
+	```
 
-透過 `make` 來建置自己版本的編譯器。新的編譯器會被放在 `.build/crystal`。
+3. 透過 `make` 來建置自己版本的編譯器。新的編譯器會被放在 `.build/crystal`。
 
-請確認你已經安裝了[全部所需的函式庫](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)。
+4. Run `make spec` to ensure all specs pass, and you've installed everything correctly.
 
-當然，我們也可以先來看看[貢獻指南](https://github.com/crystal-lang/crystal/blob/master/Contributing.md)。
+5. Use `bin/crystal` to run your crystal files
 
-在儲存庫中我們可以從 `bin/crystal` 找到包裝好的腳本<small>(Wrapper script)</small>。這個腳本會優先執行我們剛編譯好的編譯器，或是安裝在系統中的編譯器。
+If you would like more information about the new `bin/crystal`, check out the [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
+
+Note: The actual binary is built in to `.build/crystal`, but the `bin/crystal` wrapper script is what you should use to run crystal.

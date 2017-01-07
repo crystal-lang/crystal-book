@@ -7,7 +7,7 @@
 首先必須在 YUM 的設定中新增套件資料庫，我們可以使用下列指令來設定：
 
 ```
-  curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash
+curl https://dist.crystal-lang.org/rpm/setup.sh | sudo bash
 ```
 
 這將加入簽章金鑰及套件資料庫的設定。

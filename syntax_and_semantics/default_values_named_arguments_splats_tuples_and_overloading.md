@@ -2,9 +2,9 @@
 
 This is the formal specification of method and call arguments.
 
-## Components a method definition
+## Components of a method definition
 
-A method definition consist of:
+A method definition consists of:
 
 * required and optional positional arguments
 * an optional splat argument, whose name can be empty

@@ -12,7 +12,7 @@ end
 add(1, 2) #=> 3
 ```
 
-A method's value is the value of its last expression, there's no need for explicit `return` expressions. However, explicit `return` are possible:
+A method's value is the value of its last expression; there's no need for explicit `return` expressions. However, explicit `return` expressions are possible:
 
 ```crystal
 def even?(num)
@@ -24,7 +24,7 @@ def even?(num)
 end
 ```
 
-When invoking a method without a receiver, like `add(1, 2)`, it will be searched in the program if not found in the current type or any of its ancestors.
+When invoking a method without a receiver, like `add(1, 2)`, it will be searched for in the program if not found in the current type or any of its ancestors.
 
 ```crystal
 def add(x, y)

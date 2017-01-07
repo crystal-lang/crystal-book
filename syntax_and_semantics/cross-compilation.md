@@ -27,7 +27,7 @@ You must copy this `.o` file to that system and execute those commands. Once you
 
 This procedure is usually done with the compiler itself to port it to new platforms where a compiler is not yet available. Because in order to compile a Crystal compiler we need an older Crystal compiler, the only two ways to generate a compiler for a system where there isn't a compiler yet are:
 * We checkout the latest version of the compiler written in Ruby, and from that compiler we compile the next versions until the current one.
-* We create a `.o` file in the target system and from that file we create a compile.
+* We create a `.o` file in the target system and from that file we create a compiler.
 
 The first alternative is long and cumbersome, while the second one is much easier.
 
