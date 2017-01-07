@@ -15,8 +15,6 @@
 
 從剛剛的範例可以看到，`K` 及 `V` 是分別從雜湊常值的索引鍵與值中提取出型別集合。
 
-In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
-
 建立空白雜湊時，需要手動指定 `K` 以及 `V` 的型別：
 
 ```crystal

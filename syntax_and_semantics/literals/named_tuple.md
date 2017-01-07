@@ -22,7 +22,7 @@ NamedTuple(x: Int32, y: String)
 Array({x: Int32, y: String})
 ```
 
-A named tuple key can also be a string literal:
+命名序組的索引鍵也可以用字串常值來表達：
 
 ```crystal
 {"this is a key": 1}
