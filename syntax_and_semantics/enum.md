@@ -71,7 +71,7 @@ IOMode::None.value #=> 0
 IOMode::All.value  #=> 7
 ```
 
-Additionally, some `Enum` methods check the `@[Flags]` method. For example:
+Additionally, some `Enum` methods check the `@[Flags]` attribute. For example:
 
 ```crystal
 puts(Color::Red)                    # prints "Red"
@@ -113,7 +113,7 @@ Color::Red.red?  #=> true
 Color::Blue.red? #=> false
 ```
 
-Class variables are allowed, but instance variables not.
+Class variables are allowed, but instance variables are not.
 
 ## Usage
 
