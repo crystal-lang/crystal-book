@@ -247,8 +247,8 @@ The ruby `attr_accessor`, `attr_getter` and `attr_setter` methods are replaced w
     Ruby Keyword     Crystal Keyword
     -------------    ---------------
     attr_accessor    property
-    attr_getter      getter
-    attr_setter      setter
+    attr_reader      getter
+    attr_writer      setter
 
 ### And && or ||
 Nice english operators for '&&' and '||' are currently not supported
