@@ -133,7 +133,7 @@ In sum:
 
 ```ruby
 X = "ho"
-puts '"cute"' # Not valid in crystal use "\"cute\"", %{"cute"}, or %("cute")
+puts '"cute"' # Not valid in crystal, use "\"cute\"", %{"cute"}, or %("cute")
 puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
 Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them:
