@@ -380,7 +380,7 @@ Note that the first 2 sends are executed without switching to another fiber. How
 
 ### Futures
 
-[Futures](https://en.wikipedia.org/wiki/Futures_and_promises) are also available. They are built on top of channels) and provide a simple alternative workflow for concurrent tasks. The resolved value from a future must be explicitly obtained by calling `.get()`.
+[Futures](https://en.wikipedia.org/wiki/Futures_and_promises) are also available. They are built on top of channels and provide a simple alternative workflow for concurrent tasks. The resolved value from a future must be explicitly obtained by calling `.get()`.
 
 ```crystal
 request1 = future do
