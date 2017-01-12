@@ -29,6 +29,13 @@ Once the repository is configured you're ready to install Crystal:
 sudo yum install crystal
 ```
 
+### Note
+If you see `/usr/bin/ld: cannot find -lreadline` when compiling you will want to install the readline development libraries:
+
+```
+sudo yum install -y readline-devel
+```
+
 ## Upgrade
 
 When a new Crystal version is released you can upgrade your system using:
