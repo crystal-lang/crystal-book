@@ -377,3 +377,20 @@ After send
 ```
 
 Note that the first 2 sends are executed without switching to another fiber. However, in the third send the channel's buffer is full, so execution goes to the main fiber. Here the two values are received and the channel is depleted. At the third `receive` the main fiber blocks and execution goes to the other fiber, which sends another values, finishes, etc.
+
+### Futures
+
+[Futures](https://en.wikipedia.org/wiki/Futures_and_promises) are also available. They are built on top of channels and provide a simple alternative workflow for concurrent tasks. The resolved value from a future must be explicitly obtained by calling `.get()`.
+
+```crystal
+request1 = future do
+  HTTP::Client.get("https://www.example.com/?example=one").body
+end
+
+request2 = future do
+  HTTP::Client.get("https://www.example.com/?example=two").body
+end
+
+puts [request1.get(), request2.get()]
+```
+
