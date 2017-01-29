@@ -2,7 +2,7 @@
 
 This is the formal specification of method and call arguments.
 
-## Components a method definition
+## Components of a method definition
 
 A method definition consists of:
 

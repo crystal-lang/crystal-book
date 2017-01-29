@@ -49,7 +49,7 @@ objects.[](2, 3)
 objects[2, 3]
 ```
 
-The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key prescence.
+The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key presence.
 
 ```crystal
 person.age += 1        # same as: person.age = person.age + 1
