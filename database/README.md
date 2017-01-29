@@ -74,6 +74,8 @@ db.exec "insert into contacts values (?, ?)", "John", 30
 db.exec "insert into contacts values (?, ?)", "Sarah", 33
 ```
 
+Note: When using the pg driver, use `$1`, `$2`, etc. instead of `?`
+
 ## Query
 
 To perform a query and get the result set use `Database#query`, arguments can be used as in `Database#exec`.
