@@ -10,7 +10,7 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
-## Contributing to These Docs
+## Contributing to the Language Reference
 
 Do you consider yourself a helpful person? If you find bugs or sections
 which need more clarification you're welcome to contribute to this
