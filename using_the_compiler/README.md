@@ -12,13 +12,13 @@ To compile and run a program in a single shot you can invoke `crystal` with a si
 $ crystal some_program.cr
 ```
 
-Crystal files end with the `.cr` extension.
-
-Alternative you can use the `run` command:
+Alternatively you can use the `run` command:
 
 ```
 $ crystal run some_program.cr
 ```
+
+Crystal files end with the `.cr` extension.
 
 ## Creating an executable
 
