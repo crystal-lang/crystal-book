@@ -20,11 +20,13 @@ The return type follows the [type grammar](type_grammar.html).
 Marking a method as returning `Nil` will make it return `nil` regardless of what it actually returns:
 
 ```crystal
-def some_method : Nil
-  1 + 2
+def greet(name : String) : Nil
+  puts "hello #{name}"
+  name
 end
 
-some_method # => nil
+n = greet "john" # => "hello john"
+puts n           # => 
 ```
 
 This is useful for two reasons:
