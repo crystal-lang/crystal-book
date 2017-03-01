@@ -10,7 +10,16 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
-## Build
+## Contributing to the Language Reference
+
+Do you consider yourself a helpful person? If you find bugs or sections
+which need more clarification you're welcome to contribute to this
+documentation. You can submit a pull request to this repository:
+https://github.com/crystal-lang/crystal-book
+
+Thank you very much!
+
+### Building and Serving Locally
 
 ```
 $ git clone https://github.com/crystal-lang/crystal-book.git
@@ -40,16 +49,6 @@ gitbook_1  | Serving book on http://localhost:4000
 gitbook_1  | Restart after change in file node_modules/.bin
 ...
 ```
-
-
-## Contribute
-
-Do you consider yourself a helpful person? If you find bugs or sections
-which need more clarification you're welcome to contribute to this
-documentation. You can submit a pull request to this repository:
-https://github.com/crystal-lang/crystal-book
-
-Thank you very much!
 
 ### Adding a page
 
