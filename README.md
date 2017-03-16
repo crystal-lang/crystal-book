@@ -38,7 +38,7 @@ Serving book on http://localhost:4000
 
 ```
 
-Html output will be in `_book` folder (some links wont work if opening the files locally).
+Html output will be in `_book` folder (some links won't work if opening the files locally).
 There is also a docker environment to avoid installing dependencies globally:
 
 ```
