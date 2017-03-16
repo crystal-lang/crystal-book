@@ -6,19 +6,19 @@ In the next sections a dollar sign (`$`) denotes the command line.
 
 ## Compiling and running at once
 
+Crystal files end with the `.cr` extension.
+
 To compile and run a program in a single shot you can invoke `crystal` with a single filename:
 
 ```
 $ crystal some_program.cr
 ```
 
-Alternatively you can use the `run` command:
+Alternatively, you can use the `run` command and it will do the same thing:
 
 ```
 $ crystal run some_program.cr
 ```
-
-Crystal files end with the `.cr` extension.
 
 ## Creating an executable
 
