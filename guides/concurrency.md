@@ -45,7 +45,7 @@ On a 64-bit machine it lets us spawn millions and millions of fibers. In a 32-bi
 
 ### The Runtime Scheduler
 
-The scheduler has a queue of :
+The scheduler has a queue of:
 * Fibers ready to be executed: for example when you spawn a fiber, it's ready to be executed.
 * The event loop: which is another fiber. When there are no other fibers ready to be executed, the event loop checks if there is any async operation that is ready, and then executes the fiber waiting for that operation. The event loop is currently implemented with `libevent`, which is an abstraction of other event mechanisms like `epoll` and `kqueue`.
 * Fibers that voluntarily asked to wait: this is done with `Fiber.yield`, which means "I can continue executing, but I'll give you some time to execute other fibers if you want".
