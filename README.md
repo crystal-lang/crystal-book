@@ -4,7 +4,7 @@ This is the documentation for the Crystal programming language.
 
 Crystal is a programming language with the following goals:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal)
+* Have a syntax similar to Ruby (but compatibility with it is not a goal).
 * Be statically type-checked, but without having to specify the type of variables or method arguments.
 * Be able to call C code by writing bindings to it in Crystal.
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
@@ -38,7 +38,7 @@ Serving book on http://localhost:4000
 
 ```
 
-Html output will be in `_book` folder (some links wont work if opening the files locally).
+Html output will be in `_book` folder (some links won't work if opening the files locally).
 There is also a docker environment to avoid installing dependencies globally:
 
 ```
