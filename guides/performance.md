@@ -65,7 +65,7 @@ class MyClass
 end
 ```
 
-This philosophy of appending to an IO instead of returning an intermediate string is present in other APIs, such as in the JSON and YAML APIs, where one needs to define `to_json(io)` and `to_yaml(io)` methods to write this data directly to an IO. And you should use this strategy in your API definitions too.
+This philosophy of appending to an IO instead of returning an intermediate string is present in other APIs, such as in the JSON and YAML APIs, where one needs to define `to_json(io)` and `to_yaml(io)` methods to write this data directly to an IO. You should use this strategy in your API definitions too.
 
 Let's compare the times:
 
@@ -96,7 +96,7 @@ without to_s  77.11M ( 12.97ns) (± 1.05%)       fastest
    with to_s  18.15M ( 55.09ns) (± 7.99%)  4.25× slower
 ```
 
-And always remember that it's not just the time that has improved: memory usage is also decreased.
+Always remember that it's not just the time that has improved: memory usage is also decreased.
 
 ### Avoid creating temporary objects over and over
 
