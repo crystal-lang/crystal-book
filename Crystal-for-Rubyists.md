@@ -268,12 +268,7 @@ Ruby `File::exists?` becomes crystal `File.exists?` etc...
 Crystal added some new keywords, these can still be used as function names, but need to be called explicitly with dot: e.g. `self.select{ |x| x > "good" }`
 
 ### Private methods
-Crystal requires each private method to be prefixed with the `private` keyword.
-
-```crystal
-
-### Private methods
-Crystal requires each 
+Crystal requires each private method to be prefixed with the `private` keyword:
 
 ```crystal
 private def method
