@@ -89,7 +89,7 @@ characters, you can use alternative literals:
 
 ## Heredoc
 
-You can also use a "heredoc" for creating string:
+You can also use a "heredoc" to create strings:
 
 ```crystal
 <<-XML
@@ -99,7 +99,7 @@ You can also use a "heredoc" for creating string:
 XML
 ```
 
-A "heredoc" is written with `<<-IDENT`, where `IDENT` is an identifier, a sequence of letters and numbers that must start with a letter. The "heredoc" finishes in the line that starts with `IDENT`, ignoring leading whitespace, and is either followed by a newline or by a non-alphanumeric character.
+A "heredoc" starts with `<<-IDENT`, where `IDENT` is an identifier: a sequence of letters and numbers that must start with a letter. The "heredoc" finishes with a line that starts with `IDENT`, ignoring leading whitespace, and is either followed by a newline or by a non-alphanumeric character.
 
 The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
 
