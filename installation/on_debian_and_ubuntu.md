@@ -25,6 +25,13 @@ Once the repository is configured you're ready to install Crystal:
 sudo apt-get install crystal
 ```
 
+Sometimes [you will need](https://github.com/crystal-lang/crystal/issues/4342) to install the package `build-essential` in order to run/build Crystal programs. You can install it with the command:
+
+```
+sudo apt-get install build-essential
+```
+
+
 ## Upgrade
 
 When a new Crystal version is released you can upgrade your system using:
