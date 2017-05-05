@@ -89,7 +89,7 @@ You can invoke a superclass' method using `super`:
 ```crystal
 class Person
   def greet(msg)
-    puts "Hello, "#{msg}"
+    puts "Hello, #{msg}"
   end
 end
 
@@ -101,4 +101,4 @@ class Employee < Person
 end
 ```
 
-Without arguments nor parenthesis, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.

@@ -10,7 +10,7 @@ class Person
 end
 ```
 
-Right now, we can't do much with a person: create it with a name, ask for its name and for its age, which will always be zero. So lets add a method that makes a person become older:
+Right now, we can't do much with a person aside from create it with a name. Its age will always be zero. So lets add a method that makes a person become older:
 
 ```crystal
 class Person
@@ -91,7 +91,7 @@ person.become_older
 person.age #=> 3
 ```
 
-Without arguments nor parenthesis, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
 
 ## Catch-all initialization
 

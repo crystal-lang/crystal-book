@@ -1,0 +1,11 @@
+version: '2.0'
+
+services:
+  gitbook:
+    build: .
+    volumes:
+      - .:/src
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    command: /bin/sh -c "npm install && gitbook serve"

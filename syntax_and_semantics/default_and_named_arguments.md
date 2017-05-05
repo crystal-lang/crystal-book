@@ -39,7 +39,7 @@ some_method 10, z: 10            # x: 10, y: 1, z: 10, w: 3
 some_method 10, w: 1, y: 2, z: 3 # x: 10, y: 2, z: 3, w: 1
 some_method y: 10, x: 20         # x: 20, y: 10, z: 2, w: 3
 
-some_method y: 10                # Error, missing arugment: x
+some_method y: 10                # Error, missing argument: x
 ```
 
-When a method specified a splat (explained in the next section), named arguments can't be used. The reason is that understanding how arguments are matched becomes very difficult: positional arguments are easier to reason about in this case.
+When a method specifies a splat (explained in the next section), named arguments can't be used. The reason is that understanding how arguments are matched becomes very difficult; positional arguments are easier to reason about in this case.

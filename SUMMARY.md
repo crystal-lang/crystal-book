@@ -6,6 +6,7 @@
    * [On RedHat and CentOS](installation/on_redhat_and_centos.md)
    * [On Arch Linux](installation/on_arch_linux.md)
    * [On Mac OSX using Homebrew](installation/on_mac_osx_using_homebrew.md)
+   * [On Bash on Ubuntu on Windows](installation/on_bash_on_ubuntu_on_windows.md)
    * [From a tar.gz](installation/from_a_targz.md)
    * [From sources](installation/from_source_repository.md)
 * [Using the compiler](using_the_compiler/README.md)
@@ -121,7 +122,8 @@
 * [Conventions](conventions/README.md)
    * [Coding style](conventions/coding_style.md)
    * [Documenting code](conventions/documenting_code.md)
+* [Database](database/README.md)
+  * [Connection pool](database/connection_pool.md)
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
-
