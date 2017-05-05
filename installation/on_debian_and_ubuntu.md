@@ -25,6 +25,30 @@ Once the repository is configured you're ready to install Crystal:
 sudo apt-get install crystal
 ```
 
+## Install required libraries
+Before you can use Crystal you'll need to install some required libraries:
+
+```
+sudo apt-get install \
+  libbsd-dev \
+  libedit-dev \
+  libevent-core-2.0-5 \
+  libevent-dev \
+  libevent-extra-2.0-5 \
+  libevent-openssl-2.0-5 \
+  libevent-pthreads-2.0-5 \
+  libgmp-dev \
+  libgmpxx4ldbl \
+  libssl-dev \
+  libxml2-dev \
+  libyaml-dev \
+  libreadline-dev \
+  automake \
+  libtool \
+  git \
+  llvm
+```
+
 ## Upgrade
 
 When a new Crystal version is released you can upgrade your system using:
