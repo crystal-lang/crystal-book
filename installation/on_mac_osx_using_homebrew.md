@@ -13,10 +13,6 @@ If you're planning to contribute to the language itself you might find useful to
 brew install crystal-lang --with-llvm
 ```
 
-Note also that Homebrew has an option to install a package called "crystal" but this is not an
-alias to the crystal-lang package, but instead to the unrelated "autocode" package so do not use it,
-use crystal-lang package instead.
-
 ## Troubleshooting on OSX 10.11 (El Capitan)
 
 If you get an error like:
