@@ -4,7 +4,7 @@ This style is used in the standard library. You can use it in your own project t
 
 ## Naming
 
-__Type names__ are camelcased. For example:
+__Type names__ are PascalCased. For example:
 
 ```crystal
 class ParseError < Exception
