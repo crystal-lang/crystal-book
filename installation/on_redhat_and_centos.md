@@ -1,4 +1,4 @@
-# On RedHat and CentOS
+# On Fedora, RedHat and CentOS
 
 In RedHat derived distributions, you can use the official Crystal repository.
 
@@ -26,7 +26,7 @@ END
 Once the repository is configured you're ready to install Crystal:
 
 ```
-sudo yum install crystal
+sudo dnf install crystal
 ```
 
 ## Upgrade
@@ -34,5 +34,5 @@ sudo yum install crystal
 When a new Crystal version is released you can upgrade your system using:
 
 ```
-sudo yum update crystal
+sudo dnf update crystal
 ```
