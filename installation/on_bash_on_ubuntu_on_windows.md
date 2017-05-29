@@ -9,7 +9,7 @@ Don't forget - **this is highly experimental**.
 First you have to add the repository to your APT configuration. For easy setup just run in your command line:
 
 ```
-curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 ```
 
 That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands:
