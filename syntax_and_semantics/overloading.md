@@ -6,6 +6,11 @@ We can define a `become_older` method that accepts a number indicating the years
 class Person
   @age = 0
 
+    getter :age
+    
+    def initalize(@name : String)
+    end
+
   def become_older
     @age += 1
   end
