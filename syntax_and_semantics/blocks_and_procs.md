@@ -238,6 +238,20 @@ transform(1) { |x| x + 1 } #=> 2
 
 The result of the last expression is `2` because the last expression of the `transform` method is `yield`, whose value is the last expression of the block.
 
+## Type restrictions
+
+The type of the block in a method that uses `yield` can be restricted using the `&block` syntax. For example:
+
+```crystal
+def transform_int(start : Int32, &block : Int32 -> Int32)
+  result = yield start
+  result * 2
+end
+
+transform_int(3) { |x| x + 2 } #=> 10
+transform_int(3) { |x| "foo" } # Error: expected block to return Int32, not String
+```
+
 ## break
 
 A `break` expression inside a block exits early from the method:
