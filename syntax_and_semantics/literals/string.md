@@ -70,7 +70,7 @@ Alternatively, a backlash followed by a newline can be inserted inside the strin
 
 In this case, leading whitespace is not included in the resulting string.
 
-If you need to write a string that has many double quotes, parenthesis, or similar
+If you need to write a string that has many double quotes, parentheses, or similar
 characters, you can use alternative literals:
 
 ```crystal
