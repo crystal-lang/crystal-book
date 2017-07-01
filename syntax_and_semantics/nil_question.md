@@ -1,6 +1,6 @@
 # nil?
 
-The pseudo-method `nil?` determines whether an expression's runtime is `Nil`. For example:
+The pseudo-method `nil?` determines whether an expression's runtime type is `Nil`. For example:
 
 ```crystal
 a = 1
