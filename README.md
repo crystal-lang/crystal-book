@@ -28,8 +28,8 @@ https://github.com/crystal-tw/docs
 Markdown 語法及規則可以參考 [Markdown 文件](http://markdown.tw)。
 
 ```
-$ git clone https://github.com/crystal-lang/crystal-book.git
-$ cd crystal-book
+$ git clone https://github.com/crystal-tw/docs.git
+$ cd docs
 $ npm install -g gitbook-cli@2.3.0
 $ npm install
 $ gitbook serve
@@ -46,7 +46,7 @@ Serving book on http://localhost:4000
 
 產生的 HTML 將放置於 `_book` 目錄下。
 
-There is also a docker environment to avoid installing dependencies globally:
+我們也提供 Docker 環境來避免在本機安裝相依套件：
 
 ```
 $ docker-compose up

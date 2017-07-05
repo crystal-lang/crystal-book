@@ -11,7 +11,7 @@
    * [使用 .tar.gz 檔案安裝](installation/from_a_targz.md)
    * [從原始碼安裝](installation/from_source_repository.md)
 * [使用編譯器](using_the_compiler/README.md)
-* [Overview and Examples](overview/README.md)
+* [概要及範例](overview/README.md)
    * [Hello World!](overview/hello_world.md)
    * [HTTP 伺服器](overview/http_server.md)
 * [語法及語意](syntax_and_semantics/README.md)
