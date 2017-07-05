@@ -89,7 +89,7 @@ You can invoke a superclass' method using `super`:
 ```crystal
 class Person
   def greet(msg)
-    puts "Hello, "#{msg}"
+    puts "Hello, #{msg}"
   end
 end
 

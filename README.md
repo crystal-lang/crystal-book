@@ -28,6 +28,8 @@ https://github.com/crystal-tw/docs
 Markdown 語法及規則可以參考 [Markdown 文件](http://markdown.tw)。
 
 ```
+$ git clone https://github.com/crystal-lang/crystal-book.git
+$ cd crystal-book
 $ npm install -g gitbook-cli@2.3.0
 $ npm install
 $ gitbook serve

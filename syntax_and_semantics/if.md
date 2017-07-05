@@ -1,6 +1,7 @@
 # if
 
-An `if` evaluates the `then` branch if its condition is *truthy*, and evaluates the `else` branch, if there’s any, otherwise.
+An `if` evaluates the given branch if its condition is *truthy*. Otherwise, it
+evaluates the `else` branch if present.
 
 ```crystal
 a = 1

@@ -7,13 +7,25 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
+  
+  def age
+    @age
+  end
 end
 ```
 
-Right now, we can't do much with a person: create it with a name, ask for its name and for its age, which will always be zero. So lets add a method that makes a person become older:
+Right now, we can't do much with a person aside from create it with a name. Its age will always be zero. So lets add a method that makes a person become older:
 
 ```crystal
 class Person
+  def initialize(@name : String)
+    @age = 0
+  end
+  
+  def age
+    @age
+  end
+  
   def become_older
     @age += 1
   end

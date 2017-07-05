@@ -28,6 +28,13 @@ apt-get update
 sudo apt-get install crystal
 ```
 
+Sometimes [you will need](https://github.com/crystal-lang/crystal/issues/4342) to install the package `build-essential` in order to run/build Crystal programs. You can install it with the command:
+
+```
+sudo apt-get install build-essential
+```
+
+
 ## 更新
 
 當新版的 Crystal 釋出時，也可以使用下列指令來進行更新：
