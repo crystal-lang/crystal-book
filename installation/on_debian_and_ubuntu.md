@@ -4,7 +4,7 @@
 
 ## 設定軟體源
 
-首先必須在 APT 的設定中加入軟體源，你可以使用下列指令來進行設定：
+首先必須在 APT 的設定中加入軟體源，我們可以使用下列指令來進行設定：
 
 ```
 curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
@@ -28,7 +28,7 @@ apt-get update
 sudo apt-get install crystal
 ```
 
-Sometimes [you will need](https://github.com/crystal-lang/crystal/issues/4342) to install the package `build-essential` in order to run/build Crystal programs. You can install it with the command:
+在[某些情況下](https://github.com/crystal-lang/crystal/issues/4342)，我們需要自己安裝 `build-essential` 套件來執行或編譯 Crystal 程式。我們可以使用以下指令來安裝：
 
 ```
 sudo apt-get install build-essential
