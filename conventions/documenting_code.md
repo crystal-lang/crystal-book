@@ -35,7 +35,7 @@ def horns
 end
 ``````
 
-* Use the third person: `Returns the number of horns this unicorn has` instead of `Return the number of horns this unicorn has`.
+* Use the third person: `Returns the number of horns a unicorn has` instead of `Return the number of horns this unicorn has`.
 
 * Parameter names should be *italicized* (surrounded with single asterisks `*` or underscores `_`):
 
