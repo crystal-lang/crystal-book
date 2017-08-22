@@ -71,6 +71,16 @@ elsif tmp.odd?
 end
 ```
 
+You may use `then` after the `when` condition. This is most frequently used to place the body of the `when` on a single line.
+
+```crystal
+case a
+when 1, 2 then puts "a is one or two"
+when 3    then puts "a is three"
+else           puts "I don't know what a is"
+end
+```
+
 Finally, you can omit the `case`'s value:
 
 ```crystal
