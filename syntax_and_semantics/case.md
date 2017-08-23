@@ -71,13 +71,13 @@ elsif tmp.odd?
 end
 ```
 
-You may use `then` after the `when` condition. This is most frequently used to place the body of the `when` on a single line.
+You may use `then` after the `when` condition to place the body on a single line.
 
 ```crystal
-case a
-when 1, 2 then puts "a is one or two"
-when 3    then puts "a is three"
-else           puts "I don't know what a is"
+case exp
+when value1, value2   then do_something
+when value3           then do_something_else
+else                       do_another_thing
 end
 ```
 
