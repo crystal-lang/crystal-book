@@ -71,6 +71,16 @@ elsif tmp.odd?
 end
 ```
 
+You may use `then` after the `when` condition to place the body on a single line.
+
+```crystal
+case exp
+when value1, value2 then do_something
+when value3         then do_something_else
+else                     do_another_thing
+end
+```
+
 Finally, you can omit the `case`'s value:
 
 ```crystal
