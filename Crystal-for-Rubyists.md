@@ -116,6 +116,21 @@ end
 
 will return the result you expect.
 
+## [.each returns nil](https://github.com/crystal-lang/crystal/pull/3815#issuecomment-269978574)
+
+In Ruby `.each` returns the receiver for many built-in collections like Array and Hash, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported.  Alternately, one can use `.tap`.
+
+Ruby:
+```ruby
+[1, 2].each { "foo" } # => [1, 2]
+```
+
+Crystal:
+```crystal
+[1, 2].each { "foo" } # => nil
+[1, 2].tap &.each { "foo" } # => [1, 2]
+```
+
 ## Reflection and Dynamic Evaluation
 
 _Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted.
