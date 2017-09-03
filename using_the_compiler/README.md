@@ -6,9 +6,7 @@ In the next sections a dollar sign (`$`) denotes the command line.
 
 ## Compiling and running at once
 
-Crystal files end with the `.cr` extension.
-
-To compile and run a program in a single shot you can invoke `crystal` with a single filename:
+To compile and run a program in a single shot you can invoke `crystal` with a single filename (Crystal files end with the `.cr` extension):
 
 ```
 $ crystal some_program.cr

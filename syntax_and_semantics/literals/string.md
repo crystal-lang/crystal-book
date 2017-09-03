@@ -147,7 +147,7 @@ This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
 
 ## Without interpolation or escapes
 
-To create a String without interpolation and without escapes use `%q`:
+To create a String without interpolation or escapes use `%q`:
 
 ```crystal
 %q(hello \n #{world}) # => "hello \\n \#{world}"
