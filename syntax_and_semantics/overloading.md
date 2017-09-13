@@ -4,7 +4,10 @@ We can define a `become_older` method that accepts a number indicating the years
 
 ```crystal
 class Person
-  @age = 0
+  getter :age
+    
+  def initialize(@name : String, @age : Int = 0)
+  end
 
   def become_older
     @age += 1
