@@ -65,7 +65,7 @@ class MyClass
 end
 ```
 
-This philosophy of appending to an IO instead of returning an intermediate string provides better performance than handling intermediate strings. You should use this strategy in your API definitions too.
+This philosophy of appending to an IO instead of returning an intermediate string results in better performance than handling intermediate strings. You should use this strategy in your API definitions too.
 
 Let's compare the times:
 
