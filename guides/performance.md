@@ -65,7 +65,7 @@ class MyClass
 end
 ```
 
-This philosophy of appending to an IO instead of returning an intermediate string is present in other APIs, such as in the JSON and YAML APIs, where one needs to define `to_json(io)` and `to_yaml(io)` methods to write this data directly to an IO. You should use this strategy in your API definitions too.
+This philosophy of appending to an IO instead of returning an intermediate string provides better performance than handling intermediate strings. You should use this strategy in your API definitions too.
 
 Let's compare the times:
 
