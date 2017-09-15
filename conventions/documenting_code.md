@@ -1,31 +1,34 @@
-# Documenting code
+# Documentation du code 
 
-Crystal documentation comments use a subset of [Markdown](https://daringfireball.net/projects/markdown/).
+Les commentaires de crystal utilisent un sous-ensemble de [Markdown](https://daringfireball.net/projects/markdown/)
 
-* Documentation should be positioned right above definitions of classes, modules, and methods. Leave no blanks between them.
+
+*La documentation doit être positionné juste au-dessus de la définition de classes, modules, méthodes. Ne laissez pas d'espace entre.
 
 ```crystal
-# A unicorn is a **legendary animal** (see the `Legendary` module) that has been
-# described since antiquity as a beast with a large, spiraling horn projecting
-# from its forehead.
+# Une licorne est un **animal légendaire** (voir le module `légendaire`) qui a été 
+# décrit depuis l'antiquité comme une bête avec une grande corne depuis son front.
+
 class Unicorn
 end
 
-# Bad: This is not attached to any class.
+# Mauvais : Ceci n'est attaché a aucune classe.
 
 class Legendary
 end
 ```
 
-* The documentation of a method is included into the method summary and the method details. The former includes only the first line, the latter includes the entire documentation. In short, it is preferred to:
+* La documentation d'une méthode est inclue dans le résumé de la méthode et les détails de celle-ci.
+* Il ne comprend que la première ligne. En bref il est préférable de :
 
-  1. State a method's purpose or functionality in the first line.
-  2. Supplement it with details and usages after that.
 
-For instance:
+  1. Indiquer le but ou la fonctionnalité d'une méthode dans la première ligne
+  2. Après cela complétez-la avec des détails et des usages.
+
+Pour l'instance:
 
 ``````crystal
-# Returns the number of horns this unicorn has.
+# Renvoie le nombre de cornes que la licorne .
 #
 # ```
 # Unicorn.new.horns # => 1
