@@ -178,10 +178,10 @@ In Crystal an exception is thrown in those cases:
 ```crystal
 # Crystal
 a = [1, 2, 3]
-a[10] #=> raises IndexOutOfBounds
+a[10] #=> raises IndexError
 
-h = {a: 1}
-h[1] #=> raises MissingKey
+h = {"a" => 1}
+h[1] #=> raises KeyError
 ```
 
 The reason behind this change is that it would be very annoying to program in this way if every Array or Hash access could return `nil` as a potential value. This wouldn't work:
