@@ -56,9 +56,6 @@ sudo apt-get install curl
 sudo apt-get install apt-transport-https
 ```
 
-* #####GPG Error that signatures can't be verified. Public key is not available.
-
-	The key to get  repository  is not in your existing list of trusted sources. So when you try to add an external key to the list, some systems might show this issue. Installation would still continue with your permission.
 
 * #####Dirmngr not found
 
