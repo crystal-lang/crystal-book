@@ -1,19 +1,23 @@
 # From sources
 
-If you want to contribute then you might want to install Crystal from sources. But Crystal is written in Crystal itself! So you first need to use one of the previous described methods to have a running compiler.
+If you want to contribute then you might want to install Crystal from sources.
 
-You will also need LLVM 3.5 or 3.6 present in the path. If you are using Mac and the Homebrew formula, this will be automatically configured for you if you install Crystal adding `--with-llvm` flag.
+1. [Install the latest Crystal release](https://crystal-lang.org/docs/installation). To compile Crystal, you need Crystal :).
 
-Then clone the repository:
+2. Make sure a supported LLVM version is present in the path. Currently, Crystal supports LLVM 3.8, 3.9 and 4.0. When possible, use the latest one. If you are using Mac and the Homebrew formula, this will be automatically configured for you if you install Crystal adding `--with-llvm` flag.
+
+3. Make sure to install [all the required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). You might also want to read the [contributing guide](https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md).
+
+4. Clone the repository:
 
 ```
 git clone https://github.com/crystal-lang/crystal.git
 ```
 
-and you're ready to start hacking.
+5. Run `make` to build your own version of the compiler
+6. Run `make spec` to ensure all specs pass, and you've installed everything correctly.
+7. Use `bin/crystal` to run your crystal files
 
-To build your own version of the compiler, run `make`. The new compiler will be placed at `.build/crystal`.
+If you would like more information about the new `bin/crystal`, check out the [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
 
-Make sure to install [all the required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). You might also want to read the [contributing guide](https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md).
-
-Inside the repository you will also find a wrapper script at `bin/crystal`. This script will execute the global installed compiler or the one that you just compiled (if present).
+Note: The actual binary is built in to `.build/crystal`, but the `bin/crystal` wrapper script is what you should use to run crystal.

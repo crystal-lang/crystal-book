@@ -26,15 +26,6 @@ You can use a backslash to denote some special characters:
 '\v' # vertical tab
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
-
-```crystal
-'\101' # == 'A'
-'\123' # == 'S'
-'\12'  # == '\n'
-'\1'   # code point 1
-```
-
 You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
 
 ```crystal

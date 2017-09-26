@@ -1,6 +1,6 @@
 # Type inference
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotatinos are required.
+Crystal's philosophy is to require as few type annotations as possible. However, some type annotations are required.
 
 Consider a class definition like this:
 
@@ -15,11 +15,11 @@ end
 We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
 
 * The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
-* Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are near impossible to do.
+* Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are nearly impossible to do.
 
 As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance, [class](class_variables.html) variables.
+For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance and [class](class_variables.html) variables.
 
 There are several ways to let Crystal know this.
 
@@ -113,7 +113,7 @@ class Person
 end
 ```
 
-Note that the name of the method argument is not important, this works as well:
+Note that the name of the method argument is not important; this works as well:
 
 ```crystal
 class Person
@@ -132,7 +132,7 @@ class Person
 end
 ```
 
-Also note that the compiler doesn't check whether method argument is reassigned a different value:
+Also note that the compiler doesn't check whether a method argument is reassigned a different value:
 
 ```crystal
 class Person
@@ -190,7 +190,7 @@ This extra rule is very convenient because it's very common to have "constructor
 
 ### 5. Assigning a variable that is a method argument with a default value
 
-In the following example, because the default value of `name` is a string literal, and it's later assigned to `@name`, `String` will be added to the set of inferred typed.
+In the following example, because the default value of `name` is a string literal, and it's later assigned to `@name`, `String` will be added to the set of inferred types.
 
 ```crystal
 class Person
