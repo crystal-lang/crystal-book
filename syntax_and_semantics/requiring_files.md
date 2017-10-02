@@ -47,7 +47,7 @@ This relative is mostly used inside a project to refer to other files inside it.
 
 ```crystal
 # in spec/project_spec.cr
-require "../src/project"
+require "./spec_helper"
 ```
 
 ## Other forms
