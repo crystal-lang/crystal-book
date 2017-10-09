@@ -14,7 +14,7 @@ CaesarCipher.encrypt("HELLO") # => "URYYB"
 
 Class methods are defined by prefixing the method name with the type name and a period.
 
-```
+```crystal
 def CaesarCipher.decrypt(string : String)
   encrypt(string)
 end
@@ -29,6 +29,5 @@ When called from within the same class or module scope the receiver can be `self
 
 # Constructors
 
-Constructors are basically just normal class methods which [create a new instance of the class](new,_initialize_and_allocate.md).
-That's why they're usually called `.new` (that's the default from `Object`) but other classes may
-define other constructors that create a new instance.
+Constructors are normal class methods which [create a new instance of the class](new,_initialize_and_allocate.md).
+By default all classes in Crystal have at least one constructor called `new`, but they may also define other constructors with different names.
