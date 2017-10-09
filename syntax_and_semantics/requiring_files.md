@@ -43,7 +43,7 @@ The lookup goes like this:
 * If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
 * Otherwise a compile-time error is issued.
 
-This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from specs:
+This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from [specs](../guides/testing.md):
 
 ```crystal
 # in spec/project_spec.cr
