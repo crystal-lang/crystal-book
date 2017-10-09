@@ -294,7 +294,7 @@ loop	case	select
 then	when	while
 for	return	macro
 require	private	protected
-yield	enum	union
+yield	enum
 ```
 
 ### Private methods
