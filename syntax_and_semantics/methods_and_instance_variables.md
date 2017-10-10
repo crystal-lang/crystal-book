@@ -44,6 +44,26 @@ peter.age #=> 0
 
 Method names begin with a lowercase letter and, as a convention, only use lowercase letters, underscores and numbers.
 
+## Getters and setters
+
+The Crystal [Standard Library](https://crystal-lang.org/api) provides macros which ease the definition of getter and setter methods:
+
+```crystal
+class Person
+  getter :age
+  property :name : String
+
+  def initialize(@name)
+    @age = 0
+  end
+end
+
+john = Person.new "John"
+john.age #=> 0
+```
+
+For more on getter and setter macros, reference the standard library documentation for [Object#getter](https://crystal-lang.org/api/0.23.1/Object.html#getter%28%2Anames%29-macro), [Object#setter](https://crystal-lang.org/api/0.23.1/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/0.23.1/Object.html#property%28%2Anames%29-macro).
+
 As a side note, we can define `become_older` inside the original `Person` definition, or in a separate definition: Crystal combines all definitions into a single class. The following works just fine:
 
 ```crystal
