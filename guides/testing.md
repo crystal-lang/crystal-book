@@ -2,29 +2,29 @@
 
 Crystal comes with a full-feature spec library to write test cases in the [`Spec`module](https://crystal-lang.org/api/latest/Spec.html).
 
-It is inspired by [Rspec](https://relishapp.com/rspec).
+It is inspired by [Rspec](http://rspec.info/).
 
 ## Anatomy of a spec file
 
 To use the spec module and DSL, you need to add `require "spec"` to your spec files. Many projects use a custom [spec helper](#spec-helper) which organizes these includes.
 
-Test files are structured through `describe` and `context` sections. Typically a top level `describe` defines the outer unit (such as a class) to be tested by the spec. Further `describe` sections can be nested within the outer unit to specify smaller units under test (such as individual methods).
+In test files, specs are structured in example groups enclosed in `describe` and `context` sections. Typically a top level `describe` defines the outer unit (such as a class) to be tested by the spec. Further `describe` sections can be nested within the outer unit to specify smaller units under test (such as individual methods).
 
 For unit tests, it is recommended to follow the conventions for method names: Outer `describe` is the name of the class, inner `describe` targets methods. Instance methods are prefixed with `#`, class methods with `.`.
 
-To establish certain contexts - think *empty array* versus *array with elements* - the `context` method may be used to communicate this to the reader. It behaves exactly like `describe`.
+To establish certain contexts - think *empty array* versus *array with elements* - the `context` method may be used to communicate this to the reader. It has a different name, but behaves exactly like `describe`.
 
 `describe` and `context` take a description as argument (which should usually be a string) and a block containing the individual specs or nested groupings.
 
 Concrete test cases are defined in `it` blocks. An optional (but strongly recommended) descriptive string states it's purpose and a block contains the main logic performing the test.
 
-Test cases that have been defined or outlined but are not yet expected to work can be defined as `pending` instead of `it`. They will not be run but show up in the spec report as pending.
+Test cases that have been defined or outlined but are not yet expected to work can be defined using `pending` instead of `it`. They will not be run but show up in the spec report as pending.
 
 Specs then use the `should` or `should_not` method on actual to verify that the value matches the expectation provided as argument.
 
 ### Expectations
 
-Expectations define if a actual value matches a certain value or specific criteria.
+Expectations define if the value being tested (*actual*) matches a certain value or specific criteria.
 
 | Matcher        | Description |
 | --             | -- |
@@ -35,17 +35,17 @@ Expectations define if a actual value matches a certain value or specific criter
 | `be_false`     | passes if actual is false (`== false`) |
 | `be_truthy`    | passes if actual is truthy (neither `nil` nor `false`) |
 | `be_falsey`    | passes if actual is falsy (`nil` or `false`) |
-| `be.<(value)`  | passes if actual is lesser than *value* (`<`) |
-| `be.<=(value)` | passes if actual is lesser than or equal *value* (`<=`) |
-| `be.>(value)`  | passes if actual is greater than *value* (`>`) |
-| `be.>=(value)` | passes if actual is greater than or equal *value* (`>=`) |
+| `be < value`  | passes if actual is lesser than *value* (`<`) |
+| `be <= value` | passes if actual is lesser than or equal *value* (`<=`) |
+| `be > value`  | passes if actual is greater than *value* (`>`) |
+| `be >= value` | passes if actual is greater than or equal *value* (`>=`) |
 | `be_close(expected, delta)` | passes if actual is within *delta* of *expected* |
 | `contain`      | passes if actual includes *expected* (`.includes?`) |
 | `match(value)` | passes if actual matches *value* (`=~`) |
 | `be_a(type)`   | passes if actual is of type *type* (`is_a?`) |
-| `expect_raises(&block)` | passes if the block raises an exception |
-| `expect_raises(klass, &block)` | passes if the block raises an exception of type *klass* |
-| `expect_raises(klass, message, &block)` | passes if the block raises an exception of type *klass* and the error message contains *message* |
+| `expect_raises(&block)` | runs the block and passes if it raises an exception |
+| `expect_raises(klass, &block)` | runs the block and passes if it raises an exception of type *klass* |
+| `expect_raises(klass, message, &block)` | runs the block and passes if it raises an exception of type *klass* and the error message contains *message* |
 
 ## Running specs
 
@@ -74,6 +74,7 @@ Run the spec defined in line `14` of file `spec/my/test/file_spec.cr`:
 ```
 crystal spec spec/my/test/file_spec.cr:14
 ```
+If the specified line is the begining of a `describe` or `context` section, all specs inside that group are run.
 
 The default formatter outputs the file and line style command for failing specs which makes it easy to rerun just this individual spec.
 
