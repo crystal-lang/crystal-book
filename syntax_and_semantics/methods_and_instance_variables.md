@@ -50,8 +50,8 @@ The Crystal [Standard Library](https://crystal-lang.org/api) provides macros whi
 
 ```crystal
 class Person
-  getter :age
-  property :name : String
+  getter age
+  property name : String
 
   def initialize(@name)
     @age = 0
