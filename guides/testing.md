@@ -9,7 +9,7 @@ A basic spec looks something like this:
 ```crystal
 require "spec"
 
-describe "Array" do
+describe Array do
   describe "#size" do
     it "correctly reports the number of elements in the Array" do
       [1, 2, 3].size.should eq 3
@@ -83,7 +83,7 @@ actual.should be >= expected  # passes if actual >= expected
 actual.should be_close(expected, delta) # passes if actual is within delta of expected:
                                         # (actual - expected).abs <= delta
 actual.should contain(expected)         # passes if actual.includes?(expected)
-actual.should match(expected)           # passes if actual ==~ expected
+actual.should match(expected)           # passes if actual =~ expected
 ```
 
 ### Expecting errors
@@ -92,17 +92,24 @@ These matchers run a block and pass if it raises a certain exception.
 
 ```crystal
 expect_raises do
-  # passes if this block raises any exception
-  # NOTE: This should be avoided because it can hide errors.
+  # Passes if this block raises any exception.
+  #
+  # NOTE: This matcher should be avoided because it rescues and thus
+  # hides *any* unexpected exception raised by the example block.
 end
 
 expect_raises(MyError) do
-  # passes if this block raises an exception of type MyError
+  # Passes if this block raises an exception of type MyError.
 end
 
 expect_raises(MyError, "error message") do
-  # passes if this block raises an exception of type MyError
-  # and the error message contains "error message"
+  # Passes if this block raises an exception of type MyError
+  # and the error message contains "error message".
+end
+
+expect_raises(MyError, /error \w{7}/) do
+  # Passes if this block raises an exception of type MyError
+  # and the error message matches the regular expression.
 end
 ```
 
