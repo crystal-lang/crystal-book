@@ -46,12 +46,12 @@ Method names begin with a lowercase letter and, as a convention, only use lowerc
 
 ## Getters and setters
 
-The Crystal [Standard Library](https://crystal-lang.org/api) provides macros which ease the definition of getter and setter methods:
+The Crystal [Standard Library](https://crystal-lang.org/api) provides macros which simplify the definition of getter and setter methods:
 
 ```crystal
 class Person
-  getter age
-  property name : String
+  property age
+  getter name : String
 
   def initialize(@name)
     @age = 0
@@ -59,10 +59,11 @@ class Person
 end
 
 john = Person.new "John"
-john.age #=> 0
+john.age = 32
+john.age #=> 32
 ```
 
-For more on getter and setter macros, reference the standard library documentation for [Object#getter](https://crystal-lang.org/api/latest/Object.html#getter%28%2Anames%29-macro), [Object#setter](https://crystal-lang.org/api/latest/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/latest/Object.html#property%28%2Anames%29-macro).
+For more information on getter and setter macros, see the standard library documentation for [Object#getter](https://crystal-lang.org/api/latest/Object.html#getter%28%2Anames%29-macro), [Object#setter](https://crystal-lang.org/api/latest/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/latest/Object.html#property%28%2Anames%29-macro).
 
 As a side note, we can define `become_older` inside the original `Person` definition, or in a separate definition: Crystal combines all definitions into a single class. The following works just fine:
 
