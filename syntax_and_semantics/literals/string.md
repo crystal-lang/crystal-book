@@ -145,9 +145,9 @@ b = 2
 
 This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
 
-## Without interpolation nor escapes
+## Without interpolation or escapes
 
-To create a String without interpolation nor escapes use `%q`:
+To create a String without interpolation or escapes use `%q`:
 
 ```crystal
 %q(hello \n #{world}) # => "hello \\n \#{world}"

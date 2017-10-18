@@ -1,6 +1,6 @@
 # Crystal Programming Language
 
-This is the documentation for the Crystal programming language.
+This is the language reference for the Crystal programming language.
 
 Crystal is a programming language with the following goals:
 
