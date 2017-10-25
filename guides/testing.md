@@ -1,6 +1,6 @@
 # Testing Crystal Code
 
-Crystal comes with a full-feature spec library in the [`Spec`module](https://crystal-lang.org/api/latest/Spec.html). It provides the structure for writing executable examples of how your code should behave.
+Crystal comes with a full-feature spec library in the [`Spec` module](https://crystal-lang.org/api/latest/Spec.html). It provides the structure for writing executable examples of how your code should behave.
 
 Inspired by [Rspec](http://rspec.info/) it includes a domain specific language (DSL) that allows to write examples in a way similar to plain english..
 
@@ -91,13 +91,6 @@ actual.should match(expected)           # passes if actual =~ expected
 These matchers run a block and pass if it raises a certain exception.
 
 ```crystal
-expect_raises do
-  # Passes if this block raises any exception.
-  #
-  # NOTE: This matcher should be avoided because it rescues and thus
-  # hides *any* unexpected exception raised by the example block.
-end
-
 expect_raises(MyError) do
   # Passes if this block raises an exception of type MyError.
 end
