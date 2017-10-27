@@ -105,6 +105,22 @@ rescue
 end
 ```
 
+## else
+
+An `else` clause is executed only if no exceptions were rescued:
+
+```crystal
+begin
+  something_dangerous
+rescue
+  # execute this if an exception is raised
+else
+  # execute this if an exception isn't raised
+end
+```
+
+An `else` clause can only be specified if at least one `rescue` clause is specified.
+
 ## ensure
 
 An `ensure` clause is executed at the end of a `begin ... end` or `begin ... rescue ... end` expression regardless of whether an exception was raised or not:
@@ -127,6 +143,8 @@ begin
   something_dangerous
 rescue
   # ...
+else
+  # ...
 ensure
   # this will always be executed
 end
@@ -134,25 +152,9 @@ end
 
 `ensure` clauses are usually used for clean up, freeing resources, etc.
 
-## else
-
-An `else` clause is executed only if no exceptions were rescued:
-
-```crystal
-begin
-  something_dangerous
-rescue
-  # execute this if an exception is raised
-else
-  # execute this if an exception isn't raised
-end
-```
-
-An `else` clause can only be specified if at least one `rescue` clause is specified.
-
 ## Short syntax form
 
-Exception handling has a short syntax form: assume a method definition is an implicit `begin ... end` expression, then specify `rescue`, `ensure` and `else` clauses:
+Exception handling has a short syntax form: assume a method definition is an implicit `begin ... end` expression, then specify `rescue`, `else`, and `ensure` clauses:
 
 ```crystal
 def some_method
