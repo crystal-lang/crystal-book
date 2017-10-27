@@ -28,3 +28,13 @@ end
 
 TEN #=> 10
 ```
+
+# Magic Constants
+
+These constants are provided automatically by Crystal:
+
+Constant | Meaning
+---------|--------
+`__FILE__` | The full path to the current file
+`__DIR__` | The full path to the directory where the current file is located
+`__LINE__` | The current line number in the file
