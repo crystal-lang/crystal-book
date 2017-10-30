@@ -154,7 +154,7 @@ end
 
 ## Short syntax form
 
-Exception handling has a short syntax form: assume a method definition is an implicit `begin ... end` expression, then specify `rescue`, `else`, and `ensure` clauses:
+Exception handling has a short syntax form: assume a method or block definition is an implicit `begin ... end` expression, then specify `rescue`, `else`, and `ensure` clauses:
 
 ```crystal
 def some_method
@@ -173,7 +173,7 @@ def some_method
 end
 ```
 
-An example with `ensure`:
+With `ensure`:
 
 ```crystal
 def some_method
@@ -189,6 +189,17 @@ def some_method
   ensure
     # always execute this
   end
+end
+
+# Similarly, the shorthand also works with blocks:
+(1..10).each do |n|
+  # potentially dangerous operation
+rescue
+  #..
+else
+  #..
+ensure
+  #..
 end
 ```
 
