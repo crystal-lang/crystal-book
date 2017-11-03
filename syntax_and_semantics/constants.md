@@ -29,9 +29,9 @@ end
 TEN #=> 10
 ```
 
-# Psuedo Constants
+# Pseudo Constants
 
-Crystal provides a few psuedo-constants which provide reflective data about the source code being executed.
+Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
 `__LINE__` is the current line number in the currently executing crystal file. When `__LINE__` is declared as the default value to a method parameter, it represents the line number at the location of the method call.
 
@@ -42,9 +42,9 @@ Crystal provides a few psuedo-constants which provide reflective data about the 
 `__DIR__` references the full path to the directory where the currently executing crystal file is located.
 
 ```crystal
-# Assuming this example code is saved at: /crystal_code/psuedo_constants.cr
+# Assuming this example code is saved at: /crystal_code/pseudo_constants.cr
 #
-def psuedo_constants(caller_line = __LINE__, end_of_caller = __END_LINE__)
+def pseudo_constants(caller_line = __LINE__, end_of_caller = __END_LINE__)
   puts "Called from line number: #{caller_line}"
   puts "Currently at line number: #{__LINE__}"
   puts "End of caller block is at: #{end_of_caller}"
@@ -54,13 +54,13 @@ end
 
 
 begin
-  psuedo_constants
+  pseudo_constants
 end
 
 # Program prints:
 # Called from line number: 13
 # Currently at line number: 5
 # End of caller block is at: 14
-# File path is: /crystal_code/psuedo_constants.cr
+# File path is: /crystal_code/pseudo_constants.cr
 # Directory file is in: /crystal_code
 ```
