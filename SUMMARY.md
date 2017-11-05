@@ -124,6 +124,7 @@
 * [Conventions](conventions/README.md)
    * [Coding style](conventions/coding_style.md)
    * [Documenting code](conventions/documenting_code.md)
+   * [Writing Shards](conventions/writing_shards.md)
 * [Database](database/README.md)
   * [Connection pool](database/connection_pool.md)
 * [Guides](guides/README.md)
