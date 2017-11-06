@@ -69,7 +69,7 @@ See [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/intege
 
 Global variables ``$` `` and `$'` are missing (yet `$~` and `$1`, `$2`, ... are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
 
-## Paired-down instance methods
+## Pared-down instance methods
 
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one.
 Specifically:
