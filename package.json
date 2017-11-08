@@ -4,6 +4,7 @@
   "license": "CC0",
   "repository": "github:crystal-lang/crystal-book",
   "devDependencies": {
-    "gitbook-plugin-ga": "^1.0.1"
+    "gitbook-plugin-ga": "^1.0.1",
+    "gitbook-plugin-offline": "0.0.3"
   }
 }
