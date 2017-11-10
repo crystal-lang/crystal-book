@@ -30,7 +30,7 @@ You can use a backslash followed by at most three digits to denote a code point 
 "\1"   # string with one character with code point 1
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint:
+You can use a backslash followed by a *u* and four hexadecimal characters to denote a unicode codepoint:
 
 ```crystal
 "\u0041" # == "A"
@@ -57,7 +57,7 @@ by joining multiple literals with a backslash:
 "no newlines" # same as "hello world, no newlines"
 ```
 
-Alternatively, a backlash followed by a newline can be inserted inside the string literal:
+Alternatively, a backslash followed by a newline can be inserted inside the string literal:
 
 ```crystal
 "hello \
