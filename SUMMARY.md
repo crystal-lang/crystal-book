@@ -130,3 +130,4 @@
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
+   * [Writing Shards](guides/writing_shards.md)
