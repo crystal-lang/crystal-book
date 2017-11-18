@@ -1,8 +1,8 @@
 # Testing Crystal Code
 
-Crystal comes with a full-feature spec library in the [`Spec` module](https://crystal-lang.org/api/latest/Spec.html). It provides the structure for writing executable examples of how your code should behave.
+Crystal comes with a fully-featured spec library in the [`Spec` module](https://crystal-lang.org/api/latest/Spec.html). It provides a structure for writing executable examples of how your code should behave.
 
-Inspired by [Rspec](http://rspec.info/) it includes a domain specific language (DSL) that allows to write examples in a way similar to plain english..
+Inspired by [Rspec](http://rspec.info/), it includes a domain specific language (DSL) that allows you to write examples in a way similar to plain english.
 
 A basic spec looks something like this:
 
@@ -17,11 +17,11 @@ describe Array do
   end
 
   describe "#empty?" do
-    it "is empty when no elements are in the array" do
+    it "is true when no elements are in the array" do
       ([] of Int32).empty?.should be_true
     end
 
-    it "is not empty if there are elements in the array" do
+    it "is false if there are elements in the array" do
       [1].empty?.should be_false
     end
   end
@@ -66,8 +66,8 @@ actual.should be_nil          # passes if actual.nil?
 ```crystal
 actual.should be_true         # passes if actual == true
 actual.should be_false        # passes if actual == false
-actual.should be_truthy       # passes if actual is truthy (neither nil nor false)
-actual.should be_falsey       # passes if actual is falsey (nil or false)
+actual.should be_truthy       # passes if actual is truthy (neither nil nor false nor Pointer.null)
+actual.should be_falsey       # passes if actual is falsey (nil, false or Pointer.null)
 ```
 
 ### Comparisons
