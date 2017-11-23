@@ -10,7 +10,7 @@ Donald Knuth once said:
 
 However, if you are writing a program and you realize that writing a semantically equivalent, faster version involves just minor changes, you shouldn't miss that opportunity.
 
-And always be sure to profile your program to learn what its bottlenecks are. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html), which comes with XCode. On Linux, a program that can profile C/C++ programs, like [gprof](https://sourceware.org/binutils/docs/gprof/), should work.
+And always be sure to profile your program to learn what its bottlenecks are. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html), which comes with XCode. On Linux, any program that can profile C/C++ programs should work. To profile your program with [gprof](https://sourceware.org/binutils/docs/gprof/), build it with `crystal build --release --link-flags -pg` and run it as usual. This will produce a file `gmon.out` in the current directory that can be analyzed with `gprof ./my-program ./gmon.out`.
 
 Make sure to always profile programs by compiling or running them with the `--release` flag, which turns on optimizations.
 
