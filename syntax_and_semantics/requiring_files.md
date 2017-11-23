@@ -10,7 +10,7 @@ Once a file is required, the compiler remembers its absolute path and later `req
 
 This looks up "filename" in the require path.
 
-By default the require path is the location of the standard library that comes with the compiler, and the "libs" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
+By default the require path is the location of the standard library that comes with the compiler, and the "lib" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
 
 The lookup goes like this:
 
@@ -22,7 +22,7 @@ The second rule is very convenient because of the typical directory structure of
 
 ```
 - project
-  - libs
+  - lib
     - foo
       foo.cr
     - bar
@@ -32,6 +32,8 @@ The second rule is very convenient because of the typical directory structure of
   - spec
     - project_spec.cr
 ```
+
+For example, if you want to `require "foo"` in "project.cr", then you should run crystal in the `project` directory with `crystal src/project.cr`. This ensures that the `lib` folder is one of the require paths.
 
 ## require "./filename"
 
