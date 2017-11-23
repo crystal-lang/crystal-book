@@ -33,7 +33,9 @@ The second rule is very convenient because of the typical directory structure of
     - project_spec.cr
 ```
 
-For example, if you want to `require "foo"` in "project.cr", then you should run crystal in the `project` directory with `crystal src/project.cr`. This ensures that the `lib` folder is one of the require paths.
+For example, if you put `require "foo"` in `project.cr` and run `crystal src/project.cr` in the project's root directory, it will find `foo` in `lib/foo/foo.cr`.
+
+If you run the compiler from somewhere else, say the `src` folder, `lib` will not be in the path and `require "foo"` can't be resolved.
 
 ## require "./filename"
 
