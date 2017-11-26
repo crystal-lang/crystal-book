@@ -6,6 +6,7 @@ Special macros exist that are invoked in some situations as hooks:
 * `included` is invoked at compile-time when a module is included. `@type` is the including type.
 * `extended` is invoked at compile-time when a module is extended. `@type` is the extending type.
 * `method_missing` is invoked at compile-time when a method is not found.
+* `method_added` is invoked at compile-time when a new method is defined.
 
 Example of `inherited`:
 
@@ -33,4 +34,45 @@ end
 
 foo          # Prints: Got foo with 0 arguments
 bar 'a', 'b' # Prints: Got bar with 2 arguments
+```
+
+Example of `method_added`:
+
+```crystal
+macro method_added(method)
+  {% puts "Method added:", method.name.stringify %}
+end
+
+def generate_random_number
+  4
+end
+#=> Method added: generate_random_number 
+```
+
+Both `method_missing` and `method_added` only apply to calls or methods in the same class that the macro is defined in, or only in the top level if the macro is defined outside of a class. For example:
+
+```crystal
+macro method_missing(call)
+  print "In outer scope, got call: ", {{ call.name.stringify }}, '\n'
+end
+
+class SomeClass
+  macro method_missing(call)
+    print "Inside SomeClass, got call: ", {{ call.name.stringify }}, '\n'
+  end
+end
+
+class OtherClass
+end
+
+# This call is handled by the top-level `method_missing`
+foo #=> In outer scope, got call: foo
+
+obj = SomeClass.new
+# This is handled by the one inside SomeClass
+obj.bar #=> Inside SomeClass, got call: bar
+
+other = OtherClass.new
+# Neither OtherClass or its parents define a `method_missing` macro
+other.baz #=> Error: Undefined method 'baz' for OtherClass
 ```
