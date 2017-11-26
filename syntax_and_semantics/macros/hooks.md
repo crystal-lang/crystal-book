@@ -1,12 +1,12 @@
 # Hooks
 
-Special macros exist that are invoked in some situations as hooks:
-`inherited`, `included`, `extended` and `method_missing`.
-* `inherited` is invoked at compile-time when a subclass is defined. `@type` is the inheriting type.
-* `included` is invoked at compile-time when a module is included. `@type` is the including type.
-* `extended` is invoked at compile-time when a module is extended. `@type` is the extending type.
-* `method_missing` is invoked at compile-time when a method is not found.
-* `method_added` is invoked at compile-time when a new method is defined.
+Special macros exist that are invoked in some situations as hooks, at compile time:
+* `inherited` is invoked when a subclass is defined. `@type` is the inheriting type.
+* `included` is invoked when a module is included. `@type` is the including type.
+* `extended` is invoked when a module is extended. `@type` is the extending type.
+* `method_missing` is invoked when a method is not found.
+* `method_added` is invoked when a new method is defined in the current scope.
+* `finished` is invoked after instance variable types for all classes are known.
 
 Example of `inherited`:
 
@@ -53,12 +53,12 @@ Both `method_missing` and `method_added` only apply to calls or methods in the s
 
 ```crystal
 macro method_missing(call)
-  print "In outer scope, got call: ", {{ call.name.stringify }}, '\n'
+  puts "In outer scope, got call: ", {{ call.name.stringify }}
 end
 
 class SomeClass
   macro method_missing(call)
-    print "Inside SomeClass, got call: ", {{ call.name.stringify }}, '\n'
+    puts "Inside SomeClass, got call: ", {{ call.name.stringify }}
   end
 end
 
@@ -76,3 +76,28 @@ other = OtherClass.new
 # Neither OtherClass or its parents define a `method_missing` macro
 other.baz #=> Error: Undefined method 'baz' for OtherClass
 ```
+
+`finished` is called once a type has been completely defined - this includes extensions on that class. Consider the following program:
+
+```crystal
+macro print_methods
+  {% puts @type.methods.map &.name %}
+end
+
+class Foo
+  macro finished
+    {% puts @type.methods.map &.name %}
+  end
+  print_methods
+end
+
+class Foo
+  def bar
+    puts "I'm a method!"
+  end
+end
+
+Foo.new.bar
+```
+
+The `print_methods` macro will be run as soon as it is encountered - and will print an empty list as there are no methods defined at that point. Once the second declaration of `Foo` is compiled the `finished` macro will be run, which will print `[bar]`.
