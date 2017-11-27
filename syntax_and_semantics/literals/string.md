@@ -38,7 +38,7 @@ You can use a backslash followed by a *u* and four hexadecimal characters to den
 
 Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
 
-For example, `"\u{41}"` euqals `A` and `"\u{1F52E}"` equals &#x1F52E;.
+For example, `"\u{41}"` equals `A` and `"\u{1F52E}"` equals &#x1F52E;.
 
 A string can span multiple lines:
 
