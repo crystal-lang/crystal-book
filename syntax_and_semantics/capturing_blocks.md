@@ -62,6 +62,101 @@ proc = some_proc { |x| x.to_s }
 proc.call(1) # "1"
 ```
 
+To have something returned without requiring any arguments, omit arguments for the proc:
+
+```crystal
+def some_proc(&block : -> _)
+  block
+end
+
+proc = some_proc { "Hello from a block" }
+proc.call #=> "Hello from a block"
+
+language = "crystal"
+proc = some_proc { "#{language} closures local variables" }
+proc.call #=> "crystal closures local variables"
+```
+
+In review, a proc can be captured in the following ways:
+
+```crystal
+### Procs with no return values ###
+
+# A block that takes no arguments and has no return value
+def proc_no_args_and_no_return_value(&block)
+  block
+end
+
+proc = proc_no_args_and_no_return_value { "I return nothing" }
+proc.call # => nil
+
+# A proc that takes one argument and has no return value
+def proc_with_one_arg_and_no_return_value(&block : Int32 ->)
+  block
+end
+
+proc = proc_with_one_arg_and_no_return_value { |x| x + 1 }
+proc.call(1) # => nil
+
+# A proc that takes multiple arguments and has no return value
+def proc_with_two_args_and_no_return_value(&block : Int32, Int32 ->)
+  block
+end
+
+proc = proc_with_two_args_and_no_return_value { |a, b| a + b }
+proc.call(1, 2) # => nil
+
+### Procs with return values ###
+
+# A proc that takes no arguments and returns a specific type
+def proc_no_args_and_specific_return_type(&block : -> String)
+  block
+end
+
+proc = proc_no_args_and_specific_return_type { "I can only return String types" }
+proc.call # => "I can only return String types"
+
+# A proc that takes no arguments and returns any type
+def proc_no_args_and_any_return_type(&block : -> _)
+  block
+end
+
+proc = proc_no_args_and_any_return_type { "I can return any Object" }
+proc.call # => "I can return any Object"
+proc = proc_no_args_and_any_return_type { 1 }
+proc.call # => 1
+proc = proc_no_args_and_any_return_type { [1, 2, "3"] }
+proc.call # => [1, 2, "3"]
+
+# A proc that takes one argument and returns a specific type
+def proc_one_arg_and_specific_return_type(&block : String -> String)
+  block
+end
+
+proc = proc_one_arg_and_specific_return_type { |x| "You passed: #{x}" }
+proc.call("a string") # => "You passed: a string"
+
+# A proc that takes two arguments and returns a specific type
+def proc_two_args_and_specific_return_type(&block : Int32, Int32 -> Int32)
+  block
+end
+
+proc = proc_two_args_and_specific_return_type { |a, b| a + b }
+proc.call(1, 2) # => 3
+
+# A proc that takes two arguments and returns any type
+def proc_two_args_and_specific_return_type(&block : Int32, Int32 -> _)
+  block
+end
+
+proc = proc_two_args_and_specific_return_type { |a, b| a + b }
+proc.call(1, 2) # => 3
+proc = proc_two_args_and_specific_return_type { |a, b| (a + b).to_s }
+proc.call(1, 2) # => "3"
+```
+
+end
+
 ## break and next
 
 `return` and `break` can't be used inside a captured block. `next` can be used and will exit and give the value of the captured block.
