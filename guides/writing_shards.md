@@ -78,7 +78,7 @@ The code you write is up to you, but how you write it impacts whether people wan
 - Document your code with comments. All of it. Even the private methods.
 - Crystal has [a built-in documentation generator](../conventions/documenting_code.md). Use it!
 
-Run `crystal doc` to convert your code and comments into interlinking API documentation. Open the files in the `/doc/` directory with a web browser to see how your documentation is looking along the way.
+Run `crystal docs` to convert your code and comments into interlinking API documentation. Open the files in the `/docs/` directory with a web browser to see how your documentation is looking along the way.
 
 See below for instructions on hosting your compiler-generated docs on GitHub Pages.
 
@@ -260,7 +260,7 @@ deploy:
   project_name: <YOUR-GITHUB-REPOSITORY-NAME>
   on:
     branch: master
-  local_dir: doc
+  local_dir: docs
 ```
 
 [Set the Environment Variable](https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings), `GITHUB_TOKEN`, with your [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
@@ -279,7 +279,7 @@ deploy:
   project_name: <YOUR-GITHUB-REPOSITORY-NAME>
   on:
     branch: master
-  local_dir: doc
+  local_dir: docs
 ```
 
 [Click Here](https://docs.travis-ci.com/user/deployment/pages/) for the official documentation on deploying to GitHub-Pages with Travis CI.
