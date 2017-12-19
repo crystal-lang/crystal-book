@@ -8,7 +8,7 @@ A Regex is typically created with a regex literal using [PCRE](http://pcre.org/p
 /foo|bar/
 /h(e+)llo/
 /\d+/
-/ 
+/あ/
 ```
 
 ## Escaping
