@@ -69,8 +69,8 @@ Any expression may be placed inside the interpolated section, but it’s best to
 Interpolation can be disabled by escaping the `#` character with a backslash or by using a non-interpolating string literal like `%q()`.
 
 ```crystal
-"\#{a + b }"  # => "#{a + b}"
-%q(#{a + b }) # => "#{a + b}"
+"\#{a + b}"  # => "#{a + b}"
+%q(#{a + b}) # => "#{a + b}"
 ```
 
 Interpolation is implemented using a [`String::Builder`](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
