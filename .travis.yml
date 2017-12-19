@@ -5,6 +5,7 @@ cache:
 before_install: |
   npm install -g gitbook-cli@2.3.0
   npm install
+  gitbook install
 script: test $TRAVIS_PULL_REQUEST != "false" || gitbook build --gitbook=3.2.2
 branches:
   only:
