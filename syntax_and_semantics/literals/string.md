@@ -29,7 +29,7 @@ Available escape sequences:
 "\u{NNNN...}" # hexadecimal unicode character
 ```
 
-Any other character followed by a backslash is interpreted as the character itself.
+Any other character following a backslash is interpreted as the character itself.
 
 A backslash followed by at most three digits denotes a code point written in octal:
 
