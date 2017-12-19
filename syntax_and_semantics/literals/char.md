@@ -1,9 +1,8 @@
 # Char
 
-A [Char](http://crystal-lang.org/api/Char.html) represents a [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
-It occupies 32 bits.
+A [Char](http://crystal-lang.org/api/Char.html) represents a 32-bit [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
 
-It is created by enclosing an UTF-8 character in single quotes.
+It is typically created with a char literal by enclosing an UTF-8 character in single quotes.
 
 ```crystal
 'a'
@@ -13,25 +12,27 @@ It is created by enclosing an UTF-8 character in single quotes.
 'あ'
 ```
 
-You can use a backslash to denote some special characters:
+A backslash denotes a special character, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
+Available escape sequences:
 ```crystal
 '\'' # single quote
 '\\' # backslash
+'\b' # backspace
 '\e' # escape
 '\f' # form feed
 '\n' # newline
 '\r' # carriage return
 '\t' # tab
 '\v' # vertical tab
+'\uNNNN' # hexadecimal unicode character
+'\u{NNNN...}' # hexadecimal unicode character
 ```
 
-You can use a backslash followed by a *u* and four hexadecimal characters to denote a unicode codepoint written:
+A backslash followed by a `u` denotes a unicode codepoint. It can either be followed by exactly four hexadecimal characters representing the unicode bytes (`\u0000` to `\uFFFF`) or a number of one to six hexadecimal characters wrapped in curly braces (`\u{0}` to `\u{10FFFF}`.
 
 ```crystal
-'\u0041' # == 'A'
+'\u0041' # => 'A'
+'\u{41}' # => 'A'
+'\u{1F52E}' # => '&#x1F52E;'
 ```
-
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
-
-`'\u{41}'` equals `A` and `'\u{1F52E}'` equals &#x1F52E;.
