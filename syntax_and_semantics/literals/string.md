@@ -2,53 +2,123 @@
 
 A [String](http://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
 
-A String is typically created with a string literal, enclosing UTF-8 characters in double quotes:
+A String is typically created with a string literal enclosing UTF-8 characters in double quotes (`"`):
 
 ```crystal
 "hello world"
 ```
 
-A backslash can be used to denote various special characters inside the string:
+## Escaping
 
+A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode character.
+
+Available escape sequences:
 ```crystal
 "\"" # double quote
 "\\" # backslash
+"\b" # backspace
 "\e" # escape
 "\f" # form feed
 "\n" # newline
 "\r" # carriage return
 "\t" # tab
 "\v" # vertical tab
+"\NNN" # octal ASCII character
+"\xNN" # hexadecimal ASCII character
+"\uNNNN # hexadecimal unicode character
+"\u{NNNN...} # hexadecimal unicode character
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
+Any other character followed by a backslash is interpreted as the character itself.
+
+A backslash followed by at most three digits denotes a code point written in octal:
 
 ```crystal
-"\101" # == "A"
-"\123" # == "S"
-"\12"  # == "\n"
+"\101" # => "A"
+"\123" # => "S"
+"\12"  # => "\n"
 "\1"   # string with one character with code point 1
 ```
 
-You can use a backslash followed by a *u* and four hexadecimal characters to denote a unicode codepoint:
+A backslash followed by a `u` denotes a unicode codepoint. It can either be followed by exactly four hexadecimal characters representing the unicode bytes (`\u0000` to `\uFFFF`) or a number of one to six hexadecimal characters wrapped in curly braces (`\u{0}` to `\u{10FFFF}`.
 
 ```crystal
-"\u0041" # == "A"
+"\u0041" # => "A"
+"\u{41}" # => "A"
+"\u{1F52E}" # => "&#x1F52E;"
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+One curly brace can contain multiple unicode characters each separated by a whitespace.
 
-For example, `"\u{41}"` equals `A` and `"\u{1F52E}"` equals &#x1F52E;.
+```crystal
+"\u{48 45 4C 4C 4F}" => "HELLO"
+```
 
-A string can span multiple lines:
+## Interpolation
+
+A string literal with interpolation allows to embed expressions into the string which will be expanded at runtime.
+
+```crystal
+a = 1
+b = 2
+"sum: #{a} + #{b} = #{a + b}"  # => "sum: 1 + 2 = 3"
+```
+
+Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
+
+Interpolation can be disabled by escaping the `#` character with a backslash or by using a non-interpolating string literal like `%q()`.
+
+```crystal
+"\#{a + b}"  # => "#{a + b}"
+%q(#{a + b}) # => "#{a + b}"
+```
+
+Interpolation is implemented using a [`String::Builder`](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
+
+```crystal
+String::Builder.new do |io|
+  io << "sum: "
+  io << a
+  io << " + "
+  io << b
+  io << " = "
+  io << a + b
+end
+```
+
+# Percent string literals
+
+Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
+
+These are handy to write strings that include double quotes which would have to be escaped in double-quoted strings.
+
+```crystal
+%(hello ("world")) # => "hello (\"world\")"
+%[hello ["world"]] # => "hello [\"world\"]"
+%{hello {"world"}} # => "hello {\"world\"}"
+%<hello <"world">> # => "hello <\"world\">"
+%|hello "world"|   # => "hello \"world\""
+```
+
+A literal denoted by `%q` does not apply interpolation nor escapes while `%Q` has the same meaning as `%`.
+
+```crystal
+name = "world"
+%q(hello \n #{name}) # => "hello \\n \#{name}"
+%Q(hello \n #{name}) # => "hello \n world"
+```
+
+## Multiline strings
+
+Any string literal can span multiple lines:
 
 ```crystal
 "hello
-      world" # same as "hello\n      world"
+      world" # => "hello\n      world"
 ```
 
 Note that in the above example trailing and leading spaces, as well as newlines,
-end up in the resulting string. To avoid this, you can split a string into multiple lines
+end up in the resulting string. To avoid this a string can be split into multiple lines
 by joining multiple literals with a backslash:
 
 ```crystal
@@ -67,26 +137,10 @@ Alternatively, a backslash followed by a newline can be inserted inside the stri
 
 In this case, leading whitespace is not included in the resulting string.
 
-If you need to write a string that has many double quotes, parentheses, or similar
-characters, you can use alternative literals:
-
-```crystal
-# Supports double quotes and nested parenthesis
-%(hello ("world")) # same as "hello (\"world\")"
-
-# Supports double quotes and nested brackets
-%[hello ["world"]] # same as "hello [\"world\"]"
-
-# Supports double quotes and nested curlies
-%{hello {"world"}} # same as "hello {\"world\"}"
-
-# Supports double quotes and nested angles
-%<hello <"world">> # same as "hello <\"world\">"
-```
-
 ## Heredoc
 
-You can also use a "heredoc" to create strings:
+A *here document* or *heredoc* can be useful for writing strings spanning over multiple lines.
+A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that starts with the heredoc identifier (ignoring leading whitespace) and is either followed by a newline or a non-alphanumeric character.
 
 ```crystal
 <<-XML
@@ -96,9 +150,21 @@ You can also use a "heredoc" to create strings:
 XML
 ```
 
-A "heredoc" starts with `<<-IDENT`, where `IDENT` is an identifier: a sequence of letters and numbers that must start with a letter. The "heredoc" finishes with a line that starts with `IDENT`, ignoring leading whitespace, and is either followed by a newline or by a non-alphanumeric character.
+Leading whitespace is removed from the heredoc contents according to the number of whitespace in the last line before the heredoc identifier.
 
-The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
+```crystal
+<<-STRING
+  Hello
+    world
+  STRING # => "Hello\n  world"
+
+<<-STRING
+    Hello
+      world
+  STRING # => "  Hello\n    world"
+```
+
+It is possible to directly call methods on heredoc string literals, or use them inside parentheses:
 
 ```crystal
 <<-SOME
@@ -114,48 +180,12 @@ upcase(<<-SOME
   SOME) # => "HELLO"
 ```
 
-Leading whitespace is removed from the heredoc contents according to the number of whitespace that this last `IDENT` has. For example:
+A heredoc generally allows interpolation and escapes.
 
-```crystal
-# Same as "Hello\n  world"
-<<-STRING
-  Hello
-    world
-  STRING
-
-# Same as "  Hello\n    world"
-<<-STRING
-    Hello
-      world
-  STRING
-```
-
-## Interpolation
-
-To create a String with embedded expressions, you can use string interpolation:
-
-```crystal
-a = 1
-b = 2
-"sum = #{a + b}"        # "sum = 3"
-```
-
-This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
-
-## Without interpolation nor escapes
-
-To create a String without interpolation nor escapes use `%q`:
-
-```crystal
-%q(hello \n #{world}) # => "hello \\n \#{world}"
-```
-
-Delimiters for `%q(...)` can also be `{}`, `[]` and `<>`.
-
-Heredoc without interpolation nor escapes is also possible, simply enclose the heredoc delimiter in single quotes:
+To denote a heredoc without interpolation nor escapes, the opening heredoc identifier is enclosed in single quotes:
 
 ```crystal
 <<-'HERE'
 hello \n #{world}
-HERE
+HERE # => "hello \n #{world}"
 ```
