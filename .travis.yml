@@ -6,10 +6,7 @@ before_install: |
   npm install -g gitbook-cli@2.3.0
   npm install
   gitbook install
-script: test $TRAVIS_PULL_REQUEST != "false" || gitbook build --gitbook=3.2.2
-branches:
-  only:
-    - master
+script: gitbook build --gitbook=3.2.2
 deploy:
   provider: s3
   access_key_id: AKIAIRL4BWFPN7P54TBQ
@@ -19,3 +16,6 @@ deploy:
   local_dir: _book
   upload-dir: docs
   skip_cleanup: true
+  on:
+    branch: master
+    condition: "$TRAVIS_PULL_REQUEST = false"
