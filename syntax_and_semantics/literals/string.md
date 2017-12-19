@@ -10,7 +10,7 @@ A String is typically created with a string literal enclosing UTF-8 characters i
 
 ## Escaping
 
-A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode character.
+A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
 ```crystal
