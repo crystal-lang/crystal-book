@@ -3,10 +3,14 @@
     "links": {
         "contributePrefix": "https://github.com/crystal-lang/crystal-book/"
     },
-    "plugins": ["ga"],
+    "plugins": ["ga", "edit-link"],
     "pluginsConfig": {
         "ga": {
             "token": "UA-42353458-1"
+        },
+        "edit-link": {
+            "base": "https://github.com/crystal-lang/crystal-book/edit/master",
+            "label": "Edit This Page"
         }
     }
 }
