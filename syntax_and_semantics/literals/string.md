@@ -25,8 +25,8 @@ Available escape sequences:
 "\v" # vertical tab
 "\NNN" # octal ASCII character
 "\xNN" # hexadecimal ASCII character
-"\uNNNN # hexadecimal unicode character
-"\u{NNNN...} # hexadecimal unicode character
+"\uNNNN" # hexadecimal unicode character
+"\u{NNNN...}" # hexadecimal unicode character
 ```
 
 Any other character followed by a backslash is interpreted as the character itself.
@@ -186,6 +186,6 @@ To denote a heredoc without interpolation or escapes, the opening heredoc identi
 
 ```crystal
 <<-'HERE'
-hello \n #{world}
-HERE # => "hello \n #{world}"
+  hello \n #{world}
+  HERE # => "hello \n #{world}"
 ```
