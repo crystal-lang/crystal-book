@@ -1,67 +1,82 @@
 # Array
 
-An [Array](http://crystal-lang.org/api/Array.html) is a generic type containing elements of a type `T`. It is typically created with an array literal:
+An [Array](http://crystal-lang.org/api/Array.html) is a generic, ordered and integer-indexed collection of elements of a specifc type `T`.
+
+Arrays are typically created with an array literal denoted by square brackets (`[]`) and individual elements separated by a comma (`,`).
 
 ```crystal
-[1, 2, 3]         # Array(Int32)
-[1, "hello", 'x'] # Array(Int32 | String | Char)
+[1, 2, 3]
 ```
 
-An Array can have mixed types, meaning `T` will be a union of types, but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
+## Generic Type Argument
 
-When creating an empty array you must always specify T:
+The array's generic type argument `T` is inferred from the types of the elements inside the literal. When all elements of the array have the same type, `T` equals to that. Otherwise it will be a union of all element types.
 
 ```crystal
-[] of Int32 # same as Array(Int32).new
-[]          # syntax error
+[1, 2, 3]          # => Array(Int32)
+[1, "hello", 'x']  # => Array(Int32 | String | Char)
 ```
 
-## Array of String
-
-Arrays of strings can be created with a special syntax:
+An explicit type can be specified by immediately following the closing bracket with `of` and a type, each separated by whitespace. This overwrites the inferred type and can be used for example to create an array that holds only some types initially but can accept other types later.
 
 ```crystal
-%w(one two three) # ["one", "two", "three"]
+array_of_numbers = [1, 2, 3] of Number  # => Array(Number)
+array_of_numbers + [0.5]                # => [1, 2, 3, 0.5]
+
+array_of_int_or_string = [1, 3, 4] of Int32 | String  # => Array(Int32 | String)
+array_of_int_or_string + ["foo"]                      # => [1, 2, 3, "foo"]
 ```
 
-## Array of Symbol
-
-Arrays of symbols can be created with a special syntax:
+Empty array literals always need a type specification::
 
 ```crystal
-%i(one two three) # [:one, :two, :three]
+[] of Int32  # => Array(Int32).new
 ```
 
-## Array-like types
+## Percent Array Literals
 
-You can use a special array literal syntax with other types too, as long as they define an argless `new` method and a `<<` method:
+[Arrays of strings](./string.html#Percent String Array Literal) and [arrays of symbols](./symbol.html#Percent Symbol Array Literal) can be created with percent array literals:
 
 ```crystal
-MyType{1, 2, 3}
+%w(one two three)  # => ["one", "two", "three"]
+%i(one two three)  # => [:one, :two, :three]
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+## Array-like Type Literal
+
+Crystal supports an additional literal for arrays and array-like types. It consists of the name of the type followed by a list of elements enclosed in curly braces (`{}`) and individual elements separated by a comma (`,`).
 
 ```crystal
-tmp = MyType.new
-tmp << 1
-tmp << 2
-tmp << 3
-tmp
+Array{1, 2, 3}
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+This literal can be used with any type as long as it has an argless constructor and responds to `<<`.
 
 ```crystal
-tmp = MyType(typeof(1, 2, 3)).new
-tmp << 1
-tmp << 2
-tmp << 3
-tmp
+IO::Memory{1, 2, 3}
+Set{1, 2, 3}
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+For a non-generic type like `IO::Memory`, this is equivalent to:
 
 ```crystal
-MyType(Int32 | String) {1, 2, "foo"}
+array_like = IO::Memory.new
+array_like << 1
+array_like << 2
+array_like << 3
+```
+
+For a generic type like `Set`, the generic type `T` is inferred from the types of the elements in the same way as with the array literal. The above is equivalent to:
+
+```crystal
+array_like = Set(typeof(1, 2, 3)).new
+array_like << 1
+array_like << 2
+array_like << 3
+```
+
+The type arguments can be explicitly specified as part of the type name:
+
+```crystal
+Set(Number) {1, 2, 3}
 ```
