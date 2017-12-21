@@ -26,7 +26,7 @@ You can use a backslash to denote some special characters:
 '\v' # vertical tab
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+You can use a backslash followed by a *u* and four hexadecimal characters to denote a unicode codepoint written:
 
 ```crystal
 '\u0041' # == 'A'

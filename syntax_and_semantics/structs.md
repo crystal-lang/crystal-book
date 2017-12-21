@@ -26,7 +26,7 @@ ary = [] of Point
 
 If `Point` is inherited, an array of such type must also account for the fact that other types can be inside it, so the size of each element must grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited. Abstract structs, on the other hand, will have descendants, so it's expected that an array of them will account for the possibility of having multiple types inside it.
 
-A struct can also includes modules and can be generic, just like a class.
+A struct can also include modules and can be generic, just like a class.
 
 A struct is mostly used for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient.
 

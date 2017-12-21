@@ -1,6 +1,6 @@
 # Generics
 
-Generics allow to parameterize a type based on other type. Consider a Box type:
+Generics allow you to parameterize a type based on other type. Consider a Box type:
 
 ```crystal
 class MyBox(T)
@@ -21,7 +21,7 @@ string_box.value # => "hello" (String)
 another_box = MyBox(String).new(1) # Error, Int32 doesn't match String
 ```
 
-Generics are specially useful for implementing collection types. `Array`, `Hash`, `Set` are generic types, as is `Pointer`.
+Generics are especially useful for implementing collection types. `Array`, `Hash`, `Set` are generic types, as is `Pointer`.
 
 More than one type argument is allowed:
 

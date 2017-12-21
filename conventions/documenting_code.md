@@ -228,4 +228,4 @@ end
 
 ### Generate Documentation
 
-To generate documentation for a project, invoke `crystal doc`. This will create a `doc` directory, with a `doc/index.html` entry point. All files inside the root `src` directory will be considered.
+To generate documentation for a project, invoke `crystal docs`. This will create a `docs` directory, with a `docs/index.html` entry point. All files inside the root `src` directory will be considered.

@@ -10,7 +10,7 @@ Once a file is required, the compiler remembers its absolute path and later `req
 
 This looks up "filename" in the require path.
 
-By default the require path is the location of the standard library that comes with the compiler, and the "libs" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
+By default the require path is the location of the standard library that comes with the compiler, and the "lib" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
 
 The lookup goes like this:
 
@@ -22,7 +22,7 @@ The second rule is very convenient because of the typical directory structure of
 
 ```
 - project
-  - libs
+  - lib
     - foo
       foo.cr
     - bar
@@ -32,6 +32,10 @@ The second rule is very convenient because of the typical directory structure of
   - spec
     - project_spec.cr
 ```
+
+For example, if you put `require "foo"` in `project.cr` and run `crystal src/project.cr` in the project's root directory, it will find `foo` in `lib/foo/foo.cr`.
+
+If you run the compiler from somewhere else, say the `src` folder, `lib` will not be in the path and `require "foo"` can't be resolved.
 
 ## require "./filename"
 
@@ -43,7 +47,7 @@ The lookup goes like this:
 * If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
 * Otherwise a compile-time error is issued.
 
-This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from specs:
+This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from [specs](../guides/testing.md):
 
 ```crystal
 # in spec/project_spec.cr
