@@ -182,7 +182,7 @@ upcase(<<-SOME
 
 A heredoc generally allows interpolation and escapes.
 
-To denote a heredoc without interpolation nor escapes, the opening heredoc identifier is enclosed in single quotes:
+To denote a heredoc without interpolation or escapes, the opening heredoc identifier is enclosed in single quotes:
 
 ```crystal
 <<-'HERE'
