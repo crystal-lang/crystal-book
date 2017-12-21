@@ -1,6 +1,6 @@
 # Crystal Programming Language
 
-This is the documentation for the Crystal programming language.
+This is the language reference for the Crystal programming language.
 
 Crystal is a programming language with the following goals:
 
@@ -14,7 +14,7 @@ Crystal is a programming language with the following goals:
 
 Do you consider yourself a helpful person? If you find bugs or sections
 which need more clarification you're welcome to contribute to this
-documentation. You can submit a pull request to this repository:
+language reference. You can submit a pull request to this repository:
 https://github.com/crystal-lang/crystal-book
 
 Thank you very much!
@@ -52,4 +52,4 @@ gitbook_1  | Restart after change in file node_modules/.bin
 
 ### Adding a page
 
-To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the documentation.
+To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.

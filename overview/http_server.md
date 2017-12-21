@@ -14,7 +14,7 @@ puts "Listening on http://127.0.0.1:8080"
 server.listen
 ```
 
-The above code will make sense once you read the whole documentation, but we can already learn some things.
+The above code will make sense once you read the whole language reference, but we can already learn some things.
 
 * You can [require](../syntax_and_semantics/requiring_files.html) code defined in other files:
 
