@@ -1,47 +1,66 @@
 # Hash
 
-A [Hash](http://crystal-lang.org/api/Hash.html) representing a mapping of keys of a type `K` to values of a type `V`. It is typically created with a hash literal:
+A [Hash](http://crystal-lang.org/api/Hash.html) is a generic collection of key-value pairs mapping keys of type `K` to values of type `V`.
+
+Hashes are typically created with a hash literal denoted by curly braces (`{ }`) enclosing a list of pairs using `=>` as delimiter between key and value and separated by commas `,`.
+
+```crystal
+{"one" => 1, "two" => 2}
+```
+
+# Generic Type Argument
+
+The generic type arguments for keys `K` and values `V` are inferred from the types of the keys or values inside the literal, respectively. When all have the same type, `K`/`V` equals to that. Otherwise it will be a union of all key types or value types respectively.
 
 ```crystal
 {1 => 2, 3 => 4}     # Hash(Int32, Int32)
 {1 => 2, 'a' => 3}   # Hash(Int32 | Char, Int32)
 ```
 
-A Hash can have mixed types, both for the keys and values, meaning `K`/`V` will be union types. These types are determined when the hash is created, either by specifying `K` and `V` or by using a hash literal. In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
+Explicit types can be specified by immediately following the closing bracket with `of` (separated by whitespace), a key type (`K`) followed by `=>` as delimiter and a value type (`V`). This overwrites the inferred types and can be used for example to create a hash that holds only some types initially but can accept other types as well.
 
-When creating an empty hash you must always specify `K` and `V`:
-
+Empty hash literals always need type specifications:
 ```crystal
-{} of Int32 => Int32 # same as Hash(Int32, Int32).new
-{}                   # syntax error
+{} of Int32 => Int32 # => Hash(Int32, Int32).new
 ```
 
-## Hash-like types
+## Hash-like Type Literal
 
-You can use a special hash literal syntax with other types too, as long as they define an argless `new` method and a `[]=` method:
+Crystal supports an additional literal for hashes and hash-like types. It consists of the name of the type followed by a list of  comma separated key-value pairs enclosed in curly braces (`{}`).
 
 ```crystal
-MyType{"foo" => "bar"}
+Hash{"one" => 1, "two" => 2}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+This literal can be used with any type as long as it has an argless constructor and responds to `[]=`.
 
 ```crystal
-tmp = MyType.new
-tmp["foo"] = "bar"
-tmp
+HTTP::Headers{"foo" => "bar"}
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+For a non-generic type like `HTTP::Headers`, this is equivalent to:
 
 ```crystal
-tmp = MyType(typeof("foo"), typeof("bar")).new
-tmp["foo"] = "bar"
-tmp
+headers = HTTP::Headers.new
+headers["foo"] = "bar"
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+For a generic type, the generic types are inferred from the types of the keys and values in the same way as with the hash literal.
 
 ```crystal
-MyType(String, String) {"foo" => "bar"}
+MyHash{"foo" => 1, "bar" = "baz"}
+```
+
+If `MyHash` is generic, the above is equivalent to this:
+
+```crystal
+my_hash = MyHash(typeof("foo", "bar"), typeof(1, "baz")).new
+my_hash["foo"] = 1
+my_hash["bar"] = baz
+```
+
+The type arguments can be explicitly specified as part of the type name:
+
+```crystal
+MyHash(String, String | Int32) {"foo" => "bar"}
 ```
