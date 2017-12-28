@@ -16,7 +16,7 @@ Make sure to always profile programs by compiling or running them with the `--re
 
 ## Avoiding memory allocations
 
-One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://www.google.com/search?q=stack+vs+heap+memory).
+One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap).
 
 Allocating heap memory is slow, and it puts more pressure on the Garbage Collector (GC) as it will later have to free that memory.
 
