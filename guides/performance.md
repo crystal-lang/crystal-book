@@ -104,6 +104,39 @@ Sometimes you need to work directly with strings built from combining string lit
 
 Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to: `(StringBuilder.new << "Hello, " << name).to_s`.
 
+### Avoid IO allocation for string building
+
+Prefer to use the dedicated `String.build` optimized for building strings, instead of creating an intermediate `IO::Memory` allocation.
+
+```crystal
+require "benchmark"
+
+Benchmark.ips do |x|
+  x.report("String.build") do
+    String.build do |io|
+      99.times do
+        io << "hello world"
+      end
+    end
+  end
+  x.report("IO::Memory") do
+    io = IO::Memory.new
+    99.times do
+      io << "hello world"
+    end
+    io.to_s
+  end
+end
+```
+
+Output:
+
+```
+$ crystal run --release str_benchmark.cr
+String.build 597.57k (  1.67µs) (± 5.52%)       fastest
+  IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
+```
+
 
 ### Avoid creating temporary objects over and over
 
