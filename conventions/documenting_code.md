@@ -87,7 +87,7 @@ For example:
 # See what a unicorn would say with `Unicorn#speak`.
 ```
 
-* To show the value of an expression inside code blocks, use `#=>`.
+* To show the value of an expression inside code blocks, use `# =>`.
 
 ```crystal
 1 + 2             # => 3
