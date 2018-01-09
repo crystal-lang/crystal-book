@@ -16,7 +16,7 @@ Make sure to always profile programs by compiling or running them with the `--re
 
 ## Avoiding memory allocations
 
-One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://www.google.com/search?q=stack+vs+heap+memory).
+One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap).
 
 Allocating heap memory is slow, and it puts more pressure on the Garbage Collector (GC) as it will later have to free that memory.
 
@@ -103,6 +103,39 @@ Always remember that it's not just the time that has improved: memory usage is a
 Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](syntax_and_semantics/literals/string.html) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
 
 Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to: `(StringBuilder.new << "Hello, " << name).to_s`.
+
+### Avoid IO allocation for string building
+
+Prefer to use the dedicated `String.build` optimized for building strings, instead of creating an intermediate `IO::Memory` allocation.
+
+```crystal
+require "benchmark"
+
+Benchmark.ips do |x|
+  x.report("String.build") do
+    String.build do |io|
+      99.times do
+        io << "hello world"
+      end
+    end
+  end
+  x.report("IO::Memory") do
+    io = IO::Memory.new
+    99.times do
+      io << "hello world"
+    end
+    io.to_s
+  end
+end
+```
+
+Output:
+
+```
+$ crystal run --release str_benchmark.cr
+String.build 597.57k (  1.67µs) (± 5.52%)       fastest
+  IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
+```
 
 
 ### Avoid creating temporary objects over and over
