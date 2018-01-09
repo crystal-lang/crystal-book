@@ -51,6 +51,7 @@ Use the `init` command to create a Crystal project with the standard directory s
 ```
 $ crystal init lib my_cool_lib
       create  my_cool_lib/.gitignore
+      create  my_cool_lib/.editorconfig
       create  my_cool_lib/LICENSE
       create  my_cool_lib/README.md
       create  my_cool_lib/.travis.yml
@@ -78,8 +79,8 @@ Command:
     env                      print Crystal environment information
     eval                     eval code from args or standard input
     play                     starts crystal playground server
-    run (default)            compile and run program
-    spec                     compile and run specs (in spec directory)
+    run (default)            build and run program
+    spec                     build and run specs (in spec directory)
     tool                     run a tool
     help, --help, -h         show this help
     version, --version, -v   show version
@@ -93,22 +94,29 @@ Usage: crystal build [options] [programfile] [--] [arguments]
 
 Options:
     --cross-compile                  cross-compile
-    -d, --debug                      Add symbolic debug info
+    -d, --debug                      Add full symbolic debug info
+    --no-debug                       Skip any symbolic debug info
     -D FLAG, --define FLAG           Define a compile-time flag
     --emit [asm|llvm-bc|llvm-ir|obj] Comma separated list of types of output for the compiler to emit
     -f text|json, --format text|json Output format text (default) or json
+    --error-trace                    Show full error trace
     -h, --help                       Show this message
-    --ll                             Dump ll to .crystal directory
+    --ll                             Dump ll to Crystal's cache directory
     --link-flags FLAGS               Additional flags to pass to the linker
     --mcpu CPU                       Target specific cpu type
+    --mattr CPU                      Target specific features
     --no-color                       Disable colored output
     --no-codegen                     Don't do code generation
     -o                               Output filename
     --prelude                        Use given file as prelude
     --release                        Compile in release mode
     -s, --stats                      Enable statistics output
+    -p, --progress                   Enable progress output
+    -t, --time                       Enable execution time output
     --single-module                  Generate a single LLVM module
     --threads                        Maximum number of threads to use
     --target TRIPLE                  Target triple
     --verbose                        Display executed commands
+    --static                         Link statically
+    --stdin-filename                 Source file name to be read from STDIN
 ```
