@@ -11,7 +11,7 @@ Crystal provides several literals for creating values of some basic types.
 | [Char](./literals/char.html)              | `'a'`, `'\n'`, `'あ'`                       |
 | [String](./literals/char.html)            | `"foo\tbar"`, `%("あ")`, `%q(foo #{foo})`   |
 | [Symbol](./literals/symbol.html)          | `:symbol`, `:"foo bar"`                     |
-| [Array](./literals/array.html)            | `[1, 2, 3]`, `[1, 2, 3] of Number`, `%w(one two three)` |
+| [Array](./literals/array.html)            | `[1, 2, 3]`, `[1, 2, 3] of Int32`, `%w(one two three)` |
 | [Array-like](./literals/array.html#array-like-type-literal) | `Set{1, 2, 3}`                              |
 | [Hash](./literals/hash.html)              | `{"foo" => 2}`, `{} of String => Int32`     |
 | [Hash-like](./literals/hash.html#hash-like-types) | `MyType{"foo" => "bar"}`                    |
