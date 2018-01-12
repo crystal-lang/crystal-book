@@ -12,7 +12,7 @@ x86_64-unknown-linux-gnu
 To define a flag, simply use the `--define` or `-D` option, like so:
 
 ```bash
-$ crystal some_program.cr -D my_flag
+$ crystal some_program.cr -Dflag
 ```
 
 Additionally, if a program is compiled with `--release`, the `release` flag will be set.
