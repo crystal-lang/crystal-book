@@ -51,7 +51,7 @@ A backslash followed by a `u` denotes a unicode codepoint. It can either be foll
 One curly brace can contain multiple unicode characters each separated by a whitespace.
 
 ```crystal
-"\u{48 45 4C 4C 4F}" => "HELLO"
+"\u{48 45 4C 4C 4F}" # => "HELLO"
 ```
 
 ## Interpolation
