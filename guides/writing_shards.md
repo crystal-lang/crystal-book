@@ -95,9 +95,9 @@ A good README can make or break your project.
 [Awesome README](https://github.com/matiassingers/awesome-readme) is a nice curation of examples and resources on the topic.
 
 Most importantly, your README should explain: 
-1. what your library is 
-2. what it does
-3. how to use it
+1. What your library is 
+2. What it does
+3. How to use it
 
 This explanation should include a few examples along with subheadings.
 
