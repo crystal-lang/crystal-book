@@ -14,11 +14,9 @@ Crystal provides several literals for creating values of some basic types.
 | [Array](./literals/array.html)            | `[1, 2, 3]`, `[1, 2, 3] of Int32`, `%w(one two three)` |
 | [Array-like](./literals/array.html#array-like-type-literal) | `Set{1, 2, 3}`                              |
 | [Hash](./literals/hash.html)              | `{"foo" => 2}`, `{} of String => Int32`     |
-| [Hash-like](./literals/hash.html#hash-like-types) | `MyType{"foo" => "bar"}`                    |
+| [Hash-like](./literals/hash.html#hash-like-type-literal) | `MyType{"foo" => "bar"}`                    |
 | [Range](./literals/range.html)            | `1..9`, `1...10`, `0..var`                  |
 | [Regex](./literals/regex.html)            | `/foo\|bar/`, `/foo #{foo}/imx`, `%r(foo/)` |
 | [Tuple](./literals/tuple.html)            | `{1, "hello", 'x'}`                         |
 | [NamedTuple](./literals/named_tuple.html) | `{name: "Crystal", year: 2011}`, `{"this is a key": 1}`|
 | [Proc](./literals/proc.html)              | `->(x : Int32, y : Int32) { x + y }`        |
-
-
