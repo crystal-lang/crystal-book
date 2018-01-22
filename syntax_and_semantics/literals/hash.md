@@ -48,7 +48,7 @@ headers["foo"] = "bar"
 For a generic type, the generic types are inferred from the types of the keys and values in the same way as with the hash literal.
 
 ```crystal
-MyHash{"foo" => 1, "bar" = "baz"}
+MyHash{"foo" => 1, "bar" => "baz"}
 ```
 
 If `MyHash` is generic, the above is equivalent to this:
