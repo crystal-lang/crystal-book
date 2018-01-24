@@ -9,7 +9,7 @@ Crystal provides several literals for creating values of some basic types.
 | [Integers](./literals/integers.html)      | `18`, `-12`, `19_i64`, `14_u32`,`64_u8`     |
 | [Floats](./literals/floats.html)          | `1.0`, `1.0_f32`, `1e10`, `-0.5`            |
 | [Char](./literals/char.html)              | `'a'`, `'\n'`, `'あ'`                       |
-| [String](./literals/char.html)            | `"foo\tbar"`, `%("あ")`, `%q(foo #{foo})`   |
+| [String](./literals/string.html)          | `"foo\tbar"`, `%("あ")`, `%q(foo #{foo})`   |
 | [Symbol](./literals/symbol.html)          | `:symbol`, `:"foo bar"`                     |
 | [Array](./literals/array.html)            | `[1, 2, 3]`, `[1, 2, 3] of Int32`, `%w(one two three)` |
 | [Array-like](./literals/array.html#array-like-type-literal) | `Set{1, 2, 3}`                              |
