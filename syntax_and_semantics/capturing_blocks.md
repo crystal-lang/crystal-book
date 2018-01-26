@@ -2,7 +2,12 @@
 
 A block can be captured and turned into a `Proc`, which represents a block of code with an associated context: the closured data.
 
-To capture a block you must specify it as a method's block argument, and return that block from the method.
+To capture a block you must:
+- Specify it as a method's block argument (e.g. `def method(&block)`)
+- Specify the input(s) and output (e.g. `def method(&block : Int32 -> Int32)`)
+- Use the block in the body of the method (it can be as simple as returning the block)
+
+You can omit input and/or output types, meaning there is no input(s) or no output, respectively. Input types must be specific (e.g. `Int32`, `String`) while the output can be a specific type or generic (using `_`).
 
 ## Simple example
 
@@ -16,6 +21,11 @@ proc.call(1) #=> 2
 ```
 
 The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [Proc(Int32, Int32)](http://crystal-lang.org/api/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
+
+The simple example covers all requirements for capturing a block:
+- def int_to_int(__&block__ : Int32 -> Int32) - specify it as a method's block argument
+- def int_to_int(&block : __Int32 -> Int32__) - specify the input(s) and output
+- __block__ - use it in the body of the method
 
 ## Saving a captured block as a callback
 
@@ -41,19 +51,29 @@ model.save # prints "Saved!"
 
 In the above example the type of `&block` wasn't specified: this just means that the captured block doesn't have arguments and doesn't return anything.
 
-## Options for capturing blocks
+## Type restrictions for blocks
 
-Capturing is not limited to requiring one block argument and a specific return type.
-A block can be captured in many ways. A captured block can:
-- Have any number of block arguments (arguments must be a specific type `Int32` not `Int`)
+There are type restrictions for capturing blocks, but you can do more than require one specific input and one specific output.
+
+A block can be captured with any of the following type restrictions:
+- Have a specific input and output
+  - `Int32 -> Int32`
+  - `Array(String) -> String`
+- Have any number of inputs (arguments must be a specific type `Int32` not `Int`)
   - Zero arguments: `->`
   - One argument: `Int32 ->`
   - Many arguments: `Int32, String, Array ->`
-- Return a specific type (e.g. `-> Int32`, `-> String`)
-- Return anything (using `-> _`)
-- Return nothing (e.g. `Int32 ->`, `->`)
+- Return a specific type
+  - With no inputs: `-> Int32`, `-> String`
+  - With input(s): `Int32 -> String`
+- Return anything
+  - With no inputs: `-> _`
+  - With input(s): `String -> _`
+- Return nothing (returns `nil`)
+  - With no inputs: `->` (you can also omit the `->` - `def method(&block)` )
+  - With input(s): `Int32 ->`
 
-### Any number of block arguments
+### Any number of block arguments (inputs)
 
 A captured block can take any number of arguments. The arguments must be specifically typed:
 
