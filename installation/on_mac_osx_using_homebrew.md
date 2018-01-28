@@ -27,3 +27,9 @@ you need to reinstall the command line tools and then select the default active 
 $ xcode-select --install
 $ xcode-select --switch /Library/Developer/CommandLineTools
 ```
+
+also check if libevent is installed and linked.
+
+```
+$ brew install libevent
+```
