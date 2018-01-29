@@ -20,7 +20,7 @@ Alternatively you can use the `run` command:
 $ crystal run some_program.cr
 ```
 
-## Creating an executable
+## Creating a dynamically-linked executable
 
 To create an executable use the `build` command:
 
@@ -43,6 +43,18 @@ $ crystal build some_program.cr --release
 Make sure to always use `--release` for production-ready executables and when performing benchmarks.
 
 The reason for this is that performance without full optimizations is still pretty good and provides fast compile times, so you can use the `crystal` command almost as if it were an interpreter.
+
+To reduce the binary size, you can add the `--no-debug` flag and use the `strip` command. Debug symbols will be removed, use this option if only size is an issue and you won't need to debug the program.
+
+## Creating a standalone executable
+
+To build a standalone executable of your program:
+
+`
+$ crystal build some_program.cr --release --static
+```
+
+More informations about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking)
 
 ## Creating a project or library
 
