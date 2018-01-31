@@ -17,7 +17,7 @@ def int_to_int(&block : Int32 -> Int32)
 end
 
 proc = int_to_int { |x| x + 1 }
-proc.call(1) #=> 2
+proc.call(1) # => 2
 ```
 
 The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [Proc(Int32, Int32)](http://crystal-lang.org/api/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
@@ -110,14 +110,14 @@ def return_a_string(&block : -> String)
 end
 
 string_return = return_a_string { "I'm a string!" }
-string_return.call #=> "I'm a string!"
+string_return.call # => "I'm a string!"
 
 def return_an_int(&block : Int32 -> Int32)
   block
 end
 
 int_return = return_an_int { |x| x + 1 }
-int_return.call(1) #=> 2
+int_return.call(1) # => 2
 ```
 
 ### Return anything
@@ -130,9 +130,9 @@ def return_anything(&block : -> _)
 end
 
 string_return = return_anything { "I'm a string!" }
-string_return.call #=> "I'm a string!"
+string_return.call # => "I'm a string!"
 int_return = return_anything { 2 }
-int_return.call #=> 2
+int_return.call # => 2
 ```
 
 ### Return nothing
@@ -145,7 +145,7 @@ def some_proc(&block : Int32 ->)
 end
 
 proc = some_proc { |x| x + 1 }
-proc.call(1) # nil
+proc.call(1) # => nil
 ```
 
 ## break and next
