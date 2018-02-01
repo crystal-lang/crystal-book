@@ -12,7 +12,7 @@ Symbols are interpreted at compile time and cannot be created dynamically. The o
 
 A double-quoted identifier can contain any unicode character including white spaces and accepts the same escape sequences as a [string literal](./string.html), yet no interpolation.
 
-For an unquoted identifier the same naming rules apply as for methids. It can contain alphanumeric characters, underscore (`_`) or characters with a code point greater than `159`(`0x9F`). It must not start with a number and may end with an exclamation mark (`!`) or question mark (`?`).
+For an unquoted identifier the same naming rules apply as for methods. It can contain alphanumeric characters, underscore (`_`) or characters with a code point greater than `159`(`0x9F`). It must not start with a number and may end with an exclamation mark (`!`) or question mark (`?`).
 
 ```crystal
 :question?
