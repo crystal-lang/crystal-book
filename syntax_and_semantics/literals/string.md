@@ -76,7 +76,7 @@ Interpolation can be disabled by escaping the `#` character with a backslash or 
 Interpolation is implemented using a [`String::Builder`](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
 
 ```crystal
-String::Builder.new do |io|
+String::Builder.build do |io|
   io << "sum: "
   io << a
   io << " + "
