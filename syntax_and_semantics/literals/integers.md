@@ -64,3 +64,8 @@ Hexadecimal numbers start with `0x`:
 0xFE012D # == 16646445
 0xfe012d # == 16646445
 ```
+
+## When and why Unsigned Integers?
+
+Unsigned Integers are a good idea when your value will only be positive.
+Unsigned integers are more efficient and faster than normal integers.
