@@ -7,7 +7,7 @@
    * [On Arch Linux](installation/on_arch_linux.md)
    * [On Gentoo Linux](installation/on_gentoo_linux.md)
    * [On FreeBSD](installation/on_freebsd.md)
-   * [On Mac OS X using Homebrew](installation/on_mac_osx_using_homebrew.md)
+   * [On macOS using Homebrew](installation/on_mac_osx_using_homebrew.md)
    * [On Linux using Linuxbrew](installation/on_linux_using_linuxbrew.md)
    * [On Bash on Ubuntu on Windows](installation/on_bash_on_ubuntu_on_windows.md)
    * [From a tar.gz](installation/from_a_targz.md)

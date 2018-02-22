@@ -1,4 +1,4 @@
-# On Mac OSX using Homebrew
+# On macOS using Homebrew
 
 To easily install Crystal on Mac you can use [Homebrew](http://brew.sh/).
 
@@ -13,7 +13,7 @@ If you're planning to contribute to the language itself you might find useful to
 brew install crystal-lang --with-llvm
 ```
 
-## Troubleshooting on OSX 10.11 (El Capitan)
+## Troubleshooting on macOS 10.11 (El Capitan)
 
 If you get an error like:
 
