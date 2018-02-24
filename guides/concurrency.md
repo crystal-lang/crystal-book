@@ -104,7 +104,7 @@ end
 sleep 1.second
 ```
 
-This program will now print "Hello!" for one second and then exit. This is because the `sleep` call will schedule the main fiber to be executed in a second, and then executes another "ready to execute" fiber, which in this case is the one above.
+This time `sleep 1.second` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
 
 Another way is this:
 
@@ -117,8 +117,6 @@ end
 
 Fiber.yield
 ```
-
-This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
 
 If we want to execute the spawned fiber for ever, we can use `sleep` without arguments:
 
