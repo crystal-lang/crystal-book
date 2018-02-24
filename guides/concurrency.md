@@ -92,21 +92,7 @@ Running the above code will produce no output and exit immediately.
 
 The reason for this is that a fiber is not executed as soon as it is spawned. So, the main fiber, the one that spawns the above fiber, finishes its execution and the program exits.
 
-One way to solve it is to do a `sleep`:
-
-```crystal
-spawn do
-  loop do
-    puts "Hello!"
-  end
-end
-
-sleep 1.second
-```
-
-This time `sleep 1.second` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
-
-Another way is this:
+One way to solve it is to do a `Fiber.yield`:
 
 ```crystal
 spawn do
@@ -118,7 +104,9 @@ end
 Fiber.yield
 ```
 
-If we want to execute the spawned fiber for ever, we can use `sleep` without arguments:
+This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
+
+Another way is this:
 
 ```crystal
 spawn do
