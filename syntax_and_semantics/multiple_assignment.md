@@ -34,15 +34,6 @@ age    = temp[1]
 source = temp[2]
 ```
 
-If the left-hand side contains just one variable, the right-hand side is considered an array:
-
-```crystal
-names = "John", "Peter", "Jack"
-
-# The above is the same as:
-names = ["John", "Peter", "Jack"]
-```
-
 Multiple assignment is also available to methods that end with `=`:
 
 ```crystal
