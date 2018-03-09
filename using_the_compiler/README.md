@@ -50,7 +50,7 @@ To reduce the binary size, you can add the `--no-debug` flag and use the `strip`
 
 To build a standalone executable of your program:
 
-`
+```
 $ crystal build some_program.cr --release --static
 ```
 
