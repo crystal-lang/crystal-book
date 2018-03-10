@@ -26,6 +26,7 @@
        * [String](syntax_and_semantics/literals/string.md)
        * [Symbol](syntax_and_semantics/literals/symbol.md)
        * [Array](syntax_and_semantics/literals/array.md)
+       * [StaticArray](syntax_and_semantics/literals/static_array.md)
        * [Hash](syntax_and_semantics/literals/hash.md)
        * [Range](syntax_and_semantics/literals/range.md)
        * [Regex](syntax_and_semantics/literals/regex.md)
