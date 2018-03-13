@@ -5,7 +5,7 @@ The program’s source code must be encoded in UTF-8.
 * [Comments](comments.html)
 * [Literals](literals.html)
 * [Assignment](assignment.html)
-* [Local Variabls](local_variables.html)
+* [Local Variables](local_variables.html)
 * [Control Expression](control_expressions.html)
 * [Requiring Files](requiring_files.html)
 * [Types and methods](types_and_methods.html)
