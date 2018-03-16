@@ -25,10 +25,10 @@ Once the repository is configured you're ready to install Crystal:
 sudo apt-get install crystal
 ```
 
-Sometimes [you will need](https://github.com/crystal-lang/crystal/issues/4342) to install the package `build-essential` in order to run/build Crystal programs. You can install it with the command:
+Sometimes [you will need](https://github.com/crystal-lang/crystal/issues/4342) to install the packages `build-essential`, `libxml2` and `libxml2-dev` in order to run/build Crystal programs. You can install them with the following command:
 
 ```
-sudo apt-get install build-essential
+sudo apt-get install build-essential libxml2 libxml2-dev
 ```
 
 
