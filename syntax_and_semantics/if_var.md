@@ -33,7 +33,7 @@ Here, the right-hand side of the `&&` expression is also guaranteed to have `a` 
 
 Of course, reassigning a variable inside the `then` branch makes that variable have a new type based on the expression assigned.
 
-## Variables with Influence
+## Limitations
 
 The above logic **doesn’t** work with instance variables, class variables and variables bound in a closure. The value of these kinds of variables could potentially be affected by another fiber after the condition was checked, rendering it `nil`.
 
