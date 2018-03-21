@@ -127,6 +127,23 @@ Macro conditionals can be used outside a macro definition:
 ```
 
 ## Iteration
+
+You can iterate a finite amount of times:
+
+```crystal
+macro define_constants(count)
+  {% for i in (1..count) %}
+    PI_{{i.id}} = Math::PI * {{i}}
+  {% end %}
+end
+
+define_constants(3)
+
+PI_1 #=> 3.14159...
+PI_2 #=> 6.28318...
+PI_3 #=> 9.42477... 
+```
+
 To iterate an `ArrayLiteral`:
 
 ```crystal
