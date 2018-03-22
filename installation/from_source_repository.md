@@ -11,7 +11,7 @@ If you want to contribute then you might want to install Crystal from sources.
 4. Clone the repository:
 
 ```
-git clone https://github.com/crystal-lang/crystal.git
+git clone https://github.com/crystal-lang/crystal
 ```
 
 5. Run `make` to build your own version of the compiler
