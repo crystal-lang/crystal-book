@@ -103,6 +103,8 @@ macro define_method(name, content)
   def {{name}}
     {% if content == 1 %}
       "one"
+    {% elsif content == 2 %}
+      "two"
     {% else %}
       {{content}}
     {% end %}
@@ -111,9 +113,11 @@ end
 
 define_method foo, 1
 define_method bar, 2
+define_method baz, 3
 
 foo #=> one
-bar #=> 2
+bar #=> two
+baz #=> 3
 ```
 
 Similar to regular code, `Nop`, `NilLiteral` and a false `BoolLiteral` are considered *falsey*, while everything else is considered truthy.
