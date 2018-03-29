@@ -54,7 +54,7 @@ Expectations define if the value being tested (*actual*) matches a certain value
 
 ### Equivalence, Identity and Type
 There are methods to create expectations which test for equivalence (`eq`), identity (`be`), type (`be_a`), and nil (`be_nil`).
-Note that the identity expectation uses `.same?` which tests if `[#object_id](https://crystal-lang.org/api/latest/Reference.html#object_id%3AUInt64-instance-method)` are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for for value types like structs or numbers.
+Note that the identity expectation uses `.same?` which tests if [#object\_ids](https://crystal-lang.org/api/latest/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
 ```crystal
 actual.should eq(expected)    # passes if actual == expected
 actual.should be(expected)    # passes if actual.same?(expected)
