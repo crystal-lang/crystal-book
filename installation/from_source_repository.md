@@ -18,6 +18,6 @@ git clone https://github.com/crystal-lang/crystal
 6. Run `make spec` to ensure all specs pass, and you've installed everything correctly.
 7. Use `bin/crystal` to run your crystal files.
 
-If you would like more information about the new `bin/crystal`, check out [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
+If you would like more information about `bin/crystal`, check out the [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
 
-Note: The actual binary is built into `.build/crystal`, but the `bin/crystal` wrapper script is what you should use to run crystal.
+Note: The actual binary is built in to `.build/crystal`, but the `bin/crystal` wrapper script is what you should use to run crystal.
