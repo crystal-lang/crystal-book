@@ -17,7 +17,7 @@ An example with an instance variable:
 
 ```crystal
 class Point
-  def initialize(@x, @y)
+  def initialize(@x : Int32, @y : Int32)
   end
 
   def x
