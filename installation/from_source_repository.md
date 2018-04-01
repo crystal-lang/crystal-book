@@ -14,10 +14,10 @@ If you want to contribute then you might want to install Crystal from sources.
 git clone https://github.com/crystal-lang/crystal
 ```
 
-5. Run `make` to build your own version of the compiler
+5. Run `make` to build your own version of the compiler.
 6. Run `make spec` to ensure all specs pass, and you've installed everything correctly.
-7. Use `bin/crystal` to run your crystal files
+7. Use `bin/crystal` to run your crystal files.
 
-If you would like more information about the new `bin/crystal`, check out the [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
+If you would like more information about `bin/crystal`, check out the [using the compiler](https://crystal-lang.org/docs/using_the_compiler/) documentation.
 
 Note: The actual binary is built in to `.build/crystal`, but the `bin/crystal` wrapper script is what you should use to run crystal.
