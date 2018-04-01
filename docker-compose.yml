@@ -8,4 +8,4 @@ services:
     ports:
       - "4000:4000"
       - "35729:35729"
-    command: /bin/sh -c "npm install && gitbook serve"
+    command: /bin/sh -c "npm install && gitbook install && gitbook serve"

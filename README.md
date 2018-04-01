@@ -42,7 +42,7 @@ Html output will be in `_book` folder (some links won't work if opening the file
 There is also a docker environment to avoid installing dependencies globally:
 
 ```
-$ docker-compose up
+$ sudo docker-compose up
 ...
 gitbook_1  | Starting server ...
 gitbook_1  | Serving book on http://localhost:4000
