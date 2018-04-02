@@ -24,8 +24,9 @@ Thank you very much!
 ```
 $ git clone https://github.com/crystal-lang/crystal-book.git
 $ cd crystal-book
-$ npm install -g gitbook-cli@2.3.0
+$ npm install -g gitbook-cli
 $ npm install
+$ gitbook install
 $ gitbook serve
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
