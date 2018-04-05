@@ -108,6 +108,7 @@
        * [Uninitialized variable declaration](syntax_and_semantics/declare_var.md)
    * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
        * [Cross-compilation](syntax_and_semantics/cross-compilation.md)
+       * [Static builds](syntax_and_semantics/static_builds.md)
    * [C bindings](syntax_and_semantics/c_bindings/README.md)
        * [lib](syntax_and_semantics/c_bindings/lib.md)
        * [fun](syntax_and_semantics/c_bindings/fun.md)
