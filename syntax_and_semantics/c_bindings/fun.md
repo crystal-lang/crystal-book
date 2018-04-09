@@ -59,7 +59,7 @@ lib LibSDL
 end
 ```
 
-The C name can be put in a string to be able to write a name that is not a valid identifier:
+The C name can be put in quotes to be able to write a name that is not a valid identifier:
 
 ```crystal
 lib LLVMIntrinsics
