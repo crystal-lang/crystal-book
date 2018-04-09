@@ -47,10 +47,11 @@ This is for example useful for deconstructing union types:
 ```
 string = STDIN.gets
 typeof(string)                        # => String?
+typeof(raise "Empty input")           # => NoReturn
 typeof(string || raise "Empty input") # => String
 ```
 
-The compiler recognizes that in case `string` is `Nil`, the right hand side of the expression `string || raise` will be evaluated. Since `typeof(raise)` is `NoReturn` the execution would not return to the current scope in that case. That leaves only `String` as resulting type of the expression.
+The compiler recognizes that in case `string` is `Nil`, the right hand side of the expression `string || raise` will be evaluated. Since `typeof(raise "Empty input")` is `NoReturn` the execution would not return to the current scope in that case. That leaves only `String` as resulting type of the expression.
 
 Every expression whose code paths all result in `NoReturn` will be `NoReturn` as well. `NoReturn` does not show up in a union type because it would essentially be included in every expression's type. It is only used when an expression will never return to the current scope.
 
