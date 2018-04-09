@@ -45,9 +45,9 @@ Typical examples for non-returning methods and keywords are `return`, `exit`, `r
 This is for example useful for deconstructing union types:
 
 ```
-string = STDIN.gets?
-typeof(string)          # => String?
-typeof(string || raise) # => String
+string = STDIN.gets
+typeof(string)                        # => String?
+typeof(string || raise "Empty input") # => String
 ```
 
 The compiler recognizes that in case `string` is `Nil`, the right hand side of the expression `string || raise` will be evaluated. Since `typeof(raise)` is `NoReturn` the execution would not return to the current scope in that case. That leaves only `String` as resulting type of the expression.
