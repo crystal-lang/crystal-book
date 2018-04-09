@@ -47,7 +47,11 @@ X.variadic(1, 2, 3, 4)
 
 Note that there are no implicit conversions (except `to_unsafe`, which is explained later) when invoking a C function: you must pass the exact type that is expected. For integers and floats you can use the various `to_...` methods.
 
-Because method names in Crystal must start with a lowercase letter, `fun` names must also start with a lowercase letter. If you need to bind to a C function that starts with a capital letter you can give the function another name for Crystal:
+## Function names
+
+Function names in a `lib` definition can start with an upper case letter. That's different from methods and function definitions outside a `lib`, which must start with a lower case letter.
+
+Function names in Crystal can be different from the C name. The following example shows how to bind the C function name `SDL_Init` as `LibSDL.init` in Crystal.
 
 ```crystal
 lib LibSDL
@@ -55,7 +59,7 @@ lib LibSDL
 end
 ```
 
-You can also use a string as a name if the name is not a valid identifier or type name:
+The C name can be put in a string to be able to write a name that is not a valid identifier:
 
 ```crystal
 lib LLVMIntrinsics
@@ -64,6 +68,8 @@ end
 ```
 
 This can also be used to give shorter, nicer names to C functions, as these tend to be long and are usually prefixed with the library name.
+
+## Types in C Bindings
 
 The valid types to use in C bindings are:
 * Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
