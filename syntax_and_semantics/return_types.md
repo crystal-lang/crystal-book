@@ -35,3 +35,24 @@ This is useful for two reasons:
 These methods usually imply a side effect.
 
 Using `Void` is the same, but `Nil` is more idiomatic: `Void` is preferred in C bindings.
+
+## NoReturn return type
+
+Some expressions won't return to the current scope and therefore have no return type. This is expressed as the special return type `NoReturn`.
+
+Typical examples for non-returning methods and keywords are `return`, `exit`, `raise`, `next`, and `break`.
+
+This is for example useful for deconstructing union types:
+
+```
+string = STDIN.gets
+typeof(string)                        # => String?
+typeof(raise "Empty input")           # => NoReturn
+typeof(string || raise "Empty input") # => String
+```
+
+The compiler recognizes that in case `string` is `Nil`, the right hand side of the expression `string || raise` will be evaluated. Since `typeof(raise "Empty input")` is `NoReturn` the execution would not return to the current scope in that case. That leaves only `String` as resulting type of the expression.
+
+Every expression whose code paths all result in `NoReturn` will be `NoReturn` as well. `NoReturn` does not show up in a union type because it would essentially be included in every expression's type. It is only used when an expression will never return to the current scope.
+
+`NoReturn` can be explicitly set as return type of a method or function definition but will usually be inferred by the compiler.
