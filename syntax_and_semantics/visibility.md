@@ -118,7 +118,7 @@ end
 Namespace::Bar.new.bar
 ```
 
-A `protected` class method can be invoked from an instance method and the other way around:
+A `protected` class method can be invoked from an instance method (of the same class) and the other way around:
 
 ```crystal
 class Person
