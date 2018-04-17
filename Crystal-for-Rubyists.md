@@ -285,13 +285,14 @@ Crystal added some new keywords, these can still be used as function names, but 
 #### Available keywords
 
 ```
-def	if	else	elsif	end	true	false	class	module	include
-extend	while	until	nil	do	yield	return	unless	next	break
-begin	lib	fun	type	struct	union	enum	macro	out	require
-case	when	select	then	of	rescue	ensure	is_a?	alias	sizeof
-as	as?	typeof	for	in	with	self	super	private	asm
-nil?		abstract	pointerof
-protected	uninitialized	instance_sizeof
+abstract    class     extend             is_a?     out          self      uninitialized
+alias       def       false              lib       pointerof    sizeof    union
+as          do        for                macro     private      struct    unless
+as?         else      fun                module    protected    super     until
+asm         elsif     if                 next      require      then      when
+begin       end       in                 nil       rescue       true      while
+break       ensure    include            nil?      return       type      with
+case        enum      instance_sizeof    of        select       typeof    yield
 ```
 
 ### Private methods
