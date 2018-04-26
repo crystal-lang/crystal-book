@@ -2,7 +2,7 @@
 
 A [Symbol](http://crystal-lang.org/api/Symbol.html) represents a unique name inside the entire source code.
 
-Symbols are interpreted at compile time and cannot be created dynamically. The only way to create a Symbol is by using a symbol literal, denoted by a colon (`:`) followed by an identifier. The identifier may be enclosed in double quotes (`"`).
+Symbols are interpreted at compile time and cannot be created dynamically. The only way to create a Symbol is by using a symbol literal, denoted by a colon (`:`) followed by an identifier. The identifier may optionally be enclosed in double quotes (`"`).
 
 ```crystal
 :unquoted_symbol
