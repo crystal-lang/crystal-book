@@ -43,8 +43,8 @@ A backslash followed by at most three digits denotes a code point written in oct
 A backslash followed by a `u` denotes a unicode codepoint. It can either be followed by exactly four hexadecimal characters representing the unicode bytes (`\u0000` to `\uFFFF`) or a number of one to six hexadecimal characters wrapped in curly braces (`\u{0}` to `\u{10FFFF}`.
 
 ```crystal
-"\u0041" # => "A"
-"\u{41}" # => "A"
+"\u0041"    # => "A"
+"\u{41}"    # => "A"
 "\u{1F52E}" # => "&#x1F52E;"
 ```
 
@@ -61,7 +61,9 @@ A string literal with interpolation allows to embed expressions into the string 
 ```crystal
 a = 1
 b = 2
-"sum: #{a} + #{b} = #{a + b}"  # => "sum: 1 + 2 = 3"
+"sum: #{a} + #{b} = #{a + b}"                                      # => "sum: 1 + 2 = 3"
+"sum: %s + %s = %s" % [a, b, a + b]                                # => "sum: 1 + 2 = 3"
+"sum: %{one} + %{two} = %{three}" % {one: a, two: b, three: a + b} # => "sum: 1 + 2 = 3"
 ```
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
@@ -73,10 +75,10 @@ Interpolation can be disabled by escaping the `#` character with a backslash or 
 %q(#{a + b}) # => "#{a + b}"
 ```
 
-Interpolation is implemented using a [`String::Builder`](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
+Interpolation is implemented using a [String::Builder](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
 
 ```crystal
-String::Builder.build do |io|
+String.build do |io|
   io << "sum: "
   io << a
   io << " + "
