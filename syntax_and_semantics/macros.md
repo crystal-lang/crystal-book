@@ -94,6 +94,40 @@ end
 define_method :foo, 1
 ```
 
+## Modules and classes
+
+Modules, classes and structs can also be generated:
+
+```crystal
+macro define_class(module_name, class_name, method, content)
+  module {{module_name}}
+    class {{class_name}}
+      def initialize(@name : String)
+      end
+
+      def {{method}}
+        {{content}} + @name
+      end
+    end
+  end
+end
+
+# This generates:
+#     module Foo
+#       class Bar
+#         def initialize(@name : String)
+#         end
+#
+#         def say
+#           "hi " + @name
+#         end
+#       end
+#     end
+define_class Foo, Bar, say, "hi "
+
+p Foo::Bar.new("John").say # => "hi John"
+```
+
 ## Conditionals
 
 You use `{% if condition %}` ... `{% end %}` to conditionally generate code:
