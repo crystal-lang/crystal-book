@@ -18,18 +18,18 @@ The above code will make sense once you read the whole language reference, but w
 
 * You can [require](../syntax_and_semantics/requiring_files.html) code defined in other files:
 
-    ```ruby
+    ```crystal
     require "http/server"
     ```
 * You can define [local variables](../syntax_and_semantics/local_variables.html) without the need to specify their type:
 
-    ```ruby
+    ```crystal
     server = HTTP::Server.new ...
     ```
 
 * You program by invoking [methods](../syntax_and_semantics/classes_and_methods.html) (or sending messages) to objects.
 
-    ```ruby
+    ```crystal
     HTTP::Server.new(8080) ...
     ...
     Time.now
@@ -41,7 +41,7 @@ The above code will make sense once you read the whole language reference, but w
 
 * You can use code blocks, or simply [blocks](../syntax_and_semantics/blocks_and_procs.html), which are a very convenient way to reuse code and get some features from the functional world:
 
-    ```ruby
+    ```crystal
     HTTP::Server.new(8080) do |context|
       ...
     end
@@ -49,7 +49,7 @@ The above code will make sense once you read the whole language reference, but w
 
 * You can easily create strings with embedded content, known as string interpolation. The language comes with other [syntax](../syntax_and_semantics/literals.html) as well to create arrays, hashes, ranges, tuples and more:
 
-    ```ruby
+    ```crystal
     "Hello world! The time is #{Time.now}"
     ```
 
