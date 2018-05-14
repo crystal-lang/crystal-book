@@ -64,7 +64,7 @@ b = 2
 "sum: #{a} + #{b} = #{a + b}" # => "sum: 1 + 2 = 3"
 ```
 
-There are also two other types of interpolation using `Kernel#sprintf`. They are not expanded at runtime like the other one. See https://crystal-lang.org/api/master/String.html#%25(other)-instance-method.
+There are also two other types of interpolation using `Kernel#sprintf`. They are not expanded at runtime like the other one. See [String#%](https://crystal-lang.org/api/master/String.html#%25(other)-instance-method).
 
 ```crystal
 "sum: %s + %s = %s" % [a, b, a + b]                                # => "sum: 1 + 2 = 3"
