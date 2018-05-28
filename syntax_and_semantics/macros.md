@@ -269,6 +269,27 @@ When a macro is invoked you can access the current scope, or type, with a specia
 
 Note that `@type` is always the *instance* type, even when the macro is invoked in a class method.
 
+For example:
+
+```crystal
+macro add_describe_methods
+  def describe
+    "Class is: " + {{ @type.stringify }}
+  end
+  
+  def self.describe
+    "Class is: " + {{ @type.stringify }}
+  end
+end
+
+class Foo
+  add_describe_methods
+end
+
+Foo.new.describe #=> "Class is Foo"
+Foo.describe #=> "Class is Foo"
+```
+
 ## Constants
 
 Macros can access constants. For example:
