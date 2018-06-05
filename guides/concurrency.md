@@ -63,7 +63,7 @@ To spawn a fiber you use `spawn` with a block:
 ```crystal
 spawn do
   # ...
-  socket.gets
+  gets
   # ...
 end
 
@@ -74,9 +74,9 @@ spawn do
 end
 ```
 
-Here we have two fibers: one reads from a socket and the other does a `sleep`. When the first fiber reaches the `socket.gets` line, it gets suspended, the Event Loop is told to continue executing this fiber when there's data in the socket, and the program continues with the second fiber. This fiber wants to sleep for 5 seconds, so the Event Loop is told to continue with this fiber in 5 seconds. If there aren't other fibers to execute, the Event Loop will wait until either of these events happen, without consuming CPU time.
+Here we have two fibers: one reads from a socket and the other does a `sleep`. When the first fiber reaches the `gets` line, it gets suspended, the Event Loop is told to continue executing this fiber when there's data in the socket, and the program continues with the second fiber. This fiber wants to sleep for 5 seconds, so the Event Loop is told to continue with this fiber in 5 seconds. If there aren't other fibers to execute, the Event Loop will wait until either of these events happen, without consuming CPU time.
 
-The reason why `socket.gets` and `sleep` behave like this is because their implementations talk directly with the Runtime Scheduler and the Event Loop, there's nothing magical about it. In general, the standard library already takes care of doing all of this so you don't have to.
+The reason why `gets` and `sleep` behave like this is because their implementations talk directly with the Runtime Scheduler and the Event Loop, there's nothing magical about it. In general, the standard library already takes care of doing all of this so you don't have to.
 
 Note, however, that fibers don't get executed right away. For example:
 
@@ -92,21 +92,7 @@ Running the above code will produce no output and exit immediately.
 
 The reason for this is that a fiber is not executed as soon as it is spawned. So, the main fiber, the one that spawns the above fiber, finishes its execution and the program exits.
 
-One way to solve it is to do a `sleep`:
-
-```crystal
-spawn do
-  loop do
-    puts "Hello!"
-  end
-end
-
-sleep 1.second
-```
-
-This program will now print "Hello!" for one second and then exit. This is because the `sleep` call will schedule the main fiber to be executed in a second, and then executes another "ready to execute" fiber, which in this case is the one above.
-
-Another way is this:
+One way to solve it is to do a `Fiber.yield`:
 
 ```crystal
 spawn do
@@ -120,7 +106,7 @@ Fiber.yield
 
 This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
 
-If we want to execute the spawned fiber for ever, we can use `sleep` without arguments:
+Another way is this:
 
 ```crystal
 spawn do
