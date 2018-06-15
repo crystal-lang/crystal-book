@@ -18,6 +18,7 @@ Available escape sequences:
 ```crystal
 '\'' # single quote
 '\\' # backslash
+'\a' # alert
 '\b' # backspace
 '\e' # escape
 '\f' # form feed
