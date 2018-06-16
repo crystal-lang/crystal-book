@@ -11,8 +11,9 @@ server = HTTP::Server.new do |context|
   context.response.print("Hello world! The time is #{Time.now}")
 end
 
-puts "Listening on http://0.0.0.0:8080"
-server.listen "0.0.0.0", 8080
+address = server.bind_tcp "0.0.0.0", 8080
+puts "Listening on #{address}"
+server.listen
 ```
 
 The above code will make sense once you read the whole language reference, but we can already learn some things.
