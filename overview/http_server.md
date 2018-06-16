@@ -27,6 +27,8 @@ The above code will make sense once you read the whole language reference, but w
 
     ```crystal
     server = HTTP::Server.new ...
+    ...
+    address = server.bind_tcp ...
     ```
 
 * You program by invoking [methods](../syntax_and_semantics/classes_and_methods.html) (or sending messages) to objects.
@@ -36,9 +38,9 @@ The above code will make sense once you read the whole language reference, but w
     ...
     Time.now
     ...
-    puts "Listening on http://0.0.0.0:8080"
+    puts "Listening on #{address}"
     ...
-    server.listen "0.0.0.0", 8080
+    server.listen
     ```
 
 * You can use code blocks, or simply [blocks](../syntax_and_semantics/blocks_and_procs.html), which are a very convenient way to reuse code and get some features from the functional world:
