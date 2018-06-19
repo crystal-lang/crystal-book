@@ -42,3 +42,25 @@ When a new Crystal version is released you can upgrade your system using:
 sudo apt-get update
 sudo apt-get install crystal
 ```
+
+## Troubleshooting on WSL
+If you get an error like:
+
+```
+gpg: connecting dirmngr at '/tmp/apt-key-gpghome.4GKHZljOFL/S.dirmngr' failed: IPC connect call failed
+gpg: keyserver receive failed: No dirmngr
+```
+
+You need to remove Crystal list from `/etc/apt/sources.list.d/crystal.list`
+
+```
+sudo rm /etc/apt/sources.list.d/crystal.list
+```
+
+And then:
+```
+curl -s "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x09617FD37CC06B54" | sudo apt-key add -
+echo "deb https://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.list
+sudo apt-get update
+sudo apt-get install crystal
+```
