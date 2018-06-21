@@ -27,7 +27,7 @@ array_of_int_or_string = [1, 3, 4] of Int32 | String  # => Array(Int32 | String)
 array_of_int_or_string + ["foo"]                      # => [1, 2, 3, "foo"]
 ```
 
-Empty array literals always need a type specification::
+Empty array literals always need a type specification:
 
 ```crystal
 [] of Int32  # => Array(Int32).new
