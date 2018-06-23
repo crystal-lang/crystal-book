@@ -3,7 +3,6 @@
 A slightly more interesting example is an HTTP Server:
 
 ```crystal
-
 require "http/server"
 
 server = HTTP::Server.new do |context|
