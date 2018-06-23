@@ -5,11 +5,12 @@ A slightly more interesting example is an HTTP Server:
 ```crystal
 require "http/server"
 
-server = HTTP::Server.new(8080) do |context|
+server = HTTP::Server.new do |context|
   context.response.content_type = "text/plain"
   context.response.print "Hello world! The time is #{Time.now}"
 end
 
+server.bind_tcp "127.0.0.1", 8080
 puts "Listening on http://127.0.0.1:8080"
 server.listen
 ```
@@ -30,7 +31,7 @@ The above code will make sense once you read the whole language reference, but w
 * You program by invoking [methods](../syntax_and_semantics/classes_and_methods.html) (or sending messages) to objects.
 
     ```crystal
-    HTTP::Server.new(8080) ...
+    HTTP::Server.new ...
     ...
     Time.now
     ...
@@ -42,7 +43,7 @@ The above code will make sense once you read the whole language reference, but w
 * You can use code blocks, or simply [blocks](../syntax_and_semantics/blocks_and_procs.html), which are a very convenient way to reuse code and get some features from the functional world:
 
     ```crystal
-    HTTP::Server.new(8080) do |context|
+    HTTP::Server.new do |context|
       ...
     end
     ```
