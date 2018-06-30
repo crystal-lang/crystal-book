@@ -4,13 +4,13 @@ To easily install Crystal on Mac you can use [Homebrew](http://brew.sh/).
 
 ```
 brew update
-brew install crystal-lang
+brew install crystal
 ```
 
 If you're planning to contribute to the language itself you might find useful to install LLVM as well. So replace the last line with:
 
 ```
-brew install crystal-lang --with-llvm
+brew install crystal --with-llvm
 ```
 
 ## Troubleshooting on OSX 10.11 (El Capitan)
