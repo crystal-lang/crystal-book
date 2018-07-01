@@ -11,7 +11,7 @@ server = HTTP::Server.new do |context|
 end
 
 address = server.bind_tcp 8080
-puts "Listening on http://{#address}"
+puts "Listening on http://#{address}"
 server.listen
 ```
 
@@ -27,6 +27,11 @@ The above code will make sense once you read the whole language reference, but w
     ```crystal
     server = HTTP::Server.new ...
     ```
+* The port of the HTTP server is set by using the method bind_tcp on the object HTTP::Server (the port set to 8080).
+    ```crystal
+    address = server.bind_tcp 8080
+    ```
+   
 
 * You program by invoking [methods](../syntax_and_semantics/classes_and_methods.html) (or sending messages) to objects.
 
@@ -55,8 +60,4 @@ The above code will make sense once you read the whole language reference, but w
     ```crystal
     "Hello world! The time is #{Time.now}"
     ``` 
- * And even you can do so inside variables. 
-    ```crystal
-    "Listening on http://{#address}"
-    ```
 
