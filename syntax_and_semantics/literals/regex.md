@@ -1,35 +1,67 @@
-# Regex
+# Regular Expressions
 
-Regular expressions are represented by the [Regex](http://crystal-lang.org/api/Regex.html) class, which is usually created with a literal:
+Regular expressions are represented by the [Regex](http://crystal-lang.org/api/Regex.html) class.
+
+A Regex is typically created with a regex literal using [PCRE](http://pcre.org/pcre.txt) syntax. It consists of a string of UTF-8 character enclosed in forward slashes (`/`):
 
 ```crystal
-foo_or_bar = /foo|bar/
-heeello    = /h(e+)llo/
-integer    = /\d+/
+/foo|bar/
+/h(e+)llo/
+/\d+/
+/あ/
 ```
 
-A regular expression literal is delimited by `/` and uses [PCRE](http://pcre.org/pcre.txt) syntax.
+## Escaping
 
-It can be followed by these modifiers:
-
-* i: ignore case (PCRE_CASELESS)
-* m: multiline (PCRE_MULTILINE)
-* x: extended (PCRE_EXTENDED)
-
-For example
+Regular expressions support the same [escape sequences as String literals](./string.html).
 
 ```crystal
-r = /foo/imx
+/\// # slash
+/\\/ # backslash
+/\b/ # backspace
+/\e/ # escape
+/\f/ # form feed
+/\n/ # newline
+/\r/ # carriage return
+/\t/ # tab
+/\v/ # vertical tab
+/\NNN/ # octal ASCII character
+/\xNN/ # hexadecimal ASCII character
+/\uNNNN/ # hexadecimal unicode character
+/\u{NNNN...}/ # hexadecimal unicode character
 ```
 
-Slashes must be escaped:
+The delimiter character `/` must be escaped inside slash-delimited regular expression literals.
+Note that special characters of the PCRE syntax need to be escaped if they are intended as literal characters.
+
+## Interpolation
+
+Interpolation works in regular expression literals just as it does in [string literals](./string.html). Be aware that using this feature will cause an exception to be raised at runtime, if the resulting string results in an invalid regular expression.
+
+## Modifiers
+The closing delimiter may be followed by a number of optional modifiers to adjust the matching behaviour of the regular expression.
+
+* `i`: case-insensitive matching (`PCRE_CASELESS`):  Unicode letters in the pattern match both upper and lower case letters in the subject string.
+* `m`: multiline matching (`PCRE_MULTILINE`): The *start of line* (`^`) and *end of line* (`$`) metacharacters match immediately following or immediately before internal newlines in the subject string, respectively, as well as at the very start and end.
+* `x`: extended whitespace matching (`PCRE_EXTENDED`): Most white space characters in the pattern are totally ignored except when ignore or inside a character class. Unescaped hash characters `#` denote the start of a comment ranging to the end of the line.
 
 ```crystal
-slash = /\//
+/foo/i.match("FOO")         # => #<Regex::MatchData "FOO">
+/foo/m.match("bar\nfoo")    # => #<Regex::MatchData "foo">
+/foo /x.match("foo")        # => #<Regex::MatchData "foo">
+/foo /imx.match("bar\nFOO") # => #<Regex::MatchData "FOO">
 ```
 
-An alternative syntax is provided:
+## Percent regex literals
+
+Besides slash-delimited literals, regular expressions may also be expressed as a percent literal indicated by `%r` and a pair of delimiters. Valid delimiters are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the literal escapes the next end delimiter.
+
+These are handy to write regular expressions that include slashes which would have to be escaped in slash-delimited literals.
 
 ```crystal
-r = %r(regex with slash: /)
+%r((/)) # => /(\/)/
+%r[[/]] # => /[\/]/
+%r{{/}} # => /{\/}/
+%r<</>> # => /<\/>/
+%r|/|   # => /\//
 ```
