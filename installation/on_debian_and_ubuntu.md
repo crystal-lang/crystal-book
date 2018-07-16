@@ -13,13 +13,10 @@ curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands:
 
 ```bash
-sudo sh -c 'apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54 && \
-            echo "deb https://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.list && \
-            apt-get update'
+curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add
+echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
+sudo apt-get update
 ```
-
-**NOTE:** There is a bug in Ubuntu 18.04 running on Windows Subystem for Linux, making `apt-key adv` fail.
-As a workaround, the first command can be replaced by `curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add`.
 
 ## Install
 Once the repository is configured you're ready to install Crystal:
@@ -28,13 +25,7 @@ Once the repository is configured you're ready to install Crystal:
 sudo apt install crystal
 ```
 
-Sometimes the package `build-essential` needs to be installed in order to run/build Crystal programs (see [issue #4342](https://github.com/crystal-lang/crystal/issues/4342)):
-
-```bash
-sudo apt install build-essential
-```
-
-The following packages are not required, but recommended for using the respective stlib features:
+The following packages are not required, but recommended for using the respective features in the standard library:
 
 ```bash
 sudo apt install libssl-dev      # for using OpenSSL
