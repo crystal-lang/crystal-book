@@ -20,7 +20,7 @@ Alternatively you can use the `run` command:
 $ crystal run some_program.cr
 ```
 
-## Creating a dynamically-linked executable
+## Creating an executable
 
 To create an executable use the `build` command:
 
@@ -46,15 +46,17 @@ The reason for this is that performance without full optimizations is still pret
 
 To reduce the binary size, you can add the `--no-debug` flag and use the `strip` command. Debug symbols will be removed, use this option if only size is an issue and you won't need to debug the program.
 
-## Creating a standalone executable
+## Creating a statically-linked executable
 
-To build a standalone executable of your program:
+To build a statically-linked executable of your program:
 
 ```
 $ crystal build some_program.cr --release --static
 ```
 
-More informations about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking)
+**Note:** Building statically-linked executables is currently only supported on Alpine Linux.
+
+More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
 
 ## Creating a project or library
 
