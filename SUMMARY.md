@@ -8,7 +8,7 @@
    * [On Gentoo Linux](installation/on_gentoo_linux.md)
    * [On Mac OSX using Homebrew](installation/on_mac_osx_using_homebrew.md)
    * [On Linux using Linuxbrew](installation/on_linux_using_linuxbrew.md)
-   * [On Bash on Ubuntu on Windows](installation/on_bash_on_ubuntu_on_windows.md)
+   * [On Windows Subsystem for Linux](installation/on_bash_on_ubuntu_on_windows.md)
    * [From a tar.gz](installation/from_a_targz.md)
    * [From sources](installation/from_source_repository.md)
 * [Using the compiler](using_the_compiler/README.md)
