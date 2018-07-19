@@ -100,9 +100,9 @@ Always remember that it's not just the time that has improved: memory usage is a
 
 ### Use string interpolation instead of concatenation
 
-Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](syntax_and_semantics/literals/string.html) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
+Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](https://crystal-lang.org/docs/syntax_and_semantics/literals/string.html#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
 
-Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to: `(StringBuilder.new << "Hello, " << name).to_s`.
+Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to: `(String::Builder.new << "Hello, " << name).to_s`.
 
 ### Avoid IO allocation for string building
 
@@ -111,15 +111,16 @@ Prefer to use the dedicated `String.build` optimized for building strings, inste
 ```crystal
 require "benchmark"
 
-Benchmark.ips do |x|
-  x.report("String.build") do
+Benchmark.ips do |bm|
+  bm.report("String.build") do
     String.build do |io|
       99.times do
         io << "hello world"
       end
     end
   end
-  x.report("IO::Memory") do
+
+  bm.report("IO::Memory") do
     io = IO::Memory.new
     99.times do
       io << "hello world"
