@@ -88,7 +88,6 @@ Usage: crystal [command] [switches] [program file] [--] [arguments]
 Command:
     init                     generate a new project
     build                    build an executable
-    deps                     install project dependencies
     docs                     generate documentation
     env                      print Crystal environment information
     eval                     eval code from args or standard input
