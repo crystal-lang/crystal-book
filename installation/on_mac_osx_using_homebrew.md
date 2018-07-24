@@ -1,4 +1,4 @@
-# On Mac OSX using Homebrew
+# On macOS using Homebrew
 
 To easily install Crystal on Mac you can use [Homebrew](http://brew.sh/).
 
