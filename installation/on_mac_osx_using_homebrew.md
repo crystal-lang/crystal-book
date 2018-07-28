@@ -7,12 +7,6 @@ brew update
 brew install crystal
 ```
 
-If you're planning to contribute to the language itself you might find useful to install LLVM as well. So replace the last line with:
-
-```
-brew install crystal --with-llvm
-```
-
 ## Troubleshooting on OSX 10.11 (El Capitan)
 
 If you get an error like:
