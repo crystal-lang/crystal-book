@@ -73,7 +73,7 @@ To get the `ebook-convert` you need to install [Calibre application](https://cal
 export PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
 ```
 Otherwise, Create a symbolic link the ebook-convert tool:
-```
+```bash
 sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/bin
 ```
 
