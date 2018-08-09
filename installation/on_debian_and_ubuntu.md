@@ -13,7 +13,7 @@ curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands:
 
 ```bash
-curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add
+curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add -
 echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
 sudo apt-get update
 ```
