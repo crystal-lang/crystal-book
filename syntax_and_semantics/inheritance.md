@@ -105,7 +105,7 @@ Without arguments or parentheses, `super` receives the same arguments as the met
 
 ## Covariance and Contravariance
 
-One place this can get a little tricky is with arrays. We have to be careful when declaring an array of objects where inheritance is used. For example, consider the following
+One place inheritance can get a little tricky is with arrays. We have to be careful when declaring an array of objects where inheritance is used. For example, consider the following
 
 ```crystal
 class Foo
