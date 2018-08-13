@@ -50,6 +50,33 @@ gitbook_1  | Restart after change in file node_modules/.bin
 ...
 ```
 
+### Generating PDF, ePub, Mobi files
+You can generate files in book format using these commands.
+
+```bash
+# Generate a PDF file
+$ gitbook pdf ./ ./crystal-book.pdf
+
+# Generate a ePub file
+$ gitbook epub ./ ./crystal-book.ePub
+
+# Generate a Mobi file
+$ gitbook mobi ./ ./crystal-book.mobi
+```
+
+`ebook-convert` is required for generation of ebooks (pdf, epub, mobi)
+
+#### macOS
+To get the `ebook-convert` you need to install [Calibre application](https://calibre-ebook.com/download). After moving the `calibre.app` file to the Application folder add the following command to your `~/.bash_profile`
+
+```bash
+export PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
+```
+Otherwise, Create a symbolic link the ebook-convert tool:
+```bash
+sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/bin
+```
+
 ### Adding a page
 
 To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.
