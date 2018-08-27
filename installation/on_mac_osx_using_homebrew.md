@@ -4,7 +4,7 @@ To easily install Crystal on Mac you can use [Homebrew](http://brew.sh/).
 
 ```
 brew update
-brew install crystal
+brew install crystal-lang
 ```
 
 ## Troubleshooting on OSX 10.11 (El Capitan)
