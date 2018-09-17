@@ -6,6 +6,7 @@
    * [On RedHat and CentOS](installation/on_redhat_and_centos.md)
    * [On Arch Linux](installation/on_arch_linux.md)
    * [On Gentoo Linux](installation/on_gentoo_linux.md)
+   * [On Alpine Linux](installation/on_alpine_linux.md)
    * [On macOS using Homebrew](installation/on_mac_osx_using_homebrew.md)
    * [On Linux using Linuxbrew](installation/on_linux_using_linuxbrew.md)
    * [On Windows Subsystem for Linux](installation/on_bash_on_ubuntu_on_windows.md)
