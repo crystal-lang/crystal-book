@@ -77,6 +77,31 @@ $ crystal init lib my_cool_lib
 Initialized empty Git repository in ~/my_cool_lib/.git/
 ```
 
+## Creating documentation
+
+Use the `docs` command to create documentation for your library (see [documentation code](../conventions/documenting_code.html)). By default, this command will create a docs directory, with a docs/index.html entry point. All files inside the root src directory will be considered (`src/**`). Now you can just open that index.html file with your web browser and start browsing your docs.
+
+If your library has any load-order dependence, you can instead specify which file or files should be used as arguments to the `docs command`:
+
+```
+$ crystal docs src/my_app.cr
+```
+
+will create docs for the crystal program resulting from only reading `src/my_app.cr`.
+
+There are also two options (which you will see by invoking `crystal docs -h`)
+
+```
+--output=DIR, -o DIR             Set the output directory (default: ./docs)
+--canonical-base-url=URL, -b URL Set the canonical base url
+```
+
+Thus, for the above program, if you need to output the docs at `public` and would like to customize your [canonical base url](https://en.wikipedia.org/wiki/Canonical_link_element) then you could do so like this
+
+```
+$ crystal docs -o public -b http://example.com/ src/my_app.cr
+```
+
 ## Other commands and options
 
 To see the full set of commands, invoke `crystal` without arguments.
