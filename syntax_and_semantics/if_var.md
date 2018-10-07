@@ -47,7 +47,7 @@ if @@a
 end
 
 a = nil
-closure = ->(){ foo = "foo" }
+closure = ->(){ a = "foo" }
 
 if a
   # here `a` can be nil
