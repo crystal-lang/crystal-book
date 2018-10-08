@@ -79,15 +79,13 @@ Initialized empty Git repository in ~/my_cool_lib/.git/
 
 ## Creating documentation
 
-Use the `docs` command to create documentation for your library (see [documentation code](../conventions/documenting_code.html)). By default, this command will create a docs directory, with a docs/index.html entry point. All files inside the root src directory will be considered (`src/**`). Now you can just open that index.html file with your web browser and start browsing your docs.
+Use the `docs` command to create documentation for your library (see [documentation code](../conventions/documenting_code.html)). By default, this command will create a docs directory, with a `docs/index.html` entry point. All files inside the root `src` directory will be considered (`src/**`). Now you can just open that `index.html` file with your web browser and start browsing your docs.
 
-If your library has any load-order dependence, you can instead specify which file or files should be used as arguments to the `docs command`:
+If your library has any load-order dependence, you can instead specify which file or files should be used as arguments to the `docs` command will create docs for the crystal program resulting from only reading `src/my_app.cr`.
 
 ```
 $ crystal docs src/my_app.cr
 ```
-
-will create docs for the crystal program resulting from only reading `src/my_app.cr`.
 
 There are also two options (which you will see by invoking `crystal docs -h`)
 
