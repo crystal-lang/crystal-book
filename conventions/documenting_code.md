@@ -1,6 +1,8 @@
 # Documenting code
 
-Crystal documentation comments use a subset of [Markdown](https://daringfireball.net/projects/markdown/).
+Crystal can generate documentation from comments using a subset of [Markdown](https://daringfireball.net/projects/markdown/).
+
+To generate documentation for a project, invoke `crystal docs`. By default this will create a `docs` directory, with a `docs/index.html` entry point. For more details see [Using the compiler - Creating documentation](../using_the_compiler/#creating-documentation).
 
 * Documentation should be positioned right above definitions of classes, modules, and methods. Leave no blanks between them.
 
@@ -225,7 +227,3 @@ class Unicorn
   end
 end
 ``````
-
-### Generate Documentation
-
-To generate documentation for a project, invoke `crystal docs`. This will create a `docs` directory, with a `docs/index.html` entry point. All files inside the root `src` directory will be considered.
