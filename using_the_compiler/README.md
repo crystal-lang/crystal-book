@@ -64,22 +64,21 @@ Use the `init` command to create a Crystal project with the standard directory s
 
 ```
 $ crystal init lib my_cool_lib
-      create  my_cool_lib/.gitignore
-      create  my_cool_lib/.editorconfig
-      create  my_cool_lib/LICENSE
-      create  my_cool_lib/README.md
-      create  my_cool_lib/.travis.yml
-      create  my_cool_lib/shard.yml
-      create  my_cool_lib/src/my_cool_lib.cr
-      create  my_cool_lib/src/my_cool_lib/version.cr
-      create  my_cool_lib/spec/spec_helper.cr
-      create  my_cool_lib/spec/my_cool_lib_spec.cr
+    create  my_cool_lib/.gitignore
+    create  my_cool_lib/.editorconfig
+    create  my_cool_lib/LICENSE
+    create  my_cool_lib/README.md
+    create  my_cool_lib/.travis.yml
+    create  my_cool_lib/shard.yml
+    create  my_cool_lib/src/my_cool_lib.cr
+    create  my_cool_lib/spec/spec_helper.cr
+    create  my_cool_lib/spec/my_cool_lib_spec.cr
 Initialized empty Git repository in ~/my_cool_lib/.git/
 ```
 
 ## Creating documentation
 
-Use the `docs` command to create documentation for your library (see [documentation code](../conventions/documenting_code.html)). By default, this command will create a docs directory, with a `docs/index.html` entry point. All files inside the root `src` directory will be considered (`src/**`). Now you can just open that `index.html` file with your web browser and start browsing your docs.
+Use the `docs` command to create documentation for your library (see [documenting code](../conventions/documenting_code.html)). By default, this command will create a docs directory, with a `docs/index.html` entry point. All files inside the root `src` directory will be considered (`src/**`). Now you can just open that `index.html` file with your web browser and start browsing your docs.
 
 If your library has any load-order dependence, you can instead specify which file or files should be used as arguments to the `docs` command will create docs for the crystal program resulting from only reading `src/my_app.cr`.
 
