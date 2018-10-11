@@ -1,8 +1,8 @@
-# Using the Compiler
+# Using the compiler
 
 Once [installed](../installation/), the Crystal compiler should be available as `crystal` command.
 
-## Compiling and Running at Once
+## Compiling and running at once
 
 To compile and run a program in a single shot, invoke [`crystal run`](#crystal-run) with a single filename:
 
@@ -15,7 +15,7 @@ Hello World!
 The `run` command compiles the source file `hello_world.cr` to a binary executable in a temporary location
 and immediately executes it.
 
-## Creating an Executable
+## Creating an executable
 
 The [`crystal build`](#crystal-build) command builds a binary executable.
 The output file has the same name as the source file minus the extension `.cr`.
@@ -26,7 +26,7 @@ $ ./hello_world
 Hello World!
 ```
 
-### Release Builds
+### Release builds
 
 By default, the generated executables are not fully optimized. The `--release` flag can be used to enable optimizations.
 
@@ -41,7 +41,7 @@ For simple development builds, there is usually no reason to do so.
 
 To reduce the binary size for distributable files, the `--no-debug` flag can be used. This removes debug symbols reducing file size, but obviously making debugging more difficult.
 
-### Creating a Statically-Linked Executable
+### Creating a statically-linked executable
 
 The `--static` flag can be used to build a statically-linked executable:
 
@@ -53,7 +53,7 @@ $ crystal build hello_world.cr --release --static
 
 More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
 
-### Creating a Crystal Project
+### Creating a Crystal project
 
 The [`crystal init`](#crystal-init) command helps to initialize a Crystal project folder, setting
 up a basic project structure. `crystal init app <name>` is used for an application,
@@ -76,7 +76,7 @@ Initialized empty Git repository in /home/crystal/myapp/.git/
 
 Not all of these files are required for every project, and some might need more customization, but `crystal init` creates a good default environment for developing Crystal applications and libraries.
 
-## Compiler Commands
+## Compiler commands
 
 * [`crystal init`](#crystal-init): generate a new project
 * [`crystal build`](#crystal-build): build an executable
@@ -111,7 +111,7 @@ $ crystal run hello_world.cr -- Crystal
 Hello Crystal!
 ```
 
-**Common Options:**
+**Common options:**
 
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
 * `--progress`: Show progress during compilation.
@@ -138,7 +138,7 @@ $ ./hello_world Crystal
 Hello Crystal!
 ```
 
-**Common Options:**
+**Common options:**
 
 * `--o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
@@ -170,7 +170,7 @@ Hello World!
 
 NOTE: When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
 
-**Common Options:**
+**Common options:**
 
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
@@ -246,7 +246,7 @@ entrypoints for the docs generator.
 crystal docs src/my_app.cr
 ```
 
-**Options:**
+**Common options:**
 
 * `--output=DIR, -o DIR`: Set the output directory (default: `./docs`)
 * `--canonical-base-url=URL, -b URL`: Set the [canonical base url](https://en.wikipedia.org/wiki/Canonical_link_element)
@@ -294,7 +294,7 @@ and a line number, providing this location to the `--location` runner option (se
 
 Run `crystal spec --options` for available options.
 
-**Runner Options:**
+**Runner options:**
 
 `runner_options` are provided to the compiled binary executable which runs the specs. They should be separated from
 the other arguments by a double dash (`--`).
