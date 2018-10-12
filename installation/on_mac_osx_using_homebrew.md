@@ -7,6 +7,8 @@ brew update
 brew install crystal
 ```
 
+(this might take quite some time ☕️)
+
 ## Troubleshooting on OSX 10.11 (El Capitan)
 
 If you get an error like:
