@@ -40,8 +40,9 @@ puts klass.array  #=> ["new", "bar"]
 
 Explanation:
 - `array` is an `Array` class, thus passed by reference
-- the `array` object can be modified - elements inside it can be add be /removed/modified
-- the `array` object can't be replaced, and remains `["str", "foo"]` - `Strukt` being a struct, and immutable
+- the `array` object can be modified - elements inside it can be add be removed/modified
+- `object.array = ["new"]` replace the `object.array` array reference by a new array - `object.array << "bar"` appends to the newly created array
+- `Strukt` is a struct, and immutable - the `array` object can't be replaced, and remains `["str", "foo"]`
 - `Klass` is a class, everything is passed by reference - all values can be replaced no matter the scope
 
 ## Allocation
