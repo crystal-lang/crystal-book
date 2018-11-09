@@ -81,7 +81,7 @@ Within a project:
 
 - `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
 - `src/` contains the project's source code.
-- `spec/` contains the project's specs, which can be run with `crystal spec`.
+- `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
 - `bin/` contains any executables.
 
 File paths match the namespace of their contents. Files are named after the class or namespace they define, with _underscore-case_.

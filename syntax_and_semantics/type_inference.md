@@ -23,7 +23,7 @@ For this reason, Crystal needs to know, in an obvious way (as obvious as to a hu
 
 There are several ways to let Crystal know this.
 
-## Use an explicit type annotation
+## With type annotations
 
 The easiest, but probably most tedious, way is to use explicit type annotations.
 
@@ -38,7 +38,7 @@ class Person
 end
 ```
 
-## Don't use an explicit type annotation
+## Without type annotations
 
 If you omit an explicit type annotation the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
 

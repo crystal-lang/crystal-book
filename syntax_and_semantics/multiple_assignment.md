@@ -34,15 +34,6 @@ age    = temp[1]
 source = temp[2]
 ```
 
-如果左側只有一個變數的話，那麼右側將會被視為一個陣列：
-
-```crystal
-names = "John", "Peter", "Jack"
-
-# 意思與下面相同：
-names = ["John", "Peter", "Jack"]
-```
-
 在對於結尾帶有等號的方法上也可以進行多項賦值：
 
 ```crystal

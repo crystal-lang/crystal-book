@@ -1,8 +1,17 @@
 # 整數
 
-共有 4 種有號整數（[Int](http://crystal-lang.org/api/Int.html)）：[Int8](http://crystal-lang.org/api/Int8.html)、[Int16](http://crystal-lang.org/api/Int16.html)、[Int32](http://crystal-lang.org/api/Int32.html) 及 [Int64](http://crystal-lang.org/api/Int64.html)，可分別表示 8、16、32 和 64 位元的有號整數。
+共有 4 種有號整數以及 4 種無號整數：
 
-還有4種無號整數: [UInt8](http://crystal-lang.org/api/UInt8.html)、[UInt16](http://crystal-lang.org/api/UInt16.html)、[UInt32](http://crystal-lang.org/api/UInt32.html) 及 [UInt64](http://crystal-lang.org/api/UInt64.html)。
+型別                                              | 長度（位元數）| 下界            | 上界
+ ------------------------------------------------ | ------------: | --------------: |-----------:
+[Int8](http://crystal-lang.org/api/Int8.html)     | 8             | -128            | 127
+[Int16](http://crystal-lang.org/api/Int16.html)   | 16            | −32,768         | 32,767
+[Int32](http://crystal-lang.org/api/Int32.html)   | 32            | −2,147,483,648  | 2,147,483,647
+[Int64](http://crystal-lang.org/api/Int64.html)   | 64            | −2<sup>63</sup> | 2<sup>63</sup> - 1
+[UInt8](http://crystal-lang.org/api/UInt8.html)   | 8             | 0               | 255
+[UInt16](http://crystal-lang.org/api/UInt16.html) | 16            | 0               | 65,535
+[UInt32](http://crystal-lang.org/api/UInt32.html) | 32            | 0               | 4,294,967,295
+[UInt64](http://crystal-lang.org/api/UInt64.html) | 64            | 0               | 2<sup>64</sup> - 1
 
 整數依照正負號（`+`/`-`，正號可省略）、`數字及底線`的規則組成，也可以加上後綴。
 
@@ -28,9 +37,9 @@
 9223372036854775808 # UInt64
 ```
 
-底線 `_` 可被加於後綴前方。
+底線 `_` 對於後綴是可選的但可增加可讀性。
 
-底線可用於讓數字更有可讀性：
+底線亦可用於數字中間使其更有可讀性：
 
 ```crystal
 1_000_000 # 優於 1000000

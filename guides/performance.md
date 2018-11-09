@@ -10,13 +10,13 @@ Donald Knuth once said:
 
 However, if you are writing a program and you realize that writing a semantically equivalent, faster version involves just minor changes, you shouldn't miss that opportunity.
 
-And always be sure to profile your program to learn what its bottlenecks are. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html), which comes with XCode. On Linux, a program that can profile C/C++ programs, like [gprof](https://sourceware.org/binutils/docs/gprof/), should work.
+And always be sure to profile your program to learn what its bottlenecks are. For profiling, on macOS you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html), which comes with XCode. On Linux, any program that can profile C/C++ programs, like [perf](https://perf.wiki.kernel.org/index.php/Main_Page) or [Callgrind](http://valgrind.org/docs/manual/cl-manual.html), should work.
 
 Make sure to always profile programs by compiling or running them with the `--release` flag, which turns on optimizations.
 
 ## Avoiding memory allocations
 
-One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://www.google.com/search?q=stack+vs+heap+memory).
+One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't incur a performance penalty. If you don't know the difference between stack and heap memory, be sure to [read this](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap).
 
 Allocating heap memory is slow, and it puts more pressure on the Garbage Collector (GC) as it will later have to free that memory.
 
@@ -65,7 +65,7 @@ class MyClass
 end
 ```
 
-This philosophy of appending to an IO instead of returning an intermediate string is present in other APIs, such as in the JSON and YAML APIs, where one needs to define `to_json(io)` and `to_yaml(io)` methods to write this data directly to an IO. You should use this strategy in your API definitions too.
+This philosophy of appending to an IO instead of returning an intermediate string results in better performance than handling intermediate strings. You should use this strategy in your API definitions too.
 
 Let's compare the times:
 
@@ -97,6 +97,52 @@ without to_s  77.11M ( 12.97ns) (± 1.05%)       fastest
 ```
 
 Always remember that it's not just the time that has improved: memory usage is also decreased.
+
+### Use string interpolation instead of concatenation
+
+Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](../syntax_and_semantics/literals/string.html#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
+
+Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to:
+```crystal
+String.build do |io|
+  io << "Hello, " << name
+end
+```
+
+### Avoid IO allocation for string building
+
+Prefer to use the dedicated `String.build` optimized for building strings, instead of creating an intermediate `IO::Memory` allocation.
+
+```crystal
+require "benchmark"
+
+Benchmark.ips do |bm|
+  bm.report("String.build") do
+    String.build do |io|
+      99.times do
+        io << "hello world"
+      end
+    end
+  end
+
+  bm.report("IO::Memory") do
+    io = IO::Memory.new
+    99.times do
+      io << "hello world"
+    end
+    io.to_s
+  end
+end
+```
+
+Output:
+
+```
+$ crystal run --release str_benchmark.cr
+String.build 597.57k (  1.67µs) (± 5.52%)       fastest
+  IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
+```
+
 
 ### Avoid creating temporary objects over and over
 

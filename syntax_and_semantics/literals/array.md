@@ -1,71 +1,83 @@
 # 陣列 <small>Array</small>
 
-陣列（[Array](http://crystal-lang.org/api/Array.html)）為一泛型<small>(Generic type)</small>型別，其中包含型別為 `T` 的元素。
+陣列（[Array](http://crystal-lang.org/api/Array.html)）為一以整數為索引之有序泛型集合<small>(Generic collection)</small>，其中包含型別為 `T` 的元素。
 
-通常我們可以這樣表達一個陣列常值：
+通常我們可以使用中括號（`[]`）表達一個陣列常值，並用逗號（`,`）分隔內部的元素：
 
 ```crystal
-[1, 2, 3]         # Array(Int32)
-[1, "hello", 'x'] # Array(Int32 | String | Char)
+[1, 2, 3]
 ```
 
-陣列可以混合多種型別，這表示 `T` 可以是一個型別的集合，但 `T` 所代表的型別必須在陣列建立的時候就指定、或是從陣列常值中提取出來。
+## 泛型型別參數
 
-剛剛的範例中可以看到，第二行陣列的 `T` 是一個從陣列常值中提取出來的型別集合。
-
-建立空白陣列時，需要手動指定 `T` 的型別：
+陣列的泛型型別參數 `T` 會從元素中推導得出，如果所有的元素都屬於同一種型別，那麼 `T` 就會是該型別；若非，則 `T` 會是所有元素型別的型別集合。
 
 ```crystal
-[] of Int32 # 相當於 Array(Int32).new
-[]          # 語法錯誤 (syntax error)
+[1, 2, 3]          # => Array(Int32)
+[1, "hello", 'x']  # => Array(Int32 | String | Char)
 ```
 
-## 字串陣列
-
-當要描述的陣列常值皆由字串常值所組成時，我們可以使用以下的語法：
+我們也可以透過在陣列後方接著的 `of` 手動指定型別，讓我們可以先建立陣列後再將元素塞入。
 
 ```crystal
-%w(one two three) # ["one", "two", "three"]
+array_of_numbers = [1, 2, 3] of Float64 | Int32  # => Array(Float64 | Int32)
+array_of_numbers << 0.5                          # => [1, 2, 3, 0.5]
+
+
+array_of_int_or_string = [1, 2, 3] of Int32 | String  # => Array(Int32 | String)
+array_of_int_or_string << "foo"                       # => [1, 2, 3, "foo"]
 ```
 
-## 符號陣列
-
-當要描述的陣列常值皆由符號常值所組成時，我們可以使用以下的語法：
+而空陣列則一定要指定型別：
 
 ```crystal
-%i(one two three) # [:one, :two, :three]
+[] of Int32  # => Array(Int32).new
 ```
 
-## 類·陣列<small>(Array-like)</small>型別
+## 百分比陣列常值表示法
 
-只要型別中有定義不需要參數的 `new` 方法以及定義 `<<` 方法，我們就可以使用類似陣列常值語法來建立該描述該型別的常值：
+[字串陣列](./string.md#Percent String Array Literal)及[符號陣列](./symbol.md#Percent Symbol Array Literal)可以使用百分比（`%`）陣列常值的表達方式來描述陣列常值：
 
 ```crystal
-MyType{1, 2, 3}
+%w(one two three)  # => ["one", "two", "three"]
+%i(one two three)  # => [:one, :two, :three]
 ```
 
-若 `MyType` 不是泛型的話，上方表達式等義於：
+## 類・陣列<small>(Array-like)</small>型別常值
+
+Crystal 亦對類・陣列的型別提供以大括號（`{}`）的方式來描述常值：
 
 ```crystal
-tmp = MyType.new
-tmp << 1
-tmp << 2
-tmp << 3
-tmp
+Array{1, 2, 3}
 ```
 
-反之，若 `MyType` 是泛型，則上方表達式等義於：
+只要型別中有定義不需要參數的 `new` 方法以及定義 `<<` 方法，我們就可以使用這個方法來描述該型別的常值：
 
 ```crystal
-tmp = MyType(typeof(1, 2, 3)).new
-tmp << 1
-tmp << 2
-tmp << 3
-tmp
+IO::Memory{1, 2, 3}
+Set{1, 2, 3}
+```
+
+對於非泛型的型別如 `IO:Memory` ，上方表達式等義於：
+
+```crystal
+array_like = IO::Memory.new
+array_like << 1
+array_like << 2
+array_like << 3
+```
+
+反之，若該型別是泛型如 `Set` ，則泛型型別參數 `T` 會如同陣列一般推導，也就是說上方表達式等義於：
+
+```crystal
+array_like = Set(typeof(1, 2, 3)).new
+array_like << 1
+array_like << 2
+array_like << 3
 ```
 
 在泛型的應用上我們也可以手動指定型別：
 
 ```crystal
-MyType(Int32 | String) {1, 2, "foo"}
+Set(Int32) {1, 2, 3}
 ```

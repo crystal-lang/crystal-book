@@ -80,7 +80,7 @@ Note: When using the pg driver, use `$1`, `$2`, etc. instead of `?`
 
 To perform a query and get the result set use `Database#query`, arguments can be used as in `Database#exec`.
 
-`Database#query` returns a `ResultSet` that needs to be closed. As in `Database#open`, if called with a block, the `ResultSet` will closed implicitly.
+`Database#query` returns a `ResultSet` that needs to be closed. As in `Database#open`, if called with a block, the `ResultSet` will be closed implicitly.
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|
@@ -90,7 +90,7 @@ db.query "select name, age from contacts order by age desc" do |rs|
 end
 ```
 
-When reading values from the database there is no type information during compile time that crystal can use. You will need to call `rs.read(T)` with the type `T` you expect the get from the database.
+When reading values from the database there is no type information during compile time that crystal can use. You will need to call `rs.read(T)` with the type `T` you expect to get from the database.
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|
@@ -112,13 +112,13 @@ You can read multiple columns at once:
 name, age = rs.read(String, Int32)
 ```
 
-Or read a single row
+Or read a single row:
 
 ```crystal
 name, age = db.query_one "select name, age from contacts order by age desc limit 1", as: { String, Int32 }
 ```
 
-Or read a scalar value without dealing explicitly with the ResultSet.
+Or read a scalar value without dealing explicitly with the ResultSet:
 
 ```crystal
 max_age = db.scalar "select max(age) from contacts"

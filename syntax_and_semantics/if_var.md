@@ -33,29 +33,44 @@ Here, the right-hand side of the `&&` expression is also guaranteed to have `a` 
 
 Of course, reassigning a variable inside the `then` branch makes that variable have a new type based on the expression assigned.
 
-The above logic **doesn’t** work with instance variables or class variables:
+## Limitations
+
+The above logic **doesn’t** work with instance variables, class variables and variables bound in a closure. The value of these kinds of variables could potentially be affected by another fiber after the condition was checked, rendering it `nil`.
 
 ```crystal
 if @a
-  # here @a can be nil
+  # here `@a` can be nil
+end
+
+if @@a
+  # here `@@a` can be nil
+end
+
+a = nil
+closure = ->(){ a = "foo" }
+
+if a
+  # here `a` can be nil
 end
 ```
 
-This is because any method call could potentially affect that instance variable, rendering it `nil`. Another reason is that another thread could change that instance variable after checking the condition.
-
-To do something with `@a` only when it is not `nil` you have two options:
+This can be circumvented by assigning the value to a new local variable:
 
 ```crystal
-# First option: assign it to a variable
 if a = @a
-  # here a can't be nil
-end
-
-# Second option: use `Object#try` found in the standard library
-@a.try do |a|
-  # here a can't be nil
+  # here `a` can't be nil
 end
 ```
+
+Another option is to use [`Object#try`](https://crystal-lang.org/api/Object.html#try%28%26block%29-instance-method) found in the standard library which only executes the block if the value is not `nil`:
+
+```crystal
+@a.try do |a|
+  # here `a` can't be nil
+end
+```
+
+## Method calls
 
 That logic also doesn't work with proc and method calls, including getters and properties, because nilable (or, more generally, union-typed) procs and methods aren't guaranteed to return the same more-specific type on two successive calls.
 

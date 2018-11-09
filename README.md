@@ -32,6 +32,7 @@ $ git clone https://github.com/crystal-tw/docs.git
 $ cd docs
 $ npm install -g gitbook-cli@2.3.0
 $ npm install
+$ gitbook install
 $ gitbook serve
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
@@ -83,4 +84,3 @@ In type restrictions, generic type arguments and other places where a type is ex
 
 
 十分感謝您的參與 <(\_ \_)>
-

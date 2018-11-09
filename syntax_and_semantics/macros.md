@@ -20,11 +20,7 @@ define_method foo, 1
 foo #=> 1
 ```
 
-A macro's definition body looks like regular Crystal code with
-extra syntax to manipulate the AST nodes. The generated code must
-be valid Crystal code, meaning that you can't for example generate
-a `def` without a matching `end`, or a single `when` expression of a
-`case`, since both of them are not complete valid expressions.
+A macro's definition body looks like regular Crystal code with extra syntax to manipulate the AST nodes. The generated code must be valid Crystal code, meaning that you can't for example generate a `def` without a matching `end`, or a single `when` expression of a `case`, since both of them are not complete valid expressions. Refer to [Pitfalls](#pitfalls) for more information.
 
 ## Scope
 
@@ -98,6 +94,40 @@ end
 define_method :foo, 1
 ```
 
+## Modules and classes
+
+Modules, classes and structs can also be generated:
+
+```crystal
+macro define_class(module_name, class_name, method, content)
+  module {{module_name}}
+    class {{class_name}}
+      def initialize(@name : String)
+      end
+
+      def {{method}}
+        {{content}} + @name
+      end
+    end
+  end
+end
+
+# This generates:
+#     module Foo
+#       class Bar
+#         def initialize(@name : String)
+#         end
+#
+#         def say
+#           "hi " + @name
+#         end
+#       end
+#     end
+define_class Foo, Bar, say, "hi "
+
+p Foo::Bar.new("John").say # => "hi John"
+```
+
 ## Conditionals
 
 You use `{% if condition %}` ... `{% end %}` to conditionally generate code:
@@ -107,6 +137,8 @@ macro define_method(name, content)
   def {{name}}
     {% if content == 1 %}
       "one"
+    {% elsif content == 2 %}
+      "two"
     {% else %}
       {{content}}
     {% end %}
@@ -115,9 +147,11 @@ end
 
 define_method foo, 1
 define_method bar, 2
+define_method baz, 3
 
 foo #=> one
-bar #=> 2
+bar #=> two
+baz #=> 3
 ```
 
 Similar to regular code, `Nop`, `NilLiteral` and a false `BoolLiteral` are considered *falsey*, while everything else is considered truthy.
@@ -130,7 +164,24 @@ Macro conditionals can be used outside a macro definition:
 {% end %}
 ```
 
-### Iteration
+## Iteration
+
+You can iterate a finite amount of times:
+
+```crystal
+macro define_constants(count)
+  {% for i in (1..count) %}
+    PI_{{i.id}} = Math::PI * {{i}}
+  {% end %}
+end
+
+define_constants(3)
+
+PI_1 #=> 3.14159...
+PI_2 #=> 6.28318...
+PI_3 #=> 9.42477... 
+```
+
 To iterate an `ArrayLiteral`:
 
 ```crystal
@@ -206,19 +257,40 @@ Additionally, using `*` when interpolating an `ArrayLiteral` interpolates the el
 
 ```crystal
 macro println(*values)
-   print {{*values}}, '\n'
+  print {{*values}}, '\n'
 end
 
 println 1, 2, 3 # outputs 123\n
 ```
 
-### Type information
+## Type information
 
 When a macro is invoked you can access the current scope, or type, with a special instance variable: `@type`. The type of this variable is `TypeNode`, which gives you access to type information at compile time.
 
 Note that `@type` is always the *instance* type, even when the macro is invoked in a class method.
 
-### Constants
+For example:
+
+```crystal
+macro add_describe_methods
+  def describe
+    "Class is: " + {{ @type.stringify }}
+  end
+  
+  def self.describe
+    "Class is: " + {{ @type.stringify }}
+  end
+end
+
+class Foo
+  add_describe_methods
+end
+
+Foo.new.describe #=> "Class is Foo"
+Foo.describe #=> "Class is Foo"
+```
+
+## Constants
 
 Macros can access constants. For example:
 
@@ -231,3 +303,72 @@ VALUES = [1, 2, 3]
 ```
 
 If the constant denotes a type, you get back a `TypeNode`.
+
+## Nested macros
+
+It is possible to define a macro which generates one or more macro definitions. You must escape macro expressions of the inner macro by preceding them with a backslash character "\\" to prevent them from being evaluated by the outer macro.
+
+```crystal
+macro define_macros(*names)
+  {% for name in names %}
+    macro greeting_for_{{name.id}}(greeting)
+      \{% if greeting == "hola" %}
+        "¡hola {{name.id}}!"
+      \{% else %}
+        "\{{greeting.id}} {{name.id}}"
+      \{% end %}
+    end
+  {% end %}
+end
+
+# This generates:
+#
+#     macro greeting_for_alice
+#       {% if greeting == "hola" %}
+#         "¡hola alice!"
+#       {% else %}
+#         "{{greeting.id}} alice"
+#       {% end %}
+#     end
+#     macro greeting_for_bob
+#       {% if greeting == "hola" %}
+#         "¡hola bob!"
+#       {% else %}
+#         "{{greeting.id}} bob"
+#       {% end %}
+#     end
+define_macros alice, bob
+
+greeting_for_alice "hello"  #=> "hello alice"
+greeting_for_bob "hallo"    #=> "hallo bob"
+greeting_for_alice "hej"    #=> "hej alice"
+greeting_for_bob "hola"     #=> "¡hola bob!"
+```
+
+## Pitfalls
+
+When writing macros (especially outside of a macro definition) it is important to remember that the generated code from the macro must be valid Crystal code by itself even before it is merged into the main program's code. This means, for example, a macro cannot generate a one or more `when` expressions of a `case` statement unless `case` was a part of the generated code.
+
+Here is an example of such an invalid macro:
+
+```crystal
+case 42
+{% for klass in [Int32, String] %}
+  when {{klass.id}}
+    p "is {{klass}}"
+{% end %}
+end
+```
+
+Notice that `case` is not within the macro. The code generated by the macro consists solely of two `when` expressions which, by themselves, is not valid Crystal code. We must include `case` within the macro in order to make it valid by using `begin` and `end`:
+
+```crystal
+{% begin %}
+  case 42
+  {% for klass in [Int32, String] %}
+    when {{klass.id}}
+      p "is {{klass}}"
+  {% end %}
+  end
+{% end %}
+```

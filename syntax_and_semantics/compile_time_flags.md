@@ -9,9 +9,15 @@ x86_64-unknown-linux-gnu
 # so the flags are: x86_64, unknown, linux, gnu
 ```
 
+To define a flag, simply use the `--define` or `-D` option, like so:
+
+```bash
+$ crystal some_program.cr -Dflag
+```
+
 Additionally, if a program is compiled with `--release`, the `release` flag will be set.
 
-You can test these flags with the `flag?` macro method:
+You can check if a flag is defined with the `flag?` macro method:
 
 ```crystal
 {% if flag?(:x86_64) %}
@@ -21,7 +27,7 @@ You can test these flags with the `flag?` macro method:
 {% end %}
 ```
 
-It returns true or false, so you can use `&&` and `||` just normally:
+`flag?` returns a boolean, so you can use it with `&&` and `||`:
 
 ```crystal
 {% if flag?(:linux) && flag?(:x86_64) %}
@@ -29,7 +35,7 @@ It returns true or false, so you can use `&&` and `||` just normally:
 {% end %}
 ```
 
-These flags are generally used in C bindings to conditionally define types and functions. For example the very well known `size_t` type is defined like this in Crystal:
+These flags are generally used in C bindings to conditionally define types and functions. For example, the very well known `size_t` type is defined like this in Crystal:
 
 ```crystal
 lib C

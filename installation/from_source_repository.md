@@ -4,7 +4,7 @@
 
 1. [安裝最新版本的 Crystal](/installation/)。 我們需要 Crystal 來編譯 Crystal :)
 
-2. 確認支援的 LLVM 版本已在 `$PATH` 中。（目前 Crystal 支援 LLVM 3.8 、 3.9 以及 4.0 ，請儘可能的使用最新的版本。）
+2. 確認支援的 LLVM 版本已在 `$PATH` 中。（目前 Crystal 支援 LLVM 3.8 、 3.9 、 4.0 以及 5.0 ，請儘可能的使用最新的版本。）
 
     * 如果是使用 Mac 中的 Homebrew 套件<small>(Formula)</small>，只要在安裝時加上 `--with-llvm` 參數，LLVM 的路徑就會自動被設定。
 
@@ -13,12 +13,12 @@
 4. 複製 Crystal 的 Git 儲存庫<small>(Repository)</small>：
 
 	```
-	git clone https://github.com/crystal-lang/crystal.git
+	git clone https://github.com/crystal-lang/crystal
 	```
 
 5. 透過 `make` 來建置自己版本的編譯器。
 
-6. 執行 `make spec` 以確認建置好的編譯器會通過所有測試。
+6. 執行 `make spec` 以確認環境及建置好的編譯器會通過所有測試。
 
 7. 使用 `bin/crystal` 來執行剛建置好的編譯器。
 
