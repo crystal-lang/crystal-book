@@ -31,8 +31,8 @@ For building Crystal yourself, the required installation is available in the por
 If the ports collection is not already installed, it can be downloaded using `portsnap fetch` or `git clone https://github.com/freebsd/freebsd-ports`.
 
 ```bash
-sudo make -C/usr/ports/lang/crystal/ reinstall clean
-sudo make -C/usr/ports/lang/shards/ reinstall clean
+sudo make -C/usr/ports/lang/crystal reinstall clean
+sudo make -C/usr/ports/devel/shards reinstall clean
 ```
 
 To avoid building LLVM from source (which can take a long time), you can first install it from binary packages if you don't have it installed yet:
