@@ -6,7 +6,7 @@ Methods can be marked as `private` or `protected`.
 
 ## Private methods
 
-A `private` method can only be invoked without a receiver, that is, without something before the dot:
+A `private` method can only be invoked without a receiver, that is, without something before the dot. The only exception is `self` as a receiver:
 
 ```crystal
 class Person
@@ -16,7 +16,7 @@ class Person
 
   def say_hello
     say "hello" # OK, no receiver
-    self.say "hello" # Error, self is a receiver
+    self.say "hello" # OK, self is a receiver, but it's allowed.
 
     other = Person.new "Other"
     other.say "hello" # Error, other is a receiver
