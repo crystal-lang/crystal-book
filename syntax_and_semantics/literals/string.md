@@ -111,6 +111,22 @@ name = "world"
 %Q(hello \n #{name}) # => "hello \n world"
 ```
 
+## Percent string array literal
+
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#Percent string literals).
+
+```crystal
+%w(foo bar baz) # => ["foo", "bar", "baz"]
+%w(foo\nbar baz) # => ["foo\\nbar", "baz"]
+%w(foo(bar) baz) # => ["foo(bar)", "baz"]
+```
+
+Note that literal denoted by `%w` does not apply interpolation nor escapes expect spaces. Since strings are separated by a single space character (` `) which must be escaped to use it as a part of a string.
+
+```crystal
+%w(foo\ bar baz) # => ["foo bar", "baz"]
+```
+
 ## Multiline strings
 
 Any string literal can span multiple lines:
