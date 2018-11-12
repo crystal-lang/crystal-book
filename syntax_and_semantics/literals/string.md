@@ -190,5 +190,5 @@ To denote a heredoc without interpolation or escapes, the opening heredoc identi
 ```crystal
 <<-'HERE'
   hello \n #{world}
-  HERE # => "hello \n #{world}"
+  HERE # => "hello \\n \#{world}"
 ```
