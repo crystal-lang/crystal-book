@@ -355,7 +355,7 @@ crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 The `crystal tool format` command applies default format to Crystal source files.
 
 ```
-crystal fool format [--check] [<path>...]
+crystal tool format [--check] [<path>...]
 ```
 
 `path` can be a file or folder name and include all Crystal files in that folder tree. Omitting `path` is equal to
