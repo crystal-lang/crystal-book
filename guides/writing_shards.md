@@ -130,7 +130,7 @@ See the Travis CI section below to implement this in your build.
 #### Name
 Your `shard.yml`'s `name` property should be concise and descriptive. 
 
-- Search [crystalshards.xyz](https://crystalshards.xyz/) to check if your name is already taken.
+- Search [CrystalShards](https://crystalshards.org/) to check if your name is already taken.
 
 e.g.
 ```YAML
@@ -148,7 +148,7 @@ A description should be:
 
 #### Optimizing
 It's hard for anyone to use your project if they can't find it.
-[crystalshards.xyz](https://crystalshards.xyz/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
+[CrystalShards](https://crystalshards.org/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
 
 There are people looking for the _exact_ functionality of our library and the _general_ functionality of our library.
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.
