@@ -27,8 +27,7 @@ Regular expressions support the same [escape sequences as String literals](./str
 /\v/ # vertical tab
 /\NNN/ # octal ASCII character
 /\xNN/ # hexadecimal ASCII character
-/\uNNNN/ # hexadecimal unicode character
-/\u{NNNN...}/ # hexadecimal unicode character
+/\x{NNNN...}/ # hexadecimal unicode character
 ```
 
 The delimiter character `/` must be escaped inside slash-delimited regular expression literals.
