@@ -8,13 +8,12 @@ $ git add -A && git commit -am "shard complete"
 ```
 - Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
 ```bash
-$ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
+$ git remote add origin https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
 ```
 - Push it:
 ```bash
-$ git push public master
+$ git push origin master
 ```
 
 #### GitHub Releases
@@ -41,7 +40,7 @@ Click "Publish release" and you're done!
 
 You'll now notice that the GitHub Release badge has updated in your README.
 
-Follow [Semantic Versioning](http://semver.org/) and create a new release every time your push new code to `master`.
+Follow [Semantic Versioning](http://semver.org/).
 
 ### Travis CI and `.travis.yml`
 If you haven't already, [sign up for Travis CI](https://travis-ci.org/).

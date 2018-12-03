@@ -12,22 +12,20 @@
 
 - Add the remote: (Be sure to replace `<YOUR-GITLAB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-    NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
-
     ```bash
-    $ git remote add public https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
+    $ git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
     or if you use SSH
 
     ```bash
-    $ git remote add public git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
+    $ git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
 - Push it:
 
     ```bash
-    $ git push public master
+    $ git push origin master
     ```
 
 ### Pipelines
@@ -75,7 +73,7 @@ The `before_script` and `cache` keys in the file are for running the same script
 If you commit the above file to your project and push, you'll trigger your first run of the new pipeline.
 
 ```bash
-$ git add -A && git commit -am 'Add .gitlab-ci.yml' && git push public master
+$ git add -A && git commit -am 'Add .gitlab-ci.yml' && git push origin master
 ```
 
 ### Some Badges
@@ -115,7 +113,7 @@ or you can create the tag from the command line like so:
 push it up
 
 ```bash
-    $ git push public master --follow-tags
+    $ git push origin master --follow-tags
 ```
 
 and then use the UI to add/edit the release note and attach files.
@@ -123,8 +121,7 @@ and then use the UI to add/edit the release note and attach files.
 **Best Practices**
 
 * Use the `-a` option to create an annotated tag for releases.
-
-* Follow [Semantic Versioning](http://semver.org/) and create a new release every time you push new code to `master`.
+* Follow [Semantic Versioning](http://semver.org/).
 
 ### Release Badge
 
@@ -135,18 +132,9 @@ If you'd like you can also add a `shields.io` badge for the release. GitLab does
 
 where `<VERSION>` is the version number prefixed with a `v` like this: `v0.1.0`.
 
-### Mirror to GitLab
+### Mirror to GitHub
 
-At the moment, crystalshards.xyz only uses the GitHub API, so if you want your library to be indexed on that service you can either:
-
-* Start a discussion about it over on their [github repo](https://github.com/zamith/crystalshards/issues) and eventually submit a Pull Request.
-* Create a GitHub mirror of your project.
-
-Until that service supports GitLab, we'll explain how to make a mirror in this guide.
-
-In the repository settings (`https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/settings/repository`) there is a section called "Mirror a Repository" which has a lot of options.
-
-So the recommended method right now is
+At the moment, crystalshards.xyz only uses the GitHub API, so if you want your library to be indexed on that service you can set up a "push mirror" from GitLab to GitHub.
 
 1. Create a GitHub repository with the same name as your project.
 2. Follow the instructions here: https://docs.gitlab.com/ee/workflow/repository_mirroring.html#setting-up-a-push-mirror-from-gitlab-to-github-core
@@ -154,4 +142,4 @@ So the recommended method right now is
     * Description: Words that are the same forwards and backwards. This is a mirror of:
     * Link: https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/
 
-This is a push mirror, so be sure to let potential collaborators know that PRs and issues should be submitted to your GitLab site.
+This is a push mirror and that means changes will only propagate one way. So be sure to let potential collaborators know that pull requests and issues should be submitted to your GitLab project.
