@@ -128,7 +128,7 @@
    * [Coding style](conventions/coding_style.md)
    * [Documenting code](conventions/documenting_code.md)
 * [Database](database/README.md)
-   * [Connection pool](database/connection_pool.md)
+  * [Connection pool](database/connection_pool.md)
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)

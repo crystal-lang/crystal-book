@@ -14,9 +14,9 @@ In this tutorial, we'll be making a Crystal library called _palindrome-example_.
 ### Requirements
 
 In order to release a Crystal Shard, and follow along with this tutorial, you will need the following:
-* A working installation of the [Crystal compiler](../using_the_compiler/README.md).
-* A working installation of [Git](https://git-scm.com).
-* A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account.
+* A working installation of the [Crystal compiler](../using_the_compiler/README.md)
+* A working installation of [Git](https://git-scm.com)
+* A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account
 
 ### Creating the Project
 
@@ -26,16 +26,17 @@ In your terminal: `crystal init lib <YOUR-SHARD-NAME>`
 
 e.g.
 ```bash
-$ crystal init lib palindrome-example
-    create  palindrome-example/.gitignore
-    create  palindrome-example/.editorconfig
-    create  palindrome-example/LICENSE
-    create  palindrome-example/README.md
-    create  palindrome-example/.travis.yml
-    create  palindrome-example/shard.yml
-    create  palindrome-example/src/palindrome-example.cr
-    create  palindrome-example/spec/spec_helper.cr
-    create  palindrome-example/spec/palindrome-example_spec.cr
+ $  crystal init lib palindrome-example
+      create  palindrome-example/.gitignore
+      create  palindrome-example/.editorconfig
+      create  palindrome-example/LICENSE
+      create  palindrome-example/README.md
+      create  palindrome-example/.travis.yml
+      create  palindrome-example/shard.yml
+      create  palindrome-example/src/palindrome-example.cr
+      create  palindrome-example/src/palindrome-example/version.cr
+      create  palindrome-example/spec/spec_helper.cr
+      create  palindrome-example/spec/palindrome-example_spec.cr
 Initialized empty Git repository in /<YOUR-DIRECTORY>/.../palindrome-example/.git/
 ```
 
@@ -49,9 +50,10 @@ cd palindrome-example
 Then `add` & `commit` to start tracking the files with Git:
 
 ```bash
-$ git add -A && git commit -m "First Commit"
-[master (root-commit) b86b4f7] First Commit
- 9 files changed, 103 insertions(+)
+ $  git add -A
+ $  git commit -am "First Commit"
+[master (root-commit) 77bad84] First Commit
+ 10 files changed, 102 insertions(+)
  create mode 100644 .editorconfig
  create mode 100644 .gitignore
  create mode 100644 .travis.yml
@@ -61,6 +63,7 @@ $ git add -A && git commit -m "First Commit"
  create mode 100644 spec/palindrome-example_spec.cr
  create mode 100644 spec/spec_helper.cr
  create mode 100644 src/palindrome-example.cr
+ create mode 100644 src/palindrome-example/version.cr
 ```
 
 ### Writing the Code
@@ -68,12 +71,10 @@ $ git add -A && git commit -m "First Commit"
 The code you write is up to you, but how you write it impacts whether people want to use your library and/or help you maintain it.
 
 #### Testing the Code
-
 - Test your code. All of it. It's the only way for anyone, including you, to know if it works.
 - Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
 
 #### Documentation
-
 - Document your code with comments. All of it. Even the private methods.
 - Crystal has [a built-in documentation generator](../conventions/documenting_code.md). Use it!
 
@@ -85,7 +86,7 @@ Once your documentation is ready and available, you can add a documentation badg
 (Be sure to replace `<LINK-TO-YOUR-DOCUMENTATION>` accordingly)
 
 ```Markdown
-[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>)
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>) 
 ```
 
 ### Writing a README
@@ -93,8 +94,8 @@ Once your documentation is ready and available, you can add a documentation badg
 A good README can make or break your project.
 [Awesome README](https://github.com/matiassingers/awesome-readme) is a nice curation of examples and resources on the topic.
 
-Most importantly, your README should explain:
-1. What your library is
+Most importantly, your README should explain: 
+1. What your library is 
 2. What it does
 3. How to use it
 
@@ -102,19 +103,19 @@ This explanation should include a few examples along with subheadings.
 
 NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-generated README template with your GitHub/GitLab username. If you're using GitLab, you'll also want to change all instances of `github` with `gitlab`.
 
-#### Coding Style
 
+#### Coding Style
 - It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
 - Utilize Crystal's [built-in code formatter](../conventions/documenting_code.md) to automatically format all `.cr` files in a directory.
 
-e.g.
+e.g. 
 ```
 crystal tool format
 ```
 
-To check if your code is formatted correctly, or to check if using the formatter wouldn't produce any changes, simply add `--check` to the end of this command.
+To check if your code is formatted correctly, or to check if using the formatter wouldn't produce any changes, simply add `--check` to the end of this command. 
 
-e.g.
+e.g. 
 ```
 crystal tool format --check
 ```
@@ -127,7 +128,6 @@ See the Travis CI section below to implement this in your build.
 [The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md#names) is your rulebook. Follow it.
 
 #### Name
-
 Your `shard.yml`'s `name` property should be concise and descriptive.
 
 - Search [crystalshards.xyz](https://crystalshards.xyz/) to check if your name is already taken.
@@ -138,7 +138,6 @@ name: palindrome-example
 ```
 
 #### Description
-
 Add a `description` to your `shard.yml`.
 
 A `description` is a single line description used to search for and find your shard.
@@ -148,7 +147,6 @@ A description should be:
 2. Discoverable
 
 #### Optimizing
-
 It's hard for anyone to use your project if they can't find it.
 [crystalshards.xyz](https://crystalshards.xyz/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
 

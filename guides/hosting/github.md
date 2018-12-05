@@ -1,6 +1,6 @@
 # Hosting on GitHub
 
-- Create a project with the same `name` and `description` as specified in your `shard.yml`.
+- Create a repository with the same `name` and `description` as specified in your `shard.yml`.
 
 - Add and commit everything:
 ```bash
@@ -8,12 +8,13 @@ $ git add -A && git commit -am "shard complete"
 ```
 - Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-```bash
-$ git remote add origin https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
+NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
+```bash 
+$ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
 ```
-- Push it:
+- Push it: 
 ```bash
-$ git push origin master
+$ git push public master
 ```
 
 #### GitHub Releases
@@ -31,7 +32,7 @@ Start by navigating to your repository's _releases_ page.
 
 Click "Create a new release".
 
-According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md),
+According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md), 
 > When libraries are installed from Git repositories, the repository is expected to have version tags following a semver-like format, prefixed with a `v`. Examples: v1.2.3, v2.0.0-rc1 or v2017.04.1
 
 Accordingly, in the input that says `tag version`, type `v0.1.0`. Make sure this matches the `version` in `shard.yml`. Title it `v0.1.0` and write a short description for the release.
@@ -40,7 +41,7 @@ Click "Publish release" and you're done!
 
 You'll now notice that the GitHub Release badge has updated in your README.
 
-Follow [Semantic Versioning](http://semver.org/).
+Follow [Semantic Versioning](http://semver.org/) and create a new release every time your push new code to `master`.
 
 ### Travis CI and `.travis.yml`
 If you haven't already, [sign up for Travis CI](https://travis-ci.org/).
@@ -48,7 +49,7 @@ If you haven't already, [sign up for Travis CI](https://travis-ci.org/).
 Insert the following markdown build badge below the description in your README.md:
 (be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 ```Markdown
-[![Build Status](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg?branch=master)](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>)
+[![Build Status](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg?branch=master)](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>) 
 ```
 Build badges are a simple way to tell people whether your Travis CI build passes.
 
@@ -58,7 +59,7 @@ script:
   - crystal spec
 ```
 
-This tells Travis CI to run your tests.
+This tells Travis CI to run your tests. 
 Accordingly with the outcome of this command, Travis CI will return a [build status](https://docs.travis-ci.com/user/customizing-the-build/#Breaking-the-Build) of "passed", "errored", "failed" or "canceled".
 
 
