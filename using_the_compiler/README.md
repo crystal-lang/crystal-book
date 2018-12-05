@@ -140,7 +140,7 @@ Hello Crystal!
 
 **Common options:**
 
-* `--o <output_file>`: Define the name of the binary executable.
+* `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
 * `--lto=thin`: Use ThinLTO, improving performance on release builds.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
