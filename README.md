@@ -10,7 +10,7 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
-> Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).
+**Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
 
 ## Contributing to the Language Reference
 
