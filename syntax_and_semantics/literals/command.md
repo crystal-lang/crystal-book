@@ -3,7 +3,7 @@
 A command literal is a string delimited by backticks `` ` `` or a `%x` percent literal.
 It will be substituted at runtime by the captured output from executing the string in a subshell.
 
-The same [escaping](./string.md#Excaping) and [interpolation rules](./string.md#Interpolation) apply as for regular strings.
+The same [escaping](./string.md#escaping) and [interpolation rules](./string.md#interpolation) apply as for regular strings.
 
 Similar to percent string literals, valid delimters fo `%x` are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
 
@@ -14,13 +14,13 @@ The special variable `$?` holds the exit status of the command as a [`Process::S
 $?.success? # => true
 ```
 
-Internally, the compiler rewrites command literals to calls to the top-level method [``.`()``](https://crystal-lang.org/api/latest/toplevel.html#%60(command):String-class-method) with a string literal containing the command as argument: `` `echo #{argument}` `` and `%x(echo #{argument})` are rewritten to `` `("echo #{argument}")``.
+Internally, the compiler rewrites command literals to calls to the top-level method [`` `()``](https://crystal-lang.org/api/latest/toplevel.html#%60(command):String-class-method) with a string literal containing the command as argument: `` `echo #{argument}` `` and `%x(echo #{argument})` are rewritten to `` `("echo #{argument}")``.
 
 ## Security concerns
 
 While command literals may prove useful for simple script-like tools, special caution is advised when interpolating user input because it may easily lead to command injection.
 
-```
+```cr
 user_input = "hello; rm -rf *"
 `echo #{user_input}`
 ```
