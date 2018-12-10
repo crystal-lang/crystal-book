@@ -34,6 +34,7 @@
        * [Tuple](syntax_and_semantics/literals/tuple.md)
        * [NamedTuple](syntax_and_semantics/literals/named_tuple.md)
        * [Proc](syntax_and_semantics/literals/proc.md)
+       * [Command](syntax_and_semantics/literals/command.md)
    * [Assignment](syntax_and_semantics/assignment.md)
        * [Multiple assignment](syntax_and_semantics/multiple_assignment.md)
    * [Local variables](syntax_and_semantics/local_variables.md)
