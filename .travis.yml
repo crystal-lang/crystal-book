@@ -2,11 +2,15 @@ sudo: false
 cache:
   directories:
     - $HOME/.npm
+    - $TRAVIS_BUILD_DIR/tmp/.htmlproofer
 before_install: |
   npm install -g gitbook-cli@2.3.0
   npm install
   gitbook install
-script: gitbook build --gitbook=3.2.2
+  NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install html-proofer
+script:
+- gitbook build --gitbook=3.2.2
+- htmlproofer _book
 deploy:
   provider: s3
   access_key_id: AKIAIRL4BWFPN7P54TBQ
