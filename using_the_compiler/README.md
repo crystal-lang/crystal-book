@@ -363,9 +363,9 @@ specifying the current working directory.
 
 ## Environment variables
 
-The following environment variables are used by the Crystal compiler if set in the environment. Otherwise the compiler will populate them with default values.. Their values can be inspected using `[crystal env](#crystal env)`.
+The following environment variables are used by the Crystal compiler if set in the environment. Otherwise the compiler will populate them with default values. Their values can be inspected using `[crystal env](#crystal-env)`.
 
-* `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with 'crystal run' rather than 'crystal build'.
+* `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with `[crystal env](#crystal-run)` rather than `[crystal build](#crystal-build)`.
 * `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
 
 `CRYSTAL_VERSION` is only available as output of `crystal env`. The compiler neither sets nor reads it.
