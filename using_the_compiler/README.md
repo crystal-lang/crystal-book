@@ -339,7 +339,7 @@ The `crystal play` command starts a webserver serving an interactive Crystal pla
 crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 ```
 
-![](crystal-play.png)
+![Screenshot of Crystal playground](crystal-play.png)
 
 ### `crystal tool`
 

@@ -113,7 +113,7 @@ name = "world"
 
 ## Percent string array literal
 
-Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#Percent string literals).
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
 %w(foo bar baz) # => ["foo", "bar", "baz"]
