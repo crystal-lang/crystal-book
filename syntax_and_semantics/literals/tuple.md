@@ -9,7 +9,7 @@ tuple[1]                  #=> "hello" (String)
 tuple[2]                  #=> 'x'     (Char)
 ```
 
-To create an empty tuple use [Tuple.new](http://crystal-lang.org/api/Tuple.html#new%28%2Aargs%29-class-method).
+To create an empty tuple use [Tuple.new](https://crystal-lang.org/api/0.27.0/Tuple.html#new%28%2Aargs%3A%2AT%29-class-method).
 
 To denote a tuple type you can write:
 
