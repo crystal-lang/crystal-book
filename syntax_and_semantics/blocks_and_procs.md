@@ -218,7 +218,7 @@ end
 
 The above prints "2" and "3".
 
-A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method) and [Enumerable#select](http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method):
+A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
 
 ```crystal
 ary = [1, 2, 3]

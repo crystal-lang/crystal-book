@@ -65,7 +65,7 @@ b = 2
 "sum: #{a} + #{b} = #{a + b}" # => "sum: 1 + 2 = 3"
 ```
 
-String interpolation is also possible with [String#%](https://crystal-lang.org/api/master/String.html#%25(other)-instance-method).
+String interpolation is also possible with [String#%](https://crystal-lang.org/api/String.html#%25%28other%29-instance-method).
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
 
@@ -113,7 +113,7 @@ name = "world"
 
 ## Percent string array literal
 
-Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#Percent string literals).
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
 %w(foo bar baz) # => ["foo", "bar", "baz"]

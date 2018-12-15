@@ -155,4 +155,4 @@ class Test
 end
 ```
 
-The way Crystal handles the bigger topic of [covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)) in general, has more tricks and pitfalls to it, so you may be interested in [this issue / discussion](https://github.com/crystal-lang/crystal/issues/3803) for more reading.
+The way Crystal handles the bigger topic of [covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29) in general, has more tricks and pitfalls to it, so you may be interested in [this issue / discussion](https://github.com/crystal-lang/crystal/issues/3803) for more reading.
