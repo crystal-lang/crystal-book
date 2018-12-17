@@ -366,6 +366,7 @@ specifying the current working directory.
 The following environment variables are used by the Crystal compiler if set in the environment. Otherwise the compiler will populate them with default values. Their values can be inspected using `[crystal env](#crystal-env)`.
 
 * `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with `[crystal env](#crystal-run)` rather than `[crystal build](#crystal-build)`.
+  Default value is the first directory that either exists or can be created of `${XDG_CACHE_HOME}/crystal` (if `XDG_CACHE_HOME` is defined), `${HOME}/.cache/crystal`, `${HOME}/.crystal`, `./.crystal`. If `CRYSTAL_CACHE_DIR` is set but points to a path that is not writeable, the default values are used instead.
 * `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
 
 `CRYSTAL_VERSION` is only available as output of `crystal env`. The compiler neither sets nor reads it.
