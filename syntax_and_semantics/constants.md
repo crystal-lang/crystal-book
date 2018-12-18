@@ -64,3 +64,11 @@ end
 # File path is: /crystal_code/pseudo_constants.cr
 # Directory file is in: /crystal_code
 ```
+
+# Dynamic assignment
+
+Dynamically assigning values to constants using the [chained assignment](chained_assignment.md) or the [multiple assignment](multiple_assignment.md) is not supported for constants and results in a syntax error.
+
+```crystal
+ONE, TWO, THREE = 1, 2, 3 # => Syntax error: Multiple assignment is not allowed for constants
+```

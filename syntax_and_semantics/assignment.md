@@ -1,6 +1,6 @@
 # Assignment
 
-Assignment is done with the equals (`=`) character.
+Assignment is done using the equals sign (`=`).
 
 ```crystal
 # Assigns to a local variable
