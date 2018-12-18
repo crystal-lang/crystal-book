@@ -34,6 +34,7 @@
        * [Proc](syntax_and_semantics/literals/proc.md)
    * [Assignment](syntax_and_semantics/assignment.md)
        * [Multiple assignment](syntax_and_semantics/multiple_assignment.md)
+       * [Chained assignment](syntax_and_semantics/chained_assignment.md)
    * [Local variables](syntax_and_semantics/local_variables.md)
    * [Control expressions](syntax_and_semantics/control_expressions.md)
        * [Truthy and falsey values](syntax_and_semantics/truthy_and_falsey_values.md)
