@@ -46,7 +46,7 @@ person.name = temp1
 person.age = temp2
 ```
 
-And it is also available to indexers (`[]=`):
+And it is also available to [indexers](operators.md#indexing) (`[]=`):
 
 ```crystal
 objects[1], objects[2] = 3, 4
