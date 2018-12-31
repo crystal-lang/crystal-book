@@ -57,9 +57,9 @@ To properly define a wrapper for this function we must send the Proc as the call
 
 ```crystal
 module Ticker
-  @@box : Box(Int32 ->)
-
   # The callback for the user doesn't have a Void*
+  @@box : Pointer(Void)?
+
   def self.on_tick(&callback : Int32 ->)
     # Since Proc is a {Void*, Void*}, we can't turn that into a Void*, so we
     # "box" it: we allocate memory and store the Proc there
