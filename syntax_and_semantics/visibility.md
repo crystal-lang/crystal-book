@@ -118,16 +118,45 @@ end
 Namespace::Bar.new.bar
 ```
 
-A `protected` class method can be invoked from an instance method and the other way around:
+A `protected` method can only be invoked from the scope of its class or its descendants. That includes the class scope and bodies of class methods and instance methods of the same type the protected method is defined on, as well as all types including or inherinting that type and all types in that namespace.
 
 ```crystal
-class Person
-  protected def self.say(message)
-    puts message
+class Parent
+  protected def self.protected_method
   end
 
-  def say_hello
-    Person.say "hello" # OK
+  Parent.protected_method # OK
+  
+  def instance_method
+    Parent.protected_method # OK
+  end
+  
+  def self.class_method
+    Parent.protected_method # OK
+  end
+end
+
+class Child < Parent
+  Parent.protected_method # OK
+  
+  def instance_method
+    Parent.protected_method # OK
+  end
+  
+  def self.class_method
+    Parent.protected_method # OK
+  end
+end
+
+class Parent::Sub
+  Parent.protected_method # OK
+  
+  def instance_method
+    Parent.protected_method # OK
+  end
+  
+  def self.class_method
+    Parent.protected_method # OK
   end
 end
 ```
