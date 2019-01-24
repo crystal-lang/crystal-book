@@ -213,7 +213,7 @@ in its repository and no build target in `shard.yml`, but instructions for using
 
 Example:
 ```shell-session
-$ crystal init lib mylib
+$ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore
     create  my_cool_lib/.editorconfig
     create  my_cool_lib/LICENSE
