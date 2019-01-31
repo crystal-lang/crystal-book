@@ -290,6 +290,24 @@ Foo.new.describe #=> "Class is Foo"
 Foo.describe #=> "Class is Foo"
 ```
 
+## Method information
+
+When a macro is invoked you can access the method, the macro is in with a special instance variable: `@def`. The type of this variable is `Def` unless the macro is outside of a method, in this case it's `NilLiteral`.
+
+Example:
+
+```crystal
+module Foo
+  def Foo.boo(arg1, arg2)
+    {% @def.receiver %} # => Foo
+    {% @def.name %}     # => boo
+    {% @def.args %}     # => [arg1, arg2]
+  end
+end
+
+Foo.boo(0, 1)
+```
+
 ## Constants
 
 Macros can access constants. For example:
