@@ -31,7 +31,7 @@ end
 # The above prints the numbers 1 and 2
 ```
 
-Similar to [`break`](syntax_and_semantics/break.md), `next` can also take a parameter which will then be the value that gets returned:
+Similar to [`break`](break.md), `next` can also take a parameter which will then be the value that gets returned:
 
 ```crystal
 def block
