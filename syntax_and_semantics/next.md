@@ -15,7 +15,7 @@ end
 # The above prints the numbers 2, 4 and 5
 ```
 
-But `next` can also be used to exit from captured blocks, for example:
+But `next` can also be used to exit from blocks, for example:
 
 ```crystal
 def block
