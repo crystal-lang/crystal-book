@@ -11,5 +11,39 @@ while a < 5
   end
   puts a
 end
+
 # The above prints the numbers 2, 4 and 5
+```
+
+But `next` can also be used to exit from captured blocks, for example:
+
+```crystal
+def block
+  yield
+end
+
+block do
+  puts 1, 2
+  next
+  puts 3
+end
+
+# The above prints the numbers 1 and 2
+```
+
+Similar to [`break`](syntax_and_semantics/break.md), `next` can also take a parameter which will then be the value that gets returned:
+
+```crystal
+def block
+  yield
+end
+
+three = block do
+  puts 1, 2
+  next 3
+end
+
+puts three
+
+# The above prints the numbers 1, 2 and 3
 ```
