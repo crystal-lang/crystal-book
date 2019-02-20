@@ -1,8 +1,8 @@
 # Visibility
 
-Methods are public by default: the compiler will always let you invoke them, even if there is no `public` keyword.
+Methods are public by default: the compiler will always let you invoke them. In fact, there isn't even a `public` keyword in the language!
 
-Methods can be marked as `private` or `protected`.
+Methods can, however, be marked as `private` or `protected`.
 
 ## Private methods
 
