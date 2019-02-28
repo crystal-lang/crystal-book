@@ -11,9 +11,30 @@ struct Point
 end
 ```
 
-## Passing
+Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when you pass it to methods, return it from methods or assign it to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference). Therefore you should prefer using structs for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
 
-A struct is [passed by value](http://crystal-lang.org/api/Value.html) while a class is passed by reference.
+Mutable structs are still allowed, but you should be careful when writing code involving mutability if you want to avoid surprises that are described below.
+
+## Passing by value
+
+A `struct` is _always_ passed by value, even when you return `self` from the method of that `struct`:
+
+```crystal
+struct Point
+  def move_right
+    @x += 1
+    self
+  end
+end
+
+p = Point.new(0, 0)
+puts p.move_right.move_right #=> Point(@x=2, @y=0)
+puts p                       #=> Point(@x=1, @y=0)
+```
+
+Notice that the chained calls of `move_right` returned the expected result, but only the first call to it modified the point `p`, as the second call was operating on the _copy_ of the `struct` that was passed to it from the first call, and this copy was discarded after the result of the expression was printed.
+
+You should also be careful when working on mutable types contained in the `stuct`:
 
 ```crystal
 class Klass
@@ -30,41 +51,41 @@ def modify(object)
   object.array << "bar"
 end
 
-strukt = Strukt.new
 klass = Klass.new
-modify strukt
-modify klass
-puts strukt.array #=> ["str", "foo"]
-puts klass.array  #=> ["new", "bar"]
+puts modify(klass)  #=> ["new", "bar"]
+puts klass.array    #=> ["new", "bar"]
+
+strukt = Strukt.new
+puts modify(strukt) #=> ["new", "bar"]
+puts strukt.array   #=> ["str", "foo"]
+
 ```
 
-Explanation:
-- `array` is an `Array` class, thus passed by reference
-- the `array` object can be modified - elements inside it can be added/removed/modified
-- `object.array = ["new"]` replace the `object.array` reference by a new array - `object.array << "bar"` appends to the newly created array
-- `Strukt` is a struct, and immutable - the `array` object can't be replaced, and remains `["str", "foo"]`
-- `Klass` is a class, everything is passed by reference - all values can be replaced no matter the scope
+What happens with the `struct` here:
+- `Array` is passed by reference, so the reference to `["str"]` is stored in the property of `strukt`
+- when `strukt` is passed to `modify`, a _copy_ of the `strukt` is passed with the reference to array inside it
+- the array referenced by `array` is modified (element inside it is added) by `object.array << "foo"`
+- this is also reflected in the original `struct` as it holds reference to the same array
+- `object.array = ["new"]` replaces the reference in the _copy_ of `strukt` with the reference to the new array
+- `object.array << "bar"` appends to this newly created array
+- `modify` returns the reference to this new array and its content is printed
+- the reference to this new array was held only in the _copy_ of `strukt`, but not in the original, so that's why the original `strukt` only retained the result of the first statement, but not of the other two statements
 
-## Allocation
+`Klass` is a class, so it is passed by reference to `modify`, and `object.array = ["new"]` saves the reference to the newly created array in the original `klass` object, not in the copy as it was with the `strukt`.
 
-Invoking `new` on a struct [allocates it on the stack](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) instead of the heap.
-
-A struct is mostly used for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient.
-
-For more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible).
 
 ## Inheritance
 
 * A struct implicitly inherits from [Struct](http://crystal-lang.org/api/Struct.html), which inherits from [Value](http://crystal-lang.org/api/Value.html). A class implicitly inherits from [Reference](http://crystal-lang.org/api/Reference.html).
-* A struct cannot inherit a non-abstract struct.
+* A struct cannot inherit from non-abstract struct.
 
-The last point has a reason to it: a struct has a very well defined memory layout. For example, the above `Point` struct occupies 8 bytes. If you have an array of points the points are embedded inside the array's buffer:
+The second point has a reason to it: a struct has a very well defined memory layout. For example, the above `Point` struct occupies 8 bytes. If you have an array of points the points are embedded inside the array's buffer:
 
 ```crystal
 # The array's buffer will have 8 bytes dedicated to each Point
 ary = [] of Point
 ```
 
-If `Point` is inherited, an array of such type must also account for the fact that other types can be inside it, so the size of each element must grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited. Abstract structs, on the other hand, will have descendants, so it's expected that an array of them will account for the possibility of having multiple types inside it.
+If `Point` is inherited, an array of such type should also account for the fact that other types can be inside it, so the size of each element should grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited from. Abstract structs, on the other hand, will have descendants, so it is expected that an array of them will account for the possibility of having multiple types inside it.
 
 A struct can also include modules and can be generic, just like a class.
