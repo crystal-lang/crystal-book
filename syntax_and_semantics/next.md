@@ -15,7 +15,7 @@ end
 # The above prints the numbers 2, 4 and 5
 ```
 
-But `next` can also be used to exit from blocks, for example:
+`next` can also be used to exit from a block, for example:
 
 ```crystal
 def block
@@ -31,7 +31,7 @@ end
 # The above prints the numbers 1 and 2
 ```
 
-Similar to [`break`](break.md), `next` can also take a parameter which will then be the value that gets returned:
+Similar to [`break`](break.md), `next` can also take a parameter which will then be returned by `yield`.
 
 ```crystal
 def block
