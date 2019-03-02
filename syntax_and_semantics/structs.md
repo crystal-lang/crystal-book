@@ -60,11 +60,11 @@ puts modify(strukt) #=> ["new", "bar"]
 puts strukt.array   #=> ["str", "foo"]
 ```
 
-What happens with the `struct` here:
+What happens with the `strukt` here:
 - `Array` is passed by reference, so the reference to `["str"]` is stored in the property of `strukt`
 - when `strukt` is passed to `modify`, a _copy_ of the `strukt` is passed with the reference to array inside it
 - the array referenced by `array` is modified (element inside it is added) by `object.array << "foo"`
-- this is also reflected in the original `struct` as it holds reference to the same array
+- this is also reflected in the original `strukt` as it holds reference to the same array
 - `object.array = ["new"]` replaces the reference in the _copy_ of `strukt` with the reference to the new array
 - `object.array << "bar"` appends to this newly created array
 - `modify` returns the reference to this new array and its content is printed
