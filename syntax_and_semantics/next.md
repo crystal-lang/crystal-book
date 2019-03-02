@@ -35,15 +35,13 @@ Similar to [`break`](break.md), `next` can also take a parameter which will then
 
 ```crystal
 def block
-  yield
+  puts yield
 end
 
-three = block do
+block do
   puts 1, 2
   next 3
 end
-
-puts three
 
 # The above prints the numbers 1, 2 and 3
 ```
