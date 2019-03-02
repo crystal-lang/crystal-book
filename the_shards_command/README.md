@@ -1,6 +1,6 @@
-# The Shards command
+# The shards command
 
-Crystal is typically accompanied by its dependency manager `shards`.
+Crystal is typically accompanied by Shards, its dependency manager.
 
 It manages dependencies for Crystal projects and libraries with reproducible
 installs across computers and systems.
@@ -47,7 +47,7 @@ To see the available options for a particular command, use `--help` after a comm
 * `--version`: Prints the version of `shards`.
 * `-h, --help`: Prints usage synopsis.
 * `--no-color`: Disabled colored output.
-* `--production`: Runs in release mode.  Development dependencies won't be installed and only locked dependencies will be installed. Commands will fail if dependencies in `shard.yml` and `shard.lock` are out of sync (used by `install`, `update`, `check` and `list` command)
+* `--production`: Runs in release mode. Development dependencies won't be installed and only locked dependencies will be installed. Commands will fail if dependencies in `shard.yml` and `shard.lock` are out of sync (used by `install`, `update`, `check` and `list` command)
 * `-q, --quiet`: Decreases the log verbosity, printing only warnings and errors.
 * `-v, --verbose`: Increases the log verbosity, printing all debug statements.
 
@@ -72,8 +72,8 @@ Verifies that all dependencies are installed and requirements are satisfied.
 
 Exit status:
 
-* `0`: dependencies are satisfied,
-* `1`: dependencies are not satisfied.
+* `0`: Dependencies are satisfied.
+* `1`: Dependencies are not satisfied.
 
 ### `shards init`
 
@@ -81,7 +81,7 @@ Exit status:
 shards init
 ```
 
-Initializes a shard folder and creates a default `shard.yml`.
+Initializes a shard folder and creates a `shard.yml`.
 
 ### `shards install`
 

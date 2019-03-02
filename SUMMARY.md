@@ -14,7 +14,7 @@
    * [From a tar.gz](installation/from_a_targz.md)
    * [From sources](installation/from_source_repository.md)
 * [Using the compiler](using_the_compiler/README.md)
-* [The Shards command](the_shards_command/README.md)
+* [The shards command](the_shards_command/README.md)
 * [Overview and Examples](overview/README.md)
    * [Hello World!](overview/hello_world.md)
    * [HTTP Server](overview/http_server.md)
