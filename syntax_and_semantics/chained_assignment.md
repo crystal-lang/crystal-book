@@ -22,13 +22,3 @@ person1.name = person2.name = "John"
 person1.name = "John"
 person2.name = "John"
 ```
-
-And it is also available to [indexers](operators.md#indexing) (`[]=`):
-
-```crystal
-object1[0] = object2[0] = 5
-
-# The above is the same as:
-object1[0] = 5
-object2[0] = 5
-```
