@@ -17,7 +17,7 @@ Mutable structs are still allowed, but you should be careful when writing code i
 
 ## Passing by value
 
-A `struct` is _always_ passed by value, even when you return `self` from the method of that `struct`:
+A struct is _always_ passed by value, even when you return `self` from the method of that struct:
 
 ```crystal
 struct Point
@@ -32,9 +32,9 @@ puts p.move_right.move_right #=> Point(@x=2, @y=0)
 puts p                       #=> Point(@x=1, @y=0)
 ```
 
-Notice that the chained calls of `move_right` returned the expected result, but only the first call to it modified the point `p`, as the second call was operating on the _copy_ of the `struct` that was passed to it from the first call, and this copy was discarded after the result of the expression was printed.
+Notice that the chained calls of `move_right` returned the expected result, but only the first call to it modified the point `p`, as the second call was operating on the _copy_ of the struct that was passed to it from the first call, and this copy was discarded after the result of the expression was printed.
 
-You should also be careful when working on mutable types contained in the `stuct`:
+You should also be careful when working on mutable types inside of the struct:
 
 ```crystal
 class Klass
@@ -58,7 +58,6 @@ puts klass.array    #=> ["new", "bar"]
 strukt = Strukt.new
 puts modify(strukt) #=> ["new", "bar"]
 puts strukt.array   #=> ["str", "foo"]
-
 ```
 
 What happens with the `struct` here:
@@ -77,7 +76,7 @@ What happens with the `struct` here:
 ## Inheritance
 
 * A struct implicitly inherits from [Struct](http://crystal-lang.org/api/Struct.html), which inherits from [Value](http://crystal-lang.org/api/Value.html). A class implicitly inherits from [Reference](http://crystal-lang.org/api/Reference.html).
-* A struct cannot inherit from non-abstract struct.
+* A struct cannot inherit from a non-abstract struct.
 
 The second point has a reason to it: a struct has a very well defined memory layout. For example, the above `Point` struct occupies 8 bytes. If you have an array of points the points are embedded inside the array's buffer:
 
