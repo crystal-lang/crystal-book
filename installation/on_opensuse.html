@@ -1,23 +1,24 @@
 # On OpenSUSE
 
-In OpenSUSE, you can use the official Crystal repository.
+On OpenSUSE, Crystal can be installed from the official rpm package using Zypper.
 
 ## Setup repository
 
-First you have to add the signing key:
+First add the signing key:
 
 ```
 rpm --import https://dist.crystal-lang.org/rpm/RPM-GPG-KEY
 ```
 
-Next you have to configure the repository in Zypper. You can do this with the following command:
+Next configure the repository in Zypper:
 
 ```
-sudo zypper ar -e -f -t rpm-md https://dist.crystal-lang.org/rpm/ Crystal```
+sudo zypper ar -e -f -t rpm-md https://dist.crystal-lang.org/rpm/ Crystal
 ```
 
 ## Install
-Once the repository is configured you're ready to install Crystal:
+
+Once the repository is configured, Crystal can be installed:
 
 ```
 sudo zypper install crystal
@@ -25,7 +26,7 @@ sudo zypper install crystal
 
 ## Upgrade
 
-When a new Crystal version is released you can upgrade your system using:
+When a new Crystal version is released you can upgrade Crystal using:
 
 ```
 sudo zypper update crystal
