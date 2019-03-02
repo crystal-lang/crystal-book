@@ -65,28 +65,18 @@ objects[1] &&= 2       # same as: objects[1]? && (objects[1] = 2)
 
 # Chained assignment
 
-You can assign multiple variables to one value at the same time using the chained assignment:
+You can assign the same value to multiple variables using chained assignment:
 
 ```crystal
-var1 = var2 = var3 = 123
+a = b = c = 123
 
-# The above is the same as this:
-var1 = 123
-var2 = 123
-var3 = 123
+# Now a, b and c have the same value:
+a # => 123
+b # => 123
+c # => 123
 ```
 
-The chained assignment is not only available to [local variables](local_variables.md) but also to [instance variables](methods_and_instance_variables.md) and [class variables](class_variables.md).
-
-Chained assignment is also available to methods that end with `=` (setters):
-
-```crystal
-person1.name = person2.name = "John"
-
-# The above is the same as:
-person1.name = "John"
-person2.name = "John"
-```
+The chained assignment is not only available to [local variables](local_variables.md) but also to [instance variables](methods_and_instance_variables.md), [class variables](class_variables.md) and setter methods (methods that end with `=`).
 
 # Multiple assignment
 
