@@ -7,6 +7,7 @@
    * [On Arch Linux](installation/on_arch_linux.md)
    * [On Gentoo Linux](installation/on_gentoo_linux.md)
    * [On Alpine Linux](installation/on_alpine_linux.md)
+   * [On OpenSUSE Linux](installation/on_opensuse.md)
    * [On FreeBSD](installation/on_freebsd.md)
    * [On macOS using Homebrew](installation/on_mac_osx_using_homebrew.md)
    * [On Linux using Linuxbrew](installation/on_linux_using_linuxbrew.md)
