@@ -39,9 +39,8 @@ def block
 end
 
 block do
-  puts 1, 2
-  next 3
+  next "hello"
 end
 
-# The above prints the numbers 1, 2 and 3
+# The above prints "hello"
 ```
