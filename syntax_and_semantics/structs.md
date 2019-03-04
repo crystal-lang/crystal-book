@@ -11,7 +11,7 @@ struct Point
 end
 ```
 
-Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when you pass it to methods, return it from methods or assign it to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference). Therefore you should prefer using structs for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
+Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when passed to methods, returned from methods or assigned to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference). Therefore structs are mostly useful for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
 
 Mutable structs are still allowed, but you should be careful when writing code involving mutability if you want to avoid surprises that are described below.
 
