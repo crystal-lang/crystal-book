@@ -28,7 +28,7 @@ struct Point
 end
 
 p = Point.new(0, 0)
-puts p.move_right.move_right #=> Point(@x=2, @y=0)
+p.move_right.move_right # => Point(@x=2, @y=0)
 puts p                       #=> Point(@x=1, @y=0)
 ```
 
