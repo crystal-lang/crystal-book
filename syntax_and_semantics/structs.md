@@ -23,11 +23,11 @@ A struct is _always_ passed by value, even when you return `self` from the metho
 
 ```crystal
 struct Counter
-  def initialize(@c : Int32)
+  def initialize(@count : Int32)
   end
   
   def plus
-    @c += 1
+    @count += 1
     self
   end
 end
