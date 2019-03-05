@@ -11,7 +11,9 @@ struct Point
 end
 ```
 
-Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when passed to methods, returned from methods or assigned to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference). Therefore structs are mostly useful for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
+Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when passed to methods, returned from methods or assigned to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference).
+
+Therefore structs are mostly useful for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
 
 Mutable structs are still allowed, but you should be careful when writing code involving mutability if you want to avoid surprises that are described below.
 
@@ -20,19 +22,22 @@ Mutable structs are still allowed, but you should be careful when writing code i
 A struct is _always_ passed by value, even when you return `self` from the method of that struct:
 
 ```crystal
-struct Point
-  def move_right
+struct Counter
+  def initialize(@c : Int32)
+  end
+  
+  def plus
     @x += 1
     self
   end
 end
 
-p = Point.new(0, 0)
-p.move_right.move_right # => Point(@x=2, @y=0)
-puts p                       #=> Point(@x=1, @y=0)
+counter = Counter.new(0)
+counter.plus.plus #=> Counter(@x=2)
+puts counter      #=> Counter(@x=1)
 ```
 
-Notice that the chained calls of `move_right` returned the expected result, but only the first call to it modified the point `p`, as the second call was operating on the _copy_ of the struct that was passed to it from the first call, and this copy was discarded after the result of the expression was printed.
+Notice that the chained calls of `plus` return the expected result, but only the first call to it modifies the variable `counter`, as the second call operates on the _copy_ of the struct passed to it from the first call, and this copy is discarded after the expression is executed.
 
 You should also be careful when working on mutable types inside of the struct:
 
