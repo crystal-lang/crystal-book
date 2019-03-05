@@ -27,7 +27,7 @@ struct Counter
   end
   
   def plus
-    @x += 1
+    @c += 1
     self
   end
 end
