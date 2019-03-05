@@ -2,7 +2,7 @@ Although Crystal has a Ruby-like syntax, Crystal is a different language, not an
 
 ## Crystal as a compiled language
 
-### Using the `crystal` program
+### Using the `crystal` command
 
 If you have a program `foo.cr`:
 
@@ -48,26 +48,26 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 ### Bool
 
-`true` and `false` are values in the _Bool_ class rather than values in classes _TrueClass_ or _FalseClass_.
+`true` and `false` are of type _Bool_ rather than instances of classes _TrueClass_ or _FalseClass_.
 
 ### Integers
 
-For Ruby's `Fixnum` type, use one of Crystal's Integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
+For Ruby's `Fixnum` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
 
-If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a Bignum. Crystal will use modular arithmetic on overflow. For example:
+If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a Bignum.
+Crystal will instead raise an `OverflowError` on overflow. For example:
 
 ```crystal
 x = 127_i8  # An Int8 type
-puts x # 127
-x += 1 # -128
-x += 1 # -127
+x # => 127
+x += 1 # Unhandled exception: Arithmetic overflow (OverflowError)
 ```
 
 See [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/integers.html)
 
 ### Regex
 
-Global variables ``$` `` and `$'` are missing (yet `$~` and `$1`, `$2`, ... are present). Use `$~.pre_match` and `$~.post_match`. [read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633)
+Global variables ``$` `` and `$'` are not supported (yet `$~` and `$1`, `$2`, ... are present). Use `$~.pre_match` and `$~.post_match`. [Read more](https://github.com/manastech/crystal/issues/1202#issuecomment-136526633).
 
 ## Pared-down instance methods
 
@@ -86,8 +86,8 @@ Specifically:
 Where Ruby has a a couple of alternative constructs, Crystal has one.
 
 * [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
-* `and` and `or` : use `&&` and `||` instead with suitable parenthesis to indicate precedence
-* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses just `->`
+* `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
+* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses only `->`
 * For `require_relative "foo"` use `require "./foo"`
 
 ## No autosplat for arrays and enforced maximum block arity
@@ -118,7 +118,7 @@ will return the result you expect.
 
 ## [.each returns nil](https://github.com/crystal-lang/crystal/pull/3815#issuecomment-269978574)
 
-In Ruby `.each` returns the receiver for many built-in collections like Array and Hash, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported.  Alternately, one can use `.tap`.
+In Ruby `.each` returns the receiver for many built-in collections like `Array` and `Hash`, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported. Alternately, one can use `.tap`.
 
 Ruby:
 ```ruby
@@ -133,16 +133,16 @@ Crystal:
 
 ## Reflection and Dynamic Evaluation
 
-_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted.
+_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted as well.
 
 In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection.
 
 ## Semantic differences
-### single- versus double-quoted strings
+### Single versus double-quoted strings
 
 In Ruby, string literals can be delimited with single or double quotes. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not.
 
-In Crystal, strings literals are delimited with double quotes only. Single quotes act as character literals the same as say C-like languages. As with Ruby, there is variable interpolation inside string literals.
+In Crystal, strings literals are delimited with double quotes only. Single quotes act as character literals just like say C-like languages. As with Ruby, there is variable interpolation inside string literals.
 
 In sum:
 
@@ -153,7 +153,7 @@ puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
 Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them:
 
-```rb
+```ruby
 """Now,
 what?""" # Invalid Crystal use:
 "Now,
@@ -184,7 +184,7 @@ h = {"a" => 1}
 h[1] #=> raises KeyError
 ```
 
-The reason behind this change is that it would be very annoying to program in this way if every Array or Hash access could return `nil` as a potential value. This wouldn't work:
+The reason behind this change is that it would be very annoying to program in this way if every `Array` or `Hash` access could return `nil` as a potential value. This wouldn't work:
 
 ```crystal
 # Crystal
@@ -225,7 +225,7 @@ h[3]? || (h[3] = 4)
 
 That is, the `[]?` method is used to check for the presence of an index/key.
 
-Just as `[]` doesn't return `nil`, some Array and Hash methods also don't return nil and raise an exception if the element is not found: `first`, `last`, `shift`, `pop`, etc. For these a question-method is also provided to get the `nil` behaviour: `first?`, `last?`, `shift?`, `pop?`, etc.
+Just as `[]` doesn't return `nil`, some `Array` and `Hash` methods also don't return nil and raise an exception if the element is not found: `first`, `last`, `shift`, `pop`, etc. For these a question-method is also provided to get the `nil` behaviour: `first?`, `last?`, `shift?`, `pop?`, etc.
 
 ***
 
@@ -237,11 +237,11 @@ Examples for all of the above:
 
 * `Array#[](index)` raises on out of bounds, `Array#[]?(index)` returns nil in that case.
 * `Hash#[](key)` raises if the key is not in the hash, `Hash#[]?(key)` returns nil in that case.
-* `Array#first` raises if the Array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
+* `Array#first` raises if the array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
 * There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
 
-### for loops
-for loops are currently missing but you can add them via macro:
+### `for` loops
+`for` loops are not supported but you can add them via macro:
 ```crystal
 macro for(expr)
   {{expr.args.first.args.first}}.each do |{{expr.name.id}}|
@@ -253,7 +253,6 @@ for i in [1,2,3] do
  puts i
 end
 # note the trailing 'do' as block-opener!
-
 ```
 
 ### Properties
@@ -265,22 +264,11 @@ The ruby `attr_accessor`, `attr_getter` and `attr_setter` methods are replaced w
     attr_reader      getter
     attr_writer      setter
 
-### And && or ||
-Nice english operators for '&&' and '||' are currently not supported
-
-### Verbose brackets()
-In general you need some more brackets to compile
-```crystal
-def brackets_needed(a)
- a.is_a?(Array)
-end
-```
-
 ### Consistent dot notation
-Ruby `File::exists?` becomes crystal `File.exists?` etc...
+For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
 ### Crystal keywords
-Crystal added some new keywords, these can still be used as function names, but need to be called explicitly with dot: e.g. `self.select{ |x| x > "good" }`
+Crystal added some new keywords, these can still be used as function names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
 
 #### Available keywords
 
@@ -305,3 +293,5 @@ private def method
   42
 end
 ```
+
+For other questions regarding differences between Ruby and Crystal, visit the FAQ: https://github.com/crystal-lang/crystal/wiki/FAQ.
