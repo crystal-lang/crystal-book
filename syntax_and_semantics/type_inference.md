@@ -12,7 +12,7 @@ class Person
 end
 ```
 
-We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
+We can quickly see that `@age` is an integer, but we don't know the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
 
 * The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
 * Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are nearly impossible to do.
