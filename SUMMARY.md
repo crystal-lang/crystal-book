@@ -108,6 +108,7 @@
        * [pointerof](syntax_and_semantics/pointerof.md)
        * [sizeof](syntax_and_semantics/sizeof.md)
        * [instance_sizeof](syntax_and_semantics/instance_sizeof.md)
+       * [offsetof](syntax_and_semantics/offsetof.md)
        * [Uninitialized variable declaration](syntax_and_semantics/declare_var.md)
    * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
        * [Cross-compilation](syntax_and_semantics/cross-compilation.md)
