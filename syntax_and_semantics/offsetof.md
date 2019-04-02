@@ -16,7 +16,5 @@ struct Foo
   @y = 34_i32
 end
 
-foo = Foo.new
-
-offsetof(typeof(foo), @y) # => 8
+offsetof(Foo, @y) # => 8
 ```
