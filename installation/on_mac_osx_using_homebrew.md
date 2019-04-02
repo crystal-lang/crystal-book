@@ -24,7 +24,7 @@ $ xcode-select --switch /Library/Developer/CommandLineTools
 
 ## Troubleshooting on macOS MacOS 10.14.2 (Mojave)
 
-if you get an error like:
+If you get an error like:
 
 ```
 ld: library not found for -lssl (this usually means you need to install the development package for libssl)
