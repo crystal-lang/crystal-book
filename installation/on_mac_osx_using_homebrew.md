@@ -30,7 +30,7 @@ If you get an error like:
 ld: library not found for -lssl (this usually means you need to install the development package for libssl)
 ```
 
-you may need to install OpenSSL and link pkg-config to OpenSSL
+you may need to install OpenSSL and link pkg-config to OpenSSL:
 
 ```
 brew install openssl
