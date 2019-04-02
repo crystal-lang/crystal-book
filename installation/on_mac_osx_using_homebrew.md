@@ -39,3 +39,9 @@ brew install openssl
 ```
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
 ```
+
+```
+As with other keg-only formulas there are some caveats shown in brew info <formula> that advertise how to link pkg-config with this library.
+
+Crystal compiler by default will use pkg-config to find the location of libraries to link.
+```
