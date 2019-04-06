@@ -1,4 +1,4 @@
-# From a tar.gz
+# From tar.gz
 
 If for any reason you can't or don't want to use one of the previous installation methods, you can still download Crystal in a standalone .tar.gz file with everything you need to get started.
 
