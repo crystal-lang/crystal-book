@@ -4,7 +4,7 @@ cache:
     - $HOME/.npm
     - $TRAVIS_BUILD_DIR/tmp/.htmlproofer
 before_install: |
-  npm install -g gitbook-cli@2.3.0
+  npm install -g gitbook-cli
   npm install
   gitbook install
   NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install html-proofer
