@@ -3,7 +3,10 @@
 How to write and release Crystal Shards.
 
 ## _What's a Shard?_
+
 Simply put, a Shard is a package of Crystal code, made to be shared-with and used-by other projects.
+
+See [the Shards command](../the_shards_command/README.md) for details.
 
 ## Introduction
 
