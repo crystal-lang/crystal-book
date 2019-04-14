@@ -23,12 +23,12 @@ def block
 end
 
 block do
-  puts 1, 2
+  puts "hello"
   next
-  puts 3
+  puts "world"
 end
 
-# The above prints the numbers 1 and 2
+# The above prints "hello"
 ```
 
 Similar to [`break`](break.md), `next` can also take a parameter which will then be returned by `yield`.
