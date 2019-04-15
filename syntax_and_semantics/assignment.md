@@ -102,13 +102,13 @@ a #=> 2
 b #=> 1
 ```
 
-If the right-hand side contains just one expression, it is considered an indexed type and the following syntax sugar applies:
+If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
 
 ```crystal
-name, age, source = "Crystal,1,GitHub".split(',')
+name, age, source = "Crystal, 123, GitHub".split(", ")
 
 # The above is the same as this:
-temp = "Crystal,1,GitHub".split(',')
+temp = "Crystal, 123, GitHub".split(", ")
 name   = temp[0]
 age    = temp[1]
 source = temp[2]
