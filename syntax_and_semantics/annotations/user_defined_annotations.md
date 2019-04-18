@@ -1,6 +1,6 @@
-# User Defined Annotations
+# User-defined annotations
 
-Users can define their own annotations using the `annotation` keyword, which works similarly to defining `class` or `sruct`.
+Users can define their own annotations using the `annotation` keyword, which works similarly to defining a `class` or `struct`.
 
 ```crystal
 annotation MyAnnotation; end
@@ -101,7 +101,6 @@ annotation_read
 "Annotation 2 = 123"
 ```
 
-
 ## Fields
 
 Data can be stored within an annotation.
@@ -118,7 +117,7 @@ annotation MyAnnotaion; end
 
 ### Key/value
 
-The values of key/value pairs would be readable at compile time via the [`[]`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28name%3ASymbolLiteral%7CStringLiteral%7CMacroId%29%3AASTNode-instance-method)  method.
+The values of key/value pairs would be readable at compile time via the [`[]`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28name%3ASymbolLiteral%7CStringLiteral%7CMacroId%29%3AASTNode-instance-method) method.
 
 ```crystal
 annotation MyAnnotation; end
@@ -135,7 +134,7 @@ double # => 4
 
 ### Indexed
 
-Values added without a key name can be read at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>)  method, however only one index can be read at a time.
+Values added without a key name can be read at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method, however only one index can be read at a time.
 
 ```crystal
 annotation MyAnnotation; end
@@ -160,14 +159,14 @@ annotation_read
 
 ## Usages
 
-Annotations are best used to store metadata about a given instance variable, type, or method; so that it can be read at compile time using macros.  One of the main benefits of annotations is that they are applied directly to instance_variables/methods.  Because of this classes look more natural since a standard macro is not needed to create these properties/methods.
+Annotations are best used to store metadata about a given instance variable, type, or method; so that it can be read at compile time using macros.  One of the main benefits of annotations is that they are applied directly to instance variables/methods. Because of this classes look more natural since a standard macro is not needed to create these properties/methods.
 
 A few ideas that annotations could be useful for:
 
 ### Object Serialization
 
-Have an annotation that when applied to an instance variable determines if that instance_variable should be serialized, or with what key.  Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/Serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/YAML/Serializable.html) are an example of this.
+Have an annotation that when applied to an instance variable determines if that instance variable should be serialized, or with what key. Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/Serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/YAML/Serializable.html) are an example of this.
 
 ### ORMs
 
-An annotation could be used to designate a property as an ORM column.  The name and type of the instance variable can be read off the `TypeNode` in addition to the annotation; removing the need for any ORM specific macro.  The annotation itself could also be used to store metadata bout the column, such as if it is nullable, the name of the column, or if it is the primary key.
+An annotation could be used to designate a property as an ORM column. The name and type of the instance variable can be read off the `TypeNode` in addition to the annotation; removing the need for any ORM specific macro. The annotation itself could also be used to store metadata about the column, such as if it is nullable, the name of the column, or if it is the primary key.
