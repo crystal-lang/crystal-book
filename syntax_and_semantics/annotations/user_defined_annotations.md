@@ -166,7 +166,7 @@ A few ideas that annotations could be useful for:
 
 ### Object Serialization
 
-Have an annotation that when applied to an instance variable determines if that instance_variable should be serialized, or with what key.  Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/JSON/serializable.html) are an example of this.
+Have an annotation that when applied to an instance variable determines if that instance_variable should be serialized, or with what key.  Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/Serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/YAML/Serializable.html) are an example of this.
 
 ### ORMs
 
