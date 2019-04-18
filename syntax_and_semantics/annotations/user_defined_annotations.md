@@ -30,7 +30,7 @@ end
 
 ## Reading
 
-Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `[]` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
+Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `[]` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
 **NOTE:** If multiple annotations of the same type are applied, the `annotation` method will return the _last_ one.
 
@@ -86,7 +86,7 @@ annotation MyAnnotation; end
 
 @[MyAnnotation("foo")]
 @[MyAnnotation(123)]
-@[MyAnnotation("bar")]
+@[MyAnnotation(123)]
 def annotation_read
   {% for ann, idx in @def.annotations(MyAnnotation) %}
     pp "Annotation {{idx}} = {{ann[0].id}}"
@@ -98,7 +98,7 @@ annotation_read
 # Which would print
 "Annotation 0 = foo"
 "Annotation 1 = 123"
-"Annotation 2 = bar"
+"Annotation 2 = 123"
 ```
 
 
@@ -142,7 +142,7 @@ annotation MyAnnotation; end
 
 @[MyAnnotation(1,2,3,4)]
 def annotation_read
-  {% for idx in [0,1,2,3] %}
+  {% for idx in [0,1,2,3,4] %}
     {% value = @def.annotation(MyAnnotation)[idx] %}
     pp "{{idx}} = {{value}}"
   {% end %}
@@ -155,4 +155,19 @@ annotation_read
 "1 = 2"
 "2 = 3"
 "3 = 4"
+"4 = nil"
 ```
+
+## Usages
+
+Annotations are best used to store metadata about a given instance variable, type, or method; so that it can be read at compile time using macros.  One of the main benefits of annotations is that they are applied directly to instance_variables/methods.  Because of this classes look more natural since a standard macro is not needed to create these properties/methods.
+
+A few ideas that annotations could be useful for:
+
+### Object Serialization
+
+Have an annotation that when applied to an instance variable determines if that instance_variable should be serialized, or with what key.  Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/JSON/serializable.html) are an example of this.
+
+### ORMs
+
+An annotation could be used to designate a property as an ORM column.  The name and type of the instance variable can be read off the `TypeNode` in addition to the annotation; removing the need for any ORM specific macro.  The annotation itself could also be used to store metadata bout the column, such as if it is nullable, the name of the column, or if it is the primary key.
