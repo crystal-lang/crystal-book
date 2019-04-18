@@ -1,6 +1,6 @@
-# Attributes
+# Annotations
 
-Some types and methods can be annotated with attributes. The attribute list is fixed, but eventually (maybe) there will be user-defined attributes.
+Some types and methods can be annotated. 
 
 ## Link
 
