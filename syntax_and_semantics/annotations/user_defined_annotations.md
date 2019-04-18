@@ -6,8 +6,8 @@ Users can define their own annotations using the `annotation` keyword, which wor
 annotation MyAnnotation; end
 ```
 
-The annotation can then be applied to various types, including:
-* Instance and Class methods
+The annotation can then be applied to various items, including:
+* Instance and class methods
 * Instance variables
 * Classes, structs, and modules
 
@@ -34,7 +34,7 @@ Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Cryst
 
 **NOTE:** If multiple annotations of the same type are applied, the `annotation` method will return the _last_ one.
 
-The [@type](../macros.md#type-information) and [@def](../macros.md#method-information) variables can be used to get `TypeNode` or `Def` object to use the `annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods` respectfully.
+The [@type](../macros.md#type-information) and [@def](../macros.md#method-information) variables can be used to get `TypeNode` or `Def` object to use the `annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 
@@ -117,7 +117,7 @@ annotation MyAnnotaion; end
 
 ### Key/value
 
-The values of key/value pairs would be readable at compile time via the [`[]`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28name%3ASymbolLiteral%7CStringLiteral%7CMacroId%29%3AASTNode-instance-method) method.
+The values of annotation key/value pairs can be accessed at compile time via the [`[]`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28name%3ASymbolLiteral%7CStringLiteral%7CMacroId%29%3AASTNode-instance-method) method.
 
 ```crystal
 annotation MyAnnotation; end
@@ -134,7 +134,7 @@ double # => 4
 
 ### Indexed
 
-Values added without a key name can be read at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method, however only one index can be read at a time.
+Values added without a key can be accessed at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method; however, only one index can be accessed at a time.
 
 ```crystal
 annotation MyAnnotation; end
@@ -157,15 +157,15 @@ annotation_read
 "4 = nil"
 ```
 
-## Usages
+## Applications
 
-Annotations are best used to store metadata about a given instance variable, type, or method; so that it can be read at compile time using macros.  One of the main benefits of annotations is that they are applied directly to instance variables/methods. Because of this classes look more natural since a standard macro is not needed to create these properties/methods.
+Annotations are best used to store metadata about a given instance variable, type, or method so that it can be read at compile time using macros.  One of the main benefits of annotations is that they are applied directly to instance variables/methods, which causes classes to look more natural since a standard macro is not needed to create these properties/methods.
 
-A few ideas that annotations could be useful for:
+A few applications for annotations:
 
 ### Object Serialization
 
-Have an annotation that when applied to an instance variable determines if that instance variable should be serialized, or with what key. Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/Serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/YAML/Serializable.html) are an example of this.
+Have an annotation that when applied to an instance variable determines if that instance variable should be serialized, or with what key. Crystal's [`JSON::Serializable`](https://crystal-lang.org/api/JSON/Serializable.html) and [`YAML::Serializable`](https://crystal-lang.org/api/YAML/Serializable.html) are examples of this.
 
 ### ORMs
 
