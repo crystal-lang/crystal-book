@@ -47,7 +47,7 @@ annotation MyIvar; end
 
 @[MyClass]
 class Foo
-  {{@type.annotation(MyClass).stringify}}
+  pp {{@type.annotation(MyClass).stringify}}
   
   @[MyIvar]
   @num : Int32 = 1
@@ -57,24 +57,26 @@ class Foo
 
   def properties
     {% for ivar in @type.instance_vars %}
-      {{ivar.annotation(MyIvar).stringify}}
+      pp {{ivar.annotation(MyIvar).stringify}}
     {% end %}
   end
 end
 
 @[MyMethod]
 def my_method
-  {{@def.annotation(MyMethod).stringify}}
+  pp {{@def.annotation(MyMethod).stringify}}
 end
 
 Foo.new.properties
 my_method
+pp {{Foo.annotation(MyClass).stringify}}
 
 # Which would print
 "@[MyClass]"
 "@[MyIvar]"
 "@[MyIvar]"
 "@[MyMethod]"
+"@[MyClass]"
 ```
 
 ### Reading Multiple Annotations
@@ -111,7 +113,7 @@ annotation MyAnnotaion; end
 # The fields can either be a key/value pair
 @[MyAnnotation(key: "value", value: 123)]
 
-# Or index based
+# Or positional
 @[MyAnnotation("foo", 123, false)]
 ```
 
@@ -132,9 +134,9 @@ double 10 # => 20
 double # => 4
 ```
 
-### Indexed
+### Positional
 
-Values added without a key can be accessed at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method; however, only one index can be accessed at a time.
+Positional values can be accessed at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method; however, only one index can be accessed at a time.
 
 ```crystal
 annotation MyAnnotation; end
