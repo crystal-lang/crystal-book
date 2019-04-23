@@ -198,6 +198,18 @@ method &.+(2)
 method &.[index]
 ```
 
+If the block is not the only parameter being passed to the method, the short syntax argument must be supplied within the argument list.
+
+```crystal
+["a", "b"].join(",") { |s| s.upcase }
+```
+
+Is equivalent to:
+
+```crystal
+["a", "b"].join(",", &.upcase)
+```
+
 ## yield value
 
 The `yield` expression itself has a value: the last expression of the block. For example:
@@ -364,7 +376,7 @@ end
 # 3
 ```
 
-If a `next` receives many arguments, they are automaticaly transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
+If a `next` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
 
 ## with ... yield
 
