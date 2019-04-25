@@ -163,7 +163,9 @@ The block variable `second` also includes the `Nil` type because the last `yield
 
 ## Short one-argument syntax
 
-A short syntax exists for specifying a block that receives a single argument and invokes a method on it. This:
+If a block has a single argument and invokes a method on it, the block can be replaced with the short syntax argument.
+
+This:
 
 ```crystal
 method do |argument|
@@ -171,43 +173,48 @@ method do |argument|
 end
 ```
 
-Can be written as this:
+and
+
+```crystal
+method { |argument| argument.some_method }
+```
+
+Can both be written as:
 
 ```crystal
 method &.some_method
 ```
 
-Or like this:
+Or like:
 
 ```crystal
 method(&.some_method)
 ```
 
-The above is just syntax sugar and doesn't have any performance penalty.
+In either case, `&.some_method` is an argument passed to `method`.  This argument is syntactically equivalent to the block variants.  It is only syntactic sugar and does not have any performance penalty.
 
-Arguments can be passed to `some_method` as well:
+If the method has other required parameters, the short syntax argument should also be supplied in the method's argument list.
+
+ ```crystal
+["a", "b"].join(",", &.upcase)
+ ```
+
+Is equivalent to:
+ ```crystal
+["a", "b"].join(",") { |s| s.upcase }
+ ```
+
+Arguments can be used with the short syntax argument as well:
 
 ```crystal
-method &.some_method(arg1, arg2)
+["i", "o"].join(",", &.upcase(Unicode::CaseOptions::Turkic))
 ```
 
-And operators can be invoked too:
+Operators can be invoked too:
 
 ```crystal
 method &.+(2)
-method &.[index]
-```
-
-If the block is not the only parameter being passed to the method, the short syntax argument must be supplied within the argument list.
-
-```crystal
-["a", "b"].join(",") { |s| s.upcase }
-```
-
-Is equivalent to:
-
-```crystal
-["a", "b"].join(",", &.upcase)
+method(&.[index])
 ```
 
 ## yield value
