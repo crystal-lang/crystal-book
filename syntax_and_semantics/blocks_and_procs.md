@@ -179,7 +179,7 @@ and
 method { |argument| argument.some_method }
 ```
 
-Can both be written as:
+can both be written as:
 
 ```crystal
 method &.some_method
