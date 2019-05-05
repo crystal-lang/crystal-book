@@ -30,11 +30,11 @@ end
 
 ## Reading
 
-Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `[]` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
+Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
-**NOTE:** If multiple annotations of the same type are applied, the `annotation` method will return the _last_ one.
+**NOTE:** If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
 
-The [@type](../macros.md#type-information) and [@def](../macros.md#method-information) variables can be used to get `TypeNode` or `Def` object to use the `annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
+The [`@type`](../macros.md#type-information) and [`@def`](../macros.md#method-information) variables can be used to get `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 
@@ -81,7 +81,7 @@ pp {{Foo.annotation(MyClass).stringify}}
 
 ### Reading Multiple Annotations
 
-If there are multiple annotations of the same type applied to the same instance variable/method/type, the `annotations(type : TypeNode)` method can be used.  This will work on anything that `annotation(type : TypeNode)` would, but instead returns an `ArrayLiteral(Annotation)`.
+If there are multiple annotations of the same type applied to the same instance variable/method/type, the `.annotations(type : TypeNode)` method can be used.  This will work on anything that `.annotation(type : TypeNode)` would, but instead returns an `ArrayLiteral(Annotation)`.
 
 ```crystal
 annotation MyAnnotation; end
@@ -124,14 +124,13 @@ The values of annotation key/value pairs can be accessed at compile time via the
 ```crystal
 annotation MyAnnotation; end
 
-@[MyAnnotation(default: 2)]
-def double(num : Number? = nil)
+@[MyAnnotation(value: 2)]
+def annotation_value
   # The name can be a `String`, `Symbol`, or `MacroId`
-  2 * (num ? num : {{@def.annotation(MyAnnotation)[:default]}})
+  {{@def.annotation(MyAnnotation)[:value]}}
 end
 
-double 10 # => 20
-double # => 4
+annotation_value # => 2
 ```
 
 ### Positional

@@ -1,6 +1,6 @@
 # Annotations
 
-Some types and methods can be annotated with built-in and user-defined annotations.
+Some types and methods can be annotated with built-in and user-defined annotations.  The built-in annotations include:
 
 ## Link
 
