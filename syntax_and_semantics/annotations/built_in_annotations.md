@@ -64,7 +64,7 @@ needed or used outside it.
 
 ## Packed
 
-Marks a [C struct](c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
+Marks a [C struct](../c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
 
 ## AlwaysInline
 
@@ -90,15 +90,15 @@ end
 
 ## ReturnsTwice
 
-Marks a method or [lib fun](c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
+Marks a method or [lib fun](../c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
 
 ## Raises
 
-Marks a method or [lib fun](c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](c_bindings/callbacks.html) section.
+Marks a method or [lib fun](../c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](../c_bindings/callbacks.html) section.
 
 ## CallConvention
 
-Indicates the call convention of a [lib fun](c_bindings/fun.html). For example:
+Indicates the call convention of a [lib fun](../c_bindings/fun.html). For example:
 
 ```crystal
 lib LibFoo
@@ -121,4 +121,4 @@ They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions)
 
 ## Flags
 
-Marks an [enum](enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+Marks an [enum](../enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
