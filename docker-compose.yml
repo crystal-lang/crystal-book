@@ -3,10 +3,9 @@ version: '2.0'
 services:
   gitbook:
     build: .
-    container_name: crystal-book
     volumes:
       - .:/src
     ports:
       - "4000:4000"
       - "35729:35729"
-    command: /bin/sh -c "npm install && gitbook install && gitbook serve"
+    command: /bin/sh -c "npm install && gitbook serve"
