@@ -106,7 +106,7 @@
        * [Hooks](syntax_and_semantics/macros/hooks.md)
        * [Fresh variables](syntax_and_semantics/macros/fresh_variables.md)
    * [Annotations](syntax_and_semantics/annotations.md)
-       * [User-defined annotations](syntax_and_semantics/annotations/user_defined_annotations.md)
+       * [Built-In annotations](syntax_and_semantics/annotations/built_in_annotations.md)
    * [Low-level primitives](syntax_and_semantics/low_level_primitives.md)
        * [pointerof](syntax_and_semantics/pointerof.md)
        * [sizeof](syntax_and_semantics/sizeof.md)
