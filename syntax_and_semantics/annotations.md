@@ -1,20 +1,22 @@
 # Annotations
 
-Some types and methods can be annotated with [built-in](./annotations/built_in_annotations.md) and user-defined annotations, such as the standard library's `JSON::Field` and `JSON::Options`.  
+Annotations can be used to add metadata to certain features in the source code. Types, methods and instance variables may be annotated.  User-defined annotations, such as the standard library's [JSON::Field](https://crystal-lang.org/api/JSON/Field.html), are defined using the `annotation` keyword.  A number of [built-in annotations](./annotations/built_in_annotations.md) are provided by the compiler.
 
 Users can define their own annotations using the `annotation` keyword, which works similarly to defining a `class` or `struct`.
 
 ```crystal
-annotation MyAnnotation; end
+annotation MyAnnotation
+end
 ```
 
 The annotation can then be applied to various items, including:
 * Instance and class methods
 * Instance variables
-* Classes, structs, and modules
+* Classes, structs, enums, and modules
 
 ```crystal
-annotation MyAnnotation; end
+annotation MyAnnotation
+end
 
 @[MyAnnotation]
 def foo
@@ -49,7 +51,8 @@ An annotation could be used to designate a property as an ORM column. The name a
 Data can be stored within an annotation.
 
 ```crystal
-annotation MyAnnotaion; end
+annotation MyAnnotaion
+end
 
 # The fields can either be a key/value pair
 @[MyAnnotation(key: "value", value: 123)]
@@ -63,7 +66,8 @@ annotation MyAnnotaion; end
 The values of annotation key/value pairs can be accessed at compile time via the [`[]`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28name%3ASymbolLiteral%7CStringLiteral%7CMacroId%29%3AASTNode-instance-method) method.
 
 ```crystal
-annotation MyAnnotation; end
+annotation MyAnnotation
+end
 
 @[MyAnnotation(value: 2)]
 def annotation_value
@@ -79,7 +83,8 @@ annotation_value # => 2
 Positional values can be accessed at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method; however, only one index can be accessed at a time.
 
 ```crystal
-annotation MyAnnotation; end
+annotation MyAnnotation
+end
 
 @[MyAnnotation(1,2,3,4)]
 def annotation_read
@@ -105,16 +110,21 @@ Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Cryst
 
 **NOTE:** If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
 
-The [`@type`](./macros.md#type-information) and [`@def`](./macros.md#method-information) variables can be used to get `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
+The [`@type`](./macros.md#type-information) and [`@def`](./macros.md#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 
 **NOTE:** `TypeNode.instance_vars` currently only works in the context of an instance/class method.
 
 ```crystal
-annotation MyClass; end
-annotation MyMethod; end
-annotation MyIvar; end
+annotation MyClass
+end
+
+annotation MyMethod
+end
+
+annotation MyIvar
+end
 
 @[MyClass]
 class Foo
@@ -155,7 +165,8 @@ pp {{Foo.annotation(MyClass).stringify}}
 If there are multiple annotations of the same type applied to the same instance variable/method/type, the `.annotations(type : TypeNode)` method can be used.  This will work on anything that `.annotation(type : TypeNode)` would, but instead returns an `ArrayLiteral(Annotation)`.
 
 ```crystal
-annotation MyAnnotation; end
+annotation MyAnnotation
+end
 
 @[MyAnnotation("foo")]
 @[MyAnnotation(123)]
