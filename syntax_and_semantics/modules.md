@@ -121,5 +121,5 @@ A module cannot be instantiated:
 module Moo
 end
 
-Moo.new # undefined method 'new' for Moo:Class
+Moo.new # undefined method 'new' for Moo:Module
 ```
