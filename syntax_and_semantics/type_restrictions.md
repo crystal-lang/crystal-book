@@ -110,6 +110,12 @@ Note that `self` always represents a match against an instance type, even in cla
 
 ```crystal
 class Person
+  getter name : String
+  
+  def initialize(@name)
+  
+  end
+  
   def self.compare(p1 : self, p2 : self)
     p1.name == p2.name
   end
