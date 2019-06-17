@@ -20,3 +20,4 @@ Crystal provides several literals for creating values of some basic types.
 | [Tuple](./literals/tuple.html)            | `{1, "hello", 'x'}`                         |
 | [NamedTuple](./literals/named_tuple.html) | `{name: "Crystal", year: 2011}`, `{"this is a key": 1}`|
 | [Proc](./literals/proc.html)              | `->(x : Int32, y : Int32) { x + y }`        |
+| [Command](./literals/command.html)        | `` `echo foo`, `echo #{foo}`, %x(echo #{bar}) ``       |
