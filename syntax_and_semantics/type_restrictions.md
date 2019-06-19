@@ -1,6 +1,6 @@
 # Type restrictions
 
-Type restrictions are type annotations put to method arguments to restrict the types accepted by that method.
+Type restrictions are applied to method arguments to restrict the types accepted by that method.
 
 ```crystal
 def add(x : Number, y : Number)
@@ -8,7 +8,7 @@ def add(x : Number, y : Number)
 end
 
 # Ok
-add 1, 2 # Ok
+add 1, 2
 
 # Error: no overload matches 'add' with types Bool, Bool
 add true, false
