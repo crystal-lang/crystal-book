@@ -1,7 +1,7 @@
 # Literals
 
 Crystal provides several literals for creating values of some basic types.
- 
+
 | Literal                                   | Sample values                               |
 |---                                        |---                                          |
 | [Nil](./literals/nil.html)                | `nil`                                       |
