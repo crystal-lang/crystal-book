@@ -1,6 +1,6 @@
 # offsetof
 
-The `offsetof` instruction returns the byte offset of an instance variable in a struct or class type. It accepts the type as first argument and the instance variable name prefixed by an `@` as second argument:
+An `offsetof` expression returns the byte offset of an instance variable in a struct or class type. It accepts the type as first argument and the instance variable name prefixed by an `@` as second argument:
 
 ```cr
 offsetof(Type, @ivar)
