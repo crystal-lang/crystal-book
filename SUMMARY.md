@@ -81,6 +81,7 @@
            * [Class variables](syntax_and_semantics/class_variables.md)
            * [finalize](syntax_and_semantics/finalize.md)
        * [Modules](syntax_and_semantics/modules.md)
+           * [Type Checking](syntax_and_semantics/module_type_checking.md)
        * [Generics](syntax_and_semantics/generics.md)
        * [Structs](syntax_and_semantics/structs.md)
        * [Constants](syntax_and_semantics/constants.md)
