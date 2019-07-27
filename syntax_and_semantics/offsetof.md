@@ -7,7 +7,6 @@ offsetof(Type, @ivar)
 ```
 
 This is a low-level primitive and only useful if a C API needs to directly interface with the data layout of a Crystal type.
-It returns the value of [`LLVMOffsetOfElement`](http://llvm.org/doxygen/group__LLVMCTarget.html#ga9971347f4072d348862519bbacbd71a7).
 
 Example:
 ```cr
