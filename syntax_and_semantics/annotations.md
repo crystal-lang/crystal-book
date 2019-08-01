@@ -78,6 +78,39 @@ end
 annotation_value # => 2
 ```
 
+The `named_args` method can be used to read all key/value pairs on an annotation as a `NamedTupleLiteral`.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(value: 2, name: "Jim")]
+def annotation_named_args
+  {{@def.annotation(MyAnnotation).named_args}}
+end
+
+puts annotation_named_args # => {value: 2, name: "Jim"}
+```
+
+This can also be used within macros.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(value: 2, name: "Jim")]
+def annotation_named_args
+  {% begin %}
+    {% args = @def.annotation(MyAnnotation).named_args %}
+
+   # The key name can be a `String`, `Symbol`, or `MacroId`
+   %(Name: {{args[:name]}} ---- Value: {{args["value"]}})
+  {% end %}
+end
+
+puts annotation_named_args # => Name: "Jim" ---- Value: 2
+```
+
 ### Positional
 
 Positional values can be accessed at compile time via the [`[]`](<https://crystal-lang.org/api/Crystal/Macros/Annotation.html#%5B%5D%28index%3ANumberLiteral%29%3AASTNode-instance-method>) method; however, only one index can be accessed at a time.
@@ -86,9 +119,9 @@ Positional values can be accessed at compile time via the [`[]`](<https://crysta
 annotation MyAnnotation
 end
 
-@[MyAnnotation(1,2,3,4)]
+@[MyAnnotation(1, 2, 3, 4)]
 def annotation_read
-  {% for idx in [0,1,2,3,4] %}
+  {% for idx in [0, 1, 2, 3, 4] %}
     {% value = @def.annotation(MyAnnotation)[idx] %}
     pp "{{idx}} = {{value}}"
   {% end %}
@@ -102,6 +135,42 @@ annotation_read
 "2 = 3"
 "3 = 4"
 "4 = nil"
+```
+
+The `args` method can be used to read all positional arguments on an annotation as a `TupleLiteral`.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(1, 2, 3, 4)]
+def annotation_args
+  {{@def.annotation(MyAnnotation).args}}
+end
+
+puts annotation_args # => {1, 2, 3, 4}
+```
+
+This can also be used within macros, which allows us to rewrite the first example in a better way.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(1, "foo", true, 17.0)]
+def annotation_read
+  {% for value, idx in @def.annotation(MyAnnotation).args %}
+    pp "{{idx}} = #{{{value}}}"
+  {% end %}
+end
+
+annotation_read
+
+# Which would print
+"0 = 1"
+"1 = foo"
+"2 = true"
+"3 = 17.0"
 ```
 
 ## Reading
@@ -184,4 +253,3 @@ annotation_read
 "Annotation 1 = 123"
 "Annotation 2 = 123"
 ```
-
