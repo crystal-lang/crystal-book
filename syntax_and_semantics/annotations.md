@@ -78,7 +78,7 @@ end
 annotation_value # => 2
 ```
 
-The `named_args` method can be used to read all key/value pairs on an annotation as a `NamedTupleLiteral`.
+The `named_args` method can be used to read all key/value pairs on an annotation as a `NamedTupleLiteral`.  This method is defined on all annotations by default, and is unique to each applied annotation.
 
 ```crystal
 annotation MyAnnotation
@@ -89,26 +89,27 @@ def annotation_named_args
   {{@def.annotation(MyAnnotation).named_args}}
 end
 
-puts annotation_named_args # => {value: 2, name: "Jim"}
+annotation_named_args # => {value: 2, name: "Jim"}
 ```
 
-This can also be used within macros.
+Since this method returns a `NamedTupleLiteral`, all of the [methods](https://crystal-lang.org/api/Crystal/Macros/NamedTupleLiteral.html) on that type are available for use.  Especially `#double_splat` which makes it easy to pass annotation arguments to classes.
 
 ```crystal
 annotation MyAnnotation
 end
 
-@[MyAnnotation(value: 2, name: "Jim")]
-def annotation_named_args
-  {% begin %}
-    {% args = @def.annotation(MyAnnotation).named_args %}
+class SomeClass
+  def initialize(@value : Int32, @name : String); end
+end
 
-   # The key name can be a `String`, `Symbol`, or `MacroId`
-   %(Name: {{args[:name]}} ---- Value: {{args["value"]}})
+@[MyAnnotation(value: 2, name: "Jim")]
+def new_test
+  {% begin %}
+    SomeClass.new {{@def.annotation(MyAnnotation).named_args.double_splat}}
   {% end %}
 end
 
-puts annotation_named_args # => Name: "Jim" ---- Value: 2
+new_test # => #<SomeClass:0x5621a19ddf00 @name="Jim", @value=2>
 ```
 
 ### Positional
@@ -137,7 +138,7 @@ annotation_read
 "4 = nil"
 ```
 
-The `args` method can be used to read all positional arguments on an annotation as a `TupleLiteral`.
+The `args` method can be used to read all positional arguments on an annotation as a `TupleLiteral`.  This method is defined on all annotations by default, and is unique to each applied annotation.
 
 ```crystal
 annotation MyAnnotation
@@ -148,10 +149,10 @@ def annotation_args
   {{@def.annotation(MyAnnotation).args}}
 end
 
-puts annotation_args # => {1, 2, 3, 4}
+annotation_args # => {1, 2, 3, 4}
 ```
 
-This can also be used within macros, which allows us to rewrite the first example in a better way.
+Since the return type of `TupleLiteral` is iterable, we can rewrite the previous example in a better way.  By extension, all of the [methods](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) on `TupleLiteral` are available for use as well.
 
 ```crystal
 annotation MyAnnotation
