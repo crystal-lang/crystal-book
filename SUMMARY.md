@@ -11,6 +11,7 @@
    * [On FreeBSD](installation/on_freebsd.md)
    * [On macOS using Homebrew](installation/on_mac_osx_using_homebrew.md)
    * [On Linux using Linuxbrew](installation/on_linux_using_linuxbrew.md)
+   * [On Linux using Snap](installation/on_linux_using_snap.md)
    * [On Windows Subsystem for Linux](installation/on_bash_on_ubuntu_on_windows.md)
    * [From a tar.gz](installation/from_a_targz.md)
    * [From sources](installation/from_source_repository.md)
