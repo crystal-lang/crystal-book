@@ -72,10 +72,44 @@ end
 @[MyAnnotation(value: 2)]
 def annotation_value
   # The name can be a `String`, `Symbol`, or `MacroId`
-  {{@def.annotation(MyAnnotation)[:value]}}
+  {{ @def.annotation(MyAnnotation)[:value] }}
 end
 
 annotation_value # => 2
+```
+
+The `named_args` method can be used to read all key/value pairs on an annotation as a `NamedTupleLiteral`.  This method is defined on all annotations by default, and is unique to each applied annotation.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(value: 2, name: "Jim")]
+def annotation_named_args
+  {{ @def.annotation(MyAnnotation).named_args }}
+end
+
+annotation_named_args # => {value: 2, name: "Jim"}
+```
+
+Since this method returns a `NamedTupleLiteral`, all of the [methods](https://crystal-lang.org/api/Crystal/Macros/NamedTupleLiteral.html) on that type are available for use.  Especially `#double_splat` which makes it easy to pass annotation arguments to methods.
+
+```crystal
+annotation MyAnnotation
+end
+
+class SomeClass
+  def initialize(@value : Int32, @name : String); end
+end
+
+@[MyAnnotation(value: 2, name: "Jim")]
+def new_test
+  {% begin %}
+    SomeClass.new {{ @def.annotation(MyAnnotation).named_args.double_splat }}
+  {% end %}
+end
+
+new_test # => #<SomeClass:0x5621a19ddf00 @name="Jim", @value=2>
 ```
 
 ### Positional
@@ -86,11 +120,11 @@ Positional values can be accessed at compile time via the [`[]`](<https://crysta
 annotation MyAnnotation
 end
 
-@[MyAnnotation(1,2,3,4)]
+@[MyAnnotation(1, 2, 3, 4)]
 def annotation_read
-  {% for idx in [0,1,2,3,4] %}
+  {% for idx in [0, 1, 2, 3, 4] %}
     {% value = @def.annotation(MyAnnotation)[idx] %}
-    pp "{{idx}} = {{value}}"
+    pp "{{ idx }} = {{ value }}"
   {% end %}
 end
 
@@ -102,6 +136,42 @@ annotation_read
 "2 = 3"
 "3 = 4"
 "4 = nil"
+```
+
+The `args` method can be used to read all positional arguments on an annotation as a `TupleLiteral`.  This method is defined on all annotations by default, and is unique to each applied annotation.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(1, 2, 3, 4)]
+def annotation_args
+  {{ @def.annotation(MyAnnotation).args }}
+end
+
+annotation_args # => {1, 2, 3, 4}
+```
+
+Since the return type of `TupleLiteral` is iterable, we can rewrite the previous example in a better way.  By extension, all of the [methods](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) on `TupleLiteral` are available for use as well.
+
+```crystal
+annotation MyAnnotation
+end
+
+@[MyAnnotation(1, "foo", true, 17.0)]
+def annotation_read
+  {% for value, idx in @def.annotation(MyAnnotation).args %}
+    pp "{{ idx }} = #{{{ value }}}"
+  {% end %}
+end
+
+annotation_read
+
+# Which would print
+"0 = 1"
+"1 = foo"
+"2 = true"
+"3 = 17.0"
 ```
 
 ## Reading
@@ -128,7 +198,7 @@ end
 
 @[MyClass]
 class Foo
-  pp {{@type.annotation(MyClass).stringify}}
+  pp {{ @type.annotation(MyClass).stringify }}
   
   @[MyIvar]
   @num : Int32 = 1
@@ -138,19 +208,19 @@ class Foo
 
   def properties
     {% for ivar in @type.instance_vars %}
-      pp {{ivar.annotation(MyIvar).stringify}}
+      pp {{ ivar.annotation(MyIvar).stringify }}
     {% end %}
   end
 end
 
 @[MyMethod]
 def my_method
-  pp {{@def.annotation(MyMethod).stringify}}
+  pp {{ @def.annotation(MyMethod).stringify }}
 end
 
 Foo.new.properties
 my_method
-pp {{Foo.annotation(MyClass).stringify}}
+pp {{ Foo.annotation(MyClass).stringify }}
 
 # Which would print
 "@[MyClass]"
@@ -173,7 +243,7 @@ end
 @[MyAnnotation(123)]
 def annotation_read
   {% for ann, idx in @def.annotations(MyAnnotation) %}
-    pp "Annotation {{idx}} = {{ann[0].id}}"
+    pp "Annotation {{ idx }} = {{ ann[0].id }}"
   {% end %}
 end
 
@@ -184,4 +254,3 @@ annotation_read
 "Annotation 1 = 123"
 "Annotation 2 = 123"
 ```
-
