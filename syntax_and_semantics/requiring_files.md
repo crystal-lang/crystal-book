@@ -16,24 +16,56 @@ The lookup goes like this:
 
 * If a file named "filename.cr" is found in the require path, it is required.
 * If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
+* If a directory named "filename" is found with a directory "src" in it and it contains a file named "filename.cr" directly underneath it, it is required.
+* If a directory named "filename" is found with a directory "src" in it and it contains a directory named "filename" directly underneath it with a "filename.cr" file inside it, it is required.
 * Otherwise a compile-time error is issued.
 
-The second rule is very convenient because of the typical directory structure of a project:
+The second rule means that in addition to having this:
+
+```
+- project
+  - src
+    - file
+      - sub1.cr
+      - sub2.cr
+    - file.cr (requires "./file/*")
+```
+
+you can have it like this:
+
+```
+- project
+  - src
+    - file
+      - file.cr (requires "./*")
+      - sub1.cr
+      - sub2.cr
+```
+
+which might be a bit cleaner depending on your taste.
+
+The third rule is very convenient because of the typical directory structure of a project:
 
 ```
 - project
   - lib
     - foo
-      foo.cr
+      - src
+        - foo.cr
     - bar
-      bar.cr
+      - src
+        - bar.cr
   - src
     - project.cr
   - spec
     - project_spec.cr
 ```
 
+That is, inside "lib/{project}" each project's directory exists (`src`, `spec`, `README.md` and so on)
+
 For example, if you put `require "foo"` in `project.cr` and run `crystal src/project.cr` in the project's root directory, it will find `foo` in `lib/foo/foo.cr`.
+
+The fourth rule is the second rule applied to the third rule.
 
 If you run the compiler from somewhere else, say the `src` folder, `lib` will not be in the path and `require "foo"` can't be resolved.
 
@@ -58,7 +90,7 @@ require "../src/project"
 
 In both cases you can use nested names and they will be looked up in nested directories:
 
-* `require "foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" in the require path.
+* `require "foo/bar/baz"` will lookup "foo/bar/baz.cr", "foo/bar/baz/baz.cr", "foo/src/bar/baz.cr" or "foo/src/bar/baz/baz.cr" in the require path.
 * `require "./foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" relative to the current file.
 
 You can also use "../" to access parent directories relative to the current file, so `require "../../foo/bar"` works as well.
