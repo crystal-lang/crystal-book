@@ -38,7 +38,7 @@ class Items
 end
 
 items = Items.new
-items.size #=> 3
+items.size # => 3
 ```
 
 In the above example, it is as if we pasted the `size` method from the module into the `Items` class. The way this really works is by making each type have a list of ancestors, or parents. By default this list starts with the superclass. As modules are included they are **prepended** to this list. When a method is not found in a type it is looked up in this list. When you invoke `super`, the first type in this ancestors list is used.
@@ -58,7 +58,7 @@ class Items
   extend SomeSize
 end
 
-Items.size #=> 3
+Items.size # => 3
 ```
 
 Both `include` and `extend` make constants defined in the module available to the including/extending type.
@@ -102,7 +102,7 @@ end
 In this way a module can be used as a namespace:
 
 ```crystal
-Base64.encode64 "hello" #=> "aGVsbG8="
+Base64.encode64 "hello" # => "aGVsbG8="
 ```
 
 But also it can be included in the program and its methods can be invoked without a namespace:
@@ -110,7 +110,7 @@ But also it can be included in the program and its methods can be invoked withou
 ```crystal
 include Base64
 
-encode64 "hello" #=> "aGVsbG8="
+encode64 "hello" # => "aGVsbG8="
 ```
 
 For this to be useful the method name should have some reference to the module, otherwise chances of name clashes are high.
@@ -121,7 +121,7 @@ A module cannot be instantiated:
 module Moo
 end
 
-Moo.new # undefined method 'new' for Moo:Module
+Moo.new   # undefined method 'new' for Moo:Module
 ```
 
 # Module Type Checking
@@ -157,13 +157,13 @@ included modules as well:
 ```crystal
 one = One.new
 typeof(one)   # => One
-one.is_a?(A)  #=> true
-one.is_a?(B)  #=> false
+one.is_a?(A)  # => true
+one.is_a?(B)  # => false
 
 three = Three.new
-typeof(three)   #=> Three
-three.is_a?(A)  #=> true
-three.is_a?(B)  #=> true
+typeof(three)   # => Three
+three.is_a?(A)  # => true
+three.is_a?(B)  # => true
 ```
 
 This allows you to define arrays and methods based on module type instead of class:
@@ -175,7 +175,7 @@ three = Three.new
 
 new_array = Array(A).new
 new_array << one    # Ok, One inherits module A
-new_array << three  #=> Ok, three includes module A
+new_array << three  # Ok, Three includes module A
 
-new_array << two # Error, because Two does not inherit module A
+new_array << two    # Error, because Two does not inherit module A
 ```
