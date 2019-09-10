@@ -178,5 +178,5 @@ new_array = Array(A).new
 new_array << one    #=> Ok, one includes module A
 new_array << three  #=> Ok, three includes module A
 
-new_array << two #=> Bad, no overload matches 'Array(A)#<<' with type Two
+new_array << two # Error, because Two does not inherit module A
 ```
