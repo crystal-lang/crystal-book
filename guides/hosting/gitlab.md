@@ -94,7 +94,7 @@ And now if the pipleline has finished we'll have docs and we can link to them wi
 
 A release is just a special commit in your history with a name (see [tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)).
 
-According to [the Crystal Shards README](https://gitlab.com/crystal-lang/shards/blob/master/README.md),
+According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md),
 
 > When libraries are installed from Git repositories, the repository is expected to have version tags following a semver-like format, prefixed with a `v`. Examples: v1.2.3, v2.0.0-rc1 or v2017.04.1
 
