@@ -175,7 +175,7 @@ two = Two.new
 three = Three.new
 
 new_array = Array(A).new
-new_array << one    #=> Ok, one includes module A
+new_array << one    # Ok, One inherits module A
 new_array << three  #=> Ok, three includes module A
 
 new_array << two # Error, because Two does not inherit module A
