@@ -27,7 +27,7 @@ All arguments can also be specified, in addition to their position, by their nam
 john.become_older by: 5
 ```
 
-When there are many arguments, the order of the names in the invocation don't matter, as long as all required arguments are covered:
+When there are many arguments, the order of the names in the invocation doesn't matter, as long as all required arguments are covered:
 
 ```crystal
 def some_method(x, y = 1, z = 2, w = 3)
