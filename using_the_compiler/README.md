@@ -49,9 +49,11 @@ The `--static` flag can be used to build a statically-linked executable:
 $ crystal build hello_world.cr --release --static
 ```
 
-**NOTE:** Building statically-linked executables is currently only supported on Alpine Linux.
+**NOTE:** Building fully statical linked executables is currently only supported on Alpine Linux.
 
 More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
+
+The compiler uses the `CRYSTAL_LIBRARY_PATH` environment variable as a first lookup destination for static and dynamic libraries that are to be linked. This can be used to provide static versions of libraries that are also available as dynamic libraries.
 
 ### Creating a Crystal project
 
@@ -140,7 +142,7 @@ Hello Crystal!
 
 **Common options:**
 
-* `--o <output_file>`: Define the name of the binary executable.
+* `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
 * `--lto=thin`: Use ThinLTO, improving performance on release builds.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
@@ -213,7 +215,7 @@ in its repository and no build target in `shard.yml`, but instructions for using
 
 Example:
 ```shell-session
-$ crystal init lib mylib
+$ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore
     create  my_cool_lib/.editorconfig
     create  my_cool_lib/LICENSE
@@ -275,9 +277,10 @@ Example:
 $ crystal env
 CRYSTAL_CACHE_DIR="/home/crystal/.cache/crystal"
 CRYSTAL_PATH="/usr/bin/../share/crystal/src:lib"
-CRYSTAL_VERSION="0.25.1"
+CRYSTAL_VERSION="0.28.0"
+CRYSTAL_LIBRARY_PATH="/usr/bin/../lib/crystal/lib"
 $ crystal env CRYSTAL_VERSION
-0.25.1
+0.28.0
 ```
 
 ### `crystal spec`
@@ -339,7 +342,7 @@ The `crystal play` command starts a webserver serving an interactive Crystal pla
 crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 ```
 
-![](crystal-play.png)
+![Screenshot of Crystal playground](crystal-play.png)
 
 ### `crystal tool`
 
@@ -360,3 +363,13 @@ crystal tool format [--check] [<path>...]
 
 `path` can be a file or folder name and include all Crystal files in that folder tree. Omitting `path` is equal to
 specifying the current working directory.
+
+## Environment variables
+
+The following environment variables are used by the Crystal compiler if set in the environment. Otherwise the compiler will populate them with default values. Their values can be inspected using `[crystal env](#crystal-env)`.
+
+* `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with `[crystal env](#crystal-run)` rather than `[crystal build](#crystal-build)`.
+  Default value is the first directory that either exists or can be created of `${XDG_CACHE_HOME}/crystal` (if `XDG_CACHE_HOME` is defined), `${HOME}/.cache/crystal`, `${HOME}/.crystal`, `./.crystal`. If `CRYSTAL_CACHE_DIR` is set but points to a path that is not writeable, the default values are used instead.
+* `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
+* `CRYSTAL_VERSION` is only available as output of `crystal env`. The compiler neither sets nor reads it.
+* `CRYSTAL_LIBRARY_PATH`: The compiler uses the paths in this variable as a first lookup destination for static and dynamic libraries that are to be linked. For example, if static libraries are put in `build/libs`, setting the environment variable accordingly will tell the compiler to look for libraries there.

@@ -1,6 +1,6 @@
 # Type inference
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotations are required.
+Crystal's philosophy is to require as few type restrictions as possible. However, some restrictions are required.
 
 Consider a class definition like this:
 
@@ -12,9 +12,9 @@ class Person
 end
 ```
 
-We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
+We can quickly see that `@age` is an integer, but we don't know the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
 
-* The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
+* The type is not obvious for a human reading the code: they would also have to check all uses of `Person` to find this out.
 * Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are nearly impossible to do.
 
 As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
@@ -23,9 +23,9 @@ For this reason, Crystal needs to know, in an obvious way (as obvious as to a hu
 
 There are several ways to let Crystal know this.
 
-## With type annotations
+## With type restrictions
 
-The easiest, but probably most tedious, way is to use explicit type annotations.
+The easiest, but probably most tedious, way is to use explicit type restrictions.
 
 ```crystal
 class Person
@@ -38,13 +38,13 @@ class Person
 end
 ```
 
-## Without type annotations
+## Without type restrictions
 
-If you omit an explicit type annotation the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
+If you omit an explicit type restriction, the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
 
 For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
 
-The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type annotation.
+The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type restriction.
 
 The following rules only mention instance variables, but they apply to class variables as well. They are:
 
@@ -143,11 +143,11 @@ class Person
 end
 ```
 
-In the above case, the compiler will still infer `@name` to be `String`, and later will give a compile time error, when fully typing that method, saying that `Int32` can't be assigned to a variable of type `String`. Use an explicit type annotation if `@name` isn't supposed to be a `String`.
+In the above case, the compiler will still infer `@name` to be `String`, and later will give a compile time error, when fully typing that method, saying that `Int32` can't be assigned to a variable of type `String`. Use an explicit type restriction if `@name` isn't supposed to be a `String`.
 
-### 4. Assigning the result of a class method that has a return type annotation
+### 4. Assigning the result of a class method that has a return type restriction
 
-In the following example, `@address` is inferred to be `Address`, because the class method `Address.unknown` has a return type annotation of `Address`.
+In the following example, `@address` is inferred to be `Address`, because the class method `Address.unknown` has a return type restriction of `Address`.
 
 ```crystal
 class Person
@@ -166,7 +166,7 @@ class Address
 end
 ```
 
-In fact, the above code doesn't need the return type annotation in `self.unknown`. The reason is that the compiler will also look at a class method's body and if it can apply one of the previous rules (it's a `new` method, or it's a literal, etc.) it will infer the type from that expression. So, the above can be simply written like this:
+In fact, the above code doesn't need the return type restriction in `self.unknown`. The reason is that the compiler will also look at a class method's body and if it can apply one of the previous rules (it's a `new` method, or it's a literal, etc.) it will infer the type from that expression. So, the above can be simply written like this:
 
 ```crystal
 class Person
@@ -176,7 +176,7 @@ class Person
 end
 
 class Address
-  # No need for a return type annotation here
+  # No need for a return type restriction here
   def self.unknown
     new("unknown")
   end
@@ -209,7 +209,7 @@ class Person
 end
 ```
 
-The default value can also be a `Type.new(...)` method or a class method with a return type annotation.
+The default value can also be a `Type.new(...)` method or a class method with a return type restriction.
 
 ### 6. Assigning the result of invoking a `lib` function
 
@@ -249,7 +249,7 @@ end
 
 ### Other rules
 
-The compiler will try to be as smart as possible to require less explicit type annotations. For example, if assigning an `if` expression, type will be inferred from the `then` and `else` branches:
+The compiler will try to be as smart as possible to require less explicit type restrictions. For example, if assigning an `if` expression, type will be inferred from the `then` and `else` branches:
 
 ```crystal
 class Person
@@ -259,7 +259,7 @@ class Person
 end
 ```
 
-Because the `if` above (well, technically a ternary operator, but it's similar to an `if`) has integer literals, `@age` is successfully inferred to be `Int32` without requiring a redundant type annotation.
+Because the `if` above (well, technically a ternary operator, but it's similar to an `if`) has integer literals, `@age` is successfully inferred to be `Int32` without requiring a redundant type restriction.
 
 Another case is `||` and `||=`:
 

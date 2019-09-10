@@ -33,6 +33,7 @@ sudo apt install libxml2-dev     # for using XML
 sudo apt install libyaml-dev     # for using YAML
 sudo apt install libgmp-dev      # for using Big numbers
 sudo apt install libreadline-dev # for using Readline
+sudo apt install libz-dev        # for using crystal play
 ```
 
 For building the Crystal compiler itself, a few other dependencies are needed, see [wiki page](https://github.com/crystal-lang/crystal/wiki/All-required-libraries#ubuntu). They are not required for regular compiler use.

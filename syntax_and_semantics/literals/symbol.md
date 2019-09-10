@@ -53,7 +53,7 @@ Internally, symbols are implemented as constants with a numeric value of type `I
 
 ## Percent symbol array literal
 
-Besides the single symbol literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of symbols. It is indicated by `%i` and a pair of delimiters. Valid delimiters are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
+Besides the single symbol literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of symbols. It is indicated by `%i` and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested; meaning a start delimiter inside the string escapes the next end delimiter.
 
 ```crystal
 %i(foo bar baz) # => [:foo, :bar, :baz]

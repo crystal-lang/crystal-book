@@ -1,6 +1,6 @@
 # Type restrictions
 
-Type restrictions are type annotations put to method arguments to restrict the types accepted by that method.
+Type restrictions are applied to method arguments to restrict the types accepted by that method.
 
 ```crystal
 def add(x : Number, y : Number)
@@ -8,7 +8,7 @@ def add(x : Number, y : Number)
 end
 
 # Ok
-add 1, 2 # Ok
+add 1, 2
 
 # Error: no overload matches 'add' with types Bool, Bool
 add true, false
@@ -110,6 +110,11 @@ Note that `self` always represents a match against an instance type, even in cla
 
 ```crystal
 class Person
+  getter name : String
+  
+  def initialize(@name)
+  end
+  
   def self.compare(p1 : self, p2 : self)
     p1.name == p2.name
   end

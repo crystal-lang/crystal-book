@@ -4,7 +4,7 @@ If you want to contribute then you might want to install Crystal from sources.
 
 1. [Install the latest Crystal release](https://crystal-lang.org/docs/installation). To compile Crystal, you need Crystal :).
 
-2. Make sure a supported LLVM version is present in the path. Currently, Crystal supports LLVM 3.8, 3.9, 4.0, and 5.0. When possible, use the latest one.
+2. Make sure a supported LLVM version is present in the path. Currently, Crystal supports LLVM 3.8, 3.9, 4.0, 5.0 and 6.0. When possible, use the latest supported version (6.0).
 
 3. Make sure to install [all the required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). You might also want to read the [contributing guide](https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md).
 

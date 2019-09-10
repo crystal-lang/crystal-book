@@ -65,7 +65,7 @@ b = 2
 "sum: #{a} + #{b} = #{a + b}" # => "sum: 1 + 2 = 3"
 ```
 
-String interpolation is also possible with [String#%](https://crystal-lang.org/api/master/String.html#%25(other)-instance-method).
+String interpolation is also possible with [String#%](https://crystal-lang.org/api/String.html#%25%28other%29-instance-method).
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
 
@@ -91,7 +91,7 @@ end
 
 # Percent string literals
 
-Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
+Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
 
 These are handy to write strings that include double quotes which would have to be escaped in double-quoted strings.
 
@@ -113,7 +113,7 @@ name = "world"
 
 ## Percent string array literal
 
-Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#Percent string literals).
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
 %w(foo bar baz) # => ["foo", "bar", "baz"]
@@ -172,31 +172,31 @@ XML
 Leading whitespace is removed from the heredoc contents according to the number of whitespace in the last line before the heredoc identifier.
 
 ```crystal
-<<-STRING
+<<-STRING # => "Hello\n  world"
   Hello
     world
-  STRING # => "Hello\n  world"
+  STRING
 
-<<-STRING
+<<-STRING # => "  Hello\n    world"
     Hello
       world
-  STRING # => "  Hello\n    world"
+  STRING
 ```
 
 It is possible to directly call methods on heredoc string literals, or use them inside parentheses:
 
 ```crystal
-<<-SOME
+<<-SOME.upcase # => "HELLO"
 hello
-SOME.upcase # => "HELLO"
+SOME
 
 def upcase(string)
   string.upcase
 end
 
-upcase(<<-SOME
+upcase(<<-SOME) # => "HELLO"
   hello
-  SOME) # => "HELLO"
+  SOME
 ```
 
 A heredoc generally allows interpolation and escapes.
@@ -204,7 +204,7 @@ A heredoc generally allows interpolation and escapes.
 To denote a heredoc without interpolation or escapes, the opening heredoc identifier is enclosed in single quotes:
 
 ```crystal
-<<-'HERE'
+<<-'HERE' # => "hello \\n \#{world}"
   hello \n #{world}
-  HERE # => "hello \\n \#{world}"
+  HERE
 ```

@@ -1,10 +1,19 @@
-# Attributes
+The Crystal standard library includes some pre-defined annotations:
 
-Some types and methods can be annotated with attributes. The attribute list is fixed, but eventually (maybe) there will be user-defined attributes.
+* [Link](#link)
+* [Extern](#extern)
+* [ThreadLocal](#threadlocal)
+* [Packed](#packed)
+* [AlwaysInline](#alwaysinline)
+* [NoInline](#noinline)
+* [ReturnsTwice](#returnstwice)
+* [Raises](#raises)
+* [CallConvention](#callconvention)
+* [Flags](#flags)
 
 ## Link
 
-Tells the compiler how to link a C library. This is explained in the [lib](c_bindings/lib.html) section.
+Tells the compiler how to link a C library. This is explained in the [lib](../c_bindings/lib.html) section.
 
 ## Extern
 
@@ -55,7 +64,7 @@ needed or used outside it.
 
 ## Packed
 
-Marks a [C struct](c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
+Marks a [C struct](../c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
 
 ## AlwaysInline
 
@@ -81,15 +90,15 @@ end
 
 ## ReturnsTwice
 
-Marks a method or [lib fun](c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
+Marks a method or [lib fun](../c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
 
 ## Raises
 
-Marks a method or [lib fun](c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](c_bindings/callbacks.html) section.
+Marks a method or [lib fun](../c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](../c_bindings/callbacks.html) section.
 
 ## CallConvention
 
-Indicates the call convention of a [lib fun](c_bindings/fun.html). For example:
+Indicates the call convention of a [lib fun](../c_bindings/fun.html). For example:
 
 ```crystal
 lib LibFoo
@@ -112,4 +121,4 @@ They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions)
 
 ## Flags
 
-Marks an [enum](enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+Marks an [enum](../enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
