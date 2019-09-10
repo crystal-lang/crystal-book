@@ -156,7 +156,7 @@ included modules as well:
 
 ```crystal
 one = One.new
-typeof(one)   #=> One
+typeof(one)   # => One
 one.is_a?(A)  #=> true
 one.is_a?(B)  #=> false
 
