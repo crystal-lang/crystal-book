@@ -134,6 +134,7 @@
    * [Documenting code](conventions/documenting_code.md)
 * [Database](database/README.md)
   * [Connection pool](database/connection_pool.md)
+  * [Transactions](database/transactions.md)
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
