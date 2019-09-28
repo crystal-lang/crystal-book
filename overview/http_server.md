@@ -7,7 +7,7 @@ require "http/server"
 
 server = HTTP::Server.new do |context|
   context.response.content_type = "text/plain"
-  context.response.print "Hello world! The time is #{Time.now}"
+  context.response.print "Hello world! The time is #{Time.local}"
 end
 
 address = server.bind_tcp 8080
@@ -38,7 +38,7 @@ The above code will make sense once you read the whole language reference, but w
     ```crystal
     HTTP::Server.new ...
     ...
-    Time.now
+    Time.local
     ...
     address = server.bind_tcp 8080
     ...
@@ -58,6 +58,6 @@ The above code will make sense once you read the whole language reference, but w
 * You can easily create strings with embedded content, known as string interpolation. The language comes with other [syntax](../syntax_and_semantics/literals.html) as well to create arrays, hashes, ranges, tuples and more:
 
     ```crystal
-    "Hello world! The time is #{Time.now}"
+    "Hello world! The time is #{Time.local}"
     ``` 
 
