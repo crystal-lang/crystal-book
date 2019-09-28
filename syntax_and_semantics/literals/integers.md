@@ -1,6 +1,6 @@
 # Integers
 
-There are four signed integer types, and four unsigned integer types:
+There are five signed integer types, and five unsigned integer types:
 
 Type | Length  | Minimum Value | Maximum Value
  ---------- | -----------: | -----------: |-----------:
