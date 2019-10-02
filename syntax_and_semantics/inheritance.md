@@ -138,7 +138,9 @@ class Test
 end
 ```
 
-because in the initialize the default type for @arr is `Array(Bar)` but the required type is `Array(Foo)`. You can solve this by specifying the type explicitly:
+we've declared `@arr` as type `Array(Foo)` so we may be tempted to think that we can start putting `Bar`s in there. Not quite. In the `initialize`, the type of the `[Bar.new]` expression is `Array(Bar)`, period. And `Array(Bar)` is *not* assignable to an `Array(Foo)` instance var. 
+
+What's the right way to do this? Change the expression so that it *is* of the right type: `Array(Foo)` (see example above).
 
 ```crystal
 class Foo
@@ -155,4 +157,6 @@ class Test
 end
 ```
 
-The way Crystal handles the bigger topic of [covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29) in general, has more tricks and pitfalls to it, so you may be interested in [this issue / discussion](https://github.com/crystal-lang/crystal/issues/3803) for more reading.
+This is just one type (Array) and one operation (assignment), the logic of the above will be applied differently for other types and assignments, in general [Covariance and Contravariance][1] is not fully supported.
+
+[1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29
