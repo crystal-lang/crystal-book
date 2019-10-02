@@ -159,4 +159,4 @@ end
 
 This is just one type (Array) and one operation (assignment), the logic of the above will be applied differently for other types and assignments, in general [Covariance and Contravariance][1] is not fully supported.
 
-[1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
+[1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29

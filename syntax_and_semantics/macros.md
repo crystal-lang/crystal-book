@@ -17,7 +17,7 @@ end
 #     end
 define_method foo, 1
 
-foo #=> 1
+foo # => 1
 ```
 
 A macro's definition body looks like regular Crystal code with extra syntax to manipulate the AST nodes. The generated code must be valid Crystal code, meaning that you can't for example generate a `def` without a matching `end`, or a single `when` expression of a `case`, since both of them are not complete valid expressions. Refer to [Pitfalls](#pitfalls) for more information.
@@ -41,7 +41,7 @@ class Foo
   end
 end
 
-Foo.new.yield_with_self { emphasize(10) } #=> "***10***"
+Foo.new.yield_with_self { emphasize(10) } # => "***10***"
 ```
 
 Macros defined in classes and modules can be invoked from outside of them too:
@@ -71,13 +71,13 @@ Note that the node is pasted as-is. If in the previous example we pass a symbol,
 define_method :foo, 1
 ```
 
-Note that `:foo` was the result of the interpolation, because that's what was passed to the macro. You can use the method `ASTNode#id` in these cases, where you just need an identifier.
+Note that `:foo` was the result of the interpolation, because that's what was passed to the macro. You can use the method [`ASTNode#id`](https://crystal-lang.org/api/Crystal/Macros/ASTNode.html#id%3AMacroId-instance-method) in these cases, where you just need an identifier.
 
 ## Macro calls
 
 You can invoke a **fixed subset** of methods on AST nodes at compile-time. These methods are documented in a fictitious [Crystal::Macros](http://crystal-lang.org/api/Crystal/Macros.html) module.
 
-For example, invoking `ASTNode#id` in the above example solves the problem:
+For example, invoking [`ASTNode#id`](https://crystal-lang.org/api/Crystal/Macros/ASTNode.html#id%3AMacroId-instance-method) in the above example solves the problem:
 
 ```crystal
 macro define_method(name, content)
@@ -149,12 +149,12 @@ define_method foo, 1
 define_method bar, 2
 define_method baz, 3
 
-foo #=> one
-bar #=> two
-baz #=> 3
+foo # => one
+bar # => two
+baz # => 3
 ```
 
-Similar to regular code, `Nop`, `NilLiteral` and a false `BoolLiteral` are considered *falsey*, while everything else is considered truthy.
+Similar to regular code, [`Nop`](https://crystal-lang.org/api/Crystal/Macros/Nop.html), [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html) and a false [`BoolLiteral`](https://crystal-lang.org/api/Crystal/Macros/BoolLiteral.html) are considered *falsey*, while everything else is considered *truthy*.
 
 Macro conditionals can be used outside a macro definition:
 
@@ -177,12 +177,12 @@ end
 
 define_constants(3)
 
-PI_1 #=> 3.14159...
-PI_2 #=> 6.28318...
-PI_3 #=> 9.42477... 
+PI_1 # => 3.14159...
+PI_2 # => 6.28318...
+PI_3 # => 9.42477...
 ```
 
-To iterate an `ArrayLiteral`:
+To iterate an [`ArrayLiteral`](https://crystal-lang.org/api/Crystal/Macros/ArrayLiteral.html):
 
 ```crystal
 macro define_dummy_methods(names)
@@ -195,14 +195,14 @@ end
 
 define_dummy_methods [foo, bar, baz]
 
-foo #=> 0
-bar #=> 1
-baz #=> 2
+foo # => 0
+bar # => 1
+baz # => 2
 ```
 
 The `index` variable in the above example is optional.
 
-To iterate a `HashLiteral`:
+To iterate a [`HashLiteral`](https://crystal-lang.org/api/Crystal/Macros/HashLiteral.html):
 
 ```crystal
 macro define_dummy_methods(hash)
@@ -213,8 +213,8 @@ macro define_dummy_methods(hash)
   {% end %}
 end
 define_dummy_methods({foo: 10, bar: 20})
-foo #=> 10
-bar #=> 20
+foo # => 10
+bar # => 20
 ```
 
 Macro iterations can be used outside a macro definition:
@@ -226,9 +226,9 @@ Macro iterations can be used outside a macro definition:
   end
 {% end %}
 
-foo #=> 0
-bar #=> 1
-baz #=> 2
+foo # => 0
+bar # => 1
+baz # => 2
 ```
 
 ## Variadic arguments and splatting
@@ -246,14 +246,14 @@ end
 
 define_dummy_methods foo, bar, baz
 
-foo #=> 0
-bar #=> 1
-baz #=> 2
+foo # => 0
+bar # => 1
+baz # => 2
 ```
 
-The arguments are packed into an `ArrayLiteral` and passed to the macro.
+The arguments are packed into an [`ArrayLiteral`](https://crystal-lang.org/api/Crystal/Macros/ArrayLiteral.html) and passed to the macro.
 
-Additionally, using `*` when interpolating an `ArrayLiteral` interpolates the elements separated by commas:
+Additionally, using `*` when interpolating an [`ArrayLiteral`](https://crystal-lang.org/api/Crystal/Macros/ArrayLiteral.html) interpolates the elements separated by commas:
 
 ```crystal
 macro println(*values)
@@ -265,7 +265,7 @@ println 1, 2, 3 # outputs 123\n
 
 ## Type information
 
-When a macro is invoked you can access the current scope, or type, with a special instance variable: `@type`. The type of this variable is `TypeNode`, which gives you access to type information at compile time.
+When a macro is invoked you can access the current scope, or type, with a special instance variable: `@type`. The type of this variable is [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), which gives you access to type information at compile time.
 
 Note that `@type` is always the *instance* type, even when the macro is invoked in a class method.
 
@@ -276,7 +276,7 @@ macro add_describe_methods
   def describe
     "Class is: " + {{ @type.stringify }}
   end
-  
+
   def self.describe
     "Class is: " + {{ @type.stringify }}
   end
@@ -286,8 +286,26 @@ class Foo
   add_describe_methods
 end
 
-Foo.new.describe #=> "Class is Foo"
-Foo.describe #=> "Class is Foo"
+Foo.new.describe # => "Class is Foo"
+Foo.describe # => "Class is Foo"
+```
+
+## Method information
+
+When a macro is invoked you can access the method, the macro is in with a special instance variable: `@def`. The type of this variable is [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html) unless the macro is outside of a method, in this case it's [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
+
+Example:
+
+```crystal
+module Foo
+  def Foo.boo(arg1, arg2)
+    {% @def.receiver %} # => Foo
+    {% @def.name %}     # => boo
+    {% @def.args %}     # => [arg1, arg2]
+  end
+end
+
+Foo.boo(0, 1)
 ```
 
 ## Constants
@@ -302,7 +320,7 @@ VALUES = [1, 2, 3]
 {% end %}
 ```
 
-If the constant denotes a type, you get back a `TypeNode`.
+If the constant denotes a type, you get back a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html).
 
 ## Nested macros
 
@@ -339,11 +357,62 @@ end
 #     end
 define_macros alice, bob
 
-greeting_for_alice "hello"  #=> "hello alice"
-greeting_for_bob "hallo"    #=> "hallo bob"
-greeting_for_alice "hej"    #=> "hej alice"
-greeting_for_bob "hola"     #=> "¡hola bob!"
+greeting_for_alice "hello"  # => "hello alice"
+greeting_for_bob "hallo"    # => "hallo bob"
+greeting_for_alice "hej"    # => "hej alice"
+greeting_for_bob "hola"     # => "¡hola bob!"
 ```
+
+### verbatim
+
+Another way to define a nested macro is by using the special `verbatim` call. Using this you will not be able to use any variable interpolation but will not need to escape the inner macro characters.
+
+```crystal
+macro define_macros(*names)
+  {% for name in names %}
+    macro greeting_for_{{name.id}}(greeting)
+
+      # name will not be available within the verbatim block
+      \{% name = {{name.stringify}} %}
+
+      {% verbatim do %}
+        {% if greeting == "hola" %}
+          "¡hola {{name.id}}!"
+        {% else %}
+          "{{greeting.id}} {{name.id}}"
+        {% end %}
+      {% end %}
+    end
+  {% end %}
+end
+
+# This generates:
+#
+#     macro greeting_for_alice
+#       {% name = "alice" %}
+#       {% if greeting == "hola" %}
+#         "¡hola alice!"
+#       {% else %}
+#         "{{greeting.id}} alice"
+#       {% end %}
+#     end
+#     macro greeting_for_bob
+#       {% name = "bob" %}
+#       {% if greeting == "hola" %}
+#         "¡hola bob!"
+#       {% else %}
+#         "{{greeting.id}} bob"
+#       {% end %}
+#     end
+define_macros alice, bob
+
+greeting_for_alice "hello"  # => "hello alice"
+greeting_for_bob "hallo"    # => "hallo bob"
+greeting_for_alice "hej"    # => "hej alice"
+greeting_for_bob "hola"     # => "¡hola bob!"
+```
+
+Notice the variables in the inner macro are not available within the `verbatim` block. The contents of the block are transferred "as is", essentially as a string, until re-examined by the compiler.
 
 ## Pitfalls
 

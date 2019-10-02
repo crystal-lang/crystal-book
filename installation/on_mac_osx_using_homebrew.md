@@ -21,3 +21,25 @@ you need to reinstall the command line tools and then select the default active 
 $ xcode-select --install
 $ xcode-select --switch /Library/Developer/CommandLineTools
 ```
+
+## Troubleshooting on macOS MacOS 10.14.2 (Mojave)
+
+If you get an error like:
+
+```
+ld: library not found for -lssl (this usually means you need to install the development package for libssl)
+```
+
+you may need to install OpenSSL and link pkg-config to OpenSSL:
+
+```
+brew install openssl
+```
+
+```
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
+```
+
+As with other keg-only formulas there are some caveats shown in `brew info <formula>` that shows how to link pkg-config with this library.
+
+The Crystal compiler will by default use pkg-config to find the locations of libraries to link with.

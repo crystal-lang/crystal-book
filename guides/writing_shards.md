@@ -3,7 +3,10 @@
 How to write and release Crystal Shards.
 
 ## _What's a Shard?_
+
 Simply put, a Shard is a package of Crystal code, made to be shared-with and used-by other projects.
+
+See [the Shards command](../the_shards_command/README.md) for details.
 
 ## Introduction
 
@@ -125,7 +128,7 @@ See the Travis CI section below to implement this in your build.
 
 ### Writing a `shard.yml`
 
-[The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md#names) is your rulebook. Follow it.
+[The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md) is your rulebook. Follow it.
 
 #### Name
 Your `shard.yml`'s `name` property should be concise and descriptive. 
@@ -220,11 +223,11 @@ script:
   - crystal spec
 ```
 
-This tells Travis CI to run your tests. 
-Accordingly with the outcome of this command, Travis CI will return a [build status](https://docs.travis-ci.com/user/customizing-the-build/#Breaking-the-Build) of "passed", "errored", "failed" or "canceled".
+This tells Travis CI to run your tests.
+Accordingly with the outcome of this command, Travis CI will return a [build status](https://docs.travis-ci.com/user/for-beginners/#breaking-the-build) of "passed", "errored", "failed" or "canceled".
 
 
-If you want to verify that all your code has been formatted with `crystal tool format`, add a script for `crystal tool format --check`. If the code is not formatted correctly, this will [break the build](https://docs.travis-ci.com/user/for-beginners/#Breaking-the-Build) just as failing tests would.
+If you want to verify that all your code has been formatted with `crystal tool format`, add a script for `crystal tool format --check`. If the code is not formatted correctly, this will [break the build](https://docs.travis-ci.com/user/for-beginners/#breaking-the-build) just as failing tests would.
 
 e.g.
 ```YAML
@@ -263,7 +266,7 @@ deploy:
   local_dir: docs
 ```
 
-[Set the Environment Variable](https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings), `GITHUB_TOKEN`, with your [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
+[Set the Environment Variable](https://docs.travis-ci.com/user/environment-variables#defining-variables-in-repository-settings), `GITHUB_TOKEN`, with your [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
 If you've been following along, your `.travis.yml` file should look something like this:
 

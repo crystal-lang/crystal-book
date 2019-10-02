@@ -163,7 +163,9 @@ The block variable `second` also includes the `Nil` type because the last `yield
 
 ## Short one-argument syntax
 
-A short syntax exists for specifying a block that receives a single argument and invokes a method on it. This:
+If a block has a single argument and invokes a method on it, the block can be replaced with the short syntax argument.
+
+This:
 
 ```crystal
 method do |argument|
@@ -171,31 +173,48 @@ method do |argument|
 end
 ```
 
-Can be written as this:
+and
+
+```crystal
+method { |argument| argument.some_method }
+```
+
+can both be written as:
 
 ```crystal
 method &.some_method
 ```
 
-Or like this:
+Or like:
 
 ```crystal
 method(&.some_method)
 ```
 
-The above is just syntax sugar and doesn't have any performance penalty.
+In either case, `&.some_method` is an argument passed to `method`.  This argument is syntactically equivalent to the block variants.  It is only syntactic sugar and does not have any performance penalty.
 
-Arguments can be passed to `some_method` as well:
+If the method has other required parameters, the short syntax argument should also be supplied in the method's argument list.
+
+ ```crystal
+["a", "b"].join(",", &.upcase)
+ ```
+
+Is equivalent to:
+ ```crystal
+["a", "b"].join(",") { |s| s.upcase }
+ ```
+
+Arguments can be used with the short syntax argument as well:
 
 ```crystal
-method &.some_method(arg1, arg2)
+["i", "o"].join(",", &.upcase(Unicode::CaseOptions::Turkic))
 ```
 
-And operators can be invoked too:
+Operators can be invoked too:
 
 ```crystal
 method &.+(2)
-method &.[index]
+method(&.[index])
 ```
 
 ## yield value
@@ -218,7 +237,7 @@ end
 
 The above prints "2" and "3".
 
-A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method) and [Enumerable#select](http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method):
+A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
 
 ```crystal
 ary = [1, 2, 3]
@@ -364,7 +383,7 @@ end
 # 3
 ```
 
-If a `next` receives many arguments, they are automaticaly transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
+If a `next` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
 
 ## with ... yield
 

@@ -27,8 +27,7 @@ Regular expressions support the same [escape sequences as String literals](./str
 /\v/ # vertical tab
 /\NNN/ # octal ASCII character
 /\xNN/ # hexadecimal ASCII character
-/\uNNNN/ # hexadecimal unicode character
-/\u{NNNN...}/ # hexadecimal unicode character
+/\x{NNNN...}/ # hexadecimal unicode character
 ```
 
 The delimiter character `/` must be escaped inside slash-delimited regular expression literals.
@@ -54,7 +53,7 @@ The closing delimiter may be followed by a number of optional modifiers to adjus
 
 ## Percent regex literals
 
-Besides slash-delimited literals, regular expressions may also be expressed as a percent literal indicated by `%r` and a pair of delimiters. Valid delimiters are parenthesis `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the literal escapes the next end delimiter.
+Besides slash-delimited literals, regular expressions may also be expressed as a percent literal indicated by `%r` and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested; meaning a start delimiter inside the literal escapes the next end delimiter.
 
 These are handy to write regular expressions that include slashes which would have to be escaped in slash-delimited literals.
 

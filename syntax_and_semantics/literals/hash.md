@@ -56,7 +56,7 @@ If `MyHash` is generic, the above is equivalent to this:
 ```crystal
 my_hash = MyHash(typeof("foo", "bar"), typeof(1, "baz")).new
 my_hash["foo"] = 1
-my_hash["bar"] = baz
+my_hash["bar"] = "baz"
 ```
 
 The type arguments can be explicitly specified as part of the type name:

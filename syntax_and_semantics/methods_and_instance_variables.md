@@ -63,7 +63,7 @@ john.age = 32
 john.age #=> 32
 ```
 
-For more information on getter and setter macros, see the standard library documentation for [Object#getter](https://crystal-lang.org/api/latest/Object.html#getter%28%2Anames%29-macro), [Object#setter](https://crystal-lang.org/api/latest/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/latest/Object.html#property%28%2Anames%29-macro).
+For more information on getter and setter macros, see the standard library documentation for [Object#getter](https://crystal-lang.org/api/latest/Object.html#getter%28%2Anames%2C%26block%29-macro), [Object#setter](https://crystal-lang.org/api/latest/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/latest/Object.html#property%28%2Anames%2C%26block%29-macro).
 
 As a side note, we can define `become_older` inside the original `Person` definition, or in a separate definition: Crystal combines all definitions into a single class. The following works just fine:
 

@@ -13,7 +13,7 @@ The program’s source code must be encoded in UTF-8.
 * [Type Grammar](type_grammar.html)
 * [Type Reflection](type_reflection.html)
 * [Macros](macros.html)
-* [Attributes](attributes.html)
+* [Annotations](annotations.html)
 * [Low Level Primitives](low_level_primitives.html)
 * [Compile-time Flags](compile_time_flags.html)
 * [C bindings](c_bindings/)

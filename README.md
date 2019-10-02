@@ -10,6 +10,8 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
+**Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
+
 ## Contributing to the Language Reference
 
 Do you consider yourself a helpful person? If you find bugs or sections
@@ -26,6 +28,7 @@ $ git clone https://github.com/crystal-lang/crystal-book.git
 $ cd crystal-book
 $ npm install -g gitbook-cli@2.3.0
 $ npm install
+$ gitbook install
 $ gitbook serve
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
