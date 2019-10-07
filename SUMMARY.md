@@ -133,6 +133,7 @@
    * [Coding style](conventions/coding_style.md)
    * [Documenting code](conventions/documenting_code.md)
 * [Database](database/README.md)
+  * [Connection](database/connection.md)
   * [Connection pool](database/connection_pool.md)
   * [Transactions](database/transactions.md)
 * [Guides](guides/README.md)
