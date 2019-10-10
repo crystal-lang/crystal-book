@@ -11,7 +11,7 @@ In Crystal we have two ways of building this connection. And so, coming up next,
 
 The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: _is a unified interface for database access_.
 
-One of the methods implemented in this module is `DB#connect`. Using this method is the **first way** for creating a connection. Let’s see how to use it.
+One of the methods implemented in this module is `DB#connect`. Using this method is the **first way** for creating a connection. Let's see how to use it.
 
 ## DB#connect
 
@@ -29,7 +29,7 @@ puts typeof(cnn) # => DB::Connection
 cnn.close
 ```
 
-It’s worth mentioning that the method returns a `DB::Connection` object. Although more specifically, it returns a `MySql::Connection` object, it doesn’t matter because all types of connections should be polymorphic. So hereinafter we will work with a `DB::Connection` instance, helping us to abstract from specific issues of each database engine.
+It's worth mentioning that the method returns a `DB::Connection` object. Although more specifically, it returns a `MySql::Connection` object, it doesn't matter because all types of connections should be polymorphic. So hereinafter we will work with a `DB::Connection` instance, helping us to abstract from specific issues of each database engine.
 
 When creating a connection _manually_ (as we are doing here) we are responsible for managing this resource, and so we must close the connection when we are done using it. Regarding the latter, this little details can be the cause of huge bugs! Crystal, being _a language for humans_, give us a more safe way of _manually_ creating a connection using blocks, like this:
 
@@ -41,7 +41,7 @@ DB.connect "mysql://root:root@localhost/test", do |cnn|
 end # the connection will be closed here
 ```
 
-Ok, now we have a connection, let’s use it!
+Ok, now we have a connection, let's use it!
 
 ```crystal
 require "mysql"
@@ -71,10 +71,10 @@ end
 ```
 
 First, in this example, we are using a transaction (check the [transactions](https://crystal-lang.org/reference/database/transactions.html) section for more information on this topic)
-Second, it’s important to notice that the connection given by the transaction **is the same connection** that we were working with, before the transaction begin. That is, there is only **one** connection at all times in our program.
+Second, it's important to notice that the connection given by the transaction **is the same connection** that we were working with, before the transaction begin. That is, there is only **one** connection at all times in our program.
 And last, we are using the method `#exec` and `#query`. You may read more about executing queries in the [database](https://crystal-lang.org/reference/database/) section.
 
-Now that we have a good idea about creating a connection, let’s present the **second way** for creating one: `DB#open`
+Now that we have a good idea about creating a connection, let's present the **second way** for creating one: `DB#open`
 
 ## DB#open
 
@@ -86,7 +86,7 @@ puts typeof(db) # DB::Database
 db.close
 ```
 
-As with a connection, we should close the database once we don’t need it anymore.
+As with a connection, we should close the database once we don't need it anymore.
 Or instead, we could use a block and let Crystal close the database for us!
 
 But, where is the connection?
