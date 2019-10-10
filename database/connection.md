@@ -15,7 +15,7 @@ One of the methods implemented in this module is `DB#connect`. Using this method
 
 ## DB#connect
 
-When using DB#connect we are indeed opening a connection to the database. The `uri` passed as the parameter is used by the module to determine which driver to use (for example: `mysql://`, `postgres://`, `sqlite://`, etc.) i.e. we do not need to specify which database we are using.
+When using `DB#connect` we are indeed opening a connection to the database. The `uri` passed as the parameter is used by the module to determine which driver to use (for example: `mysql://`, `postgres://`, `sqlite://`, etc.) i.e. we do not need to specify which database we are using.
 
 The `uri` for this example is `mysql://root:root@localhost/test`, and so the module will use the `mysql driver` to connect to the MySQL database.
 
@@ -25,7 +25,7 @@ Here is the example:
 require "mysql"
 
 cnn = DB.connect("mysql://root:root@localhost/test")
-puts typeof(cnn) # DB::Connection
+puts typeof(cnn) # => DB::Connection
 cnn.close
 ```
 
@@ -37,7 +37,7 @@ When creating a connection _manually_ (as we are doing here) we are responsible 
 require "mysql"
 
 DB.connect "mysql://root:root@localhost/test", do |cnn|
-  puts typeof(cnn) # DB::Connection
+  puts typeof(cnn) # => DB::Connection
 end # the connection will be closed here
 ```
 
@@ -47,8 +47,8 @@ Ok, now we have a connection, let’s use it!
 require "mysql"
 
 DB.connect "mysql://root:root@localhost/test", do |cnn|
-  puts typeof(cnn) # DB::Connection
-  puts "Connection closed: #{cnn.closed?}" # False
+  puts typeof(cnn) # => DB::Connection
+  puts "Connection closed: #{cnn.closed?}" # => false
 
   result = cnn.exec("drop table if exists contacts")
   puts result
@@ -102,9 +102,9 @@ DB.open "mysql://root:root@localhost/test" do |db|
   cnn = db.checkout
   puts typeof(cnn)
 
-  puts "Connection closed: #{cnn.closed?}" # False
+  puts "Connection closed: #{cnn.closed?}" # => false
   cnn.release
-  puts "Connection closed: #{cnn.closed?}" # False
+  puts "Connection closed: #{cnn.closed?}" # => false
 end
 ```
 
@@ -142,11 +142,11 @@ DB.open "mysql://root:root@localhost/test" do |db|
 end
 ```
 
-As we may notice, the `database` is polymorphic with a `connection` object with regard to the #exec / #query / #transaction methods. The database is responsible for the use of the connections. Great!
+As we may notice, the `database` is polymorphic with a `connection` object with regard to the `#exec` / `#query` / `#transaction` methods. The database is responsible for the use of the connections. Great!
 
 ## When to use one or the other?
 Given the examples, it may come to our attention that **the number of connections is relevant**.
-If we are programming a short living application with only one user starting requests to the  database then a single connection managed by us (i.e. a `connection` object) should be enough (think of a command line application that receives parameters, then starts a request to the database and finally displays the result to the user)
-On the other hand, if we are building a system with many concurrent users and with heavy database access, then we should use a `database` object; which by using a `connection pool` will have a number of connections already prepared and ready to use (no bootstrap/initialization-time penalizations). Or imagine that you are building a long-living application (like a background job) then a `connection pool` will free you from the responsibility of monitoring the state of the connection: is it alive or does it need to reconnect?
+If we are programming a short living application with only one user starting requests to the  database then a single connection managed by us (i.e. a `DB::Connection` object) should be enough (think of a command line application that receives parameters, then starts a request to the database and finally displays the result to the user)
+On the other hand, if we are building a system with many concurrent users and with heavy database access, then we should use a `DB::Database` object; which by using a connection pool will have a number of connections already prepared and ready to use (no bootstrap/initialization-time penalizations). Or imagine that you are building a long-living application (like a background job) then a connection pool will free you from the responsibility of monitoring the state of the connection: is it alive or does it need to reconnect?
 
 
