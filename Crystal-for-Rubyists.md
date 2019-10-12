@@ -258,8 +258,8 @@ end
 ### Properties
 The ruby `attr_accessor`, `attr_getter` and `attr_setter` methods are replaced with new keywords:
 
-    Ruby Keyword     Crystal Keyword
-    -------------    ---------------
+    Ruby Keyword     Crystal
+    -------------    --------
     attr_accessor    property
     attr_reader      getter
     attr_writer      setter
