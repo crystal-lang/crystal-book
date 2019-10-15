@@ -142,12 +142,16 @@ Hello Crystal!
 
 **Common options:**
 
+* `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
+* `-D FLAG, --define FLAG`: Define a compile-time flag.
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
+* `--link-flags FLAGS`: Additional flags to passs to the linker.
 * `--lto=thin`: Use ThinLTO, improving performance on release builds.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
+* `--verbose`: Display executed commands.
 
 More options are described in the integrated help: `crystal build --help` or man page `man crystal`.
 
