@@ -1,6 +1,6 @@
 # Using the compiler
 
-Once [installed](../installation/), the Crystal compiler should be available as `crystal` command.
+Once [installed](https://crystal-lang.org/install/), the Crystal compiler should be available as `crystal` command.
 
 ## Compiling and running at once
 
