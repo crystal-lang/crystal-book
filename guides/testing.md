@@ -116,9 +116,14 @@ By convention, specs live in the `spec/` directory of a project. Spec files must
 
 You can compile and run specs from folder trees, individual files or specific lines in a file.
 
+You can turn off colors with the switch `--no-color`.
+
 ```bash
 # Run  all specs in files matching spec/**/*_spec.cr
 crystal spec
+
+# Run  all specs in files matching spec/**/*_spec.cr without colors
+crystal spec --no-color
 
 # Run all specs in files matching spec/my/test/**/*_spec.cr
 crystal spec spec/my/test/
