@@ -1,6 +1,6 @@
-# Command Line Interfaces
+# Command Line Interface Application
 
-Programming Command Line Interfaces applications (CLI applications) is one of the most entertaining tasks a developer may do. Maybe because it resembles us to the Matrix movie? ... maybe because we may play with ascii art? well … I don’t know … but let’s have some fun building our first CLI application in Crystal.
+Programming Command Line Interface applications (CLI applications) is one of the most entertaining tasks a developer may do. So let’s have some fun building our first CLI application in Crystal.
 
 There are two main topics when building a CLI application:
 * [input](#input)
@@ -14,7 +14,7 @@ This topic covers all things related to:
 ### Options
 It is a very common practice to pass options to the application. For example, we may run `crystal -v` and Crystal will display:
 
-```bash
+```shell-session
 $ crystal -v
 Crystal 0.31.1 (2019-10-02)
 
@@ -22,13 +22,13 @@ LLVM: 8.0.1
 Default target: x86_64-apple-macosx
 ```
 
-and if we run: `crystal -h`, then Crystal will show all the options and the way to use the different options.
+and if we run: `crystal -h`, then Crystal will show all the accepted options and how to use them.
 
 So now the question would be: **do we need to implement an options parser?** No need to, Crystal got us covered with the class `OptionParser`. Let’s build an application using this parser!
 
-To begin, our first CLI application will have two options:
-* -v (--version) it will display the application version.
-* -h (--help) it will display the application help.
+To begin with our CLI application will have two options:
+* `-v` / `--version`: it will display the application version.
+* `-h` / `--help`: it will display the application help.
 
 ```crystal
 # file: all_my_cli.cr
@@ -37,59 +37,38 @@ require "option_parser"
 OptionParser.parse do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Please, please show me the version" do
+  parser.on "-v", "--version", "Show version" do
     puts "version 1.0"
     exit
   end
-  parser.on "-h", "--help", "Help! I need somebody..." do
+  parser.on "-h", "--help", "Show help" do
     puts parser
     exit
   end
 end
 ```
 
-So, how does all this is working? Well … magic! No, it’s not really magic! Just Crystal making our life easy. When our application starts, the block passed to `OptionParser#parse` gets executed (in that block we define all the options our application will accept). After the block is executed, the parser will start consuming the options passed to the application, trying to match each one with the options defined by us. If an option matches then the block passed to `parser#on` gets executed!
-So, for example, if we run our application with the option `-v`, then it should print the version and then exit the application, as defined in the block:
-
-```crystal
-  parser.on "-v", "--version", "Please, please show me the version" do
-    puts "version 1.0"
-    exit
-  end
-```
+So, how does all this work? Well … magic! No, it’s not really magic! Just Crystal making our life easy.
+When our application starts, the block passed to `OptionParser#parse` gets executed. In that block we define all the options. After the block is executed, the parser will start consuming the arguments passed to the application, trying to match each one with the options defined by us. If an option matches then the block passed to `parser#on` gets executed!
 
 We can read all about `OptionParser` in [the official API documentation](https://crystal-lang.org/api/latest/OptionParser.html). And from there we are one click away from the source code ... the actual proof that it is not magic!
 
-Great! That was far from a hard day’s night! But, **How do we run the application?**
+Now, let's run our application. We have two ways [using the compiler](https://crystal-lang.org/reference/using_the_compiler):
+1. [Build the application](https://crystal-lang.org/reference/using_the_compiler/#crystal-build) and then run it.
+2. Compile and [run the application](https://crystal-lang.org/reference/using_the_compiler/#crystal-run), all in one command.
 
-We may take two roads:
+We are going to use the second way:
 
-The first one, is to **build the application**
+```shell-session
+$ crystal ./all_my_cli.cr -- -h
 
-```bash
-$ crystal build all_my_cli.cr
-```
-
-Crystal will build our application, and generate the executable file (in our example it will be named `all_my_cli`) Then, we can execute the file passing the options we want. Like this:
-
-```bash
-$ ./all_my_cli -v
-version 1.0
-```
-
-The second ~~Abbey~~ road (okay, that would be the last Beatles reference) is to **compile and run the application** in one command
-
-```bash
-$ crystal run ./all_my_cli.cr -- -h
 Welcome to The Beatles App!
-    -v, --version                    Please, please show me the version
-    -h, --help                       Help! I need somebody...
+    -v, --version                    Show version
+    -h, --help                       Show help
 ```
 
-**NOTE:** we use `--` to tell Crystal that the following options are to be passed to the application and they are not options for the compiler itself.
-**NOTE:** it’s not necessary to explicitly use `run` because it’s the default behaviour.
-
-Now, let’s add new features to this _fabulous_ application! By default (i.e. no options given) the application will display the names of the Fab Four. And if we pass the option `-t` (`--twist`) it will display the uppercased names.
+Let's continue building our _fabulous_ application adding a new feature:
+by default (i.e. no options given) the application will display the names of the Fab Four. But, if we pass the option `-t` / `--twist` it will display the names in uppercase:
 
 ```crystal
 # file: all_my_cli.cr
@@ -110,7 +89,7 @@ option_parser = OptionParser.parse do |parser|
     puts "version 1.0"
     exit
   end
-  parser.on "-h", "--help", "Help! I need somebody..." do
+  parser.on "-h", "--help", "Show help" do
     puts parser
     exit
   end
@@ -130,47 +109,41 @@ members.each do |member|
 end
 ```
 
-Furthermore, we may want to **pass a parameter to an option**. Let’s add a new option to our application: when passing this option, the application will say hello to the given name (passed as a parameter to the option). Here we go:
+Running the application with the `-t` option will output:
 
-First we define a new variable:
+```shell-session
+$ crystal run ./all_my_cli.cr -- -t
 
-```crystal
-say_hi_to = ""
-
-option_parser = OptionParser.parse do |parser|
-  # ... etc
+Group members:
+==============
+JOHN LENNON
+PAUL MCCARTNEY
+GEORGE HARRISON
+RINGO STARR
 ```
 
-Then, we define the new option:
+#### Parameterized options
+Let’s add a new feature to our application: _when passing the option -g, the application will say hello to a given name **passed as a parameter to the option**_.
 
 ```crystal
 option_parser = OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
+  #...
 
   parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
     say_hi_to = name
   end
 
-  # ... etc
-```
-
-Finally, after listing the group members, we add:
-
-```crystal
-members.each do |member|
-  puts member
-end
-
-if (!say_hi_to.empty?)
-  puts "You say goodbye, and I say hello to #{say_hi_to}!"
-end
+  #... etc
 ```
 
 In this case, the block receives a parameter that represents the parameter passed to the option.
+
+**Note:** Before running the application, for this new option to be functional, some other changes need to be made. See [the final result](#the-complete-application).
+
 Let’s try this new option:
 
-```bash
-$ crystal ./src/samples/input_option.cr -- -g "Penny Lane"
+```shell-session
+$ crystal ./all_my_cli.cr -- -g "Penny Lane"
 
 Group members:
 ==============
@@ -182,16 +155,17 @@ Ringo Starr
 You say goodbye, and I say hello to Penny Lane!
 ```
 
-Great! We almost finished our application. But, what happens when we pass an option that is not declared? For example -n
+Great! We have almost finished our application. But, **what happens when we pass an option that is not declared?** For example -n
 
-```bash
-$ crystal ./src/samples/input_option_banner.cr -- -n
+```shell-session
+$ crystal ./all_my_cli.cr -- -n
 Unhandled exception: Invalid option: -n (OptionParser::InvalidOption)
   from ...
 ```
 
 Oh no! It’s broken: we need to handle **invalid options** and **invalid parameters** given to an option! For these two situations, the `OptionParser` class has two methods: `invalid_option` and `missing_option`
 
+#### The complete application
 Here’s the final result (with other new options and invalid/missing options handling):
 
 ```crystal
@@ -211,11 +185,11 @@ strawberry = false
 option_parser = OptionParser.parse do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Please, please show me the version" do
+  parser.on "-v", "--version", "Show version" do
     puts "version 1.0"
     exit
   end
-  parser.on "-h", "--help", "Help! I need somebody..." do
+  parser.on "-h", "--help", "Show help" do
     puts parser
     exit
   end
@@ -256,7 +230,7 @@ members.each do |member|
   puts "#{strawberry ? "🍓" : "-"} #{member}"
 end
 
-if (!say_hi_to.empty?)
+unless say_hi_to.empty?
   puts ""
   puts "You say goodbye, and I say hello to #{say_hi_to}!"
 end
@@ -277,8 +251,10 @@ puts "The Beatles are singing: 🎵#{user_input}🎶🎸🥁"
 ```
 
 The method `gets` will **pause** the execution of the application, until the user finishes entering the input (pressing the `Enter` key)
-When the user presses `Enter`, then the execution will continue and `user_input` will have the user value. And if the user doesn’t enter any value? Maybe we would  get an `empty string` (if the user only presses `Enter`) or maybe a `Nil value`(if the user hits Ctrl+D)
-Let’s try the following, we want the input entered by the user to be sang loudly:
+When the user presses `Enter`, then the execution will continue and `user_input` will have the user value.
+
+But what happen if the user doesn’t enter any value? In that case, we would  get an `empty string` (if the user only presses `Enter`) or maybe a `Nil value`(if the user hits Ctrl+D).
+To illustrate the problem let’s try the following: we want the input entered by the user to be sang loudly:
 
  ```crystal
 # file: let_it_cli.cr
@@ -291,7 +267,7 @@ puts "The Beatles are singing: 🎵#{user_input.upcase}🎶🎸🥁"
 
 When running the example, Crystal will reply:
 
-```bash
+```shell-session
 $ crystal ./let_it_cli.cr
 Showing last frame. Use --error-trace for full trace.
 
@@ -303,7 +279,7 @@ Error: undefined method 'upper_case' for Nil (compile-time type is (String | Nil
 ```
 
 Ah! We should have known better: the type of the user input is the [union type](https://crystal-lang.org/reference/syntax_and_semantics/type_grammar.html) `String | Nil`.
-So, we have to test for `Nil`, and for `empty` and act naturally for each case:
+So, we have to test for `Nil` and for `empty` and act naturally for each case:
 
 ```crystal
 # file: let_it_cli.cr
@@ -318,7 +294,7 @@ default_lyrics = "Na, na, na, na-na-na na" \
                  " / " \
                  "Na-na-na na, hey Jude"
 
-lyrics = user_input.presence? || default_lyrics
+lyrics = user_input.presence || default_lyrics
 
 puts "The Beatles are singing: 🎵#{lyrics.upcase}🎶🎸🥁"
 ```
@@ -328,17 +304,26 @@ puts "The Beatles are singing: 🎵#{lyrics.upcase}🎶🎸🥁"
 Now, we will focus on the second main topic: our application’s output.
 For starters, our applications already display information but (I think) we could do better. Let’s add more _life_ (i.e. colors!) to the outputs.
 
-And to accomplish this, we will be using the `Colorize` module.
+And to accomplish this, we will be using the [`Colorize`](https://crystal-lang.org/api/latest/Colorize.html) module.
 
 Let’s focus on our first application. We will add colors to the application’s banner. We will use white font on a black background:
 
 ```crystal
-app_banner = "#{"The Beatles".colorize(:white).on(:black)} App"
+# file: all_my_cli.cr
+require "option_parser"
+require "colorize"
+
+# ...
+
+option_parser = OptionParser.parse do |parser|
+  parser.banner = "#{"The Beatles".colorize(:white).on(:black)} App"
+
+# ...
 ```
 
 Great! That was easy!
 
-And for our second application, we will add a text decoration (`blink`in this case):
+And for our second application, we will add a *text decoration* (`blink`in this case):
 
 ```crystal
 # file: let_it_cli.cr
@@ -355,22 +340,21 @@ default_lyrics = "Na, na, na, na-na-na na" \
                  " / " \
                  "Na-na-na na, hey Jude"
 
-lyrics = user_input.presence? || default_lyrics
+lyrics = user_input.presence || default_lyrics
 
 puts "The Beatles are singing: #{"🎵#{user_input}🎶🎸🥁".colorize.mode(:blink)}"
 ```
 
 Let’s try the renewed application … and _hear_ the difference!!
+**Now** we have two fabulous apps!!
 
-And **now** we have two fabulous apps!!
-
-You may read more about the `Colorize` module  [in the official API documentation](https://crystal-lang.org/api/latest/Colorize.html) and find a list of available colors and text decorations.
+You may find a list of **available colors** and **text decorations** in the [API documentation](https://crystal-lang.org/api/latest/Colorize.html).
 
 ## Testing
 
 As with any other application, at some point we would like to [write tests](https://crystal-lang.org/reference/guides/testing.html) for the different features.
 
-Right now the code containing the logic of each of the applications always gets executed with the `OptionParser`, i.e. there is no way to include that file without running the whole application. So first we would need to refactor the code, separating the code necessary for parsing options from the logic. Ones the refactor is done, then we could start testing the logic, and so including the file with the logic in the testing files we need. We leave this as an exercise for the reader.
+Right now the code containing the logic of each of the applications always gets executed with the `OptionParser`, i.e. there is no way to include that file without running the whole application. So first we would need to refactor the code, separating the code necessary for parsing options from the logic. Once the refactor is done, we could start testing the logic and including the file with the logic in the testing files we need. We leave this as an exercise for the reader.
 
 ## Using `Readline` and `NCurses`
 
@@ -380,6 +364,6 @@ As stated in the documentation for the [GNU Readline Library](http://www.gnu.org
 `Readline` has some great features: filename autocompletion out of the box; custom autocompletion method; keybinding, just to mention a few. If we want to try it then the [crystal-lang/crystal-readline](https://github.com/crystal-lang/crystal-readline) shard will give us an easy API to use `Readline`.
 
 On the other hand, we have `NCurses`(New Curses). This library allows developers to create _graphical_ user interfaces in the terminal. As its name implies, it is an improved version of the library named `Curses`, which was developed to support a text-based dungeon-crawling adventure game called Rogue!
-As you can imagine, there are already a couple of shards in the ecosystem that will allow us to use `NCurses` in Crystal!
+As you can imagine, there are already [a couple of shards](https://crystalshards.org/?filter=ncurses) in the ecosystem that will allow us to use `NCurses` in Crystal!
 
 And so we have reached The End 😎🎶
