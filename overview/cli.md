@@ -26,12 +26,12 @@ and if we run: `crystal -h`, then Crystal will show all the accepted options and
 
 So now the question would be: **do we need to implement an options parser?** No need to, Crystal got us covered with the class `OptionParser`. Let’s build an application using this parser!
 
-To begin with our CLI application will have two options:
+At start our CLI application will have two options:
 * `-v` / `--version`: it will display the application version.
 * `-h` / `--help`: it will display the application help.
 
 ```crystal
-# file: all_my_cli.cr
+# file: help.cr
 require "option_parser"
 
 OptionParser.parse do |parser|
@@ -60,18 +60,18 @@ Now, let's run our application. We have two ways [using the compiler](https://cr
 We are going to use the second way:
 
 ```shell-session
-$ crystal ./all_my_cli.cr -- -h
+$ crystal ./help.cr -- -h
 
 Welcome to The Beatles App!
     -v, --version                    Show version
     -h, --help                       Show help
 ```
 
-Let's continue building our _fabulous_ application adding a new feature:
-by default (i.e. no options given) the application will display the names of the Fab Four. But, if we pass the option `-t` / `--twist` it will display the names in uppercase:
+Let's build another _fabulous_ application with the following feature:
+By default (i.e. no options given) the application will display the names of the Fab Four. But, if we pass the option `-t` / `--twist` it will display the names in uppercase:
 
 ```crystal
-# file: all_my_cli.cr
+# file: twist_and_shout.cr
 require "option_parser"
 
 the_beatles = [
@@ -85,7 +85,7 @@ shout = false
 option_parser = OptionParser.parse do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Please, -please- show me the version" do
+  parser.on "-v", "--version", "Show version" do
     puts "version 1.0"
     exit
   end
@@ -112,7 +112,7 @@ end
 Running the application with the `-t` option will output:
 
 ```shell-session
-$ crystal run ./all_my_cli.cr -- -t
+$ crystal run ./twist_and_shout.cr -- -t
 
 Group members:
 ==============
@@ -123,50 +123,66 @@ RINGO STARR
 ```
 
 #### Parameterized options
-Let’s add a new feature to our application: _when passing the option -g, the application will say hello to a given name **passed as a parameter to the option**_.
+Let’s create another application: _when passing the option `-g` / `--goodbye_hello`, the application will say hello to a given name **passed as a parameter to the option**_.
 
 ```crystal
-option_parser = OptionParser.parse do |parser|
-  #...
+# file: hello_goodbye.cr
+require "option_parser"
 
+the_beatles = [
+  "John Lennon",
+  "Paul McCartney",
+  "George Harrison",
+  "Ringo Starr"
+]
+say_hi_to = ""
+
+option_parser = OptionParser.parse do |parser|
+  parser.banner = "Welcome to The Beatles App!"
+
+  parser.on "-v", "--version", "Show version" do
+    puts "version 1.0"
+    exit
+  end
+  parser.on "-h", "--help", "Show help" do
+    puts parser
+    exit
+  end
   parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
     say_hi_to = name
   end
+end
 
-  #... etc
+unless say_hi_to.empty?
+  puts ""
+  puts "You say goodbye, and #{the_beatles[Random.new.rand(4)]} say hello to #{say_hi_to}!"
+end
 ```
 
 In this case, the block receives a parameter that represents the parameter passed to the option.
 
-**Note:** Before running the application, for this new option to be functional, some other changes need to be made. See [the final result](#the-complete-application).
-
-Let’s try this new option:
+Let’s try it!
 
 ```shell-session
-$ crystal ./all_my_cli.cr -- -g "Penny Lane"
+$ crystal ./hello_goodbye.cr -- -g "Penny Lane"
 
-Group members:
-==============
-John Lennon
-Paul McCartney
-George Harrison
-Ringo Starr
-
-You say goodbye, and I say hello to Penny Lane!
+You say goodbye, and Ringo Starr say hello to Penny Lane!
 ```
 
-Great! We have almost finished our application. But, **what happens when we pass an option that is not declared?** For example -n
+Great! These applications look awesome! But, **what happens when we pass an option that is not declared?** For example -n
 
 ```shell-session
-$ crystal ./all_my_cli.cr -- -n
+$ crystal ./hello_goodbye.cr -- -n
 Unhandled exception: Invalid option: -n (OptionParser::InvalidOption)
   from ...
 ```
 
-Oh no! It’s broken: we need to handle **invalid options** and **invalid parameters** given to an option! For these two situations, the `OptionParser` class has two methods: `invalid_option` and `missing_option`
+Oh no! It’s broken: we need to handle **invalid options** and **invalid parameters** given to an option! For these two situations, the `OptionParser` class has two methods: `#invalid_option` and `#missing_option`
 
-#### The complete application
-Here’s the final result (with other new options and invalid/missing options handling):
+So, let's add this option handlers and merge all this CLI applications into one fabulous CLI application!
+
+#### All My CLI: The complete application!
+Here’s the final result, with invalid/missing options handling, plus other new options:
 
 ```crystal
 # file: all_my_cli.cr
@@ -250,10 +266,10 @@ user_input = gets
 puts "The Beatles are singing: 🎵#{user_input}🎶🎸🥁"
 ```
 
-The method `gets` will **pause** the execution of the application, until the user finishes entering the input (pressing the `Enter` key)
+The method [`gets`](https://crystal-lang.org/api/latest/toplevel.html#gets%28*args,**options%29-class-method) will **pause** the execution of the application, until the user finishes entering the input (pressing the `Enter` key).
 When the user presses `Enter`, then the execution will continue and `user_input` will have the user value.
 
-But what happen if the user doesn’t enter any value? In that case, we would  get an `empty string` (if the user only presses `Enter`) or maybe a `Nil value`(if the user hits Ctrl+D).
+But what happen if the user doesn’t enter any value? In that case, we would get an empty string (if the user only presses `Enter`) or maybe a `Nil` value (if the input stream id closed, e.g. by pressing `Ctrl+D`).
 To illustrate the problem let’s try the following: we want the input entered by the user to be sang loudly:
 
  ```crystal
@@ -306,24 +322,22 @@ For starters, our applications already display information but (I think) we coul
 
 And to accomplish this, we will be using the [`Colorize`](https://crystal-lang.org/api/latest/Colorize.html) module.
 
-Let’s focus on our first application. We will add colors to the application’s banner. We will use white font on a black background:
+Let’s build a really simple application that shows a string with colors! We will use yellow font on a black background:
 
 ```crystal
-# file: all_my_cli.cr
-require "option_parser"
+# file: yellow_cli.cr
 require "colorize"
 
-# ...
-
-option_parser = OptionParser.parse do |parser|
-  parser.banner = "#{"The Beatles".colorize(:white).on(:black)} App"
-
-# ...
+puts "#{"The Beatles".colorize(:yellow).on(:black)} App"
 ```
 
-Great! That was easy!
+Great! That was easy! Now imagine using this string as the banner for our All My CLI application, it's easy if you try:
 
-And for our second application, we will add a *text decoration* (`blink`in this case):
+```crystal
+  parser.banner = "#{"The Beatles".colorize(:yellow).on(:black)} App"
+```
+
+For our second application, we will add a *text decoration* (`blink`in this case):
 
 ```crystal
 # file: let_it_cli.cr
