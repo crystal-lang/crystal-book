@@ -155,7 +155,7 @@ end
 
 unless say_hi_to.empty?
   puts ""
-  puts "You say goodbye, and #{the_beatles[Random.new.rand(4)]} say hello to #{say_hi_to}!"
+  puts "You say goodbye, and #{the_beatles[Random.new.rand(4)]} says hello to #{say_hi_to}!"
 end
 ```
 
