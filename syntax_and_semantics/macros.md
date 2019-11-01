@@ -414,6 +414,33 @@ greeting_for_bob "hola"     # => "¡hola bob!"
 
 Notice the variables in the inner macro are not available within the `verbatim` block. The contents of the block are transferred "as is", essentially as a string, until re-examined by the compiler.
 
+## Comments
+
+Macro expressions are evaluated both within comments as well as compilable sections of code. This may be used to provide relevant documentation for expansions:
+
+```crystal
+{% for name, index in ["foo", "bar", "baz"] %}
+  # Provides a placeholder {{name.id}} method. Always returns {{index}}.
+  def {{name.id}}
+    {{index}}
+  end
+{% end %}
+```
+
+This evaluation applies to both interpolation and directives. As a result of this, macros cannot be commented out.
+
+```crystal
+macro a
+  # {% if false %}
+  puts 42
+  # {% end %}
+end
+
+a
+```
+
+The expression above will result in no output.
+
 ## Pitfalls
 
 When writing macros (especially outside of a macro definition) it is important to remember that the generated code from the macro must be valid Crystal code by itself even before it is merged into the main program's code. This means, for example, a macro cannot generate a one or more `when` expressions of a `case` statement unless `case` was a part of the generated code.
