@@ -87,7 +87,7 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 
 * [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
 * `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
-* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses only `->`
+* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->`
 * For `require_relative "foo"` use `require "./foo"`
 
 ## No autosplat for arrays and enforced maximum block arity
