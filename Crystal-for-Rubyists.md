@@ -264,6 +264,11 @@ The ruby `attr_accessor`, `attr_getter` and `attr_setter` methods are replaced w
     attr_reader      getter
     attr_writer      setter
 
+Example:
+```
+   getter :name, :bday
+```
+
 ### Consistent dot notation
 For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
