@@ -125,6 +125,7 @@
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
+   * [Collections] (guides/collections.md)
    * [Testing](guides/testing.md)
    * [Writing Shards](guides/writing_shards.md)
       * [Hosting on GitHub](guides/hosting/github.md)
