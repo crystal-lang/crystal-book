@@ -441,6 +441,10 @@ a
 
 The expression above will result in no output.
 
+## More methods
+
+There are several more macro methods available, see the [`full list`](https://crystal-lang.org/api/Crystal/Macros.html).
+
 ## Pitfalls
 
 When writing macros (especially outside of a macro definition) it is important to remember that the generated code from the macro must be valid Crystal code by itself even before it is merged into the main program's code. This means, for example, a macro cannot generate a one or more `when` expressions of a `case` statement unless `case` was a part of the generated code.
