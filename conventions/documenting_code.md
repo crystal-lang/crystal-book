@@ -96,10 +96,10 @@ For example:
 Unicorn.new.speak # => "I'm a unicorn"
 ```
 
-* Use `ditto` to use the same comment as in the previous declaration.
+* Use `:ditto:` to use the same comment as in the previous declaration.
 
 ```crystal
-# ditto
+# :ditto:
 def number_of_horns
   horns
 end
@@ -212,7 +212,7 @@ class Unicorn
     @horns
   end
 
-  # ditto
+  # :ditto:
   def number_of_horns
     horns
   end
