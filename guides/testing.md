@@ -164,20 +164,6 @@ Specs, by default, run in the order defined, but can be run in a random order by
 
 Specs run in random order will display a seed value upon completion. This seed value can be used to rerun the specs in that same order by passing the seed value to `--order`.
 
-### Filtering
-
-The `spec` command has a number of ways to filter down to the specs that you want to run.  Any combination of filters can be applied.
-
-In addition to specifying folder trees, individual files, specific lines in a file, as well as marking specs with `focus: true`, the following filters can be given on the command line:
-
-- `-e`, `--example`: run examples whose full nested names include the specific string
-- `-l`, `--line`: run examples whose line matches the specified line.
-- `--location`: run the example at the specified file and line. This is equivalent to just specifying the file and line directly to `crystal spec`. Multiple values are allowed.
-- `-t`, `--tag`: run examples with the specified tag, or exclude examples by adding ~ before the tag.  Multiple values are allowed.
-  - `--tag a --tag b` will include specs tagged with `a` OR `b`.
-  - `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
-  - `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
-
 ### Examples
 
 ```bash
