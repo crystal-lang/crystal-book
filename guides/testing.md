@@ -115,7 +115,7 @@ They return the rescued exception so it can be used for further expectations, fo
 
 ## Focusing on a group of specs
 
-A `describe`, `context` or `it` can be marked with `focus: true`, like this:
+`describe`, `context` and `it` blocks can be marked with `focus: true`, like this:
 
 ```crystal
 it "adds", focus: true do
@@ -127,9 +127,9 @@ If any such thing is marked with `focus: true` then only those examples will run
 
 ## Tagging specs
 
-Tags allow you to group your specs, allowing you to run a subset of your specs.
+Tags can be used to group specs, allowing to only run a subset of specs when providing a `--tag` argument to the spec runner (see [Using the compiler](../using_the_compiler/README.md)).
 
-A `describe`, `context` or `it` can be tagged, like this:
+`describe`, `context` and `it` blocks can be tagged, like this:
 
 ```crystal
 it "is slow", tags: "slow" do
@@ -142,9 +142,9 @@ it "is fast", tags: "fast" do
 end
 ```
 
-Tagging a `describe` or `context` implies that all of the containing `it`s are also tagged.
+Tagging an example group (`describe` or `context`) extends to all of the contained examples.
 
-Multiple tags can be specified by giving an Enumerable, such as Array or Set.
+Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/Array.html) or [`Set`](https://crystal-lang.org/api/Set.html).
 
 ## Running specs
 
