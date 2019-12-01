@@ -53,8 +53,10 @@ To establish certain contexts - think *empty array* versus *array with elements*
 Expectations define if the value being tested (*actual*) matches a certain value or specific criteria.
 
 ### Equivalence, Identity and Type
+
 There are methods to create expectations which test for equivalence (`eq`), identity (`be`), type (`be_a`), and nil (`be_nil`).
 Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/latest/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
+
 ```crystal
 actual.should eq(expected)    # passes if actual == expected
 actual.should be(expected)    # passes if actual.same?(expected)
@@ -63,6 +65,7 @@ actual.should be_nil          # passes if actual.nil?
 ```
 
 ### Truthiness
+
 ```crystal
 actual.should be_true         # passes if actual == true
 actual.should be_false        # passes if actual == false
@@ -71,6 +74,7 @@ actual.should be_falsey       # passes if actual is falsey (nil, false or Pointe
 ```
 
 ### Comparisons
+
 ```crystal
 actual.should be <  expected  # passes if actual <  expected
 actual.should be <= expected  # passes if actual <= expected
@@ -79,6 +83,7 @@ actual.should be >= expected  # passes if actual >= expected
 ```
 
 ### Other matchers
+
 ```crystal
 actual.should be_close(expected, delta) # passes if actual is within delta of expected:
                                         # (actual - expected).abs <= delta
@@ -108,18 +113,61 @@ end
 
 They return the rescued exception so it can be used for further expectations, for example to verify specific properties of the exception.
 
+## Focusing on a group of specs
+
+`describe`, `context` and `it` blocks can be marked with `focus: true`, like this:
+
+```crystal
+it "adds", focus: true do
+  (2 + 2).should_not eq(5)
+end
+```
+
+If any such thing is marked with `focus: true` then only those examples will run.
+
+## Tagging specs
+
+Tags can be used to group specs, allowing to only run a subset of specs when providing a `--tag` argument to the spec runner (see [Using the compiler](../using_the_compiler/README.md)).
+
+`describe`, `context` and `it` blocks can be tagged, like this:
+
+```crystal
+it "is slow", tags: "slow" do
+  sleep 60
+  true.should be(true)
+end
+
+it "is fast", tags: "fast" do
+  true.should be(true)
+end
+```
+
+Tagging an example group (`describe` or `context`) extends to all of the contained examples.
+
+Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/Array.html) or [`Set`](https://crystal-lang.org/api/Set.html).
+
 ## Running specs
 
 The Crystal compiler has a `spec` command with tools to constrain which examples get run and tailor the output. All specs of a project are compiled and executed through the command `crystal spec`.
 
 By convention, specs live in the `spec/` directory of a project. Spec files must end with `_spec.cr` to be recognizable as such by the compiler command.
 
-You can compile and run specs from folder trees, individual files or specific lines in a file.
+You can compile and run specs from folder trees, individual files, or specific lines in a file. If the specified line is the beginning of a `describe` or `context` section, all specs inside that group are run.
+
+The default formatter outputs the file and line style command for failing specs which makes it easy to rerun just this individual spec.
 
 You can turn off colors with the switch `--no-color`.
 
+### Randomizing order of specs
+
+Specs, by default, run in the order defined, but can be run in a random order by passing `--order random` to `crystal spec`.
+
+Specs run in random order will display a seed value upon completion. This seed value can be used to rerun the specs in that same order by passing the seed value to `--order`.
+
+### Examples
+
 ```bash
-# Run  all specs in files matching spec/**/*_spec.cr
+# Run all specs in files matching spec/**/*_spec.cr
 crystal spec
 
 # Run  all specs in files matching spec/**/*_spec.cr without colors
@@ -133,11 +181,13 @@ crystal spec spec/my/test/file_spec.cr
 
 # Run the spec or group defined in line 14 of spec/my/test/file_spec.cr
 crystal spec spec/my/test/file_spec.cr:14
+
+# Run all specs tagged with "fast"
+crystal spec --tag 'fast'
+
+# Run all specs not tagged with "slow"
+crystal spec --tag '~slow'
 ```
-
-If the specified line is the beginning of a `describe` or `context` section, all specs inside that group are run.
-
-The default formatter outputs the file and line style command for failing specs which makes it easy to rerun just this individual spec.
 
 ## Spec helper
 

@@ -307,12 +307,19 @@ Run `crystal spec --options` for available options.
 the other arguments by a double dash (`--`).
 
 * `--verbose`: Prints verbose output, including all example names.
-* `--example <name>`: Runs examples whose full nested names include `name`.
-* `--line <line>`: Runs examples whose line matches `line`.
 * `--profile`: Prints the 10 slowest specs.
 * `--fail-fast`: Abort the spec run on first failure.
-* `--location <file>:<line>`: Runs example(s) at `line` in `file` (multiple options allowed).
 * `--junit_output <output_dir>`: Generates JUnit XML output.
+
+The following options can be combined to filter the list of specs to run.
+
+* `--example <name>`: Runs examples whose full nested names include `name`.
+* `--line <line>`: Runs examples whose line matches `line`.
+* `--location <file>:<line>`: Runs example(s) at `line` in `file` (multiple options allowed).
+* `--tag <tag>`: Runs examples with the specified tag, or excludes examples by adding `~` before the tag (multiple options allowed).
+  * `--tag a --tag b` will include specs tagged with `a` OR `b`.
+  * `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
+  * `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
 
 Example:
 
