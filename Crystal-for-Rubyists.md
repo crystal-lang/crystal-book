@@ -299,7 +299,7 @@ private def method
 end
 ```
 
-### Ruby Gems => Crystal Shards
+### Crystal Shards for Ruby Gems
 
 Many popular Ruby gems have been ported or rewritten in Crystal. [Here are some of the equivalent Crystal Shards for Ruby Gems](https://github.com/crystal-lang/crystal/wiki/Crystal-Shards-for-Ruby-Gems).
 
