@@ -299,8 +299,23 @@ private def method
 end
 ```
 
-### Crystal Shards for Ruby Gems
+### Pseudo Constants
+Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
+> [Read more about Pseudo Constants in the Crystal documentation.](https://crystal-lang.org/reference/syntax_and_semantics/constants.html#pseudo-constants)
+
+| Crystal | Ruby | Description |
+| ------- | ---- | ----------- |
+| `__FILE__` | `__FILE__` | The full path to the currently executing crystal file. |
+| `__DIR__` | `__dir__` | The full path to the directory where the currently executing crystal file is located. |
+| `__LINE__` | `__LINE__` | The current line number in the currently executing crystal file. |
+| `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
+
+> Further reading about `__DIR__` vs. `__dir__`:
+> * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
+> * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
+
+## Crystal Shards for Ruby Gems
 Many popular Ruby gems have been ported or rewritten in Crystal. [Here are some of the equivalent Crystal Shards for Ruby Gems](https://github.com/crystal-lang/crystal/wiki/Crystal-Shards-for-Ruby-Gems).
 
 -------
