@@ -132,3 +132,6 @@
     * [Hosting on GitLab](guides/hosting/gitlab.md)
   * [Continuous Integration](guides/continuous_integration.md)
     * [Using TravisCI](guides/ci/travis.md)
+  * [Shipping Apps](guides/shipping.md)
+    * [Using Docker](guides/shipping/docker.md)
+    * [Using Snapcraft](guides/shipping/snapcraft.md)
