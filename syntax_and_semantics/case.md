@@ -103,7 +103,7 @@ This sometimes leads to code that is more natural to read.
 
 ## Tuple literal
 
-When a case expression is a tuple literal there are a few semantic differences if a when condition is also a tuple literal.
+When a case expression is a tuple literal there are a few semantic differences if a `when` condition is also a tuple literal.
 
 ### Tuple size must match
 
