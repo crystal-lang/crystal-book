@@ -1,4 +1,4 @@
-# Structs
+# Structs and Records
 
 Instead of defining a type with `class` you can do so with `struct`:
 
@@ -25,7 +25,7 @@ A struct is _always_ passed by value, even when you return `self` from the metho
 struct Counter
   def initialize(@count : Int32)
   end
-  
+
   def plus
     @count += 1
     self
@@ -93,3 +93,61 @@ ary = [] of Point
 If `Point` is inherited, an array of such type should also account for the fact that other types can be inside it, so the size of each element should grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited from. Abstract structs, on the other hand, will have descendants, so it is expected that an array of them will account for the possibility of having multiple types inside it.
 
 A struct can also include modules and can be generic, just like a class.
+
+## Records
+
+Records are a simplified way to create a Struct _(they have default initializer)._
+
+**Record Definitions**
+```
+record Foo, id : Int32, name : String
+# or
+record(Foo, id : Int32, name : String)
+```
+
+Like structs, records can also have custom behaviors - defined with:
+```
+record(Foo, name : String, id : Int32) do
+  def to_s
+    puts "Foo: id: #{id}; name: #{name}"
+  end
+end
+```
+
+Records can be a flexible data structure (tuples and others require a fixed data structure - without `nil`s).
+
+For example if you need a simple data structure that may or maynot have all the data you can define a record with the following parameters `name : String? = nil`
+```
+record Foo, id : Int32, name : String? = nil do
+  def to_s
+    puts "Foo: id: #{id}; name: #{name}"
+  end
+end
+```
+
+**Record Usage:**
+Record assignment is done using:
+```
+foo1 = Foo.new(1)
+# => Foo(id: 1, name: nil)
+
+
+foo2 = Foo.new(2, "Bar")
+# => Foo(id: 2, name: "Bar")
+```
+
+Record usage looks like:
+```
+puts "id: #{foo1.id}"
+# => id: 1
+puts "name: #{foo1.name}"
+# => name:
+puts foo1.to_s
+# => Foo: id: 1; name:
+puts "id: #{foo2.id}"
+# => id: 2
+puts "name: #{foo2.name}"
+# => name: Bar
+puts foo2.to_s
+# => Foo: id: 2; name: Bar
+```
