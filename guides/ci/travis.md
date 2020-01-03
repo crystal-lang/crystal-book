@@ -2,7 +2,7 @@
 
 If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/) and then a [short tutorial](https://docs.travis-ci.com/user/tutorial/).
 
-Now let’s see an example of using Travis CI with Crystal.
+Now let's see an example of using Travis CI with Crystal.
 
 ## Build and run specs
 
@@ -23,11 +23,11 @@ script:
   - crystal tool format --check
 ```
 
-Although a basic configuration file, it will let’s use Travis CI. Now, let’s go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci) From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases)
+Although a basic configuration file, it will let's use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci) From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases)
 
 ### Using a specific Crystal release
 
-So, let’s suppose we want to use version [0.31.1](https://github.com/crystal-lang/crystal/releases/tag/0.31.1)
+So, let's suppose we want to use version [0.31.1](https://github.com/crystal-lang/crystal/releases/tag/0.31.1)
  of the Crystal compiler. We will be tempting to add `- 0.31.1`. But, as we may read at the [Crystal configuration options](https://docs.travis-ci.com/user/languages/crystal/#configuration-options), we can only use the values `latest` and `nightly`.
 
 So, how do we test against a specific version?
@@ -101,7 +101,7 @@ script:
   - crystal spec spec/game_of_life_spec.cr
 ```
 
-**Note:** We are using `git` just for printing GIT’s version, as an example of external dependency.
+**Note:** We are using `git` just for printing GIT's version, as an example of external dependency.
 
 **Note:** Git is already installed by TravisCI and available but (again) we are using it as an example of installing and using a dependency.
 
@@ -136,7 +136,7 @@ script:
   - docker run -v $PWD:/src -w /src testing git --version # => 2.17.1
 ```
 
-We may notice that GIT’s version running in the `testing` container is different from Git running by default in Travis CI.
+We may notice that GIT's version running in the `testing` container is different from Git running by default in Travis CI.
 
 Again, these are only examples of two ways of running our application and installing (and using) dependencies.
 
@@ -157,8 +157,8 @@ script:
   - crystal spec
 ```
 
-To continue this example, let’s add a new test that uses the database.
-(**important:** the new test case is only for testing Travis CI database service, and it’s not a good design or test case by any means)
+To continue this example, let's add a new test that uses the database.
+(**important:** the new test case is only for testing Travis CI database service, and it's not a good design or test case by any means)
 
 ```crystal
 # game_of_life_spec.cr
@@ -270,7 +270,7 @@ $ export DATABASE_URL="mysql://root@localhost/test"
 **Running the `specs` locally** should output 3 examples successfully. But, if we push the changes then Travis CI will report the following error: `Unknown database 'test' (Exception)`
 So, we need to configure Travis CI to use a MySQL service **and also setup the database**:
 
->It’s really **important** to notice that the lines we are adding to `.travis.yml` will depend exclusively on the development workflow we are using!
+>It's really **important** to notice that the lines we are adding to `.travis.yml` will depend exclusively on the development workflow we are using!
 > And remember that this is only an example using MySQL.
 
 ```yaml
@@ -361,4 +361,4 @@ script:
   - crystal spec
 ```
 
-Let’s push these changes. Travis CI will run, and it will install dependencies, but then it will cache the `lib/` and `$HOME/.cache/shards` folders. The following runs will use the cached dependencies.
+Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the `lib/` and `$HOME/.cache/shards` folders. The following runs will use the cached dependencies.

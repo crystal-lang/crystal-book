@@ -11,9 +11,9 @@ These tools not only will let us build and test our code each time the source ha
 
 ## The example application
 
-We are going to use Conway’s Game of Life as the example application. More precisely, we are going to use only the first iterations in [Conway's Game of Life Kata](http://codingdojo.org/kata/GameOfLife/) solution using [TDD](https://martinfowler.com/bliki/TestDrivenDevelopment.html).
+We are going to use Conway's Game of Life as the example application. More precisely, we are going to use only the first iterations in [Conway's Game of Life Kata](http://codingdojo.org/kata/GameOfLife/) solution using [TDD](https://martinfowler.com/bliki/TestDrivenDevelopment.html).
 
-Here’s the implementation:
+Here's the implementation:
 
 ```crystal
 # game_of_life.cr
@@ -76,13 +76,13 @@ describe "an empty world" do
 end
 ```
 
-And this is all we need for our continuous integration examples! Let’s start!
+And this is all we need for our continuous integration examples! Let's start!
 
 ## Continuous Integration step by step
 
-Here’s the list of items we want to achieve:
+Here's the list of items we want to achieve:
 
-1. Build and run specs using 3 different Crystal’s versions:
+1. Build and run specs using 3 different Crystal's versions:
    * latest
    * nightly
    * 0.31.1 (using a Docker image)
