@@ -45,7 +45,7 @@ script:
   - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
-**Note:** We may find the list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) at [DockerHub](https://hub.docker.com/r/crystallang/crystal)
+**Note:** We may find the list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
 
 **Note:** This is a great trick that will let us use different Crystal versions without the need of actually installing the compiler and without the need of creating a `Dockerfile` configuration file.
 
@@ -81,7 +81,9 @@ matrix:
 
 Before presenting some examples, it is important to mention that there are many ways to achieve this and **it will heavily depend on our development workflow**.
 
-With this in mind, here is a first example installing Git using Travis CI configuration file:
+With this in mind, let's continue!
+
+Using shards dependencies (i.e. libraries declared in `shard.yml`) will not be a problem, because thanks to the `language: crystal` support, TravisCI automatically runs `shards install`. But, how do we install dependencies outside `shards.yml`? Well, here is a first example installing SQLite3 using Travis CI configuration file:
 
 ```yaml
 # .travis.yml
@@ -90,28 +92,26 @@ crystal:
   - latest
 
 before_install:
-  - sudo apt-get -y install git
+  - sudo apt-get -y install sqlite3
 
 addons:
   apt:
     update: true
 
 script:
-  - git --version
+  - sqlite3 --version
   - crystal spec
 ```
 
-**Note:** We are using `git` just for printing GIT's version, as an example of external dependency.
+**Note:** We are using `sqlite3` just for printing SQLite's version, as an example of external dependency.
 
-**Note:** Git is already installed by TravisCI and available but (again) we are using it as an example of installing and using a dependency.
-
-The same can be accomplished using a containerization service like Docker. Here is an example of a `Dockerfile` installing Git:
+The same can be accomplished using a containerization service like Docker. Here is an example of a `Dockerfile` installing SQLite3:
 
 ```dockerfile
 # Dockerfile
 FROM crystallang/crystal:latest
 
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y sqlite3
 ```
 
 And here is the TravisCI configuration file:
@@ -126,17 +126,13 @@ services:
 before_install:
   # build image using Dockerfile:
   - docker build -t testing .
-  # Git installed by Travis CI
-  - git --version # => 2.21.0
 
 script:
   # run specs in the container
   - docker run -v $PWD:/src -w /src testing crystal spec
-  # Git installed in Docker container (see Dockerfile)
-  - docker run -v $PWD:/src -w /src testing git --version # => 2.17.1
+  # sqlite3
+  - docker run -v $PWD:/src -w /src testing sqlite3 --version
 ```
-
-We may notice that GIT's version running in the `testing` container is different from Git running by default in Travis CI.
 
 Again, these are only examples of two ways of running our application and installing (and using) dependencies.
 
