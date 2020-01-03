@@ -23,7 +23,7 @@ script:
   - crystal tool format --check
 ```
 
-Although a basic configuration file, it will let's use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci) From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases)
+Although a basic configuration file, it will let's use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci). From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases)
 
 ### Using a specific Crystal release
 
@@ -42,7 +42,7 @@ services:
   - docker
 
 script:
-  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec spec/game_of_life_spec.cr
+  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
 **Note:** We may find the list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) at [DockerHub](https://hub.docker.com/r/crystallang/crystal)
@@ -74,7 +74,7 @@ matrix:
      services:
        - docker
      script:
-       - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec spec/game_of_life_spec.cr
+       - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
 ## Using external dependencies
@@ -98,7 +98,7 @@ addons:
 
 script:
   - git --version
-  - crystal spec spec/game_of_life_spec.cr
+  - crystal spec
 ```
 
 **Note:** We are using `git` just for printing GIT's version, as an example of external dependency.
@@ -131,7 +131,7 @@ before_install:
 
 script:
   # run specs in the container
-  - docker run -v $PWD:/src -w /src testing crystal spec spec/game_of_life_spec.cr
+  - docker run -v $PWD:/src -w /src testing crystal spec
   # Git installed in Docker container (see Dockerfile)
   - docker run -v $PWD:/src -w /src testing git --version # => 2.17.1
 ```
