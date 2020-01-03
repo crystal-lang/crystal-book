@@ -8,7 +8,7 @@ Now let's see an example of using Travis CI with Crystal.
 
 ### Using `latest` and `nightly`
 
-When [creating a Crystal project](https://crystal-lang.org/reference/using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us:
+When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us:
 
 ```yaml
 # .travis.yml
