@@ -13,7 +13,11 @@ These tools not only will let us build and test our code each time the source ha
 
 We are going to use Conway's Game of Life as the example application. More precisely, we are going to use only the first iterations in [Conway's Game of Life Kata](http://codingdojo.org/kata/GameOfLife/) solution using [TDD](https://martinfowler.com/bliki/TestDrivenDevelopment.html).
 
-Here's the implementation:
+Note that we won't be using TDD in the example itself, but we will mimic as if the example code is the result of the first iterations.
+
+Another important thing to mention is that we are using `crystal init` to [create the application](../using_the_compiler/#creating-a-crystal-project).
+
+And here's the implementation:
 
 ```crystal
 # game_of_life.cr
@@ -33,14 +37,10 @@ class World
   @living_cells : Array(Location)
 
   def self.empty
-    World.new([] of Location)
+    new
   end
 
-  def initialize
-    initialize([] of Location)
-  end
-
-  def initialize(living_cells)
+  def initialize(living_cells = [] of Location)
     @living_cells = living_cells
   end
 

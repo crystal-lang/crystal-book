@@ -136,9 +136,11 @@ script:
 
 Again, these are only examples of two ways of running our application and installing (and using) dependencies.
 
+> *Note:* Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
+
 ## Using a database (example using MySQL)
 
-As you may notice, in the last configuration file we are using `docker` as a `service`. Travis CI may start different services as needed. For example, we may need  [MySQL](https://docs.travis-ci.com/user/database-setup/#mysql)
+As you may notice, in the last configuration file we are using `docker` as a `service`. Travis CI may start different services as needed. For example, we may need [MySQL](https://docs.travis-ci.com/user/database-setup/#mysql).
 
 ```yaml
 # .travis.yml
@@ -205,11 +207,7 @@ class World
     World.new([] of Location)
   end
 
-  def initialize
-    initialize([] of Location)
-  end
-
-  def initialize(living_cells)
+  def initialize(living_cells = [] of Location)
     @living_cells = living_cells
   end
 
@@ -222,7 +220,7 @@ class World
   end
 
   def save
-    DB.connect ENV["DATABASE_URL"], do |cnn|
+    DB.connect ENV["DATABASE_URL"] do |cnn|
       cnn.exec("insert into worlds (living_cells) values (?);", @living_cells.size)
     end
   end
@@ -331,7 +329,7 @@ Fetching https://github.com/crystal-lang/crystal-db.git
 
 This takes time and on the other hand these libraries might not change as often as our application, so it looks like we may cache them and save time.
 
-Travis CI [uses caching](https://docs.travis-ci.com/user/caching/) to improve some parts of the building path. For our example. here is the new configuration file **with cache enabled**:
+Travis CI [uses caching](https://docs.travis-ci.com/user/caching/) to improve some parts of the building path. For our example. Here is the new configuration file **with cache enabled**:
 
 ```yml
 # .travis.yml
