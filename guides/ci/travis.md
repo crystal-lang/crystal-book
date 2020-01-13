@@ -354,4 +354,4 @@ script:
   - crystal spec
 ```
 
-Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the `lib/` and `$HOME/.cache/shards` folders. The following runs will use the cached dependencies.
+Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the `$HOME/.cache/shards` folder. The following runs will use the cached dependencies.
