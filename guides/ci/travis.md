@@ -342,7 +342,6 @@ env:
 
 cache:
   directories:
-    - lib
     - $HOME/.cache/shards
 
 services:
