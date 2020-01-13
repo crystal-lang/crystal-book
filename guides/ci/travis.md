@@ -23,7 +23,7 @@ script:
   - crystal tool format --check
 ```
 
-Although a basic configuration file, it will let's use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci). From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases)
+Although a basic configuration file, it will let us use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci). From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases).
 
 ### Using a specific Crystal release
 
