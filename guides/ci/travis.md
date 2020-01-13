@@ -45,7 +45,7 @@ script:
   - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
-**Note:** We may find the list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
+**Note:** A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
 
 **Note:** This is a great trick that will let us use different Crystal versions without the need of actually installing the compiler and without the need of creating a `Dockerfile` configuration file.
 
