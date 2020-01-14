@@ -151,50 +151,23 @@ script:
   - crystal spec
 ```
 
-To continue this example, let's add a new test that uses the database.
-(**important:** the new test case is only for testing Travis CI database service, and it's not a good design or test case by any means)
-
-So, let's add the new test:
+Here is the new test file for testing against the database:
 
 ```crystal
-# game_of_life_spec.cr
+# spec/simple_db_spec.cr
+require "./spec_helper"
+require "mysql"
 
-[...]
-
-describe "an empty world" do
-
-  [...]
-
-  # this is the new test:
-  it "should be persisted" do
-    World.empty.save
-  end
-end
-```
-
-And the new implementation:
-
-```crystal
-# game_of_life.cr
-require "mysql" # let's require the MySQL driver
-
-[...]
-
-class World
-  [...]
-
-  # and here is the new implementation:
-  def save
-    DB.connect ENV["DATABASE_URL"] do |cnn|
-      cnn.exec("insert into worlds (living_cells) values (?);", @living_cells.size)
-    end
+it "connects to the database" do
+  DB.connect ENV["DATABASE_URL"] do |cnn|
+    cnn.query_one("SELECT 'foo'", as: String).should eq "foo"
   end
 end
 ```
 
 When pushing this changes Travis CI will report the following error: `Unknown database 'test' (Exception)`, showing that we need to configure the MySQL service **and also setup the database**:
 
->It's really **important** to notice that the lines we are adding to `.travis.yml` will depend exclusively on the development workflow we are using!
+> It's really **important** to notice that the lines we are adding to `.travis.yml` will depend exclusively on the development workflow we are using!
 > And remember that this is only an example using MySQL.
 
 ```yaml
@@ -221,7 +194,7 @@ We are [using a `setup.sql` script](https://andidittrich.de/2017/06/travisci-set
 ```sql
 -- setup.sql
 CREATE DATABASE IF NOT EXISTS test;
-CREATE TABLE `test`.`worlds` (`id` serial,`living_cells` int NOT NULL DEFAULT 0, PRIMARY KEY (id));
+-- CREATE TABLE ... etc ...
 ```
 
 Pushing these changes will trigger Travis CI and the build should be successful!!

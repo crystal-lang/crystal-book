@@ -20,7 +20,7 @@ Another important thing to mention is that we are using `crystal init` to [creat
 And here's the implementation:
 
 ```crystal
-# game_of_life.cr
+# src/game_of_life.cr
 class Location
   getter x : Int32
   getter y : Int32
@@ -57,7 +57,7 @@ end
 And the specs:
 
 ```crystal
-# game_of_life_spec.cr
+# spec/game_of_life_spec.cr
 require "./spec_helper"
 
 describe "a new world" do
