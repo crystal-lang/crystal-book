@@ -70,16 +70,17 @@ matrix:
        - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
-## Using binary dependencies
+## Installing shards packages
 
-Before presenting some examples, it is important to mention that there are many ways to achieve this and **it will heavily depend on our development workflow**.
+Thanks to the `language: crystal` support, Travis CI automatically runs `shards install`. And for faster ci times we may use [caching](#caching)
 
-With this in mind, let's continue!
+## Installing binary dependencies
 
-Using shards dependencies (i.e. libraries declared in `shard.yml`) will not be a problem because, thanks to the `language: crystal` support, Travis CI automatically runs `shards install`.
+> It is important to mention that there are many ways to achieve this and **it will heavily depend on our development workflow**.
 
-But, how do we install dependencies outside `shards.yml`?
-Well, here is a first example installing SQLite3 using Travis CI configuration file:
+Our application or maybe some shards may required libraries and packages. In that case we will need to install them using `apt` (or similar).
+
+Here is a first example installing SQLite3 using Travis CI configuration file:
 
 ```yaml
 # .travis.yml
@@ -88,18 +89,15 @@ crystal:
   - latest
 
 before_install:
-  - sudo apt-get -y install sqlite3
+  - sudo apt-get -y install libsqlite3-dev
 
 addons:
   apt:
     update: true
 
 script:
-  - sqlite3 --version
   - crystal spec
 ```
-
-**Note:** We are using `sqlite3` just for printing SQLite's version, as an example of external dependency.
 
 The same can be accomplished using a containerization service like Docker. Here is an example of a `Dockerfile` installing SQLite3:
 
@@ -107,7 +105,7 @@ The same can be accomplished using a containerization service like Docker. Here 
 # Dockerfile
 FROM crystallang/crystal:latest
 
-RUN apt-get update && apt-get install -y sqlite3
+RUN apt-get update && apt-get install -y libsqlite3-dev
 ```
 
 And here is the Travis CI configuration file:
@@ -126,13 +124,9 @@ before_install:
 script:
   # run specs in the container
   - docker run -v $PWD:/src -w /src testing crystal spec
-  # sqlite3
-  - docker run -v $PWD:/src -w /src testing sqlite3 --version
 ```
 
-Again, these are only examples of two ways of running our application and installing (and using) dependencies.
-
-> *Note:* Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
+**Note:** Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
 
 ## Using a database (example using MySQL)
 

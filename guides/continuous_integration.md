@@ -86,9 +86,10 @@ Here's the list of items we want to achieve:
    * latest
    * nightly
    * 0.31.1 (using a Docker image)
-2. Use external dependencies
-3. Use a database (for example MySQL)
-4. Cache dependencies to make the build run faster
+2. Install shards packages
+3. Install binary dependencies
+4. Use a database (for example MySQL)
+5. Cache dependencies to make the build run faster
 
 From here choose your next steps:
 
