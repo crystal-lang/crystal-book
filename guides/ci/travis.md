@@ -74,6 +74,24 @@ matrix:
 
 Thanks to the `language: crystal` support, Travis CI automatically runs `shards install`. And for faster ci times we may use [caching](#caching)
 
+#### Using Docker
+
+When using a containerization service like Docker we will need to run `shards install` explicitly, like this:
+
+```yml
+# .travis.yml
+language: bash
+
+services:
+  - docker
+
+script:
+  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 shards install
+  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
+```
+
+**Note:** Since the shards will be installed in `./lib/` folder, it will be preserved for the second docker run command.
+
 ## Installing binary dependencies
 
 > It is important to mention that there are many ways to achieve this and **it will heavily depend on our development workflow**.
@@ -98,6 +116,8 @@ addons:
 script:
   - crystal spec
 ```
+
+#### Using Docker
 
 The same can be accomplished using a containerization service like Docker. Here is an example of a `Dockerfile` installing SQLite3:
 
