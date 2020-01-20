@@ -34,7 +34,7 @@ At start our CLI application will have two options:
 # file: help.cr
 require "option_parser"
 
-OptionParser.parse do |parser|
+OptionParser.parse! do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
   parser.on "-v", "--version", "Show version" do
@@ -82,7 +82,7 @@ the_beatles = [
 ]
 shout = false
 
-option_parser = OptionParser.parse do |parser|
+option_parser = OptionParser.parse! do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
   parser.on "-v", "--version", "Show version" do
@@ -137,7 +137,7 @@ the_beatles = [
 ]
 say_hi_to = ""
 
-option_parser = OptionParser.parse do |parser|
+option_parser = OptionParser.parse! do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
   parser.on "-v", "--version", "Show version" do
@@ -198,7 +198,7 @@ shout = false
 say_hi_to = ""
 strawberry = false
 
-option_parser = OptionParser.parse do |parser|
+option_parser = OptionParser.parse! do |parser|
   parser.banner = "Welcome to The Beatles App!"
 
   parser.on "-v", "--version", "Show version" do
