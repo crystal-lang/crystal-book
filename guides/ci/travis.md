@@ -1,14 +1,26 @@
 # Travis CI
 
-If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/) and then a [short tutorial](https://docs.travis-ci.com/user/tutorial/).
+In this section we are going to use [Travis CI](https://travis-ci.org/) as our continuous-integration service. Travis CI is [mostly used](https://docs.travis-ci.com/user/tutorial/#more-than-running-tests) for building and running tests for projects hosted at GitHub. It supports [different programming laguages](https://docs.travis-ci.com/user/tutorial/#selecting-a-different-programming-language) and for our particular case, it supports the [Crystal language](https://docs.travis-ci.com/user/languages/crystal/).
 
-Now let's see an example of using Travis CI with Crystal.
+>**Note:**If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/).
+
+Now let's see some examples!
 
 ## Build and run specs
 
 ### Using `latest` and `nightly`
 
-When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us:
+A first (and very basic) Travis CI config file could be:
+
+```yaml
+# .travis.yml
+language: crystal
+```
+
+That's it! With this config file, Travis CI by default will run `crystal spec`.
+Now, we just need to go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci).
+
+Let's see another example:
 
 ```yaml
 # .travis.yml
@@ -23,15 +35,21 @@ script:
   - crystal tool format --check
 ```
 
-Although a basic configuration file, it will let us use Travis CI. Now, let's go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci). From this moment, Travis CI will run the `specs` against the Crystal compiler (using both `latest` and `nightly` releases).
+With this configuration, Travis CI will run the tests using both Crystal `latest` and `nightly` releases on every push to a branch on your Github repository.
+
+**Note:** When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us.
 
 ### Using a specific Crystal release
 
-So, let's suppose we want to use version [0.31.1](https://github.com/crystal-lang/crystal/releases/tag/0.31.1) of the Crystal compiler. For this we are going to use [Docker](https://www.docker.com/). First we need to add Docker as a service in `.travis.yml`, and then we can use `docker` commands in our build steps, like this:
+Let's suppose we want to pin a specific Crystal release (maybe we want to make sure the shard compiles and works with that version) for example [Crystal 0.31.1](https://github.com/crystal-lang/crystal/releases/tag/0.31.1).
+
+Travis CI only provides _runners_ to `latest` and `nightly` releases directly and so, we need to install the requested Crystal release manually. For this we are going to use [Docker](https://www.docker.com/).
+
+First we need to add Docker as a service in `.travis.yml`, and then we can use `docker` commands in our build steps, like this:
 
 ```yml
 # .travis.yml
-language: bash
+language: minimal
 
 services:
   - docker
@@ -40,11 +58,14 @@ script:
   - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
+**Note:** We may read about different (languages)[https://docs.travis-ci.com/user/languages/] supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
+
 **Note:** A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
 
 ### Using `latest`, `nightly` and a specific Crystal release all together!
 
-For using 3 versions of the compiler we are going to use a different configuration file based on [Build Matrix](https://docs.travis-ci.com/user/customizing-the-build#build-matrix)
+Supported _runners_ can be combined with Docker-based _runners_ using a [Build Matrix](https://docs.travis-ci.com/user/customizing-the-build#build-matrix). This will allow us to run tests against `latest` and `nightly` and pinned releases.
+
 Here is the example:
 
 ```yaml
@@ -72,11 +93,11 @@ matrix:
 
 ## Installing shards packages
 
-Thanks to the `language: crystal` support, Travis CI automatically runs `shards install`. And for faster ci times we may use [caching](#caching)
+In native _runners_ (`language: crystal`), Travis CI already automatically installs shards dependencies using `shards install`. To improve build performance we may add [caching](#caching) on top of that.
 
 #### Using Docker
 
-When using a containerization service like Docker we will need to run `shards install` explicitly, like this:
+In a Docker-based _runner_ we need to run `shards install` explicitly, like this:
 
 ```yml
 # .travis.yml
@@ -94,11 +115,9 @@ script:
 
 ## Installing binary dependencies
 
-> It is important to mention that there are many ways to achieve this and **it will heavily depend on our development workflow**.
+Our application or maybe some shards may required libraries and packages. This binary dependencies may be installed using different methods. Here we are going to show an example using the [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) command (since the Docker image we are using is based on Ubuntu)
 
-Our application or maybe some shards may required libraries and packages. In that case we will need to install them using `apt` (or similar).
-
-Here is a first example installing SQLite3 using Travis CI configuration file:
+Here is a first example installing the `libsqlite3` development package using the [APT addon](https://docs.travis-ci.com/user/installing-dependencies/#installing-packages-with-the-apt-addon):
 
 ```yaml
 # .travis.yml
@@ -119,12 +138,15 @@ script:
 
 #### Using Docker
 
-The same can be accomplished using a containerization service like Docker. Here is an example of a `Dockerfile` installing SQLite3:
+We are going to build a new docker image based on [crystallang/crystal](https://hub.docker.com/r/crystallang/crystal/), and in this new image we will be installing the binary dependencies.
+
+To accomplish this we are going to use a [Dockerfile](https://docs.docker.com/engine/reference/builder/):
 
 ```dockerfile
 # Dockerfile
 FROM crystallang/crystal:latest
 
+# install binary dependencies:
 RUN apt-get update && apt-get install -y libsqlite3-dev
 ```
 
@@ -148,9 +170,11 @@ script:
 
 **Note:** Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
 
-## Using a database (example using MySQL)
+## Using services
 
-As you may notice, in the last configuration file we are using `docker` as a `service`. Travis CI may start different services as needed. For example, we may need [MySQL](https://docs.travis-ci.com/user/database-setup/#mysql).
+Travis CI may start [services](https://docs.travis-ci.com/user/database-setup/) as requested.
+
+For example, we can start a [MySQL](https://docs.travis-ci.com/user/database-setup/#mysql) database service by adding a `services:` section to our `.travis.yml`:
 
 ```yaml
 # .travis.yml
@@ -181,9 +205,6 @@ end
 
 When pushing this changes Travis CI will report the following error: `Unknown database 'test' (Exception)`, showing that we need to configure the MySQL service **and also setup the database**:
 
-> It's really **important** to notice that the lines we are adding to `.travis.yml` will depend exclusively on the development workflow we are using!
-> And remember that this is only an example using MySQL.
-
 ```yaml
 # .travis.yml
 language: crystal
@@ -191,27 +212,29 @@ crystal:
   - latest
 
 env:
-  - DATABASE_URL="mysql://root@localhost/test"
+  global:
+    - DATABASE_NAME=test
+    - DATABASE_URL=mysql://root@localhost/$DATABASE_NAME
 
 services:
   - mysql
 
 before_install:
-  - mysql -u root --password="" < test-data/setup.sql
+  - mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;"
+  - mysql -u root --password="" $DATABASE_NAME < db/schema.sql
 
 script:
   - crystal spec
 ```
 
-We are [using a `setup.sql` script](https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html) to create a more readable `.travis.yml`. The file `./test-data/setup.sql` looks like this:
+We are [using a `schema.sql` script](https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html) to create a more readable `.travis.yml`. The file `./db/schema.sql` looks like this:
 
 ```sql
--- setup.sql
-CREATE DATABASE IF NOT EXISTS test;
--- CREATE TABLE ... etc ...
+-- schema.sql
+CREATE TABLE ... etc ...
 ```
 
-Pushing these changes will trigger Travis CI and the build should be successful!!
+Pushing these changes will trigger Travis CI and the build should be successful!
 
 ## Caching
 
@@ -222,9 +245,9 @@ Fetching https://github.com/crystal-lang/crystal-mysql.git
 Fetching https://github.com/crystal-lang/crystal-db.git
 ```
 
-This takes time and on the other hand these libraries might not change as often as our application, so it looks like we may cache them and save time.
+This takes time and, on the other hand, these libraries might not change as often as our application, so it looks like we may cache them and save time.
 
-Travis CI [uses caching](https://docs.travis-ci.com/user/caching/) to improve some parts of the building path. For our example. Here is the new configuration file **with cache enabled**:
+Travis CI [uses caching](https://docs.travis-ci.com/user/caching/) to improve some parts of the building path. Here is the new configuration file **with cache enabled**:
 
 ```yml
 # .travis.yml
@@ -232,18 +255,9 @@ language: crystal
 crystal:
   - latest
 
-env:
-  - DATABASE_URL="mysql://root@localhost/test"
-
 cache:
   directories:
     - $HOME/.cache/shards
-
-services:
-  - mysql
-
-before_install:
-  - mysql -u root --password="" < travisci/test.sql
 
 script:
   - crystal spec
