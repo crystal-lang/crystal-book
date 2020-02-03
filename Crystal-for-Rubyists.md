@@ -267,7 +267,7 @@ end
 process_data(b: 2, a: "one")
 ```
 
-This is because, in ruby, `process_data(b: 2, a: "one")` is syntax suger for `process_data({b: 2, a: "one"})`.
+This is because, in ruby, `process_data(b: 2, a: "one")` is syntax sugar for `process_data({b: 2, a: "one"})`.
 
 In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `processData` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
 
