@@ -313,13 +313,13 @@ proven faster than equality).
 <td><code>&amp;&amp;</code></td>
 <td><a href="and.html">logical AND</a></td>
 <td><code>true &amp;&amp; false</code></td>
-<td>false</td>
+<td>no</td>
 </tr>
 <tr>
 <td><code>||</code></td>
 <td><a href="or.html">logical OR</a></td>
 <td><code>true || false</code></td>
-<td>false</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
