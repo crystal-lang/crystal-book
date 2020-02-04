@@ -130,3 +130,5 @@
   * [Writing Shards](guides/writing_shards.md)
     * [Hosting on GitHub](guides/hosting/github.md)
     * [Hosting on GitLab](guides/hosting/gitlab.md)
+  * [Continuous Integration](guides/continuous_integration.md)
+    * [Using TravisCI](guides/ci/travis.md)
