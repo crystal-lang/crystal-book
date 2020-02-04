@@ -255,12 +255,10 @@ language: crystal
 crystal:
   - latest
 
-cache:
-  directories:
-    - $HOME/.cache/shards
+cache: shards
 
 script:
   - crystal spec
 ```
 
-Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the `$HOME/.cache/shards` folder. The following runs will use the cached dependencies.
+Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the shards cache folder which, usually, is `~/.cache/shards`. The following runs will use the cached dependencies.
