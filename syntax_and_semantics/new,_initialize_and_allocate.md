@@ -33,10 +33,10 @@ Now we can create people like this:
 john = Person.new "John"
 peter = Person.new "Peter"
 
-john.name #=> "John"
-john.age #=> 0
+john.name # => "John"
+john.age  # => 0
 
-peter.name #=> "Peter"
+peter.name # => "Peter"
 ```
 
 (If you wonder why we needed to specify that `name` is a `String` but we didn't need to do it for `age`, check the [global type inference algorithm](type_inference.html))

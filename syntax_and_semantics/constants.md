@@ -9,8 +9,8 @@ module Earth
   RADIUS = 6_371_000
 end
 
-PI #=> 3.14
-Earth::RADIUS #=> 6_371_000
+PI            # => 3.14
+Earth::RADIUS # => 6_371_000
 ```
 
 Although not enforced by the compiler, constants are usually named with all capital letters and underscores to separate words.
@@ -26,7 +26,7 @@ TEN = begin
   a
 end
 
-TEN #=> 10
+TEN # => 10
 ```
 
 # Pseudo Constants
@@ -51,7 +51,6 @@ def pseudo_constants(caller_line = __LINE__, end_of_caller = __END_LINE__)
   puts "File path is: #{__FILE__}"
   puts "Directory file is in: #{__DIR__}"
 end
-
 
 begin
   pseudo_constants

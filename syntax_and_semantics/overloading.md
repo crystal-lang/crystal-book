@@ -5,7 +5,7 @@ We can define a `become_older` method that accepts a number indicating the years
 ```crystal
 class Person
   getter :age
-    
+
   def initialize(@name : String, @age : Int = 0)
   end
 
@@ -19,13 +19,13 @@ class Person
 end
 
 john = Person.new "John"
-john.age #=> 0
+john.age # => 0
 
 john.become_older
-john.age #=> 1
+john.age # => 1
 
 john.become_older 5
-john.age #=> 6
+john.age # => 6
 ```
 
 That is, you can have different methods with the same name and different number of arguments and they will be considered as separate methods. This is called *method overloading*.
@@ -68,18 +68,18 @@ end
 person = Person.new "John"
 
 person.become_older
-person.age #=> 1
+person.age # => 1
 
 person.become_older 5
-person.age #=> 6
+person.age # => 6
 
 person.become_older "12"
-person.age #=> 18
+person.age # => 18
 
 person.become_older do |current_age|
   current_age < 20 ? 10 : 30
 end
-person.age #=> 28
+person.age # => 28
 ```
 
 Note that in the case of the method that yields, the compiler figured this out because there's a `yield` expression. To make this more explicit, you can add a dummy `&block` argument at the end:

@@ -9,7 +9,7 @@ def add(x, y)
 end
 
 # Invokes the add method in the program
-add(1, 2) #=> 3
+add(1, 2) # => 3
 ```
 
 A method's value is the value of its last expression; there's no need for explicit `return` expressions. However, explicit `return` expressions are possible:
@@ -55,8 +55,8 @@ end
 
 class Foo
   def bar
-    baz(4, 2) #=> 2
-    ::baz(4, 2) #=> 6
+    baz(4, 2)   # => 2
+    ::baz(4, 2) # => 6
   end
 
   def baz(x, y)

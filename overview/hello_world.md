@@ -7,4 +7,3 @@ puts "Hello world!"
 ```
 
 From this you can see that the main routine is simply the program itself: there's no need to define a "main" function or something similar.
-

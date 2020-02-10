@@ -8,7 +8,7 @@ a = 1
 if a > 0
   a = 10
 end
-a #=> 10
+a # => 10
 
 b = 1
 if b > 2
@@ -16,7 +16,7 @@ if b > 2
 else
   b = 20
 end
-b #=> 20
+b # => 20
 ```
 
 To write a chain of if-else-if you use `elsif`:

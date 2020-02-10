@@ -31,7 +31,7 @@ To avoid this initialization you can use `uninitialized`:
 
 ```crystal
 value = uninitialized U::IntOrFloat
-value.some_int #=> some garbage value
+value.some_int # => some garbage value
 ```
 
 You can set and get its properties:
@@ -39,8 +39,8 @@ You can set and get its properties:
 ```crystal
 value = U::IntOrFloat.new
 value.some_int = 1
-value.some_int #=> 1
-value.some_float #=> 4.94066e-324
+value.some_int   # => 1
+value.some_float # => 4.94066e-324
 ```
 
 If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
@@ -54,7 +54,7 @@ end
 
 value = U::IntOrFloat.new
 change_it value
-value.some_int #=> 0
+value.some_int # => 0
 ```
 
 Refer to the [type grammar](../type_grammar.html) for the notation used in union field types.

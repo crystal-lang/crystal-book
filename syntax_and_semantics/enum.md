@@ -14,23 +14,23 @@ An enum is defined with the `enum` keyword, followed by its name. The enum's bod
 
 ```crystal
 enum Color
-  Red         # 0
-  Green       # 1
-  Blue   = 5  # overwritten to 5
-  Yellow      # 6 (5 + 1)
+  Red        # 0
+  Green      # 1
+  Blue   = 5 # overwritten to 5
+  Yellow     # 6 (5 + 1)
 end
 ```
 
 Each constant in the enum has the type of the enum:
 
 ```crystal
-Color::Red #:: Color
+Color::Red # :: Color
 ```
 
 To get the underlying value you invoke `value` on it:
 
 ```crystal
-Color::Green.value #=> 1
+Color::Green.value # => 1
 ```
 
 The type of the value is `Int32` by default but can be changed:
@@ -42,7 +42,7 @@ enum Color : UInt8
   Blue
 end
 
-Color::Red.value #:: UInt8
+Color::Red.value # :: UInt8
 ```
 
 Only integer types are allowed as the underlying type.
@@ -56,8 +56,8 @@ An enum can be marked with the `@[Flags]` attribute. This changes the default va
 ```crystal
 @[Flags]
 enum IOMode
-  Read # 1
-  Write  # 2
+  Read  # 1
+  Write # 2
   Async # 4
 end
 ```
@@ -67,8 +67,8 @@ The `@[Flags]` attribute makes the first constant's value be `1`, and successive
 Implicit constants, `None` and `All`, are automatically added to these enums, where `None` has the value `0` and `All` has the "or"ed value of all constants.
 
 ```crystal
-IOMode::None.value #=> 0
-IOMode::All.value  #=> 7
+IOMode::None.value # => 0
+IOMode::All.value  # => 7
 ```
 
 Additionally, some `Enum` methods check the `@[Flags]` attribute. For example:
@@ -83,13 +83,13 @@ puts(IOMode::Write | IOMode::Async) # prints "Write, Async"
 An enum can be created from an integer:
 
 ```crystal
-puts Color.new(1) #=> prints "Green"
+puts Color.new(1) # => prints "Green"
 ```
 
 Values that don't correspond to an enum's constants are allowed: the value will still be of type `Color`, but when printed you will get the underlying value:
 
 ```crystal
-puts Color.new(10) #=> prints "10"
+puts Color.new(10) # => prints "10"
 ```
 
 This method is mainly intended to convert integers from C to enums in Crystal.
@@ -109,8 +109,8 @@ enum Color
   end
 end
 
-Color::Red.red?  #=> true
-Color::Blue.red? #=> false
+Color::Red.red?  # => true
+Color::Blue.red? # => false
 ```
 
 Class variables are allowed, but instance variables are not.

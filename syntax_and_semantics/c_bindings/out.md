@@ -18,8 +18,6 @@ that status_ptr points to, unless status_ptr is a null pointer.
 We can use this function like this:
 
 ```crystal
-pid = ...
-options = ...
 status_ptr = uninitialized Int32
 
 C.waitpid(pid, pointerof(status_ptr), options)
@@ -30,9 +28,6 @@ In this way we pass a pointer of `status_ptr` to the function for it to fill its
 There's a simpler way to write the above by using an `out` parameter:
 
 ```crystal
-pid = ...
-options = ...
-
 C.waitpid(pid, out status_ptr, options)
 ```
 

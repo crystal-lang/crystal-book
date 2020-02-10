@@ -6,7 +6,7 @@ A [Range](http://crystal-lang.org/api/Range.html) represents an interval between
 * `x...y`: Three dots denote an exclusive range, including `x` and all values up to but not including `y` (in mathematics: `[x, y)`).
 
 ```cr
-(0..5).to_a # => [0, 1, 2, 3, 4, 5]
+(0..5).to_a  # => [0, 1, 2, 3, 4, 5]
 (0...5).to_a # => [0, 1, 2, 3, 4]
 ```
 

@@ -36,7 +36,7 @@ When creating a connection _manually_ (as we are doing here) we are responsible 
 ```crystal
 require "mysql"
 
-DB.connect "mysql://root:root@localhost/test", do |cnn|
+DB.connect "mysql://root:root@localhost/test" do |cnn|
   puts typeof(cnn) # => DB::Connection
 end # the connection will be closed here
 ```
@@ -46,8 +46,8 @@ Ok, now we have a connection, let's use it!
 ```crystal
 require "mysql"
 
-DB.connect "mysql://root:root@localhost/test", do |cnn|
-  puts typeof(cnn) # => DB::Connection
+DB.connect "mysql://root:root@localhost/test" do |cnn|
+  puts typeof(cnn)                         # => DB::Connection
   puts "Connection closed: #{cnn.closed?}" # => false
 
   result = cnn.exec("drop table if exists contacts")

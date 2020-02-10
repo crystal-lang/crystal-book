@@ -194,12 +194,14 @@ end
 # Similarly, the shorthand also works with blocks:
 (1..10).each do |n|
   # potentially dangerous operation
+
+
 rescue
-  #..
+  # ..
 else
-  #..
+  # ..
 ensure
-  #..
+  # ..
 end
 ```
 

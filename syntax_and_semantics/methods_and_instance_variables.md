@@ -7,7 +7,7 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
-  
+
   def age
     @age
   end
@@ -21,11 +21,11 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
-  
+
   def age
     @age
   end
-  
+
   def become_older
     @age += 1
   end
@@ -34,12 +34,12 @@ end
 john = Person.new "John"
 peter = Person.new "Peter"
 
-john.age #=> 0
+john.age # => 0
 
 john.become_older
-john.age #=> 1
+john.age # => 1
 
-peter.age #=> 0
+peter.age # => 0
 ```
 
 Method names begin with a lowercase letter and, as a convention, only use lowercase letters, underscores and numbers.
@@ -60,7 +60,7 @@ end
 
 john = Person.new "John"
 john.age = 32
-john.age #=> 32
+john.age # => 32
 ```
 
 For more information on getter and setter macros, see the standard library documentation for [Object#getter](https://crystal-lang.org/api/latest/Object.html#getter%28%2Anames%2C%26block%29-macro), [Object#setter](https://crystal-lang.org/api/latest/Object.html#setter%28%2Anames%29-macro), and [Object#property](https://crystal-lang.org/api/latest/Object.html#property%28%2Anames%2C%26block%29-macro).
@@ -100,7 +100,7 @@ end
 
 person = Person.new "John"
 person.become_older
-person.age #=> 2
+person.age # => 2
 ```
 
 You can invoke the previously redefined method with `previous_def`:
@@ -121,7 +121,7 @@ end
 
 person = Person.new "John"
 person.become_older
-person.age #=> 3
+person.age # => 3
 ```
 
 Without arguments or parentheses, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.

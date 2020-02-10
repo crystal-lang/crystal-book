@@ -195,14 +195,14 @@ In either case, `&.some_method` is an argument passed to `method`.  This argumen
 
 If the method has other required parameters, the short syntax argument should also be supplied in the method's argument list.
 
- ```crystal
+```crystal
 ["a", "b"].join(",", &.upcase)
- ```
+```
 
 Is equivalent to:
- ```crystal
+```crystal
 ["a", "b"].join(",") { |s| s.upcase }
- ```
+```
 
 Arguments can be used with the short syntax argument as well:
 
@@ -241,8 +241,8 @@ A `yield` expression's value is mostly useful for transforming and filtering val
 
 ```crystal
 ary = [1, 2, 3]
-ary.map { |x| x + 1 }         #=> [2, 3, 4]
-ary.select { |x| x % 2 == 1 } #=> [1, 3]
+ary.map { |x| x + 1 }         # => [2, 3, 4]
+ary.select { |x| x % 2 == 1 } # => [1, 3]
 ```
 
 A dummy transformation method:
@@ -252,7 +252,7 @@ def transform(value)
   yield value
 end
 
-transform(1) { |x| x + 1 } #=> 2
+transform(1) { |x| x + 1 } # => 2
 ```
 
 The result of the last expression is `2` because the last expression of the `transform` method is `yield`, whose value is the last expression of the block.
@@ -267,7 +267,7 @@ def transform_int(start : Int32, &block : Int32 -> Int32)
   result * 2
 end
 
-transform_int(3) { |x| x + 2 } #=> 10
+transform_int(3) { |x| x + 2 } # => 10
 transform_int(3) { |x| "foo" } # Error: expected block to return Int32, not String
 ```
 
@@ -303,8 +303,8 @@ def twice
   yield 2
 end
 
-twice { |i| i + 1 } #=> 3
-twice { |i| break "hello" } #=> "hello"
+twice { |i| i + 1 }         # => 3
+twice { |i| break "hello" } # => "hello"
 ```
 
 The first call's value is 3 because the last expression of the `twice` method is `yield`, which gets the value of the block. The second call's value is "hello" because a `break` was performed.
@@ -318,21 +318,21 @@ value = twice do |i|
   end
   i + 1
 end
-value #:: Int32 | String
+value # :: Int32 | String
 ```
 
 If a `break` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html):
 
 ```crystal
 values = twice { break 1, 2 }
-values #=> {1, 2}
+values # => {1, 2}
 ```
 
 If a `break` receives no arguments, it's the same as receiving a single `nil` argument:
 
 ```crystal
 value = twice { break }
-value #=> nil
+value # => nil
 ```
 
 ## next

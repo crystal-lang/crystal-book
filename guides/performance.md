@@ -241,7 +241,7 @@ Strings in Crystal always contain UTF-8 encoded bytes. UTF-8 is a variable-lengt
 For this reason, iterating a String in this way is not optimal, and in fact has a complexity of `O(n^2)`:
 
 ```crystal
-string = ...
+string = "foo"
 while i < string.size
   char = string[i]
   # ...
@@ -253,7 +253,7 @@ There's a second problem with the above: computing the `size` of a String is als
 The way to improve performance in this case is to either use one of the iteration methods (`each_char`, `each_byte`, `each_codepoint`), or use the more low-level `Char::Reader` struct. For example, using `each_char`:
 
 ```crystal
-string = ...
+string = "foo"
 string.each_char do |char|
   # ...
 end

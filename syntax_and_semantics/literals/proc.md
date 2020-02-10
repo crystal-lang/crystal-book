@@ -53,7 +53,7 @@ To invoke a Proc, you invoke the `call` method on it. The number of arguments mu
 
 ```crystal
 proc = ->(x : Int32, y : Int32) { x + y }
-proc.call(1, 2) #=> 3
+proc.call(1, 2) # => 3
 ```
 
 ## From methods
@@ -66,7 +66,7 @@ def one
 end
 
 proc = ->one
-proc.call #=> 1
+proc.call # => 1
 ```
 
 If the method has arguments, you must specify their types:
@@ -77,7 +77,7 @@ def plus_one(x)
 end
 
 proc = ->plus_one(Int32)
-proc.call(41) #=> 42
+proc.call(41) # => 42
 ```
 
 A proc can optionally specify a receiver:
@@ -85,6 +85,6 @@ A proc can optionally specify a receiver:
 ```crystal
 str = "hello"
 proc = ->str.count(Char)
-proc.call('e') #=> 1
-proc.call('l') #=> 2
+proc.call('e') # => 1
+proc.call('l') # => 2
 ```

@@ -209,7 +209,7 @@ Default target: x86_64-unknown-linux-gnu
 
 The `crystal init` command initializes a Crystal project folder.
 
-```bash
+```
 crystal init (lib|app) <name> [<dir>]
 ```
 

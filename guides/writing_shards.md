@@ -28,18 +28,18 @@ Begin by using [the Crystal compiler](../using_the_compiler/README.md)'s `init l
 In your terminal: `crystal init lib <YOUR-SHARD-NAME>`
 
 e.g.
-```bash
- $  crystal init lib palindrome-example
-      create  palindrome-example/.gitignore
-      create  palindrome-example/.editorconfig
-      create  palindrome-example/LICENSE
-      create  palindrome-example/README.md
-      create  palindrome-example/.travis.yml
-      create  palindrome-example/shard.yml
-      create  palindrome-example/src/palindrome-example.cr
-      create  palindrome-example/src/palindrome-example/version.cr
-      create  palindrome-example/spec/spec_helper.cr
-      create  palindrome-example/spec/palindrome-example_spec.cr
+```session
+$ crystal init lib palindrome-example
+    create  palindrome-example/.gitignore
+    create  palindrome-example/.editorconfig
+    create  palindrome-example/LICENSE
+    create  palindrome-example/README.md
+    create  palindrome-example/.travis.yml
+    create  palindrome-example/shard.yml
+    create  palindrome-example/src/palindrome-example.cr
+    create  palindrome-example/src/palindrome-example/version.cr
+    create  palindrome-example/spec/spec_helper.cr
+    create  palindrome-example/spec/palindrome-example_spec.cr
 Initialized empty Git repository in /<YOUR-DIRECTORY>/.../palindrome-example/.git/
 ```
 
@@ -52,21 +52,21 @@ cd palindrome-example
 
 Then `add` & `commit` to start tracking the files with Git:
 
-```bash
- $  git add -A
- $  git commit -am "First Commit"
+```session
+$  git add -A
+$  git commit -am "First Commit"
 [master (root-commit) 77bad84] First Commit
- 10 files changed, 102 insertions(+)
- create mode 100644 .editorconfig
- create mode 100644 .gitignore
- create mode 100644 .travis.yml
- create mode 100644 LICENSE
- create mode 100644 README.md
- create mode 100644 shard.yml
- create mode 100644 spec/palindrome-example_spec.cr
- create mode 100644 spec/spec_helper.cr
- create mode 100644 src/palindrome-example.cr
- create mode 100644 src/palindrome-example/version.cr
+10 files changed, 102 insertions(+)
+create mode 100644 .editorconfig
+create mode 100644 .gitignore
+create mode 100644 .travis.yml
+create mode 100644 LICENSE
+create mode 100644 README.md
+create mode 100644 shard.yml
+create mode 100644 spec/palindrome-example_spec.cr
+create mode 100644 spec/spec_helper.cr
+create mode 100644 src/palindrome-example.cr
+create mode 100644 src/palindrome-example/version.cr
 ```
 
 ### Writing the Code
@@ -89,7 +89,7 @@ Once your documentation is ready and available, you can add a documentation badg
 (Be sure to replace `<LINK-TO-YOUR-DOCUMENTATION>` accordingly)
 
 ```Markdown
-[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>) 
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>)
 ```
 
 ### Writing a README
@@ -97,8 +97,8 @@ Once your documentation is ready and available, you can add a documentation badg
 A good README can make or break your project.
 [Awesome README](https://github.com/matiassingers/awesome-readme) is a nice curation of examples and resources on the topic.
 
-Most importantly, your README should explain: 
-1. What your library is 
+Most importantly, your README should explain:
+1. What your library is
 2. What it does
 3. How to use it
 
@@ -111,14 +111,14 @@ NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-ge
 - It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
 - Utilize Crystal's [built-in code formatter](../conventions/documenting_code.md) to automatically format all `.cr` files in a directory.
 
-e.g. 
+e.g.
 ```
 crystal tool format
 ```
 
-To check if your code is formatted correctly, or to check if using the formatter wouldn't produce any changes, simply add `--check` to the end of this command. 
+To check if your code is formatted correctly, or to check if using the formatter wouldn't produce any changes, simply add `--check` to the end of this command.
 
-e.g. 
+e.g.
 ```
 crystal tool format --check
 ```

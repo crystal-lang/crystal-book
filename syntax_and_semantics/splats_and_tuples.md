@@ -11,8 +11,8 @@ def sum(*elements)
   total
 end
 
-sum 1, 2, 3    #=> 6
-sum 1, 2, 3, 4.5 #=> 10.5
+sum 1, 2, 3      # => 6
+sum 1, 2, 3, 4.5 # => 10.5
 ```
 
 The passed arguments become a [Tuple](http://crystal-lang.org/api/Tuple.html) in the method's body:
@@ -36,7 +36,7 @@ def sum(*elements, initial = 0)
   total
 end
 
-sum 1, 2, 3 # => 6
+sum 1, 2, 3              # => 6
 sum 1, 2, 3, initial: 10 # => 16
 ```
 
@@ -51,7 +51,7 @@ def sum(*elements, initial)
   total
 end
 
-sum 1, 2, 3 # Error, missing argument: initial
+sum 1, 2, 3              # Error, missing argument: initial
 sum 1, 2, 3, initial: 10 # => 16
 ```
 

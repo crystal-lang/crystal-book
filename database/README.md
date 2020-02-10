@@ -115,7 +115,7 @@ name, age = rs.read(String, Int32)
 Or read a single row:
 
 ```crystal
-name, age = db.query_one "select name, age from contacts order by age desc limit 1", as: { String, Int32 }
+name, age = db.query_one "select name, age from contacts order by age desc limit 1", as: {String, Int32}
 ```
 
 Or read a scalar value without dealing explicitly with the ResultSet:

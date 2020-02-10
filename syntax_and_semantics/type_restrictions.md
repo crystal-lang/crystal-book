@@ -97,9 +97,9 @@ john = Person.new "John"
 another_john = Person.new "John"
 peter = Person.new "Peter"
 
-john == another_john #=> true
-john == peter #=> false (names differ)
-john == 1 #=> false (because 1 is not a Person)
+john == another_john # => true
+john == peter        # => false (names differ)
+john == 1            # => false (because 1 is not a Person)
 ```
 
 In the previous example `self` is the same as writing `Person`. But, in general, `self` is the same as writing the type that will finally own that method, which, when modules are involved, becomes more useful.
@@ -111,10 +111,10 @@ Note that `self` always represents a match against an instance type, even in cla
 ```crystal
 class Person
   getter name : String
-  
+
   def initialize(@name)
   end
-  
+
   def self.compare(p1 : self, p2 : self)
     p1.name == p2.name
   end
@@ -196,8 +196,8 @@ A simple way to match against one or more elements of any type is to use `Object
 def foo(*args : Object)
 end
 
-foo() # Error
-foo(1) # OK
+foo()       # Error
+foo(1)      # OK
 foo(1, "x") # OK
 ```
 
@@ -210,8 +210,8 @@ def foo(x : T) forall T
   T
 end
 
-foo(1)       #=> Int32
-foo("hello") #=> String
+foo(1)       # => Int32
+foo("hello") # => String
 ```
 
 That is, `T` becomes the type that was effectively used to instantiate the method.
@@ -223,8 +223,8 @@ def foo(x : Array(T)) forall T
   T
 end
 
-foo([1, 2])   #=> Int32
-foo([1, "a"]) #=> (Int32 | String)
+foo([1, 2])   # => Int32
+foo([1, "a"]) # => (Int32 | String)
 ```
 
 To create a method that accepts a type name, rather than an instance of a type, append `.class` to a free variable in the type restriction:
@@ -234,8 +234,8 @@ def foo(x : T.class) forall T
   Array(T)
 end
 
-foo(Int32)  #=> Array(Int32)
-foo(String) #=> Array(String)
+foo(Int32)  # => Array(Int32)
+foo(String) # => Array(String)
 ```
 
 Multiple free variables can be specified too, for matching types of multiple arguments:
@@ -245,7 +245,7 @@ def push(element : T, array : Array(T)) forall T
   array << element
 end
 
-push(4, [1, 2, 3]) # OK
+push(4, [1, 2, 3])      # OK
 push("oops", [1, 2, 3]) # Error
 ```
 

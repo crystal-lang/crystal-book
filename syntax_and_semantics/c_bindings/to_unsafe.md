@@ -17,9 +17,7 @@ class IntWrapper
 end
 
 wrapper = IntWrapper.new(1)
-C.exit(wrapper) # wrapper is not an Int32, but its to_unsafe
-                # method is, so wrapper.to_unsafe
-                # is passed instead
+C.exit(wrapper) # wrapper.to_unsafe is passed to C function which has type Int32
 ```
 
 This is very useful for defining wrappers of C types without having to explicitly transform them to their wrapped values.

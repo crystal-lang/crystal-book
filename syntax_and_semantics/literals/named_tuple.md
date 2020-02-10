@@ -4,8 +4,8 @@ A [NamedTuple](http://crystal-lang.org/api/NamedTuple.html) is typically created
 
 ```crystal
 tuple = {name: "Crystal", year: 2011} # NamedTuple(name: String, year: Int32)
-tuple[:name] # => "Crystal" (String)
-tuple[:year] # => 2011      (Int32)
+tuple[:name]                          # => "Crystal" (String)
+tuple[:year]                          # => 2011      (Int32)
 ```
 
 To denote a named tuple type you can write:

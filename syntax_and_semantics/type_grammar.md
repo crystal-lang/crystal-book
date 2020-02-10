@@ -194,6 +194,6 @@ end
 `typeof` is allowed in the type grammar. It returns a union type of the type of the passed expressions:
 
 ```crystal
-typeof(1 + 2) # => Int32
+typeof(1 + 2)  # => Int32
 typeof(1, "a") # => (Int32 | String)
 ```

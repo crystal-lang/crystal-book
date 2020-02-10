@@ -12,7 +12,7 @@ end
 Once you bind it, the function is available inside the `C` type as if it was a class method:
 
 ```crystal
-C.cos(1.5) #=> 0.0707372
+C.cos(1.5) # => 0.0707372
 ```
 
 You can omit the parentheses if the function doesn't have arguments (and omit them in the call as well):

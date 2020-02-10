@@ -23,7 +23,7 @@ def foo(
   a, b, c = 2,
   # This is the double splat argument:
   **options
-  )
+)
 end
 ```
 
@@ -59,8 +59,8 @@ When a splat method argument has no name, it means no more positional arguments 
 def foo(x, *, y)
 end
 
-foo 1 # Error, missing argument: y
-foo 1, 2 # Error: wrong number of arguments (given 2, expected 1)
+foo 1        # Error, missing argument: y
+foo 1, 2     # Error: wrong number of arguments (given 2, expected 1)
 foo 1, y: 10 # OK
 ```
 
@@ -71,10 +71,10 @@ But even if a splat method argument has a name, arguments that follow it must be
 def foo(x, *args, y)
 end
 
-foo 1 # Error, missing argument: y
-foo 1, 2 # Error: missing argument; y
-foo 1, 2, 3 # Error: missing argument: y
-foo 1, y: 10 # OK
+foo 1             # Error, missing argument: y
+foo 1, 2          # Error: missing argument; y
+foo 1, 2, 3       # Error: missing argument: y
+foo 1, y: 10      # OK
 foo 1, 2, 3, y: 4 # OK
 ```
 
@@ -85,8 +85,8 @@ There's also the possibility of making a method only receive named arguments (an
 def foo(*, x, y)
 end
 
-foo # Error: missing arguments: x, y
-foo x: 1 # Error: missing argument: y
+foo            # Error: missing arguments: x, y
+foo x: 1       # Error: missing argument: y
 foo x: 1, y: 2 # OK
 ```
 
@@ -97,8 +97,8 @@ Arguments past the star can also have default values. It means: they must be pas
 def foo(*, x, y = 2)
 end
 
-foo # Error: missing argument: x
-foo x: 1 # OK, y is 2
+foo            # Error: missing argument: x
+foo x: 1       # OK, y is 2
 foo x: 1, y: 3 # OK, y is 3
 ```
 
@@ -123,7 +123,7 @@ Positional arguments can always be matched by name:
 def foo(x, *, y)
 end
 
-foo 1, y: 2 # OK
+foo 1, y: 2    # OK
 foo y: 2, x: 3 # OK
 ```
 

@@ -77,7 +77,7 @@ end
 Now the code compiles:
 
 ```crystal
-john.pet.talk #=> "Woof!"
+john.pet.talk # => "Woof!"
 ```
 
 Marking a class as abstract will also prevent us from creating an instance of it:
