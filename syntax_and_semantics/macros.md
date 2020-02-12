@@ -75,7 +75,7 @@ Note that `:foo` was the result of the interpolation, because that's what was pa
 
 ## Macro calls
 
-You can invoke a **fixed subset** of methods on AST nodes at compile-time. These methods are documented in a fictitious [Crystal::Macros](http://crystal-lang.org/api/Crystal/Macros.html) module.
+You can invoke a **fixed subset** of methods on AST nodes at compile-time. These methods are documented in a fictitious [Crystal::Macros](http://crystal-lang.org/api/Crystal/Macros.html) module.  You can run things like `puts` to output code snippets, and run system commands to insert code.
 
 For example, invoking [`ASTNode#id`](https://crystal-lang.org/api/Crystal/Macros/ASTNode.html#id%3AMacroId-instance-method) in the above example solves the problem:
 
