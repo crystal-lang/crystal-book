@@ -4,7 +4,7 @@ This style is used in the standard library. You can use it in your own project t
 
 ## Naming
 
-__Type names__ are camelcased. For example:
+__Type names__ are StudlyCased. For example:
 
 ```crystal
 class ParseError < Exception
@@ -27,7 +27,7 @@ enum Time::DayOfWeek
 end
 ```
 
-__Method names__ are underscore-cased. For example:
+__Method names__ are snake_cased. For example:
 
 ```crystal
 class Person
@@ -42,7 +42,7 @@ class Person
 end
 ```
 
-__Variable names__ are underscore-cased. For example:
+__Variable names__ are snake_cased. For example:
 
 ```crystal
 class Greeting
@@ -58,7 +58,7 @@ class Greeting
 end
 ```
 
-__Constants__ are screaming-cased. For example:
+__Constants__ are SCREAMING_SNAKE_CASED. For example:
 
 ```crystal
 LUCKY_NUMBERS     = [3, 7, 11]
@@ -69,7 +69,7 @@ DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 
 In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
 
-In method names, acronyms are _all-lowercase_.  For example `#from_json`,  `#to_io`.
+In method names, acronyms are _all-lowercase_. For example `#from_json`, `#to_io`.
 
 ### Libs
 
@@ -84,11 +84,11 @@ Within a project:
 - `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
 - `bin/` contains any executables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with _underscore-case_.
+File paths match the namespace of their contents. Files are named after the class or namespace they define, with _snake-case_.
 
 For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
 
-## Whitespace
+## Indentation
 
 Use __two spaces__ to indent code inside namespaces, methods, blocks or other nested contexts. For example:
 
