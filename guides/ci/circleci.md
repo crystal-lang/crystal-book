@@ -26,7 +26,7 @@ workflows:
       - crystal/test
 
 orbs:
-  crystal: manastech/crystal@0.4
+  crystal: manastech/crystal@1.0
 version: 2.1
 ```
 
@@ -51,7 +51,7 @@ workflows:
             tag: nightly
 
 orbs:
-  crystal: manastech/crystal@0.4
+  crystal: manastech/crystal@1.0
 version: 2.1
 ```
 
@@ -70,7 +70,7 @@ workflows:
             tag: 0.30.0
 
 orbs:
-  crystal: manastech/crystal@0.4
+  crystal: manastech/crystal@1.0
 version: 2.1
 ```
 
@@ -95,7 +95,7 @@ workflows:
             - run: apt-get update && apt-get install -y libsqlite3-dev
 
 orbs:
-  crystal: manastech/crystal@0.4
+  crystal: manastech/crystal@1.0
 version: 2.1
 ```
 
@@ -134,7 +134,7 @@ workflows:
                         mysql -h 127.0.0.1 -u root --password="" db < test-data/setup.sql
 
 orbs:
-  crystal: manastech/crystal@0.4
+  crystal: manastech/crystal@1.0
 version: 2.1
 ```
 
