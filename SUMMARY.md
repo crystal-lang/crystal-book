@@ -131,4 +131,5 @@
     * [Hosting on GitHub](guides/hosting/github.md)
     * [Hosting on GitLab](guides/hosting/gitlab.md)
   * [Continuous Integration](guides/continuous_integration.md)
-    * [Using TravisCI](guides/ci/travis.md)
+    * [Using Travis CI](guides/ci/travis.md)
+    * [Using CircleCI](guides/ci/circleci.md)
