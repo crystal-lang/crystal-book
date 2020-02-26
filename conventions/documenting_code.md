@@ -117,7 +117,7 @@ end
 
 ### Inheriting Documentation
 
-When using inheritance, if an instance method is only documented on the parent type; the method on the child type will inherit the documentation of the parent with `Description copied from class/struct ParentType` prepended.
+When an instance method has no doc comment, but a method with the same signature exists in a parent type, the documentation is inherited from the parent method.
 
 For example:
 
@@ -134,7 +134,7 @@ class Unicorn < Animal
 end
 ```
 
-The documentation that would appear on `Unicon#name` would be:
+The documentation for `Unicorn#name` would be:
 
 ```
 Description copied from class `Animal`
@@ -162,7 +162,7 @@ class Child < Parent
 end
 ```
 
-The documentation that would appear on `Child#id` would be:
+The documentation for `Child#id` would be:
 
 ```
 Some documentation specific to *id*'s usage within `Child`.
