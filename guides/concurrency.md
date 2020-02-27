@@ -223,6 +223,13 @@ After receive
 
 First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked, and so execution continues at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes, so the program exits without giving the other fiber a chance to print "After send".
 
+But what will happen if the first fiber has an uncaught exception, and so never signals completion to its channel?  It will hang forever.  We could add a large `begin...ensure` block in the fiber's block to ensure the send occurs, or there is another construct useful for joining called a [Future](https://crystal-lang.org/api/toplevel.html#future(&exp:-%3EUNDERSCORE)-class-method).
+
+```
+f = future { sleep 1; "hello" }
+puts f.get # => "hello" after 1s
+```
+
 In the above example we used `nil` just to communicate that the fiber ended. We can also use channels to communicate values between fibers:
 
 ```crystal
