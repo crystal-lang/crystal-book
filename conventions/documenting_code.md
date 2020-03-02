@@ -115,6 +115,63 @@ class Unicorn
 end
 ```
 
+### Inheriting Documentation
+
+When an instance method has no doc comment, but a method with the same signature exists in a parent type, the documentation is inherited from the parent method.
+
+For example:
+
+```crystal
+abstract class Animal
+  # Returns the name of `self`.
+  abstract def name : String
+end
+
+class Unicorn < Animal
+  def name : String
+    "unicorn"
+  end
+end
+```
+
+The documentation for `Unicorn#name` would be:
+
+```
+Description copied from class `Animal`
+
+Returns the name of `self`.
+```
+
+The child method can use `:inherit:` to explicitly copy the parent's documentation, without the `Description copied from ...` text.  `:inherit:` can also be used to inject the parent's documentation into additional documentation on the child.
+
+For example:
+
+```crystal
+abstract class Parent
+  # Some documentation common to every *id*.
+  abstract def id : Int32
+end
+
+class Child < Parent
+  # Some documentation specific to *id*'s usage within `Child`.
+  #
+  # :inherit:
+  def id : Int32
+    -1
+  end
+end
+```
+
+The documentation for `Child#id` would be:
+
+```
+Some documentation specific to *id*'s usage within `Child`.
+
+Some documentation common to every *id*.
+```
+
+> **NOTE:** Inheriting documentation only works on _instance_, non-constructor methods.
+
 ### Flagging Classes, Modules, and Methods
 
 Given a valid keyword, Crystal will automatically generate visual flags that help highlight problems, notes and/or possible issues.
