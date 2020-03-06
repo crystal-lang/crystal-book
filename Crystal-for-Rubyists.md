@@ -103,7 +103,25 @@ will generate an error message like
 
     in line 1: too many block arguments (given 2, expected maximum 1)
 
-However omitting unneeded arguments is fine.
+However omitting unneeded arguments is fine (as it is in Ruby), ex: `
+
+```cr
+[[1, "A"], [2, "B"]].each do # no arguments
+  pp 3
+end
+```
+
+Or
+
+```cr
+def many
+  yield 1, 2, 3
+end
+
+many do |x, y| # ignoring value passed in for "z" is OK
+  puts x + y
+end
+```
 
 There is autosplat for tuples:
 
@@ -116,7 +134,7 @@ end
 
 will return the result you expect.
 
-You can explicitly unpack it to get the same result as Ruby:
+You can also explicitly unpack to get the same result as Ruby's autosplat:
 
 ```cr
 [[1, "A"], [2, "B"]].each do |(a, b)|
