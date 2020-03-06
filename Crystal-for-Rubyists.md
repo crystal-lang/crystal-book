@@ -116,6 +116,15 @@ end
 
 will return the result you expect.
 
+You can explicitly unpack it to get the same result as Ruby:
+
+```cr
+[[1, "A"], [2, "B"]].each do |(a, b)|
+  pp a
+  pp b
+end
+```
+
 ## [.each returns nil](https://github.com/crystal-lang/crystal/pull/3815#issuecomment-269978574)
 
 In Ruby `.each` returns the receiver for many built-in collections like `Array` and `Hash`, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported. Alternately, one can use `.tap`.
