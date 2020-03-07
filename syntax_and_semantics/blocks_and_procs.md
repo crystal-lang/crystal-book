@@ -445,6 +445,16 @@ array.each do |number, word, bool|
 end
 ```
 
+Because [Hash#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes Tuples to its blocks, this means you can iterate over Hash key values with auto-splatting:
+
+```crystal
+h = {"foo" => "bar"}
+h.each do |key, value|
+  key   # => "foo"
+  value # => "bar"
+end
+```
+
 ## Performance
 
 When using blocks with `yield`, the blocks are **always** inlined: no closures, calls or function pointers are involved. This means that this:
