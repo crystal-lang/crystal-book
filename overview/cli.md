@@ -155,7 +155,7 @@ end
 
 unless say_hi_to.empty?
   puts ""
-  puts "You say goodbye, and #{the_beatles[Random.new.rand(4)]} says hello to #{say_hi_to}!"
+  puts "You say goodbye, and #{the_beatles.sample} says hello to #{say_hi_to}!"
 end
 ```
 
@@ -216,7 +216,7 @@ option_parser = OptionParser.parse do |parser|
     say_hi_to = name
   end
   parser.on "-r", "--random_goodbye_hello", "Say hello to one random member" do
-    say_hi_to = the_beatles[Random.new.rand(4)]
+    say_hi_to = the_beatles.sample
   end
   parser.on "-s", "--strawberry", "Strawberry fields forever mode ON" do
     strawberry = true
