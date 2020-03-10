@@ -445,7 +445,7 @@ array.each do |number, word, bool|
 end
 ```
 
-Because [Hash#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes Tuples to its blocks, this means you can iterate over Hash key values with auto-splatting:
+[Hash(K, V)#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
 
 ```crystal
 h = {"foo" => "bar"}
