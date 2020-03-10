@@ -436,7 +436,7 @@ end
 
 That means that any type that responds to `[]` with integers can be unpacked in a block argument.
 
-For [Tuple](http://crystal-lang.org/api/Tuple.html) arguments you can take advantage of auto-splatting and not need parentheses:
+For [Tuple](http://crystal-lang.org/api/Tuple.html) arguments you can take advantage of auto-splatting and do not need parentheses:
 
 ```crystal
 array = [{1, "one", true}, {2, "two", false}]
