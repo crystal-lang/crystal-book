@@ -1,0 +1,15 @@
+<aside class="page__meta">
+  <p>
+    Found an error?
+    {%- if page.collection -%}
+      {%- assign doclink = 'src/collections/'
+        | append: page.relative_path
+      -%}
+    {%- else -%}
+      {%- assign doclink = 'src/'
+        | append: page.path
+      -%}
+    {%- endif %}
+    <a href="{{ site.edit_page_url | append: site.source | append: doclink }}">Edit this page on GitHub</a>
+  </p>
+</aside>

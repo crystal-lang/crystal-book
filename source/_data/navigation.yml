@@ -1,0 +1,280 @@
+main:
+- title: Language Reference
+  url: /syntax_and_semantics/
+- title: Guides
+  url: /guides/
+- title: Manuals
+  url: /manuals/
+- title: API Reference
+  url: https://crystal-lang.org/api/
+
+compiler:
+- title: Using the compiler
+  url: using_the_compiler/README
+- title: Overview and Examples
+  url: overview/README
+  children:
+  - title: Hello World!
+    url: overview/hello_world
+  - title: HTTP Server
+    url: overview/http_server
+
+language:
+- title: Literals
+  url: syntax_and_semantics/literals
+  children:
+  - title: Nil
+    url: syntax_and_semantics/literals/nil
+  - title: Bool
+    url: syntax_and_semantics/literals/bool
+  - title: Integers
+    url: syntax_and_semantics/literals/integers
+  - title: Floats
+    url: syntax_and_semantics/literals/floats
+  - title: Char
+    url: syntax_and_semantics/literals/char
+  - title: String
+    url: syntax_and_semantics/literals/string
+  - title: Symbol
+    url: syntax_and_semantics/literals/symbol
+  - title: Array
+    url: syntax_and_semantics/literals/array
+  - title: Hash
+    url: syntax_and_semantics/literals/hash
+  - title: Range
+    url: syntax_and_semantics/literals/range
+  - title: Regex
+    url: syntax_and_semantics/literals/regex
+  - title: Tuple
+    url: syntax_and_semantics/literals/tuple
+  - title: NamedTuple
+    url: syntax_and_semantics/literals/named_tuple
+  - title: Proc
+    url: syntax_and_semantics/literals/proc
+- title: Syntax and semantics
+  url: syntax_and_semantics/README
+  children:
+  - title: Comments
+    url: syntax_and_semantics/comments
+  - title: Assignment
+    url: syntax_and_semantics/assignment
+  - title: Multiple assignment
+    url: syntax_and_semantics/multiple_assignment
+  - title: Local variables
+    url: syntax_and_semantics/local_variables
+- title: Control expressions
+  url: syntax_and_semantics/control_expressions
+  children:
+  - title: Truthy and falsey values
+    url: syntax_and_semantics/truthy_and_falsey_values
+  - title: if
+    url: syntax_and_semantics/if
+    children:
+    - title: As a suffix
+      url: syntax_and_semantics/as_a_suffix
+    - title: As an expression
+      url: syntax_and_semantics/as_an_expression
+    - title: Ternary if
+      url: syntax_and_semantics/ternary_if
+    - title: if var
+      url: syntax_and_semantics/if_var
+    - title: if var.is_a?(...)
+      url: syntax_and_semantics/if_varis_a
+    - title: if var.responds_to?(...)
+      url: syntax_and_semantics/if_varresponds_to
+    - title: if var.nil?
+      url: syntax_and_semantics/if_var_nil
+    - title: if !
+      url: syntax_and_semantics/not
+  - title: unless
+    url: syntax_and_semantics/unless
+  - title: case
+    url: syntax_and_semantics/case
+  - title: while
+    url: syntax_and_semantics/while
+    children:
+    - title: break
+      url: syntax_and_semantics/break
+    - title: next
+      url: syntax_and_semantics/next
+  - title: until
+    url: syntax_and_semantics/until
+  - title: "&&"
+    url: syntax_and_semantics/and
+  - title: "||"
+    url: syntax_and_semantics/or
+- title: "dunno"
+  children:
+  - title: Requiring files
+    url: syntax_and_semantics/requiring_files
+- title: Types and methods
+url: syntax_and_semantics/types_and_methods
+children:
+- title: Everything is an object
+  url: syntax_and_semantics/everything_is_an_object
+- title: The Program
+  url: syntax_and_semantics/the_program
+- title: Classes and methods
+  url: syntax_and_semantics/classes_and_methods
+  children:
+  - title: new, initialize and allocate
+    url: syntax_and_semantics/new,_initialize_and_allocate
+  - title: Methods and instance variables
+    url: syntax_and_semantics/methods_and_instance_variables
+  - title: Type inference
+    url: syntax_and_semantics/type_inference
+  - title: Union types
+    url: syntax_and_semantics/union_types
+  - title: Overloading
+    url: syntax_and_semantics/overloading
+  - title: Default values and named arguments
+    url: syntax_and_semantics/default_and_named_arguments
+  - title: Splats and tuples
+    url: syntax_and_semantics/splats_and_tuples
+  - title: Type restrictions
+    url: syntax_and_semantics/type_restrictions
+  - title: Return types
+    url: syntax_and_semantics/return_types
+  - title: Method arguments
+    url: syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading
+  - title: Operators
+    url: syntax_and_semantics/operators
+  - title: Visibility
+    url: syntax_and_semantics/visibility
+  - title: Inheritance
+    url: syntax_and_semantics/inheritance
+    children:
+    - title: Virtual and abstract types
+      url: syntax_and_semantics/virtual_and_abstract_types
+  - title: Class methods
+    url: syntax_and_semantics/class_methods
+  - title: Class variables
+    url: syntax_and_semantics/class_variables
+  - title: finalize
+    url: syntax_and_semantics/finalize
+  - title: Modules
+    url: syntax_and_semantics/modules
+  - title: Generics
+    url: syntax_and_semantics/generics
+  - title: Structs
+    url: syntax_and_semantics/structs
+  - title: Constants
+    url: syntax_and_semantics/constants
+  - title: Enums
+    url: syntax_and_semantics/enum
+  - title: Blocks and Procs
+    url: syntax_and_semantics/blocks_and_procs
+    children:
+    - title: Capturing blocks
+      url: syntax_and_semantics/capturing_blocks
+    - title: Proc literal
+      url: syntax_and_semantics/proc_literal
+    - title: Block forwarding
+      url: syntax_and_semantics/block_forwarding
+    - title: Closures
+      url: syntax_and_semantics/closures
+  - title: alias
+    url: syntax_and_semantics/alias
+- title: "dunno"
+  children:
+  - title: Exception handling
+    url: syntax_and_semantics/exception_handling
+  - title: Type grammar
+    url: syntax_and_semantics/type_grammar
+  - title: Type reflection
+    url: syntax_and_semantics/type_reflection
+    children:
+    - title: is_a?
+      url: syntax_and_semantics/is_a
+    - title: nil?
+      url: syntax_and_semantics/nil_question
+    - title: responds_to?
+      url: syntax_and_semantics/responds_to
+    - title: as
+      url: syntax_and_semantics/as
+    - title: as?
+      url: syntax_and_semantics/as_question
+    - title: typeof
+      url: syntax_and_semantics/typeof
+  - title: Macros
+    url: syntax_and_semantics/macros
+    children:
+    - title: Macro methods
+      url: syntax_and_semantics/macros/macro_methods
+    - title: Hooks
+      url: syntax_and_semantics/macros/hooks
+    - title: Fresh variables
+      url: syntax_and_semantics/macros/fresh_variables
+  - title: Attributes
+    url: syntax_and_semantics/attributes
+  - title: Low-level primitives
+    url: syntax_and_semantics/low_level_primitives
+    children:
+    - title: pointerof
+      url: syntax_and_semantics/pointerof
+    - title: sizeof
+      url: syntax_and_semantics/sizeof
+    - title: instance_sizeof
+      url: syntax_and_semantics/instance_sizeof
+    - title: Uninitialized variable declaration
+      url: syntax_and_semantics/declare_var
+  - title: Compile-time flags
+    url: syntax_and_semantics/compile_time_flags
+    children:
+    - title: Cross-compilation
+      url: syntax_and_semantics/cross-compilation
+  - title: C bindings
+    url: syntax_and_semantics/c_bindings/README
+    children:
+    - title: lib
+      url: syntax_and_semantics/c_bindings/lib
+    - title: fun
+      url: syntax_and_semantics/c_bindings/fun
+      children:
+      - title: out
+        url: syntax_and_semantics/c_bindings/out
+      - title: to_unsafe
+        url: syntax_and_semantics/c_bindings/to_unsafe
+    - title: struct
+      url: syntax_and_semantics/c_bindings/struct
+    - title: union
+      url: syntax_and_semantics/c_bindings/union
+    - title: enum
+      url: syntax_and_semantics/c_bindings/enum
+    - title: Variables
+      url: syntax_and_semantics/c_bindings/variables
+    - title: Constants
+      url: syntax_and_semantics/c_bindings/constants
+    - title: type
+      url: syntax_and_semantics/c_bindings/type
+    - title: alias
+      url: syntax_and_semantics/c_bindings/alias
+    - title: Callbacks
+      url: syntax_and_semantics/c_bindings/callbacks
+  - title: Unsafe code
+    url: syntax_and_semantics/unsafe
+
+guides:
+- title: Guides
+  url: guides/
+  children:
+  - title: Performance
+    url: guides/performance
+  - title: Concurrency
+    url: guides/concurrency
+  - title: Testing
+    url: guides/testing
+  - title: Writing Shards
+    url: guides/writing_shards
+- title: Database
+  url: database/README
+  children:
+  - title: Connection pool
+    url: database/connection_pool
+- title: Conventions
+  url: conventions/README
+  children:
+  - title: Coding style
+    url: conventions/coding_style
+  - title: Documenting code
+    url: conventions/documenting_code

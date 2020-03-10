@@ -1,0 +1,120 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Crystal Language Reference
+description: >- # this means to ignore newlines until "baseurl:"
+  Reference of the Crystal Language, using the compiler and guides for using Crystal.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://crystal-lang.org/reference" # the base hostname & protocol for your site, e.g. http://example.com
+home_url: "https://crystal-lang.org/" # the home hostname of the website
+repository: crystal-lang/crystal-book
+crystal_version: 0.32.1
+edit_page_url: https://github.com/crystal-lang/crystal-book/master/edit/
+
+encoding: utf-8
+timezone: UTC
+locale: "en"
+
+# Build settings
+markdown: kramdown
+theme: minimal-mistakes-jekyll
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude: []
+
+plugins:
+- jekyll-relative-links
+- octopress-escape-code
+#- jekyll-toc
+
+permalink: /:slug/
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  footnote_nr: 1
+  auto_id_stripping: true
+
+# theme settings
+
+#minimal_mistakes_skin: "contrast"
+
+
+# Source folder for Jekyll content
+source: source/
+collections_dir: collections
+
+collections:
+  syntax_and_semantics:
+    output: true
+  guides:
+    output: true
+
+defaults:
+# pages
+- scope:
+    path: ""
+    type: pages
+  values:
+    #layout: page
+    foo: bar
+    escape_code: true
+# language reference
+- scope:
+    path: ""
+    type: syntax_and_semantics
+  values:
+    layout: doc
+    toc: true
+    permalink: /syntax_and_semantics/:path/
+    render_with_liquid: false
+    escape_code: true
+    sidebar:
+      nav: "language"
+# guides
+- scope:
+    path: ""
+    type: guides
+  values:
+    layout: single
+    toc: true
+    permalink: /guides/:path/
+    render_with_liquid: false
+    escape_code: true
+    sidebar:
+      nav: "guides"
+
+toc:
+  max_level: 3
+
+relative_links:
+  enabled:     true
+  collections: true
+
+search: true
+search_full_content: true
+
+# breadcrumbs: true
+
+footer:
+  links:
+  - label: Crystal Repository
+    icon: "fab fa-fw fa-github"
+    url: https://github.com/crystal-lang/crystal
+  - label: "@CrystalLanguage"
+    icon: "fab fa-fw fa-twitter-square"
+    url: "https://twitter.com/CrystalLanguage"

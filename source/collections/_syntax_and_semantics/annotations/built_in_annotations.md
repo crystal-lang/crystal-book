@@ -1,4 +1,6 @@
-# Built in Annotations
+---
+title: Built in Annotations
+---
 
 The Crystal standard library includes some pre-defined annotations:
 
