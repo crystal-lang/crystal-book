@@ -436,6 +436,25 @@ end
 
 That means that any type that responds to `[]` with integers can be unpacked in a block argument.
 
+For [Tuple](http://crystal-lang.org/api/Tuple.html) arguments you can take advantage of auto-splatting and do not need parentheses:
+
+```crystal
+array = [{1, "one", true}, {2, "two", false}]
+array.each do |number, word, bool|
+  puts "#{number}: #{word} #{bool}"
+end
+```
+
+[Hash(K, V)#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
+
+```crystal
+h = {"foo" => "bar"}
+h.each do |key, value|
+  key   # => "foo"
+  value # => "bar"
+end
+```
+
 ## Performance
 
 When using blocks with `yield`, the blocks are **always** inlined: no closures, calls or function pointers are involved. This means that this:
