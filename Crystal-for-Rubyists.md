@@ -308,9 +308,44 @@ The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced w
     attr_writer      setter
 
 Example:
+```crystal
+  getter :name, :bday
 ```
-   getter :name, :bday
+
+In addition, Crystal added boolean properties that will use a question mark (`?`) in the method name:
+
+    Crystal
+    --------
+    property?
+    getter?
+
+Example:
+```crystal
+class Person
+  getter? happy = true
+  property? sad = true
+end
+
+p = Person.new
+
+p.sad = false
+
+puts p.happy?
+puts p.sad?
 ```
+
+Even though this is for booleans, you can specify any type:
+
+```crystal
+class Person
+  getter? feeling : String = "happy"
+end
+
+puts Person.new.feeling?
+# => happy
+```
+
+Read more about [getter?](https://crystal-lang.org/api/Object.html#getter?(*names,&block)-macro) and/or [property?](https://crystal-lang.org/api/Object.html#property?(*names,&block)-macro) in the documentation.
 
 ### Consistent dot notation
 For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
