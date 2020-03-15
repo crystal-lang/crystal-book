@@ -119,7 +119,7 @@ bar_arr = [Bar.new] # => [#<Bar:0x10215bfd0>] : Array(Bar)
 bar_arr2 = [Foo.new] of Bar # compiler error
 ```
 
-A Foo array can hold both Foo's and Bar's, but an array of Bar can only hold Bar and it's subclasses.
+A Foo array can hold both Foo's and Bar's, but an array of Bar can only hold Bar and its subclasses.
 
 One place this might trip you up is when automatic casting comes into play. For example, the following won't work:
 
