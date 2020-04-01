@@ -11,7 +11,7 @@ Crystal is a programming language with the following goals:
 * Compile to efficient native code.
 
 
-<!-- **Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
+**Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
 
 ## Contributing to the Language Reference
 
@@ -56,4 +56,4 @@ gitbook_1  | Restart after change in file node_modules/.bin
 
 ### Adding a page
 
-To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference. -->
+To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.

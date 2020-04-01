@@ -12,5 +12,8 @@
             "base": "https://github.com/crystal-lang/crystal-book/edit/master",
             "label": "Edit This Page"
         }
+    },
+    "structure": {
+        "readme": "introduction.md"
     }
 }
