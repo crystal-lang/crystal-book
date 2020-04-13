@@ -212,6 +212,7 @@ macro define_dummy_methods(hash)
     end
   {% end %}
 end
+
 define_dummy_methods({foo: 10, bar: 20})
 foo # => 10
 bar # => 20
@@ -287,7 +288,7 @@ class Foo
 end
 
 Foo.new.describe # => "Class is Foo"
-Foo.describe # => "Class is Foo"
+Foo.describe     # => "Class is Foo"
 ```
 
 ## Method information
@@ -357,10 +358,10 @@ end
 #     end
 define_macros alice, bob
 
-greeting_for_alice "hello"  # => "hello alice"
-greeting_for_bob "hallo"    # => "hallo bob"
-greeting_for_alice "hej"    # => "hej alice"
-greeting_for_bob "hola"     # => "¡hola bob!"
+greeting_for_alice "hello" # => "hello alice"
+greeting_for_bob "hallo"   # => "hallo bob"
+greeting_for_alice "hej"   # => "hej alice"
+greeting_for_bob "hola"    # => "¡hola bob!"
 ```
 
 ### verbatim
@@ -406,10 +407,10 @@ end
 #     end
 define_macros alice, bob
 
-greeting_for_alice "hello"  # => "hello alice"
-greeting_for_bob "hallo"    # => "hallo bob"
-greeting_for_alice "hej"    # => "hej alice"
-greeting_for_bob "hola"     # => "¡hola bob!"
+greeting_for_alice "hello" # => "hello alice"
+greeting_for_bob "hallo"   # => "hallo bob"
+greeting_for_alice "hej"   # => "hej alice"
+greeting_for_bob "hola"    # => "¡hola bob!"
 ```
 
 Notice the variables in the inner macro are not available within the `verbatim` block. The contents of the block are transferred "as is", essentially as a string, until re-examined by the compiler.
@@ -449,7 +450,7 @@ Here is an example of such an invalid macro:
 
 ```crystal
 case 42
-{% for klass in [Int32, String] %}
+{% for klass in [Int32, String] %} # Syntax Error: unexpected token: {% (expecting when, else or end)
   when {{klass.id}}
     p "is {{klass}}"
 {% end %}

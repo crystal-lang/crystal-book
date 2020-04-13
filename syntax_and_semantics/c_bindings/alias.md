@@ -24,7 +24,7 @@ An `alias` is most useful to avoid writing long types over and over, but also to
 
 ```crystal
 lib C
-  {% if flag?:(x86_64) %}
+  {% if flag?(:x86_64) %}
     alias SizeT = Int64
   {% else %}
     alias SizeT = Int32

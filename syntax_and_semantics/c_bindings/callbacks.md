@@ -28,8 +28,7 @@ Note, however, that functions passed to C can't form closures. If the compiler d
 
 ```crystal
 y = 2
-X.callback ->(x) { x + y } # Error: can't send closure
-                           # to C function
+X.callback ->(x) { x + y } # Error: can't send closure to C function
 ```
 
 If the compiler can't detect this at compile-time, an exception will be raised at runtime.

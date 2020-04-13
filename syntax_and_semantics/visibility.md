@@ -15,7 +15,7 @@ class Person
   end
 
   def say_hello
-    say "hello" # OK, no receiver
+    say "hello"      # OK, no receiver
     self.say "hello" # OK, self is a receiver, but it's allowed.
 
     other = Person.new "Other"
@@ -70,7 +70,7 @@ A `protected` method can only be invoked on:
 2. instances in the same namespace (class, struct, module, etc.) as the current type
 
 ```crystal
-### Example of 1
+# Example of 1
 
 class Person
   protected def say(message)
@@ -78,7 +78,7 @@ class Person
   end
 
   def say_hello
-    say "hello" # OK, implicit self is a Person
+    say "hello"      # OK, implicit self is a Person
     self.say "hello" # OK, self is a Person
 
     other = Person.new "Other"
@@ -89,16 +89,14 @@ end
 class Animal
   def make_a_person_talk
     person = Person.new
-    person.say "hello" # Error, person is a Person
-                       # but current type is an Animal
+    person.say "hello" # Error: person is a Person but current type is an Animal
   end
 end
 
 one_more = Person.new "One more"
-one_more.say "hello" # Error, one_more is a Person
-                     # but current type is the Program
+one_more.say "hello" # Error: one_more is a Person but current type is the Program
 
-### Example of 2
+# Example of 2
 
 module Namespace
   class Foo
@@ -126,11 +124,11 @@ class Parent
   end
 
   Parent.protected_method # OK
-  
+
   def instance_method
     Parent.protected_method # OK
   end
-  
+
   def self.class_method
     Parent.protected_method # OK
   end
@@ -138,11 +136,11 @@ end
 
 class Child < Parent
   Parent.protected_method # OK
-  
+
   def instance_method
     Parent.protected_method # OK
   end
-  
+
   def self.class_method
     Parent.protected_method # OK
   end
@@ -150,11 +148,11 @@ end
 
 class Parent::Sub
   Parent.protected_method # OK
-  
+
   def instance_method
     Parent.protected_method # OK
   end
-  
+
   def self.class_method
     Parent.protected_method # OK
   end
@@ -171,7 +169,7 @@ private def greet
   puts "Hello"
 end
 
-greet #=> "Hello"
+greet # => "Hello"
 
 # In file two.cr
 require "./one"
@@ -193,7 +191,7 @@ private class Greeter
   end
 end
 
-Greeter.greet #=> "Hello"
+Greeter.greet # => "Hello"
 
 # In file two.cr
 require "./one"

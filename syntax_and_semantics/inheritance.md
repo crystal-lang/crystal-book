@@ -35,8 +35,7 @@ class Employee < Person
 end
 
 Employee.new "John", "Acme" # OK
-Employee.new "Peter" # Error: wrong number of arguments
-                     # for 'Employee:Class#new' (1 for 2)
+Employee.new "Peter"        # Error: wrong number of arguments for 'Employee:Class#new' (1 for 2)
 ```
 
 You can override methods in a derived class:
@@ -114,8 +113,8 @@ end
 class Bar < Foo
 end
 
-foo_arr = [Bar.new] of Foo # => [#<Bar:0x10215bfe0>] : Array(Foo)
-bar_arr = [Bar.new] # => [#<Bar:0x10215bfd0>] : Array(Bar)
+foo_arr = [Bar.new] of Foo  # => [#<Bar:0x10215bfe0>] : Array(Foo)
+bar_arr = [Bar.new]         # => [#<Bar:0x10215bfd0>] : Array(Bar)
 bar_arr2 = [Foo.new] of Bar # compiler error
 ```
 
@@ -132,6 +131,7 @@ end
 
 class Test
   @arr : Array(Foo)
+
   def initialize
     @arr = [Bar.new]
   end
@@ -151,6 +151,7 @@ end
 
 class Test
   @arr : Array(Foo)
+
   def initialize
     @arr = [Bar.new] of Foo
   end

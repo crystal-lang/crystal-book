@@ -12,7 +12,7 @@ These parts of the language are considered unsafe:
 ```crystal
 a = 1
 ptr = pointerof(a)
-ptr[100_000] = 2   # undefined behaviour, probably a segmentation fault
+ptr[100_000] = 2 # undefined behaviour, probably a segmentation fault
 ```
 
 However, regular code usually never involves pointer manipulation or uninitialized variables. And C bindings are usually wrapped in safe wrappers that include null pointers and bounds checks.

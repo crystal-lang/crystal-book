@@ -5,7 +5,7 @@ Class methods are methods associated to a class or module instead of a specific 
 ```crystal
 module CaesarCipher
   def self.encrypt(string : String)
-    string.chars.map{ |char| ((char.upcase.ord - 52) % 26 + 65).chr }.join
+    string.chars.map { |char| ((char.upcase.ord - 52) % 26 + 65).chr }.join
   end
 end
 

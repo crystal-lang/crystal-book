@@ -121,7 +121,7 @@ A module cannot be instantiated:
 module Moo
 end
 
-Moo.new   # undefined method 'new' for Moo:Module
+Moo.new # undefined method 'new' for Moo:Module
 ```
 
 # Module Type Checking
@@ -132,6 +132,7 @@ If we define two modules with names `A` and `B`:
 
 ```crystal
 module A; end
+
 module B; end
 ```
 
@@ -156,26 +157,25 @@ included modules as well:
 
 ```crystal
 one = One.new
-typeof(one)   # => One
-one.is_a?(A)  # => true
-one.is_a?(B)  # => false
+typeof(one)  # => One
+one.is_a?(A) # => true
+one.is_a?(B) # => false
 
 three = Three.new
-typeof(three)   # => Three
-three.is_a?(A)  # => true
-three.is_a?(B)  # => true
+typeof(three)  # => Three
+three.is_a?(A) # => true
+three.is_a?(B) # => true
 ```
 
 This allows you to define arrays and methods based on module type instead of class:
 ```crystal
-
 one = One.new
 two = Two.new
 three = Three.new
 
 new_array = Array(A).new
-new_array << one    # Ok, One inherits module A
-new_array << three  # Ok, Three includes module A
+new_array << one   # Ok, One inherits module A
+new_array << three # Ok, Three includes module A
 
-new_array << two    # Error, because Two does not inherit module A
+new_array << two # Error, because Two does not inherit module A
 ```

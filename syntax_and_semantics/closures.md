@@ -5,9 +5,9 @@ Captured blocks and proc literals closure local variables and `self`. This is be
 ```crystal
 x = 0
 proc = ->{ x += 1; x }
-proc.call #=> 1
-proc.call #=> 2
-x         #=> 2
+proc.call # => 1
+proc.call # => 2
+x         # => 2
 ```
 
 Or with a proc returned from a method:
@@ -19,8 +19,8 @@ def counter
 end
 
 proc = counter
-proc.call #=> 1
-proc.call #=> 2
+proc.call # => 1
+proc.call # => 2
 ```
 
 In the above example, even though `x` is a local variable, it was captured by the proc literal. In this case the compiler allocates `x` on the heap and uses it as the context data of the proc to make it work, because normally local variables live in the stack and are gone after a method returns.

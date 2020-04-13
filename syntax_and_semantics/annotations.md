@@ -199,10 +199,10 @@ end
 @[MyClass]
 class Foo
   pp {{ @type.annotation(MyClass).stringify }}
-  
+
   @[MyIvar]
   @num : Int32 = 1
-  
+
   @[MyIvar]
   property name : String = "jim"
 

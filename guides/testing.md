@@ -58,28 +58,28 @@ There are methods to create expectations which test for equivalence (`eq`), iden
 Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/latest/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
 
 ```crystal
-actual.should eq(expected)    # passes if actual == expected
-actual.should be(expected)    # passes if actual.same?(expected)
-actual.should be_a(expected)  # passes if actual.is_a?(expected)
-actual.should be_nil          # passes if actual.nil?
+actual.should eq(expected)   # passes if actual == expected
+actual.should be(expected)   # passes if actual.same?(expected)
+actual.should be_a(expected) # passes if actual.is_a?(expected)
+actual.should be_nil         # passes if actual.nil?
 ```
 
 ### Truthiness
 
 ```crystal
-actual.should be_true         # passes if actual == true
-actual.should be_false        # passes if actual == false
-actual.should be_truthy       # passes if actual is truthy (neither nil nor false nor Pointer.null)
-actual.should be_falsey       # passes if actual is falsey (nil, false or Pointer.null)
+actual.should be_true   # passes if actual == true
+actual.should be_false  # passes if actual == false
+actual.should be_truthy # passes if actual is truthy (neither nil nor false nor Pointer.null)
+actual.should be_falsey # passes if actual is falsey (nil, false or Pointer.null)
 ```
 
 ### Comparisons
 
 ```crystal
-actual.should be <  expected  # passes if actual <  expected
-actual.should be <= expected  # passes if actual <= expected
-actual.should be >  expected  # passes if actual >  expected
-actual.should be >= expected  # passes if actual >= expected
+actual.should be < expected  # passes if actual <  expected
+actual.should be <= expected # passes if actual <= expected
+actual.should be > expected  # passes if actual >  expected
+actual.should be >= expected # passes if actual >= expected
 ```
 
 ### Other matchers

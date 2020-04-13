@@ -52,15 +52,15 @@ objects[2, 3]
 The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key presence.
 
 ```crystal
-person.age += 1        # same as: person.age = person.age + 1
+person.age += 1 # same as: person.age = person.age + 1
 
 person.name ||= "John" # same as: person.name || (person.name = "John")
 person.name &&= "John" # same as: person.name && (person.name = "John")
 
-objects[1] += 2        # same as: objects[1] = objects[1] + 2
+objects[1] += 2 # same as: objects[1] = objects[1] + 2
 
-objects[1] ||= 2       # same as: objects[1]? || (objects[1] = 2)
-objects[1] &&= 2       # same as: objects[1]? && (objects[1] = 2)
+objects[1] ||= 2 # same as: objects[1]? || (objects[1] = 2)
+objects[1] &&= 2 # same as: objects[1]? && (objects[1] = 2)
 ```
 
 # Chained assignment
@@ -88,8 +88,8 @@ name, age = "Crystal", 1
 # The above is the same as this:
 temp1 = "Crystal"
 temp2 = 1
-name  = temp1
-age   = temp2
+name = temp1
+age = temp2
 ```
 
 Note that because expressions are assigned to temporary variables it is possible to exchange variables’ contents in a single line:
@@ -98,8 +98,8 @@ Note that because expressions are assigned to temporary variables it is possible
 a = 1
 b = 2
 a, b = b, a
-a #=> 2
-b #=> 1
+a # => 2
+b # => 1
 ```
 
 If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
@@ -109,8 +109,8 @@ name, age, source = "Crystal, 123, GitHub".split(", ")
 
 # The above is the same as this:
 temp = "Crystal, 123, GitHub".split(", ")
-name   = temp[0]
-age    = temp[1]
+name = temp[0]
+age = temp[1]
 source = temp[2]
 ```
 

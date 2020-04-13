@@ -16,7 +16,7 @@ In the above code, `a` is a union of `Int32 | String`. If for some reason we are
 
 ```crystal
 a_as_int = a.as(Int32)
-a_as_int.abs          # works, compiler knows that a_as_int is Int32
+a_as_int.abs # works, compiler knows that a_as_int is Int32
 ```
 
 The `as` pseudo-method performs a runtime check: if `a` wasn't an `Int32`, an [exception](exception_handling.html) is raised.
@@ -37,7 +37,7 @@ The `as` pseudo-method also allows to cast between pointer types:
 
 ```crystal
 ptr = Pointer(Int32).malloc(1)
-ptr.as(Int8*)                    #:: Pointer(Int8)
+ptr.as(Int8*) # :: Pointer(Int8)
 ```
 
 In this case, no runtime checks are done: pointers are unsafe and this type of casting is usually only needed in C bindings and low-level code.
@@ -56,7 +56,7 @@ ptr = Pointer(Void).new(array.object_id)
 # Now we cast that pointer to the same type, and
 # we should get the same value
 array2 = ptr.as(Array(Int32))
-array2.same?(array) #=> true
+array2.same?(array) # => true
 ```
 
 No runtime checks are performed in these cases because, again, pointers are involved. The need for this cast is even more rare than the previous one, but allows to implement some core types (like String) in Crystal itself, and it also allows passing a Reference type to C functions by casting it to a void pointer.
@@ -68,7 +68,7 @@ The `as` pseudo-method can be used to cast an expression to a "bigger" type. For
 ```crystal
 a = 1
 b = a.as(Int32 | Float64)
-b #:: Int32 | Float64
+b # :: Int32 | Float64
 ```
 
 The above might not seem to be useful, but it is when, for example, mapping an array of elements:
@@ -79,7 +79,7 @@ ary = [1, 2, 3]
 # We want to create an array 1, 2, 3 of Int32 | Float64
 ary2 = ary.map { |x| x.as(Int32 | Float64) }
 
-ary2 #:: Array(Int32 | Float64)
+ary2        # :: Array(Int32 | Float64)
 ary2 << 1.5 # OK
 ```
 

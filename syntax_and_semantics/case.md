@@ -111,7 +111,7 @@ When a case expression is a tuple literal there are a few semantic differences i
 case {value1, value2}
 when {0, 0} # OK, 2 elements
   # ...
-when {1, 2, 3} # Compiler error, because it will never match
+when {1, 2, 3} # Syntax error: wrong number of tuple elements (given 3, expected 2)
   # ...
 end
 ```

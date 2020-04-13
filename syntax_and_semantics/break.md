@@ -9,7 +9,7 @@ while (a += 1) < 20
     break # goes to 'puts a'
   end
 end
-puts a #=> 10
+puts a # => 10
 ```
 
 `break` can also take a parameter which will then be the value that gets returned:
@@ -20,5 +20,6 @@ def foo
     break "bar"
   end
 end
-puts foo #=> "bar"
+
+puts foo # => "bar"
 ```

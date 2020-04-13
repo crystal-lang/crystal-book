@@ -11,7 +11,7 @@ end
 
 x = 0
 update_x
-x #=> 1
+x # => 1
 ```
 
 This can sometimes be useful to avoid repetitive code by deliberately reading/writing local variables, but can also overwrite local variables by mistake. To avoid this, fresh variables can be declared with `%name`:
@@ -24,7 +24,7 @@ end
 
 x = 0
 dont_update_x # outputs 1
-x #=> 0
+x             # => 0
 ```
 
 Using `%x` in the above example, we declare a variable whose name is guaranteed not to conflict with local variables in the current scope.

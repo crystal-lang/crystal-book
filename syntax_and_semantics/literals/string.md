@@ -14,20 +14,20 @@ A backslash denotes a special character inside a string, which can either be a n
 
 Available escape sequences:
 ```crystal
-"\"" # double quote
-"\\" # backslash
-"\a" # alert
-"\b" # backspace
-"\e" # escape
-"\f" # form feed
-"\n" # newline
-"\r" # carriage return
-"\t" # tab
-"\v" # vertical tab
-"\NNN" # octal ASCII character
-"\xNN" # hexadecimal ASCII character
-"\uNNNN" # hexadecimal unicode character
-"\u{NNNN...}" # hexadecimal unicode character
+"\""                  # double quote
+"\\"                  # backslash
+"\a"                  # alert
+"\b"                  # backspace
+"\e"                  # escape
+"\f"                  # form feed
+"\n"                  # newline
+"\r"                  # carriage return
+"\t"                  # tab
+"\v"                  # vertical tab
+"\888"                # octal ASCII character
+"\xFF"                # hexadecimal ASCII character
+"\uFFFF"              # hexadecimal unicode character
+"\u{0}".."\u{10FFFF}" # hexadecimal unicode character
 ```
 
 Any other character following a backslash is interpreted as the character itself.
@@ -116,7 +116,7 @@ name = "world"
 Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
-%w(foo bar baz) # => ["foo", "bar", "baz"]
+%w(foo bar baz)  # => ["foo", "bar", "baz"]
 %w(foo\nbar baz) # => ["foo\\nbar", "baz"]
 %w(foo(bar) baz) # => ["foo(bar)", "baz"]
 ```

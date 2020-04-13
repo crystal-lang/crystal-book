@@ -11,9 +11,9 @@ end
 Then it can be get and set:
 
 ```crystal
-C.errno #=> some value
+C.errno # => some value
 C.errno = 0
-C.errno #=> 0
+C.errno # => 0
 ```
 
 A variable can be marked as thread local with an attribute:

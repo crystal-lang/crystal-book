@@ -10,7 +10,7 @@ a = 1
 ptr = pointerof(a)
 ptr.value = 2
 
-a #=> 2
+a # => 2
 ```
 
 An example with an instance variable:
@@ -34,7 +34,7 @@ point = Point.new 1, 2
 ptr = point.x_ptr
 ptr.value = 10
 
-point.x #=> 10
+point.x # => 10
 ```
 
 Because `pointerof` involves pointers, it is considered [unsafe](unsafe.html).

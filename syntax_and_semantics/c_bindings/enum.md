@@ -26,7 +26,7 @@ As in C, the first member of the enum has a value of zero and each successive va
 To use a value:
 
 ```crystal
-X::SomeEnum::One #=> One
+X::SomeEnum::One # => One
 ```
 
 You can specify the value of a member:
@@ -34,8 +34,8 @@ You can specify the value of a member:
 ```crystal
 lib X
   enum SomeEnum
-    Ten = 10
-    Twenty = 10 * 2
+    Ten       = 10
+    Twenty    = 10 * 2
     ThirtyTwo = 1 << 5
   end
 end
@@ -52,7 +52,7 @@ lib X
   end
 end
 
-X::SomeEnum #=> 1_i32
+X::SomeEnum # => 1_i32
 ```
 
 However, you can change this default type:
@@ -60,13 +60,13 @@ However, you can change this default type:
 ```crystal
 lib X
   enum SomeEnum : Int8
-    Zero,
-    Two = 2
+    Zero
+    Two  = 2
   end
 end
 
-X::SomeEnum::Zero #=> 0_i8
-X::SomeEnum::Two  #=> 2_i8
+X::SomeEnum::Zero # => 0_i8
+X::SomeEnum::Two  # => 2_i8
 ```
 
 You can use an enum as a type in a `fun` argument or `struct` or `union` members:

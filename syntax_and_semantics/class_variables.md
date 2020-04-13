@@ -15,11 +15,11 @@ class Counter
   end
 end
 
-Counter.instances #=> 0
+Counter.instances # => 0
 Counter.new
 Counter.new
 Counter.new
-Counter.instances #=> 3
+Counter.instances # => 3
 ```
 
 Class variables can be read and written from class methods or instance methods.
@@ -41,11 +41,11 @@ class Child < Parent
 end
 
 Parent.numbers # => []
-Child.numbers # => []
+Child.numbers  # => []
 
 Parent.numbers << 1
 Parent.numbers # => [1]
-Child.numbers # => []
+Child.numbers  # => []
 ```
 
 Class variables can also be associated to modules and structs. Like above, they are inherited by including/subclassing types.

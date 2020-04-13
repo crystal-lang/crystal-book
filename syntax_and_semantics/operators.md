@@ -60,7 +60,7 @@ struct Vector2
 end
 
 v1 = Vector2.new(1, 2)
--v1 #=> Vector2(@x=-1, @y=-2)
+-v1 # => Vector2(@x=-1, @y=-2)
 ```
 
 ## Binary operators
@@ -87,7 +87,7 @@ end
 
 v1 = Vector2.new(1, 2)
 v2 = Vector2.new(3, 4)
-v1 + v2 #=> Vector2(@x=4, @y=6)
+v1 + v2 # => Vector2(@x=4, @y=6)
 ```
 
 Per convention, the return type of a binary operator should be the type of the

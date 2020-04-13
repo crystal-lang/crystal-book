@@ -39,7 +39,7 @@ If necessary a variable can be defined as a union type at compile time
 
 ```crystal
 # set the compile-time type
-a = 0.as(Int32|Nil|String)
+a = 0.as(Int32 | Nil | String)
 typeof(a) # => Int32 | Nil | String
 ```
 

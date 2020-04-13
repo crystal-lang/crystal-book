@@ -2,7 +2,7 @@
 
 Types, methods and generally any part of your code can be conditionally defined based on some flags available at compile time. These flags are by default read from the hosts [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple), split on `-`. To get the target you can execute `llvm-config --host-target`.
 
-```bash
+```console
 $ llvm-config --host-target
 x86_64-unknown-linux-gnu
 
@@ -12,7 +12,7 @@ x86_64-unknown-linux-gnu
 To define a flag, simply use the `--define` or `-D` option, like so:
 
 ```bash
-$ crystal some_program.cr -Dflag
+crystal some_program.cr -Dflag
 ```
 
 Additionally, if a program is compiled with `--release`, the `release` flag will be set.

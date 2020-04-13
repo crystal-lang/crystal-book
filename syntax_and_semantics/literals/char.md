@@ -16,24 +16,24 @@ A backslash denotes a special character, which can either be a named escape sequ
 
 Available escape sequences:
 ```crystal
-'\'' # single quote
-'\\' # backslash
-'\a' # alert
-'\b' # backspace
-'\e' # escape
-'\f' # form feed
-'\n' # newline
-'\r' # carriage return
-'\t' # tab
-'\v' # vertical tab
-'\uNNNN' # hexadecimal unicode character
-'\u{NNNN...}' # hexadecimal unicode character
+'\''         # single quote
+'\\'         # backslash
+'\a'         # alert
+'\b'         # backspace
+'\e'         # escape
+'\f'         # form feed
+'\n'         # newline
+'\r'         # carriage return
+'\t'         # tab
+'\v'         # vertical tab
+'\uFFFF'     # hexadecimal unicode character
+'\u{10FFFF}' # hexadecimal unicode character
 ```
 
 A backslash followed by a `u` denotes a unicode codepoint. It can either be followed by exactly four hexadecimal characters representing the unicode bytes (`\u0000` to `\uFFFF`) or a number of one to six hexadecimal characters wrapped in curly braces (`\u{0}` to `\u{10FFFF}`.
 
 ```crystal
-'\u0041' # => 'A'
-'\u{41}' # => 'A'
+'\u0041'    # => 'A'
+'\u{41}'    # => 'A'
 '\u{1F52E}' # => '&#x1F52E;'
 ```

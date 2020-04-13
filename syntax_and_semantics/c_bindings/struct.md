@@ -12,7 +12,7 @@ lib C
   #  };
   struct TimeZone
     minutes_west : Int32
-    dst_time     : Int32
+    dst_time : Int32
   end
 end
 ```
@@ -34,7 +34,7 @@ lib C
   struct LinkedListNode
     prev, _next : LinkedListNode*
   end
-  
+
   struct LinkedList
     head : LinkedListNode*
   end
@@ -55,7 +55,7 @@ To avoid this initialization you can use `uninitialized`:
 
 ```crystal
 tz = uninitialized C::TimeZone
-tz.minutes_west #=> some garbage value
+tz.minutes_west # => some garbage value
 ```
 
 You can set and get its properties:
@@ -63,7 +63,7 @@ You can set and get its properties:
 ```crystal
 tz = C::TimeZone.new
 tz.minutes_west = 1
-tz.minutes_west #=> 1
+tz.minutes_west # => 1
 ```
 
 If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
@@ -72,8 +72,8 @@ You can also initialize some fields with a syntax similar to [named arguments](.
 
 ```crystal
 tz = C::TimeZone.new minutes_west: 1, dst_time: 2
-tz.minutes_west #=> 1
-tz.dst_time     #=> 2
+tz.minutes_west # => 1
+tz.dst_time     # => 2
 ```
 
 A C struct is passed by value (as a copy) to functions and methods, and also passed by value when it is returned from a method:
@@ -85,7 +85,7 @@ end
 
 tz = C::TimeZone.new
 change_it tz
-tz.minutes_west #=> 0
+tz.minutes_west # => 0
 ```
 
 Refer to the [type grammar](../type_grammar.html) for the notation used in struct field types.

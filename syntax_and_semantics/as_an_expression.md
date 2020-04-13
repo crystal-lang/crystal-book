@@ -8,7 +8,7 @@ a = if 2 > 1
     else
       4
     end
-a #=> 3
+a # => 3
 ```
 
 If an `if` branch is empty, or it’s missing, it’s considered as if it had `nil` in it:
