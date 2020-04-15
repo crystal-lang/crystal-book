@@ -254,6 +254,8 @@ crystal docs src/my_app.cr
 
 **Common options:**
 
+* `--project-name=NAME`: Set the project name. The default value is extracted from `shard.yml` if available. In case no default can be found, this option is mandatory.
+* `--project-version=VERSION`: Set the project version. The default value is extracted from current git commit or `shard.yml` if available. In case no default can be found, this option is mandatory.
 * `--output=DIR, -o DIR`: Set the output directory (default: `./docs`)
 * `--canonical-base-url=URL, -b URL`: Set the [canonical base url](https://en.wikipedia.org/wiki/Canonical_link_element)
 
