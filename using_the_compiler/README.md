@@ -185,7 +185,7 @@ NOTE: When running interactively, stdin can usually be closed by typing the end 
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
 
-More options are described in the integrated help: `crystal build --help` or man page `man crystal`.
+More options are described in the integrated help: `crystal eval --help` or man page `man crystal`.
 
 ### `crystal version`
 
