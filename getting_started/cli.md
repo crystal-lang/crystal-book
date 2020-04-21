@@ -381,7 +381,7 @@ Right now the code containing the logic of each of the applications always gets 
 
 ## Using `Readline` and `NCurses`
 
-In case we want to build richer CLI applications, there are libraries that can help us. Here we will name two well-known libraries: `Readline` and` NCurses`.
+In case we want to build richer CLI applications, there are libraries that can help us. Here we will name two well-known libraries: `Readline` and `NCurses`.
 
 As stated in the documentation for the [GNU Readline Library](http://www.gnu.org/software/readline/), `Readline` is a library that provides a set of functions for use by applications that allow users to edit command lines as they are typed in.
 `Readline` has some great features: filename autocompletion out of the box; custom autocompletion method; keybinding, just to mention a few. If we want to try it then the [crystal-lang/crystal-readline](https://github.com/crystal-lang/crystal-readline) shard will give us an easy API to use `Readline`.
