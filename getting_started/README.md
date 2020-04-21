@@ -16,7 +16,7 @@ We may check the Crystal compiler version. If Crystal is installed correctly the
 $ crystal --version
 Crystal 0.33.0 (2020-02-14)
 
-LLVM: 9.0.1
+LLVM: 10.0.0
 Default target: x86_64-apple-macosx
 ```
 
