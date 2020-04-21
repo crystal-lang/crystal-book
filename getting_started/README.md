@@ -67,6 +67,8 @@ $ crystal hello_world.cr
 Hello World!
 ```
 
+**Note:** The main routine is simply the program itself. There's no need to define a "main" function or something similar.
+
 Here we have two more examples to continue our first steps in Crystal:
-- [HTTP Server](./examples/http_server.md)
-- [Command Line Application](./examples/cli.md)
+- [HTTP Server](./http_server.md)
+- [Command Line Application](./cli.md)

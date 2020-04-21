@@ -78,25 +78,17 @@ Not all of these files are required for every project, and some might need more 
 
 ## Compiler commands
 
-- [Using the compiler](#using-the-compiler)
-  - [Compiling and running at once](#compiling-and-running-at-once)
-  - [Creating an executable](#creating-an-executable)
-    - [Release builds](#release-builds)
-    - [Creating a statically-linked executable](#creating-a-statically-linked-executable)
-    - [Creating a Crystal project](#creating-a-crystal-project)
-  - [Compiler commands](#compiler-commands)
-    - [`crystal run`](#crystal-run)
-    - [`crystal build`](#crystal-build)
-    - [`crystal eval`](#crystal-eval)
-    - [`crystal version`](#crystal-version)
-    - [`crystal init`](#crystal-init)
-    - [`crystal docs`](#crystal-docs)
-    - [`crystal env`](#crystal-env)
-    - [`crystal spec`](#crystal-spec)
-    - [`crystal play`](#crystal-play)
-    - [`crystal tool`](#crystal-tool)
-    - [`crystal tool format`](#crystal-tool-format)
-  - [Environment variables](#environment-variables)
+* [`crystal init`](#crystal-init): generate a new project
+* [`crystal build`](#crystal-build): build an executable
+* [`crystal docs`](#crystal-docs): generate documentation
+* [`crystal env`](#crystal-env): print Crystal environment information
+* [`crystal eval`](#crystal-eval): eval code from args or standard input
+* [`crystal play`](#crystal-play): starts crystal playground server
+* [`crystal run`](#crystal-run): build and run program
+* [`crystal spec`](#crystal-spec): build and run specs
+* [`crystal tool`](#crystal-tool): run a compiler tool
+* `crystal help`: show help about commands and options
+* [`crystal version`](#crystal-version): show version
 
 To see the available options for a particular command, use `--help` after a command:
 
