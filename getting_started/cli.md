@@ -281,7 +281,7 @@ When the user presses `Enter`, then the execution will continue and `user_input`
 But what happen if the user doesn’t enter any value? In that case, we would get an empty string (if the user only presses `Enter`) or maybe a `Nil` value (if the input stream id closed, e.g. by pressing `Ctrl+D`).
 To illustrate the problem let’s try the following: we want the input entered by the user to be sang loudly:
 
- ```crystal
+```crystal
 # file: let_it_cli.cr
 puts "Welcome to The Beatles Sing Along version 1.0!"
 puts "Enter a phrase you want The Beatles to sing"
