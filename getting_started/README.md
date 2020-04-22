@@ -2,7 +2,7 @@
 
 Hi and welcome to Crystal's Reference Book!
 
-First we are going to check if we have [installed the language](https://crystal-lang.org/install/) correctly so that we may try all the examples listed in this book.
+First let's make sure to [install the compiler](https://crystal-lang.org/install/) correctly so that we may try all the examples listed in this book.
 
 Once installed, the Crystal compiler should be available as `crystal` command.
 
