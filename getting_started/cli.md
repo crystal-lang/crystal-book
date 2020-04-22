@@ -58,10 +58,10 @@ When our application starts, the block passed to `OptionParser#parse` gets execu
 
 We can read all about `OptionParser` in [the official API documentation](https://crystal-lang.org/api/latest/OptionParser.html). And from there we are one click away from the source code ... the actual proof that it is not magic!
 
-Now, let's run our application. We have two ways [using the compiler](https://crystal-lang.org/reference/guides/using_the_compiler):
+Now, let's run our application. We have two ways [using the compiler](../using_the_compiler/README.md):
 
-1. [Build the application](https://crystal-lang.org/reference/guides/using_the_compiler/#crystal-build) and then run it.
-2. Compile and [run the application](https://crystal-lang.org/reference/guides/using_the_compiler/#crystal-run), all in one command.
+1. [Build the application](../using_the_compiler/README.md#crystal-build) and then run it.
+2. Compile and [run the application](../using_the_compiler/README.md#crystal-run), all in one command.
 
 We are going to use the second way:
 
@@ -375,7 +375,7 @@ You may find a list of **available colors** and **text decorations** in the [API
 
 ## Testing
 
-As with any other application, at some point we would like to [write tests](https://crystal-lang.org/reference/guides/testing.html) for the different features.
+As with any other application, at some point we would like to [write tests](../guides/testing.md) for the different features.
 
 Right now the code containing the logic of each of the applications always gets executed with the `OptionParser`, i.e. there is no way to include that file without running the whole application. So first we would need to refactor the code, separating the code necessary for parsing options from the logic. Once the refactor is done, we could start testing the logic and including the file with the logic in the testing files we need. We leave this as an exercise for the reader.
 

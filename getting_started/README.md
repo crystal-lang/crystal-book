@@ -47,8 +47,7 @@ Run a command followed by --help to see command specific information, ex:
     crystal <command> --help
 ```
 
-We have a section with some examples about [using the compiler](https://crystal-lang.org/reference/guides/using_the_compiler/README.md).
-
+We have a section with some examples about [using the compiler](../using_the_compiler/README.md).
 
 ## Hello Crystal
 
