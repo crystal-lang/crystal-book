@@ -24,7 +24,7 @@ Great!
 
 ## Crystal help
 
-Now, if we want to list all the options given by the compiler, we may run `crystal` and that's it:
+Now, if we want to list all the options given by the compiler, we may run `crystal` program without any arguments:
 
 ```terminal-session
 $ crystal
