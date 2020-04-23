@@ -10,7 +10,8 @@ before_install: |
   NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install html-proofer
 script:
 - gitbook build --gitbook=3.2.2
-- htmlproofer _book
+- htmlproofer _book --disable_external
+- htmlproofer _book --external_only || true # allowed to fail
 deploy:
   provider: s3
   access_key_id: AKIAIRL4BWFPN7P54TBQ
