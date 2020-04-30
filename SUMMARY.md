@@ -1,12 +1,10 @@
 # Summary
-
-* [Introduction](README.md)
+* [Introduction](introduction.md)
+* [Getting started](getting_started/README.md)
+  * [An HTTP Server](getting_started/http_server.md)
+  * [A Command Line Application](getting_started/cli.md)
 * [Using the compiler](using_the_compiler/README.md)
 * [The shards command](the_shards_command/README.md)
-* [Overview and Examples](overview/README.md)
-   * [Hello World!](overview/hello_world.md)
-   * [HTTP Server](overview/http_server.md)
-   * [Command Line Application](overview/cli.md)
 * [Syntax and semantics](syntax_and_semantics/README.md)
    * [Comments](syntax_and_semantics/comments.md)
    * [Literals](syntax_and_semantics/literals.md)

@@ -1,7 +1,5 @@
 # Using the compiler
 
-Once [installed](https://crystal-lang.org/install/), the Crystal compiler should be available as `crystal` command.
-
 ## Compiling and running at once
 
 To compile and run a program in a single shot, invoke [`crystal run`](#crystal-run) with a single filename:
