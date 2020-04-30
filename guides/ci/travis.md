@@ -1,6 +1,6 @@
 # Travis CI
 
-In this section we are going to use [Travis CI](https://travis-ci.org/) as our continuous-integration service. Travis CI is [mostly used](https://docs.travis-ci.com/user/tutorial/#more-than-running-tests) for building and running tests for projects hosted at GitHub. It supports [different programming laguages](https://docs.travis-ci.com/user/tutorial/#selecting-a-different-programming-language) and for our particular case, it supports the [Crystal language](https://docs.travis-ci.com/user/languages/crystal/).
+In this section we are going to use [Travis CI](https://travis-ci.org/) as our continuous-integration service. Travis CI is [mostly used](https://docs.travis-ci.com/user/tutorial/#more-than-running-tests) for building and running tests for projects hosted at GitHub. It supports [different programming languages](https://docs.travis-ci.com/user/tutorial/#selecting-a-different-programming-language) and for our particular case, it supports the [Crystal language](https://docs.travis-ci.com/user/languages/crystal/).
 
 >**Note:**If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/).
 

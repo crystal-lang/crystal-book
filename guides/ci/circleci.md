@@ -1,6 +1,6 @@
 # CircleCI
 
-In this section we are going to use [CircleCI](https://circleci.com/) as our continuous-integration service. In a [few words](https://circleci.com/docs/2.0/about-circleci/#section=welcome) CircleCI automates your software builds, tests, and deployments. It supports [different programming laguages](https://circleci.com/docs/2.0/demo-apps/#section=welcome) and for our particular case, it supports the [Crystal language](https://circleci.com/docs/2.0/language-crystal/).
+In this section we are going to use [CircleCI](https://circleci.com/) as our continuous-integration service. In a [few words](https://circleci.com/docs/2.0/about-circleci/#section=welcome) CircleCI automates your software builds, tests, and deployments. It supports [different programming languages](https://circleci.com/docs/2.0/demo-apps/#section=welcome) and for our particular case, it supports the [Crystal language](https://circleci.com/docs/2.0/language-crystal/).
 
 In this section we are going to present some configuration examples to see how CircleCI implements some [continuous integration concepts](https://circleci.com/docs/2.0/concepts/).
 
