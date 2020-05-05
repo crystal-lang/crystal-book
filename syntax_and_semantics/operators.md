@@ -269,7 +269,7 @@ Three base operators test equality:
 * `=~`: Checks whether the value of the first operand matches the value of the
 second operand with pattern matching.
 * `===`: Checks whether the left hand operand matches the right hand operand in
-  [case equality](case.html). This operator is applied in `case ... when`
+  [case equality](case.md). This operator is applied in `case ... when`
   conditions.
 
 The first two operators also have inversion operators (`!=` and `!~`) whose
@@ -285,7 +285,7 @@ proven faster than equality).
 | `!=` | not equals | `1 != 2` | yes |
 | `=~` | pattern match | `"foo" =~ /fo/` | yes |
 | `!~` | no pattern match | `"foo" !~ /fo/` | yes |
-| `===` | [case equality](case.html) | `/foo/ === "foo"` | yes |
+| `===` | [case equality](case.md) | `/foo/ === "foo"` | yes |
 
 ### Comparison
 
@@ -311,13 +311,13 @@ proven faster than equality).
 <tbody>
 <tr>
 <td><code>&amp;&amp;</code></td>
-<td><a href="and.html">logical AND</a></td>
+<td><a href="and.md">logical AND</a></td>
 <td><code>true &amp;&amp; false</code></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>||</code></td>
-<td><a href="or.html">logical OR</a></td>
+<td><a href="or.md">logical OR</a></td>
 <td><code>true || false</code></td>
 <td>no</td>
 </tr>

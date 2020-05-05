@@ -5,7 +5,7 @@ Crystal supports a basic form of [cross compilation](http://en.wikipedia.org/wik
 In order to achieve this, the compiler executable provides two flags:
 
 * `--cross-compile`: When given enables cross compilation mode
-* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.html) from
+* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.md) from
 
 To get the `--target` flags you can execute `llvm-config --host-target` using an installed LLVM 3.5. For example on a Linux it could say "x86_64-unknown-linux-gnu".
 

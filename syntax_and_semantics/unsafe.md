@@ -2,10 +2,10 @@
 
 These parts of the language are considered unsafe:
 
-* Code involving raw pointers: the [Pointer](http://crystal-lang.org/api/Pointer.html) type and [pointerof](pointerof.html).
-* The [allocate](new,_initialize_and_allocate.html) class method.
+* Code involving raw pointers: the [Pointer](http://crystal-lang.org/api/Pointer.html) type and [pointerof](pointerof.md).
+* The [allocate](new,_initialize_and_allocate.md) class method.
 * Code involving C bindings
-* [Uninitialized variable declaration](declare_var.html)
+* [Uninitialized variable declaration](declare_var.md)
 
 "Unsafe" means that memory corruption, segmentation faults and crashes are possible to achieve. For example:
 

@@ -43,7 +43,7 @@ value.some_int   # => 1
 value.some_float # => 4.94066e-324
 ```
 
-If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
+If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.md) will be tried.
 
 A C union is passed by value (as a copy) to functions and methods, and also passed by value when it is returned from a method:
 
@@ -57,4 +57,4 @@ change_it value
 value.some_int # => 0
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in union field types.
+Refer to the [type grammar](../type_grammar.md) for the notation used in union field types.

@@ -232,7 +232,7 @@ Initialized empty Git repository in ~/my_cool_lib/.git/
 
 ### `crystal docs`
 
-The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [documenting code](../conventions/documenting_code.html)).
+The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [documenting code](../conventions/documenting_code.md)).
 
 ```bash
 crystal docs [--output=<output_dir>] [--canonical-base-url=<url>] [<source_file>...]

@@ -79,7 +79,7 @@ end)
 
 ## Overloads
 
-Two methods, one that yields and another that doesn't, are considered different overloads, as explained in the [overloading](overloading.html) section.
+Two methods, one that yields and another that doesn't, are considered different overloads, as explained in the [overloading](overloading.md) section.
 
 ## Yield arguments
 

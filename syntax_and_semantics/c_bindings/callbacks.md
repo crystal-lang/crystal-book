@@ -33,7 +33,7 @@ X.callback ->(x) { x + y } # Error: can't send closure to C function
 
 If the compiler can't detect this at compile-time, an exception will be raised at runtime.
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in callbacks and procs types.
+Refer to the [type grammar](../type_grammar.md) for the notation used in callbacks and procs types.
 
 If you want to pass `NULL` instead of a callback, just pass `nil`:
 

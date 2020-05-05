@@ -166,5 +166,5 @@ description: |
 
 From here the guide differs depending on whether you are hosting your repo on GitHub or GitLab. If you're hosting somewhere else, please feel free to write up a guide and add it to this book!
 
-* [Hosting on GitHub](./hosting/github.html)
-* [Hosting on GitLab](./hosting/gitlab.html)
+* [Hosting on GitHub](./hosting/github.md)
+* [Hosting on GitLab](./hosting/gitlab.md)

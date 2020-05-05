@@ -35,7 +35,7 @@ Methods overload by several criteria:
 * The number of arguments
 * The type restrictions applied to arguments
 * The names of required named arguments
-* Whether the method accepts a [block](blocks_and_procs.html) or not
+* Whether the method accepts a [block](blocks_and_procs.md) or not
 
 For example, we can define four different `become_older` methods:
 

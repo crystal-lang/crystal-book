@@ -66,9 +66,9 @@ tz.minutes_west = 1
 tz.minutes_west # => 1
 ```
 
-If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
+If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.md) will be tried.
 
-You can also initialize some fields with a syntax similar to [named arguments](../default_and_named_arguments.html):
+You can also initialize some fields with a syntax similar to [named arguments](../default_and_named_arguments.md):
 
 ```crystal
 tz = C::TimeZone.new minutes_west: 1, dst_time: 2
@@ -88,4 +88,4 @@ change_it tz
 tz.minutes_west # => 0
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in struct field types.
+Refer to the [type grammar](../type_grammar.md) for the notation used in struct field types.

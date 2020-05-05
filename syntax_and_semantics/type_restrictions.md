@@ -67,7 +67,7 @@ end
 restricted_add Six.new, 10
 ```
 
-Refer to the [type grammar](type_grammar.html) for the notation used in type restrictions.
+Refer to the [type grammar](type_grammar.md) for the notation used in type restrictions.
 
 Note that type restrictions do not apply to the variables inside the actual methods.
 

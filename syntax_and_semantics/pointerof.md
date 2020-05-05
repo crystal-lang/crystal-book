@@ -37,5 +37,5 @@ ptr.value = 10
 point.x # => 10
 ```
 
-Because `pointerof` involves pointers, it is considered [unsafe](unsafe.html).
+Because `pointerof` involves pointers, it is considered [unsafe](unsafe.md).
 

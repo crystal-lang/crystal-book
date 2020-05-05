@@ -24,7 +24,7 @@ Counter.instances # => 3
 
 Class variables can be read and written from class methods or instance methods.
 
-Their type is inferred using the [global type inference algorithm](type_inference.html).
+Their type is inferred using the [global type inference algorithm](type_inference.md).
 
 Class variables are inherited by subclasses with this meaning: their type is the same, but each class has a different runtime value. For example:
 

@@ -35,7 +35,7 @@ Empty array literals always need a type specification:
 
 ## Percent Array Literals
 
-[Arrays of strings](./string.html#percent-string-array-literal) and [arrays of symbols](./symbol.html#percent-symbol-array-literal) can be created with percent array literals:
+[Arrays of strings](./string.md#percent-string-array-literal) and [arrays of symbols](./symbol.md#percent-symbol-array-literal) can be created with percent array literals:
 
 ```crystal
 %w(one two three) # => ["one", "two", "three"]
