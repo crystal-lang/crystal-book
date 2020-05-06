@@ -65,6 +65,15 @@ LUCKY_NUMBERS     = [3, 7, 11]
 DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 ```
 
+__Enum Value Names__ are camelcased.  For example:
+
+```crystal
+enum IceCream::Flavour
+  Vanilla
+  SaltedCaramel
+  MintChocChip
+end
+```
 ### Acronyms
 
 In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
