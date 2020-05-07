@@ -45,7 +45,7 @@ is the same as:
 alias Int32OrNil = Int32 | ::Nil
 ```
 
-In regular code, `Int32?` is a syntax error.
+In regular code, `Int32?` is an `Int32 | ::Nil` union type itself.
 
 ## Pointer
 
