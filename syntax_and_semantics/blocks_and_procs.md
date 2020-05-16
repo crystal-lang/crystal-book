@@ -159,8 +159,6 @@ some do |first, second|
 end
 ```
 
-The block variable `second` also includes the `Nil` type because the last `yield` expression didn't include a second argument.
-
 ## Short one-argument syntax
 
 If a block has a single argument and invokes a method on it, the block can be replaced with the short syntax argument.
