@@ -5,5 +5,8 @@
   "repository": "github:crystal-lang/crystal-book",
   "devDependencies": {
     "gitbook-plugin-ga": "^1.0.1"
+  },
+  "dependencies": {
+    "gitbook-plugin-anchors": "^0.7.1"
   }
 }

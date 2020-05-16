@@ -3,7 +3,7 @@
     "links": {
         "contributePrefix": "https://github.com/crystal-lang/crystal-book/"
     },
-    "plugins": ["ga", "edit-link", "offline"],
+    "plugins": ["anchors", "ga", "edit-link", "offline"],
     "pluginsConfig": {
         "ga": {
             "token": "UA-42353458-1"
