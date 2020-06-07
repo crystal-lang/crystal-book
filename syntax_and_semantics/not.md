@@ -1,6 +1,6 @@
 # if !
 
-The `!` operator returns a `Bool` that results from negating the [truthyness](truthy_and_falsey_values.html) of a value.
+The `!` operator returns a `Bool` that results from negating the [truthiness](truthy_and_falsey_values.html) of a value.
 
 When used in an `if` in conjunction with a variable, `is_a?`, `responds_to?` or `nil?` the compiler will restrict the types accordingly:
 
