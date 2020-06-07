@@ -24,7 +24,7 @@ Available escape sequences:
 "\r"                  # carriage return
 "\t"                  # tab
 "\v"                  # vertical tab
-"\888"                # octal ASCII character
+"\377"                # octal ASCII character
 "\xFF"                # hexadecimal ASCII character
 "\uFFFF"              # hexadecimal unicode character
 "\u{0}".."\u{10FFFF}" # hexadecimal unicode character
@@ -32,7 +32,7 @@ Available escape sequences:
 
 Any other character following a backslash is interpreted as the character itself.
 
-A backslash followed by at most three digits ranging from 0 to 7 denotes a code point written in octal:
+A backslash followed by at most three digits ranging from 0 to 7 (`\000` to `\377`) denotes a code point written in octal:
 
 ```crystal
 "\101" # => "A"
