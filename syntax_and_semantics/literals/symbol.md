@@ -8,6 +8,7 @@ Symbols are interpreted at compile time and cannot be created dynamically. The o
 :unquoted_symbol
 :"quoted symbol"
 :"a" # identical to :a
+:あ
 ```
 
 A double-quoted identifier can contain any unicode character including white spaces and accepts the same escape sequences as a [string literal](./string.html), yet no interpolation.
