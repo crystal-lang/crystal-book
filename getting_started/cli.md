@@ -66,7 +66,7 @@ Now, let's run our application. We have two ways [using the compiler](../using_t
 We are going to use the second way:
 
 ```shell-session
-$ crystal ./help.cr -- -h
+$ crystal run ./help.cr -- -h
 
 Welcome to The Beatles App!
     -v, --version                    Show version
@@ -172,7 +172,7 @@ In this case, the block receives a parameter that represents the parameter passe
 Let’s try it!
 
 ```shell-session
-$ crystal ./hello_goodbye.cr -- -g "Penny Lane"
+$ crystal run ./hello_goodbye.cr -- -g "Penny Lane"
 
 You say goodbye, and Ringo Starr say hello to Penny Lane!
 ```
@@ -180,7 +180,7 @@ You say goodbye, and Ringo Starr say hello to Penny Lane!
 Great! These applications look awesome! But, **what happens when we pass an option that is not declared?** For example -n
 
 ```shell-session
-$ crystal ./hello_goodbye.cr -- -n
+$ crystal run ./hello_goodbye.cr -- -n
 Unhandled exception: Invalid option: -n (OptionParser::InvalidOption)
   from ...
 ```
@@ -293,7 +293,7 @@ puts "The Beatles are singing: 🎵#{user_input.upcase}🎶🎸🥁"
 When running the example, Crystal will reply:
 
 ```shell-session
-$ crystal ./let_it_cli.cr
+$ crystal run ./let_it_cli.cr
 Showing last frame. Use --error-trace for full trace.
 
 In let_it_cli.cr:5:46
