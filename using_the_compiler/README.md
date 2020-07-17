@@ -127,7 +127,7 @@ The `crystal build` command builds a dynamically-linked binary executable.
 crystal build [<options>] <programfile>
 ```
 
-Unless specified, the resuling binary will have the same name as the source file minus the extension `.cr`.
+Unless specified, the resulting binary will have the same name as the source file minus the extension `.cr`.
 
 Example:
 
