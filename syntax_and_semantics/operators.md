@@ -186,80 +186,56 @@ ones.
 
 #### Unary
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `+`  | positive | `+1` | yes |
-| `&+` | wrapping positive | `&+1` | yes |
-| `-`  | negative | `-1` | yes |
-| `&-` | wrapping negative | `&-1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+`  | positive | `+1` | yes | right |
+| `&+` | wrapping positive | `&+1` | yes | right |
+| `-`  | negative | `-1` | yes | right |
+| `&-` | wrapping negative | `&-1` | yes | right |
 
 #### Multiplicative
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `**` | exponentiation | `1 ** 2` | yes |
-| `&**` | wrapping exponentiation | `1 &** 2` | yes |
-| `*` | multiplication | `1 * 2` | yes |
-| `&*` | wrapping multiplication | `1 &* 2` | yes |
-| `/` | division | `1 / 2` | yes |
-| `//` | floor division | `1 // 2` | yes |
-| `%` | modulus | `1 % 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `**` | exponentiation | `1 ** 2` | yes | left |
+| `&**` | wrapping exponentiation | `1 &** 2` | yes | left |
+| `*` | multiplication | `1 * 2` | yes | left |
+| `&*` | wrapping multiplication | `1 &* 2` | yes | left |
+| `/` | division | `1 / 2` | yes | left |
+| `//` | floor division | `1 // 2` | yes | left |
+| `%` | modulus | `1 % 2` | yes | left |
 
 #### Additive
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `+` | addition | `1 + 2` | yes |
-| `&+` | wrapping addition | `1 &+ 2` | yes |
-| `-` | subtraction | `1 - 2` | yes |
-| `&-` | wrapping subtraction | `1 &- 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+` | addition | `1 + 2` | yes | left |
+| `&+` | wrapping addition | `1 &+ 2` | yes | left |
+| `-` | subtraction | `1 - 2` | yes | left |
+| `&-` | wrapping subtraction | `1 &- 2` | yes | left |
 
 ### Other unary operators
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `!` | inversion | `!true` | no |
-| `~` | binary complement | `~1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `!` | inversion | `!true` | no | right |
+| `~` | binary complement | `~1` | yes | right |
 
 ### Shifts
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `<<` | shift left, append | `1 << 2`, `STDOUT << "foo"` | yes |
-| `>>` | shift right | `1 >> 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `<<` | shift left, append | `1 << 2`, `STDOUT << "foo"` | yes | left |
+| `>>` | shift right | `1 >> 2` | yes | left |
 
 ### Binary
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&amp;</code></td>
-<td>binary AND</td>
-<td><code>1 &amp; 2</code></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>|</code></td>
-<td>binary OR</td>
-<td><code>1 | 2</code></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>^</code></td>
-<td>binary XOR</td>
-<td><code>1 ^ 2</code></td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
+
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&` | binary AND | `1 & 2` | yes | left |
+| `\|` | binary OR | `1 \| 2` | yes | left |
+| `^` | binary XOR | `1 ^ 2` | yes | left |
 
 ### Equality
 
@@ -279,50 +255,30 @@ Nevertheless, these inversions can be defined with a custom implementation. This
 can be useful for example to improve performance (non-equality can often be
 proven faster than equality).
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `==` | equals | `1 == 2` | yes |
-| `!=` | not equals | `1 != 2` | yes |
-| `=~` | pattern match | `"foo" =~ /fo/` | yes |
-| `!~` | no pattern match | `"foo" !~ /fo/` | yes |
-| `===` | [case equality](case.html) | `/foo/ === "foo"` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `==` | equals | `1 == 2` | yes | left |
+| `!=` | not equals | `1 != 2` | yes | left |
+| `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
+| `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
+| `===` | [case equality](case.html) | `/foo/ === "foo"` | yes | left |
 
 ### Comparison
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `<` | less | `1 < 2` | yes |
-| `<=` | less or equal | `1 <= 2` | yes |
-| `>` | greater | `1 > 2` | yes |
-| `>=` | greater or equal | `1 >= 2` | yes |
-| `<=>` | comparison | `1 <=> 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `<` | less | `1 < 2` | yes | left |
+| `<=` | less or equal | `1 <= 2` | yes | left |
+| `>` | greater | `1 > 2` | yes | left |
+| `>=` | greater or equal | `1 >= 2` | yes | left |
+| `<=>` | comparison | `1 <=> 2` | yes | left |
 
 ### Logical
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&amp;&amp;</code></td>
-<td><a href="and.html">logical AND</a></td>
-<td><code>true &amp;&amp; false</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>||</code></td>
-<td><a href="or.html">logical OR</a></td>
-<td><code>true || false</code></td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&&` | logical AND | `true && false` | no | left |
+| `\|\|` | logical OR | `true \|\| false` | no | left |
 
 ### Range
 
@@ -349,9 +305,9 @@ See [Splats and Tuples](splats_and_tuples.md) for details.
 The [conditional operator (`? :`)](./ternary_if.md) is internally rewritten to
 an `if` expression by the compiler.
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `? :` | conditional | `a == b ? c : d` | no |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `? :` | conditional | `a == b ? c : d` | no | right |
 
 ### Assignments
 
@@ -360,11 +316,11 @@ operand. The first operand is either a variable (in this case the operator can't
 be redefined) or a call (in this case the operator can be redefined).
 See [assignment](assignment.md) for details.
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `=` | variable assignment | `a = 1` | no |
-| `=` | call assignment | `a.b = 1` | yes |
-| `[]=` | index assignment | `a[0] = 1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `=` | variable assignment | `a = 1` | no | right |
+| `=` | call assignment | `a.b = 1` | yes | right |
+| `[]=` | index assignment | `a[0] = 1` | yes | right |
 
 ### Combined assignments
 
@@ -390,120 +346,25 @@ be callable.
 
 The receiver can't be anything else than a variable or call.
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>+=</code></td>
-<td>addition <em>and</em> assignment</td>
-<td><code>i += 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&amp;+=</code></td>
-<td>wrapping addition <em>and</em> assignment</td>
-<td><code>i &amp;+= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>-=</code></td>
-<td>subtraction <em>and</em> assignment</td>
-<td><code>i -= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&amp;-=</code></td>
-<td>wrapping subtraction <em>and</em> assignment</td>
-<td><code>i &amp;-= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>*=</code></td>
-<td>multiplication <em>and</em> assignment</td>
-<td><code>i *= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&amp;*=</code></td>
-<td>wrapping multiplication <em>and</em> assignment</td>
-<td><code>i &amp;*= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>/=</code></td>
-<td>division <em>and</em> assignment</td>
-<td><code>i /= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>//=</code></td>
-<td>floor division <em>and</em> assignment</td>
-<td><code>i //= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>%=</code></td>
-<td>modulo <em>and</em> assignment</td>
-<td><code>i %= 1</code></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>|=</code></td>
-<td>binary or <em>and</em> assignment</td>
-<td><code>i |= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&amp;=</code></td>
-<td>binary and <em>and</em> assignment</td>
-<td><code>i &amp;= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>^=</code></td>
-<td>binary xor <em>and</em> assignment</td>
-<td><code>i ^= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>**=</code></td>
-<td>exponential <em>and</em> assignment</td>
-<td><code>i **= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&lt;&lt;=</code></td>
-<td>left shift <em>and</em> assignment</td>
-<td><code>i &lt;&lt;= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;=</code></td>
-<td>right shift <em>and</em> assignment</td>
-<td><code>i &gt;&gt;= 1</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>||=</code></td>
-<td>logical or <em>and</em>  assignment</td>
-<td><code>i ||= true</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td><code>&amp;&amp;=</code></td>
-<td>logical and <em>and</em> assignment</td>
-<td><code>i &amp;&amp;= true</code></td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+=` | addition *and* assignment | `i += 1` | no | right |
+| `&+=` | wrapping addition *and* assignment | `i &+= 1` | no | right |
+| `-=` | subtraction *and* assignment | `i -= 1` | no | right |
+| `&-=` | wrapping subtraction *and* assignment | `i &-= 1` | no | right |
+| `*=` | multiplication *and* assignment | `i *= 1` | no | right |
+| `&*=` | wrapping multiplication *and* assignment | `i &*= 1` | no | right |
+| `/=` | division *and* assignment | `i /= 1` | no | right |
+| `//=` | floor division *and* assignment | `i //= 1` | no | right |
+| `%=` | modulo *and* assignment | `i %= 1` | yes | right |
+| `\|=` | binary or *and* assignment | `i \|= 1` | no | right |
+| `&=` | binary and *and* assignment | `i &= 1` | no | right |
+| `^=` | binary cor *and* assignment | `i ^= 1` | no | right |
+| `**=` | exponential *and* assignment | `i **= 1` | no | right |
+| `<<=` | left shift *and* assignment | `i <<= 1` | no | right |
+| `>>=` | right shift *and* assignment | `i >>= 1` | no | right |
+| `\|\|=` | logical or *and* assignment | `i \|\|= true` | no | right |
+| `&&=` | logical and *and* assignment | `i &&= true` | no | right |
 
 ### Index Accessors
 
