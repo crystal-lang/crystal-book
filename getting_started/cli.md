@@ -365,7 +365,7 @@ default_lyrics = "Na, na, na, na-na-na na" \
 
 lyrics = user_input.presence || default_lyrics
 
-puts "The Beatles are singing: #{"🎵#{user_input}🎶🎸🥁".colorize.mode(:blink)}"
+puts "The Beatles are singing: #{"🎵#{lyrics}🎶🎸🥁".colorize.mode(:blink)}"
 ```
 
 Let’s try the renewed application … and _hear_ the difference!!
