@@ -33,8 +33,8 @@ struct Counter
 end
 
 counter = Counter.new(0)
-counter.plus.plus # => Counter(@x=2)
-puts counter      # => Counter(@x=1)
+counter.plus.plus # => Counter(@count=2)
+puts counter      # => Counter(@count=1)
 ```
 
 Notice that the chained calls of `plus` return the expected result, but only the first call to it modifies the variable `counter`, as the second call operates on the _copy_ of the struct passed to it from the first call, and this copy is discarded after the expression is executed.
