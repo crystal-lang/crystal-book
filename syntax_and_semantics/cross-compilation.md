@@ -32,3 +32,37 @@ This procedure is usually done with the compiler itself to port it to new platfo
 The first alternative is long and cumbersome, while the second one is much easier.
 
 Cross-compiling can be done for other executables, but its main target is the compiler. If Crystal isn't available in some system you can try cross-compiling it there.
+
+## Example of cross-compiling
+
+Here's an example of how to cross compile a crystal app on a host machine and then transfering it to the target machine (in this case an Ubuntu aarch64/arm64) and compiles the last bits there:
+
+```bash
+#!/bin/bash -eu
+
+srcfile=$1
+target=$2
+
+export CFLAGS="-fPIC"
+buildcmd=$(crystal build --cross-compile --target=aarch64-unknown-linux-gnu --release $srcfile)
+
+# Upload the object file to the aarch64 machine
+scp "$(basename $srcfile).o" "$target":.
+rm "$(basename $srcfile).o"
+
+# SSH to the target machine
+ssh "$target" << EOF
+# install dependencies
+sudo apt-get install -y clang libssl-dev libpcre3-dev libgc-dev libevent-dev zlib1g-dev
+
+# download and compile crystal's sigfault library
+wget https://raw.githubusercontent.com/crystal-lang/crystal/master/src/ext/sigfault.c
+cc -c -o sigfault.o sigfault.c
+ar -rcs libcrystal.a sigfault.o
+sudo mkdir -p /usr/share/crystal/src/ext
+sudo cp libcrystal.a /usr/share/crystal/src/ext/
+
+# compile the object file with the command crystal build --cross-compile gave us
+$buildcmd
+EOF
+```
