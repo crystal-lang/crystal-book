@@ -1,0 +1,20 @@
+site_name: Crystal
+use_directory_urls: false
+docs_dir: .
+repo_url: https://github.com/crystal-lang/crystal
+edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - same-dir
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.magiclink
+  - pymdownx.superfences
