@@ -1,6 +1,6 @@
 # Crystal Programming Language
 
-This is the language reference for the Crystal programming language.
+Welcome to the language reference for the Crystal programming language!
 
 Crystal is a programming language with the following goals:
 
@@ -10,7 +10,11 @@ Crystal is a programming language with the following goals:
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
 * Compile to efficient native code.
 
+From here, you can jump to anywhere you want in this document. Although, if you are new to the Crystal Language, we suggest that you **continue reading the [Getting started](./getting_started/README.md) section**.
+
 **Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
+
+---
 
 ## Contributing to the Language Reference
 
