@@ -107,7 +107,8 @@ Most importantly, your README should explain:
 
 This explanation should include a few examples along with subheadings.
 
-NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-generated README template with your GitHub/GitLab username. If you're using GitLab, you'll also want to change all instances of `github` with `gitlab`.
+!!! note
+    Be sure to replace all instances of `[your-github-name]` in the Crystal-generated README template with your GitHub/GitLab username. If you're using GitLab, you'll also want to change all instances of `github` with `gitlab`.
 
 
 #### Coding Style

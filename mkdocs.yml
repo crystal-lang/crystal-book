@@ -18,6 +18,7 @@ plugins:
   - section-index
 
 markdown_extensions:
+  - admonition
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences

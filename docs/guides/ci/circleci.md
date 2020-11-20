@@ -138,7 +138,8 @@ orbs:
 version: 2.1
 ```
 
-**Note:** The explicit `checkout` in the `pre-steps` is to have the `test-data/setup.sql` file available.
+!!! note
+    The explicit `checkout` in the `pre-steps` is to have the `test-data/setup.sql` file available.
 
 ## Caching
 

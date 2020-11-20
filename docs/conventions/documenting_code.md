@@ -170,7 +170,8 @@ Some documentation specific to *id*'s usage within `Child`.
 Some documentation common to every *id*.
 ```
 
-> **NOTE:** Inheriting documentation only works on _instance_, non-constructor methods.
+!!! note
+    Inheriting documentation only works on _instance_, non-constructor methods.
 
 ### Flagging Classes, Modules, and Methods
 
