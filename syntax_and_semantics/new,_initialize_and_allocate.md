@@ -2,7 +2,7 @@
 
 You create an instance of a class by invoking `new` on that class:
 
-```
+```crystal
 person = Person.new
 ```
 
