@@ -10,6 +10,7 @@ end
 ```
 
 The annotation can then be applied to various items, including:
+
 * Instance and class methods
 * Instance variables
 * Classes, structs, enums, and modules

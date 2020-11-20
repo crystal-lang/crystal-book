@@ -21,8 +21,8 @@ end
 
 * The documentation of a method is included into the method summary and the method details. The former includes only the first line, the latter includes the entire documentation. In short, it is preferred to:
 
-  1. State a method's purpose or functionality in the first line.
-  2. Supplement it with details and usages after that.
+    1. State a method's purpose or functionality in the first line.
+    2. Supplement it with details and usages after that.
 
 For instance:
 
