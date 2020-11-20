@@ -90,7 +90,7 @@ end
 
 Output:
 
-```
+```console
 $ crystal run --release io_benchmark.cr
 without to_s  77.11M ( 12.97ns) (± 1.05%)       fastest
    with to_s  18.15M ( 55.09ns) (± 7.99%)  4.25× slower
@@ -137,7 +137,7 @@ end
 
 Output:
 
-```
+```console
 $ crystal run --release str_benchmark.cr
 String.build 597.57k (  1.67µs) (± 5.52%)       fastest
   IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
@@ -228,7 +228,7 @@ end
 
 Output:
 
-```
+```console
 $ crystal run --release class_vs_struct.cr
  class  28.17M (± 2.86%) 15.29× slower
 struct 430.82M (± 6.58%)       fastest

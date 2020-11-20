@@ -12,7 +12,7 @@ Let's try it!
 
 We may check the Crystal compiler version. If Crystal is installed correctly then we should see something like this:
 
-```terminal-session
+```console
 $ crystal --version
 Crystal 0.34.0 (2020-04-07)
 
@@ -26,7 +26,7 @@ Great!
 
 Now, if we want to list all the options given by the compiler, we may run `crystal` program without any arguments:
 
-```terminal-session
+```console
 $ crystal
 Usage: crystal [command] [switches] [program file] [--] [arguments]
 
@@ -61,7 +61,7 @@ puts "Hello World!"
 
 We may run our example like this:
 
-```terminal-session
+```console
 $ crystal hello_world.cr
 Hello World!
 ```

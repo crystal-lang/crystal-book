@@ -23,7 +23,7 @@ Thank you very much!
 
 ### Building and Serving Locally
 
-```
+```console
 $ git clone https://github.com/crystal-lang/crystal-book.git
 $ cd crystal-book
 $ npm install -g gitbook-cli@2.3.0
@@ -44,7 +44,7 @@ Serving book on http://localhost:4000
 Html output will be in `_book` folder (some links won't work if opening the files locally).
 There is also a docker environment to avoid installing dependencies globally:
 
-```
+```console
 $ docker-compose up
 ...
 gitbook_1  | Starting server ...

@@ -4,7 +4,7 @@
 
 To compile and run a program in a single shot, invoke [`crystal run`](#crystal-run) with a single filename:
 
-```shell-session
+```console
 $ echo 'puts "Hello World!"' > hello_world.cr
 $ crystal run hello_world.cr
 Hello World!
@@ -18,7 +18,7 @@ and immediately executes it.
 The [`crystal build`](#crystal-build) command builds a binary executable.
 The output file has the same name as the source file minus the extension `.cr`.
 
-```shell-session
+```console
 $ crystal build hello_world.cr
 $ ./hello_world
 Hello World!
@@ -28,7 +28,7 @@ Hello World!
 
 By default, the generated executables are not fully optimized. The `--release` flag can be used to enable optimizations.
 
-```
+```console
 $ crystal build hello_world.cr --release
 ```
 
@@ -43,7 +43,7 @@ To reduce the binary size for distributable files, the `--no-debug` flag can be 
 
 The `--static` flag can be used to build a statically-linked executable:
 
-```
+```console
 $ crystal build hello_world.cr --release --static
 ```
 
@@ -59,7 +59,7 @@ The [`crystal init`](#crystal-init) command helps to initialize a Crystal projec
 up a basic project structure. `crystal init app <name>` is used for an application,
 `crystal init lib <name>` for a library.
 
-```shell
+```console
 $ crystal init app myapp
     create  myapp/.gitignore
     create  myapp/.editorconfig
@@ -105,7 +105,7 @@ The binary executable is stored in a temporary location between compiling and ru
 
 Example:
 
-```shell-session
+```console
 $ echo 'puts "Hello #{ARGV[0]?}!"' > hello_world.cr
 $ crystal run hello_world.cr -- Crystal
 Hello Crystal!
@@ -131,7 +131,7 @@ Unless specified, the resulting binary will have the same name as the source fil
 
 Example:
 
-```shell-session
+```console
 $ echo 'puts "Hello #{ARGV[0]?}!"' > hello_world.cr
 $ crystal build hello_world.cr
 $ ./hello_world Crystal
@@ -165,7 +165,7 @@ If no `source` argument is provided, the Crystal source is read from standard in
 
 Example:
 
-```shell-session
+```console
 $ crystal eval 'puts "Hello World"'
 Hello World!
 $ echo 'puts "Hello World"' | crystal eval
@@ -195,7 +195,7 @@ crystal version
 
 Example:
 
-```shell-session
+```console
 $ crystal version
 Crystal 0.25.1 [b782738ff] (2018-06-27)
 
@@ -216,7 +216,7 @@ an application not intended to be used as a dependency. A library doesn't have a
 in its repository and no build target in `shard.yml`, but instructions for using it as a dependency.
 
 Example:
-```shell-session
+```console
 $ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore
     create  my_cool_lib/.editorconfig
@@ -277,7 +277,7 @@ the value of each named variable is printed on its own line.
 
 Example:
 
-```shell-session
+```console
 $ crystal env
 CRYSTAL_CACHE_DIR="/home/crystal/.cache/crystal"
 CRYSTAL_PATH="/usr/bin/../share/crystal/src:lib"
@@ -323,7 +323,7 @@ The following options can be combined to filter the list of specs to run.
 
 Example:
 
-```shell-session
+```console
 $ crystal spec
 F
 

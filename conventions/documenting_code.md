@@ -215,13 +215,13 @@ will automatically format all `.cr` files in current directory.
 
 To format a single file:
 
-```
+```console
 $ crystal tool format file.cr
 ```
 
 To format all `.cr` files within a directory:
 
-```
+```console
 $ crystal tool format src/
 ```
 

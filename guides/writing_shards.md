@@ -28,7 +28,7 @@ Begin by using [the Crystal compiler](../using_the_compiler/README.md)'s `init l
 In your terminal: `crystal init lib <YOUR-SHARD-NAME>`
 
 e.g.
-```session
+```console
 $ crystal init lib palindrome-example
     create  palindrome-example/.gitignore
     create  palindrome-example/.editorconfig
@@ -52,9 +52,9 @@ cd palindrome-example
 
 Then `add` & `commit` to start tracking the files with Git:
 
-```session
-$  git add -A
-$  git commit -am "First Commit"
+```console
+$ git add -A
+$ git commit -am "First Commit"
 [master (root-commit) 77bad84] First Commit
 10 files changed, 102 insertions(+)
 create mode 100644 .editorconfig
