@@ -50,7 +50,7 @@ The following rules only mention instance variables, but they apply to class var
 
 ### 1. Assigning a literal value
 
-When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.md) have an associated type.
+When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals/README.md) have an associated type.
 
 In the following example, `@name` is inferred to be `String` and `@age` to be `Int32`.
 

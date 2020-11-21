@@ -16,6 +16,12 @@ plugins:
   - literate-nav:
       nav_file: SUMMARY.md
   - section-index
+  - redirects:
+      redirect_maps:
+        syntax_and_semantics/literals.md: syntax_and_semantics/literals/README.md
+        syntax_and_semantics/macros.md: syntax_and_semantics/macros/README.md
+        syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
+        guides/continuous_integration.md: guides/ci/README.md
 
 markdown_extensions:
   - pymdownx.highlight

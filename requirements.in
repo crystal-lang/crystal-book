@@ -2,3 +2,4 @@ mkdocs
 mkdocs-material
 mkdocs-literate-nav
 mkdocs-section-index
+mkdocs-redirects

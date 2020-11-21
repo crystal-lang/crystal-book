@@ -57,7 +57,7 @@ HTTP::Server.new do |context|
 end
 ```
 
-* You can easily create strings with embedded content, known as string interpolation. The language comes with other [syntax](../syntax_and_semantics/literals.md) as well to create arrays, hashes, ranges, tuples and more:
+* You can easily create strings with embedded content, known as string interpolation. The language comes with other [syntax](../syntax_and_semantics/literals/README.md) as well to create arrays, hashes, ranges, tuples and more:
 
 ```crystal
 "Hello world! The time is #{Time.local}"
