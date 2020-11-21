@@ -6,6 +6,11 @@ edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/
 
 theme:
   name: material
+  palette:
+    primary: black
+    accent: blue
+  icon:
+    repo: fontawesome/brands/github
 
 plugins:
   - search
