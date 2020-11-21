@@ -17,7 +17,7 @@ Tells the compiler how to link a C library. This is explained in the [lib](../c_
 
 ## Extern
 
-Marking a Crystal struct with this attribute makes it possible to use it in lib declarations:
+Marking a Crystal struct with this annotation makes it possible to use it in lib declarations:
 
 ```crystal
 @[Extern]
@@ -25,7 +25,7 @@ struct MyStruct
 end
 
 lib MyLib
-  fun my_func(s : MyStruct) # OK (gives an error without the Extern attribute)
+  fun my_func(s : MyStruct) # OK (gives an error without the Extern annotation)
 end
 ```
 
@@ -49,7 +49,7 @@ s.char # => 'B'
 
 ## ThreadLocal
 
-The `@[ThreadLocal]` attribute can be applied to class variables and C external variables. It makes them be thread local.
+The `@[ThreadLocal]` annotation can be applied to class variables and C external variables. It makes them be thread local.
 
 ```crystal
 class DontUseThis
