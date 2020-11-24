@@ -1,8 +1,7 @@
 site_name: Crystal
 use_directory_urls: false
-docs_dir: .
 repo_url: https://github.com/crystal-lang/crystal
-edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/
+edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
 
 theme:
   name: material
@@ -14,7 +13,6 @@ theme:
 
 plugins:
   - search
-  - same-dir
   - literate-nav:
       nav_file: SUMMARY.md
   - section-index

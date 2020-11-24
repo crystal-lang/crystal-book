@@ -9,11 +9,9 @@
             "token": "UA-42353458-1"
         },
         "edit-link": {
-            "base": "https://github.com/crystal-lang/crystal-book/edit/master",
+            "base": "https://github.com/crystal-lang/crystal-book/edit/master/docs",
             "label": "Edit This Page"
         }
     },
-    "structure": {
-        "readme": "introduction.md"
-    }
+    "root": "./docs"
 }
