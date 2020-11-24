@@ -17,6 +17,7 @@ In this tutorial, we'll be making a Crystal library called _palindrome-example_.
 ### Requirements
 
 In order to release a Crystal Shard, and follow along with this tutorial, you will need the following:
+
 * A working installation of the [Crystal compiler](../using_the_compiler/README.md)
 * A working installation of [Git](https://git-scm.com)
 * A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account
@@ -74,10 +75,12 @@ create mode 100644 src/palindrome-example/version.cr
 The code you write is up to you, but how you write it impacts whether people want to use your library and/or help you maintain it.
 
 #### Testing the Code
+
 - Test your code. All of it. It's the only way for anyone, including you, to know if it works.
 - Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
 
 #### Documentation
+
 - Document your code with comments. All of it. Even the private methods.
 - Crystal has [a built-in documentation generator](../conventions/documenting_code.md). Use it!
 
@@ -108,6 +111,7 @@ NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-ge
 
 
 #### Coding Style
+
 - It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
 - Utilize Crystal's [built-in code formatter](../conventions/documenting_code.md) to automatically format all `.cr` files in a directory.
 

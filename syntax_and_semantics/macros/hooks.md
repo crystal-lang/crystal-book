@@ -1,6 +1,7 @@
 # Hooks
 
 Special macros exist that are invoked in some situations as hooks, at compile time:
+
 * `inherited` is invoked when a subclass is defined. `@type` is the inheriting type.
 * `included` is invoked when a module is included. `@type` is the including type.
 * `extended` is invoked when a module is extended. `@type` is the extending type.

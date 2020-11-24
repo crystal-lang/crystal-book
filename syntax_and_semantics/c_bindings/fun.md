@@ -72,6 +72,7 @@ This can also be used to give shorter, nicer names to C functions, as these tend
 ## Types in C Bindings
 
 The valid types to use in C bindings are:
+
 * Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
 * Pointer types (`Pointer(Int32)`, which can also be written as `Int32*`)
 * Static arrays (`StaticArray(Int32, 8)`, which can also be written as `Int32[8]`)
