@@ -26,7 +26,7 @@ There are several ways to avoid heap memory allocations. The standard library is
 
 To print a number to the standard output you write:
 
-```
+```crystal
 puts 123
 ```
 
@@ -36,7 +36,7 @@ In Crystal, `puts` will invoke `to_s(io)` on the object, passing it the IO to wh
 
 So, you should never do this:
 
-```
+```crystal
 puts 123.to_s
 ```
 

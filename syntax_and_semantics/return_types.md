@@ -44,7 +44,7 @@ Typical examples for non-returning methods and keywords are `return`, `exit`, `r
 
 This is for example useful for deconstructing union types:
 
-```
+```crystal
 string = STDIN.gets
 typeof(string)                        # => String?
 typeof(raise "Empty input")           # => NoReturn

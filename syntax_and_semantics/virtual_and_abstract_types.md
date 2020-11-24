@@ -45,7 +45,7 @@ You can see that `@pet` is `Animal+`. The `+` means it's a virtual type, meaning
 
 The compiler will always resolve a type union to a virtual type if they are under the same hierarchy:
 
-```
+```crystal
 if some_condition
   pet = Dog.new
 else
