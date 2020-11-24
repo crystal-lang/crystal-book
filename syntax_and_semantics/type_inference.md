@@ -19,7 +19,7 @@ We can quickly see that `@age` is an integer, but we don't know the type of `@na
 
 As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance and [class](class_variables.html) variables.
+For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance and [class](class_variables.md) variables.
 
 There are several ways to let Crystal know this.
 
@@ -42,7 +42,7 @@ end
 
 If you omit an explicit type restriction, the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
 
-For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
+For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.md) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.md) type.
 
 The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type restriction.
 
@@ -50,7 +50,7 @@ The following rules only mention instance variables, but they apply to class var
 
 ### 1. Assigning a literal value
 
-When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.html) have an associated type.
+When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.md) have an associated type.
 
 In the following example, `@name` is inferred to be `String` and `@age` to be `Int32`.
 
@@ -213,7 +213,7 @@ The default value can also be a `Type.new(...)` method or a class method with a 
 
 ### 6. Assigning the result of invoking a `lib` function
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the return type when assigning it to an instance variable.
+Because a [lib function](c_bindings/fun.md) must have explicit types, the compiler can use the return type when assigning it to an instance variable.
 
 In the following example `@age` is inferred to be `Int32`.
 
@@ -231,7 +231,7 @@ end
 
 ### 7. Using an `out` lib expression
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the `out` argument's type, which should be a pointer type, and use the dereferenced type as a guess.
+Because a [lib function](c_bindings/fun.md) must have explicit types, the compiler can use the `out` argument's type, which should be a pointer type, and use the dereferenced type as a guess.
 
 In the following example `@age` is inferred to be `Int32`.
 

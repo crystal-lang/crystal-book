@@ -13,7 +13,7 @@ A Regex is typically created with a regex literal using [PCRE](http://pcre.org/p
 
 ## Escaping
 
-Regular expressions support the same [escape sequences as String literals](./string.html).
+Regular expressions support the same [escape sequences as String literals](./string.md).
 
 ```crystal
 /\//         # slash
@@ -36,7 +36,7 @@ Note that special characters of the PCRE syntax need to be escaped if they are i
 
 ## Interpolation
 
-Interpolation works in regular expression literals just as it does in [string literals](./string.html). Be aware that using this feature will cause an exception to be raised at runtime, if the resulting string results in an invalid regular expression.
+Interpolation works in regular expression literals just as it does in [string literals](./string.md). Be aware that using this feature will cause an exception to be raised at runtime, if the resulting string results in an invalid regular expression.
 
 ## Modifiers
 The closing delimiter may be followed by a number of optional modifiers to adjust the matching behaviour of the regular expression.

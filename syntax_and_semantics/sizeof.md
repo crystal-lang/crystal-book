@@ -15,9 +15,9 @@ sizeof(Pointer(Int32)) # => 8
 sizeof(String)         # => 8
 ```
 
-This is because a Reference's memory is allocated on the heap and a pointer to it is passed around. To get the effective size of a class, use [instance_sizeof](instance_sizeof.html).
+This is because a Reference's memory is allocated on the heap and a pointer to it is passed around. To get the effective size of a class, use [instance_sizeof](instance_sizeof.md).
 
-The argument to sizeof is a [type](type_grammar.html) and is often combined with [typeof](typeof.html):
+The argument to sizeof is a [type](type_grammar.md) and is often combined with [typeof](typeof.md):
 
 ```crystal
 a = 1

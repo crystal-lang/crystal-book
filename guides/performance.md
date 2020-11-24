@@ -100,7 +100,7 @@ Always remember that it's not just the time that has improved: memory usage is a
 
 ### Use string interpolation instead of concatenation
 
-Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](../syntax_and_semantics/literals/string.html#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
+Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](../syntax_and_semantics/literals/string.md#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
 
 Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to:
 ```crystal

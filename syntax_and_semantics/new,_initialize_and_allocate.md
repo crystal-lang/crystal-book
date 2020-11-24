@@ -39,7 +39,7 @@ john.age  # => 0
 peter.name # => "Peter"
 ```
 
-(If you wonder why we needed to specify that `name` is a `String` but we didn't need to do it for `age`, check the [global type inference algorithm](type_inference.html))
+(If you wonder why we needed to specify that `name` is a `String` but we didn't need to do it for `age`, check the [global type inference algorithm](type_inference.md))
 
 Note that we create a `Person` with `new` but we defined the initialization in an `initialize` method, not in a `new` method. Why is this so?
 
@@ -57,5 +57,5 @@ end
 
 First, note the `self.new` notation. This is a [class method](class_methods.md) that belongs to the **class** `Person`, not to particular instances of that class. This is why we can do `Person.new`.
 
-Second, `allocate` is a low-level class method that creates an uninitialized object of the given type. It basically allocates the necessary memory for the object, then `initialize` is invoked on it and finally the instance is returned. You generally never invoke `allocate`, as it is [unsafe](unsafe.html), but that's the reason why `new` and `initialize` are related.
+Second, `allocate` is a low-level class method that creates an uninitialized object of the given type. It basically allocates the necessary memory for the object, then `initialize` is invoked on it and finally the instance is returned. You generally never invoke `allocate`, as it is [unsafe](unsafe.md), but that's the reason why `new` and `initialize` are related.
 

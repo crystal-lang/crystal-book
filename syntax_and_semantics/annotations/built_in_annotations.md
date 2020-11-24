@@ -13,7 +13,7 @@ The Crystal standard library includes some pre-defined annotations:
 
 ## Link
 
-Tells the compiler how to link a C library. This is explained in the [lib](../c_bindings/lib.html) section.
+Tells the compiler how to link a C library. This is explained in the [lib](../c_bindings/lib.md) section.
 
 ## Extern
 
@@ -64,7 +64,7 @@ needed or used outside it.
 
 ## Packed
 
-Marks a [C struct](../c_bindings/struct.html) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
+Marks a [C struct](../c_bindings/struct.md) as packed, which prevents the automatic insertion of padding bytes between fields. This is typically only needed if the C library explicitly uses packed structs.
 
 ## AlwaysInline
 
@@ -90,15 +90,15 @@ end
 
 ## ReturnsTwice
 
-Marks a method or [lib fun](../c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
+Marks a method or [lib fun](../c_bindings/fun.md) as returning twice. The C `setjmp` is an example of such a function.
 
 ## Raises
 
-Marks a method or [lib fun](../c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](../c_bindings/callbacks.html) section.
+Marks a method or [lib fun](../c_bindings/fun.md) as potentially raising an exception. This is explained in the [callbacks](../c_bindings/callbacks.md) section.
 
 ## CallConvention
 
-Indicates the call convention of a [lib fun](../c_bindings/fun.html). For example:
+Indicates the call convention of a [lib fun](../c_bindings/fun.md). For example:
 
 ```crystal
 lib LibFoo
@@ -121,4 +121,4 @@ They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions)
 
 ## Flags
 
-Marks an [enum](../enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+Marks an [enum](../enum.md) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.

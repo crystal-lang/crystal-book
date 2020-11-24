@@ -41,4 +41,4 @@ typeof(nest) # => Array(Int32 | Array(String | Array(Symbol | Array(Char))))
 typeof(flat) # => Array(String | Int32 | Symbol | Char)
 ```
 
-This expression is also available in the [type grammar](type_grammar.html).
+This expression is also available in the [type grammar](type_grammar.md).

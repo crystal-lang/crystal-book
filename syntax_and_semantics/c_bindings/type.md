@@ -22,4 +22,4 @@ X.some_fun 1 # Error: argument 'value' of 'X#some_fun' must be X::MyInt, not Int
 
 Thus, a `type` declaration is useful for opaque types that are created by the C library you are wrapping. An example of this is the C `FILE` type, which you can obtain with `fopen`.
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in typedef types.
+Refer to the [type grammar](../type_grammar.md) for the notation used in typedef types.

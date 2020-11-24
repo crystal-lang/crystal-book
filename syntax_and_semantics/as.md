@@ -19,9 +19,9 @@ a_as_int = a.as(Int32)
 a_as_int.abs # works, compiler knows that a_as_int is Int32
 ```
 
-The `as` pseudo-method performs a runtime check: if `a` wasn't an `Int32`, an [exception](exception_handling.html) is raised.
+The `as` pseudo-method performs a runtime check: if `a` wasn't an `Int32`, an [exception](exception_handling.md) is raised.
 
-The argument to the expression is a [type](type_grammar.html).
+The argument to the expression is a [type](type_grammar.md).
 
 If it is impossible for a type to be restricted by another type, a compile-time error is issued:
 

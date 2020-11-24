@@ -13,7 +13,7 @@ def some_method : String
 end
 ```
 
-The return type follows the [type grammar](type_grammar.html).
+The return type follows the [type grammar](type_grammar.md).
 
 ## Nil return type
 
