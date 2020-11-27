@@ -378,3 +378,60 @@ After send
 ```
 
 Note that the first 2 sends are executed without switching to another fiber. However, in the third send the channel's buffer is full, so execution goes to the main fiber. Here the two values are received and the channel is depleted. At the third `receive` the main fiber blocks and execution goes to the other fiber, which sends more values, finishes, etc.
+
+### Multiple channels
+
+It is possible to try multiple channels simultaneously (for example, a server application receiving data from multiple clients, or to write data to multiple I/O backends). There are two ways to do this, which you choose depends on whether you need to know on which channel the operation occurred.
+
+#### Unnown channel
+
+Use `receive_first` to receive a message from the first channel of a set that has data available or `send_first` to send a message to the first channel of a set that is ready to receive, without knowing on which channel the operation occurred. Both methods accept an array of channels, a tuple of channels, or channels as individual parameters.
+
+For example, here we create 3 channels and pass them to 3 fibers that wait for a certain number of seconds, write a message to their channel, then close the channel. The main loop receives each message without caring which channel it was sent on and deletes any closed channel from the array of channels:
+
+```crystal
+def send_after(interval : Int, channel : Channel(String))
+  sleep(interval)
+  channel.send("Sent after #{interval}s")
+  channel.close
+end
+
+channels = [] of Channel(String)
+
+(1..3).each do |seconds|
+  new_channel = Channel(String).new
+  spawn send_after(seconds, new_channel)
+  channels << new_channel
+end
+
+while channels.size > 0
+  puts Channel.receive_first(channels)
+  Fiber.yield
+  channels.reject! { |c| c.closed? }
+end
+```
+
+Note the `yield` after the receive. When a fiber sends a message it blocks and execution continues at `receive_first` in the main loop, just like a regular `receive`. If the main loop returned to `receive_first` without yielding then the fiber would close the channel _after_ the `receive_first` so the main loop would never exit.
+
+#### Known channel
+
+If you need to know which channel data was received from (or which channel data was sent on) use `select`. This is conceptually similar to the POSIX system call `select()` (which monitors a set of file descriptors and returns those that are ready for I/O) but is easier to use.
+
+First construct a series of `Channel::SelectAction` objects which associate each channel with either a receive operation or a send operation. For example, assume you are using two channels of type `Channel(String)`, reading a string from `a` and sending a string to `b`. This code will try both operations simultaneously, the `select` will block and return the index of the operation that eventually completes, as well as any message received (or `nil` for a send operation):
+
+```crystal
+index, msg = Channel.select( a.receive_select_action,
+                             b.send_select_action("data to send") )
+case index
+when 0
+  unless msg.nil?
+    # process received data
+  end
+when 1
+  # note that data was sent
+end
+```
+
+Like `receive_first` and `send_first` above, `select` accepts `SelectAction` objects as an array, a tuple, or as individual parameters.
+
+This technique is commonly used for a network server with multiple connected clients. A main loop would spawn a fiber to listen for new connections and send them back via a channel, where it would be received using `select`. It would spawn another fiber (with associated channel) for each new connection, adding an appropriate `SelectAction` for each channel to the `select`, maintain all processing state centrally and delegating network I/O to the fibers via the channel list.
