@@ -4,7 +4,7 @@
 
 - Add and commit everything:
 
-    ```bash
+    ```console
     $ git add -A && git commit -am "shard complete"
     ```
 
@@ -12,19 +12,19 @@
 
 - Add the remote: (Be sure to replace `<YOUR-GITLAB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-    ```bash
+    ```console
     $ git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
     or if you use SSH
 
-    ```bash
+    ```console
     $ git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
 - Push it:
 
-    ```bash
+    ```console
     $ git push origin master
     ```
 
@@ -72,7 +72,7 @@ The `before_script` and `cache` keys in the file are for running the same script
 
 If you commit the above file to your project and push, you'll trigger your first run of the new pipeline.
 
-```bash
+```console
 $ git add -A && git commit -am 'Add .gitlab-ci.yml' && git push origin master
 ```
 
@@ -106,14 +106,14 @@ As you'll see from the [releases docs](https://docs.gitlab.com/ee/workflow/relea
 
 or you can create the tag from the command line like so:
 
-```bash
-    $ git tag -a v0.1.0 -m "Release v0.1.0"
+```console
+$ git tag -a v0.1.0 -m "Release v0.1.0"
 ```
 
 push it up
 
-```bash
-    $ git push origin master --follow-tags
+```console
+$ git push origin master --follow-tags
 ```
 
 and then use the UI to add/edit the release note and attach files.

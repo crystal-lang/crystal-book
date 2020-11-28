@@ -23,36 +23,30 @@ Thank you very much!
 
 ### Building and Serving Locally
 
-```
-$ git clone https://github.com/crystal-lang/crystal-book.git
+```console
+$ git clone https://github.com/crystal-lang/crystal-book
 $ cd crystal-book
-$ npm install -g gitbook-cli@2.3.0
-$ npm install
-$ gitbook install
-$ gitbook serve
-Live reload server started on port: 35729
-Press CTRL+C to quit ...
-
-info: 8 plugins are installed
-info: loading plugin "ga"... OK
-...
-Starting server ...
-Serving book on http://localhost:4000
-
+$ python3 -m venv .venv
+$ .venv/bin/pip install -r requirements.txt
 ```
 
-Html output will be in `_book` folder (some links won't work if opening the files locally).
-There is also a docker environment to avoid installing dependencies globally:
+Live preview (at http://127.0.0.1:8000):
 
+```console
+$ .venv/bin/mkdocs serve
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 3.02 seconds
+INFO    -  Serving on http://127.0.0.1:8000
+...
 ```
-$ docker-compose up
-...
-gitbook_1  | Starting server ...
-gitbook_1  | Serving book on http://localhost:4000
-gitbook_1  | Restart after change in file node_modules/.bin
-...
+
+Build into the `site` directory (some functionality won't work if opening the files locally):
+
+```console
+$ .venv/bin/mkdocs build
 ```
 
 ### Adding a page
 
-To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.
+To add a page, create a Markdown file in the desired location. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.
