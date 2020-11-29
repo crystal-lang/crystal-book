@@ -12,11 +12,10 @@ livereload==2.6.3         # via mkdocs
 lunr[languages]==0.5.8    # via mkdocs
 markdown==3.3.3           # via mkdocs, mkdocs-material, pymdown-extensions
 markupsafe==1.1.1         # via jinja2
-mkdocs-literate-nav==0.2.0  # via -r requirements.in
 mkdocs-material-extensions==1.0.1  # via mkdocs-material
 mkdocs-material==6.1.6    # via -r requirements.in, mkdocs-material-extensions
 mkdocs-section-index==0.2.1  # via -r requirements.in
-mkdocs==1.1.2             # via -r requirements.in, mkdocs-literate-nav, mkdocs-material, mkdocs-section-index
+mkdocs==1.1.2             # via -r requirements.in, mkdocs-material, mkdocs-section-index
 nltk==3.5                 # via lunr
 pygments==2.7.2           # via mkdocs-material
 pymdown-extensions==8.0.1  # via mkdocs-material
