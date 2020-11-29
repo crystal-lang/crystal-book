@@ -21,3 +21,7 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences
+
+google_analytics:
+  - UA-42353458-1
+  - auto

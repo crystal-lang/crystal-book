@@ -1,0 +1,28 @@
+name: Deploy book
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday 6 AM UTC
+jobs:
+  build:
+    name: Deploy book
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: pip-
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build book
+        run: mkdocs build --strict
+      - name: Deploy book
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: ls site  # TODO: Actually deploy this documentation.
