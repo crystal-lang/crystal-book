@@ -2,7 +2,8 @@
 
 In this section we are going to use [Travis CI](https://travis-ci.org/) as our continuous-integration service. Travis CI is [mostly used](https://docs.travis-ci.com/user/tutorial/#more-than-running-tests) for building and running tests for projects hosted at GitHub. It supports [different programming languages](https://docs.travis-ci.com/user/tutorial/#selecting-a-different-programming-language) and for our particular case, it supports the [Crystal language](https://docs.travis-ci.com/user/languages/crystal/).
 
->**Note:**If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/).
+!!! note
+    If you are new to continuous integration (or you want to refresh the basic concepts) we may start reading the [core concepts guide](https://docs.travis-ci.com/user/for-beginners/).
 
 Now let's see some examples!
 
@@ -37,7 +38,8 @@ script:
 
 With this configuration, Travis CI will run the tests using both Crystal `latest` and `nightly` releases on every push to a branch on your Github repository.
 
-**Note:** When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us.
+!!! note
+    When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us.
 
 ### Using a specific Crystal release
 
@@ -58,9 +60,11 @@ script:
   - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
-**Note:** We may read about different (languages)[https://docs.travis-ci.com/user/languages/] supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
+!!! note
+    We may read about different (languages)[https://docs.travis-ci.com/user/languages/] supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
 
-**Note:** A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
+!!! note
+    A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
 
 ### Using `latest`, `nightly` and a specific Crystal release all together!
 
@@ -111,7 +115,8 @@ script:
   - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
 ```
 
-**Note:** Since the shards will be installed in `./lib/` folder, it will be preserved for the second docker run command.
+!!! note
+    Since the shards will be installed in `./lib/` folder, it will be preserved for the second docker run command.
 
 ## Installing binary dependencies
 
@@ -168,7 +173,8 @@ script:
   - docker run -v $PWD:/src -w /src testing crystal spec
 ```
 
-**Note:** Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
+!!! note
+    Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
 
 ## Using services
 
