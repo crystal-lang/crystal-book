@@ -24,6 +24,7 @@ plugins:
         guides/continuous_integration.md: guides/ci/README.md
 
 markdown_extensions:
+  - admonition
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences

@@ -179,13 +179,15 @@ annotation_read
 
 Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
-**NOTE:** If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
+!!! note
+    If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
 
 The [`@type`](../macros/#type-information) and [`@def`](../macros/#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 
-**NOTE:** `TypeNode.instance_vars` currently only works in the context of an instance/class method.
+!!! note
+    `TypeNode.instance_vars` currently only works in the context of an instance/class method.
 
 ```crystal
 annotation MyClass

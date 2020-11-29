@@ -160,7 +160,8 @@ db.transaction do |tx|
 end
 ```
 
-**NOTE:** After `commit` or `rollback` are used, the transaction is no longer usable. The connection is still open but any statement will be performed outside the context of the terminated transaction.
+!!! note
+    After `commit` or `rollback` are used, the transaction is no longer usable. The connection is still open but any statement will be performed outside the context of the terminated transaction.
 
 ## Nested transactions
 
