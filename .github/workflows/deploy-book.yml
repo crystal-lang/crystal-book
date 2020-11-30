@@ -23,6 +23,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build book
         run: mkdocs build --strict
+      - name: Configure AWS Credentials
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ci/publish')
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
       - name: Deploy book
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: ls site  # TODO: Actually deploy this documentation.
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ci/publish')
+        run: |
+          aws s3 sync ./site s3://crystal-book/reference --delete --dryrun
