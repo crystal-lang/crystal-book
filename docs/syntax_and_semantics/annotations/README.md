@@ -257,3 +257,7 @@ annotation_read
 "Annotation 1 = 123"
 "Annotation 2 = 123"
 ```
+
+---
+
+* [Built-in annotations](built_in_annotations.md)

@@ -13,3 +13,15 @@ Crystal is a programming language with the following goals:
 From here, you can jump to anywhere you want in this document. Although, if you are new to the Crystal Language, we suggest that you continue reading the [Getting started](./getting_started/README.md) section.
 
 **Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
+
+---
+
+* [Introduction](README.md)
+* [Getting started](getting_started/)
+* [Using the compiler](using_the_compiler/README.md)
+* [The shards command](the_shards_command/README.md)
+* [About this guide](overview/README.md)
+* [Syntax and semantics](syntax_and_semantics/)
+* [Conventions](conventions/)
+* [Database](database/)
+* [Guides](guides/)

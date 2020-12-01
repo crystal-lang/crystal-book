@@ -126,3 +126,9 @@ max_age = db.scalar "select max(age) from contacts"
 ```
 
 All available methods to perform statements in a database are defined in `DB::QueryMethods`.
+
+---
+
+* [Connection](connection.md)
+* [Connection pool](connection_pool.md)
+* [Transactions](transactions.md)

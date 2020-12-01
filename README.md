@@ -49,4 +49,4 @@ $ .venv/bin/mkdocs build
 
 ### Adding a page
 
-To add a page, create a Markdown file in the desired location. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the language reference.
+To add a page, create a Markdown file in the desired location. Then, add a link to that directory's `README.md` file: the Markdown list at the bottom acts as the navigation for the directory.

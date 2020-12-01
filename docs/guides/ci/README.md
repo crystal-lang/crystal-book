@@ -93,5 +93,5 @@ Here's the list of items we want to achieve:
 
 From here choose your next steps:
 
-* I want to use [Travis CI](travis.md)
-* I want to use [CircleCI](circleci.md)
+* [Using Travis CI](travis.md)
+* [Using CircleCI](circleci.md)

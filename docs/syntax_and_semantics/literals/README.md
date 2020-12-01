@@ -21,3 +21,21 @@ Crystal provides several literals for creating values of some basic types.
 | [NamedTuple](named_tuple.md)                   | `{name: "Crystal", year: 2011}`, `{"this is a key": 1}` |
 | [Proc](proc.md)                                | `->(x : Int32, y : Int32) { x + y }`                    |
 | [Command](command.md)                          | `` `echo foo` ``, `%x(echo foo)`                        |
+
+---
+
+* [Nil](nil.md)
+* [Bool](bool.md)
+* [Integers](integers.md)
+* [Floats](floats.md)
+* [Char](char.md)
+* [String](string.md)
+* [Symbol](symbol.md)
+* [Array](array.md)
+* [Hash](hash.md)
+* [Range](range.md)
+* [Regex](regex.md)
+* [Tuple](tuple.md)
+* [NamedTuple](named_tuple.md)
+* [Proc](proc.md)
+* [Command](command.md)
