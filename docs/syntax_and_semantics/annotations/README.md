@@ -1,6 +1,6 @@
 # Annotations
 
-Annotations can be used to add metadata to certain features in the source code. Types, methods and instance variables may be annotated.  User-defined annotations, such as the standard library's [JSON::Field](https://crystal-lang.org/api/JSON/Field.html), are defined using the `annotation` keyword.  A number of [built-in annotations](./annotations/built_in_annotations.md) are provided by the compiler.
+Annotations can be used to add metadata to certain features in the source code. Types, methods and instance variables may be annotated.  User-defined annotations, such as the standard library's [JSON::Field](https://crystal-lang.org/api/JSON/Field.html), are defined using the `annotation` keyword.  A number of [built-in annotations](built_in_annotations.md) are provided by the compiler.
 
 Users can define their own annotations using the `annotation` keyword, which works similarly to defining a `class` or `struct`.
 
@@ -182,7 +182,7 @@ Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Cryst
 !!! note
     If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
 
-The [`@type`](./macros.md#type-information) and [`@def`](./macros.md#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
+The [`@type`](../macros/#type-information) and [`@def`](../macros/#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 

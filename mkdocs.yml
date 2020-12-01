@@ -1,7 +1,8 @@
 site_name: Crystal
-use_directory_urls: false
+site_url: https://crystal-lang.org/reference/
 repo_url: https://github.com/crystal-lang/crystal
 edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
+use_directory_urls: false
 
 theme:
   name: material
@@ -16,6 +17,13 @@ plugins:
   - literate-nav:
       nav_file: SUMMARY.md
   - section-index
+  - redirects:
+      redirect_maps:
+        introduction.md: README.md
+        syntax_and_semantics/literals.md: syntax_and_semantics/literals/README.md
+        syntax_and_semantics/macros.md: syntax_and_semantics/macros/README.md
+        syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
+        guides/continuous_integration.md: guides/ci/README.md
 
 markdown_extensions:
   - admonition

@@ -1,16 +1,5 @@
 The Crystal standard library includes some pre-defined annotations:
 
-* [Link](#link)
-* [Extern](#extern)
-* [ThreadLocal](#threadlocal)
-* [Packed](#packed)
-* [AlwaysInline](#alwaysinline)
-* [NoInline](#noinline)
-* [ReturnsTwice](#returnstwice)
-* [Raises](#raises)
-* [CallConvention](#callconvention)
-* [Flags](#flags)
-
 ## Link
 
 Tells the compiler how to link a C library. This is explained in the [lib](../c_bindings/lib.md) section.
