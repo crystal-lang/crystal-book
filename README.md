@@ -26,14 +26,12 @@ Thank you very much!
 ```console
 $ git clone https://github.com/crystal-lang/crystal-book
 $ cd crystal-book
-$ python3 -m venv .venv
-$ .venv/bin/pip install -r requirements.txt
 ```
 
 Live preview (at http://127.0.0.1:8000):
 
 ```console
-$ .venv/bin/mkdocs serve
+$ make serve
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
 INFO    -  Documentation built in 3.02 seconds
@@ -44,7 +42,7 @@ INFO    -  Serving on http://127.0.0.1:8000
 Build into the `site` directory (some functionality won't work if opening the files locally):
 
 ```console
-$ .venv/bin/mkdocs build
+$ make build
 ```
 
 ### Adding a page
