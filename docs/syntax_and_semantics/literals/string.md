@@ -121,7 +121,7 @@ Besides the single string literal, there is also a percent literal to create an 
 %w(foo(bar) baz) # => ["foo(bar)", "baz"]
 ```
 
-Note that literal denoted by `%w` does not apply interpolation nor escapes expect spaces. Since strings are separated by a single space character (` `) which must be escaped to use it as a part of a string.
+Note that literal denoted by `%w` does not apply interpolation nor escapes except spaces. Since strings are separated by a single space character (` `) which must be escaped to use it as a part of a string.
 
 ```crystal
 %w(foo\ bar baz) # => ["foo bar", "baz"]
