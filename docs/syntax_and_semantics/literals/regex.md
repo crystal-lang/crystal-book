@@ -2,7 +2,7 @@
 
 Regular expressions are represented by the [Regex](http://crystal-lang.org/api/Regex.html) class.
 
-A Regex is typically created with a regex literal using [PCRE](http://pcre.org/pcre.txt) syntax. It consists of a string of UTF-8 character enclosed in forward slashes (`/`):
+A Regex is typically created with a regex literal using [PCRE](http://pcre.org/pcre.txt) syntax. It consists of a string of UTF-8 characters enclosed in forward slashes (`/`):
 
 ```crystal
 /foo|bar/
