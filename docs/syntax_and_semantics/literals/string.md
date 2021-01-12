@@ -24,7 +24,7 @@ Available escape sequences:
 "\r"                  # carriage return
 "\t"                  # tab
 "\v"                  # vertical tab
-"\888"                # octal ASCII character
+"\377"                # octal ASCII character
 "\xFF"                # hexadecimal ASCII character
 "\uFFFF"              # hexadecimal unicode character
 "\u{0}".."\u{10FFFF}" # hexadecimal unicode character
