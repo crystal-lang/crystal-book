@@ -183,7 +183,7 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-A heredoc can be used like any other expression but only the first line is treated as such and essentially holds its value. The content and final line may not contain any other Crystal code.
+A heredoc can be used like any other expression but only the first line is treated as such and essentially holds its value. The final line may not contain any Crystal code.
 It is possible to directly call methods on heredoc string literals, or use them as arguments.
 
 ```crystal
