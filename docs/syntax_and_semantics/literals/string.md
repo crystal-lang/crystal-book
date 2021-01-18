@@ -159,7 +159,7 @@ In this case, leading whitespace is not included in the resulting string.
 ## Heredoc
 
 A *here document* or *heredoc* can be useful for writing strings spanning over multiple lines.
-A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optional preceeded by whitespace.
+A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optionally preceeded by whitespace.
 
 ```crystal
 <<-XML
@@ -183,8 +183,7 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-A heredoc can be used like any other expression but only the first line is treated as such and essentially holds its value. The final line may not contain any Crystal code.
-It is possible to directly call methods on heredoc string literals, or use them as arguments.
+After the heredoc identifier, and in that same line, anything that follows continues the original expression that came before the heredoc. It's as if the end of the starting heredoc identifier is the end of the string. However, the string contents come in subsequent lines until the ending heredoc idenfitier which must be on its own line.
 
 ```crystal
 <<-STRING.upcase # => "HELLO"
