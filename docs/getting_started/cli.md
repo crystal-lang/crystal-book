@@ -387,6 +387,6 @@ As stated in the documentation for the [GNU Readline Library](http://www.gnu.org
 `Readline` has some great features: filename autocompletion out of the box; custom autocompletion method; keybinding, just to mention a few. If we want to try it then the [crystal-lang/crystal-readline](https://github.com/crystal-lang/crystal-readline) shard will give us an easy API to use `Readline`.
 
 On the other hand, we have `NCurses`(New Curses). This library allows developers to create _graphical_ user interfaces in the terminal. As its name implies, it is an improved version of the library named `Curses`, which was developed to support a text-based dungeon-crawling adventure game called Rogue!
-As you can imagine, there are already [a couple of shards](https://crystalshards.org/?filter=ncurses) in the ecosystem that will allow us to use `NCurses` in Crystal!
+As you can imagine, there are already [a couple of shards](https://crystalshards.org/shards/search?q=ncurses) in the ecosystem that will allow us to use `NCurses` in Crystal!
 
 And so we have reached The End 😎🎶
