@@ -159,7 +159,7 @@ In this case, leading whitespace is not included in the resulting string.
 ## Heredoc
 
 A *here document* or *heredoc* can be useful for writing strings spanning over multiple lines.
-A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that starts with the heredoc identifier (ignoring leading whitespace) and is either followed by a newline or a non-alphanumeric character.
+A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optionally preceeded by whitespace.
 
 ```crystal
 <<-XML
@@ -183,20 +183,30 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-It is possible to directly call methods on heredoc string literals, or use them inside parentheses:
+After the heredoc identifier, and in that same line, anything that follows continues the original expression that came before the heredoc. It's as if the end of the starting heredoc identifier is the end of the string. However, the string contents come in subsequent lines until the ending heredoc idenfitier which must be on its own line.
 
 ```crystal
-<<-SOME.upcase # => "HELLO"
+<<-STRING.upcase # => "HELLO"
 hello
-SOME
+STRING
 
 def upcase(string)
   string.upcase
 end
 
-upcase(<<-SOME) # => "HELLO"
-  hello
-  SOME
+upcase(<<-STRING) # => "HELLO WORLD"
+  Hello World
+  STRING
+```
+
+If multiple heredocs start in the same line, their bodies are read sequentially:
+
+```cr
+print(<<-FIRST, <<-SECOND) # prints "HelloWorld"
+  Hello
+  FIRST
+  World
+  SECOND
 ```
 
 A heredoc generally allows interpolation and escapes.
