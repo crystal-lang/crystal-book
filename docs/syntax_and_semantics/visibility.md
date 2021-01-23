@@ -18,7 +18,7 @@ class Person
     say "hello"      # OK, no receiver
     self.say "hello" # OK, self is a receiver, but it's allowed.
 
-    other = Person.new "Other"
+    other = Person.new
     other.say "hello" # Error, other is a receiver
   end
 end
