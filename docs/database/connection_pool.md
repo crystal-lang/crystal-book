@@ -52,19 +52,19 @@ If a connection is lost or can't be established retry at most `retry_attempts` t
 
 The following program will print the current time from MySQL but if the connection is lost or the whole server is down for a few seconds the program will still run without raising exceptions.
 
-```crystal
-# file: sample.cr
-require "mysql"
+!!! example "sample.cr"
+    ```crystal
+    require "mysql"
 
-DB.open "mysql://root@localhost?retry_attempts=8&retry_delay=3" do |db|
-  loop do
-    pp db.scalar("SELECT NOW()")
-    sleep 0.5
-  end
-end
-```
+    DB.open "mysql://root@localhost?retry_attempts=8&retry_delay=3" do |db|
+      loop do
+        pp db.scalar("SELECT NOW()")
+        sleep 0.5
+      end
+    end
+    ```
 
-```
+```console
 $ crystal sample.cr
 db.scalar("SELECT NOW()") # => 2016-12-16 16:36:57
 db.scalar("SELECT NOW()") # => 2016-12-16 16:36:57

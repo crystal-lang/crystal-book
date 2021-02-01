@@ -17,18 +17,18 @@ In our case, we are going to use [Crystal’s Orb](https://circleci.com/orbs/reg
 
 Let’s start with a simple example. We are going to run the tests **using latest** Crystal release:
 
-```yml
-# .circleci/config.yml
-workflows:
-  version: 2
-  build:
-    jobs:
-      - crystal/test
+!!! example ".circleci/config.yml"
+    ```yaml
+    workflows:
+      version: 2
+      build:
+        jobs:
+          - crystal/test
 
-orbs:
-  crystal: manastech/crystal@1.0
-version: 2.1
-```
+    orbs:
+      crystal: manastech/crystal@1.0
+    version: 2.1
+    ```
 
 Yeah! That was simple! With Orbs an abstraction layer is built so that the configuration file is more readable and intuitive.
 
@@ -38,41 +38,41 @@ In case we are wondering what the job [crystal/test](https://circleci.com/orbs/r
 
 Using nightly Crystal release is as easy as:
 
-```yml
-# .circleci/config.yml
-workflows:
-  version: 2
-  build:
-    jobs:
-      - crystal/test:
-          name: test-on-nightly
-          executor:
-            name: crystal/default
-            tag: nightly
+!!! example ".circleci/config.yml"
+    ```yaml
+    workflows:
+      version: 2
+      build:
+        jobs:
+          - crystal/test:
+              name: test-on-nightly
+              executor:
+                name: crystal/default
+                tag: nightly
 
-orbs:
-  crystal: manastech/crystal@1.0
-version: 2.1
-```
+    orbs:
+      crystal: manastech/crystal@1.0
+    version: 2.1
+    ```
 
 ### Using a specific Crystal release
 
-```yml
-# .circleci/config.yml
-workflows:
-  version: 2
-  build:
-    jobs:
-      - crystal/test:
-          name: test-on-0.30
-          executor:
-            name: crystal/default
-            tag: 0.30.0
+!!! example ".circleci/config.yml"
+    ```yaml
+    workflows:
+      version: 2
+      build:
+        jobs:
+          - crystal/test:
+              name: test-on-0.30
+              executor:
+                name: crystal/default
+                tag: 0.30.0
 
-orbs:
-  crystal: manastech/crystal@1.0
-version: 2.1
-```
+    orbs:
+      crystal: manastech/crystal@1.0
+    version: 2.1
+    ```
 
 ## Installing shards packages
 
@@ -84,59 +84,59 @@ Our application or maybe some shards may require libraries and packages. This bi
 
 Here is an example installing the `libsqlite3` development package:
 
-```yml
-# .circleci/config.yml
-workflows:
-  version: 2
-  build:
-    jobs:
-      - crystal/test:
-          pre-steps:
-            - run: apt-get update && apt-get install -y libsqlite3-dev
+!!! example ".circleci/config.yml"
+    ```yaml
+    workflows:
+      version: 2
+      build:
+        jobs:
+          - crystal/test:
+              pre-steps:
+                - run: apt-get update && apt-get install -y libsqlite3-dev
 
-orbs:
-  crystal: manastech/crystal@1.0
-version: 2.1
-```
+    orbs:
+      crystal: manastech/crystal@1.0
+    version: 2.1
+    ```
 
 ## Using services
 
 Now, let’s run specs using an external service (for example MySQL):
 
-```yml
-# .circleci/config.yml
-executors:
-  crystal_mysql:
-    docker:
-      - image: 'crystallang/crystal:latest'
-        environment:
-          DATABASE_URL: 'mysql://root@localhost/db'
-      - image: 'mysql:5.7'
-        environment:
-          MYSQL_DATABASE: db
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+!!! example ".circleci/config.yml"
+    ```yaml
+    executors:
+      crystal_mysql:
+        docker:
+          - image: 'crystallang/crystal:latest'
+            environment:
+              DATABASE_URL: 'mysql://root@localhost/db'
+          - image: 'mysql:5.7'
+            environment:
+              MYSQL_DATABASE: db
+              MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - crystal/test:
-          executor: crystal_mysql
-          pre-steps:
-            - run:
-                name: Waiting for service to start (check dockerize)
-                command: sleep 1m
-            - checkout
-            - run:
-                name: Install MySQL CLI; Import dummy data
-                command: |
-                        apt-get update && apt-get install -y mysql-client
-                        mysql -h 127.0.0.1 -u root --password="" db < test-data/setup.sql
+    workflows:
+      version: 2
+      build:
+        jobs:
+          - crystal/test:
+              executor: crystal_mysql
+              pre-steps:
+                - run:
+                    name: Waiting for service to start (check dockerize)
+                    command: sleep 1m
+                - checkout
+                - run:
+                    name: Install MySQL CLI; Import dummy data
+                    command: |
+                            apt-get update && apt-get install -y mysql-client
+                            mysql -h 127.0.0.1 -u root --password="" db < test-data/setup.sql
 
-orbs:
-  crystal: manastech/crystal@1.0
-version: 2.1
-```
+    orbs:
+      crystal: manastech/crystal@1.0
+    version: 2.1
+    ```
 
 !!! note
     The explicit `checkout` in the `pre-steps` is to have the `test-data/setup.sql` file available.

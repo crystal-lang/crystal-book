@@ -19,62 +19,62 @@ Another important thing to mention is that we are using `crystal init` to [creat
 
 And here's the implementation:
 
-```crystal
-# src/game_of_life.cr
-class Location
-  getter x : Int32
-  getter y : Int32
+!!! example "src/game_of_life.cr"
+    ```crystal
+    class Location
+      getter x : Int32
+      getter y : Int32
 
-  def self.random
-    Location.new(Random.rand(10), Random.rand(10))
-  end
+      def self.random
+        Location.new(Random.rand(10), Random.rand(10))
+      end
 
-  def initialize(@x, @y)
-  end
-end
+      def initialize(@x, @y)
+      end
+    end
 
-class World
-  @living_cells : Array(Location)
+    class World
+      @living_cells : Array(Location)
 
-  def self.empty
-    new
-  end
+      def self.empty
+        new
+      end
 
-  def initialize(living_cells = [] of Location)
-    @living_cells = living_cells
-  end
+      def initialize(living_cells = [] of Location)
+        @living_cells = living_cells
+      end
 
-  def set_living_at(a_location)
-    @living_cells << a_location
-  end
+      def set_living_at(a_location)
+        @living_cells << a_location
+      end
 
-  def is_empty?
-    @living_cells.size == 0
-  end
-end
-```
+      def is_empty?
+        @living_cells.size == 0
+      end
+    end
+    ```
 
 And the specs:
 
-```crystal
-# spec/game_of_life_spec.cr
-require "./spec_helper"
+!!! example "spec/game_of_life_spec.cr"
+    ```crystal
+    require "./spec_helper"
 
-describe "a new world" do
-  it "should be empty" do
-    world = World.new
-    world.is_empty?.should be_true
-  end
-end
+    describe "a new world" do
+      it "should be empty" do
+        world = World.new
+        world.is_empty?.should be_true
+      end
+    end
 
-describe "an empty world" do
-  it "should not be empty after adding a cell" do
-    world = World.empty
-    world.set_living_at(Location.random)
-    world.is_empty?.should be_false
-  end
-end
-```
+    describe "an empty world" do
+      it "should not be empty after adding a cell" do
+        world = World.empty
+        world.set_living_at(Location.random)
+        world.is_empty?.should be_false
+      end
+    end
+    ```
 
 And this is all we need for our continuous integration examples! Let's start!
 
