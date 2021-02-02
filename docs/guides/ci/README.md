@@ -83,9 +83,9 @@ And this is all we need for our continuous integration examples! Let's start!
 Here's the list of items we want to achieve:
 
 1. Build and run specs using 3 different Crystal's versions:
-   * latest
-   * nightly
-   * 0.31.1 (using a Docker image)
+    * latest
+    * nightly
+    * 0.31.1 (using a Docker image)
 2. Install shards packages
 3. Install binary dependencies
 4. Use a database (for example MySQL)

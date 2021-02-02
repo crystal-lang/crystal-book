@@ -248,4 +248,3 @@ end
 push(4, [1, 2, 3])      # OK
 push("oops", [1, 2, 3]) # Error
 ```
-

@@ -28,7 +28,7 @@
     $ git push origin master
     ```
 
-### Pipelines
+## Pipelines
 
 Next, let's setup a [GitLab Pipeline](https://docs.gitlab.com/ee/ci/pipelines.html) that can run our tests and build/deploy the docs when we push code to the repo.
 
@@ -88,7 +88,6 @@ And now if the pipleline has finished we'll have docs and we can link to them wi
 
 - Link: `https://<YOUR-GITLAB-USERNAME>.gitlab.io/<YOUR-REPOSITORY-NAME>`
 - Image: `https://img.shields.io/badge/docs-available-brightgreen.svg`
-
 
 ## Releases
 

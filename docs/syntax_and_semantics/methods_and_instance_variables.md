@@ -140,4 +140,3 @@ end
 ```
 
 This will initialize `@age` to zero in every constructor. This is useful to avoid duplication, but also to avoid the `Nil` type when reopening a class and adding instance variables to it.
-

@@ -200,6 +200,7 @@ If the method has other required parameters, the short syntax argument should al
 ```
 
 Is equivalent to:
+
 ```crystal
 ["a", "b"].join(",") { |s| s.upcase }
 ```

@@ -164,4 +164,3 @@ def increment(value, by amount)
   value + amount
 end
 ```
-

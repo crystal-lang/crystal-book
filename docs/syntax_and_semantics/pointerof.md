@@ -38,4 +38,3 @@ point.x # => 10
 ```
 
 Because `pointerof` involves pointers, it is considered [unsafe](unsafe.md).
-

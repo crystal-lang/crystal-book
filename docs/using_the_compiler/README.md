@@ -218,6 +218,7 @@ an application not intended to be used as a dependency. A library doesn't have a
 in its repository and no build target in `shard.yml`, but instructions for using it as a dependency.
 
 Example:
+
 ```console
 $ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore

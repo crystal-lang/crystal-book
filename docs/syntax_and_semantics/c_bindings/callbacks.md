@@ -42,7 +42,7 @@ If you want to pass `NULL` instead of a callback, just pass `nil`:
 X.callback nil
 ```
 
-### Passing a closure to a C function
+## Passing a closure to a C function
 
 Most of the time a C function that allows setting a callback also provide an argument for custom data. This custom data is then sent as an argument to the callback. For example, suppose a C function that invokes a callback at every tick, passing that tick:
 

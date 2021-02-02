@@ -13,6 +13,7 @@ A String is typically created with a string literal enclosing UTF-8 characters i
 A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
+
 ```crystal
 "\""                  # double quote
 "\\"                  # backslash
@@ -89,7 +90,7 @@ String.build do |io|
 end
 ```
 
-# Percent string literals
+## Percent string literals
 
 Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
 
@@ -111,7 +112,7 @@ name = "world"
 %Q(hello \n #{name}) # => "hello \n world"
 ```
 
-## Percent string array literal
+### Percent string array literal
 
 Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
@@ -201,7 +202,7 @@ upcase(<<-STRING) # => "HELLO WORLD"
 
 If multiple heredocs start in the same line, their bodies are read sequentially:
 
-```cr
+```crystal
 print(<<-FIRST, <<-SECOND) # prints "HelloWorld"
   Hello
   FIRST

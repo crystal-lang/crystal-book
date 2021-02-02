@@ -16,4 +16,3 @@ buffer = uninitialized UInt8[256]
 The buffer is allocated on the stack, avoiding a heap allocation.
 
 The type after the `uninitialized` keyword follows the [type grammar](type_grammar.md).
-

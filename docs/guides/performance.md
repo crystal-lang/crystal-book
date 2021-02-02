@@ -103,6 +103,7 @@ Always remember that it's not just the time that has improved: memory usage is a
 Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](../syntax_and_semantics/literals/string.md#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
 
 Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to:
+
 ```crystal
 String.build do |io|
   io << "Hello, " << name
@@ -142,7 +143,6 @@ $ crystal run --release str_benchmark.cr
 String.build 597.57k (  1.67µs) (± 5.52%)       fastest
   IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
 ```
-
 
 ### Avoid creating temporary objects over and over
 
