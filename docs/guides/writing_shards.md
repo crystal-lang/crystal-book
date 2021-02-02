@@ -29,6 +29,7 @@ Begin by using [the Crystal compiler](../using_the_compiler/README.md)'s `init l
 In your terminal: `crystal init lib <YOUR-SHARD-NAME>`
 
 e.g.
+
 ```console
 $ crystal init lib palindrome-example
     create  palindrome-example/.gitignore
@@ -47,6 +48,7 @@ Initialized empty Git repository in /<YOUR-DIRECTORY>/.../palindrome-example/.gi
 ...and `cd` into the directory:
 
 e.g.
+
 ```bash
 cd palindrome-example
 ```
@@ -91,7 +93,7 @@ See below for instructions on hosting your compiler-generated docs on GitHub/Git
 Once your documentation is ready and available, you can add a documentation badge to your repository so users know that it exists. In GitLab this badge belongs to the project so we'll cover it in the GitLab instructions below, for GitHub it is common to place it below the description in your README.md like so:
 (Be sure to replace `<LINK-TO-YOUR-DOCUMENTATION>` accordingly)
 
-```Markdown
+```markdown
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>)
 ```
 
@@ -101,6 +103,7 @@ A good README can make or break your project.
 [Awesome README](https://github.com/matiassingers/awesome-readme) is a nice curation of examples and resources on the topic.
 
 Most importantly, your README should explain:
+
 1. What your library is
 2. What it does
 3. How to use it
@@ -110,13 +113,13 @@ This explanation should include a few examples along with subheadings.
 !!! note
     Be sure to replace all instances of `[your-github-name]` in the Crystal-generated README template with your GitHub/GitLab username. If you're using GitLab, you'll also want to change all instances of `github` with `gitlab`.
 
-
 #### Coding Style
 
 - It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
 - Utilize Crystal's [built-in code formatter](../conventions/documenting_code.md) to automatically format all `.cr` files in a directory.
 
 e.g.
+
 ```
 crystal tool format
 ```
@@ -124,37 +127,42 @@ crystal tool format
 To check if your code is formatted correctly, or to check if using the formatter wouldn't produce any changes, simply add `--check` to the end of this command.
 
 e.g.
+
 ```
 crystal tool format --check
 ```
 
 See the Travis CI section below to implement this in your build.
 
-
 ### Writing a `shard.yml`
 
 [The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md) is your rulebook. Follow it.
 
 #### Name
+
 Your `shard.yml`'s `name` property should be concise and descriptive.
 
 - Search [crystalshards.xyz](https://crystalshards.xyz/) to check if your name is already taken.
 
 e.g.
-```YAML
+
+```yaml
 name: palindrome-example
 ```
 
 #### Description
+
 Add a `description` to your `shard.yml`.
 
 A `description` is a single line description used to search for and find your shard.
 
 A description should be:
+
 1. Informative
 2. Discoverable
 
 #### Optimizing
+
 It's hard for anyone to use your project if they can't find it.
 [crystalshards.xyz](https://crystalshards.xyz/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
 
@@ -162,7 +170,8 @@ There are people looking for the _exact_ functionality of our library and the _g
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.
 
 Our `name` is already descriptive enough for Bob's search of "palindrome". We don't need to repeat the _palindrome_ keyword. Instead, we'll catch Susan's search for "spelling" and Felipe's search for "text".
-```YAML
+
+```yaml
 description: |
   A textual algorithm to tell if a word is spelled the same way forwards as it is backwards.
 ```

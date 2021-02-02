@@ -124,7 +124,7 @@ end
 Moo.new # undefined method 'new' for Moo:Module
 ```
 
-# Module Type Checking
+## Module Type Checking
 
 Modules can also be used for type checking.
 
@@ -168,6 +168,7 @@ three.is_a?(B) # => true
 ```
 
 This allows you to define arrays and methods based on module type instead of class:
+
 ```crystal
 one = One.new
 two = Two.new

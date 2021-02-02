@@ -115,7 +115,7 @@ To generate documentation for a project, invoke `crystal docs`. By default this 
     end
     ```
 
-### Inheriting Documentation
+## Inheriting Documentation
 
 When an instance method has no doc comment, but a method with the same signature exists in a parent type, the documentation is inherited from the parent method.
 
@@ -173,7 +173,7 @@ Some documentation common to every *id*.
 !!! note
     Inheriting documentation only works on _instance_, non-constructor methods.
 
-### Flagging Classes, Modules, and Methods
+## Flagging Classes, Modules, and Methods
 
 Given a valid keyword, Crystal will automatically generate visual flags that help highlight problems, notes and/or possible issues.
 
@@ -206,7 +206,7 @@ def talk
 end
 ``````
 
-### Use Crystal's code formatter
+## Use Crystal's code formatter
 
 Crystal's built-in code formatter can be used not just to format your code,
 but also to format code samples included in documentation blocks.
@@ -232,7 +232,7 @@ Crystal itself.
 The formatter is also fast, so very little time is lost if you format the
 entire project instead of a single file.
 
-### A Complete Example
+## A Complete Example
 
 ``````crystal
 # A unicorn is a **legendary animal** (see the `Legendary` module) that has been

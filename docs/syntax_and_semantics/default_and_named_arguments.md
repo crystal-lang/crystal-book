@@ -1,4 +1,4 @@
-# Default values
+## Default values
 
 A method can specify default values for the last arguments:
 
@@ -19,7 +19,7 @@ john.become_older 2
 john.age # => 3
 ```
 
-# Named arguments
+## Named arguments
 
 All arguments can also be specified, in addition to their position, by their name. For example:
 

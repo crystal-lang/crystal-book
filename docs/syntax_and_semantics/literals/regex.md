@@ -39,6 +39,7 @@ Note that special characters of the PCRE syntax need to be escaped if they are i
 Interpolation works in regular expression literals just as it does in [string literals](./string.md). Be aware that using this feature will cause an exception to be raised at runtime, if the resulting string results in an invalid regular expression.
 
 ## Modifiers
+
 The closing delimiter may be followed by a number of optional modifiers to adjust the matching behaviour of the regular expression.
 
 * `i`: case-insensitive matching (`PCRE_CASELESS`):  Unicode letters in the pattern match both upper and lower case letters in the subject string.

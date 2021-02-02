@@ -8,7 +8,7 @@ Hashes are typically created with a hash literal denoted by curly braces (`{ }`)
 {"one" => 1, "two" => 2}
 ```
 
-# Generic Type Argument
+## Generic Type Argument
 
 The generic type arguments for keys `K` and values `V` are inferred from the types of the keys or values inside the literal, respectively. When all have the same type, `K`/`V` equals to that. Otherwise it will be a union of all key types or value types respectively.
 
@@ -20,6 +20,7 @@ The generic type arguments for keys `K` and values `V` are inferred from the typ
 Explicit types can be specified by immediately following the closing bracket with `of` (separated by whitespace), a key type (`K`) followed by `=>` as delimiter and a value type (`V`). This overwrites the inferred types and can be used for example to create a hash that holds only some types initially but can accept other types as well.
 
 Empty hash literals always need type specifications:
+
 ```crystal
 {} of Int32 => Int32 # => Hash(Int32, Int32).new
 ```

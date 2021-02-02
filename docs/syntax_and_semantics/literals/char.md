@@ -15,6 +15,7 @@ It is typically created with a char literal by enclosing an UTF-8 character in s
 A backslash denotes a special character, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
+
 ```crystal
 '\''         # single quote
 '\\'         # backslash

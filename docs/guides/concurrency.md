@@ -216,7 +216,7 @@ puts "After receive"
 
 This prints:
 
-```text
+```
 Before receive
 Before send
 After receive
@@ -247,7 +247,7 @@ puts value # => 2
 
 Output:
 
-```text
+```
 Before first receive
 Before first send
 1
@@ -328,7 +328,7 @@ puts "After yield"
 
 Output:
 
-```text
+```
 Before yield
 Before send
 Before receive

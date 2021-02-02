@@ -29,7 +29,7 @@ end
 TEN # => 10
 ```
 
-# Pseudo Constants
+## Pseudo Constants
 
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
@@ -64,7 +64,7 @@ end
 # Directory file is in: /crystal_code
 ```
 
-# Dynamic assignment
+## Dynamic assignment
 
 Dynamically assigning values to constants using the [chained assignment](assignment.md#chained-assignment) or the [multiple assignment](assignment.md#multiple-assignment) is not supported and results in a syntax error.
 
