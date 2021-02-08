@@ -56,7 +56,7 @@
             * [Type inference](syntax_and_semantics/type_inference.md)
             * [Union types](syntax_and_semantics/union_types.md)
             * [Overloading](syntax_and_semantics/overloading.md)
-            * [Default values and named arguments](syntax_and_semantics/default_and_named_arguments.md)
+            * [Default arguments and named arguments](syntax_and_semantics/default_and_named_arguments.md)
             * [Splats and tuples](syntax_and_semantics/splats_and_tuples.md)
             * [Type restrictions](syntax_and_semantics/type_restrictions.md)
             * [Return types](syntax_and_semantics/return_types.md)

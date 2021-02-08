@@ -16,7 +16,7 @@ end
 
 The above program prints "Hello!" twice, once for each `yield`.
 
-To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block argument, indicated as a last argument prefixed with ampersand (`&`):
+To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block parameter, indicated as a last parameter prefixed with ampersand (`&`):
 
 ```crystal
 def twice(&block)
@@ -118,7 +118,7 @@ end
 # Output: 6
 ```
 
-A block can specify less than the arguments yielded:
+A block can specify fewer parameters than the arguments yielded:
 
 ```crystal
 def many
@@ -132,7 +132,7 @@ end
 # Output: 3
 ```
 
-It's an error specifying more block arguments than those yielded:
+It's an error specifying more block parameters than the arguments yielded:
 
 ```crystal
 def twice
@@ -140,11 +140,11 @@ def twice
   yield
 end
 
-twice do |i| # Error: too many block arguments
+twice do |i| # Error: too many block parameters
 end
 ```
 
-Each block variable has the type of every yield expression in that position. For example:
+Each block parameter has the type of every yield expression in that position. For example:
 
 ```crystal
 def some
@@ -159,24 +159,22 @@ some do |first, second|
 end
 ```
 
-The block variable `second` also includes the `Nil` type because the last `yield` expression didn't include a second argument.
+## Short one-parameter syntax
 
-## Short one-argument syntax
-
-If a block has a single argument and invokes a method on it, the block can be replaced with the short syntax argument.
+If a block has a single parameter and invokes a method on it, the block can be replaced with the short syntax argument.
 
 This:
 
 ```crystal
-method do |argument|
-  argument.some_method
+method do |param|
+  param.some_method
 end
 ```
 
 and
 
 ```crystal
-method { |argument| argument.some_method }
+method { |param| param.some_method }
 ```
 
 can both be written as:
@@ -193,7 +191,7 @@ method(&.some_method)
 
 In either case, `&.some_method` is an argument passed to `method`.  This argument is syntactically equivalent to the block variants.  It is only syntactic sugar and does not have any performance penalty.
 
-If the method has other required parameters, the short syntax argument should also be supplied in the method's argument list.
+If the method has other required arguments, the short syntax argument should also be supplied in the method's argument list.
 
 ```crystal
 ["a", "b"].join(",", &.upcase)
@@ -413,9 +411,9 @@ Foo.new.yield_with_self { one } # => 1
 Foo.new.yield_normally { one }  # => "one"
 ```
 
-## Unpacking block arguments
+## Unpacking block parameters
 
-A block argument can specify sub-arguments enclosed in parentheses:
+A block parameter can specify sub-parameters enclosed in parentheses:
 
 ```crystal
 array = [{1, "one"}, {2, "two"}]
@@ -435,9 +433,9 @@ array.each do |arg|
 end
 ```
 
-That means that any type that responds to `[]` with integers can be unpacked in a block argument.
+That means that any type that responds to `[]` with integers can be unpacked in a block parameter.
 
-For [Tuple](http://crystal-lang.org/api/Tuple.html) arguments you can take advantage of auto-splatting and do not need parentheses:
+For [Tuple](http://crystal-lang.org/api/Tuple.html) parameters you can take advantage of auto-splatting and do not need parentheses:
 
 ```crystal
 array = [{1, "one", true}, {2, "two", false}]

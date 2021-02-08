@@ -69,7 +69,7 @@ X::SomeEnum::Zero # => 0_i8
 X::SomeEnum::Two  # => 2_i8
 ```
 
-You can use an enum as a type in a `fun` argument or `struct` or `union` members:
+You can use an enum as a type in a `fun` parameter or `struct` or `union` members:
 
 ```crystal
 lib X
