@@ -1,4 +1,4 @@
-## Default arguments
+## Default parameter values
 
 A method can specify default values for the last parameters:
 
