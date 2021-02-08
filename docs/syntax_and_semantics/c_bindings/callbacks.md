@@ -85,11 +85,11 @@ end
 
 Note that we save the boxed callback in `@@box`. The reason is that if we don't do it, and our code doesn't reference it anymore, the GC will collect it. The C library will of course store the callback, but Crystal's GC has no way of knowing that.
 
-## Raises attribute
+## Raises annotation
 
-If a C function executes a user-provided callback that might raise, it must be annotated with the `@[Raises]` attribute.
+If a C function executes a user-provided callback that might raise, it must be annotated with the `@[Raises]` annotation.
 
-The compiler infers this attribute for a method if it invokes a method that is marked as `@[Raises]` or raises (recursively).
+The compiler infers this annotation for a method if it invokes a method that is marked as `@[Raises]` or raises (recursively).
 
 However, some C functions accept callbacks to be executed by other C functions. For example, suppose a fictitious library:
 
