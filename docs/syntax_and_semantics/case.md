@@ -187,7 +187,7 @@ end
 
 ### Enum values
 
-If `case`'s expression is a non-flags enum value, its enumerators may be used as conditions:
+If `case`'s expression is a non-flags enum value, its members may be used as conditions, either as constant or predicate method.
 
 ```crystal
 enum Foo
