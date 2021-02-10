@@ -146,3 +146,84 @@ when {String, Int32}
   # and the type of value2 is known to be an Int32
 end
 ```
+
+## Exhaustive case
+
+Using `in` instead of `when` produces an exhaustive case expression; in an exhaustive case, it is a compile-time error to omit any of the required `in` conditions. An exhaustive `case` cannot contain any `when` or `else` clauses.
+
+The compiler supports the following `in` conditions:
+
+### Union type checks
+
+If `case`'s expression is a union value, each of the union types may be used as a condition:
+
+```crystal
+# var : (Bool | Char | String)?
+case var
+in String
+  # var : String
+in Char
+  # var : Char
+in Bool
+  # var : Bool
+in nil # or Nil, but .nil? is not allowed
+  # var : Nil
+end
+```
+
+### Bool values
+
+If `case`'s expression is a `Bool` value, the `true` and `false` literals may be used as conditions:
+
+```crystal
+# var : Bool
+case var
+in true
+  do_something
+in false
+  do_something_else
+end
+```
+
+### Enum values
+
+If `case`'s expression is a non-flags enum value, its enumerators may be used as conditions:
+
+```crystal
+enum Foo
+  X
+  Y
+  Z
+end
+
+# var : Foo
+case var
+in Foo::X
+  # var == Foo::X
+in .y?
+  # var == Foo::Y
+in .z? # :z is not allowed
+  # var == Foo::Z
+end
+```
+
+### Tuple literals
+
+The conditions must exhaust all possible combinations of the `case` expression's elements:
+
+```crystal
+# value1, value2 : Bool
+case {value1, value2}
+in {true, _}
+  # value1 is true, value2 can be true or false
+  do_something
+in {_, false}
+  # here value1 is false, and value2 is also false
+  do_something_else
+end
+
+# Error: case is not exhaustive.
+#
+# Missing cases:
+#  - {false, true}
+```
