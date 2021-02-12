@@ -1,6 +1,6 @@
 # Splats and tuples
 
-A method can receive a variable number of arguments by using a *splat* (`*`), which can appear only once and in any position:
+A method can receive a variable number of arguments by using a *splat parameter* (`*`), which can appear only once and in any position:
 
 ```crystal
 def sum(*elements)
@@ -25,7 +25,7 @@ sum 1, 2, 3
 sum 1, 2, 3, 4.5
 ```
 
-Arguments past the splat argument can only be passed as named arguments:
+Arguments past the splat parameter can only be passed as named arguments:
 
 ```crystal
 def sum(*elements, initial = 0)
@@ -40,7 +40,7 @@ sum 1, 2, 3              # => 6
 sum 1, 2, 3, initial: 10 # => 16
 ```
 
-Arguments past the splat method without a default value are required named arguments:
+Parameters past the splat parameter without a default value are required named parameters:
 
 ```crystal
 def sum(*elements, initial)
@@ -55,7 +55,7 @@ sum 1, 2, 3              # Error, missing argument: initial
 sum 1, 2, 3, initial: 10 # => 16
 ```
 
-Two methods with different required named arguments overload between each other:
+Two methods with different required named parameters overload between each other:
 
 ```crystal
 def foo(*elements, x)
@@ -70,7 +70,7 @@ foo x: "something" # => 1
 foo y: "something" # => 2
 ```
 
-The splat argument can also be left unnamed, with the meaning "after this, named arguments follow":
+The splat parameter can also be left unnamed, with the meaning "after this, named parameters follow":
 
 ```crystal
 def foo(x, y, *, z)
@@ -96,7 +96,7 @@ foo *tuple # => 3
 
 ## Double splats and named tuples
 
-A double splat (`**`) captures named arguments that were not matched by other arguments. The type of the argument is a `NamedTuple`:
+A double splat (`**`) captures named arguments that were not matched by other parameters. The type of the parameter is a `NamedTuple`:
 
 ```crystal
 def foo(x, **other)

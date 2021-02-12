@@ -31,7 +31,7 @@ end
 # The above prints "hello"
 ```
 
-Similar to [`break`](break.md), `next` can also take a parameter which will then be returned by `yield`.
+Similar to [`break`](break.md), `next` can also take an argument which will then be returned by `yield`.
 
 ```crystal
 def block

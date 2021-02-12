@@ -1,6 +1,6 @@
 # Type restrictions
 
-Type restrictions are applied to method arguments to restrict the types accepted by that method.
+Type restrictions are applied to method parameters to restrict the types accepted by that method.
 
 ```crystal
 def add(x : Number, y : Number)
@@ -216,7 +216,7 @@ foo("hello") # => String
 
 That is, `T` becomes the type that was effectively used to instantiate the method.
 
-A free variable can be used to extract the type parameter of a generic type within a type restriction:
+A free variable can be used to extract the type argument of a generic type within a type restriction:
 
 ```crystal
 def foo(x : Array(T)) forall T

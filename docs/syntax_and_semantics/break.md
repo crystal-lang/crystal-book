@@ -12,7 +12,7 @@ end
 puts a # => 10
 ```
 
-`break` can also take a parameter which will then be the value that gets returned:
+`break` can also take an argument which will then be the value that gets returned:
 
 ```crystal
 def foo

@@ -252,9 +252,9 @@ bar # => 1
 baz # => 2
 ```
 
-The arguments are packed into an [`ArrayLiteral`](https://crystal-lang.org/api/Crystal/Macros/ArrayLiteral.html) and passed to the macro.
+The arguments are packed into a [`TupleLiteral`](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) and passed to the macro.
 
-Additionally, using `*` when interpolating an [`ArrayLiteral`](https://crystal-lang.org/api/Crystal/Macros/ArrayLiteral.html) interpolates the elements separated by commas:
+Additionally, using `*` when interpolating a [`TupleLiteral`](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) interpolates the elements separated by commas:
 
 ```crystal
 macro println(*values)

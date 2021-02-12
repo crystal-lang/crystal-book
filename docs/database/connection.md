@@ -15,7 +15,7 @@ One of the methods implemented in this module is `DB#connect`. Using this method
 
 ## DB#connect
 
-When using `DB#connect` we are indeed opening a connection to the database. The `uri` passed as the parameter is used by the module to determine which driver to use (for example: `mysql://`, `postgres://`, `sqlite://`, etc.) i.e. we do not need to specify which database we are using.
+When using `DB#connect` we are indeed opening a connection to the database. The `uri` passed as the argument is used by the module to determine which driver to use (for example: `mysql://`, `postgres://`, `sqlite://`, etc.) i.e. we do not need to specify which database we are using.
 
 The `uri` for this example is `mysql://root:root@localhost/test`, and so the module will use the `mysql driver` to connect to the MySQL database.
 
