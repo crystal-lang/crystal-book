@@ -159,6 +159,22 @@ some do |first, second|
 end
 ```
 
+The [underscore](assignment.md#underscore) is also allowed as a block parameter:
+
+```crystal
+def pairs
+  yield 1, 2
+  yield 2, 4
+  yield 3, 6
+end
+
+pairs do |_, second|
+  print second
+end
+
+# Output: 246
+```
+
 ## Short one-parameter syntax
 
 If a block has a single parameter and invokes a method on it, the block can be replaced with the short syntax argument.
