@@ -164,29 +164,29 @@ There are two ways to solve this:
 
 1. Use a tuple. If you use `{"crystal", "ruby", "java"}` in the above program it will work the same way, but since a tuple doesn't involve heap memory it will be faster, consume less memory, and give more chances for the compiler to optimize the program.
 
-  ```crystal
-  lines_with_language_reference = 0
-  while line = gets
-    if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    ```crystal
+    lines_with_language_reference = 0
+    while line = gets
+      if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
-2. Move the array to a constant.
+1. Move the array to a constant.
 
-  ```crystal
-  LANGS = ["crystal", "ruby", "java"]
+    ```crystal
+    LANGS = ["crystal", "ruby", "java"]
 
-  lines_with_language_reference = 0
-  while line = gets
-    if LANGS.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    lines_with_language_reference = 0
+    while line = gets
+      if LANGS.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
 Using tuples is the preferred way.
 
