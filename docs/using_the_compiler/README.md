@@ -50,7 +50,7 @@ $ crystal build hello_world.cr --release --static
 !!! note
     Building fully statical linked executables is currently only supported on Alpine Linux.
 
-More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
+More information about statically linking [can be found in the Static Linking guide](/guides/static_linking.md).
 
 The compiler uses the `CRYSTAL_LIBRARY_PATH` environment variable as a first lookup destination for static and dynamic libraries that are to be linked. This can be used to provide static versions of libraries that are also available as dynamic libraries.
 
