@@ -2,7 +2,7 @@
 
 Crystal supports static linking, i.e. it can link a binary with static libraries so that these libraries don't need to be available as runtime dependencies.
 
-Static linking can be enabled using the `--static` compiler flag. See [the usage instructions](https://crystal-lang.org/reference/using_the_compiler/#creating-a-statically-linked-executable) in the language reference.
+Static linking can be enabled using the `--static` compiler flag. See [the usage instructions](../using_the_compiler/README.md#creating-a-statically-linked-executable) in the language reference.
 
 When `--static` is given, linking static libraries is enabled, but it's not exclusive. The produced binary won't be fully static linked if the dynamic version of a library is higher in the compiler's library lookup chain than the static variant (or if the static library is entirely missing). In order to build a static binary you need to make sure that static versions of the linked libraries are available and the compiler can find them.
 
@@ -28,7 +28,7 @@ Instead, static linking against [`musl-libc`](#musl-libc) is the recommended opt
 
 #### `musl-libc`
 
-[`musl-libc`](https://www.musl-libc.org/) is a clean, efficient `libc` implementation with excellent static linking support.
+[`musl-libc`](https://musl.libc.org/) is a clean, efficient `libc` implementation with excellent static linking support.
 
 The recommended way to build a statically linked Crystal program is [Alpine Linux](https://alpinelinux.org/), a minimal Linux distribution based on `musl-libc`.
 
