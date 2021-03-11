@@ -27,7 +27,7 @@ Class methods can also be defined by [extending a `Module`](modules.md#extend-se
 A class method can be called under the same name as it was defined (`CaesarCipher.decrypt("HELLO")`).
 When called from within the same class or module scope the receiver can be `self` or implicit (like `encrypt(string)`).
 
-# Constructors
+## Constructors
 
 Constructors are normal class methods which [create a new instance of the class](new,_initialize_and_allocate.md).
 By default all classes in Crystal have at least one constructor called `new`, but they may also define other constructors with different names.

@@ -16,7 +16,7 @@ C.errno = 0
 C.errno # => 0
 ```
 
-A variable can be marked as thread local with an attribute:
+A variable can be marked as thread local with an annotation:
 
 ```crystal
 lib C

@@ -29,13 +29,13 @@ end
 TEN # => 10
 ```
 
-# Pseudo Constants
+## Pseudo Constants
 
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
-`__LINE__` is the current line number in the currently executing crystal file. When `__LINE__` is declared as the default value to a method parameter, it represents the line number at the location of the method call.
+`__LINE__` is the current line number in the currently executing crystal file. When `__LINE__` is used as a default parameter value, it represents the line number at the location of the method call.
 
-`__END_LINE__` is the line number of the `end` of the calling block. Can only be used as a default value to a method parameter.
+`__END_LINE__` is the line number of the `end` of the calling block. Can only be used as a default parameter value.
 
 `__FILE__` references the full path to the currently executing crystal file.
 
@@ -64,7 +64,7 @@ end
 # Directory file is in: /crystal_code
 ```
 
-# Dynamic assignment
+## Dynamic assignment
 
 Dynamically assigning values to constants using the [chained assignment](assignment.md#chained-assignment) or the [multiple assignment](assignment.md#multiple-assignment) is not supported and results in a syntax error.
 

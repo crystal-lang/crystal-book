@@ -13,6 +13,7 @@ A String is typically created with a string literal enclosing UTF-8 characters i
 A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
+
 ```crystal
 "\""                  # double quote
 "\\"                  # backslash
@@ -24,7 +25,7 @@ Available escape sequences:
 "\r"                  # carriage return
 "\t"                  # tab
 "\v"                  # vertical tab
-"\888"                # octal ASCII character
+"\377"                # octal ASCII character
 "\xFF"                # hexadecimal ASCII character
 "\uFFFF"              # hexadecimal unicode character
 "\u{0}".."\u{10FFFF}" # hexadecimal unicode character
@@ -89,7 +90,7 @@ String.build do |io|
 end
 ```
 
-# Percent string literals
+## Percent string literals
 
 Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
 
@@ -111,7 +112,7 @@ name = "world"
 %Q(hello \n #{name}) # => "hello \n world"
 ```
 
-## Percent string array literal
+### Percent string array literal
 
 Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
@@ -159,7 +160,7 @@ In this case, leading whitespace is not included in the resulting string.
 ## Heredoc
 
 A *here document* or *heredoc* can be useful for writing strings spanning over multiple lines.
-A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that starts with the heredoc identifier (ignoring leading whitespace) and is either followed by a newline or a non-alphanumeric character.
+A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optionally preceeded by whitespace.
 
 ```crystal
 <<-XML
@@ -183,20 +184,30 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-It is possible to directly call methods on heredoc string literals, or use them inside parentheses:
+After the heredoc identifier, and in that same line, anything that follows continues the original expression that came before the heredoc. It's as if the end of the starting heredoc identifier is the end of the string. However, the string contents come in subsequent lines until the ending heredoc idenfitier which must be on its own line.
 
 ```crystal
-<<-SOME.upcase # => "HELLO"
+<<-STRING.upcase # => "HELLO"
 hello
-SOME
+STRING
 
 def upcase(string)
   string.upcase
 end
 
-upcase(<<-SOME) # => "HELLO"
-  hello
-  SOME
+upcase(<<-STRING) # => "HELLO WORLD"
+  Hello World
+  STRING
+```
+
+If multiple heredocs start in the same line, their bodies are read sequentially:
+
+```crystal
+print(<<-FIRST, <<-SECOND) # prints "HelloWorld"
+  Hello
+  FIRST
+  World
+  SECOND
 ```
 
 A heredoc generally allows interpolation and escapes.

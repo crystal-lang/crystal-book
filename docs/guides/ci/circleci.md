@@ -144,4 +144,3 @@ version: 2.1
 ## Caching
 
 Caching is enabled by default when using the job `crystal/test`, because internally it uses the `command` [with-shards-cache](https://circleci.com/orbs/registry/orb/manastech/crystal#commands-with-shards-cache)
-

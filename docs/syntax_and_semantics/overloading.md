@@ -28,13 +28,13 @@ john.become_older 5
 john.age # => 6
 ```
 
-That is, you can have different methods with the same name and different number of arguments and they will be considered as separate methods. This is called *method overloading*.
+That is, you can have different methods with the same name and different number of parameters and they will be considered as separate methods. This is called *method overloading*.
 
 Methods overload by several criteria:
 
-* The number of arguments
-* The type restrictions applied to arguments
-* The names of required named arguments
+* The number of parameters
+* The type restrictions applied to parameters
+* The names of required named parameters
 * Whether the method accepts a [block](blocks_and_procs.md) or not
 
 For example, we can define four different `become_older` methods:
@@ -82,7 +82,7 @@ end
 person.age # => 28
 ```
 
-Note that in the case of the method that yields, the compiler figured this out because there's a `yield` expression. To make this more explicit, you can add a dummy `&block` argument at the end:
+Note that in the case of the method that yields, the compiler figured this out because there's a `yield` expression. To make this more explicit, you can add a dummy `&block` parameter at the end:
 
 ```crystal
 class Person
@@ -96,7 +96,7 @@ end
 
 In generated documentation the dummy `&block` method will always appear, regardless of you writing it or not.
 
-Given the same number of arguments, the compiler will try to sort them by leaving the less restrictive ones to the end:
+Given the same number of parameters, the compiler will try to sort them by leaving the less restrictive ones to the end:
 
 ```crystal
 class Person

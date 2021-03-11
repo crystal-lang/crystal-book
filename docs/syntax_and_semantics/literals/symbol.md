@@ -21,6 +21,7 @@ For an unquoted identifier the same naming rules apply as for methods. It can co
 ```
 
 All [Crystal operators](../operators.md) can be used as symbol names unquoted:
+
 ```crystal
 :+
 :-

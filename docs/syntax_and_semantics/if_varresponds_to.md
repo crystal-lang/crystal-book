@@ -38,4 +38,3 @@ if (a = @a).responds_to?(:abs)
   # here a is guaranteed to respond to `abs`
 end
 ```
-

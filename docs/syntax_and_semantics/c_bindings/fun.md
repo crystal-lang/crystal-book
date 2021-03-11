@@ -15,7 +15,7 @@ Once you bind it, the function is available inside the `C` type as if it was a c
 C.cos(1.5) # => 0.0707372
 ```
 
-You can omit the parentheses if the function doesn't have arguments (and omit them in the call as well):
+You can omit the parentheses if the function doesn't have parameters (and omit them in the call as well):
 
 ```crystal
 lib C
@@ -80,7 +80,7 @@ The valid types to use in C bindings are:
 * Other `struct`, `union`, `enum`, `type` or `alias` declared previously.
 * `Void`: the absence of a return value.
 * `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
-* Crystal structs marked with the `@[Extern]` attribute
+* Crystal structs marked with the `@[Extern]` annotation
 
 Refer to the [type grammar](../type_grammar.md) for the notation used in fun types.
 

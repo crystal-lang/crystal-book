@@ -23,18 +23,19 @@
     $ git push public master
     ```
 
-#### GitHub Releases
+## GitHub Releases
+
 It's good practice to do GitHub Releases.
 
 Add the following markdown build badge below the description in your README to inform users what the most current release is:
 (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-```Markdown
+```markdown
 [![GitHub release](https://img.shields.io/github/release/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg)](https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>/releases)
 ```
 
 Start by navigating to your repository's _releases_ page.
-  - This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
+This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
 
 Click "Create a new release".
 
@@ -49,18 +50,22 @@ You'll now notice that the GitHub Release badge has updated in your README.
 
 Follow [Semantic Versioning](http://semver.org/) and create a new release every time your push new code to `master`.
 
-### Travis CI and `.travis.yml`
+## Travis CI and `.travis.yml`
+
 If you haven't already, [sign up for Travis CI](https://travis-ci.org/).
 
 Insert the following markdown build badge below the description in your README.md:
 (be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
-```Markdown
+
+```markdown
 [![Build Status](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg?branch=master)](https://travis-ci.org/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>) 
 ```
+
 Build badges are a simple way to tell people whether your Travis CI build passes.
 
 Add the following lines to your `.travis.yml`:
-```YAML
+
+```yaml
 script:
   - crystal spec
 ```
@@ -68,16 +73,15 @@ script:
 This tells Travis CI to run your tests. 
 Accordingly with the outcome of this command, Travis CI will return a [build status](https://docs.travis-ci.com/user/for-beginners/#breaking-the-build) of "passed", "errored", "failed" or "canceled".
 
-
 If you want to verify that all your code has been formatted with `crystal tool format`, add a script for `crystal tool format --check`. If the code is not formatted correctly, this will [break the build](https://docs.travis-ci.com/user/for-beginners/#breaking-the-build) just as failing tests would.
 
 e.g.
-```YAML
+
+```yaml
 script:
   - crystal spec
   - crystal tool format --check
 ```
-
 
 Commit and push to GitHub.
 
@@ -85,11 +89,11 @@ Follow [these guidelines](https://docs.travis-ci.com/user/getting-started/) to g
 
 Once you're up and running, and the build is passing, the build badge will update in your README.
 
-
-#### Hosting your `docs` on GitHub-Pages
+## Hosting your `docs` on GitHub-Pages
 
 Add the following `script` to your `.travis.yml`:
-```YAML
+
+```yaml
   - crystal docs
 ```
 
@@ -97,7 +101,8 @@ This tells Travis CI to generate your documentation.
 
 Next, add the following lines to your `.travis.yml`.
 (Be sure to replace all instances of `<YOUR-GITHUB-REPOSITORY-NAME>` accordingly)
-```YAML
+
+```yaml
 deploy:
   provider: pages
   skip_cleanup: true
@@ -112,7 +117,7 @@ deploy:
 
 If you've been following along, your `.travis.yml` file should look something like this:
 
-```YAML
+```yaml
 language: crystal
 script:
   - crystal spec

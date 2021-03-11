@@ -11,6 +11,11 @@ theme:
     accent: blue
   icon:
     repo: fontawesome/brands/github
+  favicon: https://crystal-lang.org/favicon.ico
+  logo: assets/crystal-circ.svg
+
+extra_css:
+  - assets/style.css
 
 plugins:
   - search

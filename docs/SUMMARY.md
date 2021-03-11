@@ -1,4 +1,5 @@
 # Summary
+
 * [Introduction](README.md)
 * [Getting started](getting_started/README.md)
     * [An HTTP Server](getting_started/http_server.md)
@@ -55,7 +56,7 @@
             * [Type inference](syntax_and_semantics/type_inference.md)
             * [Union types](syntax_and_semantics/union_types.md)
             * [Overloading](syntax_and_semantics/overloading.md)
-            * [Default values and named arguments](syntax_and_semantics/default_and_named_arguments.md)
+            * [Default parameter values and named arguments](syntax_and_semantics/default_and_named_arguments.md)
             * [Splats and tuples](syntax_and_semantics/splats_and_tuples.md)
             * [Type restrictions](syntax_and_semantics/type_restrictions.md)
             * [Return types](syntax_and_semantics/return_types.md)
@@ -132,4 +133,5 @@
     * [Continuous Integration](guides/ci/README.md)
         * [Using Travis CI](guides/ci/travis.md)
         * [Using CircleCI](guides/ci/circleci.md)
+    * [Static Linking](guides/static_linking.md)
 * [Platform Support](platform_support.md)

@@ -1,6 +1,6 @@
-# Default values
+## Default parameter values
 
-A method can specify default values for the last arguments:
+A method can specify default values for the last parameters:
 
 ```crystal
 class Person
@@ -19,7 +19,7 @@ john.become_older 2
 john.age # => 3
 ```
 
-# Named arguments
+## Named arguments
 
 All arguments can also be specified, in addition to their position, by their name. For example:
 
@@ -27,7 +27,7 @@ All arguments can also be specified, in addition to their position, by their nam
 john.become_older by: 5
 ```
 
-When there are many arguments, the order of the names in the invocation doesn't matter, as long as all required arguments are covered:
+When there are many arguments, the order of the names in the invocation doesn't matter, as long as all required parameters are covered:
 
 ```crystal
 def some_method(x, y = 1, z = 2, w = 3)
@@ -42,4 +42,4 @@ some_method y: 10, x: 20         # x: 20, y: 10, z: 2, w: 3
 some_method y: 10 # Error, missing argument: x
 ```
 
-When a method specifies a splat (explained in the next section), named arguments can't be used. The reason is that understanding how arguments are matched becomes very difficult; positional arguments are easier to reason about in this case.
+When a method specifies a splat parameter (explained in the next section), named arguments can't be used for positional parameters. The reason is that understanding how arguments are matched becomes very difficult; positional arguments are easier to reason about in this case.

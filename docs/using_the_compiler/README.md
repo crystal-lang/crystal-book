@@ -50,7 +50,7 @@ $ crystal build hello_world.cr --release --static
 !!! note
     Building fully statical linked executables is currently only supported on Alpine Linux.
 
-More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
+More information about statically linking [can be found in the Static Linking guide](../guides/static_linking.md).
 
 The compiler uses the `CRYSTAL_LIBRARY_PATH` environment variable as a first lookup destination for static and dynamic libraries that are to be linked. This can be used to provide static versions of libraries that are also available as dynamic libraries.
 
@@ -218,6 +218,7 @@ an application not intended to be used as a dependency. A library doesn't have a
 in its repository and no build target in `shard.yml`, but instructions for using it as a dependency.
 
 Example:
+
 ```console
 $ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore

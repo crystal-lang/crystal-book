@@ -18,7 +18,7 @@ f = ->(x : Int32) { x + 1 }
 X.callback(f)
 ```
 
-If you define the function inline in the same call you can omit the argument types, the compiler will add the types for you based on the `fun` signature:
+If you define the function inline in the same call you can omit the parameter types, the compiler will add the types for you based on the `fun` signature:
 
 ```crystal
 X.callback ->(x) { x + 1 }
@@ -42,9 +42,9 @@ If you want to pass `NULL` instead of a callback, just pass `nil`:
 X.callback nil
 ```
 
-### Passing a closure to a C function
+## Passing a closure to a C function
 
-Most of the time a C function that allows setting a callback also provide an argument for custom data. This custom data is then sent as an argument to the callback. For example, suppose a C function that invokes a callback at every tick, passing that tick:
+Most of the time a C function that allows setting a callback also provides a parameter for custom data. This custom data is then sent as an argument to the callback. For example, suppose a C function that invokes a callback at every tick, passing that tick:
 
 ```crystal
 lib LibTicker
@@ -85,11 +85,11 @@ end
 
 Note that we save the boxed callback in `@@box`. The reason is that if we don't do it, and our code doesn't reference it anymore, the GC will collect it. The C library will of course store the callback, but Crystal's GC has no way of knowing that.
 
-## Raises attribute
+## Raises annotation
 
-If a C function executes a user-provided callback that might raise, it must be annotated with the `@[Raises]` attribute.
+If a C function executes a user-provided callback that might raise, it must be annotated with the `@[Raises]` annotation.
 
-The compiler infers this attribute for a method if it invokes a method that is marked as `@[Raises]` or raises (recursively).
+The compiler infers this annotation for a method if it invokes a method that is marked as `@[Raises]` or raises (recursively).
 
 However, some C functions accept callbacks to be executed by other C functions. For example, suppose a fictitious library:
 

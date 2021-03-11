@@ -23,7 +23,6 @@ deposit db, "Sarah", 50
 withdraw db, "John", 50
 ```
 
-
 It is important to have in mind that if one of the operations fails then the final state would be inconsistent. So we need to execute the **two operations** (deposit and withdraw) as **one operation**. And if an error occurs then we would like to go back in time as if that one operation was never executed.
 
 ```crystal

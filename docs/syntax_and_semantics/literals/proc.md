@@ -3,17 +3,17 @@
 A [Proc](http://crystal-lang.org/api/Proc.html) represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:
 
 ```crystal
-# A proc without arguments
+# A proc without parameters
 ->{ 1 } # Proc(Int32)
 
-# A proc with one argument
+# A proc with one parameters
 ->(x : Int32) { x.to_s } # Proc(Int32, String)
 
-# A proc with two arguments:
+# A proc with two parameters
 ->(x : Int32, y : Int32) { x + y } # Proc(Int32, Int32, Int32)
 ```
 
-The types of the arguments are mandatory, except when directly sending a proc literal to a lib `fun` in C bindings.
+The types of the parameters are mandatory, except when directly sending a proc literal to a lib `fun` in C bindings.
 
 The return type is inferred from the proc's body.
 
@@ -69,7 +69,7 @@ proc = ->one
 proc.call # => 1
 ```
 
-If the method has arguments, you must specify their types:
+If the method has parameters, you must specify their types:
 
 ```crystal
 def plus_one(x)
