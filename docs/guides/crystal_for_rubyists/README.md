@@ -11,16 +11,12 @@ If you have a program `foo.cr`:
 puts "Hello world"
 ```
 
-When you execute one of these commands:
+When you execute one of these commands, you will get the same output:
 
-```
-crystal foo.cr
-ruby foo.cr
-```
-
-You will get this output:
-
-```
+```console
+$ crystal foo.cr
+Hello world
+$ ruby foo.cr
 Hello world
 ```
 
@@ -28,16 +24,16 @@ It looks like `crystal` interprets the file, but what actually happens is that t
 
 If you just want to compile it you can use the `build` command:
 
-```
-crystal build foo.cr
+```console
+$ crystal build foo.cr
 ```
 
-This will create a `foo` executable, which you can then run with `./foo`.
+This creates a `foo` executable, which you can then run with `./foo`.
 
 Note that this creates an executable that is not optimized. To optimize it, pass the `--release` flag:
 
-```
-crystal build foo.cr --release
+```console
+$ crystal build foo.cr --release
 ```
 
 When writing benchmarks or testing performance, always remember to compile in release mode.
@@ -54,7 +50,7 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 For Ruby's `Fixnum` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
 
-If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a Bignum.
+If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a `ignum`.
 Crystal will instead raise an `OverflowError` on overflow. For example:
 
 ```crystal
@@ -63,7 +59,9 @@ x # => 127
 x += 1 # Unhandled exception: Arithmetic overflow (OverflowError)
 ```
 
-See [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/integers.html)
+Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/BigInt.html), [`BigRational`](https://crystal-lang.,org/api/BigRational.html).
+
+See the language reference on [Integers](http://crystal-lang.org/docs/syntax_and_semantics/literals/integers.html).
 
 ### Regex
 
@@ -74,18 +72,18 @@ Global variables ``$` `` and `$'` are not supported (yet `$~` and `$1`, `$2`, ..
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one.
 Specifically:
 
-    Ruby Method          Crystal Method
-    -----------------    --------------
-    Enumerable#detect    Enumerable#find
-    Enumerable#collect   Enumerable#map
-    Object#respond_to?   Object#responds_to?
-    length, size, count  size
+| Ruby Method               | Crystal Method        |
+|---------------------------|-----------------------|
+| `Enumerable#detect`       | `Enumerable#find`     |
+| `Enumerable#collect`      | `Enumerable#map`      |
+| `Object#respond_to?`      | `Object#responds_to?` |
+| `length`, `size`, `count` | `size`                |
 
 ## Omitted Language Constructs
 
 Where Ruby has a a couple of alternative constructs, Crystal has one.
 
-* [[trailing while/until | FAQ#why-trailing-whileuntil-is-not-supported-unlike-ruby]]. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
+* trailing `while`/`until` are missing. Note however that [if as a suffix](http://crystal-lang.org/docs/syntax_and_semantics/as_a_suffix.html) is still available
 * `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
 * Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->`
 * For `require_relative "foo"` use `require "./foo"`
@@ -103,7 +101,7 @@ will generate an error message like
 
     in line 1: too many block arguments (given 2, expected maximum 1)
 
-However omitting unneeded arguments is fine (as it is in Ruby), ex: `
+However omitting unneeded arguments is fine (as it is in Ruby), ex:
 
 ```cr
 [[1, "A"], [2, "B"]].each do # no arguments
@@ -143,7 +141,7 @@ You can also explicitly unpack to get the same result as Ruby's autosplat:
 end
 ```
 
-## [.each returns nil](https://github.com/crystal-lang/crystal/pull/3815#issuecomment-269978574)
+## `#each` returns nil
 
 In Ruby `.each` returns the receiver for many built-in collections like `Array` and `Hash`, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported. Alternately, one can use `.tap`.
 
@@ -158,9 +156,11 @@ Crystal:
 [1, 2].tap &.each { "foo" } # => [1, 2]
 ```
 
+[Reference](https://github.com/crystal-lang/crystal/pull/3815#issuecomment-269978574)
+
 ## Reflection and Dynamic Evaluation
 
-_Kernel#eval()_ and the weird _Kernel#autoload()_ are omitted. Object and class introspection methods _Object#kind_of?()_, _Object#methods_, _Object#instance_..., and _Class#constants_, are omitted as well.
+`Kernel#eval()` and the weird `Kernel#autoload()` are omitted. Object and class introspection methods `Object#kind_of?()`, `Object#methods`, `Object#instance_methods`, and `Class#constants`, are omitted as well.
 
 In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.html) can be used for reflection.
 
@@ -169,7 +169,7 @@ In some cases [macros](http://crystal-lang.org/docs/syntax_and_semantics/macros.
 
 In Ruby, string literals can be delimited with single or double quotes. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not.
 
-In Crystal, strings literals are delimited with double quotes only. Single quotes act as character literals just like say C-like languages. As with Ruby, there is variable interpolation inside string literals.
+In Crystal, string literals are delimited with double quotes only. Single quotes act as character literals just like say C-like languages. As with Ruby, there is variable interpolation inside string literals.
 
 In sum:
 
@@ -186,6 +186,8 @@ what?""" # Invalid Crystal use:
 "Now,
 what?"  # Valid Crystal
 ```
+
+Crystal supports many [percent string literals](../syntax_and_semantics/literals/string.md#percent-string-literals), though.
 
 ### The `[]` and `[]?` methods
 
@@ -299,25 +301,26 @@ This is because, in ruby, `process_data(b: 2, a: "one")` is syntax sugar for `pr
 In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `processData` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
 
 ### Properties
-The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced with new keywords:
 
-    Ruby Keyword     Crystal
-    -------------    --------
-    attr_accessor    property
-    attr_reader      getter
-    attr_writer      setter
+The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced by macros with different names:
+
+| Ruby Keyword    | Crystal    |
+|-----------------|------------|
+| `attr_accessor` | `property` |
+| `attr_reader`   | `getter`   |
+| `attr_writer`   | `setter`   |
 
 Example:
 ```crystal
   getter :name, :bday
 ```
 
-In addition, Crystal added boolean properties that will use a question mark (`?`) in the method name:
+In addition, Crystal added accessor macros for nilable or boolean instance variables. They have a question mark (`?`) in the name:
 
-    Crystal
-    --------
-    property?
-    getter?
+| Crystal     |
+|-------------|
+| `property?` |
+| `getter?`   |
 
 Example:
 ```crystal
@@ -351,7 +354,7 @@ Read more about [getter?](https://crystal-lang.org/api/Object.html#getter?(*name
 For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
 ### Crystal keywords
-Crystal added some new keywords, these can still be used as function names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
+Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
 
 #### Available keywords
 
@@ -389,9 +392,11 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 | `__LINE__` | `__LINE__` | The current line number in the currently executing crystal file. |
 | `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
 
-> Further reading about `__DIR__` vs. `__dir__`:
-> * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
-> * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
+!!! tip
+    Further reading about `__DIR__` vs. `__dir__`:
+
+    * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
+    * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
 
 ## Crystal Shards for Ruby Gems
 Many popular Ruby gems have been ported or rewritten in Crystal. [Here are some of the equivalent Crystal Shards for Ruby Gems](https://github.com/crystal-lang/crystal/wiki/Crystal-Shards-for-Ruby-Gems).
