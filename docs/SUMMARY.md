@@ -134,3 +134,4 @@
         * [Using Travis CI](guides/ci/travis.md)
         * [Using CircleCI](guides/ci/circleci.md)
     * [Static Linking](guides/static_linking.md)
+* [Platform Support](platform_support.md)
