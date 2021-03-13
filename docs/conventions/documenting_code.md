@@ -15,7 +15,7 @@ considered part of the API documentation.
 
 Doc comments must be positioned directly above the definition of the
 documented feature. Consecutive comment lines are combined into a single comment
-block. Any empty line breaks the association to the documented feature
+block. Any empty line breaks the association to the documented feature.
 
 ```crystal
 # This comment is not associated with the class.
