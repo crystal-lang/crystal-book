@@ -47,7 +47,7 @@ Color::Red.value # :: UInt8
 
 Only integer types are allowed as the underlying type.
 
-All enums inherit from [Enum](http://crystal-lang.org/api/Enum.html).
+All enums inherit from [Enum](https://crystal-lang.org/api/latest/Enum.html).
 
 ## Flags enums
 
@@ -117,7 +117,7 @@ Class variables are allowed, but instance variables are not.
 
 ## Usage
 
-Enums are a type-safe alternative to [Symbol](http://crystal-lang.org/api/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.md) using an enum type:
+Enums are a type-safe alternative to [Symbol](https://crystal-lang.org/api/latest/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.md) using an enum type:
 
 ```crystal
 def paint(color : Color)

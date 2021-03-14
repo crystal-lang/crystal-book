@@ -170,7 +170,7 @@ end
 Fiber.yield
 ```
 
-Now it works because we are creating a [Proc](http://crystal-lang.org/api/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
+Now it works because we are creating a [Proc](https://crystal-lang.org/api/latest/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
 
 To avoid all this boilerplate, the standard library provides a `spawn` macro that accepts a call expression and basically rewrites it to do the above. Using it, we end up with:
 
