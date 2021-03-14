@@ -1,6 +1,6 @@
 # Array
 
-An [Array](http://crystal-lang.org/api/Array.html) is an ordered and integer-indexed generic collection of elements of a specific type `T`.
+An [Array](https://crystal-lang.org/api/latest/Array.html) is an ordered and integer-indexed generic collection of elements of a specific type `T`.
 
 Arrays are typically created with an array literal denoted by square brackets (`[]`) and individual elements separated by a comma (`,`).
 

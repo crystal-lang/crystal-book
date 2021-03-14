@@ -1,6 +1,6 @@
 # Symbol
 
-A [Symbol](http://crystal-lang.org/api/Symbol.html) represents a unique name inside the entire source code.
+A [Symbol](https://crystal-lang.org/api/latest/Symbol.html) represents a unique name inside the entire source code.
 
 Symbols are interpreted at compile time and cannot be created dynamically. The only way to create a Symbol is by using a symbol literal, denoted by a colon (`:`) followed by an identifier. The identifier may optionally be enclosed in double quotes (`"`).
 
@@ -55,7 +55,7 @@ Internally, symbols are implemented as constants with a numeric value of type `I
 
 ## Percent symbol array literal
 
-Besides the single symbol literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of symbols. It is indicated by `%i` and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested; meaning a start delimiter inside the string escapes the next end delimiter.
+Besides the single symbol literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/latest/Array.html) of symbols. It is indicated by `%i` and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested; meaning a start delimiter inside the string escapes the next end delimiter.
 
 ```crystal
 %i(foo bar baz)  # => [:foo, :bar, :baz]

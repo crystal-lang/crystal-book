@@ -35,6 +35,10 @@ clean: ## Remove build directory
 clean_deps: ## Remove .venv directory
 	rm -rf .venv
 
+.PHONY: format_api_docs_links
+format_api_docs_links:
+	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
+
 .PHONY: help
 help: ## Show this help
 	@echo

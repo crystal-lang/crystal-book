@@ -79,7 +79,7 @@ The code you write is up to you, but how you write it impacts whether people wan
 #### Testing the Code
 
 - Test your code. All of it. It's the only way for anyone, including you, to know if it works.
-- Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
+- Crystal has [a built-in testing library](https://crystal-lang.org/api/latest/Spec.html). Use it!
 
 #### Documentation
 
