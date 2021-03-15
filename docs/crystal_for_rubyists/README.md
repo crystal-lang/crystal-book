@@ -61,7 +61,7 @@ x += 1 # Unhandled exception: Arithmetic overflow (OverflowError)
 
 Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/latest/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/latest/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/latest/BigInt.html), [`BigRational`](https://crystal-lang.org/api/latest/BigRational.html).
 
-See the language reference on [Integers](../../syntax_and_semantics/literals/integers.md).
+See the language reference on [Integers](../syntax_and_semantics/literals/integers.md).
 
 ### Regex
 
@@ -83,7 +83,7 @@ Specifically:
 
 Where Ruby has a a couple of alternative constructs, Crystal has one.
 
-* trailing `while`/`until` are missing. Note however that [if as a suffix](../../syntax_and_semantics/as_a_suffix.md) is still available
+* trailing `while`/`until` are missing. Note however that [if as a suffix](../syntax_and_semantics/as_a_suffix.md) is still available
 * `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
 * Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->`
 * For `require_relative "foo"` use `require "./foo"`
@@ -162,7 +162,7 @@ Crystal:
 
 `Kernel#eval()` and the weird `Kernel#autoload()` are omitted. Object and class introspection methods `Object#kind_of?()`, `Object#methods`, `Object#instance_methods`, and `Class#constants`, are omitted as well.
 
-In some cases [macros](../../syntax_and_semantics/macros/README.md) can be used for reflection.
+In some cases [macros](../syntax_and_semantics/macros/README.md) can be used for reflection.
 
 ## Semantic differences
 ### Single versus double-quoted strings
@@ -187,7 +187,7 @@ what?""" # Invalid Crystal use:
 what?"  # Valid Crystal
 ```
 
-Crystal supports many [percent string literals](../../syntax_and_semantics/literals/string.md#percent-string-literals), though.
+Crystal supports many [percent string literals](../syntax_and_semantics/literals/string.md#percent-string-literals), though.
 
 ### The `[]` and `[]?` methods
 
@@ -383,7 +383,7 @@ end
 ### Pseudo Constants
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
-> [Read more about Pseudo Constants in the Crystal documentation.](../../syntax_and_semantics/constants.md#pseudo-constants)
+> [Read more about Pseudo Constants in the Crystal documentation.](../syntax_and_semantics/constants.md#pseudo-constants)
 
 | Crystal | Ruby | Description |
 | ------- | ---- | ----------- |

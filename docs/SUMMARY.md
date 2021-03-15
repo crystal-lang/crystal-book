@@ -134,6 +134,6 @@
         * [Using Travis CI](guides/ci/travis.md)
         * [Using CircleCI](guides/ci/circleci.md)
     * [Static Linking](guides/static_linking.md)
-    * [Crystal for Rubyists](guides/crystal_for_rubyists/README.md)
-        * [Metaprogramming Help](guides/crystal_for_rubyists/metaprogramming_help.md)
+* [Crystal for Rubyists](crystal_for_rubyists/README.md)
+    * [Metaprogramming Help](crystal_for_rubyists/metaprogramming_help.md)
 * [Platform Support](platform_support.md)
