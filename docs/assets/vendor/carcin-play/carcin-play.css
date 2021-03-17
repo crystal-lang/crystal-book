@@ -15,7 +15,7 @@
 .carcin-play__actions {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .carcin-play__actions > .md-button {

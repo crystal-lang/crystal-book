@@ -39,14 +39,14 @@ CarcinPlay = function(code, wrapper, carcinOptions) {
   var output = document.createElement("div");
   output.className = "carcin-play__output"
   var stdout = document.createElement("code")
-  stdoutPre = document.createElement("pre");
+  var stdoutPre = document.createElement("pre");
   stdoutPre.className = "carcin-play__stdout"
   stdoutPre.style.display = "none";
   stdoutPre.appendChild(stdout);
 
   output.appendChild(stdoutPre);
   var stderr = document.createElement("code");
-  stderrPre = document.createElement("pre");
+  var stderrPre = document.createElement("pre");
   stderrPre.className = "carcin-play__stderr";
   stderrPre.style.display = "none";
   stderrPre.appendChild(stderr);
