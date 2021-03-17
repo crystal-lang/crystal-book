@@ -27,6 +27,35 @@ $(MKDOCS): $(PIP) requirements.txt
 $(PIP):
 	python3 -m venv .venv
 
+.PHONY: vendor
+vendor: ## Install assets from external sources
+vendor: carcin-play codemirror ansi_up
+
+.PHONY: carcin-play
+carcin-play: docs/assets/vendor/carcin-play/carcin.js docs/assets/vendor/carcin-play/carcin-play.js docs/assets/vendor/carcin-play/carcin-play.css docs/assets/vendor/carcin-play/codemirror-theme.css
+
+docs/assets/vendor/carcin-play/%:
+	mkdir -p $(@D)
+	wget -O $@ https://github.com/straight-shoota/carcin-play/raw/master/$(@F)
+
+.PHONY: codemirror
+codemirror: docs/assets/vendor/codemirror/codemirror.min.css docs/assets/vendor/codemirror/codemirror.min.js docs/assets/vendor/codemirror/mode/crystal/crystal.min.js
+
+docs/assets/vendor/codemirror/%:
+	mkdir -p $(@D)
+	wget -O $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/$(@F)
+
+docs/assets/vendor/codemirror/mode/crystal/crystal.min.js:
+	mkdir -p $(@D)
+	wget -O $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/crystal/crystal.min.js:
+
+.PHONY: ansi_up
+ansi_up: docs/assets/vendor/ansi_up/ansi_up.min.js
+
+docs/assets/vendor/ansi_up/%:
+	mkdir -p $(@D)
+  wget -O $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
+
 .PHONY: clean
 clean: ## Remove build directory
 	rm -rf $(OUTPUT_DIR)
@@ -35,9 +64,12 @@ clean: ## Remove build directory
 clean_deps: ## Remove .venv directory
 	rm -rf .venv
 
-.PHONY: format_api_docs_links
-format_api_docs_links:
-	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
+.PHONY: clean_vendor
+clean_vendor: ## Remove docs/assets/vendor directory
+	rm -rf docs/assets/vendor
+
+.PHONY: clean_all
+clean_all: clean clean_deps clean_vendor
 
 .PHONY: help
 help: ## Show this help
