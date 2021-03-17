@@ -1,3 +1,4 @@
 # Syntax and Semantics
 
-The program’s source code must be encoded in UTF-8.
+This section is a reference of the Crystal language. It describes the behaviour of
+the compiler implementation.

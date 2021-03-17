@@ -8,6 +8,7 @@
 * [The shards command](the_shards_command/README.md)
 * [About this guide](overview/README.md)
 * [Syntax and semantics](syntax_and_semantics/README.md)
+    * [Program](syntax_and_semantics/program.md)
     * [Comments](syntax_and_semantics/comments.md)
     * [Literals](syntax_and_semantics/literals/README.md)
         * [Nil](syntax_and_semantics/literals/nil.md)
