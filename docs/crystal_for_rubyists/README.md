@@ -50,7 +50,7 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 For Ruby's `Fixnum` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
 
-If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a `ignum`.
+If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a `Bignum`.
 Crystal will instead raise an `OverflowError` on overflow. For example:
 
 ```crystal
