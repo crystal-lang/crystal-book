@@ -36,25 +36,25 @@ carcin-play: docs/assets/vendor/carcin-play/carcin.js docs/assets/vendor/carcin-
 
 docs/assets/vendor/carcin-play/%:
 	mkdir -p $(@D)
-	wget -O $@ https://github.com/straight-shoota/carcin-play/raw/master/$(@F)
+	curl -sL -o $@ https://github.com/straight-shoota/carcin-play/raw/master/$(@F)
 
 .PHONY: codemirror
 codemirror: docs/assets/vendor/codemirror/codemirror.min.css docs/assets/vendor/codemirror/codemirror.min.js docs/assets/vendor/codemirror/mode/crystal/crystal.min.js
 
 docs/assets/vendor/codemirror/%:
 	mkdir -p $(@D)
-	wget -O $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/$(@F)
+	curl -sL -o $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/$(@F)
 
 docs/assets/vendor/codemirror/mode/crystal/crystal.min.js:
 	mkdir -p $(@D)
-	wget -O $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/crystal/crystal.min.js:
+	curl -sL -o $@ https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/crystal/crystal.min.js
 
 .PHONY: ansi_up
 ansi_up: docs/assets/vendor/ansi_up/ansi_up.min.js
 
 docs/assets/vendor/ansi_up/%:
 	mkdir -p $(@D)
-  wget -O $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
+  curl -sL -o $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
 
 .PHONY: clean
 clean: ## Remove build directory
