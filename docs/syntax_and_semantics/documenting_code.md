@@ -1,119 +1,210 @@
 # Documenting code
 
-Crystal can generate documentation from comments using a subset of [Markdown](https://daringfireball.net/projects/markdown/).
+Documentation for API features can be written in code comments directly
+preceding the definition of the respective feature.
 
-To generate documentation for a project, invoke `crystal docs`. By default this will create a `docs` directory, with a `docs/index.html` entry point. For more details see [Using the compiler – Creating documentation](../using_the_compiler/#crystal-docs).
+By default, all public methods, macros, types and constants are
+considered part of the API documentation.
 
-* Documentation should be positioned right above definitions of classes, modules, and methods. Leave no blanks between them.
+!!! tip
+    The compiler command [`crystal docs`](../using_the_compiler/#crystal-docs)
+    automatically extracts the API documentation and generates a website to
+    present it.
 
-    ```crystal
-    # A unicorn is a **legendary animal** (see the `Legendary` module) that has been
-    # described since antiquity as a beast with a large, spiraling horn projecting
-    # from its forehead.
-    class Unicorn
-    end
+## Association
 
-    # Bad: This is not attached to any class.
+Doc comments must be positioned directly above the definition of the
+documented feature. Consecutive comment lines are combined into a single comment
+block. Any empty line breaks the association to the documented feature.
 
-    class Legendary
-    end
-    ```
+```crystal
+# This comment is not associated with the class.
 
-* The documentation of a method is included into the method summary and the method details. The former includes only the first line, the latter includes the entire documentation. In short, it is preferred to:
+# First line of documentation for class Unicorn.
+# Second line of documentation for class Unicorn.
+class Unicorn
+end
+```
 
-    1. State a method's purpose or functionality in the first line.
-    2. Supplement it with details and usages after that.
+## Format
 
-    For instance:
+Doc comments support [Markdown](https://daringfireball.net/projects/markdown/) formatting.
 
-    ``````crystal
-    # Returns the number of horns this unicorn has.
-    #
-    # ```
-    # Unicorn.new.horns # => 1
-    # ```
-    def horns
-      @horns
-    end
-    ``````
+The first paragraph of a doc comment is considered its summary. It should concisely
+define the purpose and functionality.
 
-* Use the third person: `Returns the number of horns this unicorn has` instead of `Return the number of horns this unicorn has`.
+Supplementary details and usages instructions should follow in subsequent paragraphs.
 
-* Parameter names should be *italicized* (surrounded with single asterisks `*` or underscores `_`):
+For instance:
 
-    ```crystal
-    # Creates a unicorn with the specified number of *horns*.
-    def initialize(@horns = 1)
-      raise "Not a unicorn" if @horns != 1
-    end
-    ```
+```crystal
+# Returns the number of horns this unicorn has.
+#
+# Always returns `1`.
+def horns
+  1
+end
+```
 
-* Code blocks that have Crystal code can be surrounded with triple backticks or indented with four spaces.
+!!! tip
+    It is generally advised to use descriptive, third person present tense:
+    `Returns the number of horns this unicorn has` (instead of an imperative `Return the number of horns this unicorn has`).
 
-    ``````crystal
-    # ```
-    # unicorn = Unicorn.new
-    # unicorn.speak
-    # ```
-    ``````
+## Markup
 
-    or
+### Linking
 
-    ```crystal
-    #     unicorn = Unicorn.new
-    #     unicorn.speak
-    ```
+References to other API features can be enclosed in single backticks. They are
+automatically resolved and converted into links to the respective feature.
 
-* Text blocks, for example to show program output, must be surrounded with triple backticks followed by the "text" keyword.
+```crystal
+class Unicorn
+  # Creates a new `Unicorn` instance.
+  def initialize
+  end
+end
+```
 
-    ``````crystal
-    # ```text
-    # "I'm a unicorn"
-    # ```
-    ``````
+The same lookup rules apply as in Crystal code. Features in the currently
+documented namespace can be accessed with relative names:
 
-* To automatically link to other types, enclose them with single backticks.
+* Instance methods are referenced with a hash prefix: `#horns`.
+* Class methods are referenced with a dot prefix: `.new`.
+* Constants and types are referenced by their name: `Unicorn`.
 
-    ```crystal
-    # the `Legendary` module
-    ```
+Features in other namespaces are referenced with the fully-qualified type path: `Unicorn#horns`, `Unicorn.new`, `Unicorn::CONST`.
 
-* To automatically link to methods of the currently documented type, use a hash like `#horns` or `#index(char)`, and enclose it with single backticks.
+Different overloads of a method can be identified by the full signature `.new(name)`, `,new(name, age)`.
 
-* To automatically link to methods in other types, do `OtherType#method(arg1, arg2)` or just `OtherType#method`, and enclose it with single backticks.
+### Parameters
 
-    For example:
+When refering to parameters, it is recommended to write their name *italicized* (`*italicized*`):
 
-    ```crystal
-    # Check the number of horns with `#horns`.
-    # See what a unicorn would say with `Unicorn#speak`.
-    ```
+```crystal
+# Creates a unicorn with the specified number of *horns*.
+def initialize(@horns = 1)
+  raise "Not a unicorn" if @horns != 1
+end
+```
 
-* To show the value of an expression inside code blocks, use `# =>`.
+### Code Examples
 
-    ```crystal
-    1 + 2             # => 3
-    Unicorn.new.speak # => "I'm a unicorn"
-    ```
+Code examples can be placed in Markdown code blocks.
+If no language tag is given, the code block is considered to be Crystal code.
 
-* Use `:ditto:` to use the same comment as in the previous declaration.
+```crystal
+# Example:
+# ```
+# unicorn = Unicorn.new
+# unicorn.horns # => 1
+# ```
+class Unicorn
+end
+```
 
-    ```crystal
-    # :ditto:
-    def number_of_horns
-      horns
-    end
-    ```
+To designate a code block as plain text, it must be explicitly tagged.
 
-* Use `:nodoc:` to hide public declarations from the generated documentation. Private and protected methods are always hidden.
+```crystal
+# Output:
+# ```plain
+# "I'm a unicorn"
+# ```
+def say
+  puts "I'm a unicorn"
+end
+```
 
-    ```crystal
-    class Unicorn
-      # :nodoc:
-      class Helper
-      end
-    end
-    ```
+Other language tags can also be used.
+
+To show the value of an expression inside code blocks, use `# =>`.
+
+```crystal
+1 + 2             # => 3
+Unicorn.new.speak # => "I'm a unicorn"
+```
+
+### Admonitions
+
+Several admonition keywords are supported to visually highlight problems, notes and/or possible issues.
+
+- `BUG`
+- `DEPRECATED`
+- `FIXME`
+- `NOTE`
+- `OPTIMIZE`
+- `TODO`
+
+Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
+
+```crystal
+# Makes the unicorn speak to STDOUT
+#
+# NOTE: Although unicorns don't normally talk, this one is special
+# TODO: Check if unicorn is asleep and raise exception if not able to speak
+# TODO: Create another `speak` method that takes and prints a string
+def speak
+  puts "I'm a unicorn"
+end
+
+# Makes the unicorn talk to STDOUT
+#
+# DEPRECATED: Use `speak`
+def talk
+  puts "I'm a unicorn"
+end
+```
+
+The compiler implicitly adds some admonitions to doc comments:
+
+* The [`@[Deprecated]`](https://crystal-lang.org/api/latest/Deprecated.html) annotation
+  adds a `DEPRECATED` admonition.
+* The [`@[Experimental]`](https://crystal-lang.org/api/latest/Experimental.html) annotation
+  adds an `EXPERIMENTAL` admonition.
+
+## Directives
+
+Directives tell the documentation generator how to treat documentation for a
+specific feature.
+
+### `ditto`
+
+If two consecutively defined features have the same documentation, `:ditto:`
+can be used to copy the same doc comment from the previous definition.
+
+```crystal
+# Returns the number of horns.
+def horns
+  horns
+end
+
+# :ditto:
+def number_of_horns
+  horns
+end
+```
+
+The directive needs to be on a separate line but further documentation can be
+added in other lines. The `:ditto:` directive is simply replaced by the content
+of the previous doc comment.
+
+### `nodoc`
+
+Public features can be hidden from the API docs with the `:nodoc:` directive.
+Private and protected features are always hidden.
+
+```crystal
+# :nodoc:
+class InternalHelper
+end
+```
+
+This directive needs to be the first line in a doc comment. Leading whitespace if
+optional.
+Following comment lines can be used for internal documentation.
+
+### `inherit`
+
+See [*Inheriting Documentation*](#Inheriting Documentation).
 
 ## Inheriting Documentation
 
@@ -173,68 +264,9 @@ Some documentation common to every *id*.
 !!! note
     Inheriting documentation only works on _instance_, non-constructor methods.
 
-## Flagging Classes, Modules, and Methods
-
-Given a valid keyword, Crystal will automatically generate visual flags that help highlight problems, notes and/or possible issues.
-
-The supported flag keywords are:
-
-- BUG
-- DEPRECATED
-- FIXME
-- NOTE
-- OPTIMIZE
-- TODO
-
-Flag keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
-
-``````crystal
-# Makes the unicorn speak to STDOUT
-#
-# NOTE: Although unicorns don't normally talk, this one is special
-# TODO: Check if unicorn is asleep and raise exception if not able to speak
-# TODO: Create another `speak` method that takes and prints a string
-def speak
-  puts "I'm a unicorn"
-end
-
-# Makes the unicorn talk to STDOUT
-#
-# DEPRECATED: Use `speak`
-def talk
-  puts "I'm a unicorn"
-end
-``````
-
-## Use Crystal's code formatter
-
-Crystal's built-in code formatter can be used not just to format your code,
-but also to format code samples included in documentation blocks.
-
-This is done automatically when `crystal tool format` is invoked, which
-will automatically format all `.cr` files in current directory.
-
-To format a single file:
-
-```console
-$ crystal tool format file.cr
-```
-
-To format all `.cr` files within a directory:
-
-```console
-$ crystal tool format src/
-```
-
-Use this tool to unify code styles and to submit documentation improvements to
-Crystal itself.
-
-The formatter is also fast, so very little time is lost if you format the
-entire project instead of a single file.
-
 ## A Complete Example
 
-``````crystal
+```crystal
 # A unicorn is a **legendary animal** (see the `Legendary` module) that has been
 # described since antiquity as a beast with a large, spiraling horn projecting
 # from its forehead.
@@ -284,4 +316,4 @@ class Unicorn
   class Helper
   end
 end
-``````
+```
