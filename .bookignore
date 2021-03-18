@@ -1,6 +1,0 @@
-Dockerfile
-docker-compose.yml
-package.json
-.bookignore
-.gitignore
-.travis.yml
