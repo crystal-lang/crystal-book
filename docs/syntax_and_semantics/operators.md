@@ -177,40 +177,12 @@ ones.
 
 ### Binary
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-<th>Associativity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&amp;</code></td>
-<td>binary AND</td>
-<td><code>1 &amp; 2</code></td>
-<td>yes</td>
-<td>left</td>
-</tr>
-<tr>
-<td><code>|</code></td>
-<td>binary OR</td>
-<td><code>1 | 2</code></td>
-<td>yes</td>
-<td>left</td>
-</tr>
-<tr>
-<td><code>^</code></td>
-<td>binary XOR</td>
-<td><code>1 ^ 2</code></td>
-<td>yes</td>
-<td>left</td>
-</tr>
-</tbody>
-</table>
+
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&` | binary AND | `1 & 2` | yes | left |
+| `\|` | binary OR | `1 \| 2` | yes | left |
+| `^` | binary XOR | `1 ^ 2` | yes | left |
 
 ### Equality
 
@@ -250,33 +222,10 @@ proven faster than equality).
 
 ### Logical
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-<th>Associativity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&amp;&amp;</code></td>
-<td><a href="and.html">logical AND</a></td>
-<td><code>true &amp;&amp; false</code></td>
-<td>no</td>
-<td>left</td>
-</tr>
-<tr>
-<td><code>||</code></td>
-<td><a href="or.html">logical OR</a></td>
-<td><code>true || false</code></td>
-<td>no</td>
-<td>left</td>
-</tr>
-</tbody>
-</table>
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&&` | logical AND | `true && false` | no | left |
+| `\|\|` | logical OR | `true \|\| false` | no | left |
 
 ### Range
 
@@ -344,138 +293,25 @@ be callable.
 
 The receiver can't be anything else than a variable or call.
 
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-<th>Example</th>
-<th>Overloadable</th>
-<th>Associativity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>+=</code></td>
-<td>addition <em>and</em> assignment</td>
-<td><code>i += 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&amp;+=</code></td>
-<td>wrapping addition <em>and</em> assignment</td>
-<td><code>i &amp;+= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>-=</code></td>
-<td>subtraction <em>and</em> assignment</td>
-<td><code>i -= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&amp;-=</code></td>
-<td>wrapping subtraction <em>and</em> assignment</td>
-<td><code>i &amp;-= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>*=</code></td>
-<td>multiplication <em>and</em> assignment</td>
-<td><code>i *= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&amp;*=</code></td>
-<td>wrapping multiplication <em>and</em> assignment</td>
-<td><code>i &amp;*= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>/=</code></td>
-<td>division <em>and</em> assignment</td>
-<td><code>i /= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>//=</code></td>
-<td>floor division <em>and</em> assignment</td>
-<td><code>i //= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>%=</code></td>
-<td>modulo <em>and</em> assignment</td>
-<td><code>i %= 1</code></td>
-<td>yes</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>|=</code></td>
-<td>binary or <em>and</em> assignment</td>
-<td><code>i |= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&amp;=</code></td>
-<td>binary and <em>and</em> assignment</td>
-<td><code>i &amp;= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>^=</code></td>
-<td>binary xor <em>and</em> assignment</td>
-<td><code>i ^= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>**=</code></td>
-<td>exponential <em>and</em> assignment</td>
-<td><code>i **= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&lt;&lt;=</code></td>
-<td>left shift <em>and</em> assignment</td>
-<td><code>i &lt;&lt;= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;=</code></td>
-<td>right shift <em>and</em> assignment</td>
-<td><code>i &gt;&gt;= 1</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>||=</code></td>
-<td>logical or <em>and</em>  assignment</td>
-<td><code>i ||= true</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-<tr>
-<td><code>&amp;&amp;=</code></td>
-<td>logical and <em>and</em> assignment</td>
-<td><code>i &amp;&amp;= true</code></td>
-<td>no</td>
-<td>right</td>
-</tr>
-</tbody>
-</table>
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+=` | addition *and* assignment | `i += 1` | no | right |
+| `&+=` | wrapping addition *and* assignment | `i &+= 1` | no | right |
+| `-=` | subtraction *and* assignment | `i -= 1` | no | right |
+| `&-=` | wrapping subtraction *and* assignment | `i &-= 1` | no | right |
+| `*=` | multiplication *and* assignment | `i *= 1` | no | right |
+| `&*=` | wrapping multiplication *and* assignment | `i &*= 1` | no | right |
+| `/=` | division *and* assignment | `i /= 1` | no | right |
+| `//=` | floor division *and* assignment | `i //= 1` | no | right |
+| `%=` | modulo *and* assignment | `i %= 1` | yes | right |
+| `\|=` | binary or *and* assignment | `i \|= 1` | no | right |
+| `&=` | binary and *and* assignment | `i &= 1` | no | right |
+| `^=` | binary cor *and* assignment | `i ^= 1` | no | right |
+| `**=` | exponential *and* assignment | `i **= 1` | no | right |
+| `<<=` | left shift *and* assignment | `i <<= 1` | no | right |
+| `>>=` | right shift *and* assignment | `i >>= 1` | no | right |
+| `\|\|=` | logical or *and* assignment | `i \|\|= true` | no | right |
+| `&&=` | logical and *and* assignment | `i &&= true` | no | right |
 
 ### Index Accessors
 
