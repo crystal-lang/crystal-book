@@ -1,0 +1,43 @@
+site_name: Crystal
+site_url: https://crystal-lang.org/reference/
+repo_url: https://github.com/crystal-lang/crystal
+edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
+use_directory_urls: false
+
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: blue
+  icon:
+    repo: fontawesome/brands/github
+  favicon: https://crystal-lang.org/favicon.ico
+  logo: assets/crystal-circ.svg
+
+extra_css:
+  - assets/style.css
+
+plugins:
+  - search
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - redirects:
+      redirect_maps:
+        introduction.md: README.md
+        syntax_and_semantics/literals.md: syntax_and_semantics/literals/README.md
+        syntax_and_semantics/macros.md: syntax_and_semantics/macros/README.md
+        syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
+        guides/continuous_integration.md: guides/ci/README.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+google_analytics:
+  - UA-42353458-1
+  - auto
