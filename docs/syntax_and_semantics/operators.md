@@ -208,7 +208,7 @@ proven faster than equality).
 | `!=` | not equals | `1 != 2` | yes | left |
 | `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
 | `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
-| `===` | [case equality](case.html) | `/foo/ === "foo"` | yes | left |
+| `===` | [case equality](case.md) | `/foo/ === "foo"` | yes | left |
 
 ### Comparison
 
