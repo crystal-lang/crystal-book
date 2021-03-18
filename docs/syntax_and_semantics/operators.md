@@ -224,8 +224,8 @@ proven faster than equality).
 
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
-| `&&` | logical AND | `true && false` | no | left |
-| `||` | logical OR | `true || false` | no | left |
+| `&&` | [logical AND](and.md) | `true && false` | no | left |
+| `||` | [logical OR](or.md) | `true || false` | no | left |
 
 ### Range
 
