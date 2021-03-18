@@ -4,13 +4,12 @@ Crystal supports a basic form of [cross compilation](http://en.wikipedia.org/wik
 
 ## Preparation
 
-Cross-compilation will depend on `libcrystal` being present on the target system.  It can be built by following these steps:
-* Download the Crystal source code on the target machine.
-* Install the LLVM/compiler toolchain. (e.g. `sudo apt-get install clang` on Ubuntu)
-* Install the [required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries) for building Crystal.
-* Run `make deps` in the source directory.
+Cross-compilation depends on `libcrystal` being present on the target system.  It can be built by following these steps:
 
-These steps will produce `libcrystal.a` within the `ext/src/` directory.
+* Download the Crystal source code on the target machine.
+* Run `make libcrystal` in the source directory.
+
+This produces `ext/src/libcrystal.a`.
 
 
 ## Compiling
@@ -20,7 +19,7 @@ The compiler executable provides two flags:
 * `--cross-compile`: When given enables cross compilation mode
 * `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.md) from
 
-The `--target` flags can be determined by executing `llvm-config --host-target` on the target system. (e.g. 'x86_64-unknown-linux-gnu')
+The `--target` flags can be determined by executing `gcc -dumpmachine` on the target system. (e.g. 'x86_64-unknown-linux-gnu')
 
 Any compile-time flags not set implicitly through `--target`, can be specified with the `-D` command line flag.
 
@@ -50,46 +49,42 @@ Cross-compiling can be done for other executables, but its main target is the co
 ## Troubleshooting libraries
 
 The cross-compilation step will generate a command with numerous flags, many of these refer to the libraries that need to be included when compiling a program.
-If the libraries are not present on the target system, the compilation will fail and complain about the respective flags, which are not always descriptive.
-
-The following command may be helpful:
-
-```bash
-ld -lgc --verbose
-```
-
-The output gives more descriptive names (and even paths) for the libraries that cannot be loaded.  These libraries can then be installed and compilation may be retried.
+If the libraries are not present on the target system, the compilation will fail and complain about the respective flags.
+To fix this you need to make the missing libraries available for linking on the target system.
 
 ## Example of cross-compiling
 
-Here's an example of how to cross compile a crystal app on a host machine and then transfering it to the target machine (in this case an Ubuntu aarch64/arm64) and compiles the last bits there:
+Here's an example of how to cross compile a crystal app on a host machine and then transfering it to the target machine and compiles the last bits there:
 
 ```bash
 #!/bin/bash -eu
 
 srcfile=$1
-target=$2
+target_host=$2
+taret_triple=$3
 
-export CFLAGS="-fPIC"
-buildcmd=$(crystal build --cross-compile --target=aarch64-unknown-linux-gnu --release $srcfile)
+object_file="$(basename $srcfile).o"
 
-# Upload the object file to the aarch64 machine
-scp "$(basename $srcfile).o" "$target":.
-rm "$(basename $srcfile).o"
+# On host machine:
 
-# SSH to the target machine
-ssh "$target" << EOF
-# install dependencies
-sudo apt-get install -y clang libssl-dev libpcre3-dev libgc-dev libevent-dev zlib1g-dev
+# 1. Build objectfile and capture linker command
+linker_command=$(crystal build --cross-compile --target=$target_triple --release -o "$object_file" "$srcfile")
 
-# download and compile crystal's sigfault library
-wget https://raw.githubusercontent.com/crystal-lang/crystal/master/src/ext/sigfault.c
-cc -c -o sigfault.o sigfault.c
-ar -rcs libcrystal.a sigfault.o
-sudo mkdir -p /usr/share/crystal/src/ext
-sudo cp libcrystal.a /usr/share/crystal/src/ext/
+# 2. Upload the object file to the target machine
+scp "$object_file" "$target_host":.
+rm "$object_file"
 
-# compile the object file with the command crystal build --cross-compile gave us
-$buildcmd
-EOF
+# On target machine:
+
+# 1. Build libcrystal
+ssh "$target_host" /bin/sh -c 'git clone https://github.com/crystal-lang/crystal.git \
+  && cd crystal && make libcrystal \
+  && sudo mkdir -p /usr/share/crystal/src/ext \
+  && sudo cp src/ext/libcrystal.a /usr/share/crystal/src/ext/'
+
+# 2. Install dependencies (this assumes a debian/ubuntu target OS)
+ssh "$target_host" sudo apt-get install -y libpcre3-dev libgc-dev libevent-dev
+
+# 3. Link the object file with the command printed from `crystal build --cross-compile`
+ssh "$target_host" "$linker_command"
 ```
