@@ -20,10 +20,7 @@ It is a very common practice to pass options to the application. For example, we
 
 ```console
 $ crystal -v
-Crystal 0.31.1 (2019-10-02)
-
-LLVM: 8.0.1
-Default target: x86_64-apple-macosx
+--8<-- "crystal-version.txt"
 ```
 
 and if we run: `crystal -h`, then Crystal will show all the accepted options and how to use them.
