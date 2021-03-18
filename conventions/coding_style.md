@@ -4,7 +4,7 @@ This style is used in the standard library. You can use it in your own project t
 
 ## Naming
 
-__Type names__ are StudlyCased. For example:
+__Type names__ are PascalCased. For example:
 
 ```crystal
 class ParseError < Exception
@@ -84,7 +84,7 @@ Within a project:
 - `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
 - `bin/` contains any executables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with _snake-case_.
+File paths match the namespace of their contents. Files are named after the class or namespace they define, with *snake_case*.
 
 For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
 
