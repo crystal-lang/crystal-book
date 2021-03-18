@@ -181,7 +181,7 @@ ones.
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
 | `&` | binary AND | `1 & 2` | yes | left |
-| `\|` | binary OR | `1 \| 2` | yes | left |
+| `|` | binary OR | `1 | 2` | yes | left |
 | `^` | binary XOR | `1 ^ 2` | yes | left |
 
 ### Equality
@@ -225,7 +225,7 @@ proven faster than equality).
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
 | `&&` | logical AND | `true && false` | no | left |
-| `\|\|` | logical OR | `true \|\| false` | no | left |
+| `||` | logical OR | `true || false` | no | left |
 
 ### Range
 
@@ -304,13 +304,13 @@ The receiver can't be anything else than a variable or call.
 | `/=` | division *and* assignment | `i /= 1` | no | right |
 | `//=` | floor division *and* assignment | `i //= 1` | no | right |
 | `%=` | modulo *and* assignment | `i %= 1` | yes | right |
-| `\|=` | binary or *and* assignment | `i \|= 1` | no | right |
+| `|=` | binary or *and* assignment | `i |= 1` | no | right |
 | `&=` | binary and *and* assignment | `i &= 1` | no | right |
-| `^=` | binary cor *and* assignment | `i ^= 1` | no | right |
+| `^=` | binary xor *and* assignment | `i ^= 1` | no | right |
 | `**=` | exponential *and* assignment | `i **= 1` | no | right |
 | `<<=` | left shift *and* assignment | `i <<= 1` | no | right |
 | `>>=` | right shift *and* assignment | `i >>= 1` | no | right |
-| `\|\|=` | logical or *and* assignment | `i \|\|= true` | no | right |
+| `||=` | logical or *and* assignment | `i ||= true` | no | right |
 | `&&=` | logical and *and* assignment | `i &&= true` | no | right |
 
 ### Index Accessors
