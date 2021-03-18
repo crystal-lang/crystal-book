@@ -101,7 +101,6 @@
         * [offsetof](syntax_and_semantics/offsetof.md)
         * [Uninitialized variable declaration](syntax_and_semantics/declare_var.md)
     * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
-        * [Cross-compilation](syntax_and_semantics/cross-compilation.md)
     * [C bindings](syntax_and_semantics/c_bindings/README.md)
         * [lib](syntax_and_semantics/c_bindings/lib.md)
         * [fun](syntax_and_semantics/c_bindings/fun.md)
@@ -133,5 +132,7 @@
     * [Continuous Integration](guides/ci/README.md)
         * [Using Travis CI](guides/ci/travis.md)
         * [Using CircleCI](guides/ci/circleci.md)
-    * [Static Linking](guides/static_linking.md)
+    * Compilation
+        * [Static Linking](guides/static_linking.md)
+        * [Cross-compilation](guides/compilation/cross-compilation.md)
 * [Platform Support](platform_support.md)

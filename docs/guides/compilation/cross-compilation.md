@@ -17,7 +17,7 @@ This produces `ext/src/libcrystal.a`.
 The compiler executable provides two flags:
 
 * `--cross-compile`: When given enables cross compilation mode
-* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.md) from
+* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](../../syntax_and_semantics/compile_time_flags.md) from
 
 The `--target` flags can be determined by executing `gcc -dumpmachine` on the target system. (e.g. 'x86_64-unknown-linux-gnu')
 
