@@ -1,2 +1,2 @@
-_book
-node_modules
+site/
+.venv/
