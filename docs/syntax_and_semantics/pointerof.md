@@ -1,6 +1,6 @@
 # pointerof
 
-The `pointerof` expression returns a [Pointer](http://crystal-lang.org/api/Pointer.html) that points to the contents of a variable or instance variable.
+The `pointerof` expression returns a [Pointer](https://crystal-lang.org/api/latest/Pointer.html) that points to the contents of a variable or instance variable.
 
 An example with a variable:
 
@@ -38,4 +38,3 @@ point.x # => 10
 ```
 
 Because `pointerof` involves pointers, it is considered [unsafe](unsafe.md).
-

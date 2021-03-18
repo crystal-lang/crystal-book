@@ -85,6 +85,3 @@ x = 1
 x = 'a'
 x # : Int32 | String | Char
 ```
-
-
-

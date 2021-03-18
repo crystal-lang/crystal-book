@@ -1,6 +1,6 @@
 # Methods and instance variables
 
-We can simplify our constructor by using a shorter syntax for assigning a method argument to an instance variable:
+We can simplify our constructor by using a shorter syntax for assigning a method parameter to an instance variable:
 
 ```crystal
 class Person
@@ -124,7 +124,7 @@ person.become_older
 person.age # => 3
 ```
 
-Without arguments or parentheses, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `previous_def` receives all of the method's parameters as arguments. Otherwise, it receives the arguments you pass to it.
 
 ## Catch-all initialization
 
@@ -140,4 +140,3 @@ end
 ```
 
 This will initialize `@age` to zero in every constructor. This is useful to avoid duplication, but also to avoid the `Nil` type when reopening a class and adding instance variables to it.
-

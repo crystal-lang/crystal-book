@@ -1,6 +1,6 @@
 # Char
 
-A [Char](http://crystal-lang.org/api/Char.html) represents a 32-bit [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
+A [Char](https://crystal-lang.org/api/latest/Char.html) represents a 32-bit [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
 
 It is typically created with a char literal by enclosing an UTF-8 character in single quotes.
 
@@ -15,6 +15,7 @@ It is typically created with a char literal by enclosing an UTF-8 character in s
 A backslash denotes a special character, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
+
 ```crystal
 '\''         # single quote
 '\\'         # backslash

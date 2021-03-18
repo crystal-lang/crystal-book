@@ -144,4 +144,3 @@ Now, let’s run specs using an external service (for example MySQL):
 ## Caching
 
 Caching is enabled by default when using the job `crystal/test`, because internally it uses the `command` [with-shards-cache](https://circleci.com/orbs/registry/orb/manastech/crystal#commands-with-shards-cache)
-

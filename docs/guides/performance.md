@@ -103,6 +103,7 @@ Always remember that it's not just the time that has improved: memory usage is a
 Sometimes you need to work directly with strings built from combining string literals with other values. You shouldn't just concatenate these strings with `String#+(String)` but rather use [string interpolation](../syntax_and_semantics/literals/string.md#interpolation) which allows to embed expressions into a string literal: `"Hello, #{name}"` is better than `"Hello, " +  name.to_s`.
 
 Interpolated strings are transformed by the compiler to append to a string IO so that it automatically avoids intermediate strings. The example above translates to:
+
 ```crystal
 String.build do |io|
   io << "Hello, " << name
@@ -143,7 +144,6 @@ String.build 597.57k (  1.67µs) (± 5.52%)       fastest
   IO::Memory 423.82k (  2.36µs) (± 3.76%)  1.41× slower
 ```
 
-
 ### Avoid creating temporary objects over and over
 
 Consider this program:
@@ -164,29 +164,29 @@ There are two ways to solve this:
 
 1. Use a tuple. If you use `{"crystal", "ruby", "java"}` in the above program it will work the same way, but since a tuple doesn't involve heap memory it will be faster, consume less memory, and give more chances for the compiler to optimize the program.
 
-  ```crystal
-  lines_with_language_reference = 0
-  while line = gets
-    if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    ```crystal
+    lines_with_language_reference = 0
+    while line = gets
+      if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
-2. Move the array to a constant.
+1. Move the array to a constant.
 
-  ```crystal
-  LANGS = ["crystal", "ruby", "java"]
+    ```crystal
+    LANGS = ["crystal", "ruby", "java"]
 
-  lines_with_language_reference = 0
-  while line = gets
-    if LANGS.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    lines_with_language_reference = 0
+    while line = gets
+      if LANGS.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
 Using tuples is the preferred way.
 

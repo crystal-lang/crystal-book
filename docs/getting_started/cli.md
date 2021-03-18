@@ -365,7 +365,7 @@ For our second application, we will add a *text decoration* (`blink`in this case
 
     lyrics = user_input.presence || default_lyrics
 
-    puts "The Beatles are singing: #{"🎵#{user_input}🎶🎸🥁".colorize.mode(:blink)}"
+    puts "The Beatles are singing: #{"🎵#{lyrics}🎶🎸🥁".colorize.mode(:blink)}"
     ```
 
 Let’s try the renewed application … and _hear_ the difference!!

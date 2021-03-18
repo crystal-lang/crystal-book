@@ -101,9 +101,9 @@ end
 
 **Note**: a `new` method might be redefined by a type. In that case the inferred type will be the one returned by `new`, if it can be inferred using some of the next rules.
 
-### 3. Assigning a variable that is a method argument with a type restriction
+### 3. Assigning a variable that is a method parameter with a type restriction
 
-In the following example `@name` is inferred to be `String` because the method argument `name` has a type restriction of type `String`, and that argument is assigned to `@name`.
+In the following example `@name` is inferred to be `String` because the method parameter `name` has a type restriction of type `String`, and that parameter is assigned to `@name`.
 
 ```crystal
 class Person
@@ -113,7 +113,7 @@ class Person
 end
 ```
 
-Note that the name of the method argument is not important; this works as well:
+Note that the name of the method parameter is not important; this works as well:
 
 ```crystal
 class Person
@@ -123,7 +123,7 @@ class Person
 end
 ```
 
-Using the shorter syntax to assign an instance variable from a method argument has the same effect:
+Using the shorter syntax to assign an instance variable from a method parameter has the same effect:
 
 ```crystal
 class Person
@@ -132,7 +132,7 @@ class Person
 end
 ```
 
-Also note that the compiler doesn't check whether a method argument is reassigned a different value:
+Also note that the compiler doesn't check whether a method parameter is reassigned a different value:
 
 ```crystal
 class Person
@@ -188,7 +188,7 @@ end
 
 This extra rule is very convenient because it's very common to have "constructor-like" class methods in addition to `new`.
 
-### 5. Assigning a variable that is a method argument with a default value
+### 5. Assigning a variable that is a method parameter with a default value
 
 In the following example, because the default value of `name` is a string literal, and it's later assigned to `@name`, `String` will be added to the set of inferred types.
 
@@ -209,7 +209,7 @@ class Person
 end
 ```
 
-The default value can also be a `Type.new(...)` method or a class method with a return type restriction.
+The default parameter value can also be a `Type.new(...)` method or a class method with a return type restriction.
 
 ### 6. Assigning the result of invoking a `lib` function
 
@@ -284,4 +284,4 @@ class SomeObject
 end
 ```
 
-Here rule 5 (argument's default value) is used, and because the constant resolves to an integer literal, `@lucky_number` is inferred to be `Int32`.
+Here rule 5 (default parameter value) is used, and because the constant resolves to an integer literal, `@lucky_number` is inferred to be `Int32`.

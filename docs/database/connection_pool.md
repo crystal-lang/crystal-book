@@ -17,9 +17,9 @@ end
 When executing statements using `db.query`, `db.exec`, `db.scalar`, etc. the algorithm goes:
 
 1. Find an available connection in the pool.
-   1. Create one if needed and possible.
-   2. If the pool is not allowed to create a new connection, wait a for a connection to become available.
-      1. But this wait should be aborted if it takes too long.
+    1. Create one if needed and possible.
+    2. If the pool is not allowed to create a new connection, wait a for a connection to become available.
+        1. But this wait should be aborted if it takes too long.
 2. Checkout that connection from the pool.
 3. Execute the SQL command.
 4. If there is no `DB::ResultSet` yielded, return the connection to the pool. Otherwise, the connection will be returned to the pool when the ResultSet is closed.

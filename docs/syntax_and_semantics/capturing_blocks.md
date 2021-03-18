@@ -2,7 +2,7 @@
 
 A block can be captured and turned into a `Proc`, which represents a block of code with an associated context: the closured data.
 
-To capture a block you must specify it as a method's block argument, give it a name and specify the input and output types. For example:
+To capture a block you must specify it as a method's block parameter, give it a name and specify the input and output types. For example:
 
 ```crystal
 def int_to_int(&block : Int32 -> Int32)
@@ -13,7 +13,7 @@ proc = int_to_int { |x| x + 1 }
 proc.call(1) # => 2
 ```
 
-The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [Proc(Int32, Int32)](http://crystal-lang.org/api/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
+The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [`Proc(Int32, Int32)`](https://crystal-lang.org/api/latest/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
 
 In this way a block can be saved as a callback:
 
@@ -35,7 +35,7 @@ model.on_save { puts "Saved!" }
 model.save # prints "Saved!"
 ```
 
-In the above example the type of `&block` wasn't specified: this just means that the captured block doesn't have arguments and doesn't return anything.
+In the above example the type of `&block` wasn't specified: this just means that the captured block doesn't take any arguments and doesn't return anything.
 
 Note that if the return type is not specified, nothing gets returned from the proc call:
 

@@ -47,11 +47,11 @@ Color::Red.value # :: UInt8
 
 Only integer types are allowed as the underlying type.
 
-All enums inherit from [Enum](http://crystal-lang.org/api/Enum.html).
+All enums inherit from [Enum](https://crystal-lang.org/api/latest/Enum.html).
 
 ## Flags enums
 
-An enum can be marked with the `@[Flags]` attribute. This changes the default values:
+An enum can be marked with the `@[Flags]` annotation. This changes the default values:
 
 ```crystal
 @[Flags]
@@ -62,7 +62,7 @@ enum IOMode
 end
 ```
 
-The `@[Flags]` attribute makes the first constant's value be `1`, and successive constants are multiplied by `2`.
+The `@[Flags]` annotation makes the first constant's value be `1`, and successive constants are multiplied by `2`.
 
 Implicit constants, `None` and `All`, are automatically added to these enums, where `None` has the value `0` and `All` has the "or"ed value of all constants.
 
@@ -71,7 +71,7 @@ IOMode::None.value # => 0
 IOMode::All.value  # => 7
 ```
 
-Additionally, some `Enum` methods check the `@[Flags]` attribute. For example:
+Additionally, some `Enum` methods check the `@[Flags]` annotation. For example:
 
 ```crystal
 puts(Color::Red)                    # prints "Red"
@@ -117,7 +117,7 @@ Class variables are allowed, but instance variables are not.
 
 ## Usage
 
-Enums are a type-safe alternative to [Symbol](http://crystal-lang.org/api/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.md) using an enum type:
+Enums are a type-safe alternative to [Symbol](https://crystal-lang.org/api/latest/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.md) using an enum type:
 
 ```crystal
 def paint(color : Color)

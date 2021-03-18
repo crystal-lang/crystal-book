@@ -50,7 +50,7 @@ $ crystal build hello_world.cr --release --static
 !!! note
     Building fully statical linked executables is currently only supported on Alpine Linux.
 
-More information about statically linking [can be found on the wiki](https://github.com/crystal-lang/crystal/wiki/Static-Linking).
+More information about statically linking [can be found in the Static Linking guide](../guides/static_linking.md).
 
 The compiler uses the `CRYSTAL_LIBRARY_PATH` environment variable as a first lookup destination for static and dynamic libraries that are to be linked. This can be used to provide static versions of libraries that are also available as dynamic libraries.
 
@@ -218,6 +218,7 @@ an application not intended to be used as a dependency. A library doesn't have a
 in its repository and no build target in `shard.yml`, but instructions for using it as a dependency.
 
 Example:
+
 ```console
 $ crystal init lib my_cool_lib
     create  my_cool_lib/.gitignore
@@ -234,7 +235,7 @@ Initialized empty Git repository in ~/my_cool_lib/.git/
 
 ### `crystal docs`
 
-The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [documenting code](../conventions/documenting_code.md)).
+The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [*Documenting Code*](../conventions/documenting_code.md)).
 
 ```bash
 crystal docs [--output=<output_dir>] [--canonical-base-url=<url>] [<source_file>...]
@@ -376,6 +377,8 @@ crystal tool format [--check] [<path>...]
 
 `path` can be a file or folder name and include all Crystal files in that folder tree. Omitting `path` is equal to
 specifying the current working directory.
+
+The formatter also applies to Crystal code blocks in comments (see [*Documenting Code*](../conventions/documenting_code.md)).
 
 ## Environment variables
 

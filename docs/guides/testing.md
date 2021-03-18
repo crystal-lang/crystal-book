@@ -144,7 +144,7 @@ end
 
 Tagging an example group (`describe` or `context`) extends to all of the contained examples.
 
-Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/Array.html) or [`Set`](https://crystal-lang.org/api/Set.html).
+Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/latest/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/latest/Array.html) or [`Set`](https://crystal-lang.org/api/latest/Set.html).
 
 ## Running specs
 

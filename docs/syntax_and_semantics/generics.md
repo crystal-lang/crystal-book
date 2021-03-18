@@ -23,14 +23,14 @@ another_box = MyBox(String).new(1) # Error, Int32 doesn't match String
 
 Generics are especially useful for implementing collection types. `Array`, `Hash`, `Set` are generic types, as is `Pointer`.
 
-More than one type argument is allowed:
+More than one type parameter is allowed:
 
 ```crystal
 class MyDictionary(K, V)
 end
 ```
 
-Any name can be used for type arguments:
+Any name can be used for type parameters:
 
 ```crystal
 class MyDictionary(KeyType, ValueType)

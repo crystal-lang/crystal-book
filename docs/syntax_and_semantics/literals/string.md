@@ -1,6 +1,6 @@
 # String
 
-A [String](http://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
+A [String](https://crystal-lang.org/api/latest/String.html) represents an immutable sequence of UTF-8 characters.
 
 A String is typically created with a string literal enclosing UTF-8 characters in double quotes (`"`):
 
@@ -13,6 +13,7 @@ A String is typically created with a string literal enclosing UTF-8 characters i
 A backslash denotes a special character inside a string, which can either be a named escape sequence or a numerical representation of a unicode codepoint.
 
 Available escape sequences:
+
 ```crystal
 "\""                  # double quote
 "\\"                  # backslash
@@ -65,7 +66,7 @@ b = 2
 "sum: #{a} + #{b} = #{a + b}" # => "sum: 1 + 2 = 3"
 ```
 
-String interpolation is also possible with [String#%](https://crystal-lang.org/api/String.html#%25%28other%29-instance-method).
+String interpolation is also possible with [String#%](https://crystal-lang.org/api/latest/String.html#%25%28other%29-instance-method).
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
 
@@ -76,7 +77,7 @@ Interpolation can be disabled by escaping the `#` character with a backslash or 
 %q(#{a + b}) # => "#{a + b}"
 ```
 
-Interpolation is implemented using a [String::Builder](http://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
+Interpolation is implemented using a [String::Builder](https://crystal-lang.org/api/latest/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
 
 ```crystal
 String.build do |io|
@@ -89,7 +90,7 @@ String.build do |io|
 end
 ```
 
-# Percent string literals
+## Percent string literals
 
 Besides double-quotes strings, Crystal also supports string literals indicated by a percent sign (`%`) and a pair of delimiters. Valid delimiters are parentheses `()`, square brackets `[]`, curly braces `{}`, angles `<>` and pipes `||`. Except for the pipes, all delimiters can be nested meaning a start delimiter inside the string escapes the next end delimiter.
 
@@ -111,9 +112,9 @@ name = "world"
 %Q(hello \n #{name}) # => "hello \n world"
 ```
 
-## Percent string array literal
+### Percent string array literal
 
-Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/latest/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
 %w(foo bar baz)  # => ["foo", "bar", "baz"]
@@ -201,7 +202,7 @@ upcase(<<-STRING) # => "HELLO WORLD"
 
 If multiple heredocs start in the same line, their bodies are read sequentially:
 
-```cr
+```crystal
 print(<<-FIRST, <<-SECOND) # prints "HelloWorld"
   Hello
   FIRST

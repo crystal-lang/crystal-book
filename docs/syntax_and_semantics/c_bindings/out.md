@@ -31,6 +31,6 @@ There's a simpler way to write the above by using an `out` parameter:
 C.waitpid(pid, out status_ptr, options)
 ```
 
-The compiler will automatically declare a `status_ptr` variable of type `Int32`, because the argument is an `Int32*`.
+The compiler will automatically declare a `status_ptr` variable of type `Int32`, because the parameter's type is `Int32*`.
 
-This will work for any type, as long as the argument is a pointer of that type (and, of course, as long as the function does fill the value the pointer is pointing to).
+This will work for any `fun` parameter, as long as its type is a pointer (and, of course, as long as the function does fill the value the pointer is pointing to).

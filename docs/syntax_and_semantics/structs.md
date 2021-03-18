@@ -11,7 +11,7 @@ struct Point
 end
 ```
 
-Structs inherit from [Value](https://crystal-lang.org/api/Value.html) so they are allocated on the stack and passed by value: when passed to methods, returned from methods or assigned to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/Reference.html), are allocated on the heap and passed by reference).
+Structs inherit from [Value](https://crystal-lang.org/api/latest/Value.html) so they are allocated on the stack and passed by value: when passed to methods, returned from methods or assigned to variables, a copy of the value is actually passed (while classes inherit from [Reference](https://crystal-lang.org/api/latest/Reference.html), are allocated on the heap and passed by reference).
 
 Therefore structs are mostly useful for immutable data types and/or stateless wrappers of other types, usually for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient (for more details, see the [performance guide](https://crystal-lang.org/docs/guides/performance.html#use-structs-when-possible)).
 
@@ -33,8 +33,8 @@ struct Counter
 end
 
 counter = Counter.new(0)
-counter.plus.plus # => Counter(@x=2)
-puts counter      # => Counter(@x=1)
+counter.plus.plus # => Counter(@count=2)
+puts counter      # => Counter(@count=1)
 ```
 
 Notice that the chained calls of `plus` return the expected result, but only the first call to it modifies the variable `counter`, as the second call operates on the _copy_ of the struct passed to it from the first call, and this copy is discarded after the expression is executed.
@@ -78,10 +78,9 @@ What happens with the `strukt` here:
 
 `Klass` is a class, so it is passed by reference to `modify`, and `object.array = ["new"]` saves the reference to the newly created array in the original `klass` object, not in the copy as it was with the `strukt`.
 
-
 ## Inheritance
 
-* A struct implicitly inherits from [Struct](http://crystal-lang.org/api/Struct.html), which inherits from [Value](http://crystal-lang.org/api/Value.html). A class implicitly inherits from [Reference](http://crystal-lang.org/api/Reference.html).
+* A struct implicitly inherits from [Struct](https://crystal-lang.org/api/latest/Struct.html), which inherits from [Value](https://crystal-lang.org/api/latest/Value.html). A class implicitly inherits from [Reference](https://crystal-lang.org/api/latest/Reference.html).
 * A struct cannot inherit from a non-abstract struct.
 
 The second point has a reason to it: a struct has a very well defined memory layout. For example, the above `Point` struct occupies 8 bytes. If you have an array of points the points are embedded inside the array's buffer:

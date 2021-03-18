@@ -100,7 +100,7 @@ class Employee < Person
 end
 ```
 
-Without arguments or parentheses, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Without arguments or parentheses, `super` receives all of the method's parameters as arguments. Otherwise, it receives the arguments you pass to it.
 
 ## Covariance and Contravariance
 
@@ -138,7 +138,7 @@ class Test
 end
 ```
 
-we've declared `@arr` as type `Array(Foo)` so we may be tempted to think that we can start putting `Bar`s in there. Not quite. In the `initialize`, the type of the `[Bar.new]` expression is `Array(Bar)`, period. And `Array(Bar)` is *not* assignable to an `Array(Foo)` instance var. 
+we've declared `@arr` as type `Array(Foo)` so we may be tempted to think that we can start putting `Bar`s in there. Not quite. In the `initialize`, the type of the `[Bar.new]` expression is `Array(Bar)`, period. And `Array(Bar)` is *not* assignable to an `Array(Foo)` instance var.
 
 What's the right way to do this? Change the expression so that it *is* of the right type: `Array(Foo)` (see example above).
 

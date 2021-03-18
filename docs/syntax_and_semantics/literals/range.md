@@ -1,11 +1,11 @@
 # Range
 
-A [Range](http://crystal-lang.org/api/Range.html) represents an interval between two values. It is typically constructed with a range literal, consisting of two or three dots:
+A [Range](https://crystal-lang.org/api/latest/Range.html) represents an interval between two values. It is typically constructed with a range literal, consisting of two or three dots:
 
 * `x..y`: Two dots denote an inclusive range, including `x` and `y` and all values in between (in mathematics: `[x, y]`) .
 * `x...y`: Three dots denote an exclusive range, including `x` and all values up to but not including `y` (in mathematics: `[x, y)`).
 
-```cr
+```crystal
 (0..5).to_a  # => [0, 1, 2, 3, 4, 5]
 (0...5).to_a # => [0, 1, 2, 3, 4]
 ```
@@ -21,7 +21,7 @@ The begin and end values do not necessarily need to be of the same type: `true..
 
 Ranges with `nil` as begin are called begin-less and `nil` as end are called end-less ranges. In the literal notation, `nil` can be omitted: `x..` is an end-less range starting from `x`, and `..x` is an begin-less range ending at `x`.
 
-```cr
+```crystal
 numbers = [1, 10, 3, 4, 5, 8]
 numbers.select(6..) # => [10, 8]
 numbers.select(..6) # => [1, 3, 4, 5]

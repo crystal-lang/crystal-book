@@ -63,7 +63,7 @@ objects[1] ||= 2 # same as: objects[1]? || (objects[1] = 2)
 objects[1] &&= 2 # same as: objects[1]? && (objects[1] = 2)
 ```
 
-# Chained assignment
+## Chained assignment
 
 You can assign the same value to multiple variables using chained assignment:
 
@@ -78,7 +78,7 @@ c # => 123
 
 The chained assignment is not only available to [local variables](local_variables.md) but also to [instance variables](methods_and_instance_variables.md), [class variables](class_variables.md) and setter methods (methods that end with `=`).
 
-# Multiple assignment
+## Multiple assignment
 
 You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`):
 

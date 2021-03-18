@@ -170,7 +170,7 @@ end
 Fiber.yield
 ```
 
-Now it works because we are creating a [Proc](http://crystal-lang.org/api/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
+Now it works because we are creating a [Proc](https://crystal-lang.org/api/latest/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
 
 To avoid all this boilerplate, the standard library provides a `spawn` macro that accepts a call expression and basically rewrites it to do the above. Using it, we end up with:
 
@@ -216,7 +216,7 @@ puts "After receive"
 
 This prints:
 
-```text
+```
 Before receive
 Before send
 After receive
@@ -247,7 +247,7 @@ puts value # => 2
 
 Output:
 
-```text
+```
 Before first receive
 Before first send
 1
@@ -328,7 +328,7 @@ puts "After yield"
 
 Output:
 
-```text
+```
 Before yield
 Before send
 Before receive

@@ -99,7 +99,7 @@ Here is the example:
 
 In native _runners_ (`language: crystal`), Travis CI already automatically installs shards dependencies using `shards install`. To improve build performance we may add [caching](#caching) on top of that.
 
-#### Using Docker
+### Using Docker
 
 In a Docker-based _runner_ we need to run `shards install` explicitly, like this:
 
@@ -141,7 +141,7 @@ Here is a first example installing the `libsqlite3` development package using th
       - crystal spec
     ```
 
-#### Using Docker
+### Using Docker
 
 We are going to build a new docker image based on [crystallang/crystal](https://hub.docker.com/r/crystallang/crystal/), and in this new image we will be installing the binary dependencies.
 
@@ -246,7 +246,7 @@ Pushing these changes will trigger Travis CI and the build should be successful!
 
 If we read Travis CI job log, we will find that every time the job runs, Travis CI needs to fetch the libraries needed to run the application:
 
-```log
+```
 Fetching https://github.com/crystal-lang/crystal-mysql.git
 Fetching https://github.com/crystal-lang/crystal-db.git
 ```
