@@ -80,8 +80,8 @@ The lookup goes like this:
 * Otherwise a compile-time error is issued.
 
 This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from [specs](../guides/testing.md):
-
-!!! example "spec/project_spec.cr"
+q
+!!! example "spec/spec_helper.cr"
     ```crystal
     require "../src/project"
     ```
