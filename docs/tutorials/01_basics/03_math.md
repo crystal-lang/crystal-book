@@ -85,7 +85,19 @@ An operation between integer and float operands always returns a float value. Ot
 
 #### Precedence
 
-!!! todo "precedence"
+When several operators are combined, the question arises in which order are they executed.
+In math there are several rules, like multiplication and division take precedence over addition and subtraction.
+Crystal operators implement these precedence rules.
+
+A tool to structure operations are parentheses. An operator expression in parenthesis always takes precedence over external operators.
+
+```{.crystal, .crystal-play}
+p! 4 + 5 * 2,
+   (4 + 5) * 2
+```
+
+!!! info
+    The entire precedence rules are quite extensive in the [the Operator reference](../../syntax_and_semantics/operators.md#operator-precedence).
 
 ### Number Methods
 
