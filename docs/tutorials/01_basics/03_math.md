@@ -74,7 +74,6 @@ p! 1 + 1,  # addition
    2 // 3, # floor division
    3 % 2,  # modulus
    -1,     # negation (unary)
-   !4      # faculty (unary)
 ```
 
 As you can see, the result of most of these operations between integer operands is also an integer value.
@@ -96,7 +95,7 @@ Some less common math operations are not operators, but named methods.
 p! -5.abs,    # absolute value
    4.3.round, # round to nearest integer
    5.even?,   # odd/even check
-   10.gcd    # greatest common divisor
+   10.gcd     # greatest common divisor
 ```
 
 !!! info
@@ -109,7 +108,7 @@ Some arithmetic methods are not defined on the number types directly, but in the
 ```{.crystal, .crystal-play}
 p! Math.cos(1),      # cosine
    Math.sin(1),      # sine
-   Math.tan(1),      # tangens
+   Math.tan(1),      # tangent
    Math.log(42),     # natural logarithm
    Math.log10(312),  # logarithm to base 10
    Math.log(312, 5), # logarithm to base 5

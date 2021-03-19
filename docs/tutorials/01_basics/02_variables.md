@@ -15,7 +15,7 @@ puts message
 
 This program prints the string `Hello Penny!` three times to the standard output, each followed by a line break.
 
-The name of a local variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letter are avoided and names are written in `snake_case`.
+The name of a local variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letter are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
 !!! note
     Other kinds of variables will be introduced later. For now we focus on local variables only.

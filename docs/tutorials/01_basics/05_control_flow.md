@@ -32,7 +32,7 @@ b = false
 p! a && b, # AND
    a || b, # OR
    !a,     # NOT
-   a != b, # XOR
+   a != b, # inequivalence (XOR)
    a == b  # equivalence
 ```
 
