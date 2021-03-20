@@ -81,7 +81,7 @@ In a most basic form it consists of a keyword `if` followed by an expression ser
 The condition is met when the return value of the expression is *truthy*.
 All subsequent expressions are part of the branch until closes with the keyword `end`.
 
-Per convention we indent nested branches by two spaces.
+Per convention, we indent nested branches by two spaces.
 
 The following example prints the message only if it meets the condition to start with `Hello`.
 
@@ -143,8 +143,8 @@ if !message.starts_with?("Hello")
 end
 ```
 
-This works but there are two drawbacks: The condition expression `message.starts_with?("Hello")` evaluates twice, that's inefficient.
-And if we later change the condition in one place (maybe allow `Hi` as well), we might forget changing the other one as well.
+This works but there are two drawbacks: The condition expression `message.starts_with?("Hello")` evaluates twice, which is inefficient.
+Later, if we change the condition in one place (maybe allowing `Hi` as well), we might forget changing the other one as well.
 
 A conditional can have multiple branches. The alternate branch is indicated by the keyword `else`. It executes if the condition is not met.
 
@@ -180,7 +180,7 @@ The `else` branch still only executes if neither of the previous conditions is m
 
 Note that the different branches are mutually exclusive and conditions evaluate from top to bottom.
 In the above example that doesn't matter because both conditions can't be truthy at the same time (the message can't start with both `Hello` and `Bye`).
-But we can add an alternative condition that is not exclusive to demonstrate this:
+However, we can add an alternative condition that is not exclusive to demonstrate this:
 
 ```{.crystal .crystal-play}
 message = "Hello Crystal"
