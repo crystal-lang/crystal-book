@@ -3,7 +3,7 @@
 In order to store a value and re-use it later, it can be assigned to a variable.
 
 For example, if you want to say `Hello Penny!` three times, you don't need to repeat the same string multiple times.
-Instead, you can assign it to a local variable and re-use it:
+Instead, you can assign it to a variable and re-use it:
 
 ```{.crystal .crystal-play}
 message = "Hello Penny!"
@@ -15,14 +15,15 @@ puts message
 
 This program prints the string `Hello Penny!` three times to the standard output, each followed by a line break.
 
-The name of a local variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letter are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
+The name of a variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letter are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
 !!! note
-    Other kinds of variables will be introduced later. For now we focus on local variables only.
+    The kind of variables this lesson discusses are called *local variables*.
+    Other kinds will be introduced later. For now we focus on local variables only.
 
 ## Type
 
-The type of local variable is automatically inferred by the compiler. In the above example, it's [`String`](https://crystal-lang.org/api/String.cr).
+The type of a variable is automatically inferred by the compiler. In the above example, it's [`String`](https://crystal-lang.org/api/String.cr).
 
 You can verify this with [`typeof`](https://crystal-lang.org/api/toplevel.html#typeof(*expression):Class-class-method):
 
@@ -37,7 +38,7 @@ p! typeof(message)
 
 ## Reassigning a Value
 
-A local variable can be reassigned with a different value:
+A variable can be reassigned with a different value:
 
 ```{.crystal .crystal-play}
 message = "Hello Penny!"
@@ -60,30 +61,3 @@ message = 73
 
 p! message, typeof(message)
 ```
-
-## Type Declaration
-
-!!! todo
-    Skip this section b/c practical irrelenvance?
-
-The type can also be declared explicitly. In this case, it's impossible to reassign a value of a different type. Adding `message = 73` to the following program would be a compiler error:
-
-```{.crystal .crystal-play}
-message : String = "Hello Penny!"
-
-p! typeof(message)
-```
-
-Type declaration and value assignment can also be separated. But it's impossible to read from the variable before a value is assigned (this would result in a compiler error).
-
-```{.crystal .crystal-play}
-message : String
-
-# Can't do `p! message` here before the assignment
-
-message = "Hello Penny!"
-
-p! typeof(message)
-```
-
-In practice it is rarely necessary or useful to declare the type of local variables.

@@ -9,7 +9,7 @@ puts "Hello World!"
 ```
 
 !!! hint
-    You can build and run code examples interactively on this website (thanks to [carc.in](https://carc.in)).
+    You can build and run code examples interactively in this tutorial by clicking the `Run` button (thanks to [carc.in](https://carc.in)).
     The output is shown directly inline.
 
     If you want to follow along locally, follow the [installation](https://crystal-lang.org/install/) and [getting started](../../getting_started/README.md) instructions.

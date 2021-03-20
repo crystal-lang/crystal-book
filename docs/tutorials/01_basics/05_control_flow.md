@@ -29,9 +29,9 @@ boolean values:
 a = true
 b = false
 
-p! a && b, # AND
-   a || b, # OR
-   !a,     # NOT
+p! a && b, # conjunction (AND)
+   a || b, # disjunction (OR)
+   !a,     # negation (NOT)
    a != b, # inequivalence (XOR)
    a == b  # equivalence
 ```
@@ -49,9 +49,9 @@ Let's replace `true` and `false` in the above example with other values, for exa
 a = "foo"
 b = nil
 
-p! a && b, # AND
-   a || b, # OR
-   !a,     # NOT
+p! a && b, # conjunction (AND)
+   a || b, # disjunction (OR)
+   !a,     # negation (NOT)
    a != b, # inequivalence (XOR)
    a == b  # equivalence
 ```
@@ -79,7 +79,7 @@ A conditional clause puts a branch of code behind a gate that only opens if the 
 
 In a most basic form it consists of a keyword `if` followed by an expression serving as condition.
 The condition is met when the return value of the expression is *truthy*.
-All subsequent expressions are part of the branch until closes with the keyword `end`.
+All subsequent expressions are part of the branch until it closes with the keyword `end`.
 
 Per convention, we indent nested branches by two spaces.
 
@@ -100,7 +100,7 @@ end
 
 If the message has a value that does not start with `Hello`, the conditional branch skips and the program prints nothing.
 
-The condition expression can be more complex. With boolean algebra we can construct a condition that accepts either `Hello`
+The condition expression can be more complex. With [boolean algebra](#boolean-algebra) we can construct a condition that accepts either `Hello`
 or `Hi`:
 
 ```{.crystal .crystal-play}
