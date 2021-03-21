@@ -132,11 +132,11 @@ e.g.
 crystal tool format --check
 ```
 
-See the Travis CI section below to implement this in your build.
+This check is good to add as a step in [continuous integration](ci/README.md).
 
 ### Writing a `shard.yml`
 
-[The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md) is your rulebook. Follow it.
+[The spec](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc) is your rulebook. Follow it.
 
 #### Name
 
