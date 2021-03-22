@@ -106,7 +106,7 @@ Most projects will have external dependencies, ["shards"](https://github.com/cry
 
 ### Latest or locked dependencies?
 
-If your repository has a checked in `shard.lock` file (typically good for applications), consider the effect that this has on CI: `shards install` will always install the exact versions specified in that file. But if you're developing a library, you probably want to be the first to find out in case a new version of a dependency breaks the installation of your library -- otherwise the users will, because the lock doesn't apply transitively. So, strongly consider running `shards update` instead of `shards install`. And then it makes sense to add [scheduled runs](https://www.jeffgeerling.com/blog/2020/running-github-actions-workflow-on-schedule-and-other-events) to your repository.
+If your repository has a checked in `shard.lock` file (typically good for applications), consider the effect that this has on CI: `shards install` will always install the exact versions specified in that file. But if you're developing a library, you probably want to be the first to find out in case a new version of a dependency breaks the installation of your library -- otherwise the users will, because the lock doesn't apply transitively. So, strongly consider running `shards update` instead of `shards install`, or don't check in `shard.lock`. And then it makes sense to add [scheduled runs](https://www.jeffgeerling.com/blog/2020/running-github-actions-workflow-on-schedule-and-other-events) to your repository.
 
 ## Installing binary dependencies
 
