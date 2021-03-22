@@ -23,7 +23,7 @@ The name of a variable always starts with a lowercase [Unicode](https://en.wikip
 
 ## Type
 
-The type of a variable is automatically inferred by the compiler. In the above example, it's [`String`](https://crystal-lang.org/api/String.cr).
+The type of a variable is automatically inferred by the compiler. In the above example, it's [`String`](https://crystal-lang.org/api/latest/String.html).
 
 You can verify this with [`typeof`](https://crystal-lang.org/api/toplevel.html#typeof(*expression):Class-class-method):
 
@@ -34,7 +34,7 @@ p! typeof(message)
 ```
 
 !!! note
-    [`p!`](https://crystal-lang.org/api/toplevel.html#p!(*exps)-macro) is similar to `puts` as it prints the value to the standard output, but it also prints the expression in code. This makes it a useful tool for inspecting the state of a Crystal program and debugging.
+    [`p!`](https://crystal-lang.org/api/latest/toplevel.html#p!(*exps)-macro) is similar to `puts` as it prints the value to the standard output, but it also prints the expression in code. This makes it a useful tool for inspecting the state of a Crystal program and debugging.
 
 ## Reassigning a Value
 
