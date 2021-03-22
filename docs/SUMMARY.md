@@ -143,4 +143,3 @@
         * [Strings](tutorials/01_basics/04_strings.md)
         * [Control Flow](tutorials/01_basics/05_control_flow.md)
         * [Methods](tutorials/01_basics/06_methods.md)
-    * [Types](tutorials/xx_types/README.md)
