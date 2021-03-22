@@ -61,7 +61,7 @@ First we need to add Docker as a service in `.travis.yml`, and then we can use `
     ```
 
 !!! note
-    We may read about different (languages)[https://docs.travis-ci.com/user/languages/] supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
+    We may read about different [languages](https://docs.travis-ci.com/user/languages/) supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
 
 !!! note
     A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
