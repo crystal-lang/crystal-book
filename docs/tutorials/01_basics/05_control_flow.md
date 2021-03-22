@@ -41,7 +41,7 @@ You can try flicking the values of `a` and `b` to see the operator behaviour for
 ### Truthiness
 
 Boolean algebra however is not only defined for boolean types proper. All values have an implicit truthiness: `nil`, `false`
-and null pointers (just for completeness, we cover that later) are *falsey*. Any other value is *truthy*.
+and null pointers (just for completeness, we cover that later) are *falsey*. Any other value (including `0`) is *truthy*.
 
 Let's replace `true` and `false` in the above example with other values, for example `"foo"` and `nil`.
 

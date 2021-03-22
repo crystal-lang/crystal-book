@@ -244,7 +244,7 @@ p! message.sub("World", "Crystal")
 `#sub` only replaces the first instance of a search string. It's big brother `#gsub` applies to all instances.
 
 ```{.crystal .crystal-play}
-message = "Hello World! Bye World."
+message = "Hello World! How are you, World?"
 
 p! message.sub("World", "Crystal"),
    message.gsub("World", "Crystal")
