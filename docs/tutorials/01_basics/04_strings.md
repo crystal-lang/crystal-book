@@ -1,4 +1,4 @@
-# String Operations
+# Strings
 
 In the previous lessons we have already made an acquaintance with a major building block
 of most programs: strings. Let's recapitulate the basic properties:
@@ -131,17 +131,124 @@ p! blank_string.blank?,
    blank_string.presence
 ```
 
-## Parts of a string
+## Equality and Comparison
 
+You can test two strings for equality with the equality operator (`==`) and compare them with the
+comparison operator (`<=>`). Both compare the strings strictly character by character.
+Remember, `<=>` returns an integer indicating the relationship between both operands,
+and `==` returns `true` if the comparison result it `0`, i.e. both values compare equally.
 
+There is however also a `#compare` method which offers case insensitive comparison.
 
-## Dissection
+```{.crystal .crystal-play}
+message = "Hello World!"
 
-## Comparison
+p! message == "Hello World",
+   message == "Hello Crystal",
+   message == "hello world",
+   message.compare("hello world", case_insensitive: false),
+   message.compare("hello world", case_insensitive: true)
+```
 
-## Regex (?)
+## Partial Components
 
-## Iteration (?)
+Sometimes it's not important to know whether a string matches another exactly, and you just want to
+know if one string contains another. For example, let's check if the message is about Crystal using the
+`#includes?` method.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message.includes?("Crystal"),
+   message.includes?("World")
+```
+
+Particularly interesting ar often the beginning and end of a string. That's where the methods `#starts_with?` and `#ends_with?`
+come into play.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message.starts_with?("Hello"),
+   message.starts_with?("Bye"),
+   message.ends_with?("!"),
+   message.ends_with?("?")
+```
+
+## Extracting Substrings
+
+A substring is a part of a string. If you want to extract parts of the string,
+there are several ways to do that.
+
+The index accessor `#[]` allows referencing a substring by character index and size. Character
+indices start at `0` and reach to length (i.e. the value of `#size`) minus one.
+The first argument specifies the index of the first character that is supposed to be in the substring,
+and the second argument specifies the length of the substring. `message[6, 5]` extracts a substring
+of five characters long, starting at index six.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message[6, 5]
+```
+
+Let's assume we have established that the string starts with `Hello` and ends with `!` and want to extract what's in
+between.
+If the message was `Hello Crystal`, we wouldn't get the entire word `Crystal` because it's longer than five characters.
+
+A solution is to calculate the length of the substring from the length of the entire string minus the lengths of beginning and end.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message[6, message.size - 6 - 1]
+```
+
+There's an easier way to do that: The index accessor can be used with a [`Range`](https://crystal-lang.org/api/latest/Range.html)
+of character indices. A range literal consists of a start value and an end value, connected by two dots (`..`).
+The first value indicates the start index of the substring, as before, but the second is the end index (as opposed to the length).
+Now we don't need to repeat the start index in the calculation, because the end index is just the size minus two
+(one for the end index, and one for excluding the last character).
+
+It can be even easier: Negative index values automatically relate to the end of the string, so we don't need to calculate
+the end index from the string size explicitly.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message[6..(message.size - 2)],
+   message[6..-2]
+```
+
+## Substitution
+
+In a very similar manner, we can alter a string. Let's make sure, we properly greet Crystal, and nothing else.
+Instead of accessing a substring, we call `#sub`. The first argument is again a range to indicate the location
+that gets replaced by the value of the second argument.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message.sub(6..-2, "Crystal")
+```
+
+The `#sub` method is very versatile and can be used in different way. We could also pass a search string as first argument
+and it replaces that substring with the value of the second argument.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+p! message.sub("World", "Crystal")
+```
+
+`#sub` only replaces the first instance of a search string. It's big brother `#gsub` applies to all instances.
+
+```{.crystal .crystal-play}
+message = "Hello World! Bye World."
+
+p! message.sub("World", "Crystal"),
+   message.gsub("World", "Crystal")
+```
 
 !!! tip
     You can find more detailed info in the [string literal reference](../../syntax_and_semantics/literals/string.md) and [String API docs](https://crystal-lang.org/api/latest/String.html).
