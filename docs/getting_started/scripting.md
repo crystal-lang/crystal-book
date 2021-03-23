@@ -27,7 +27,7 @@ puts "Hello CRYSTAL"
 ```
 crystal build script.cr -o compiled_binary --release
 
-hyperfine --warmup 3 --export-markdown /dev/stdin './script.cr' './scriptisto.cr' 'compiled_binary'
+hyperfine --warmup 3 --export-markdown /dev/stdin './script.cr' './scriptisto.cr' './compiled_binary'
 ```
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
