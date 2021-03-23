@@ -56,8 +56,8 @@ module A
 
   CONST = "A::Const"
 
-  p! CONST,
-     ::CONST
+  p! CONST   # => "A::CONST"
+  p! ::CONST # => "::CONST"
 end
 ```
 
