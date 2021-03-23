@@ -199,10 +199,7 @@ Example:
 
 ```console
 $ crystal version
-Crystal 0.25.1 [b782738ff] (2018-06-27)
-
-LLVM: 4.0.0
-Default target: x86_64-unknown-linux-gnu
+--8<-- "crystal-version.txt"
 ```
 
 ### `crystal init`

@@ -14,10 +14,7 @@ We may check the Crystal compiler version. If Crystal is installed correctly the
 
 ```console
 $ crystal --version
-Crystal 0.34.0 (2020-04-07)
-
-LLVM: 10.0.0
-Default target: x86_64-apple-macosx
+--8<-- "crystal-version.txt"
 ```
 
 Great!
