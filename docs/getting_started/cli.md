@@ -35,23 +35,23 @@ At start our CLI application will have two options:
 * `-v` / `--version`: it will display the application version.
 * `-h` / `--help`: it will display the application help.
 
-```crystal
-# file: help.cr
-require "option_parser"
+!!! example "help.cr"
+    ```crystal
+    require "option_parser"
 
-OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
+    OptionParser.parse do |parser|
+      parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Show version" do
-    puts "version 1.0"
-    exit
-  end
-  parser.on "-h", "--help", "Show help" do
-    puts parser
-    exit
-  end
-end
-```
+      parser.on "-v", "--version", "Show version" do
+        puts "version 1.0"
+        exit
+      end
+      parser.on "-h", "--help", "Show help" do
+        puts parser
+        exit
+      end
+    end
+    ```
 
 So, how does all this work? Well … magic! No, it’s not really magic! Just Crystal making our life easy.
 When our application starts, the block passed to `OptionParser#parse` gets executed. In that block we define all the options. After the block is executed, the parser will start consuming the arguments passed to the application, trying to match each one with the options defined by us. If an option matches then the block passed to `parser#on` gets executed!
@@ -77,95 +77,95 @@ Let's build another _fabulous_ application with the following feature:
 
 By default (i.e. no options given) the application will display the names of the Fab Four. But, if we pass the option `-t` / `--twist` it will display the names in uppercase:
 
-```crystal
-# file: twist_and_shout.cr
-require "option_parser"
+!!! example "twist_and_shout.cr"
+    ```crystal
+    require "option_parser"
 
-the_beatles = [
-  "John Lennon",
-  "Paul McCartney",
-  "George Harrison",
-  "Ringo Starr"
-]
-shout = false
+    the_beatles = [
+      "John Lennon",
+      "Paul McCartney",
+      "George Harrison",
+      "Ringo Starr"
+    ]
+    shout = false
 
-option_parser = OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
+    option_parser = OptionParser.parse do |parser|
+      parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Show version" do
-    puts "version 1.0"
-    exit
-  end
-  parser.on "-h", "--help", "Show help" do
-    puts parser
-    exit
-  end
-  parser.on "-t", "--twist", "Twist and SHOUT" do
-    shout = true
-  end
-end
+      parser.on "-v", "--version", "Show version" do
+        puts "version 1.0"
+        exit
+      end
+      parser.on "-h", "--help", "Show help" do
+        puts parser
+        exit
+      end
+      parser.on "-t", "--twist", "Twist and SHOUT" do
+        shout = true
+      end
+    end
 
-members = the_beatles
-members = the_beatles.map &.upcase if shout
+    members = the_beatles
+    members = the_beatles.map &.upcase if shout
 
-puts ""
-puts "Group members:"
-puts "=============="
-members.each do |member|
-  puts member
-end
-```
+    puts ""
+    puts "Group members:"
+    puts "=============="
+    members.each do |member|
+      puts member
+    end
+    ```
 
-Running the application with the `-t` option will output:
+    Running the application with the `-t` option will output:
 
-```console
-$ crystal run ./twist_and_shout.cr -- -t
+    ```console
+    $ crystal run ./twist_and_shout.cr -- -t
 
-Group members:
-==============
-JOHN LENNON
-PAUL MCCARTNEY
-GEORGE HARRISON
-RINGO STARR
-```
+    Group members:
+    ==============
+    JOHN LENNON
+    PAUL MCCARTNEY
+    GEORGE HARRISON
+    RINGO STARR
+    ```
 
 #### Parameterized options
 
 Let’s create another application: _when passing the option `-g` / `--goodbye_hello`, the application will say hello to a given name **passed as a parameter to the option**_.
 
-```crystal
-# file: hello_goodbye.cr
-require "option_parser"
+!!! example "hello_goodbye.cr"
+    ```crystal
+    require "option_parser"
 
-the_beatles = [
-  "John Lennon",
-  "Paul McCartney",
-  "George Harrison",
-  "Ringo Starr"
-]
-say_hi_to = ""
+    the_beatles = [
+      "John Lennon",
+      "Paul McCartney",
+      "George Harrison",
+      "Ringo Starr"
+    ]
+    say_hi_to = ""
 
-option_parser = OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
+    option_parser = OptionParser.parse do |parser|
+      parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Show version" do
-    puts "version 1.0"
-    exit
-  end
-  parser.on "-h", "--help", "Show help" do
-    puts parser
-    exit
-  end
-  parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
-    say_hi_to = name
-  end
-end
+      parser.on "-v", "--version", "Show version" do
+        puts "version 1.0"
+        exit
+      end
+      parser.on "-h", "--help", "Show help" do
+        puts parser
+        exit
+      end
+      parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
+        say_hi_to = name
+      end
+    end
 
-unless say_hi_to.empty?
-  puts ""
-  puts "You say goodbye, and #{the_beatles.sample} says hello to #{say_hi_to}!"
-end
-```
+    unless say_hi_to.empty?
+      puts ""
+      puts "You say goodbye, and #{the_beatles.sample} says hello to #{say_hi_to}!"
+    end
+    ```
 
 In this case, the block receives a parameter that represents the parameter passed to the option.
 
@@ -193,87 +193,87 @@ So, let's add this option handlers and merge all this CLI applications into one 
 
 Here’s the final result, with invalid/missing options handling, plus other new options:
 
-```crystal
-# file: all_my_cli.cr
-require "option_parser"
+!!! example "all_my_cli.cr"
+    ```crystal
+    require "option_parser"
 
-the_beatles = [
-  "John Lennon",
-  "Paul McCartney",
-  "George Harrison",
-  "Ringo Starr"
-]
-shout = false
-say_hi_to = ""
-strawberry = false
+    the_beatles = [
+      "John Lennon",
+      "Paul McCartney",
+      "George Harrison",
+      "Ringo Starr"
+    ]
+    shout = false
+    say_hi_to = ""
+    strawberry = false
 
-option_parser = OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
+    option_parser = OptionParser.parse do |parser|
+      parser.banner = "Welcome to The Beatles App!"
 
-  parser.on "-v", "--version", "Show version" do
-    puts "version 1.0"
-    exit
-  end
-  parser.on "-h", "--help", "Show help" do
-    puts parser
-    exit
-  end
-  parser.on "-t", "--twist", "Twist and SHOUT" do
-    shout = true
-  end
-  parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
-    say_hi_to = name
-  end
-  parser.on "-r", "--random_goodbye_hello", "Say hello to one random member" do
-    say_hi_to = the_beatles.sample
-  end
-  parser.on "-s", "--strawberry", "Strawberry fields forever mode ON" do
-    strawberry = true
-  end
-  parser.missing_option do |option_flag|
-    STDERR.puts "ERROR: #{option_flag} is missing something."
-    STDERR.puts ""
-    STDERR.puts parser
-    exit(1)
-  end
-  parser.invalid_option do |option_flag|
-    STDERR.puts "ERROR: #{option_flag} is not a valid option."
-    STDERR.puts parser
-    exit(1)
-  end
-end
+      parser.on "-v", "--version", "Show version" do
+        puts "version 1.0"
+        exit
+      end
+      parser.on "-h", "--help", "Show help" do
+        puts parser
+        exit
+      end
+      parser.on "-t", "--twist", "Twist and SHOUT" do
+        shout = true
+      end
+      parser.on "-g NAME", "--goodbye_hello=NAME", "Say hello to whoever you want" do |name|
+        say_hi_to = name
+      end
+      parser.on "-r", "--random_goodbye_hello", "Say hello to one random member" do
+        say_hi_to = the_beatles.sample
+      end
+      parser.on "-s", "--strawberry", "Strawberry fields forever mode ON" do
+        strawberry = true
+      end
+      parser.missing_option do |option_flag|
+        STDERR.puts "ERROR: #{option_flag} is missing something."
+        STDERR.puts ""
+        STDERR.puts parser
+        exit(1)
+      end
+      parser.invalid_option do |option_flag|
+        STDERR.puts "ERROR: #{option_flag} is not a valid option."
+        STDERR.puts parser
+        exit(1)
+      end
+    end
 
-members = the_beatles
-members = the_beatles.map &.upcase if shout
+    members = the_beatles
+    members = the_beatles.map &.upcase if shout
 
-puts "Strawberry fields forever mode ON" if strawberry
+    puts "Strawberry fields forever mode ON" if strawberry
 
-puts ""
-puts "Group members:"
-puts "=============="
-members.each do |member|
-  puts "#{strawberry ? "🍓" : "-"} #{member}"
-end
+    puts ""
+    puts "Group members:"
+    puts "=============="
+    members.each do |member|
+      puts "#{strawberry ? "🍓" : "-"} #{member}"
+    end
 
-unless say_hi_to.empty?
-  puts ""
-  puts "You say goodbye, and I say hello to #{say_hi_to}!"
-end
-```
+    unless say_hi_to.empty?
+      puts ""
+      puts "You say goodbye, and I say hello to #{say_hi_to}!"
+    end
+    ```
 
 ### Request for user input
 
 Sometimes, we may need the user to input a value. How do we _read_ that value?
 Easy, peasy! Let’s create a new application: the Fab Four will sing with us any phrase we want. When running the application, it will request a phrase to the user and the magic will happen!
 
-```crystal
-# file: let_it_cli.cr
-puts "Welcome to The Beatles Sing Along version 1.0!"
-puts "Enter a phrase you want The Beatles to sing"
-print "> "
-user_input = gets
-puts "The Beatles are singing: 🎵#{user_input}🎶🎸🥁"
-```
+!!! example "let_it_cli.cr"
+    ```crystal
+    puts "Welcome to The Beatles Sing Along version 1.0!"
+    puts "Enter a phrase you want The Beatles to sing"
+    print "> "
+    user_input = gets
+    puts "The Beatles are singing: 🎵#{user_input}🎶🎸🥁"
+    ```
 
 The method [`gets`](https://crystal-lang.org/api/latest/toplevel.html#gets%28*args,**options%29-class-method) will **pause** the execution of the application, until the user finishes entering the input (pressing the `Enter` key).
 When the user presses `Enter`, then the execution will continue and `user_input` will have the user value.
@@ -281,14 +281,14 @@ When the user presses `Enter`, then the execution will continue and `user_input`
 But what happen if the user doesn’t enter any value? In that case, we would get an empty string (if the user only presses `Enter`) or maybe a `Nil` value (if the input stream id closed, e.g. by pressing `Ctrl+D`).
 To illustrate the problem let’s try the following: we want the input entered by the user to be sang loudly:
 
-```crystal
-# file: let_it_cli.cr
-puts "Welcome to The Beatles Sing Along version 1.0!"
-puts "Enter a phrase you want The Beatles to sing"
-print "> "
-user_input = gets
-puts "The Beatles are singing: 🎵#{user_input.upcase}🎶🎸🥁"
-```
+!!! example "let_it_cli.cr"
+    ```crystal
+    puts "Welcome to The Beatles Sing Along version 1.0!"
+    puts "Enter a phrase you want The Beatles to sing"
+    print "> "
+    user_input = gets
+    puts "The Beatles are singing: 🎵#{user_input.upcase}🎶🎸🥁"
+    ```
 
 When running the example, Crystal will reply:
 
@@ -306,23 +306,23 @@ Error: undefined method 'upper_case' for Nil (compile-time type is (String | Nil
 Ah! We should have known better: the type of the user input is the [union type](https://crystal-lang.org/reference/syntax_and_semantics/type_grammar.html) `String | Nil`.
 So, we have to test for `Nil` and for `empty` and act naturally for each case:
 
-```crystal
-# file: let_it_cli.cr
-puts "Welcome to The Beatles Sing Along version 1.0!"
-puts "Enter a phrase you want The Beatles to sing"
-print "> "
-user_input = gets
+!!! example "let_it_cli.cr"
+    ```crystal
+    puts "Welcome to The Beatles Sing Along version 1.0!"
+    puts "Enter a phrase you want The Beatles to sing"
+    print "> "
+    user_input = gets
 
-exit if user_input.nil? # Ctrl+D
+    exit if user_input.nil? # Ctrl+D
 
-default_lyrics = "Na, na, na, na-na-na na" \
-                 " / " \
-                 "Na-na-na na, hey Jude"
+    default_lyrics = "Na, na, na, na-na-na na" \
+                    " / " \
+                    "Na-na-na na, hey Jude"
 
-lyrics = user_input.presence || default_lyrics
+    lyrics = user_input.presence || default_lyrics
 
-puts "The Beatles are singing: 🎵#{lyrics.upcase}🎶🎸🥁"
-```
+    puts "The Beatles are singing: 🎵#{lyrics.upcase}🎶🎸🥁"
+    ```
 
 ## Output
 
@@ -333,12 +333,12 @@ And to accomplish this, we will be using the [`Colorize`](https://crystal-lang.o
 
 Let’s build a really simple application that shows a string with colors! We will use yellow font on a black background:
 
-```crystal
-# file: yellow_cli.cr
-require "colorize"
+!!! example "yellow_cli.cr"
+    ```crystal
+    require "colorize"
 
-puts "#{"The Beatles".colorize(:yellow).on(:black)} App"
-```
+    puts "#{"The Beatles".colorize(:yellow).on(:black)} App"
+    ```
 
 Great! That was easy! Now imagine using this string as the banner for our All My CLI application, it's easy if you try:
 
@@ -348,25 +348,25 @@ Great! That was easy! Now imagine using this string as the banner for our All My
 
 For our second application, we will add a *text decoration* (`blink`in this case):
 
-```crystal
-# file: let_it_cli.cr
-require "colorize"
+!!! example "let_it_cli.cr"
+    ```crystal
+    require "colorize"
 
-puts "Welcome to The Beatles Sing Along version 1.0!"
-puts "Enter a phrase you want The Beatles to sing"
-print "> "
-user_input = gets
+    puts "Welcome to The Beatles Sing Along version 1.0!"
+    puts "Enter a phrase you want The Beatles to sing"
+    print "> "
+    user_input = gets
 
-exit if user_input.nil? # Ctrl+D
+    exit if user_input.nil? # Ctrl+D
 
-default_lyrics = "Na, na, na, na-na-na na" \
-                 " / " \
-                 "Na-na-na na, hey Jude"
+    default_lyrics = "Na, na, na, na-na-na na" \
+                    " / " \
+                    "Na-na-na na, hey Jude"
 
-lyrics = user_input.presence || default_lyrics
+    lyrics = user_input.presence || default_lyrics
 
-puts "The Beatles are singing: #{"🎵#{lyrics}🎶🎸🥁".colorize.mode(:blink)}"
-```
+    puts "The Beatles are singing: #{"🎵#{lyrics}🎶🎸🥁".colorize.mode(:blink)}"
+    ```
 
 Let’s try the renewed application … and _hear_ the difference!!
 **Now** we have two fabulous apps!!

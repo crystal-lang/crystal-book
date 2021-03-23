@@ -53,11 +53,10 @@ More details about using the compiler can be found on the manpage `man crystal` 
 
 The following example is the classic Hello World. In Crystal it looks like this:
 
-```crystal
-# hello_world.cr
-
-puts "Hello World!"
-```
+!!! example "hello_world.cr"
+    ```crystal
+    puts "Hello World!"
+    ```
 
 We may run our example like this:
 

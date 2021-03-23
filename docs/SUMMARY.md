@@ -130,8 +130,9 @@
         * [Hosting on GitHub](guides/hosting/github.md)
         * [Hosting on GitLab](guides/hosting/gitlab.md)
     * [Continuous Integration](guides/ci/README.md)
-        * [Using Travis CI](guides/ci/travis.md)
-        * [Using CircleCI](guides/ci/circleci.md)
+        * [GitHub Actions](guides/ci/gh-actions.md)
+        * [Travis CI](guides/ci/travis.md)
+        * [CircleCI](guides/ci/circleci.md)
     * Compilation
         * [Static Linking](guides/static_linking.md)
         * [Cross-compilation](guides/compilation/cross-compilation.md)
