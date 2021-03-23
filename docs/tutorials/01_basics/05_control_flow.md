@@ -5,8 +5,11 @@
 ### Nil
 
 The most simplistic type is `Nil`. It has only a single value: `nil` and represents
-the absence of an actual value. If you ask which car occupies a parking spot, and
-no car is parking there, the answer is `nil`.
+the absence of an actual value.
+
+Remember [`String#index` from last lesson](../04_strings.md#indexing-substrings)?
+It returns `nil` if the substring does not exist in the search string. It has no index,
+so the index position is absent.
 
 ### Bool
 

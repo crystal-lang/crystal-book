@@ -175,6 +175,54 @@ p! message.starts_with?("Hello"),
    message.ends_with?("?")
 ```
 
+## Indexing Substrings
+
+We can get even more detailed information on the position of a substring with the `#index` method.
+It returns the index of the first character in the substring's first appearance.
+The result `0` means the same as `starts_with?`.
+
+```{.crystal .crystal-play}
+p! "Crystal is awesome".index("Crystal"),
+   "Crystal is awesome".index("s"),
+   "Crystal is awesome".index("aw")
+```
+
+The method has an optional `offset` argument that can be used to start searching from a different
+position than the beginning of string. This is useful when the substring may appear multiple times.
+
+```{.crystal .crystal-play}
+message = "Crystal is awesome"
+
+p! message.index("s"),
+   message.index("s", offset: 4),
+   message.index("s", offset: 10)
+```
+
+The method `#rindex` works exactly the same, but instead it searches from the end of the string.
+
+```{.crystal .crystal-play}
+message = "Crystal is awesome"
+
+p! message.rindex("s"),
+   message.rindex("s", 13),
+   message.rindex("s", 8)
+```
+
+In case the substring is not found, the result is a special value called `nil`.
+It basically means "no value". Which makes sense when the substring has no index.
+
+Looking at the return type of `#index` we can see that it returns either `Int32` or `Nil`.
+
+```{.crystal .crystal-play}
+a = "Crystal is awesome".index("aw")
+p! a, typeof(a)
+b = "Crystal is awesome".index("meh")
+p! b, typeof(b)
+```
+
+!!! tip
+    We'll cover `nil` more deeply in the next lesson.
+
 ## Extracting Substrings
 
 A substring is a part of a string. If you want to extract parts of the string,
