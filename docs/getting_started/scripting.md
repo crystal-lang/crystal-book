@@ -25,10 +25,13 @@ puts "Hello CRYSTAL"
 ## Benchmarks
 
 ```
-hyperfine --warmup 3 --export-markdown /dev/stdin './script.cr' './scriptisto.cr'
+crystal build script.cr -o compiled_binary --release
+
+hyperfine --warmup 3 --export-markdown /dev/stdin './script.cr' './scriptisto.cr' 'compiled_binary'
 ```
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `./script.cr` | 1.196 ± 0.034 | 1.148 | 1.248 | 95.01 ± 17.95 |
-| `./scriptisto.cr` | 0.013 ± 0.002 | 0.010 | 0.028 | 1.00 |
+| `./script.cr` | 1.228 ± 0.075 | 1.177 | 1.430 | 535.24 ± 406.84 |
+| `./scriptisto.cr` | 0.010 ± 0.002 | 0.008 | 0.022 | 4.34 ± 3.37 |
+| `./compiled_binary` | 0.002 ± 0.002 | 0.000 | 0.015 | 1.00 |
