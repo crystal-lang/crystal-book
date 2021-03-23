@@ -40,7 +40,7 @@ You can try flicking the values of `a` and `b` to see the operator behaviour for
 
 ### Truthiness
 
-Boolean algebra however is not only defined for boolean types proper. All values have an implicit truthiness: `nil`, `false`
+Boolean algebra however is not only defined for boolean types proper. All values have an implicit truthiness: `nil`, `false`,
 and null pointers (just for completeness, we cover that later) are *falsey*. Any other value (including `0`) is *truthy*.
 
 Let's replace `true` and `false` in the above example with other values, for example `"foo"` and `nil`.
@@ -77,7 +77,7 @@ Now this is going to change.
 
 A conditional clause puts a branch of code behind a gate that only opens if the condition is met.
 
-In a most basic form it consists of a keyword `if` followed by an expression serving as condition.
+In the most basic form it consists of a keyword `if` followed by an expression serving as the condition.
 The condition is met when the return value of the expression is *truthy*.
 All subsequent expressions are part of the branch until it closes with the keyword `end`.
 
@@ -113,7 +113,7 @@ end
 
 Let's turn the condition around: Only print the message if it does *not*  start with `Hello`.
 That's just a minor deviation from the previous example: We can use the negation operator (`!`) to turn the condition
-into the opposite.
+into the opposite expression.
 
 ```{.crystal .crystal-play}
 message = "Hello World"

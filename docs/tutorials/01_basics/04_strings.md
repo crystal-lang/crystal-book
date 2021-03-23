@@ -103,7 +103,7 @@ The methods `#camelcased` and `#underscored` don't change our string, but try th
 
 ## Information
 
-Let's look a bit more detailed at a string and what we can know about it. First of all, a string
+Let's take a more detailed look at a string and what we can know about it. First of all, a string
 has a length, i.e. the number of characters it contains. This value is available as `String#size`.
 
 
@@ -122,7 +122,7 @@ p! empty_string.size == 0,
    empty_string.empty?
 ```
 
-The method `String#blank?` returns `true` if the string is empty or if it contains only of whitespace characters. A related method is `String#presence` which returns `nil` if the string is blank, otherwise the string itself.
+The method `String#blank?` returns `true` if the string is empty or if it only contains whitespace characters. A related method is `String#presence` which returns `nil` if the string is blank, otherwise the string itself.
 
 ```{.crystal .crystal-play}
 blank_string = ""
@@ -163,7 +163,7 @@ p! message.includes?("Crystal"),
    message.includes?("World")
 ```
 
-Particularly interesting ar often the beginning and end of a string. That's where the methods `#starts_with?` and `#ends_with?`
+What is particularly interesting is often at the beginning or end of a string. That's where the methods `#starts_with?` and `#ends_with?`
 come into play.
 
 ```{.crystal .crystal-play}
@@ -222,7 +222,7 @@ p! message[6..(message.size - 2)],
 
 ## Substitution
 
-In a very similar manner, we can alter a string. Let's make sure, we properly greet Crystal, and nothing else.
+In a very similar manner, we can alter a string. Let's make sure we properly greet Crystal and nothing else.
 Instead of accessing a substring, we call `#sub`. The first argument is again a range to indicate the location
 that gets replaced by the value of the second argument.
 
@@ -232,7 +232,7 @@ message = "Hello World!"
 p! message.sub(6..-2, "Crystal")
 ```
 
-The `#sub` method is very versatile and can be used in different way. We could also pass a search string as first argument
+The `#sub` method is very versatile and can be used in different ways. We could also pass a search string as the first argument
 and it replaces that substring with the value of the second argument.
 
 ```{.crystal .crystal-play}
