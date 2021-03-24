@@ -58,16 +58,16 @@ Some string literals may contain a lot of double quotes – think of HTML tags w
 puts %(I say: "Hello World!")
 ```
 
-Escape sequences and interpolation still works the same way.
+Escape sequences and interpolation still work the same way.
 
 !!! tip
     You can find more info on alternative delimiters in the [string literal reference](../../syntax_and_semantics/literals/string.md#percent-string-literals).
 
 ## Unicode
 
-Unicode is an international standard for representing text in many different writing systems. Besides letters of the latin alphabet used by English and many other languages, it includes several other character sets. Not just for plain text, but the Unicode standard also includes emojis and icons.
+Unicode is an international standard for representing text in many different writing systems. Besides letters of the latin alphabet used by English and many other languages, it includes many other character sets. Not just for plain text, but the Unicode standard also includes emojis and icons.
 
-The following example uses the unicode character [`U+1F310` (*Globe with Meridians*)](https://codepoints.net/U+1F310) to address the world:
+The following example uses the Unicode character [`U+1F310` (*Globe with Meridians*)](https://codepoints.net/U+1F310) to address the world:
 
 ```{.crystal .crystal-play}
 puts "Hello 🌐"
@@ -81,7 +81,7 @@ puts "Hello \u{1F310}"
 
 ## Transformation
 
-Consider you want to change something about a string. Maybe scream the message and make it all uppercase?
+Let's say you want to change something about a string. Maybe scream the message and make it all uppercase?
 The method `String#upcase` converts all lower case characters to their upper case equivalent.
 The opposite is `String#downcase`. There are a couple more similar methods, which let us express our message in different
 styles:
@@ -99,7 +99,7 @@ puts "titleized: #{message.titleize}"
 puts "underscored: #{message.underscore}"
 ```
 
-The methods `#camelcased` and `#underscored` don't change our string, but try them with `"snake_cased"` or `"CamelCased"`.
+The methods `#camelcase` and `#underscore` don't change this particular string, but try them with the inputs `"snake_cased"` or `"CamelCased"`.
 
 ## Information
 
@@ -163,7 +163,7 @@ p! message.includes?("Crystal"),
    message.includes?("World")
 ```
 
-What is particularly interesting is often at the beginning or end of a string. That's where the methods `#starts_with?` and `#ends_with?`
+Sometimes the beginning or end of a string are of particular interest. That's where the methods `#starts_with?` and `#ends_with?`
 come into play.
 
 ```{.crystal .crystal-play}
@@ -270,7 +270,7 @@ p! message[6..(message.size - 2)],
 
 ## Substitution
 
-In a very similar manner, we can alter a string. Let's make sure we properly greet Crystal and nothing else.
+In a very similar manner, we can modify a string. Let's make sure we properly greet Crystal and nothing else.
 Instead of accessing a substring, we call `#sub`. The first argument is again a range to indicate the location
 that gets replaced by the value of the second argument.
 
@@ -289,7 +289,7 @@ message = "Hello World!"
 p! message.sub("World", "Crystal")
 ```
 
-`#sub` only replaces the first instance of a search string. It's big brother `#gsub` applies to all instances.
+`#sub` only replaces the first instance of a search string. Its big brother `#gsub` applies to all instances.
 
 ```{.crystal .crystal-play}
 message = "Hello World! How are you, World?"

@@ -8,7 +8,7 @@ In Crystal this is pretty simple, maybe a little bit boring:
 puts "Hello World!"
 ```
 
-!!! hint
+!!! tip
     You can build and run code examples interactively in this tutorial by clicking the `Run` button (thanks to [carc.in](https://carc.in)).
     The output is shown directly inline.
 

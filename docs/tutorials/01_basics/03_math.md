@@ -89,7 +89,7 @@ When several operators are combined, the question arises in which order are they
 In math there are several rules, like multiplication and division take precedence over addition and subtraction.
 Crystal operators implement these precedence rules.
 
-A tool to structure operations are parentheses. An operator expression in parenthesis always takes precedence over external operators.
+A tool to structure operations are parentheses. An operator expression in parentheses always takes precedence over external operators.
 
 ```{.crystal, .crystal-play}
 p! 4 + 5 * 2,
@@ -97,7 +97,7 @@ p! 4 + 5 * 2,
 ```
 
 !!! info
-    The entire precedence rules are quite extensive in the [the Operator reference](../../syntax_and_semantics/operators.md#operator-precedence).
+    All the precedence rules are detailed in the [the Operator reference](../../syntax_and_semantics/operators.md#operator-precedence).
 
 ### Number Methods
 

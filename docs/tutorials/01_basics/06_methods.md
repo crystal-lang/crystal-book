@@ -13,18 +13,18 @@ end
 
 say_hello
 say_hello
-say_hello() # syntactically equivalent method call with parenthesis
+say_hello() # syntactically equivalent method call with parentheses
 ```
 
 !!! tip
-    Method calls are unambiguously indicated by parenthesis after the name, but it can be omitted. It would only be
+    Method calls are unambiguously indicated by parentheses after the name, but it can be omitted. It would only be
     necessary for disambiguation, for example if `say_hello` was also a local variable.
 
 ## Arguments
 
 What if we want to greet different people, but all in the same manner?
 Instead of writing individual messages, we can define a method that allows customization through a parameter.
-A parameter is like a local variable inside the method body. Parameters are declared after the method name in parenthesis.
+A parameter is like a local variable inside the method body. Parameters are declared after the method name in parentheses.
 When calling a method, you can pass in arguments which are mapped as values for the method's parameters.
 
 ```{.crystal .crystal-play}
@@ -37,10 +37,10 @@ say_hello "Crystal"
 ```
 
 !!! tip
-    Arguments at method calls are typically placed in parenthesis, but it can often be omitted. `say_hello "World"`
+    Arguments at method calls are typically placed in parentheses, but it can often be omitted. `say_hello "World"`
     and `say_hello("World")` are syntactically equivalent.
 
-    It's generally recommended to use parenthesis because it avoids ambiguity. But they're often omitted if the
+    It's generally recommended to use parentheses because it avoids ambiguity. But they're often omitted if the
     expression reads like natural language.
 
 ### Default arguments
@@ -105,5 +105,5 @@ say_hello "World"
 say_hello 3
 ```
 
-Overloading is not only defined by type restrictions. The number of arguments as well as named arguments are also
+Overloading isn't defined just by type restrictions. The number of arguments as well as named arguments are also
 relevant characteristics.

@@ -43,7 +43,7 @@ You can try flicking the values of `a` and `b` to see the operator behaviour for
 
 ### Truthiness
 
-Boolean algebra however is not only defined for boolean types proper. All values have an implicit truthiness: `nil`, `false`,
+Boolean algebra isn't limited to just boolean types, though. All values have an implicit truthiness: `nil`, `false`,
 and null pointers (just for completeness, we cover that later) are *falsey*. Any other value (including `0`) is *truthy*.
 
 Let's replace `true` and `false` in the above example with other values, for example `"foo"` and `nil`.
@@ -72,7 +72,7 @@ The `NOT`, `XOR` and equivalence operators always return a `Bool` value (`true` 
 
 ## Control Flow
 
-Controlling the flow of a program means to take different paths based on conditions.
+Controlling the flow of a program means taking different paths based on conditions.
 Up until now, every program in this tutorial has been a sequential series of expressions.
 Now this is going to change.
 
@@ -147,7 +147,7 @@ end
 ```
 
 This works but there are two drawbacks: The condition expression `message.starts_with?("Hello")` evaluates twice, which is inefficient.
-Later, if we change the condition in one place (maybe allowing `Hi` as well), we might forget changing the other one as well.
+Later, if we change the condition in one place (maybe allowing `Hi` as well), we might forget to change the other one as well.
 
 A conditional can have multiple branches. The alternate branch is indicated by the keyword `else`. It executes if the condition is not met.
 
