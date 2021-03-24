@@ -11,6 +11,11 @@ Remember [`String#index` from last lesson](./40_strings.md#indexing-substrings)?
 It returns `nil` if the substring does not exist in the search string. It has no index,
 so the index position is absent.
 
+```{.crystal .crystal-play}
+p! "Crystal is awesome".index("aw"),
+   "Crystal is awesome".index("xxxx")
+```
+
 ### Bool
 
 The `Bool` type has just two possible values: `true` and `false` which represent the
@@ -127,6 +132,38 @@ end
 ```
 
 An alternative is to replace `if` with the keyword `unless` which expects just the opposite truthiness. `unless x` is equivalent to `if !x`.
+
+```{.crystal .crystal-play}
+message = "Hello World"
+
+unless message.starts_with?("Hello")
+  puts "I didn't understand that."
+end
+```
+
+Let's look at an example that uses `String#index` to find a substring and highlight its location.
+Remember that it returns `nil` if it can't find the substring? In that case, we can't highlight anything.
+So we need an `if` clause with a condition that checks if the index is `nil`. The `.nil?` method is perfect for that.
+
+```{.crystal .crystal-play}
+str = "Crystal is awesome"
+index = str.index("aw")
+
+if !index.nil?
+  puts str
+  puts "#{" " * index}^^"
+end
+```
+
+The compiler actually enforces that you handle the `nil` case.
+Try to remove the conditional or change the condition to `true`: a type error shows up and explains that you can't
+use a `Nil` value in that expression.
+With the proper condition, the compiler knows that `index` can't be `nil` inside the branch and it can be used as a numeric input.
+
+!!! tip
+    A shorter form for `if !index.nil?` is `if index`, which is mostly equivalent.
+    It only makes a difference if you wanted to tell apart whether a falsey value is `nil` or `false`
+    because the former condition matches for `false`, while the latter does not.
 
 ### Else
 
