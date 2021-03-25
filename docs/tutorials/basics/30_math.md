@@ -73,7 +73,7 @@ p! 1 + 1,  # addition
    2 / 3,  # division
    2 // 3, # floor division
    3 % 2,  # modulus
-   -1,     # negation (unary)
+   -1      # negation (unary)
 ```
 
 As you can see, the result of most of these operations between integer operands is also an integer value.
