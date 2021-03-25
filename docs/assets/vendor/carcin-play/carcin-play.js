@@ -81,14 +81,14 @@ CarcinPlay = function(code, wrapper, carcinOptions) {
             stderrPre.style.display = "none";
           } else {
             stderrPre.style.display = "block";
-            stderr = Carcin.transformStderr(run.stderr);
+            var error = Carcin.transformStderr(run.stderr);
 
             if(window.AnsiUp) {
               const ANSI_UP = new AnsiUp();
-              stderr = ANSI_UP.ansi_to_html(stderr);
+              error = ANSI_UP.ansi_to_html(error);
             }
 
-            stderr.innerHTML = stderr;
+            stderr.innerHTML = error;
           }
 
           statusLine.innerHTML = "Compiled with " + run.language + " " + run.version + ". Exit code: " + run.exit_code + " (" + run.created_at + ", " +
