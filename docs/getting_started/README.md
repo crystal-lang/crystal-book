@@ -65,6 +65,8 @@ Hello World!
 !!! note
     The main routine is simply the program itself. There's no need to define a "main" function or something similar.
 
+Next you might want to start with the [Introduction Tour](../tutorials/basics/README.md) to get acquainted with the language.
+
 Here we have two more examples to continue our first steps in Crystal:
 
 - [HTTP Server](./http_server.md)

@@ -22,6 +22,7 @@ CarcinPlay = function(code, wrapper, carcinOptions) {
     viewportMargin: Infinity,
     theme: "mkdocs-material",
   });
+  this.codeMirror = codeMirror;
 
   var actions = document.createElement("div");
   actions.className = "carcin-play__actions";
