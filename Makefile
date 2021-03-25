@@ -54,7 +54,7 @@ ansi_up: docs/assets/vendor/ansi_up/ansi_up.min.js
 
 docs/assets/vendor/ansi_up/%:
 	mkdir -p $(@D)
-  curl -sL -o $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
+	curl -sL -o $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
 
 .PHONY: clean
 clean: ## Remove build directory
