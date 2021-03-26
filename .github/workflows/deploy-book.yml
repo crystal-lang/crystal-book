@@ -21,6 +21,15 @@ jobs:
           restore-keys: pip-
       - name: Build book
         run: make build
+      - name: Disallow unchecked intra-site links
+        run: |
+          if grep -P '\[\w.*?\]\((?!http)[^ )]*?(\.html|/)(#[^ )]*?)?\)' docs/**/*.md; then
+            echo "Links within the site must end with .md"; exit 1
+          fi
+          if grep -P '\]\(/|//crystal-lang.org/reference/' docs/**/*.md; then
+            echo "Absolute links within the site are disallowed, use relative links instead"; exit 1
+          fi
+
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: aws-actions/configure-aws-credentials@v1
