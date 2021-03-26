@@ -13,6 +13,8 @@ theme:
     repo: fontawesome/brands/github
   favicon: https://crystal-lang.org/favicon.ico
   logo: assets/crystal-circ.svg
+  features:
+    - navigation.tabs
 
 extra_css:
   - assets/vendor/codemirror/codemirror.min.css
@@ -32,6 +34,7 @@ plugins:
         syntax_and_semantics/macros.md: syntax_and_semantics/macros/README.md
         syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
         guides/continuous_integration.md: guides/ci/README.md
+        conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
 
 markdown_extensions:
   - admonition
