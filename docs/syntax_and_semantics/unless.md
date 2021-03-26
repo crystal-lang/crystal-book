@@ -4,16 +4,16 @@ An `unless` evaluates the then branch if its condition is *falsey*, and evaluate
 
 ```crystal
 unless some_condition
-  then_expression
+  expression_when_falsey
 else
-  else_expression
+  expression_when_truthy
 end
 
 # The above is the same as:
 if some_condition
-  else_expression
+  expression_when_truthy
 else
-  then_expression
+  expression_when_falsey
 end
 
 # Can also be written as a suffix

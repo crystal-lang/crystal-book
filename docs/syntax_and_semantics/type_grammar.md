@@ -189,6 +189,8 @@ def foo(x : _, _ -> Int32)
 end
 ```
 
+In regular code `_` means the [underscore](assignment.md#underscore) variable.
+
 ## typeof
 
 `typeof` is allowed in the type grammar. It returns a union type of the type of the passed expressions:

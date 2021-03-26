@@ -11,13 +11,13 @@ raise "OH NO!"
 raise Exception.new("Some error")
 ```
 
-The String version just creates a new [Exception](http://crystal-lang.org/api/Exception.html) instance with that message.
+The String version just creates a new [Exception](https://crystal-lang.org/api/latest/Exception.html) instance with that message.
 
 Only `Exception` instances or subclasses can be raised.
 
 ## Defining custom exceptions
 
-To define a custom exception type, just subclass from [Exception](http://crystal-lang.org/api/Exception.html):
+To define a custom exception type, just subclass from [Exception](https://crystal-lang.org/api/latest/Exception.html):
 
 ```crystal
 class MyException < Exception

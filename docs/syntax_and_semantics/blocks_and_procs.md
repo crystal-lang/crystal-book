@@ -159,6 +159,22 @@ some do |first, second|
 end
 ```
 
+The [underscore](assignment.md#underscore) is also allowed as a block parameter:
+
+```crystal
+def pairs
+  yield 1, 2
+  yield 2, 4
+  yield 3, 6
+end
+
+pairs do |_, second|
+  print second
+end
+
+# Output: 246
+```
+
 ## Short one-parameter syntax
 
 If a block has a single parameter and invokes a method on it, the block can be replaced with the short syntax argument.
@@ -236,7 +252,7 @@ end
 
 The above prints "2" and "3".
 
-A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
+A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/latest/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
 
 ```crystal
 ary = [1, 2, 3]
@@ -320,7 +336,7 @@ end
 value # :: Int32 | String
 ```
 
-If a `break` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html):
+If a `break` receives many arguments, they are automatically transformed to a [Tuple](https://crystal-lang.org/api/latest/Tuple.html):
 
 ```crystal
 values = twice { break 1, 2 }
@@ -382,7 +398,7 @@ end
 # 3
 ```
 
-If a `next` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
+If a `next` receives many arguments, they are automatically transformed to a [Tuple](https://crystal-lang.org/api/latest/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
 
 ## with ... yield
 
@@ -435,7 +451,7 @@ end
 
 That means that any type that responds to `[]` with integers can be unpacked in a block parameter.
 
-For [Tuple](http://crystal-lang.org/api/Tuple.html) parameters you can take advantage of auto-splatting and do not need parentheses:
+For [Tuple](https://crystal-lang.org/api/latest/Tuple.html) parameters you can take advantage of auto-splatting and do not need parentheses:
 
 ```crystal
 array = [{1, "one", true}, {2, "two", false}]
@@ -444,7 +460,7 @@ array.each do |number, word, bool|
 end
 ```
 
-[Hash(K, V)#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
+[Hash(K, V)#each](https://crystal-lang.org/api/latest/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
 
 ```crystal
 h = {"foo" => "bar"}

@@ -14,10 +14,7 @@ We may check the Crystal compiler version. If Crystal is installed correctly the
 
 ```console
 $ crystal --version
-Crystal 0.34.0 (2020-04-07)
-
-LLVM: 10.0.0
-Default target: x86_64-apple-macosx
+--8<-- "crystal-version.txt"
 ```
 
 Great!
@@ -53,11 +50,10 @@ More details about using the compiler can be found on the manpage `man crystal` 
 
 The following example is the classic Hello World. In Crystal it looks like this:
 
-```crystal
-# hello_world.cr
-
-puts "Hello World!"
-```
+!!! example "hello_world.cr"
+    ```crystal
+    puts "Hello World!"
+    ```
 
 We may run our example like this:
 
@@ -68,6 +64,8 @@ Hello World!
 
 !!! note
     The main routine is simply the program itself. There's no need to define a "main" function or something similar.
+
+Next you might want to start with the [Introduction Tour](../tutorials/basics/README.md) to get acquainted with the language.
 
 Here we have two more examples to continue our first steps in Crystal:
 

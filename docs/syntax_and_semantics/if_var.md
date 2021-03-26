@@ -62,7 +62,7 @@ if a = @a
 end
 ```
 
-Another option is to use [`Object#try`](https://crystal-lang.org/api/Object.html#try%28%26block%29-instance-method) found in the standard library which only executes the block if the value is not `nil`:
+Another option is to use [`Object#try`](https://crystal-lang.org/api/latest/Object.html#try%28%26block%29-instance-method) found in the standard library which only executes the block if the value is not `nil`:
 
 ```crystal
 @a.try do |a|

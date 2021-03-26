@@ -11,7 +11,7 @@ lib X
 end
 ```
 
-Then you can pass a function (a [Proc](http://crystal-lang.org/api/Proc.html)) like this:
+Then you can pass a function (a [Proc](https://crystal-lang.org/api/latest/Proc.html)) like this:
 
 ```crystal
 f = ->(x : Int32) { x + 1 }

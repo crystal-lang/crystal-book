@@ -7,7 +7,7 @@ Special macros exist that are invoked in some situations as hooks, at compile ti
 * `extended` is invoked when a module is extended. `@type` is the extending type.
 * `method_missing` is invoked when a method is not found.
 * `method_added` is invoked when a new method is defined in the current scope.
-* `finished` is invoked after instance variable types for all classes are known.
+* `finished` is invoked after parsing finished, so all types and their methods are known.
 
 Example of `inherited`:
 

@@ -1,6 +1,6 @@
 # Hash
 
-A [Hash](http://crystal-lang.org/api/Hash.html) is a generic collection of key-value pairs mapping keys of type `K` to values of type `V`.
+A [Hash](https://crystal-lang.org/api/latest/Hash.html) is a generic collection of key-value pairs mapping keys of type `K` to values of type `V`.
 
 Hashes are typically created with a hash literal denoted by curly braces (`{ }`) enclosing a list of pairs using `=>` as delimiter between key and value and separated by commas `,`.
 
