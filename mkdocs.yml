@@ -35,6 +35,7 @@ plugins:
         syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
         guides/continuous_integration.md: guides/ci/README.md
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
+        docs/overview/README.md: syntax_and_semantics/syntax_and_semantics/README.md
 
 markdown_extensions:
   - admonition

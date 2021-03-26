@@ -9,8 +9,7 @@
     * [Coding style](conventions/coding_style.md)
     * [Platform Support](platform_support.md)
 * Specification
-    * [Syntax and semantics](syntax_and_semantics/README.md)
-    * [About this guide](overview/README.md)
+    * [About this guide](syntax_and_semantics/README.md)
     * [Comments](syntax_and_semantics/comments.md)
     * [Documenting code](syntax_and_semantics/documenting_code.md)
     * [Literals](syntax_and_semantics/literals/README.md)
