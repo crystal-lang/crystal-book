@@ -11,12 +11,12 @@ DOCS_FILES := $(shell find docs -type f)
 build: ## Build website into build directory
 build: $(OUTPUT_DIR)
 
-$(OUTPUT_DIR): $(DOCS_FILES) $(MKDOCS)
+$(OUTPUT_DIR): $(DOCS_FILES) $(MKDOCS) mkdocs.yml
 	$(MKDOCS) build -d $(OUTPUT_DIR) --strict
 
 .PHONY: serve
 serve: ## Run live-preview server
-serve: $(MKDOCS)
+serve: $(MKDOCS) mkdocs.yml
 	$(MKDOCS) serve
 
 deps: $(MKDOCS)
@@ -54,7 +54,7 @@ ansi_up: docs/assets/vendor/ansi_up/ansi_up.min.js
 
 docs/assets/vendor/ansi_up/%:
 	mkdir -p $(@D)
-  curl -sL -o $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
+	curl -sL -o $@ https://cdn.jsdelivr.net/npm/ansi_up@5.0.0/$(@F)
 
 .PHONY: clean
 clean: ## Remove build directory
@@ -70,6 +70,10 @@ clean_vendor: ## Remove docs/assets/vendor directory
 
 .PHONY: clean_all
 clean_all: clean clean_deps clean_vendor
+
+.PHONY: format_api_docs_links
+format_api_docs_links:
+	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
 
 .PHONY: help
 help: ## Show this help

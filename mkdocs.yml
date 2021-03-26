@@ -13,6 +13,8 @@ theme:
     repo: fontawesome/brands/github
   favicon: https://crystal-lang.org/favicon.ico
   logo: assets/crystal-circ.svg
+  features:
+    - navigation.tabs
 
 extra_css:
   - assets/vendor/codemirror/codemirror.min.css
@@ -33,11 +35,13 @@ plugins:
         syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
         guides/continuous_integration.md: guides/ci/README.md
         syntax_and_semantics/cross-compilation.md: guides/compilation/cross-compilation.md
+        conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
 
 markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.magiclink
+  - pymdownx.snippets
   - pymdownx.superfences
   - toc:
       permalink: true
@@ -49,6 +53,7 @@ google_analytics:
 extra_javascript:
   - assets/vendor/codemirror/codemirror.min.js
   - assets/vendor/codemirror/mode/crystal/crystal.min.js
+  - assets/vendor/ansi_up/ansi_up.min.js
   - assets/vendor/carcin-play/carcin.js
   - assets/vendor/carcin-play/carcin-play.js
   - assets/crystal-play.js

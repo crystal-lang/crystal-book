@@ -16,3 +16,14 @@
 .md-typeset .admonition {
     font-size: 0.72rem;
 }
+
+.md-header {
+    /* place it above codemirror gutter */
+    z-index: 10;
+}
+@media screen and (max-width: 76.1875em) {
+    .md-sidebar--primary {
+        /* place it above codemirror gutter */
+        z-index: 10;
+    }
+}

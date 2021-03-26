@@ -14,10 +14,7 @@ We may check the Crystal compiler version. If Crystal is installed correctly the
 
 ```console
 $ crystal --version
-Crystal 0.34.0 (2020-04-07)
-
-LLVM: 10.0.0
-Default target: x86_64-apple-macosx
+--8<-- "crystal-version.txt"
 ```
 
 Great!
@@ -67,6 +64,8 @@ Hello World!
 
 !!! note
     The main routine is simply the program itself. There's no need to define a "main" function or something similar.
+
+Next you might want to start with the [Introduction Tour](../tutorials/basics/README.md) to get acquainted with the language.
 
 Here we have two more examples to continue our first steps in Crystal:
 
