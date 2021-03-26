@@ -57,5 +57,5 @@
 
 .card > ul > li:not(:last-child)::after {
     content: "·";
-    margin-right: .3em;
+    margin: 0 0.3em;
 }

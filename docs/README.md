@@ -13,45 +13,35 @@ Crystal is a language for humans and computers. These materials help humans unde
 
 These instructions and courses help you got get to know the language and how to use it.
 
-<div class="cards">
-  <div class="card">
-    <h3><a href="getting_started/">
-      Getting started
-    </a></h3>
-    <p>Install Crystal and get it running.</p>
+<div class="cards" markdown="1">
+  <div class="card" markdown="1">
+
+### [Getting started](getting_started/README.md)
+Install Crystal and get it running.
+
   </div>
-  <div class="card">
-    <h3>
-      Tutorials
-    </h3>
-    <p>Introductory courses for beginners and advanced learners.</p>
-    <ul>
-      <li><a href="tutorials/basics/index.html">
-        Basics
-      </a></li>
-    </ul>
+  <div class="card" markdown="1">
+
+### Tutorials
+Introductory courses for beginners and advanced learners.
+
+* [Basics](tutorials/basics/README.md)
+
   </div>
-  <div class="card">
-    <h3><a href="guides/">
-      Guides
-    </a></h3>
-    <p>Detailed examples for practical applications.</p>
+  <div class="card" markdown="1">
+
+### [Guides](guides/README.md)
+Detailed examples for practical applications.
+
   </div>
-  <div class="card">
-    <h3>
-      Tools
-    </h3>
-    <ul>
-      <li><a href="https://github.com/crystal-lang/crystal/wiki/Online-playgrounds">
-        Online Playgrounds
-      </a></li>
-      <li><a href="https://github.com/veelenga/awesome-crystal#editor-plugins">
-        IDE Integrations
-      </a></li>
-      <li><a href="guides/ci/index.html">
-        CI Integrations
-      </a></li>
-    </ul>
+  <div class="card" markdown="1">
+
+### Tools
+
+* [Online Playgrounds](https://github.com/crystal-lang/crystal/wiki/Online-playgrounds)
+* [IDE Integrations](https://github.com/veelenga/awesome-crystal#editor-plugins)
+* [CI Integrations](guides/ci/README.md)
+
   </div>
 </div>
 
@@ -61,41 +51,34 @@ These instructions and courses help you got get to know the language and how to 
 
 The core documentation of the Crystal language, standard library and tooling.
 
-<div class="cards">
-  <div class="card">
-    <h3><a href="syntax-and-semantics/">
-        Language Reference
-    </a></h3>
-    <p>Specification of the language.</p>
+<div class="cards" markdown="1">
+  <div class="card" markdown="1">
+
+### [Language Reference](syntax-and-semantics/)
+Specification of the language.
+
   </div>
-  <div class="card">
-    <h3><a href="https://crystal-lang.org/api">
-        Standard Library API
-    </a></h3>
-    <p>Documentation of the standard library.</p>
+  <div class="card" markdown="1">
+
+### [Standard Library API](https://crystal-lang.org/api)
+Documentation of the standard library.
+
   </div>
-  <div class="card">
-    <h3>
-      Shards
-    </h3>
-    <p>Discover the ecosystem of Crystal libraries.</p>
-    <ul>
-      <li><a href="https://crystal-lang.org/community/#shards">
-        Discovering Shards
-      </a></li>
-      <li><a href="https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc">
-        Specification
-      </li>
-      <li><a href="the_shards_command/README.md">
-        Shards Manual
-      </a></li>
-    </ul>
+  <div class="card" markdown="1">
+
+### Shards
+Discover the ecosystem of Crystal libraries.
+
+* [Discovering Shards](https://crystal-lang.org/community/#shards)
+* [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
+* [Shards Manual](the_shards_command/README.md)
+
   </div>
-  <div class="card">
-    <h3><a href="using_the_compiler/README.md">
-      Compiler Manual
-    </a></h3>
-    <p>Instructions on how to use the compiler and tools.</p>
+  <div class="card" markdown="1">
+
+### [Compiler Manual](using_the_compiler/README.md)
+Instructions on how to use the compiler and tools.
+
   </div>
 </div>
 
@@ -105,37 +88,28 @@ The core documentation of the Crystal language, standard library and tooling.
 
 If you want to dive into development of Crystal, these materials give some guidance.
 
-<div class="cards">
-  <div class="card">
-    <h3><a href="https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md">
-      Contributing Instructions
-    </a></h3>
-    <p>A guide on how to open issues and contribute code to the Crystal project.</p>
+<div class="cards" markdown="1">
+  <div class="card" markdown="1">
+
+### [Contributing Instructions](https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md)
+A guide on how to open issues and contribute code to the Crystal project.
+
   </div>
-  <div class="card">
-    <h3><a href="https://github.com/crystal-lang/crystal/blob/master/CODE_OF_CONDUCT.md">
-      Code of Conduct
-    </a></h3>
-    <p>Our standards and expectations about working together as a community.</p>
+  <div class="card" markdown="1">
+
+### [Code of Conduct](https://github.com/crystal-lang/crystal/blob/master/CODE_OF_CONDUCT.md)
+Our standards and expectations about working together as a community.
+
   </div>
-  <div class="card">
-    <h3>Developer resources</h3>
-    <ul>
-      <li><a href="https://github.com/crystal-lang/crystal/wiki/All-required-libraries">
-        All required libraries
-      </a></li>
-      <li><a href="https://github.com/crystal-lang/crystal/wiki/Compiler-internals">
-        Compiler internals
-      </a></li>
-      <li><a href="conventions/coding_style.html">
-        Coding style
-      </a></li>
-      <li><a href="platform_support.html">
-        Platform Support
-      </a></li>
-      <li><a href="https://github.com/crystal-lang/crystal/wiki/Merging-PRs">
-        Merging PRs
-      </a></li>
-    </ul>
+  <div class="card" markdown="1">
+
+### Developer resources
+
+* [All required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)
+* [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
+* [Coding style](conventions/coding_style.md)
+* [Platform Support](platform_support.md)
+* [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
+
   </div>
 </div>
