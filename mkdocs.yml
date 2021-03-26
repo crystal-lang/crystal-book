@@ -17,7 +17,10 @@ theme:
     - navigation.tabs
 
 extra_css:
+  - assets/vendor/codemirror/codemirror.min.css
   - assets/style.css
+  - assets/vendor/carcin-play/carcin-play.css
+  - assets/vendor/carcin-play/codemirror-theme.css
 
 plugins:
   - search
@@ -40,7 +43,16 @@ markdown_extensions:
   - pymdownx.superfences
   - toc:
       permalink: true
+  - pymdownx.snippets
 
 google_analytics:
   - UA-42353458-1
   - auto
+
+extra_javascript:
+  - assets/vendor/codemirror/codemirror.min.js
+  - assets/vendor/codemirror/mode/crystal/crystal.min.js
+  - assets/vendor/carcin-play/carcin.js
+  - assets/vendor/carcin-play/carcin-play.js
+  - assets/vendor/ansi_up/ansi_up.min.js
+  - assets/crystal-play.js

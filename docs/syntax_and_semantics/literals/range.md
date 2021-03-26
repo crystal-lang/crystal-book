@@ -17,9 +17,9 @@ An easy way to remember which one is inclusive and which one is exclusive it to 
 
 The literal `x..y` is semantically equivalent to the explicit constructor `Range.new(x, y)` and `x...y` to `Range.new(x, y, true)`.
 
-The begin and end values do not necessarily need to be of the same type: `true..1` is a valid range, although pretty useless `Enumerable` methods won't work with incompatible types. They need at least to be comparable.
+The begin and end values do not necessarily need to be of the same type: `true..1` is a valid range, although pretty useless since `Enumerable` methods won't work with incompatible types. They need at least to be comparable.
 
-Ranges with `nil` as begin are called begin-less and `nil` as end are called end-less ranges. In the literal notation, `nil` can be omitted: `x..` is an end-less range starting from `x`, and `..x` is an begin-less range ending at `x`.
+Ranges that begin with `nil` are called begin-less ranges, while ranges that end with `nil` are called end-less ranges. In the literal notation, `nil` can be omitted: `x..` is an end-less range starting from `x`, and `..x` is an begin-less range ending at `x`.
 
 ```crystal
 numbers = [1, 10, 3, 4, 5, 8]

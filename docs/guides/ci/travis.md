@@ -13,28 +13,28 @@ Now let's see some examples!
 
 A first (and very basic) Travis CI config file could be:
 
-```yaml
-# .travis.yml
-language: crystal
-```
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
+    ```
 
 That's it! With this config file, Travis CI by default will run `crystal spec`.
 Now, we just need to go to Travis CI dashboard to [add the GitHub repository](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci).
 
 Let's see another example:
 
-```yaml
-# .travis.yml
-language: crystal
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
 
-crystal:
-  - latest
-  - nightly
+    crystal:
+      - latest
+      - nightly
 
-script:
-  - crystal spec
-  - crystal tool format --check
-```
+    script:
+      - crystal spec
+      - crystal tool format --check
+    ```
 
 With this configuration, Travis CI will run the tests using both Crystal `latest` and `nightly` releases on every push to a branch on your Github repository.
 
@@ -49,19 +49,19 @@ Travis CI only provides _runners_ to `latest` and `nightly` releases directly an
 
 First we need to add Docker as a service in `.travis.yml`, and then we can use `docker` commands in our build steps, like this:
 
-```yml
-# .travis.yml
-language: minimal
+!!! example ".travis.yml"
+    ```yaml
+    language: minimal
 
-services:
-  - docker
+    services:
+      - docker
 
-script:
-  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
-```
+    script:
+      - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
+    ```
 
 !!! note
-    We may read about different (languages)[https://docs.travis-ci.com/user/languages/] supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
+    We may read about different [languages](https://docs.travis-ci.com/user/languages/) supported by Travis CI, included [minimal](https://docs.travis-ci.com/user/languages/minimal-and-generic/).
 
 !!! note
     A list with the different official [Crystal docker images](https://hub.docker.com/r/crystallang/crystal/tags) is available at [DockerHub](https://hub.docker.com/r/crystallang/crystal).
@@ -72,28 +72,28 @@ Supported _runners_ can be combined with Docker-based _runners_ using a [Build M
 
 Here is the example:
 
-```yaml
-# .travis.yml
-matrix:
- include:
-   - language: crystal
-     crystal:
-       - latest
-     script:
-       - crystal spec
+!!! example ".travis.yml"
+    ```yaml
+    matrix:
+    include:
+      - language: crystal
+        crystal:
+          - latest
+        script:
+          - crystal spec
 
-   - language: crystal
-     crystal:
-       - nightly
-     script:
-       - crystal spec
+      - language: crystal
+        crystal:
+          - nightly
+        script:
+          - crystal spec
 
-   - language: bash
-     services:
-       - docker
-     script:
-       - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
-```
+      - language: bash
+        services:
+          - docker
+        script:
+          - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
+    ```
 
 ## Installing shards packages
 
@@ -103,17 +103,17 @@ In native _runners_ (`language: crystal`), Travis CI already automatically insta
 
 In a Docker-based _runner_ we need to run `shards install` explicitly, like this:
 
-```yml
-# .travis.yml
-language: bash
+!!! example ".travis.yml"
+    ```yaml
+    language: bash
 
-services:
-  - docker
+    services:
+      - docker
 
-script:
-  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 shards install
-  - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
-```
+    script:
+      - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 shards install
+      - docker run -v $PWD:/src -w /src crystallang/crystal:0.31.1 crystal spec
+    ```
 
 !!! note
     Since the shards will be installed in `./lib/` folder, it will be preserved for the second docker run command.
@@ -124,22 +124,22 @@ Our application or maybe some shards may required libraries and packages. This b
 
 Here is a first example installing the `libsqlite3` development package using the [APT addon](https://docs.travis-ci.com/user/installing-dependencies/#installing-packages-with-the-apt-addon):
 
-```yaml
-# .travis.yml
-language: crystal
-crystal:
-  - latest
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
+    crystal:
+      - latest
 
-before_install:
-  - sudo apt-get -y install libsqlite3-dev
+    before_install:
+      - sudo apt-get -y install libsqlite3-dev
 
-addons:
-  apt:
-    update: true
+    addons:
+      apt:
+        update: true
 
-script:
-  - crystal spec
-```
+    script:
+      - crystal spec
+    ```
 
 ### Using Docker
 
@@ -147,31 +147,31 @@ We are going to build a new docker image based on [crystallang/crystal](https://
 
 To accomplish this we are going to use a [Dockerfile](https://docs.docker.com/engine/reference/builder/):
 
-```dockerfile
-# Dockerfile
-FROM crystallang/crystal:latest
+!!! example "Dockerfile"
+    ```dockerfile
+    FROM crystallang/crystal:latest
 
-# install binary dependencies:
-RUN apt-get update && apt-get install -y libsqlite3-dev
-```
+    # install binary dependencies:
+    RUN apt-get update && apt-get install -y libsqlite3-dev
+    ```
 
 And here is the Travis CI configuration file:
 
-```yml
-# .travis.yml
-language: bash
+!!! example ".travis.yml"
+    ```yaml
+    language: bash
 
-services:
-  - docker
+    services:
+      - docker
 
-before_install:
-  # build image using Dockerfile:
-  - docker build -t testing .
+    before_install:
+      # build image using Dockerfile:
+      - docker build -t testing .
 
-script:
-  # run specs in the container
-  - docker run -v $PWD:/src -w /src testing crystal spec
-```
+    script:
+      # run specs in the container
+      - docker run -v $PWD:/src -w /src testing crystal spec
+    ```
 
 !!! note
     Dockerfile arguments can be used to use the same Dockerfile for latest, nightly or a specific version.
@@ -182,63 +182,63 @@ Travis CI may start [services](https://docs.travis-ci.com/user/database-setup/) 
 
 For example, we can start a [MySQL](https://docs.travis-ci.com/user/database-setup/#mysql) database service by adding a `services:` section to our `.travis.yml`:
 
-```yaml
-# .travis.yml
-language: crystal
-crystal:
-  - latest
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
+    crystal:
+      - latest
 
-services:
-  - mysql
+    services:
+      - mysql
 
-script:
-  - crystal spec
-```
+    script:
+      - crystal spec
+    ```
 
 Here is the new test file for testing against the database:
 
-```crystal
-# spec/simple_db_spec.cr
-require "./spec_helper"
-require "mysql"
+!!! example "spec/simple_db_spec.cr"
+    ```crystal
+    require "./spec_helper"
+    require "mysql"
 
-it "connects to the database" do
-  DB.connect ENV["DATABASE_URL"] do |cnn|
-    cnn.query_one("SELECT 'foo'", as: String).should eq "foo"
-  end
-end
-```
+    it "connects to the database" do
+      DB.connect ENV["DATABASE_URL"] do |cnn|
+        cnn.query_one("SELECT 'foo'", as: String).should eq "foo"
+      end
+    end
+    ```
 
 When pushing this changes Travis CI will report the following error: `Unknown database 'test' (Exception)`, showing that we need to configure the MySQL service **and also setup the database**:
 
-```yaml
-# .travis.yml
-language: crystal
-crystal:
-  - latest
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
+    crystal:
+      - latest
 
-env:
-  global:
-    - DATABASE_NAME=test
-    - DATABASE_URL=mysql://root@localhost/$DATABASE_NAME
+    env:
+      global:
+        - DATABASE_NAME=test
+        - DATABASE_URL=mysql://root@localhost/$DATABASE_NAME
 
-services:
-  - mysql
+    services:
+      - mysql
 
-before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;"
-  - mysql -u root --password="" $DATABASE_NAME < db/schema.sql
+    before_install:
+      - mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;"
+      - mysql -u root --password="" $DATABASE_NAME < db/schema.sql
 
-script:
-  - crystal spec
-```
+    script:
+      - crystal spec
+    ```
 
 We are [using a `schema.sql` script](https://andidittrich.de/2017/06/travisci-setup-mysql-tablesdata-before-running-tests.html) to create a more readable `.travis.yml`. The file `./db/schema.sql` looks like this:
 
-```sql
--- schema.sql
-CREATE TABLE ... etc ...
-```
+!!! example "schema.sql"
+    ```sql
+    CREATE TABLE ... etc ...
+    ```
 
 Pushing these changes will trigger Travis CI and the build should be successful!
 
@@ -255,16 +255,16 @@ This takes time and, on the other hand, these libraries might not change as ofte
 
 Travis CI [uses caching](https://docs.travis-ci.com/user/caching/) to improve some parts of the building path. Here is the new configuration file **with cache enabled**:
 
-```yml
-# .travis.yml
-language: crystal
-crystal:
-  - latest
+!!! example ".travis.yml"
+    ```yaml
+    language: crystal
+    crystal:
+      - latest
 
-cache: shards
+    cache: shards
 
-script:
-  - crystal spec
-```
+    script:
+      - crystal spec
+    ```
 
 Let's push these changes. Travis CI will run, and it will install dependencies, but then it will cache the shards cache folder which, usually, is `~/.cache/shards`. The following runs will use the cached dependencies.
