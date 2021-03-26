@@ -27,3 +27,35 @@
         z-index: 10;
     }
 }
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+    margin: 2em 0;
+}
+.card {
+    display: block;
+}
+.card > h3 {
+    margin: 0;
+}
+.card > p {
+    color: var(--md-default-fg-color--light);
+    margin: 0;
+}
+.card > ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.card > ul > li {
+    margin: 0;
+}
+
+.card > ul > li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.3em;
+}
