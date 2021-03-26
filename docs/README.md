@@ -54,7 +54,7 @@ The core documentation of the Crystal language, standard library and tooling.
 <div class="cards" markdown="1">
   <div class="card" markdown="1">
 
-### [Language Reference](syntax-and-semantics/)
+### [Language Reference](syntax_and_semantics/)
 Specification of the language.
 
   </div>
