@@ -54,7 +54,7 @@ The core documentation of the Crystal language, standard library and tooling.
 <div class="cards" markdown="1">
   <div class="card" markdown="1">
 
-### [Language Reference](syntax_and_semantics/)
+### [Language Reference](syntax_and_semantics/README.md)
 Specification of the language.
 
   </div>
