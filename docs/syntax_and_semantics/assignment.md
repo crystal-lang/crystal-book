@@ -137,3 +137,25 @@ temp2 = 4
 objects[1] = temp1
 objects[2] = temp2
 ```
+
+## Underscore
+
+The underscore can appear on the left-hand side of any assignment. Assigning a value to it has no effect and the underscore cannot be read from:
+
+```crystal
+_ = 1     # no effect
+_ = "123" # no effect
+puts _    # Error: can't read from _
+```
+
+It is useful in multiple assignment when some of the values returned by the right-hand side are unimportant:
+
+```crystal
+before, _, after = "main.cr".partition(".")
+
+# The above is the same as this:
+temp = "main.cr".partition(".")
+before = temp[0]
+_ = temp[1] # this line has no effect
+after = temp[2]
+```

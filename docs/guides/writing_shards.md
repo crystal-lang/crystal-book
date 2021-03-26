@@ -84,7 +84,7 @@ The code you write is up to you, but how you write it impacts whether people wan
 #### Documentation
 
 - Document your code with comments. All of it. Even the private methods.
-- Crystal has [a built-in documentation generator](../conventions/documenting_code.md). Use it!
+- Crystal has [a built-in documentation generator](../syntax_and_semantics/documenting_code.md). Use it!
 
 Run `crystal docs` to convert your code and comments into interlinking API documentation. Open the files in the `/docs/` directory with a web browser to see how your documentation is looking along the way.
 
@@ -116,7 +116,7 @@ This explanation should include a few examples along with subheadings.
 #### Coding Style
 
 - It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
-- Utilize Crystal's [built-in code formatter](../conventions/documenting_code.md) to automatically format all `.cr` files in a directory.
+- Utilize Crystal's [built-in code formatter](../syntax_and_semantics/documenting_code.md) to automatically format all `.cr` files in a directory.
 
 e.g.
 
@@ -132,11 +132,11 @@ e.g.
 crystal tool format --check
 ```
 
-See the Travis CI section below to implement this in your build.
+This check is good to add as a step in [continuous integration](ci/README.md).
 
 ### Writing a `shard.yml`
 
-[The spec](https://github.com/crystal-lang/shards/blob/master/SPEC.md) is your rulebook. Follow it.
+[The spec](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc) is your rulebook. Follow it.
 
 #### Name
 

@@ -1,0 +1,122 @@
+.crystal-play .md-clipboard {
+  z-index: 1000;
+}
+
+.carcin-play .CodeMirror {
+  padding-bottom: 1em;
+  border: 1px solid #eee;
+  height: auto;
+  min-height: 2.5em;
+}
+.carcin-play .CodeMirror-scroll {
+  height: auto;
+}
+
+.carcin-play__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.carcin-play__actions > .md-button {
+  width: 3em;
+  height: 3em;
+  padding: .3em;
+  border-radius: 50%;
+  margin-top: -1.5em;
+  margin-bottom: -.5em;
+  margin-right: .5em;
+  z-index: 10;
+  position: relative;
+  cursor: pointer;
+}
+
+.carcin-play__actions > .md-button > svg > path {
+  fill: currentColor;
+}
+
+.loading > .carcin-play__actions .md-button::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0.5em solid #000;
+  border-radius: 50%;
+  animation: pulse-border 1500ms ease-out infinite;
+}
+.carcin-play__actions .md-button:focus::before,
+.carcin-play__actions .md-button:hover::before {
+  border-color: var(--md-accent-fg-color)
+}
+
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.carcin-play__output {
+  position: relative;
+  min-height: 1.5em;
+}
+
+.carcin-play.error .carcin-play__output {
+  outline: 2px solid #b55;
+}
+
+.carcin-play > .carcin-play__output::after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+
+.carcin-play.loading > .carcin-play__output::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  opacity: 0.5;
+  transition: opacity .5s ease-in-out;
+}
+
+pre.carcin-play__stdout, pre.carcin-play__stderr {
+  margin-top: 0;
+}
+
+.carcin-play__stdout:not(:empty)::before {
+  content: "Output"
+}
+.carcin-play__stderr:not(:empty)::before {
+  content: "Error"
+}
+
+.carcin-play__stdout:not(:empty)::before,
+.carcin-play__stderr:not(:empty)::before {
+  display: block;
+  color: #666;
+  font-weight: bold;
+  background: #eee;
+  padding: .3em .4em;
+}
+
+.carcin-play__status {
+  font-size: 80%;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #888;
+  margin-top: -.75em;
+  padding: .2em .3em;
+}
