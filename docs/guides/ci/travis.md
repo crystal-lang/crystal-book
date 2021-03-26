@@ -39,7 +39,7 @@ Let's see another example:
 With this configuration, Travis CI will run the tests using both Crystal `latest` and `nightly` releases on every push to a branch on your Github repository.
 
 !!! note
-    When [creating a Crystal project](../../using_the_compiler/#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us.
+    When [creating a Crystal project](../../using_the_compiler/README.md#creating-a-crystal-project) using `crystal init`, Crystal creates a `.travis.yml` file for us.
 
 ### Using a specific Crystal release
 
