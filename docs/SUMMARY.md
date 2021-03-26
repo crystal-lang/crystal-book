@@ -8,7 +8,8 @@
     * [The shards command](the_shards_command/README.md)
     * [Coding style](conventions/coding_style.md)
     * [Platform Support](platform_support.md)
-* [Specification](syntax_and_semantics/README.md)
+* Specification
+    * [Syntax and semantics](syntax_and_semantics/README.md)
     * [About this guide](overview/README.md)
     * [Comments](syntax_and_semantics/comments.md)
     * [Documenting code](syntax_and_semantics/documenting_code.md)
@@ -135,7 +136,7 @@
         * [Connection](database/connection.md)
         * [Connection pool](database/connection_pool.md)
         * [Transactions](database/transactions.md)
-* [Tutorials](tutorials/README.md)
+* Tutorials
     * [Basics](tutorials/basics/README.md)
         * [Hello World](tutorials/basics/10_hello_world.md)
         * [Variables](tutorials/basics/20_variables.md)
