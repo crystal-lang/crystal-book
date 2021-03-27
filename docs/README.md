@@ -80,6 +80,16 @@ Discover the ecosystem of Crystal libraries.
 Instructions on how to use the compiler and tools.
 
   </div>
+  <div class="card" markdown="1">
+
+### Developer News
+
+Announcements about the language development.
+
+* [Release Notes](https://crystal-lang.org/blog/#release_notes)
+* [Crystal Blog](https://crystal-lang.org/blog)
+
+  </div>
 </div>
 
 ---
