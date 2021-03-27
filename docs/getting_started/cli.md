@@ -300,7 +300,7 @@ In let_it_cli.cr:5:46
 Error: undefined method 'upper_case' for Nil (compile-time type is (String | Nil))
 ```
 
-Ah! We should have known better: the type of the user input is the [union type](https://crystal-lang.org/reference/syntax_and_semantics/type_grammar.html) `String | Nil`.
+Ah! We should have known better: the type of the user input is the [union type](../syntax_and_semantics/type_grammar.md) `String | Nil`.
 So, we have to test for `Nil` and for `empty` and act naturally for each case:
 
 !!! example "let_it_cli.cr"

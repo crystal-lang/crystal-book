@@ -21,6 +21,8 @@ jobs:
           restore-keys: pip-
       - name: Build book
         run: make build
+      - name: Disallow unchecked intra-site links
+        run: make check_internal_links
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: aws-actions/configure-aws-credentials@v1
