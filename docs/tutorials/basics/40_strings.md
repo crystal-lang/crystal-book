@@ -5,7 +5,7 @@ of most programs: strings. Let's recapitulate the basic properties:
 
 A [string](https://en.wikipedia.org/wiki/String_(computer_science)) is a sequence of [Unicode](https://en.wikipedia.org/wiki/Unicode) characters encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
 A string is [immutable](https://en.wikipedia.org/wiki/Immutable_object):
-If you apply a modification to a string, you get a new string with the
+If you apply a modification to a string, you actually get a new string with the
 modified content. The original string stays the same.
 
 Strings are written as literals typically enclosed in double-quote characters (`"`).
@@ -52,7 +52,7 @@ puts "I say: \"Hello \\\n\tWorld!\""
 
 ### Alternative Delimiters
 
-Some string literals may contain a lot of double quotes – think of HTML tags with quoted argument values for example. It would be cumbersome to have to escape each one with a backslash. Alternative literal delimiters are a convenient alternative. `%(...)` is equivalent to `"..."` except that the delimiters are denoted by parentheses (`(` and `)`) instead of double-quotes.
+Some string literals may contain a lot of double quotes – think of HTML tags with quoted argument values for example. It would be cumbersome to have to escape each one with a backslash. Alternative literal delimiters are a convenient alternative. `%(...)` is equivalent to `"..."` except that the delimiters are denoted by parentheses (`(` and `)`) instead of double quotes.
 
 ```{.crystal .crystal-play}
 puts %(I say: "Hello World!")
