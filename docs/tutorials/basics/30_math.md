@@ -107,7 +107,7 @@ Some less common math operations are not operators, but named methods.
 p! -5.abs,    # absolute value
    4.3.round, # round to nearest integer
    5.even?,   # odd/even check
-   10.gcd     # greatest common divisor
+   10.gcd(16) # greatest common divisor
 ```
 
 !!! info

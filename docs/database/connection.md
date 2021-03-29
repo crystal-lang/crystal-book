@@ -70,9 +70,9 @@ DB.connect "mysql://root:root@localhost/test" do |cnn|
 end
 ```
 
-First, in this example, we are using a transaction (check the [transactions](https://crystal-lang.org/reference/database/transactions.html) section for more information on this topic)
+First, in this example, we are using a transaction (check the [transactions](transactions.md) section for more information on this topic)
 Second, it's important to notice that the connection given by the transaction **is the same connection** that we were working with, before the transaction begin. That is, there is only **one** connection at all times in our program.
-And last, we are using the method `#exec` and `#query`. You may read more about executing queries in the [database](https://crystal-lang.org/reference/database/) section.
+And last, we are using the method `#exec` and `#query`. You may read more about executing queries in the [database](README.md) section.
 
 Now that we have a good idea about creating a connection, let's present the **second way** for creating one: `DB#open`
 
@@ -90,7 +90,7 @@ As with a connection, we should close the database once we don't need it anymore
 Or instead, we could use a block and let Crystal close the database for us!
 
 But, where is the connection?
-Well, we should be asking for the **connections**. When a database is created, a pool of connections is created with connections to the database prepared and ready to use! (Do you want to read more about **pool of connections**? In the [connection pool](https://crystal-lang.org/reference/database/connection_pool.html) section you may read all about this interesting topic!)
+Well, we should be asking for the **connections**. When a database is created, a pool of connections is created with connections to the database prepared and ready to use! (Do you want to read more about **pool of connections**? In the [connection pool](connection_pool.md) section you may read all about this interesting topic!)
 
 How do we use a connection from the `database` object?
 For this, we could ask the database for a connection using the method `Database#checkout`. But, doing this will require to explicitly return the connection to the pool using `Connection#release`. Here is an example:

@@ -15,7 +15,7 @@ We are going to use Conway's Game of Life as the example application. More preci
 
 Note that we won't be using TDD in the example itself, but we will mimic as if the example code is the result of the first iterations.
 
-Another important thing to mention is that we are using `crystal init` to [create the application](../using_the_compiler/#creating-a-crystal-project).
+Another important thing to mention is that we are using `crystal init` to [create the application](../../using_the_compiler/README.md#creating-a-crystal-project).
 
 And here's the implementation:
 
