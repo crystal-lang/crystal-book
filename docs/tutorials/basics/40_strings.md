@@ -1,14 +1,14 @@
 # Strings
 
-In the previous lessons we have already made an acquaintance with a major building block
+In the previous lessons, we have already made an acquaintance with a major building block
 of most programs: strings. Let's recapitulate the basic properties:
 
 A [string](https://en.wikipedia.org/wiki/String_(computer_science)) is a sequence of [Unicode](https://en.wikipedia.org/wiki/Unicode) characters encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
 A string is [immutable](https://en.wikipedia.org/wiki/Immutable_object):
-If you apply a modification to a string, you actually get a new string with the
+If you apply a modification to a string, you get a new string with the
 modified content. The original string stays the same.
 
-Strings are written as literals typically enclosed in double quote characters (`"`).
+Strings are written as literals typically enclosed in double-quote characters (`"`).
 
 ## Interpolation
 
@@ -41,7 +41,7 @@ The solution to this problem is escaping: If a double quote is preceded by a bac
 puts "I say: \"Hello World!\""
 ```
 
-There are other escape sequences: For example non printable characters such as a line break (`\n`) or a tabulator (`\t`). If you want to write a literal backslash, the escape sequence is a double backslash (`\\`). The null character (codepoint `0`) is a regular character in Crystal strings. In some programming languages this character denotes the end of a string, but in Crystal it's only determined by its `#size` property.
+There are other escape sequences: For example non-printable characters such as a line break (`\n`) or a tabulator (`\t`). If you want to write a literal backslash, the escape sequence is a double backslash (`\\`). The null character (codepoint `0`) is a regular character in Crystal strings. In some programming languages, this character denotes the end of a string. But in Crystal, it's only determined by its `#size` property.
 
 ```{.crystal .crystal-play}
 puts "I say: \"Hello \\\n\tWorld!\""
@@ -52,7 +52,7 @@ puts "I say: \"Hello \\\n\tWorld!\""
 
 ### Alternative Delimiters
 
-Some string literals may contain a lot of double quotes – think of HTML tags with quoted argument values for example. It would be cumbersome to have to escape each one with a backslash. Alternative literal delimiters are a convenient alternative. `%(...)` is equivalent to `"..."` except that the delimiters are denoted by parentheses (`(` and `)`) instead of double quotes.
+Some string literals may contain a lot of double quotes – think of HTML tags with quoted argument values for example. It would be cumbersome to have to escape each one with a backslash. Alternative literal delimiters are a convenient alternative. `%(...)` is equivalent to `"..."` except that the delimiters are denoted by parentheses (`(` and `)`) instead of double-quotes.
 
 ```{.crystal .crystal-play}
 puts %(I say: "Hello World!")
@@ -73,7 +73,7 @@ The following example uses the Unicode character [`U+1F310` (*Globe with Meridia
 puts "Hello 🌐"
 ```
 
-Working with unicode symbols can be a bit tricky sometimes. Some characters may not be supported by your editor font, some characters are not even printable. As an alternative, Unicode characters can be expressed as an escape sequence. A backslash followed by the letter `u` denotes a Unicode codepoint. The codepoint value is written as hexadecimal digits enclosed in curly braces. The curly braces can be omitted if the codepoint has exactly four digits.
+Working with Unicode symbols can be a bit tricky sometimes. Some characters may not be supported by your editor font, some characters are not even printable. As an alternative, Unicode characters can be expressed as an escape sequence. A backslash followed by the letter `u` denotes a Unicode codepoint. The codepoint value is written as hexadecimal digits enclosed in curly braces. The curly braces can be omitted if the codepoint has exactly four digits.
 
 ```{.crystal .crystal-play}
 puts "Hello \u{1F310}"
@@ -113,7 +113,7 @@ message = "Hello World! Greetings from Crystal."
 p! message.size
 ```
 
-To determine if a string is empty, you can check if the size is zero, or just use the short hand `String#empty?`:
+To determine if a string is empty, you can check if the size is zero, or just use the shorthand `String#empty?`:
 
 ```{.crystal .crystal-play}
 empty_string = ""
@@ -136,9 +136,9 @@ p! blank_string.blank?,
 You can test two strings for equality with the equality operator (`==`) and compare them with the
 comparison operator (`<=>`). Both compare the strings strictly character by character.
 Remember, `<=>` returns an integer indicating the relationship between both operands,
-and `==` returns `true` if the comparison result it `0`, i.e. both values compare equally.
+and `==` returns `true` if the comparison results in `0`, i.e. both values compare equally.
 
-There is however also a `#compare` method which offers case insensitive comparison.
+There is however also a `#compare` method that offers case insensitive comparison.
 
 ```{.crystal .crystal-play}
 message = "Hello World!"
@@ -188,7 +188,7 @@ p! "Crystal is awesome".index("Crystal"),
 ```
 
 The method has an optional `offset` argument that can be used to start searching from a different
-position than the beginning of string. This is useful when the substring may appear multiple times.
+position than the beginning of the string. This is useful when the substring may appear multiple times.
 
 ```{.crystal .crystal-play}
 message = "Crystal is awesome"
@@ -198,7 +198,7 @@ p! message.index("s"),
    message.index("s", offset: 10)
 ```
 
-The method `#rindex` works exactly the same, but instead it searches from the end of the string.
+The method `#rindex` works the same, but it searches from the end of the string instead.
 
 ```{.crystal .crystal-play}
 message = "Crystal is awesome"
@@ -209,7 +209,7 @@ p! message.rindex("s"),
 ```
 
 In case the substring is not found, the result is a special value called `nil`.
-It basically means "no value". Which makes sense when the substring has no index.
+It means "no value". Which makes sense when the substring has no index.
 
 Looking at the return type of `#index` we can see that it returns either `Int32` or `Nil`.
 
@@ -255,7 +255,7 @@ p! message[6, message.size - 6 - 1]
 There's an easier way to do that: The index accessor can be used with a [`Range`](https://crystal-lang.org/api/latest/Range.html)
 of character indices. A range literal consists of a start value and an end value, connected by two dots (`..`).
 The first value indicates the start index of the substring, as before, but the second is the end index (as opposed to the length).
-Now we don't need to repeat the start index in the calculation, because the end index is just the size minus two
+Now we don't need to repeat the start index in the calculation because the end index is just the size minus two
 (one for the end index, and one for excluding the last character).
 
 It can be even easier: Negative index values automatically relate to the end of the string, so we don't need to calculate

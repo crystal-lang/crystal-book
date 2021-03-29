@@ -17,15 +17,15 @@ say_hello() # syntactically equivalent method call with parentheses
 ```
 
 !!! tip
-    Method calls are unambiguously indicated by parentheses after the name, but it can be omitted. It would only be
-    necessary for disambiguation, for example if `say_hello` was also a local variable.
+    Method calls are unambiguously indicated by parentheses after the name, but they can be omitted. It would only be
+    necessary for disambiguation, for example, if `say_hello` was also a local variable.
 
 ## Arguments
 
 What if we want to greet different people, but all in the same manner?
 Instead of writing individual messages, we can define a method that allows customization through a parameter.
 A parameter is like a local variable inside the method body. Parameters are declared after the method name in parentheses.
-When calling a method, you can pass in arguments which are mapped as values for the method's parameters.
+When calling a method, you can pass in arguments that are mapped as values for the method's parameters.
 
 ```{.crystal .crystal-play}
 def say_hello(recipient)
