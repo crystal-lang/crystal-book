@@ -4,25 +4,69 @@
 #
 #    pip-compile requirements.in
 #
-click==7.1.2              # via mkdocs, nltk
-future==0.18.2            # via lunr
-jinja2==2.11.2            # via mkdocs
-joblib==1.0.0             # via nltk
-livereload==2.6.3         # via mkdocs
-lunr[languages]==0.5.8    # via mkdocs
-markdown==3.3.3           # via mkdocs, mkdocs-material, pymdown-extensions
-markupsafe==1.1.1         # via jinja2
-mkdocs-literate-nav==0.2.0  # via -r requirements.in
-mkdocs-material-extensions==1.0.1  # via mkdocs-material
-mkdocs-material==6.2.4    # via -r requirements.in, mkdocs-material-extensions
-mkdocs-redirects==1.0.1   # via -r requirements.in
-mkdocs-section-index==0.2.3  # via -r requirements.in
-mkdocs==1.1.2             # via -r requirements.in, mkdocs-literate-nav, mkdocs-material, mkdocs-redirects, mkdocs-section-index
-nltk==3.5                 # via lunr
-pygments==2.7.4           # via mkdocs-material
-pymdown-extensions==8.1   # via mkdocs-material
-pyyaml==5.3.1             # via mkdocs
-regex==2020.11.13         # via nltk
-six==1.15.0               # via livereload, lunr
-tornado==6.1              # via livereload, mkdocs
-tqdm==4.56.0              # via nltk
+click==7.1.2
+    # via
+    #   mkdocs
+    #   nltk
+future==0.18.2
+    # via lunr
+jinja2==2.11.2
+    # via mkdocs
+joblib==1.0.0
+    # via nltk
+livereload==2.6.3
+    # via mkdocs
+lunr[languages]==0.5.8
+    # via mkdocs
+markdown==3.3.3
+    # via
+    #   mkdocs
+    #   mkdocs-code-validator
+    #   mkdocs-material
+    #   pymdown-extensions
+markupsafe==1.1.1
+    # via jinja2
+git+https://github.com/oprypin/mkdocs-code-validator
+    # via -r requirements.in
+mkdocs-literate-nav==0.2.0
+    # via -r requirements.in
+mkdocs-material-extensions==1.0.1
+    # via mkdocs-material
+mkdocs-material==6.2.4
+    # via
+    #   -r requirements.in
+    #   mkdocs-material-extensions
+mkdocs-redirects==1.0.1
+    # via -r requirements.in
+mkdocs-section-index==0.2.3
+    # via -r requirements.in
+mkdocs==1.1.2
+    # via
+    #   -r requirements.in
+    #   mkdocs-code-validator
+    #   mkdocs-literate-nav
+    #   mkdocs-material
+    #   mkdocs-redirects
+    #   mkdocs-section-index
+nltk==3.5
+    # via lunr
+pygments==2.7.4
+    # via mkdocs-material
+pymdown-extensions==8.1
+    # via
+    #   mkdocs-code-validator
+    #   mkdocs-material
+pyyaml==5.3.1
+    # via mkdocs
+regex==2020.11.13
+    # via nltk
+six==1.15.0
+    # via
+    #   livereload
+    #   lunr
+tornado==6.1
+    # via
+    #   livereload
+    #   mkdocs
+tqdm==4.56.0
+    # via nltk

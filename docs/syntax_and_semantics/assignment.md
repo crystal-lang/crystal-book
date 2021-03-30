@@ -17,8 +17,8 @@ Each of the above kinds of variables will be explained later on.
 
 Some syntax sugar that contains the `=` character is available:
 
-```crystal
-local += 1  # same as: local = local + 1
+```{.crystal nocheck}
+local += 1 # same as: local = local + 1
 
 # The above is valid with these operators:
 # +, -, *, /, %, |, &, ^, **, <<, >>

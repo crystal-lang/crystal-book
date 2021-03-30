@@ -3,3 +3,4 @@ mkdocs-material
 mkdocs-literate-nav
 mkdocs-section-index
 mkdocs-redirects
+git+https://github.com/oprypin/mkdocs-code-validator

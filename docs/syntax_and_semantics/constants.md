@@ -68,6 +68,6 @@ end
 
 Dynamically assigning values to constants using the [chained assignment](assignment.md#chained-assignment) or the [multiple assignment](assignment.md#multiple-assignment) is not supported and results in a syntax error.
 
-```crystal
+```{.crystal nocheck}
 ONE, TWO, THREE = 1, 2, 3 # Syntax error: Multiple assignment is not allowed for constants
 ```

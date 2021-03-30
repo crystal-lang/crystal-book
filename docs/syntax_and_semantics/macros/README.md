@@ -448,7 +448,7 @@ When writing macros (especially outside of a macro definition) it is important t
 
 Here is an example of such an invalid macro:
 
-```crystal
+```{.crystal nocheck}
 case 42
 {% for klass in [Int32, String] %} # Syntax Error: unexpected token: {% (expecting when, else or end)
   when {{klass.id}}

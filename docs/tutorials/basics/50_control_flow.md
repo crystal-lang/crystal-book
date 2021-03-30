@@ -11,9 +11,9 @@ Remember [`String#index` from last lesson](./40_strings.md#indexing-substrings)?
 It returns `nil` if the substring does not exist in the search string. It has no index,
 so the index position is absent.
 
-```{.crystal .crystal-play}
+```crystal-play
 p! "Crystal is awesome".index("aw"),
-   "Crystal is awesome".index("xxxx")
+  "Crystal is awesome".index("xxxx")
 ```
 
 ### Bool
@@ -21,7 +21,7 @@ p! "Crystal is awesome".index("aw"),
 The `Bool` type has just two possible values: `true` and `false` which represent the
 truth values of logic and Boolean algebra.
 
-```{.crystal, .crystal-play}
+```crystal-play
 p! true, false
 ```
 
@@ -33,15 +33,15 @@ managing control flow in a program.
 The following example shows operators for implementing [boolean algebra](https://en.wikipedia.org/wiki/Boolean_algebra) with
 boolean values:
 
-```{.crystal, .crystal-play}
+```crystal-play
 a = true
 b = false
 
 p! a && b, # conjunction (AND)
-   a || b, # disjunction (OR)
-   !a,     # negation (NOT)
-   a != b, # inequivalence (XOR)
-   a == b  # equivalence
+  a || b,  # disjunction (OR)
+  !a,      # negation (NOT)
+  a != b,  # inequivalence (XOR)
+  a == b   # equivalence
 ```
 
 You can try flicking the values of `a` and `b` to see the operator behaviour for different input values.
@@ -53,24 +53,24 @@ and null pointers (just for completeness, we cover that later) are *falsey*. Any
 
 Let's replace `true` and `false` in the above example with other values, for example `"foo"` and `nil`.
 
-```{.crystal, .crystal-play}
+```crystal-play
 a = "foo"
 b = nil
 
 p! a && b, # conjunction (AND)
-   a || b, # disjunction (OR)
-   !a,     # negation (NOT)
-   a != b, # inequivalence (XOR)
-   a == b  # equivalence
+  a || b,  # disjunction (OR)
+  !a,      # negation (NOT)
+  a != b,  # inequivalence (XOR)
+  a == b   # equivalence
 ```
 
 The `AND` and `OR` operators return the first operand value matching the operator's truthiness.
 
-```{.crystal, .crystal-play}
+```crystal-play
 p! "foo" && nil,
-   "foo" && false,
-   false || "foo",
-   "bar" || "foo"
+  "foo" && false,
+  false || "foo",
+  "bar" || "foo"
 ```
 
 The `NOT`, `XOR` and equivalence operators always return a `Bool` value (`true` or `false`).
@@ -93,7 +93,7 @@ Per convention, we indent nested branches by two spaces.
 
 The following example prints the message only if it meets the condition to start with `Hello`.
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 if message.starts_with?("Hello")
@@ -111,7 +111,7 @@ If the message has a value that does not start with `Hello`, the conditional bra
 The condition expression can be more complex. With [boolean algebra](#boolean-algebra) we can construct a condition that accepts either `Hello`
 or `Hi`:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 if message.starts_with?("Hello") || message.starts_with?("Hi")
@@ -123,7 +123,7 @@ Let's turn the condition around: Only print the message if it does *not*  start 
 That's just a minor deviation from the previous example: We can use the negation operator (`!`) to turn the condition
 into the opposite expression.
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 if !message.starts_with?("Hello")
@@ -133,7 +133,7 @@ end
 
 An alternative is to replace `if` with the keyword `unless` which expects just the opposite truthiness. `unless x` is equivalent to `if !x`.
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 unless message.starts_with?("Hello")
@@ -145,7 +145,7 @@ Let's look at an example that uses `String#index` to find a substring and highli
 Remember that it returns `nil` if it can't find the substring? In that case, we can't highlight anything.
 So we need an `if` clause with a condition that checks if the index is `nil`. The `.nil?` method is perfect for that.
 
-```{.crystal .crystal-play}
+```crystal-play
 str = "Crystal is awesome"
 index = str.index("aw")
 
@@ -171,7 +171,7 @@ Let's refine our program and react in both cases, whether the message meets the 
 
 We can do this as two separate conditionals with negated conditions:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 if message.starts_with?("Hello")
@@ -188,7 +188,7 @@ Later, if we change the condition in one place (maybe allowing `Hi` as well), we
 
 A conditional can have multiple branches. The alternate branch is indicated by the keyword `else`. It executes if the condition is not met.
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello World"
 
 if message.starts_with?("Hello")
@@ -204,7 +204,7 @@ Our program only reacts to `Hello`, but we want more interaction. Let's add a br
 We can have branches for different conditions in the same conditional. It's like an `else` with another
 integrated `if`. Hence the keyword is `elsif`:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Bye World"
 
 if message.starts_with?("Hello")
@@ -222,7 +222,7 @@ Note that the different branches are mutually exclusive and conditions evaluate 
 In the above example that doesn't matter because both conditions can't be truthy at the same time (the message can't start with both `Hello` and `Bye`).
 However, we can add an alternative condition that is not exclusive to demonstrate this:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello Crystal"
 
 if message.starts_with?("Hello")

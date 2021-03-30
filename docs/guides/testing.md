@@ -86,9 +86,9 @@ actual.should be >= expected # passes if actual >= expected
 
 ```crystal
 actual.should be_close(expected, delta) # passes if actual is within delta of expected:
-                                        # (actual - expected).abs <= delta
-actual.should contain(expected)         # passes if actual.includes?(expected)
-actual.should match(expected)           # passes if actual =~ expected
+#                                         (actual - expected).abs <= delta
+actual.should contain(expected) # passes if actual.includes?(expected)
+actual.should match(expected)   # passes if actual =~ expected
 ```
 
 ### Expecting errors
