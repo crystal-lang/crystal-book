@@ -26,7 +26,7 @@ markdown==3.3.3
     #   pymdown-extensions
 markupsafe==1.1.1
     # via jinja2
-git+https://github.com/oprypin/mkdocs-code-validator
+mkdocs-code-validator==0.1.0
     # via -r requirements.in
 mkdocs-literate-nav==0.2.0
     # via -r requirements.in
