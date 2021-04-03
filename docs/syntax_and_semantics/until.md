@@ -13,4 +13,4 @@ while !some_condition
 end
 ```
 
-`break` and `next` can also be used inside an `until`.
+`break` and `next` can also be used inside an `until`, and like `while` expressions, `break`s may be used to return values from an `until`.
