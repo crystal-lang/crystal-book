@@ -235,6 +235,7 @@ Here’s the final result, with invalid/missing options handling, plus other new
       end
       parser.invalid_option do |option_flag|
         STDERR.puts "ERROR: #{option_flag} is not a valid option."
+        STDERR.puts ""
         STDERR.puts parser
         exit(1)
       end
@@ -275,7 +276,7 @@ Easy, peasy! Let’s create a new application: the Fab Four will sing with us an
 The method [`gets`](https://crystal-lang.org/api/latest/toplevel.html#gets%28*args,**options%29-class-method) will **pause** the execution of the application, until the user finishes entering the input (pressing the `Enter` key).
 When the user presses `Enter`, then the execution will continue and `user_input` will have the user value.
 
-But what happen if the user doesn’t enter any value? In that case, we would get an empty string (if the user only presses `Enter`) or maybe a `Nil` value (if the input stream id closed, e.g. by pressing `Ctrl+D`).
+But what happens if the user doesn’t enter any value? In that case, we would get an empty string (if the user only presses `Enter`) or maybe a `Nil` value (if the input stream is closed, e.g. by pressing `Ctrl+D`).
 To illustrate the problem let’s try the following: we want the input entered by the user to be sang loudly:
 
 !!! example "let_it_cli.cr"
