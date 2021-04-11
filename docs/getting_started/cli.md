@@ -235,7 +235,7 @@ Here’s the final result, with invalid/missing options handling, plus other new
       end
       parser.invalid_option do |option_flag|
         STDERR.puts "ERROR: #{option_flag} is not a valid option."
-        STDERR.puts ""
+        STDERR.puts
         STDERR.puts parser
         exit(1)
       end
