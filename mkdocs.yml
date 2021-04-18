@@ -4,8 +4,18 @@ repo_url: https://github.com/crystal-lang/crystal
 edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
 use_directory_urls: false
 
+extra:
+  alternate:
+    - name: English
+      link: https://crystal-lang.org/reference/
+      lang: en
+    - name: 日本語
+      link: https://ja.crystal-lang.org/reference/
+      lang: ja
+
 theme:
   name: material
+  language: en
   palette:
     primary: black
     accent: blue
