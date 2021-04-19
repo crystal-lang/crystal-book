@@ -291,19 +291,24 @@ Now it's easy to extract the prefix ranging from `0` of length `search_index` (`
 before the first character of the search string). The suffix is a similar, it ranges from the first character after the search
 string (`search_index + search.size`) to the last character (indicated by `-1`, which means `message.size - 1`).
 
-The result from `#index` could be `nil`. We need to use `.not_nil!` to let the program compile.
-It triggers an error if the value is `nil` (i.e. the search string is not found).
+The result from `#index` could be `nil` instead of a numeric value. The program needs to
+handle this, otherwise it would not compile.
+We'll use an `if` conditional clause for this, which is introduced in more details in the following lesson.
+For now, it's sufficient to know that it ensures `search_index` has a valid value
+and if not, the enclosed expressions are skipped.
 
 ```{.crystal .crystal-play}
 message = "Hello World!"
 
 search = "World"
 
-search_index = message.index(search).not_nil!
+search_index = message.index(search)
 
-prefix = message[0, search_index]
-suffix = message[(search_index + search.size)..-1]
-puts "#{prefix}Crystal#{suffix}"
+if search_index
+  prefix = message[0, search_index]
+  suffix = message[(search_index + search.size)..-1]
+  puts "#{prefix}Crystal#{suffix}"
+end
 ```
 
 This code is actually pretty resilient. Try removing or adding parts of the original message.
