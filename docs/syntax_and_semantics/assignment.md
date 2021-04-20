@@ -5,7 +5,7 @@ The [assignment operator](operators.md#assignments) is the equals sign (`=`).
 
 The target of an assignment can be:
 
-* a [local variable](local_variable.md)
+* a [local variable](local_variables.md)
 * an [instance variable](methods_and_instance_variables.md)
 * a [class variable](class_variables.md)
 * a [constant](constants.md)
