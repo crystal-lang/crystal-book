@@ -183,7 +183,9 @@ ones.
 | `|` | binary OR | `1 | 2` | yes |
 | `^` | binary XOR | `1 ^ 2` | yes |
 
-### Equality
+### Equality and Comparison
+
+#### Equality
 
 Three base operators test equality:
 
@@ -209,7 +211,7 @@ proven faster than equality).
 | `!~` | no pattern match | `"foo" !~ /fo/` | yes |
 | `===` | [case equality](case.md) | `/foo/ === "foo"` | yes |
 
-### Comparison
+#### Comparison
 
 | Operator | Description | Example | Overloadable |
 |---|---|---|---|
@@ -218,6 +220,24 @@ proven faster than equality).
 | `>` | greater | `1 > 2` | yes |
 | `>=` | greater or equal | `1 >= 2` | yes |
 | `<=>` | comparison | `1 <=> 2` | yes |
+
+#### Chaining Equality and Comparison
+
+The compiler allows for `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
+to be chained together.  
+For example `a <= b <= c` is treated as `a <= b && b <= c`
+and it is even possible to mix operators like `a == b <= c > d`.
+
+There are cases where this does not work due to 
+[operator precedence](#operator-precedence),
+e.g. `a <= b == c` results in a compile time error
+while `a == b <= c` works fine.
+To ensure precedence, the compiler 
+treats `a <= b == c` as `a.<=(b.==(c))` and throws an error since `<=` cannot be used with a `Bool`. The same thing happens for `(a == b) <= c` or `(a.==(b)).<=(c)`.
+However, `a == b <= c` is just treated as `a.==(b).<=(c)` where the compiler can infer that this is a chain of comparisons/equalities and produces `a == b && b <= c`.
+
+Because of this rather confusing behavior, it is advised to only make use of this feature
+in obvious cases, e.g. `a <= b <= c`.
 
 ### Logical
 
