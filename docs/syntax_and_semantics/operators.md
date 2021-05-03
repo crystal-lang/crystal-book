@@ -223,8 +223,8 @@ proven faster than equality).
 
 #### Chaining Equality and Comparison
 
-The compiler allows for `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
-to be chained together. 
+Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
+can be chained together and are interpreted as a compound expression. 
 For example `a <= b <= c` is treated as `a <= b && b <= c`
 and it is even possible to mix operators of the same 
 [operator precedence](#operator-precedence) 
