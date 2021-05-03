@@ -183,7 +183,9 @@ ones.
 | `|` | binary OR | `1 | 2` | yes |
 | `^` | binary XOR | `1 ^ 2` | yes |
 
-### Equality
+### Equality and Comparison
+
+#### Equality
 
 Three base operators test equality:
 
@@ -209,7 +211,7 @@ proven faster than equality).
 | `!~` | no pattern match | `"foo" !~ /fo/` | yes |
 | `===` | [case equality](case.md) | `/foo/ === "foo"` | yes |
 
-### Comparison
+#### Comparison
 
 | Operator | Description | Example | Overloadable |
 |---|---|---|---|
@@ -218,6 +220,16 @@ proven faster than equality).
 | `>` | greater | `1 > 2` | yes |
 | `>=` | greater or equal | `1 >= 2` | yes |
 | `<=>` | comparison | `1 <=> 2` | yes |
+
+#### Chaining Equality and Comparison
+
+Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
+can be chained together and are interpreted as a compound expression. 
+For example `a <= b <= c` is treated as `a <= b && b <= c`
+and it is even possible to mix operators of the same 
+[operator precedence](#operator-precedence) 
+like `a >= b <= c > d`. 
+Operators with different precedences can be chained too, however, it is advised to avoid it, since it is makes the code harder to understand. For instance `a == b <= c` is interpreted as `a == b && b <= c`, while `a <= b == c` is interpreted as `a <= (b == c)`. 
 
 ### Logical
 
