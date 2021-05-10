@@ -8,6 +8,7 @@
     * [The shards command](the_shards_command/README.md)
     * [Coding style](conventions/coding_style.md)
     * [Platform Support](platform_support.md)
+	* [Governance document](./governance.md)
 * Specification
     * [About this guide](syntax_and_semantics/README.md)
     * [Comments](syntax_and_semantics/comments.md)
