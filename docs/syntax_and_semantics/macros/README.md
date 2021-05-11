@@ -291,6 +291,21 @@ Foo.new.describe # => "Class is Foo"
 Foo.describe     # => "Class is Foo"
 ```
 
+## The top level module
+
+It is posible to access the top level module, as a [`TypeNode`](https://crystal-lang.org/api/latest/Crystal/Macros/TypeNode.html), with a special instance variable: `@top_level`. The following example shows its utility:
+
+```crystal
+A_CONSTANT = 0
+
+{% if @top_level.has_constant?("A_CONSTANT") %}
+puts "this is printed"
+{% else %}
+puts "this is not printed"
+{% end %}
+```
+
+
 ## Method information
 
 When a macro is invoked you can access the method, the macro is in with a special instance variable: `@def`. The type of this variable is [`Def`](https://crystal-lang.org/api/latest/Crystal/Macros/Def.html) unless the macro is outside of a method, in this case it's [`NilLiteral`](https://crystal-lang.org/api/latest/Crystal/Macros/NilLiteral.html).
