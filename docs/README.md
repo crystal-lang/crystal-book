@@ -103,6 +103,12 @@ Our standards and expectations about working together as a community.
   </div>
   <div class="card" markdown="1">
 
+### [Governance document](governance.md)
+How we take the decisions that guide the language and its community.
+
+  </div>
+  <div class="card" markdown="1">
+
 ### Developer resources
 
 * [All required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)
