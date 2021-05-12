@@ -293,7 +293,7 @@ Foo.describe     # => "Class is Foo"
 
 ## The top level module
 
-It is posible to access the top level module, as a [`TypeNode`](https://crystal-lang.org/api/latest/Crystal/Macros/TypeNode.html), with a special instance variable: `@top_level`. The following example shows its utility:
+It is possible to access the top-level namespace, as a [`TypeNode`](https://crystal-lang.org/api/latest/Crystal/Macros/TypeNode.html), with a special variable: `@top_level`. The following example shows its utility:
 
 ```crystal
 A_CONSTANT = 0
