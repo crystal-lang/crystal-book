@@ -27,7 +27,7 @@ enum Time::DayOfWeek
 end
 ```
 
-__Method names__ are underscore-cased. For example:
+__Method names__ are snake-cased. For example:
 
 ```crystal
 class Person
@@ -42,7 +42,7 @@ class Person
 end
 ```
 
-__Variable names__ are underscore-cased. For example:
+__Variable names__ are snake-cased. For example:
 
 ```crystal
 class Greeting
@@ -84,7 +84,7 @@ Within a project:
 - `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
 - `bin/` contains any executables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with _underscore-case_.
+File paths match the namespace of their contents. Files are named after the class or namespace they define, with _snake-case_.
 
 For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
 
