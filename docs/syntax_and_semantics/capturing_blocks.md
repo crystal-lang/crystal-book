@@ -45,7 +45,7 @@ def some_proc(&block : Int32 ->)
 end
 
 proc = some_proc { |x| x + 1 }
-proc.call(1) # nil
+proc.call(1) # => nil
 ```
 
 To have something returned, either specify the return type or use an underscore to allow any return type:
