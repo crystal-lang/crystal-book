@@ -59,3 +59,7 @@
     content: "·";
     margin: 0 0.3em;
 }
+
+.carcin-play__actions > button.md-button {
+  z-index: 9;
+}
