@@ -82,7 +82,7 @@ By default (i.e. no options given) the application will display the names of the
       "John Lennon",
       "Paul McCartney",
       "George Harrison",
-      "Ringo Starr"
+      "Ringo Starr",
     ]
     shout = false
 
@@ -138,7 +138,7 @@ Let’s create another application: _when passing the option `-g` / `--goodbye_h
       "John Lennon",
       "Paul McCartney",
       "George Harrison",
-      "Ringo Starr"
+      "Ringo Starr",
     ]
     say_hi_to = ""
 
@@ -198,7 +198,7 @@ Here’s the final result, with invalid/missing options handling, plus other new
       "John Lennon",
       "Paul McCartney",
       "George Harrison",
-      "Ringo Starr"
+      "Ringo Starr",
     ]
     shout = false
     say_hi_to = ""
@@ -313,8 +313,8 @@ So, we have to test for `Nil` and for `empty` and act naturally for each case:
     exit if user_input.nil? # Ctrl+D
 
     default_lyrics = "Na, na, na, na-na-na na" \
-                    " / " \
-                    "Na-na-na na, hey Jude"
+                     " / " \
+                     "Na-na-na na, hey Jude"
 
     lyrics = user_input.presence || default_lyrics
 
@@ -340,7 +340,7 @@ Let’s build a really simple application that shows a string with colors! We wi
 Great! That was easy! Now imagine using this string as the banner for our All My CLI application, it's easy if you try:
 
 ```crystal
-  parser.banner = "#{"The Beatles".colorize(:yellow).on(:black)} App"
+parser.banner = "#{"The Beatles".colorize(:yellow).on(:black)} App"
 ```
 
 For our second application, we will add a *text decoration* (`blink`in this case):
@@ -357,8 +357,8 @@ For our second application, we will add a *text decoration* (`blink`in this case
     exit if user_input.nil? # Ctrl+D
 
     default_lyrics = "Na, na, na, na-na-na na" \
-                    " / " \
-                    "Na-na-na na, hey Jude"
+                     " / " \
+                     "Na-na-na na, hey Jude"
 
     lyrics = user_input.presence || default_lyrics
 

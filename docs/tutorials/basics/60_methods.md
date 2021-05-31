@@ -6,7 +6,7 @@ define a method and call it multiple times.
 A method definition is indicated by the keyword `def` followed by the method name.
 Every expression until the keyword `end` is part of the method body.
 
-```{.crystal .crystal-play}
+```crystal-play
 def say_hello
   puts "Hello Penny!"
 end
@@ -27,7 +27,7 @@ Instead of writing individual messages, we can define a method that allows custo
 A parameter is like a local variable inside the method body. Parameters are declared after the method name in parentheses.
 When calling a method, you can pass in arguments that are mapped as values for the method's parameters.
 
-```{.crystal .crystal-play}
+```crystal-play
 def say_hello(recipient)
   puts "Hello #{recipient}!"
 end
@@ -48,7 +48,7 @@ say_hello "Crystal"
 Arguments can be assigned a default value. It is used in case the argument is missing in the method call. Usually,
 arguments are mandatory but when there's a default value, it can be omitted.
 
-```{.crystal .crystal-play}
+```crystal-play
 def say_hello(recipient = "World")
   puts "Hello #{recipient}!"
 end
@@ -67,7 +67,7 @@ But semantically we want to greet people with a name as a `String`.
 
 Type restrictions limit the allowed type of an argument. They come after the argument name, separated by a colon:
 
-```{.crystal .crystal-play}
+```crystal-play
 def say_hello(recipient : String)
   puts "Hello #{recipient}!"
 end
@@ -90,7 +90,7 @@ When a method has an unrestricted argument like `say_hello(recipient)`, *all* ca
 But with overloading several methods of the same name can exist with different argument type restrictions. Each call is routed
 to the most fitting overload.
 
-```{.crystal .crystal-play}
+```crystal-play
 # This methods greets *recipient*.
 def say_hello(recipient : String)
   puts "Hello #{recipient}!"

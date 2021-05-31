@@ -4,7 +4,7 @@ The first thing you need to learn in any programming language is the famous [`He
 
 In Crystal this is pretty simple, maybe a little bit boring:
 
-```{.crystal .crystal-play}
+```crystal-play
 puts "Hello World!"
 ```
 
