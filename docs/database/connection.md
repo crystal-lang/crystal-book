@@ -38,7 +38,7 @@ require "mysql"
 
 DB.connect "mysql://root:root@localhost/test" do |cnn|
   puts typeof(cnn) # => DB::Connection
-end # the connection will be closed here
+end                # the connection will be closed here
 ```
 
 Ok, now we have a connection, let's use it!

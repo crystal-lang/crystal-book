@@ -74,7 +74,7 @@ documented namespace can be accessed with relative names:
 
 Features in other namespaces are referenced with the fully-qualified type path: `Unicorn#horns`, `Unicorn.new`, `Unicorn::CONST`.
 
-Different overloads of a method can be identified by the full signature `.new(name)`, `,new(name, age)`.
+Different overloads of a method can be identified by the full signature `.new(name)`, `.new(name, age)`.
 
 ### Parameters
 

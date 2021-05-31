@@ -11,16 +11,16 @@ followed by numbers or underscores, followed by an optional exponent suffix,
 followed by an optional type suffix. If no suffix is present, the literal's type is `Float64`.
 
 ```crystal
-1.0      # Float64
-1.0_f32  # Float32
-1_f32    # Float32
+1.0     # Float64
+1.0_f32 # Float32
+1_f32   # Float32
 
-1e10     # Float64
-1.5e10   # Float64
-1.5e-7   # Float64
+1e10   # Float64
+1.5e10 # Float64
+1.5e-7 # Float64
 
-+1.3     # Float64
--0.5     # Float64
++1.3 # Float64
+-0.5 # Float64
 ```
 
 The underscore `_` before the suffix is optional.
