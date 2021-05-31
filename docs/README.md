@@ -11,7 +11,7 @@ Crystal is a language for humans and computers. These materials help humans unde
 
 ## Learning Materials
 
-These instructions and courses help you got get to know the language and how to use it.
+These instructions and courses help you get to know the language and how to use it.
 
 <div class="cards" markdown="1">
   <div class="card" markdown="1">
@@ -49,7 +49,7 @@ Detailed examples for practical applications.
 
 ## Grow in Crystal
 
-The core documentation of the Crystal language, standard library and tooling.
+The core documentation of the Crystal language, standard library, and tooling.
 
 <div class="cards" markdown="1">
   <div class="card" markdown="1">
@@ -86,7 +86,7 @@ Instructions on how to use the compiler and tools.
 
 ## Contribute
 
-If you want to dive into development of Crystal, these materials give some guidance.
+If you want to dive into the development of Crystal, these materials give some guidance.
 
 <div class="cards" markdown="1">
   <div class="card" markdown="1">

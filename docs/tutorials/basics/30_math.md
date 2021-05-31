@@ -5,7 +5,7 @@
 The two most common number types are `Int32` and `Float64`. The number in the name denotes the size in bits: `Int32` is a 32-bit [integer type](https://en.wikipedia.org/wiki/Integer_(computer_science)), `Float64` is a 64-bit [floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic).
 
 * An integer literal is written as a series of one or more base-10 digits (`0-9`) without leading zeros. The default type is `Int32`.
-* A floating point literal is written as a series of two or more base-10 digits (`0-9`) with a point (`.`) somewhere in the middle,
+* A floating-point literal is written as a series of two or more base-10 digits (`0-9`) with a point (`.`) somewhere in the middle,
   indicating the decimal point. The default type is `Float64`.
 
 All numeric types allow underscores at any place in the middle. This is useful to write large numbers in a more readable way: `100000` can be written as `100_000`.
@@ -17,11 +17,11 @@ p! 100_000, typeof(100_000)
 p! 100_000.0, typeof(100_000.0)
 ```
 
-Float values print with with a decimal point. Integer values don't.
+Float values print with a decimal point. Integer values don't.
 
 !!! info
     There are quite a few more numeric types, but most of them are intended only for special use cases such as binary protocols,
-    specific numeric algorithms and performance optimization. You probably don't need them for every-day programs.
+    specific numeric algorithms, and performance optimization. You probably don't need them for everyday programs.
 
     See [Integer literal reference](../../syntax_and_semantics/literals/integers.md) and [Float literal reference](../../syntax_and_semantics/literals/floats.md)
     for a full reference on all primitive number types and alternative representations.
@@ -86,7 +86,7 @@ An operation between integer and float operands always returns a float value. Ot
 #### Precedence
 
 When several operators are combined, the question arises in which order are they executed.
-In math there are several rules, like multiplication and division take precedence over addition and subtraction.
+In math, there are several rules, like multiplication and division taking precedence over addition and subtraction.
 Crystal operators implement these precedence rules.
 
 A tool to structure operations are parentheses. An operator expression in parentheses always takes precedence over external operators.
@@ -111,11 +111,11 @@ p! -5.abs,    # absolute value
 ```
 
 !!! info
-    A full list of number methods is available in [the Number API docs](https://crystal-lang.org/api/latest/Number.html) (also check subtypes).
+    A full list of numerical methods is available in [the Number API docs](https://crystal-lang.org/api/latest/Number.html) (also check subtypes).
 
 ### Math Methods
 
-Some arithmetic methods are not defined on the number types directly, but in the `Math` namespace.
+Some arithmetic methods are not defined on the number types directly but in the `Math` namespace.
 
 ```{.crystal, .crystal-play}
 p! Math.cos(1),      # cosine
