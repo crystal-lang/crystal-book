@@ -10,7 +10,7 @@ click==7.1.2
     #   nltk
 future==0.18.2
     # via lunr
-jinja2==2.11.2
+jinja2==2.11.3
     # via mkdocs
 joblib==1.0.0
     # via nltk
