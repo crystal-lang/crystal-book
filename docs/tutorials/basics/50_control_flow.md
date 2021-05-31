@@ -73,7 +73,7 @@ p! "foo" && nil,
   "bar" || "foo"
 ```
 
-The `NOT`, `XOR` and equivalence operators always return a `Bool` value (`true` or `false`).
+The `NOT`, `XOR`, and equivalence operators always return a `Bool` value (`true` or `false`).
 
 ## Control Flow
 
@@ -85,7 +85,7 @@ Now this is going to change.
 
 A conditional clause puts a branch of code behind a gate that only opens if the condition is met.
 
-In the most basic form it consists of a keyword `if` followed by an expression serving as the condition.
+In the most basic form, it consists of a keyword `if` followed by an expression serving as the condition.
 The condition is met when the return value of the expression is *truthy*.
 All subsequent expressions are part of the branch until it closes with the keyword `end`.
 
@@ -106,7 +106,7 @@ end
     But let's assume we don't define the value of the message in the source code. It could just as well come from user input,
     for example a chat client.
 
-If the message has a value that does not start with `Hello`, the conditional branch skips and the program prints nothing.
+If the message has a value that does not start with `Hello`, the conditional branch skips, and the program prints nothing.
 
 The condition expression can be more complex. With [boolean algebra](#boolean-algebra) we can construct a condition that accepts either `Hello`
 or `Hi`:
@@ -155,7 +155,7 @@ if !index.nil?
 end
 ```
 
-The compiler actually enforces that you handle the `nil` case.
+The compiler enforces that you handle the `nil` case.
 Try to remove the conditional or change the condition to `true`: a type error shows up and explains that you can't
 use a `Nil` value in that expression.
 With the proper condition, the compiler knows that `index` can't be `nil` inside the branch and it can be used as a numeric input.
@@ -238,5 +238,5 @@ elsif message.starts_with?("Hello")
 end
 ```
 
-Both clauses have branches with the same conditions but in different order and they behave differently.
+Both clauses have branches with the same conditions but in a different order and they behave differently.
 The first matching condition selects which branch executes.

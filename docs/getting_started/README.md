@@ -2,7 +2,7 @@
 
 Hi and welcome to Crystal's Reference Book!
 
-First let's make sure to [install the compiler](https://crystal-lang.org/install/) so that we may try all the examples listed in this book.
+First, let's make sure to [install the compiler](https://crystal-lang.org/install/) so that we may try all the examples listed in this book.
 
 Once installed, the Crystal compiler should be available as `crystal` command.
 
@@ -40,7 +40,7 @@ Command:
     help, --help, -h         show this help
     version, --version, -v   show version
 
-Run a command followed by --help to see command specific information, ex:
+Run a command followed by --help to see command-specific information, ex:
     crystal <command> --help
 ```
 
