@@ -50,7 +50,7 @@ p! 2 > 1,
 ```
 
 The universal comparison operator is `<=>`, also called *Spaceship operator* for its appearance. It compares its operands and returns a value that is either zero (both operands are equal),
-a negative value (the first operand is bigger), or a positive value (the second operand is bigger). It combines the behaviour of all other comparison operators.
+a positive value (the first operand is bigger), or a negative value (the second operand is bigger). It combines the behaviour of all other comparison operators.
 
 ```{.crystal, .crystal-play}
 p! 1 <=> 1,
