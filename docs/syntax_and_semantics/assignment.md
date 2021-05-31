@@ -36,17 +36,20 @@ as the target of an assignment. The semantics of the assignment operator apply a
 a form of syntax sugar to the method call.
 
 This is an example of a call to a setter method in typical method notation and with assignment operator.
-Both expressions are equivalent.
+Both assignment expressions are equivalent.
 
 ```crystal
-def name=(value);end
+class Thing
+  def name=(value); end
+end
+thing = Thing.new
 
-name=("John")
-name = "John"
+thing.name=("John")
+thing.name = "John"
 ```
 
 This is an example of a call to an indexed assignment method in typical method notation and with index assignment operator.
-Both expressions are equivalent.
+Both assignment expressions are equivalent.
 
 ```crystal
 class List
@@ -57,6 +60,9 @@ list = List.new
 list.[]=(2, 3)
 list[2] = 3
 ```
+
+NOTE: This does not apply to top-level methods. An assignment `x = y` in the top-level scope is always an assignment to
+a local variable, never a call to a method `x=`.
 
 ### Combined assignments
 
@@ -69,6 +75,8 @@ Some syntax sugar that contains the `=` character is available:
 ```crystal
 local += 1  # same as: local = local + 1
 ```
+
+This assumes that the corresponding target `local` is assignable, either as a variable or via the respective getter and setter methods.
 
 The `=` operator syntax sugar is also available to setter and index assignment methods.
 Note that `||` and `&&` use the `[]?` method to check for key presence.
