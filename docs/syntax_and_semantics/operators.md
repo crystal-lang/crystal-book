@@ -112,7 +112,7 @@ ones.
 | Category | Operators |
 |---|---|
 | Index accessors | `[]`, `[]?` |
-| Unary | `+`, `&+`, `-`, `&-`, `!`, `~`, `*`, `**` |
+| Unary | `+`, `&+`, `-`, `&-`, `!`, `~` |
 | Exponential | `**`, `&**` |
 | Multiplicative | `*`, `&*`, `/`, `//`, `%` |
 | Additive | `+`, `&+`, `-`, `&-` |
@@ -126,6 +126,7 @@ ones.
 | Range | `..`, `...` |
 | Conditional | `?:` |
 | Assignment | `=`, `[]=`, `+=`, `&+=`, `-=`, `&-=`, `*=`, `&*=`, `/=`, `//=`, `%=`, `|=`, `&=`,`^=`,`**=`,`<<=`,`>>=`, `||=`, `&&=` |
+| Splat | `*`, `**` |
 
 ## List of operators
 
@@ -133,57 +134,60 @@ ones.
 
 #### Unary
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `+`  | positive | `+1` | yes |
-| `&+` | wrapping positive | `&+1` | yes |
-| `-`  | negative | `-1` | yes |
-| `&-` | wrapping negative | `&-1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+`  | positive | `+1` | yes | right |
+| `&+` | wrapping positive | `&+1` | yes | right |
+| `-`  | negative | `-1` | yes | right |
+| `&-` | wrapping negative | `&-1` | yes | right |
 
 #### Multiplicative
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `**` | exponentiation | `1 ** 2` | yes |
-| `&**` | wrapping exponentiation | `1 &** 2` | yes |
-| `*` | multiplication | `1 * 2` | yes |
-| `&*` | wrapping multiplication | `1 &* 2` | yes |
-| `/` | division | `1 / 2` | yes |
-| `//` | floor division | `1 // 2` | yes |
-| `%` | modulus | `1 % 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `**` | exponentiation | `1 ** 2` | yes | left |
+| `&**` | wrapping exponentiation | `1 &** 2` | yes | left |
+| `*` | multiplication | `1 * 2` | yes | left |
+| `&*` | wrapping multiplication | `1 &* 2` | yes | left |
+| `/` | division | `1 / 2` | yes | left |
+| `//` | floor division | `1 // 2` | yes | left |
+| `%` | modulus | `1 % 2` | yes | left |
 
 #### Additive
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `+` | addition | `1 + 2` | yes |
-| `&+` | wrapping addition | `1 &+ 2` | yes |
-| `-` | subtraction | `1 - 2` | yes |
-| `&-` | wrapping subtraction | `1 &- 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+` | addition | `1 + 2` | yes | left |
+| `&+` | wrapping addition | `1 &+ 2` | yes | left |
+| `-` | subtraction | `1 - 2` | yes | left |
+| `&-` | wrapping subtraction | `1 &- 2` | yes | left |
 
 ### Other unary operators
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `!` | inversion | `!true` | no |
-| `~` | binary complement | `~1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `!` | inversion | `!true` | no | right |
+| `~` | binary complement | `~1` | yes | right |
 
 ### Shifts
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `<<` | shift left, append | `1 << 2`, `STDOUT << "foo"` | yes |
-| `>>` | shift right | `1 >> 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `<<` | shift left, append | `1 << 2`, `STDOUT << "foo"` | yes | left |
+| `>>` | shift right | `1 >> 2` | yes | left |
 
 ### Binary
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `&` | binary AND | `1 & 2` | yes |
-| `|` | binary OR | `1 | 2` | yes |
-| `^` | binary XOR | `1 ^ 2` | yes |
 
-### Equality
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&` | binary AND | `1 & 2` | yes | left |
+| `|` | binary OR | `1 | 2` | yes | left |
+| `^` | binary XOR | `1 ^ 2` | yes | left |
+
+### Equality and Comparison
+
+#### Equality
 
 Three base operators test equality:
 
@@ -201,30 +205,40 @@ Nevertheless, these inversions can be defined with a custom implementation. This
 can be useful for example to improve performance (non-equality can often be
 proven faster than equality).
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `==` | equals | `1 == 2` | yes |
-| `!=` | not equals | `1 != 2` | yes |
-| `=~` | pattern match | `"foo" =~ /fo/` | yes |
-| `!~` | no pattern match | `"foo" !~ /fo/` | yes |
-| `===` | [case equality](case.md) | `/foo/ === "foo"` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `==` | equals | `1 == 2` | yes | left |
+| `!=` | not equals | `1 != 2` | yes | left |
+| `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
+| `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
+| `===` | [case equality](case.md) | `/foo/ === "foo"` | yes | left |
 
-### Comparison
+#### Comparison
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `<` | less | `1 < 2` | yes |
-| `<=` | less or equal | `1 <= 2` | yes |
-| `>` | greater | `1 > 2` | yes |
-| `>=` | greater or equal | `1 >= 2` | yes |
-| `<=>` | comparison | `1 <=> 2` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `<` | less | `1 < 2` | yes | left |
+| `<=` | less or equal | `1 <= 2` | yes | left |
+| `>` | greater | `1 > 2` | yes | left |
+| `>=` | greater or equal | `1 >= 2` | yes | left |
+| `<=>` | comparison | `1 <=> 2` | yes | left |
+
+#### Chaining Equality and Comparison
+
+Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
+can be chained together and are interpreted as a compound expression. 
+For example `a <= b <= c` is treated as `a <= b && b <= c`
+and it is even possible to mix operators of the same 
+[operator precedence](#operator-precedence) 
+like `a >= b <= c > d`. 
+Operators with different precedences can be chained too, however, it is advised to avoid it, since it is makes the code harder to understand. For instance `a == b <= c` is interpreted as `a == b && b <= c`, while `a <= b == c` is interpreted as `a <= (b == c)`. 
 
 ### Logical
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `&&` | [logical AND](and.md) | `true && false` | no |
-| `||` | [logical OR](or.md) | `true || false` | no |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `&&` | [logical AND](and.md) | `true && false` | no | left |
+| `||` | [logical OR](or.md) | `true || false` | no | left |
 
 ### Range
 
@@ -251,9 +265,9 @@ See [Splats and Tuples](splats_and_tuples.md) for details.
 The [conditional operator (`? :`)](./ternary_if.md) is internally rewritten to
 an `if` expression by the compiler.
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `? :` | conditional | `a == b ? c : d` | no |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `? :` | conditional | `a == b ? c : d` | no | right |
 
 ### Assignments
 
@@ -262,11 +276,11 @@ operand. The first operand is either a variable (in this case the operator can't
 be redefined) or a call (in this case the operator can be redefined).
 See [assignment](assignment.md) for details.
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `=` | variable assignment | `a = 1` | no |
-| `=` | call assignment | `a.b = 1` | yes |
-| `[]=` | index assignment | `a[0] = 1` | yes |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `=` | variable assignment | `a = 1` | no | right |
+| `=` | call assignment | `a.b = 1` | yes | right |
+| `[]=` | index assignment | `a[0] = 1` | yes | right |
 
 ### Combined assignments
 
@@ -292,25 +306,25 @@ be callable.
 
 The receiver can't be anything else than a variable or call.
 
-| Operator | Description | Example | Overloadable |
-|---|---|---|---|
-| `+=` | addition *and* assignment | `i += 1` | no |
-| `&+=` | wrapping addition *and* assignment | `i &+= 1` | no |
-| `-=` | subtraction *and* assignment | `i -= 1` | no |
-| `&-=` | wrapping subtraction *and* assignment | `i &-= 1` | no |
-| `*=` | multiplication *and* assignment | `i *= 1` | no |
-| `&*=` | wrapping multiplication *and* assignment | `i &*= 1` | no |
-| `/=` | division *and* assignment | `i /= 1` | no |
-| `//=` | floor division *and* assignment | `i //= 1` | no |
-| `%=` | modulo *and* assignment | `i %= 1` | yes |
-| `|=` | binary or *and* assignment | `i |= 1` | no |
-| `&=` | binary and *and* assignment | `i &= 1` | no |
-| `^=` | binary xor *and* assignment | `i ^= 1` | no |
-| `**=` | exponential *and* assignment | `i **= 1` | no |
-| `<<=` | left shift *and* assignment | `i <<= 1` | no |
-| `>>=` | right shift *and* assignment | `i >>= 1` | no |
-| `||=` | logical or *and*  assignment | `i ||= true` | no |
-| `&&=` | logical and *and* assignment | `i &&= true` | no |
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `+=` | addition *and* assignment | `i += 1` | no | right |
+| `&+=` | wrapping addition *and* assignment | `i &+= 1` | no | right |
+| `-=` | subtraction *and* assignment | `i -= 1` | no | right |
+| `&-=` | wrapping subtraction *and* assignment | `i &-= 1` | no | right |
+| `*=` | multiplication *and* assignment | `i *= 1` | no | right |
+| `&*=` | wrapping multiplication *and* assignment | `i &*= 1` | no | right |
+| `/=` | division *and* assignment | `i /= 1` | no | right |
+| `//=` | floor division *and* assignment | `i //= 1` | no | right |
+| `%=` | modulo *and* assignment | `i %= 1` | yes | right |
+| `|=` | binary or *and* assignment | `i |= 1` | no | right |
+| `&=` | binary and *and* assignment | `i &= 1` | no | right |
+| `^=` | binary xor *and* assignment | `i ^= 1` | no | right |
+| `**=` | exponential *and* assignment | `i **= 1` | no | right |
+| `<<=` | left shift *and* assignment | `i <<= 1` | no | right |
+| `>>=` | right shift *and* assignment | `i >>= 1` | no | right |
+| `||=` | logical or *and* assignment | `i ||= true` | no | right |
+| `&&=` | logical and *and* assignment | `i &&= true` | no | right |
 
 ### Index Accessors
 

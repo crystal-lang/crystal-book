@@ -72,7 +72,7 @@ This works with any target type except constants.
 
 Some syntax sugar that contains the `=` character is available:
 
-```crystal
+```{.crystal nocheck}
 local += 1  # same as: local = local + 1
 ```
 

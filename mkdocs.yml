@@ -36,6 +36,18 @@ plugins:
         guides/continuous_integration.md: guides/ci/README.md
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
         docs/overview/README.md: syntax_and_semantics/README.md
+  - code-validator:
+      enabled: false
+      enable_on_env: LINT
+      identifiers:
+        crystal:
+          validators:
+            - crystal tool format --check -
+        crystal-play:
+          language: crystal
+          validators:
+            - crystal tool format --check -
+            - crystal build --no-codegen $<
 
 markdown_extensions:
   - admonition

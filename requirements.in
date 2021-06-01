@@ -3,3 +3,4 @@ mkdocs-material
 mkdocs-literate-nav
 mkdocs-section-index
 mkdocs-redirects
+mkdocs-code-validator

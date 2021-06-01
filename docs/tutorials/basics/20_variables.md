@@ -1,11 +1,11 @@
 # Variables
 
-In order to store a value and re-use it later, it can be assigned to a variable.
+To store a value and re-use it later, it can be assigned to a variable.
 
 For example, if you want to say `Hello Penny!` three times, you don't need to repeat the same string multiple times.
 Instead, you can assign it to a variable and re-use it:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello Penny!"
 
 puts message
@@ -15,11 +15,11 @@ puts message
 
 This program prints the string `Hello Penny!` three times to the standard output, each followed by a line break.
 
-The name of a variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letter are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
+The name of a variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letters are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
 !!! note
-    The kind of variables this lesson discusses are called *local variables*.
-    Other kinds will be introduced later. For now we focus on local variables only.
+    The kind of variables this lesson discusses is called *local variables*.
+    Other kinds will be introduced later. For now, we focus on local variables only.
 
 ## Type
 
@@ -27,7 +27,7 @@ The type of a variable is automatically inferred by the compiler. In the above e
 
 You can verify this with [`typeof`](https://crystal-lang.org/api/toplevel.html#typeof(*expression):Class-class-method):
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello Penny!"
 
 p! typeof(message)
@@ -40,7 +40,7 @@ p! typeof(message)
 
 A variable can be reassigned with a different value:
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello Penny!"
 
 p! message
@@ -50,9 +50,9 @@ message = "Hello Sheldon!"
 p! message
 ```
 
-This also works with values of a different type. The type of the variable changes when a value of a different type is assigned. The compiler is smart enough to know which type it has at which point in the program.
+This also works with values of different types. The type of the variable changes when a value of a different type is assigned. The compiler is smart enough to know which type it has at which point in the program.
 
-```{.crystal .crystal-play}
+```crystal-play
 message = "Hello Penny!"
 
 p! message, typeof(message)
