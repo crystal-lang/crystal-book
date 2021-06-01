@@ -35,34 +35,37 @@ A method ending with an equals sign (`=`) is called a setter method. It can be u
 as the target of an assignment. The semantics of the assignment operator apply as
 a form of syntax sugar to the method call.
 
-This is an example of a call to a setter method in typical method notation and with assignment operator.
+Calling setter methods requires an explicit receiver. The receiver-less syntax `x = y`
+is always parsed as an assignment to a local variable, never a call to a method `x=`.
+Even adding parentheses does not force a method call, as it would when reading from a local variable.
+
+The following example shows two calls to a setter method in typical method notation and with assignment operator.
 Both assignment expressions are equivalent.
 
 ```crystal
 class Thing
   def name=(value); end
 end
+
 thing = Thing.new
 
 thing.name=("John")
 thing.name = "John"
 ```
 
-This is an example of a call to an indexed assignment method in typical method notation and with index assignment operator.
+The following example shows two calls to an indexed assignment method in typical method notation and with index assignment operator.
 Both assignment expressions are equivalent.
 
 ```crystal
 class List
   def []=(key, value); end
 end
+
 list = List.new
 
 list.[]=(2, 3)
 list[2] = 3
 ```
-
-NOTE: This does not apply to top-level methods. An assignment `x = y` in the top-level scope is always an assignment to
-a local variable, never a call to a method `x=`.
 
 ### Combined assignments
 
