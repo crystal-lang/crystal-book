@@ -33,8 +33,8 @@ To denote a Proc type you can write:
 # A Proc accepting a single Int32 argument and returning a String
 Proc(Int32, String)
 
-# A proc accepting no arguments and returning Void
-Proc(Void)
+# A proc accepting no arguments and returning Nil
+Proc(Nil)
 
 # A proc accepting two arguments (one Int32 and one String) and returning a Char
 Proc(Int32, String, Char)
