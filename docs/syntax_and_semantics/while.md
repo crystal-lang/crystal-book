@@ -59,7 +59,7 @@ end
 x # => "three"
 ```
 
-If the `while`'s condition fails, `nil` is returned instead:
+If the `while` loop ends normally (because its condition became false), the value is `nil`:
 
 ```crystal
 x = while 1 > 2
