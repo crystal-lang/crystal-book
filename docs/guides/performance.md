@@ -200,7 +200,7 @@ You shouldn't always use a struct, though. Structs are passed by value, so if yo
 
 For example:
 
-!!! example "class_vs_struct.cr'
+!!! example "class_vs_struct.cr"
     ```crystal
     require "benchmark"
 
