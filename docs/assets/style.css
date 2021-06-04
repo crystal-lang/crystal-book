@@ -1,7 +1,10 @@
-.md-header {
+.md-header, .md-sidebar--primary {
     /* pull z-index up to be above the codemirror gutters (z-index: 3).
      * original value is z-index: 2 */
-    z-index: 10;
+    z-index: 20;
+}
+.md-overly {
+  z-index: 15;
 }
 
 .md-header-nav__button.md-logo {
@@ -15,17 +18,6 @@
 
 .md-typeset .admonition {
     font-size: 0.72rem;
-}
-
-.md-header {
-    /* place it above codemirror gutter */
-    z-index: 10;
-}
-@media screen and (max-width: 76.1875em) {
-    .md-sidebar--primary {
-        /* place it above codemirror gutter */
-        z-index: 10;
-    }
 }
 
 .cards {
