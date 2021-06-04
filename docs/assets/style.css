@@ -3,8 +3,8 @@
      * original value is z-index: 2 */
     z-index: 20;
 }
-.md-overly {
-  z-index: 15;
+.md-overlay {
+    z-index: 15;
 }
 
 .md-header-nav__button.md-logo {
