@@ -299,9 +299,9 @@ It is possible to access the top-level namespace, as a [`TypeNode`](https://crys
 A_CONSTANT = 0
 
 {% if @top_level.has_constant?("A_CONSTANT") %}
-puts "this is printed"
+  puts "this is printed"
 {% else %}
-puts "this is not printed"
+  puts "this is not printed"
 {% end %}
 ```
 
