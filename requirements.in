@@ -1,6 +1,6 @@
-mkdocs
-mkdocs-material
-mkdocs-literate-nav
-mkdocs-section-index
-mkdocs-redirects
-mkdocs-code-validator
+mkdocs>=1.2
+mkdocs-material>=7.1.8
+mkdocs-literate-nav>=0.2
+mkdocs-section-index>=0.2.3
+mkdocs-redirects>=1.0.1
+mkdocs-code-validator>=0.1.0
