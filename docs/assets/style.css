@@ -7,11 +7,11 @@
     z-index: 15;
 }
 
-.md-header-nav__button.md-logo {
+.md-header__button.md-logo {
     padding: 0;
     margin: 0.4rem;
 }
-.md-header-nav__button.md-logo img {
+.md-header__button.md-logo img {
     width: 1.6rem;
     height: 1.6rem;
 }
