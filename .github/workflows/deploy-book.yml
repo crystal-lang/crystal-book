@@ -12,7 +12,7 @@ jobs:
       - name: Download source
         uses: actions/checkout@v2
       - name: Install Crystal
-        uses: oprypin/install-crystal@v1
+        uses: crystal-lang/install-crystal@v1
       - name: Install Python
         uses: actions/setup-python@v2
       - name: Cache dependencies
