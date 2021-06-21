@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build book
+    name: Deploy book
     runs-on: ubuntu-latest
     steps:
       - name: Download source
@@ -26,56 +26,36 @@ jobs:
         run: LINT=1 make build
       - name: Disallow unchecked intra-site links
         run: make check_internal_links
-      - name: Persist built book
-        uses: actions/upload-artifact@v2
-        with:
-          name: site
-          path: site
-
-  deploy:
-    name: Deploy book
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/1.')
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch built book
-        uses: actions/download-artifact@v2
-        with:
-          name: site
-          path: site
+      - name: Extract branch name to deploy
+        id: branch
+        shell: bash -x {0}
+        run: |
+          if [[ $GITHUB_REF =~ ^refs/heads/(master|[0-9][0-9.]+)$ ]]; then
+            echo "::set-output name=branch::${BASH_REMATCH[1]}"
+          fi
       - name: Build versions file
-        run: |
-          printf '[' >versions.json
-          delim=''; latest='"latest"'
-          for ver in $(git ls-remote --heads https://github.com/${{ github.repository }} | grep -P -o '(?<=refs/heads/)[0-9][0-9.]+' | sort -V -r); do
-            printf '%s{"version": "%s", "title": "%s", "aliases": [%s]}' "$delim" "$ver" "$ver" "$latest" >>versions.json
-            delim=', '; latest=''
-          done
-          printf ']' >>versions.json
-          test -n "$delim"  # Check that we wrote at least one version
-      - name: Extract branch name
-        id: extract_branch
-        run: |
-          echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null
+        run: scripts/docs-versions.sh origin | tee /dev/stderr > versions.json
       #- name: Configure AWS Credentials
+      #  if: github.event_name == 'push' && steps.branch.outputs.branch != null
       #  uses: aws-actions/configure-aws-credentials@v1
       #  with:
       #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #    aws-region: us-east-1
       - name: Deploy book
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null
         uses: oprypin/push-to-gh-pages@v3
         with:
           publish_dir: site
-          destination_dir: ${{ steps.extract_branch.outputs.branch }}
-          commit_message: 'Generate ${{ steps.extract_branch.outputs.branch }} docs: '
-        #run: |
-        #  aws s3 sync ./site s3://crystal-book/reference/${{ steps.extract_branch.outputs.branch }} --delete
+          destination_dir: ${{ steps.branch.outputs.branch }}
+          commit_message: 'Generate ${{ steps.branch.outputs.branch }} docs: '
+        #run: aws s3 sync ./site s3://crystal-book/reference/${{ steps.branch.outputs.branch }} --delete
       - name: Deploy versions file
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null
         uses: oprypin/push-to-gh-pages@v3
         with:
           publish_dir: .
           keep_files: true
           full_commit_message: 'Generate version file'
-        #run: |
-        #  aws s3 sync . s3://crystal-book/reference --exclude '*' --include 'versions.json'
+        #run: aws s3 sync . s3://crystal-book/reference --exclude '*' --include 'versions.json'
