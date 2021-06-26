@@ -86,9 +86,9 @@ actual.should be >= expected # passes if actual >= expected
 
 ```crystal
 actual.should be_close(expected, delta) # passes if actual is within delta of expected:
-                                        # (actual - expected).abs <= delta
-actual.should contain(expected)         # passes if actual.includes?(expected)
-actual.should match(expected)           # passes if actual =~ expected
+#                                         (actual - expected).abs <= delta
+actual.should contain(expected) # passes if actual.includes?(expected)
+actual.should match(expected)   # passes if actual =~ expected
 ```
 
 ### Expecting errors
@@ -144,7 +144,7 @@ end
 
 Tagging an example group (`describe` or `context`) extends to all of the contained examples.
 
-Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/Array.html) or [`Set`](https://crystal-lang.org/api/Set.html).
+Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/latest/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/latest/Array.html) or [`Set`](https://crystal-lang.org/api/latest/Set.html).
 
 ## Running specs
 
@@ -195,24 +195,26 @@ Many projects use a custom spec helper file, usually named `spec/spec_helper.cr`
 
 This file is used to require `spec` and other includes like code from the project needed for every spec file. This is also a good place to define global helper methods that make writing specs easier and avoid code duplication.
 
-```crystal
-# spec/spec_helper.cr
-require "spec"
-require "../src/my_project.cr"
+!!! example "spec/spec_helper.cr"
+    ```crystal
+    require "spec"
+    require "../src/my_project.cr"
 
-def create_test_object(name)
-  project = MyProject.new(option: false)
-  object = project.create_object(name)
-  object
-end
+    def create_test_object(name)
+      project = MyProject.new(option: false)
+      object = project.create_object(name)
+      object
+    end
+    ```
 
-# spec/my_project_spec.cr
-require "./spec_helper"
+!!! example "spec/my_project_spec.cr"
+    ```crystal
+    require "./spec_helper"
 
-describe "MyProject::Object" do
-  it "is created" do
-    object = create_test_object(name)
-    object.should_not be_nil
-  end
-end
-```
+    describe "MyProject::Object" do
+      it "is created" do
+        object = create_test_object(name)
+        object.should_not be_nil
+      end
+    end
+    ```

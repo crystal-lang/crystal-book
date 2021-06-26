@@ -115,13 +115,13 @@ is the same as:
 alias Int32ToString = Proc(Int32, String)
 ```
 
-To specify a Proc without arguments:
+To specify a Proc without parameters:
 
 ```crystal
 alias ProcThatReturnsInt32 = -> Int32
 ```
 
-To specify multiple arguments:
+To specify multiple parameters:
 
 ```crystal
 alias Int32AndCharToString = Int32, Char -> String
@@ -184,10 +184,12 @@ An underscore is allowed in type restrictions. It matches anything:
 def foo(x : _)
 end
 
-# A bit more useful: any two arguments Proc that returns an Int32:
+# A bit more useful: any two-parameter Proc that returns an Int32:
 def foo(x : _, _ -> Int32)
 end
 ```
+
+In regular code `_` means the [underscore](assignment.md#underscore) variable.
 
 ## typeof
 

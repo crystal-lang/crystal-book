@@ -1,8 +1,53 @@
-.md-header-nav__button.md-logo {
+.md-header, .md-sidebar--primary {
+    /* pull z-index up to be above the codemirror gutters (z-index: 3).
+     * original value is z-index: 2 */
+    z-index: 20;
+}
+.md-overlay {
+    z-index: 15;
+}
+
+.md-header__button.md-logo {
     padding: 0;
     margin: 0.4rem;
 }
-.md-header-nav__button.md-logo img {
+.md-header__button.md-logo img {
     width: 1.6rem;
     height: 1.6rem;
+}
+
+.md-typeset .admonition {
+    font-size: 0.72rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+    margin: 2em 0;
+}
+.card {
+    display: block;
+}
+.card > h3 {
+    margin: 0;
+}
+.card > p {
+    color: var(--md-default-fg-color--light);
+    margin: 0;
+}
+.card > ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.card > ul > li {
+    margin: 0;
+}
+
+.card > ul > li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.3em;
 }

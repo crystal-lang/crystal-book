@@ -7,7 +7,7 @@ sizeof(Int32) # => 4
 sizeof(Int64) # => 8
 ```
 
-For [Reference](http://crystal-lang.org/api/Reference.html) types, the size is the same as the size of a pointer:
+For [Reference](https://crystal-lang.org/api/latest/Reference.html) types, the size is the same as the size of a pointer:
 
 ```crystal
 # On a 64 bits machine

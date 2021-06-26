@@ -69,24 +69,24 @@ This philosophy of appending to an IO instead of returning an intermediate strin
 
 Let's compare the times:
 
-```crystal
-# io_benchmark.cr
-require "benchmark"
+!!! example "io_benchmark.cr"
+    ```crystal
+    require "benchmark"
 
-io = IO::Memory.new
+    io = IO::Memory.new
 
-Benchmark.ips do |x|
-  x.report("without to_s") do
-    io << 123
-    io.clear
-  end
+    Benchmark.ips do |x|
+      x.report("without to_s") do
+        io << 123
+        io.clear
+      end
 
-  x.report("with to_s") do
-    io << 123.to_s
-    io.clear
-  end
-end
-```
+      x.report("with to_s") do
+        io << 123.to_s
+        io.clear
+      end
+    end
+    ```
 
 Output:
 
@@ -164,29 +164,29 @@ There are two ways to solve this:
 
 1. Use a tuple. If you use `{"crystal", "ruby", "java"}` in the above program it will work the same way, but since a tuple doesn't involve heap memory it will be faster, consume less memory, and give more chances for the compiler to optimize the program.
 
-  ```crystal
-  lines_with_language_reference = 0
-  while line = gets
-    if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    ```crystal
+    lines_with_language_reference = 0
+    while line = gets
+      if {"crystal", "ruby", "java"}.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
-2. Move the array to a constant.
+1. Move the array to a constant.
 
-  ```crystal
-  LANGS = ["crystal", "ruby", "java"]
+    ```crystal
+    LANGS = ["crystal", "ruby", "java"]
 
-  lines_with_language_reference = 0
-  while line = gets
-    if LANGS.any? { |string| line.includes?(string) }
-      lines_with_language_reference += 1
+    lines_with_language_reference = 0
+    while line = gets
+      if LANGS.any? { |string| line.includes?(string) }
+        lines_with_language_reference += 1
+      end
     end
-  end
-  puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
-  ```
+    puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
+    ```
 
 Using tuples is the preferred way.
 
@@ -200,31 +200,31 @@ You shouldn't always use a struct, though. Structs are passed by value, so if yo
 
 For example:
 
-```crystal
-# class_vs_struct.cr
-require "benchmark"
+!!! example "class_vs_struct.cr"
+    ```crystal
+    require "benchmark"
 
-class PointClass
-  getter x
-  getter y
+    class PointClass
+      getter x
+      getter y
 
-  def initialize(@x : Int32, @y : Int32)
-  end
-end
+      def initialize(@x : Int32, @y : Int32)
+      end
+    end
 
-struct PointStruct
-  getter x
-  getter y
+    struct PointStruct
+      getter x
+      getter y
 
-  def initialize(@x : Int32, @y : Int32)
-  end
-end
+      def initialize(@x : Int32, @y : Int32)
+      end
+    end
 
-Benchmark.ips do |x|
-  x.report("class") { PointClass.new(1, 2) }
-  x.report("struct") { PointStruct.new(1, 2) }
-end
-```
+    Benchmark.ips do |x|
+      x.report("class") { PointClass.new(1, 2) }
+      x.report("struct") { PointStruct.new(1, 2) }
+    end
+    ```
 
 Output:
 

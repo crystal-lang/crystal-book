@@ -16,7 +16,7 @@ end
 
 The above program prints "Hello!" twice, once for each `yield`.
 
-To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block argument, indicated as a last argument prefixed with ampersand (`&`):
+To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block parameter, indicated as a last parameter prefixed with ampersand (`&`):
 
 ```crystal
 def twice(&block)
@@ -118,7 +118,7 @@ end
 # Output: 6
 ```
 
-A block can specify less than the arguments yielded:
+A block can specify fewer parameters than the arguments yielded:
 
 ```crystal
 def many
@@ -132,7 +132,7 @@ end
 # Output: 3
 ```
 
-It's an error specifying more block arguments than those yielded:
+It's an error specifying more block parameters than the arguments yielded:
 
 ```crystal
 def twice
@@ -140,11 +140,11 @@ def twice
   yield
 end
 
-twice do |i| # Error: too many block arguments
+twice do |i| # Error: too many block parameters
 end
 ```
 
-Each block variable has the type of every yield expression in that position. For example:
+Each block parameter has the type of every yield expression in that position. For example:
 
 ```crystal
 def some
@@ -159,24 +159,38 @@ some do |first, second|
 end
 ```
 
-The block variable `second` also includes the `Nil` type because the last `yield` expression didn't include a second argument.
+The [underscore](assignment.md#underscore) is also allowed as a block parameter:
 
-## Short one-argument syntax
+```crystal
+def pairs
+  yield 1, 2
+  yield 2, 4
+  yield 3, 6
+end
 
-If a block has a single argument and invokes a method on it, the block can be replaced with the short syntax argument.
+pairs do |_, second|
+  print second
+end
+
+# Output: 246
+```
+
+## Short one-parameter syntax
+
+If a block has a single parameter and invokes a method on it, the block can be replaced with the short syntax argument.
 
 This:
 
 ```crystal
-method do |argument|
-  argument.some_method
+method do |param|
+  param.some_method
 end
 ```
 
 and
 
 ```crystal
-method { |argument| argument.some_method }
+method { |param| param.some_method }
 ```
 
 can both be written as:
@@ -193,7 +207,7 @@ method(&.some_method)
 
 In either case, `&.some_method` is an argument passed to `method`.  This argument is syntactically equivalent to the block variants.  It is only syntactic sugar and does not have any performance penalty.
 
-If the method has other required parameters, the short syntax argument should also be supplied in the method's argument list.
+If the method has other required arguments, the short syntax argument should also be supplied in the method's argument list.
 
 ```crystal
 ["a", "b"].join(",", &.upcase)
@@ -238,7 +252,7 @@ end
 
 The above prints "2" and "3".
 
-A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
+A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method) and [Enumerable#select](https://crystal-lang.org/api/latest/Enumerable.html#select%28%26block%3AT-%3E%29-instance-method):
 
 ```crystal
 ary = [1, 2, 3]
@@ -322,7 +336,7 @@ end
 value # :: Int32 | String
 ```
 
-If a `break` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html):
+If a `break` receives many arguments, they are automatically transformed to a [Tuple](https://crystal-lang.org/api/latest/Tuple.html):
 
 ```crystal
 values = twice { break 1, 2 }
@@ -384,7 +398,7 @@ end
 # 3
 ```
 
-If a `next` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
+If a `next` receives many arguments, they are automatically transformed to a [Tuple](https://crystal-lang.org/api/latest/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
 
 ## with ... yield
 
@@ -413,9 +427,9 @@ Foo.new.yield_with_self { one } # => 1
 Foo.new.yield_normally { one }  # => "one"
 ```
 
-## Unpacking block arguments
+## Unpacking block parameters
 
-A block argument can specify sub-arguments enclosed in parentheses:
+A block parameter can specify sub-parameters enclosed in parentheses:
 
 ```crystal
 array = [{1, "one"}, {2, "two"}]
@@ -435,9 +449,9 @@ array.each do |arg|
 end
 ```
 
-That means that any type that responds to `[]` with integers can be unpacked in a block argument.
+That means that any type that responds to `[]` with integers can be unpacked in a block parameter.
 
-For [Tuple](http://crystal-lang.org/api/Tuple.html) arguments you can take advantage of auto-splatting and do not need parentheses:
+For [Tuple](https://crystal-lang.org/api/latest/Tuple.html) parameters you can take advantage of auto-splatting and do not need parentheses:
 
 ```crystal
 array = [{1, "one", true}, {2, "two", false}]
@@ -446,7 +460,7 @@ array.each do |number, word, bool|
 end
 ```
 
-[Hash(K, V)#each](http://crystal-lang.org/api/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
+[Hash(K, V)#each](https://crystal-lang.org/api/latest/Hash.html#each(&):Nil-instance-method) passes `Tuple(K, V)` to the block so iterating key-value pairs works with auto-splatting:
 
 ```crystal
 h = {"foo" => "bar"}

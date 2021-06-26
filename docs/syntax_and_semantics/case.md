@@ -25,7 +25,7 @@ else
 end
 ```
 
-For comparing an expression against a `case`'s value the *case equality operator* `===` is used. It is defined as a method on [`Object`](https://crystal-lang.org/api/Object.html#%3D%3D%3D%28other%29-instance-method) and can be overridden by subclasses to provide meaningful semantics in case statements. For example, [`Class`](https://crystal-lang.org/api/Class.html#%3D%3D%3D%28other%29-instance-method) defines case equality as when an object is an instance of that class, [`Regex`](https://crystal-lang.org/api/Regex.html#%3D%3D%3D%28other%3AString%29-instance-method) as when the value matches the regular expression and [`Range`](https://crystal-lang.org/api/Range.html#%3D%3D%3D%28value%29-instance-method) as when the value is included in that range.
+For comparing an expression against a `case`'s value the *case equality operator* `===` is used. It is defined as a method on [`Object`](https://crystal-lang.org/api/latest/Object.html#%3D%3D%3D%28other%29-instance-method) and can be overridden by subclasses to provide meaningful semantics in case statements. For example, [`Class`](https://crystal-lang.org/api/latest/Class.html#%3D%3D%3D%28other%29-instance-method) defines case equality as when an object is an instance of that class, [`Regex`](https://crystal-lang.org/api/latest/Regex.html#%3D%3D%3D%28other%3AString%29-instance-method) as when the value matches the regular expression and [`Range`](https://crystal-lang.org/api/latest/Range.html#%3D%3D%3D%28value%29-instance-method) as when the value is included in that range.
 
 If a `when`'s expression is a type, `is_a?` is used. Additionally, if the case expression is a variable or a variable assignment the type of the variable is restricted:
 
@@ -107,7 +107,7 @@ When a case expression is a tuple literal there are a few semantic differences i
 
 ### Tuple size must match
 
-```crystal
+```{.crystal nocheck}
 case {value1, value2}
 when {0, 0} # OK, 2 elements
   # ...
@@ -145,4 +145,85 @@ when {String, Int32}
   # The type of value1 is known to be a String by the compiler,
   # and the type of value2 is known to be an Int32
 end
+```
+
+## Exhaustive case
+
+Using `in` instead of `when` produces an exhaustive case expression; in an exhaustive case, it is a compile-time error to omit any of the required `in` conditions. An exhaustive `case` cannot contain any `when` or `else` clauses.
+
+The compiler supports the following `in` conditions:
+
+### Union type checks
+
+If `case`'s expression is a union value, each of the union types may be used as a condition:
+
+```crystal
+# var : (Bool | Char | String)?
+case var
+in String
+  # var : String
+in Char
+  # var : Char
+in Bool
+  # var : Bool
+in nil # or Nil, but .nil? is not allowed
+  # var : Nil
+end
+```
+
+### Bool values
+
+If `case`'s expression is a `Bool` value, the `true` and `false` literals may be used as conditions:
+
+```crystal
+# var : Bool
+case var
+in true
+  do_something
+in false
+  do_something_else
+end
+```
+
+### Enum values
+
+If `case`'s expression is a non-flags enum value, its members may be used as conditions, either as constant or predicate method.
+
+```crystal
+enum Foo
+  X
+  Y
+  Z
+end
+
+# var : Foo
+case var
+in Foo::X
+  # var == Foo::X
+in .y?
+  # var == Foo::Y
+in .z? # :z is not allowed
+  # var == Foo::Z
+end
+```
+
+### Tuple literals
+
+The conditions must exhaust all possible combinations of the `case` expression's elements:
+
+```crystal
+# value1, value2 : Bool
+case {value1, value2}
+in {true, _}
+  # value1 is true, value2 can be true or false
+  do_something
+in {_, false}
+  # here value1 is false, and value2 is also false
+  do_something_else
+end
+
+# Error: case is not exhaustive.
+#
+# Missing cases:
+#  - {false, true}
 ```

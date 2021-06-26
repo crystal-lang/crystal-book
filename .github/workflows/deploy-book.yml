@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v2
-      - name: Set up Python
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+      - name: Install Python
         uses: actions/setup-python@v2
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -20,7 +22,9 @@ jobs:
           key: pip-${{ hashFiles('requirements.txt') }}
           restore-keys: pip-
       - name: Build book
-        run: make build
+        run: LINT=1 make build
+      - name: Disallow unchecked intra-site links
+        run: make check_internal_links
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: aws-actions/configure-aws-credentials@v1

@@ -1,6 +1,15 @@
 # Assignment
 
-Assignment is done using the equals sign (`=`).
+An assignment expression assigns a value to a named identifier (usually a variable).
+The [assignment operator](operators.md#assignments) is the equals sign (`=`).
+
+The target of an assignment can be:
+
+* a [local variable](local_variables.md)
+* an [instance variable](methods_and_instance_variables.md)
+* a [class variable](class_variables.md)
+* a [constant](constants.md)
+* an assignment method
 
 ```crystal
 # Assigns to a local variable
@@ -11,45 +20,69 @@ local = 1
 
 # Assigns to a class variable
 @@class = 3
+
+# Assigns to a constant
+CONST = 4
+
+# Assigns to a setter method
+foo.method = 5
+foo[0] = 6
 ```
 
-Each of the above kinds of variables will be explained later on.
+### Method as assignment target
+
+A method ending with an equals sign (`=`) is called a setter method. It can be used
+as the target of an assignment. The semantics of the assignment operator apply as
+a form of syntax sugar to the method call.
+
+Calling setter methods requires an explicit receiver. The receiver-less syntax `x = y`
+is always parsed as an assignment to a local variable, never a call to a method `x=`.
+Even adding parentheses does not force a method call, as it would when reading from a local variable.
+
+The following example shows two calls to a setter method in typical method notation and with assignment operator.
+Both assignment expressions are equivalent.
+
+```crystal
+class Thing
+  def name=(value); end
+end
+
+thing = Thing.new
+
+thing.name=("John")
+thing.name = "John"
+```
+
+The following example shows two calls to an indexed assignment method in typical method notation and with index assignment operator.
+Both assignment expressions are equivalent.
+
+```crystal
+class List
+  def []=(key, value); end
+end
+
+list = List.new
+
+list.[]=(2, 3)
+list[2] = 3
+```
+
+### Combined assignments
+
+[Combined assignments](operators.md#combined-assignments) are a combination of an
+assignment operator and another operator.
+This works with any target type except constants.
 
 Some syntax sugar that contains the `=` character is available:
 
-```crystal
+```{.crystal nocheck}
 local += 1  # same as: local = local + 1
-
-# The above is valid with these operators:
-# +, -, *, /, %, |, &, ^, **, <<, >>
-
-local ||= 1 # same as: local || (local = 1)
-local &&= 1 # same as: local && (local = 1)
 ```
 
-A method invocation that ends with `=` has syntax sugar:
+This assumes that the corresponding target `local` is assignable, either as a variable or via the respective getter and setter methods.
 
-```crystal
-# A setter
-person.name=("John")
-
-# The above can be written as:
-person.name = "John"
-
-# An indexed assignment
-objects.[]=(2, 3)
-
-# The above can be written as:
-objects[2] = 3
-
-# Not assignment-related, but also syntax sugar:
-objects.[](2, 3)
-
-# The above can be written as:
-objects[2, 3]
-```
-
-The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key presence.
+The `=` operator syntax sugar is also available to setter and index assignment methods.
+Note that `||` and `&&` use the `[]?` method to check for key presence.
 
 ```crystal
 person.age += 1 # same as: person.age = person.age + 1
@@ -65,7 +98,8 @@ objects[1] &&= 2 # same as: objects[1]? && (objects[1] = 2)
 
 ## Chained assignment
 
-You can assign the same value to multiple variables using chained assignment:
+The same value can be assigned to multiple targets using chained assignment.
+This works with any target type except constants.
 
 ```crystal
 a = b = c = 123
@@ -76,11 +110,10 @@ b # => 123
 c # => 123
 ```
 
-The chained assignment is not only available to [local variables](local_variables.md) but also to [instance variables](methods_and_instance_variables.md), [class variables](class_variables.md) and setter methods (methods that end with `=`).
-
 ## Multiple assignment
 
-You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`):
+You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`).
+This works with any target type except constants.
 
 ```crystal
 name, age = "Crystal", 1
@@ -136,4 +169,26 @@ temp1 = 3
 temp2 = 4
 objects[1] = temp1
 objects[2] = temp2
+```
+
+## Underscore
+
+The underscore can appear on the left-hand side of any assignment. Assigning a value to it has no effect and the underscore cannot be read from:
+
+```crystal
+_ = 1     # no effect
+_ = "123" # no effect
+puts _    # Error: can't read from _
+```
+
+It is useful in multiple assignment when some of the values returned by the right-hand side are unimportant:
+
+```crystal
+before, _, after = "main.cr".partition(".")
+
+# The above is the same as this:
+temp = "main.cr".partition(".")
+before = temp[0]
+_ = temp[1] # this line has no effect
+after = temp[2]
 ```
