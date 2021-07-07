@@ -69,5 +69,6 @@ Next you might want to start with the [Introduction Tour](../tutorials/basics/RE
 
 Here we have two more examples to continue our first steps in Crystal:
 
+- [Scripting](./scripting.md)
 - [HTTP Server](./http_server.md)
 - [Command Line Application](./cli.md)
