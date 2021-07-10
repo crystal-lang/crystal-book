@@ -1,71 +1,26 @@
-# The Program
+# Program
 
-The program is a global object in which you can define types, methods and file-local variables.
+The program is the entirety of the source code worked by the compiler. The source gets parsed and compiled to an executable version of the program.
+
+The program’s source code must be encoded in UTF-8.
+
+
+
+## Top-level scope
+
+Features such as types, constants, macros and methods defined outside any other namespace are in the top-level scope.
 
 ```crystal
-# Defines a method in the program
+# Defines a method in the top-level scope
 def add(x, y)
   x + y
 end
 
-# Invokes the add method in the program
+# Invokes the add method on the top-level scope
 add(1, 2) # => 3
 ```
 
-A method's value is the value of its last expression; there's no need for explicit `return` expressions. However, explicit `return` expressions are possible:
-
-```crystal
-def even?(num)
-  if num % 2 == 0
-    return true
-  end
-
-  return false
-end
-```
-
-When invoking a method without a receiver, like `add(1, 2)`, it will be searched for in the program if not found in the current type or any of its ancestors.
-
-```crystal
-def add(x, y)
-  x + y
-end
-
-class Foo
-  def bar
-    # invokes the program's add method
-    add(1, 2)
-
-    # invokes Foo's baz method
-    baz(1, 2)
-  end
-
-  def baz(x, y)
-    x * y
-  end
-end
-```
-
-If you want to invoke the program's method, even though the current type defines a method with the same name, prefix the call with `::`:
-
-```crystal
-def baz(x, y)
-  x + y
-end
-
-class Foo
-  def bar
-    baz(4, 2)   # => 2
-    ::baz(4, 2) # => 6
-  end
-
-  def baz(x, y)
-    x - y
-  end
-end
-```
-
-Variables declared in a program are not visible inside methods:
+Local variables in the top-level scope are file-local and not visible inside method bodies.
 
 ```crystal
 x = 1
@@ -77,22 +32,49 @@ end
 add(2)
 ```
 
-Parentheses in method invocations are optional:
+Private features are also only visible in the current file.
+
+A double colon prefix (`::`) unambiguously references a namespace, constant, method or macro in the top-level scope:
 
 ```crystal
-add 1, 2 # same as add(1, 2)
+def baz
+  puts "::baz"
+end
+
+CONST = "::CONST"
+
+module A
+  def self.baz
+    puts "A.baz"
+  end
+
+  # Without prefix, resolves to the method in the local scope
+  baz
+
+  # With :: prefix, resolves to the method in the top-level scope
+  ::baz
+
+  CONST = "A::Const"
+
+  p! CONST   # => "A::CONST"
+  p! ::CONST # => "::CONST"
+end
 ```
 
-## Main code
+### Main code
 
-Main code, the code that is run when you compile and run a program, can be written directly in a source file without the need to put it in a special "main" method:
+Any expression that is neither a method, macro, constant or type definition, or in a method or macro body,
+is part of the main code.
+Main code is executed when the program starts in the order of the source file's inclusion.
+
+There is no need to use a special entry point for the main code (such as a `main` method).
 
 ```crystal
 # This is a program that prints "Hello Crystal!"
 puts "Hello Crystal!"
 ```
 
-Main code can also be inside type declarations:
+Main code can also be inside namespaces:
 
 ```crystal
 # This is a program that prints "Hello"
