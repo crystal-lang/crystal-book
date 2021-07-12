@@ -222,6 +222,8 @@ p! b, typeof(b)
 
 !!! tip
     We'll cover `nil` more deeply in the next lesson.
+    For now it should be sufficient to know that calling `.not_nil!` on the result
+    lets the program compile. It allows to use the value if it's not `nil`, and errors otherwise.
 
 ## Extracting Substrings
 
@@ -268,11 +270,57 @@ p! message[6..(message.size - 2)],
   message[6..-2]
 ```
 
+## Recomposition
+
+With these methods it is possible to extract substrings and compose them again in a different manner.
+Let's say instead of `World` we want to greet `Crystal`, but keep the rest of the string.
+
+To achieve that, we extract the first and final parts of the string and then combine them with a different middle using interpolation.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+prefix = message[0, 6]
+suffix = message[-1, 1]
+puts "#{prefix}Crystal#{suffix}"
+```
+
+However, this isn't really flexible. Fixed substring indices only work if the string has predefined word lengths.
+The `#index` method can find the substring index of the word we want to replace.
+Now it's easy to extract the prefix ranging from `0` of length `search_index` (`search_index` is the number of character
+before the first character of the search string). The suffix is a similar, it ranges from the first character after the search
+string (`search_index + search.size`) to the last character (indicated by `-1`, which means `message.size - 1`).
+
+The result from `#index` could be `nil` instead of a numeric value. The program needs to
+handle this, otherwise it would not compile.
+We'll use an `if` conditional clause for this, which is introduced in more details in the following lesson.
+For now, it's sufficient to know that it ensures `search_index` has a valid value
+and if not, the enclosed expressions are skipped.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+
+search = "World"
+
+search_index = message.index(search)
+
+if search_index
+  prefix = message[0, search_index]
+  suffix = message[(search_index + search.size)..-1]
+  puts "#{prefix}Crystal#{suffix}"
+end
+```
+
+This code is actually pretty resilient. Try removing or adding parts of the original message.
+It works as expected even with changing parts. Even in the edge case that the entire message is the search string (`message = "World"`).
+
 ## Substitution
 
-In a very similar manner, we can modify a string. Let's make sure we properly greet Crystal and nothing else.
-Instead of accessing a substring, we call `#sub`. The first argument is again a range to indicate the location
-that gets replaced by the value of the second argument.
+The previous example was actually quite complex for a simple task like replacing a part of a string.
+This can actually be much easier because there is a generic implementation for doing exactly this: The method `String#sub`.
+The first argument is a range to indicate the location that gets replaced by the value of the second argument.
+
+First, we use fixed numbers as before:
 
 ```crystal-play
 message = "Hello World!"
@@ -280,8 +328,20 @@ message = "Hello World!"
 p! message.sub(6..-2, "Crystal")
 ```
 
-The `#sub` method is very versatile and can be used in different ways. We could also pass a search string as the first argument
-and it replaces that substring with the value of the second argument.
+Now, let's work with `#index` and calculate the range the range that is supposed to be replaced.
+
+```{.crystal .crystal-play}
+message = "Hello World!"
+search = "World"
+
+start_index = message.index(search).not_nil!
+range = start_index..(start_index + search.size)
+
+p! message.sub(range, "Crystal")
+```
+
+The `#sub` method is very versatile and can be used in different ways. We can pass in the search string directly
+as the first argument and it replaces that substring with the value of the second argument.
 
 ```crystal-play
 message = "Hello World!"
