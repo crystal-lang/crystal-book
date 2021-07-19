@@ -4,43 +4,39 @@
 #
 #    pip-compile requirements.in
 #
-click==7.1.2
-    # via
-    #   mkdocs
-    #   nltk
-future==0.18.2
-    # via lunr
-jinja2==2.11.2
+click==8.0.1
     # via mkdocs
-joblib==1.0.0
-    # via nltk
-livereload==2.6.3
+ghp-import==2.0.1
     # via mkdocs
-lunr[languages]==0.5.8
+importlib-metadata==4.6.1
     # via mkdocs
-markdown==3.3.3
+jinja2==3.0.1
+    # via mkdocs
+markdown==3.3.4
     # via
     #   mkdocs
     #   mkdocs-code-validator
     #   mkdocs-material
     #   pymdown-extensions
-markupsafe==1.1.1
+markupsafe==2.0.1
     # via jinja2
+mergedeep==1.3.4
+    # via mkdocs
 mkdocs-code-validator==0.1.0
     # via -r requirements.in
-mkdocs-literate-nav==0.2.0
+mkdocs-literate-nav==0.4.0
     # via -r requirements.in
 mkdocs-material-extensions==1.0.1
     # via mkdocs-material
-mkdocs-material==7.1.2
+mkdocs-material==7.1.11
     # via
     #   -r requirements.in
     #   mkdocs-material-extensions
-mkdocs-redirects==1.0.1
+mkdocs-redirects==1.0.3
     # via -r requirements.in
-mkdocs-section-index==0.2.3
+mkdocs-section-index==0.3.1
     # via -r requirements.in
-mkdocs==1.1.2
+mkdocs==1.2.2
     # via
     #   -r requirements.in
     #   mkdocs-code-validator
@@ -48,25 +44,29 @@ mkdocs==1.1.2
     #   mkdocs-material
     #   mkdocs-redirects
     #   mkdocs-section-index
-nltk==3.5
-    # via lunr
-pygments==2.7.4
+packaging==21.0
+    # via mkdocs
+pygments==2.9.0
     # via mkdocs-material
-pymdown-extensions==8.1
+pymdown-extensions==8.2
     # via
     #   mkdocs-code-validator
     #   mkdocs-material
-pyyaml==5.3.1
+pyparsing==2.4.7
+    # via packaging
+python-dateutil==2.8.2
+    # via ghp-import
+pyyaml-env-tag==0.1
     # via mkdocs
-regex==2020.11.13
-    # via nltk
-six==1.15.0
+pyyaml==5.4.1
     # via
-    #   livereload
-    #   lunr
-tornado==6.1
-    # via
-    #   livereload
     #   mkdocs
-tqdm==4.56.0
-    # via nltk
+    #   pyyaml-env-tag
+six==1.16.0
+    # via
+    #   mkdocs-redirects
+    #   python-dateutil
+watchdog==2.1.3
+    # via mkdocs
+zipp==3.5.0
+    # via importlib-metadata
