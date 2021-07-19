@@ -17,7 +17,6 @@ The lookup goes like this:
 * If a file named "filename.cr" is found in the require path, it is required.
 * If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
 * If a directory named "filename" is found with a directory "src" in it and it contains a file named "filename.cr" directly underneath it, it is required.
-* If a directory named "filename" is found with a directory "src" in it and it contains a directory named "filename" directly underneath it with a "filename.cr" file inside it, it is required.
 * Otherwise a compile-time error is issued.
 
 The second rule means that in addition to having this:
