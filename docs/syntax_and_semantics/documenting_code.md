@@ -129,10 +129,12 @@ Several admonition keywords are supported to visually highlight problems, notes 
 
 - `BUG`
 - `DEPRECATED`
+- `EXPERIMENTAL`
 - `FIXME`
 - `NOTE`
 - `OPTIMIZE`
 - `TODO`
+- `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
