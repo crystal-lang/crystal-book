@@ -21,6 +21,8 @@ jobs:
           path: ~/.cache/pip
           key: pip-${{ hashFiles('requirements.txt') }}
           restore-keys: pip-
+      - name: Install dependencies
+        run: make deps
       - name: Build book
         run: LINT=true make build
       - name: Disallow unchecked intra-site links
