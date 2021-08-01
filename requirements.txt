@@ -32,7 +32,7 @@ mkdocs-material==7.1.11
     # via
     #   -r requirements.in
     #   mkdocs-material-extensions
-mkdocs-redirects==1.0.3
+mkdocs-redirects==1.0.1
     # via -r requirements.in
 mkdocs-section-index==0.3.1
     # via -r requirements.in
@@ -63,9 +63,7 @@ pyyaml==5.4.1
     #   mkdocs
     #   pyyaml-env-tag
 six==1.16.0
-    # via
-    #   mkdocs-redirects
-    #   python-dateutil
+    # via python-dateutil
 watchdog==2.1.3
     # via mkdocs
 zipp==3.5.0
