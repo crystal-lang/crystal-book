@@ -145,8 +145,8 @@ ones.
 
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
-| `**` | exponentiation | `1 ** 2` | yes | left |
-| `&**` | wrapping exponentiation | `1 &** 2` | yes | left |
+| `**` | exponentiation | `1 ** 2` | yes | right |
+| `&**` | wrapping exponentiation | `1 &** 2` | yes | right |
 | `*` | multiplication | `1 * 2` | yes | left |
 | `&*` | wrapping multiplication | `1 &* 2` | yes | left |
 | `/` | division | `1 / 2` | yes | left |

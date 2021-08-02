@@ -4,8 +4,21 @@ repo_url: https://github.com/crystal-lang/crystal
 edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
 use_directory_urls: false
 
+extra:
+  alternate:
+    - name: English
+      link: https://crystal-lang.org/reference/
+      lang: en
+    - name: 日本語
+      link: https://ja.crystal-lang.org/reference/
+      lang: ja
+  analytics:
+    provider: google
+    property: UA-42353458-1
+
 theme:
   name: material
+  language: en
   palette:
     primary: black
     accent: blue
@@ -37,8 +50,7 @@ plugins:
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
         docs/overview/README.md: syntax_and_semantics/README.md
   - code-validator:
-      enabled: false
-      enable_on_env: LINT
+      enabled: !ENV [LINT, false]
       identifiers:
         crystal:
           validators:
@@ -58,10 +70,6 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.snippets
-
-google_analytics:
-  - UA-42353458-1
-  - auto
 
 extra_javascript:
   - assets/vendor/codemirror/codemirror.min.js
