@@ -48,7 +48,7 @@ $ ldd hello-world
         statically linked
 ```
 
-Alpine’s package manager APK is als easy to work with to install static libraries. Available packages can be found at [pkgs.alpinelinux.org](https://pkgs.alpinelinux.org/packages).
+Alpine’s package manager APK is also easy to work with to install static libraries. Available packages can be found at [pkgs.alpinelinux.org](https://pkgs.alpinelinux.org/packages).
 
 ### macOS
 

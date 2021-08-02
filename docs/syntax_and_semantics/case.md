@@ -107,7 +107,7 @@ When a case expression is a tuple literal there are a few semantic differences i
 
 ### Tuple size must match
 
-```crystal
+```{.crystal nocheck}
 case {value1, value2}
 when {0, 0} # OK, 2 elements
   # ...

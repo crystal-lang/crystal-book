@@ -74,7 +74,7 @@ documented namespace can be accessed with relative names:
 
 Features in other namespaces are referenced with the fully-qualified type path: `Unicorn#horns`, `Unicorn.new`, `Unicorn::CONST`.
 
-Different overloads of a method can be identified by the full signature `.new(name)`, `,new(name, age)`.
+Different overloads of a method can be identified by the full signature `.new(name)`, `.new(name, age)`.
 
 ### Parameters
 
@@ -129,10 +129,12 @@ Several admonition keywords are supported to visually highlight problems, notes 
 
 - `BUG`
 - `DEPRECATED`
+- `EXPERIMENTAL`
 - `FIXME`
 - `NOTE`
 - `OPTIMIZE`
 - `TODO`
+- `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
