@@ -137,6 +137,7 @@ it "is slow", tags: "slow" do
   true.should be(true)
 end
 
+# can be ran using --tag="fast"
 it "is fast", tags: "fast" do
   true.should be(true)
 end
@@ -145,6 +146,9 @@ end
 Tagging an example group (`describe` or `context`) extends to all of the contained examples.
 
 Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/latest/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/latest/Array.html) or [`Set`](https://crystal-lang.org/api/latest/Set.html).
+
+Be sure to use `--tag="my-tag"` syntax when there is a directory name that matches your tag name in your project or else they will be parsed as directories instead of tag filters.  For example, if you have some tests that run in a Terraform environment and you have put all of your terraform scripts in `terraform/example.tf` and have also tagged some tests as `tags: "terraform"`
+you should pass `--tag="terraform"` to use that tag.
 
 ## Running specs
 
@@ -183,10 +187,10 @@ crystal spec spec/my/test/file_spec.cr
 crystal spec spec/my/test/file_spec.cr:14
 
 # Run all specs tagged with "fast"
-crystal spec --tag 'fast'
+crystal spec --tag='fast'
 
 # Run all specs not tagged with "slow"
-crystal spec --tag '~slow'
+crystal spec --tag='~slow'
 ```
 
 ## Spec helper
