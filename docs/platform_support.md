@@ -18,7 +18,7 @@ Tier 1 platforms can be thought of as “guaranteed to work”. Specifically the
 | ------ | -------- | --- | ----------- |
 | x86_64-darwin | ✓ | ✓ | 64-bit OSX (10.7+, Lion+) |
 | x86_64-linux-gnu | ✓ | ✓ | 64-bit Linux (2.6.18+) |
-| i386-linux-gnu | ✓ | ✓ | 32-bit Linux (2.6.18+) |
+| x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL) |
 
 ***
 
@@ -32,7 +32,7 @@ Tier 2 platforms can be thought of as “expected to build”. Automated tests a
 | aarch64-linux-musl | ✓ | ✓ | ARM 64-bit Linux (MUSL, hardfloat) |
 | arm-linux-gnueabihf | ✓ | ✓ | ARM 32-bit Linux (GNU, hardfloat) |
 | i386-linux-musl | ✓ | ✓ | 32-bit Linux (MUSL) |
-| x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL) |
+| i386-linux-gnu | ✓ | ✓ | 32-bit Linux (2.6.18+) |
 | x86_64-openbsd | ✓ | ✓ | 64-bit OpenBSD (6.x) |
 | x86_64-freebsd | ✓ | ✓ | 64-bit FreeBSD (11.x) |
 
