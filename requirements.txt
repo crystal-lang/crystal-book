@@ -22,7 +22,7 @@ markupsafe==2.0.1
     # via jinja2
 mergedeep==1.3.4
     # via mkdocs
-mkdocs-code-validator==0.1.0
+mkdocs-code-validator==0.1.1
     # via -r requirements.in
 mkdocs-literate-nav==0.4.0
     # via -r requirements.in
