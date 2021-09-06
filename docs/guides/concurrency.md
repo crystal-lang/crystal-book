@@ -371,10 +371,81 @@ Output:
 Before send 1
 Before send 2
 Before send 3
+After send
 1
 2
-After send
 3
 ```
 
-Note that the first 2 sends are executed without switching to another fiber. However, in the third send the channel's buffer is full, so execution goes to the main fiber. Here the two values are received and the channel is depleted. At the third `receive` the main fiber blocks and execution goes to the other fiber, which sends more values, finishes, etc.
+Note that the first `send` does not occupy space in the channel. This is because there is a `receive` invoked prior to the first `send` whereas the other 2 `send` invocations take place before their respective `receive`. The number of `send` calls do not exceed the bounds of the buffer and so the send fiber runs uninterrupted to completion.
+
+Here's an example where all space in the buffer gets occupied:
+
+```crystal
+# A buffered channel of capacity 1
+channel = Channel(Int32).new(1)
+
+spawn do
+  puts "Before send 1"
+  channel.send(1)
+  puts "Before send 2"
+  channel.send(2)
+  puts "Before send 3"
+  channel.send(3)
+  puts "End of send fiber"
+end
+
+3.times do |i|
+  puts channel.receive
+end
+```
+
+Output:
+
+```
+Before send 1
+Before send 2
+Before send 3
+1
+2
+3
+```
+
+Note that "End of send fiber" does not appear in the output because we `receive` the 3 `send` calls which means `3.times` runs to completion and in turn unblocks the main fiber which executes to completion.
+
+Here's the same snippet as the one we just saw - with the addition of a `Fiber.yield` call at the very bottom:
+
+```crystal
+# A buffered channel of capacity 1
+channel = Channel(Int32).new(1)
+
+spawn do
+  puts "Before send 1"
+  channel.send(1)
+  puts "Before send 2"
+  channel.send(2)
+  puts "Before send 3"
+  channel.send(3)
+  puts "End of send fiber"
+end
+
+3.times do |i|
+  puts channel.receive
+end
+
+Fiber.yield
+```
+
+Output:
+
+```
+Before send 1
+Before send 2
+Before send 3
+1
+2
+3
+End of send fiber
+```
+
+With the addition of a `Fiber.yield` call at the end of the snippet we see the "End of send fiber" message in the output which would have otherwise been missed due to the main fiber executing to completion.
