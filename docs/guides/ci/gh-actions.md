@@ -53,7 +53,7 @@ For an application (very good to do even if you have specs):
             run: crystal build src/game_of_life.cr
 ```
 
-### Testing with different vesions of Crystal
+### Testing with different versions of Crystal
 
 By default, the latest released version of Crystal is installed. But you may want to also test with the "nightly" build of Crystal, and perhaps some older versions that you still support for your project. Change the top of the workflow as follows:
 
