@@ -66,10 +66,8 @@ $ crystal init app myapp
     create  myapp/.editorconfig
     create  myapp/LICENSE
     create  myapp/README.md
-    create  myapp/.travis.yml
     create  myapp/shard.yml
     create  myapp/src/myapp.cr
-    create  myapp/src/myapp/version.cr
     create  myapp/spec/spec_helper.cr
     create  myapp/spec/myapp_spec.cr
 Initialized empty Git repository in /home/crystal/myapp/.git/
@@ -222,7 +220,6 @@ $ crystal init lib my_cool_lib
     create  my_cool_lib/.editorconfig
     create  my_cool_lib/LICENSE
     create  my_cool_lib/README.md
-    create  my_cool_lib/.travis.yml
     create  my_cool_lib/shard.yml
     create  my_cool_lib/src/my_cool_lib.cr
     create  my_cool_lib/spec/spec_helper.cr

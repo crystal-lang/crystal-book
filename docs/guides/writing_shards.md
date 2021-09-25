@@ -36,10 +36,8 @@ $ crystal init lib palindrome-example
     create  palindrome-example/.editorconfig
     create  palindrome-example/LICENSE
     create  palindrome-example/README.md
-    create  palindrome-example/.travis.yml
     create  palindrome-example/shard.yml
     create  palindrome-example/src/palindrome-example.cr
-    create  palindrome-example/src/palindrome-example/version.cr
     create  palindrome-example/spec/spec_helper.cr
     create  palindrome-example/spec/palindrome-example_spec.cr
 Initialized empty Git repository in /<YOUR-DIRECTORY>/.../palindrome-example/.git/
@@ -59,17 +57,15 @@ Then `add` & `commit` to start tracking the files with Git:
 $ git add -A
 $ git commit -am "First Commit"
 [master (root-commit) 77bad84] First Commit
-10 files changed, 102 insertions(+)
-create mode 100644 .editorconfig
-create mode 100644 .gitignore
-create mode 100644 .travis.yml
-create mode 100644 LICENSE
-create mode 100644 README.md
-create mode 100644 shard.yml
-create mode 100644 spec/palindrome-example_spec.cr
-create mode 100644 spec/spec_helper.cr
-create mode 100644 src/palindrome-example.cr
-create mode 100644 src/palindrome-example/version.cr
+ 8 files changed, 104 insertions(+)
+ create mode 100644 .editorconfig
+ create mode 100644 .gitignore
+ create mode 100644 LICENSE
+ create mode 100644 README.md
+ create mode 100644 shard.yml
+ create mode 100644 spec/palindrome-example_spec.cr
+ create mode 100644 spec/spec_helper.cr
+ create mode 100644 src/palindrome-example.cr
 ```
 
 ### Writing the Code

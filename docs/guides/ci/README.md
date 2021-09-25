@@ -5,7 +5,7 @@ The ability of having immediate feedback on what we are working should be one of
 Martin Fowler [defines Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) as
 _a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly._
 
-In the next subsections, we are going to present a few continuous integration tools: [GitHub Actions](https://docs.github.com/actions), [Travis CI](https://travis-ci.org/) and [Circle CI](https://circleci.com/) and use them with a Crystal example application.
+In the next subsections, we are going to present two continuous integration tools: [GitHub Actions](https://docs.github.com/actions) and [Circle CI](https://circleci.com/), and use them with a Crystal example application.
 
 These tools not only will let us build and test our code each time the source has changed but also deploy the result (if the build was successful) or use automatic builds, and maybe test against different platforms, to mention a few.
 
@@ -94,5 +94,4 @@ Here's the list of items we want to achieve:
 From here choose your next steps:
 
 * I want to use [GitHub Actions](gh-actions.md)
-* I want to use [Travis CI](travis.md)
 * I want to use [CircleCI](circleci.md)
