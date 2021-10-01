@@ -27,6 +27,7 @@ Available escape sequences:
 '\r'         # carriage return
 '\t'         # tab
 '\v'         # vertical tab
+'\0'         # null character
 '\uFFFF'     # hexadecimal unicode character
 '\u{10FFFF}' # hexadecimal unicode character
 ```
