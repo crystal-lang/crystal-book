@@ -17,6 +17,7 @@ Available escape sequences:
 ```crystal
 "\""                  # double quote
 "\\"                  # backslash
+"\#"                  # hash character (to escape interpolation)
 "\a"                  # alert
 "\b"                  # backspace
 "\e"                  # escape
@@ -70,7 +71,7 @@ String interpolation is also possible with [String#%](https://crystal-lang.org/a
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
 
-Interpolation can be disabled by escaping the `#` character with a backslash or by using a non-interpolating string literal like `%q()`.
+Interpolation can be disabled by escaping the hash character (`#`) with a backslash or by using a non-interpolating string literal like `%q()`.
 
 ```crystal
 "\#{a + b}"  # => "#{a + b}"
