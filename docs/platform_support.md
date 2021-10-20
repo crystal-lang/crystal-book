@@ -27,6 +27,7 @@ Tier 2 platforms can be thought of as “expected to build”. Automated tests a
 
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
+| aarch64-darwin | ✓ | ✓ | ARM 64-bit OSX (Apple Silicon) |
 | aarch64-linux-gnu | ✓ | ✓ | ARM 64-bit Linux (GNU, hardfloat) |
 | aarch64-linux-musl | ✓ | ✓ | ARM 64-bit Linux (MUSL, hardfloat) |
 | arm-linux-gnueabihf | ✓ | ✓ | ARM 32-bit Linux (GNU, hardfloat) |
@@ -45,7 +46,6 @@ Tier 3 platforms are those which the Crystal codebase has some sort of support f
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
 | x86_64-windows-msvc |  |  | 64-bit MSVC (Windows 7+) |
-| aarch64-darwin | | | ARM 64-bit OSX (Apple Silicon) |
 | x86_64-unknown-dragonfly | | | 64-bit DragonFlyBSD |
 | x86_64-unknown-netbsd | | | 64-bit NetBSD |
 
