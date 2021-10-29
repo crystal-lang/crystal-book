@@ -119,21 +119,16 @@ $ crystal eval -Dfoo 'puts {{ flag?(:foo) }}'
 true
 ```
 
-### Compiler features
-
-| Flag name | Description |
-|-----------|-------------|
-| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
-
 ### Stdlib features
 
 | Flag name | Description |
 |-----------|-------------|
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314))
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising.
+| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation.
 
-### Compiler build features
+### Compiler features
 
 | Flag name | Description |
 |-----------|-------------|
