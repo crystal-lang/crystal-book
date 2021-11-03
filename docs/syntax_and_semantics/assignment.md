@@ -171,6 +171,64 @@ objects[1] = temp1
 objects[2] = temp2
 ```
 
+## Splat assignment
+
+The left-hand side of an assignment may contain one splat, which collects any values not assigned to the other targets. A [range](literals/range.md) index is used if the right-hand side has one expression:
+
+```crystal
+head, *rest = [1, 2, 3, 4, 5]
+
+# Same as:
+temp = [1, 2, 3, 4, 5]
+head = temp[0]
+rest = temp[1..]
+```
+
+Negative indices are used for targets after the splat. [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html) types support negative indices out of the box:
+
+```crystal
+*rest, tail1, tail2 = [1, 2, 3, 4, 5]
+
+# Same as:
+temp = [1, 2, 3, 4, 5]
+rest = temp[..-3]
+tail1 = temp[-2]
+tail2 = temp[-1]
+```
+
+If the expression does not have enough elements and the splat appears in the middle of the targets, [`IndexError`](https://crystal-lang.org/api/latest/IndexError.html) is raised:
+
+```crystal
+a, b, *c, d, e, f = [1, 2, 3, 4]
+
+# Same as:
+temp = [1, 2, 3, 4]
+if temp.size < 5 # number of non-splat assignment targets
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+# note that the following assignments would incorrectly not raise if the above check is absent
+a = temp[0]
+b = temp[1]
+c = temp[2..-4]
+d = temp[-3]
+e = temp[-2]
+f = temp[-1]
+```
+
+A [`Tuple`](https://crystal-lang.org/api/latest/Tuple.html) is formed if there are multiple values:
+
+```crystal
+*a, b, c = 3, 4, 5, 6, 7
+
+# Same as:
+temp1 = {3, 4, 5}
+temp2 = 6
+temp3 = 7
+a = temp1
+b = temp2
+c = temp3
+```
+
 ## Underscore
 
 The underscore can appear on the left-hand side of any assignment. Assigning a value to it has no effect and the underscore cannot be read from:
