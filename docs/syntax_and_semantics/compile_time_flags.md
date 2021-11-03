@@ -16,9 +16,9 @@ The following program shows the use of compile-time flags by printing the target
 
 ```cr
 {% if flag?(:unix) %}
-  puts "Compiling for a UNIX-like operating system"
+  puts "This program is compiled for a UNIX-like operating system"
 {% elsif flag?(:windows) %}
-  puts "Compiling for Windows"
+  puts "This program is compiled for Windows"
 {% else %}
   # Currently, all supported targets are either UNIX or Windows platforms, so
   # this branch is practically unreachable.
