@@ -85,7 +85,7 @@ The operating system is derived from the third component of a the target triple.
 
 #### ABI
 
-The ABI is derived from the third component of the target triple.
+The ABI is derived from the last component of the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
