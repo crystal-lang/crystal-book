@@ -250,3 +250,17 @@ before = temp[0]
 _ = temp[1] # this line has no effect
 after = temp[2]
 ```
+
+Assignments to `*_` are dropped altogether, so multiple assignments can be used to extract the first and last elements in a value efficiently, without creating an intermediate object for the elements in the middle:
+
+```crystal
+first, *_, last = "127.0.0.1".split(".")
+
+# Same as:
+temp = "127.0.0.1".split(".")
+if temp.size < 2
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+first = temp[0]
+last = temp[-1]
+```
