@@ -160,7 +160,7 @@ A description should be:
 #### Optimizing
 
 It's hard for anyone to use your project if they can't find it.
-[crystalshards.xyz](https://crystalshards.org/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
+Take a look [here](https://crystal-lang.org/community/#shards) for more information on where to find shards
 
 There are people looking for the _exact_ functionality of our library and the _general_ functionality of our library.
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.
