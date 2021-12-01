@@ -357,14 +357,14 @@ end
 
 # This generates:
 #
-#     macro greeting_for_alice
+#     macro greeting_for_alice(greeting)
 #       {% if greeting == "hola" %}
 #         "¡hola alice!"
 #       {% else %}
 #         "{{greeting.id}} alice"
 #       {% end %}
 #     end
-#     macro greeting_for_bob
+#     macro greeting_for_bob(greeting)
 #       {% if greeting == "hola" %}
 #         "¡hola bob!"
 #       {% else %}
