@@ -135,18 +135,6 @@ a # => 2
 b # => 1
 ```
 
-If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
-
-```crystal
-name, age, source = "Crystal, 123, GitHub".split(", ")
-
-# The above is the same as this:
-temp = "Crystal, 123, GitHub".split(", ")
-name = temp[0]
-age = temp[1]
-source = temp[2]
-```
-
 Multiple assignment is also available to methods that end with `=`:
 
 ```crystal
@@ -171,6 +159,37 @@ objects[1] = temp1
 objects[2] = temp2
 ```
 
+## One-to-many assignment
+
+If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
+
+```crystal
+name, age, source = "Crystal, 123, GitHub".split(", ")
+
+# The above is the same as this:
+temp = "Crystal, 123, GitHub".split(", ")
+name = temp[0]
+age = temp[1]
+source = temp[2]
+```
+
+Additionally, if the [`strict_multi_assign` flag](compile_time_flags.md) is provided, the number of elements must match the number of targets, and the right-hand side must be an [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html):
+
+```crystal
+name, age, source = "Crystal, 123, GitHub".split(", ")
+
+# The above is the same as this:
+temp = "Crystal, 123, GitHub".split(", ")
+if temp.size != 3 # number of targets
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+name = temp[0]
+age = temp[1]
+source = temp[2]
+
+a, b = {0 => "x", 1 => "y"} # Error: right-hand side of one-to-many assignment must be an Indexable, not Hash(Int32, String)
+```
+
 ## Splat assignment
 
 The left-hand side of an assignment may contain one splat, which collects any values not assigned to the other targets. A [range](literals/range.md) index is used if the right-hand side has one expression:
@@ -184,7 +203,7 @@ head = temp[0]
 rest = temp[1..]
 ```
 
-Negative indices are used for targets after the splat. [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html) types support negative indices out of the box:
+Negative indices are used for targets after the splat:
 
 ```crystal
 *rest, tail1, tail2 = [1, 2, 3, 4, 5]
@@ -214,6 +233,8 @@ d = temp[-3]
 e = temp[-2]
 f = temp[-1]
 ```
+
+The right-hand side expression must be an [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html). Both the size check and the `Indexable` check occur even without the `strict_multi_assign` flag (see [One-to-many assignment](#one-to-many-assignment) above).
 
 A [`Tuple`](https://crystal-lang.org/api/latest/Tuple.html) is formed if there are multiple values:
 
