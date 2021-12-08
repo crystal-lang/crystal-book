@@ -17,7 +17,7 @@ To continuously test [our example application](README.md#the-example-application
           - name: Download source
             uses: actions/checkout@v2
           - name: Install Crystal
-            uses: oprypin/install-crystal@v1
+            uses: crystal-lang/install-crystal@v1
           - name: Run tests
             run: crystal spec
     ```
@@ -25,9 +25,9 @@ To continuously test [our example application](README.md#the-example-application
 To get started with [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration#about-continuous-integration-using-github-actions), commit this YAML file into your Git repository under the directory `.github/workflows/`, push it to GitHub, and observe the Actions tab.
 
 !!! tip "Quickstart"
-    Check out [**Configurator for *install-crystal* action**](https://oprypin.github.io/install-crystal/configurator.html) to quickly get a config with the CI features you need. Or continue reading for more details.
+    Check out [**Configurator for *install-crystal* action**](https://crystal-lang.github.io/install-crystal/configurator.html) to quickly get a config with the CI features you need. Or continue reading for more details.
 
-This runs on GitHub's [default](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) "latest Ubuntu" container. It downloads the source code from the repository itself (directly into the current directory), installs Crystal via [an external GitHub Action](https://github.com/oprypin/install-crystal), then runs the specs, assuming they are there in the `spec/` directory.
+This runs on GitHub's [default](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) "latest Ubuntu" container. It downloads the source code from the repository itself (directly into the current directory), installs Crystal via [Crystal's official GitHub Action](https://github.com/crystal-lang/install-crystal), then runs the specs, assuming they are there in the `spec/` directory.
 
 If any step fails, the build will show up as failed, notify the author and, if it's a push, set the overall build status of the project to failing.
 
@@ -53,7 +53,7 @@ For an application (very good to do even if you have specs):
             run: crystal build src/game_of_life.cr
 ```
 
-### Testing with different vesions of Crystal
+### Testing with different versions of Crystal
 
 By default, the latest released version of Crystal is installed. But you may want to also test with the "nightly" build of Crystal, and perhaps some older versions that you still support for your project. Change the top of the workflow as follows:
 
@@ -69,7 +69,7 @@ jobs:
       - name: Download source
         uses: actions/checkout@v2
       - name: Install Crystal
-        uses: oprypin/install-crystal@v1
+        uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{ matrix.crystal }}
       - ...

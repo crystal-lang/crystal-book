@@ -407,17 +407,17 @@ end
 #     macro greeting_for_alice
 #       {% name = "alice" %}
 #       {% if greeting == "hola" %}
-#         "¡hola alice!"
+#         "¡hola {{name.id}}!"
 #       {% else %}
-#         "{{greeting.id}} alice"
+#         "{{greeting.id}} {{name.id}}"
 #       {% end %}
 #     end
 #     macro greeting_for_bob
 #       {% name = "bob" %}
 #       {% if greeting == "hola" %}
-#         "¡hola bob!"
+#         "¡hola {{name.id}}!"
 #       {% else %}
-#         "{{greeting.id}} bob"
+#         "{{greeting.id}} {{name.id}}"
 #       {% end %}
 #     end
 define_macros alice, bob

@@ -36,10 +36,8 @@ $ crystal init lib palindrome-example
     create  palindrome-example/.editorconfig
     create  palindrome-example/LICENSE
     create  palindrome-example/README.md
-    create  palindrome-example/.travis.yml
     create  palindrome-example/shard.yml
     create  palindrome-example/src/palindrome-example.cr
-    create  palindrome-example/src/palindrome-example/version.cr
     create  palindrome-example/spec/spec_helper.cr
     create  palindrome-example/spec/palindrome-example_spec.cr
 Initialized empty Git repository in /<YOUR-DIRECTORY>/.../palindrome-example/.git/
@@ -59,17 +57,15 @@ Then `add` & `commit` to start tracking the files with Git:
 $ git add -A
 $ git commit -am "First Commit"
 [master (root-commit) 77bad84] First Commit
-10 files changed, 102 insertions(+)
-create mode 100644 .editorconfig
-create mode 100644 .gitignore
-create mode 100644 .travis.yml
-create mode 100644 LICENSE
-create mode 100644 README.md
-create mode 100644 shard.yml
-create mode 100644 spec/palindrome-example_spec.cr
-create mode 100644 spec/spec_helper.cr
-create mode 100644 src/palindrome-example.cr
-create mode 100644 src/palindrome-example/version.cr
+ 8 files changed, 104 insertions(+)
+ create mode 100644 .editorconfig
+ create mode 100644 .gitignore
+ create mode 100644 LICENSE
+ create mode 100644 README.md
+ create mode 100644 shard.yml
+ create mode 100644 spec/palindrome-example_spec.cr
+ create mode 100644 spec/spec_helper.cr
+ create mode 100644 src/palindrome-example.cr
 ```
 
 ### Writing the Code
@@ -164,7 +160,7 @@ A description should be:
 #### Optimizing
 
 It's hard for anyone to use your project if they can't find it.
-[crystalshards.xyz](https://crystalshards.xyz/) is currently the go-to place for Crystal libraries, so that's what we'll optimize for.
+There are several services for discovering shards, a list is available on the [Crystal Community page](https://crystal-lang.org/community/#shards).
 
 There are people looking for the _exact_ functionality of our library and the _general_ functionality of our library.
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.

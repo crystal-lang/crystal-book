@@ -22,7 +22,7 @@ serve: $(MKDOCS) mkdocs.yml
 deps: $(MKDOCS)
 
 $(MKDOCS): $(PIP) requirements.txt
-	$(PIP) install -q -r requirements.txt
+	$(PIP) install -q --no-deps -r requirements.txt && touch $(MKDOCS)
 
 $(PIP):
 	python3 -m venv .venv
@@ -75,7 +75,8 @@ clean_all: clean clean_deps clean_vendor
 format_api_docs_links:
 	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
 
-check_internal_links:
+.PHONY: check_internal_links
+check_internal_links: $(DOCS_FILES)
 	if grep -P '\[\w.*?\]\((?!http)[^ )]*?(\.html|/)(#[^ )]*?)?\)' docs/**/*.md; then \
 		echo "Links within the site must end with .md"; exit 1; \
 	fi
