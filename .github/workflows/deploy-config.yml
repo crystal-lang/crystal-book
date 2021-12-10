@@ -7,13 +7,17 @@ jobs:
   build:
     name: Deploy config
     runs-on: ubuntu-latest
+    env:
+      S3_BUCKET: crystal-book
     steps:
       - name: Download source
         uses: actions/checkout@v2
-      - name: Build versions files
+      - name: Build versions.json
+        run: scripts/docs-versions.sh origin | tee /dev/stderr > versions.json
+      - name: Build aws-config.json
         run: |
-          scripts/docs-versions.sh origin
-          grep '' versions.json .aws-config  # Display the files
+          latest_version=$(git ls-remote --heads origin | grep -P -o '(?<=refs/heads/)[0-9][0-9.]+' | sort -V -r | head -n1)
+          sed 's/\${LATEST_VERSION}/${latest_version}/g' scripts/aws-config.json | tee /dev/stderr > aws-config.json
       - name: Configure AWS Credentials
         if: github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v1
@@ -21,6 +25,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Deploy versions files
+      - name: Deploy versions.json
         if: github.repository == 'crystal-lang/crystal-book'
-        run: aws s3 sync . s3://crystal-book/reference --exclude '*' --include 'versions.json' --include '.aws-config'
+        run: aws s3 cp versions.json "s3://${{ env.S3_BUCKET }}/reference/versions.json"
+      - name: Deploy website configuration
+        if: github.repository == 'crystal-lang/crystal-book'
+        run: aws s3api put-bucket-website --bucket "${{ env.S3_BUCKET }}" --website-configuration "file://aws-config.json"

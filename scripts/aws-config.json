@@ -1,0 +1,77 @@
+{
+  "IndexDocument": {
+    "Suffix": "index.html"
+  },
+  "ErrorDocument": {
+    "Key": "reference/404.html"
+  },
+  "RoutingRules": [
+    {
+      "Condition": {
+        "KeyPrefixEquals": "reference/installation"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "301",
+        "Protocol": "https",
+        "ReplaceKeyPrefixWith": "install"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "reference/overview/hello_world.html"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "301",
+        "Protocol": "https",
+        "ReplaceKeyPrefixWith": "reference/getting_started"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "reference/overview"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "301",
+        "Protocol": "https",
+        "ReplaceKeyPrefixWith": "reference/getting_started"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "reference/${LATEST_VERSION}/${LATEST_VERSION}/"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "301",
+        "Protocol": "https",
+        "ReplaceKeyWith": "404"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "reference/latest"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "302",
+        "Protocol": "https",
+        "ReplaceKeyPrefixWith": "reference/${LATEST_VERSION}/"
+      }
+    },
+    {
+      "Condition": {
+        "HttpErrorCodeReturnedEquals": "404",
+        "KeyPrefixEquals": "reference/"
+      },
+      "Redirect": {
+        "HostName": "crystal-lang.org",
+        "HttpRedirectCode": "301",
+        "Protocol": "https",
+        "ReplaceKeyPrefixWith": "reference/${LATEST_VERSION}/"
+      }
+    }
+  ]
+}
