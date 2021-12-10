@@ -4,23 +4,22 @@
 
 To continuously test [our example application](README.md#the-example-application) -- both whenever a commit is pushed and when someone opens a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests), add this minimal [workflow file](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#create-an-example-workflow):
 
-!!! example ".github/workflows/ci.yml"
-    ```yaml
-    on:
-      push:
-      pull_request:
-        branches: [master]
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Download source
-            uses: actions/checkout@v2
-          - name: Install Crystal
-            uses: crystal-lang/install-crystal@v1
-          - name: Run tests
-            run: crystal spec
-    ```
+```yaml title=".github/workflows/ci.yml"
+on:
+  push:
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+      - name: Run tests
+        run: crystal spec
+```
 
 To get started with [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration#about-continuous-integration-using-github-actions), commit this YAML file into your Git repository under the directory `.github/workflows/`, push it to GitHub, and observe the Actions tab.
 
@@ -57,7 +56,7 @@ For an application (very good to do even if you have specs):
 
 By default, the latest released version of Crystal is installed. But you may want to also test with the "nightly" build of Crystal, and perhaps some older versions that you still support for your project. Change the top of the workflow as follows:
 
-```{.yaml hl_lines="6 14"}
+```yaml hl_lines="6 14"
 jobs:
   build:
     strategy:
@@ -83,7 +82,7 @@ By specifying the version of Crystal you could even opt *out* of supporting the 
 
 Typically, developers run tests only on Ubuntu, which is OK if there is no platform-sensitive code. But it's easy to add another [system](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) into the test matrix, just add the following near the top of your job definition:
 
-```{.yaml hl_lines="6 7"}
+```yaml hl_lines="6 7"
 jobs:
   build:
     strategy:
@@ -136,20 +135,19 @@ We have been using an "action" to install Crystal into the default OS image that
 
 The base config becomes this instead:
 
-!!! example ".github/workflows/ci.yml"
-    ```{.yaml hl_lines="4-5 9"}
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        container:
-          image: crystallang/crystal:latest
-        steps:
-          - name: Download source
-            uses: actions/checkout@v2
+```yaml title=".github/workflows/ci.yml" hl_lines="4-5 9"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
 
-          - name: Run tests
-            run: crystal spec
-    ```
+      - name: Run tests
+        run: crystal spec
+```
 
 Some [other options](https://hub.docker.com/r/crystallang/crystal/tags) for containers are `crystallang/crystal:nightly`, `crystallang/crystal:0.36.1`, `crystallang/crystal:latest-alpine`.
 
@@ -193,17 +191,16 @@ Note that we also made the installation conditional on `shards check`. That save
 
 If your project is an application, you likely want to distribute it as an executable ("binary") file. For the case of Linux x86_64, by far the most popular option is to build and [link statically](../static_linking.md) [on Alpine Linux](../static_linking.md#linux). This means that you *cannot* use GitHub's default Ubuntu container and the install action. Instead, just use the official container:
 
-!!! example ".github/workflows/release.yml"
-    ```{.yaml hl_lines="5 8"}
-    jobs:
-      release_linux:
-        runs-on: ubuntu-latest
-        container:
-          image: crystallang/crystal:latest-alpine
-        steps:
-          - uses: actions/checkout@v2
-          - run: shards build --production --release --static --no-debug
-    ```
+```yaml title=".github/workflows/release.yml" hl_lines="5 8"
+jobs:
+  release_linux:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:latest-alpine
+    steps:
+      - uses: actions/checkout@v2
+      - run: shards build --production --release --static --no-debug
+```
 
 These steps would be followed by some action to publish the produced executable (`bin/*`), in one of the two ways (or both of them):
 
