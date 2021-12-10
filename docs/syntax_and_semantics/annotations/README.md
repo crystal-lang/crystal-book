@@ -177,7 +177,7 @@ annotation_read
 
 ## Reading
 
-Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/latest/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/latest/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/latest/Crystal/Macros/MetaVar.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/master/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
+Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/latest/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/latest/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/latest/Crystal/Macros/MetaVar.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/latest/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
 !!! note
     If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.

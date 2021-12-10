@@ -25,7 +25,7 @@ The name of a variable always starts with a lowercase [Unicode](https://en.wikip
 
 The type of a variable is automatically inferred by the compiler. In the above example, it's [`String`](https://crystal-lang.org/api/latest/String.html).
 
-You can verify this with [`typeof`](https://crystal-lang.org/api/toplevel.html#typeof(*expression):Class-class-method):
+You can verify this with [`typeof`](https://crystal-lang.org/api/latest/toplevel.html#typeof(*expression):Class-class-method):
 
 ```crystal-play
 message = "Hello Penny!"

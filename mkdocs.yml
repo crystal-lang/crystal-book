@@ -62,6 +62,9 @@ plugins:
           validators:
             - crystal tool format --check -
             - crystal build --no-codegen $<
+  - mkdocs-simple-hooks:
+      hooks:
+        on_page_markdown: 'hooks:on_page_markdown'
 
 markdown_extensions:
   - admonition

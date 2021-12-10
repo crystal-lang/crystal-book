@@ -20,6 +20,7 @@ jobs:
             echo "::set-output name=branch::${BASH_REMATCH[1]}"
           fi
       - name: Install Crystal
+        id: crystal
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{ steps.branch.outputs.branch }}
@@ -34,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: make deps
       - name: Build book
-        run: LINT=true make build
+        run: CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }} LINT=true make build
       - name: Disallow unchecked intra-site links
         run: make check_internal_links
       - name: Build versions file
