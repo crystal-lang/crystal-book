@@ -1,0 +1,27 @@
+name: Deploy config
+on:
+  push:
+    branches:
+      - '[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    name: Deploy config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Build versions files
+        run: |
+          scripts/docs-versions.sh origin
+          grep '' versions.json .aws-config  # Display the files
+      - name: Configure AWS Credentials
+        if: github.repository == 'crystal-lang/crystal-book'
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy versions files
+        if: github.repository == 'crystal-lang/crystal-book'
+        run: aws s3 sync . s3://crystal-book/reference --exclude '*' --include 'versions.json' --include '.aws-config'

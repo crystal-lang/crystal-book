@@ -35,19 +35,13 @@ jobs:
           if [[ $GITHUB_REF =~ ^refs/heads/(master|[0-9][0-9.]+)$ ]]; then
             echo "::set-output name=branch::${BASH_REMATCH[1]}"
           fi
-      - name: Build versions file
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null
-        run: scripts/docs-versions.sh origin | tee /dev/stderr > versions.json
       - name: Configure AWS Credentials
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy book
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         run: aws s3 sync ./site s3://crystal-book/reference/${{ steps.branch.outputs.branch }} --delete
-      - name: Deploy versions file
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null
-        run: aws s3 sync . s3://crystal-book/reference --exclude '*' --include 'versions.json'
