@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env sh
 set -eu
 
 branches=( $(git ls-remote --heads "${1:-.}" | grep -P -o '(?<=refs/heads/)[0-9][0-9.]+' | sort -V -r) )
-latest_branch="${branches[0]}"
 
 printf '[\n'
 latest='"latest"'
