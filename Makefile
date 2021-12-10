@@ -73,7 +73,7 @@ clean_all: clean clean_deps clean_vendor
 
 .PHONY: format_api_docs_links
 format_api_docs_links:
-	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
+	echo $(DOCS_FILES) | xargs perl -p -i -e 's@\bhttps?://crystal-lang\.org/api/(?!toplevel|[A-Z])[^ )/]+/([^ )]+\.html\b)@https://crystal-lang.org/api/\1@g'
 
 .PHONY: help
 help: ## Show this help

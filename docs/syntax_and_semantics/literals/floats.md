@@ -1,6 +1,6 @@
 # Floats
 
-There are two floating point types, [Float32](https://crystal-lang.org/api/latest/Float32.html) and [Float64](https://crystal-lang.org/api/latest/Float64.html),
+There are two floating point types, [Float32](https://crystal-lang.org/api/Float32.html) and [Float64](https://crystal-lang.org/api/Float64.html),
 which correspond to the [binary32](http://en.wikipedia.org/wiki/Single_precision_floating-point_format)
 and [binary64](http://en.wikipedia.org/wiki/Double_precision_floating-point_format)
 types defined by IEEE.

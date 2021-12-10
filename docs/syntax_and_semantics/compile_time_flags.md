@@ -9,7 +9,7 @@ User-provided flags are passed to the compiler, which allow them to be used as f
 ## Querying flags
 
 A flag is just a named identifier which is either set or not.
-The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/1.2.1/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
+The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
 literal and returns a bool literal indicating the flag's state.
 
 The following program shows the use of compile-time flags by printing the target OS family.
@@ -26,7 +26,7 @@ The following program shows the use of compile-time flags by printing the target
 {% end %}
 ```
 
-There's also the macro method [`host_flag?`](https://crystal-lang.org/api/1.2.1/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method)
+There's also the macro method [`host_flag?`](https://crystal-lang.org/api/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method)
 which returns whether a flag is set for the *host* platform, which can differ
 from the target platform (queried by `flag?`) during cross-compilation.
 
