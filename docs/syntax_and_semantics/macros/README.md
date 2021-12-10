@@ -404,7 +404,7 @@ end
 
 # This generates:
 #
-#     macro greeting_for_alice
+#     macro greeting_for_alice(greeting)
 #       {% name = "alice" %}
 #       {% if greeting == "hola" %}
 #         "¡hola {{name.id}}!"
@@ -412,7 +412,7 @@ end
 #         "{{greeting.id}} {{name.id}}"
 #       {% end %}
 #     end
-#     macro greeting_for_bob
+#     macro greeting_for_bob(greeting)
 #       {% name = "bob" %}
 #       {% if greeting == "hola" %}
 #         "¡hola {{name.id}}!"
