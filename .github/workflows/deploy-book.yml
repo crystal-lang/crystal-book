@@ -36,8 +36,6 @@ jobs:
         run: make deps
       - name: Build book
         run: CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }} LINT=true make build
-      - name: Disallow unchecked intra-site links
-        run: make check_internal_links
       - name: Build versions file
         if: github.event_name == 'push' && steps.branch.outputs.branch != null
         run: scripts/docs-versions.sh origin | tee /dev/stderr > versions.json
