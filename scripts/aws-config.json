@@ -41,13 +41,13 @@
     },
     {
       "Condition": {
-        "KeyPrefixEquals": "reference/${LATEST_VERSION}/${LATEST_VERSION}/"
+        "KeyPrefixEquals": "reference/latest/${LATEST_VERSION}/"
       },
       "Redirect": {
         "HostName": "crystal-lang.org",
-        "HttpRedirectCode": "301",
+        "HttpRedirectCode": "302",
         "Protocol": "https",
-        "ReplaceKeyWith": "404"
+        "ReplaceKeyWith": "reference/${LATEST_VERSION}/404.html"
       }
     },
     {
