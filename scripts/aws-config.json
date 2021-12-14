@@ -2,9 +2,6 @@
   "IndexDocument": {
     "Suffix": "index.html"
   },
-  "ErrorDocument": {
-    "Key": "reference/404.html"
-  },
   "RoutingRules": [
     {
       "Condition": {
@@ -15,28 +12,6 @@
         "HttpRedirectCode": "301",
         "Protocol": "https",
         "ReplaceKeyPrefixWith": "install"
-      }
-    },
-    {
-      "Condition": {
-        "KeyPrefixEquals": "reference/overview/hello_world.html"
-      },
-      "Redirect": {
-        "HostName": "crystal-lang.org",
-        "HttpRedirectCode": "301",
-        "Protocol": "https",
-        "ReplaceKeyPrefixWith": "reference/getting_started"
-      }
-    },
-    {
-      "Condition": {
-        "KeyPrefixEquals": "reference/overview"
-      },
-      "Redirect": {
-        "HostName": "crystal-lang.org",
-        "HttpRedirectCode": "301",
-        "Protocol": "https",
-        "ReplaceKeyPrefixWith": "reference/getting_started"
       }
     },
     {
@@ -52,7 +27,7 @@
     },
     {
       "Condition": {
-        "KeyPrefixEquals": "reference/latest"
+        "KeyPrefixEquals": "reference/latest/"
       },
       "Redirect": {
         "HostName": "crystal-lang.org",
@@ -70,7 +45,7 @@
         "HostName": "crystal-lang.org",
         "HttpRedirectCode": "301",
         "Protocol": "https",
-        "ReplaceKeyPrefixWith": "reference/${LATEST_VERSION}/"
+        "ReplaceKeyPrefixWith": "reference/latest/"
       }
     }
   ]
