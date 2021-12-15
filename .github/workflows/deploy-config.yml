@@ -2,6 +2,7 @@ name: Deploy config
 on:
   - create
   - delete
+  - workflow_dispatch
 
 jobs:
   build:
