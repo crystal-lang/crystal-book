@@ -37,7 +37,7 @@
     margin: 0;
 }
 .card > ul {
-    display: flex;
+    display: flex !important;
     flex-wrap: wrap;
     list-style: none;
     padding: 0;

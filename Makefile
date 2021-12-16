@@ -75,15 +75,6 @@ clean_all: clean clean_deps clean_vendor
 format_api_docs_links:
 	echo $(DOCS_FILES) | xargs sed -i -E -e 's|https?://(www\.)?crystal-lang.org/api/([A-Z])|https://crystal-lang.org/api/latest/\2|g'
 
-.PHONY: check_internal_links
-check_internal_links: $(DOCS_FILES)
-	if grep -P '\[\w.*?\]\((?!http)[^ )]*?(\.html|/)(#[^ )]*?)?\)' docs/**/*.md; then \
-		echo "Links within the site must end with .md"; exit 1; \
-	fi
-	if grep -P '\]\(/|//crystal-lang.org/reference/' docs/**/*.md; then \
-		echo "Absolute links within the site are disallowed, use relative links instead"; exit 1; \
-	fi
-
 .PHONY: help
 help: ## Show this help
 	@echo

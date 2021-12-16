@@ -1,5 +1,5 @@
 site_name: Crystal
-site_url: https://crystal-lang.org/reference/
+site_url: https://crystal-lang.org/reference/latest/
 repo_url: https://github.com/crystal-lang/crystal
 edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
 use_directory_urls: false
@@ -12,6 +12,8 @@ extra:
     - name: 日本語
       link: https://ja.crystal-lang.org/reference/
       lang: ja
+  version:
+    provider: mike
   analytics:
     provider: google
     property: UA-42353458-1
@@ -48,7 +50,8 @@ plugins:
         syntax_and_semantics/annotations.md: syntax_and_semantics/annotations/README.md
         guides/continuous_integration.md: guides/ci/README.md
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
-        docs/overview/README.md: syntax_and_semantics/README.md
+        overview/index.md: syntax_and_semantics/README.md
+        overview/hello_world.md: getting_started/README.md
   - code-validator:
       enabled: !ENV [LINT, false]
       identifiers:
@@ -60,6 +63,9 @@ plugins:
           validators:
             - crystal tool format --check -
             - crystal build --no-codegen $<
+  - mkdocs-simple-hooks:
+      hooks:
+        on_page_markdown: 'hooks:on_page_markdown'
 
 markdown_extensions:
   - admonition
@@ -78,3 +84,4 @@ extra_javascript:
   - assets/vendor/carcin-play/carcin-play.js
   - assets/vendor/ansi_up/ansi_up.min.js
   - assets/crystal-play.js
+  - assets/script.js

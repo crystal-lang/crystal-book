@@ -357,14 +357,14 @@ end
 
 # This generates:
 #
-#     macro greeting_for_alice
+#     macro greeting_for_alice(greeting)
 #       {% if greeting == "hola" %}
 #         "¡hola alice!"
 #       {% else %}
 #         "{{greeting.id}} alice"
 #       {% end %}
 #     end
-#     macro greeting_for_bob
+#     macro greeting_for_bob(greeting)
 #       {% if greeting == "hola" %}
 #         "¡hola bob!"
 #       {% else %}
@@ -404,20 +404,20 @@ end
 
 # This generates:
 #
-#     macro greeting_for_alice
+#     macro greeting_for_alice(greeting)
 #       {% name = "alice" %}
 #       {% if greeting == "hola" %}
-#         "¡hola alice!"
+#         "¡hola {{name.id}}!"
 #       {% else %}
-#         "{{greeting.id}} alice"
+#         "{{greeting.id}} {{name.id}}"
 #       {% end %}
 #     end
-#     macro greeting_for_bob
+#     macro greeting_for_bob(greeting)
 #       {% name = "bob" %}
 #       {% if greeting == "hola" %}
-#         "¡hola bob!"
+#         "¡hola {{name.id}}!"
 #       {% else %}
-#         "{{greeting.id}} bob"
+#         "{{greeting.id}} {{name.id}}"
 #       {% end %}
 #     end
 define_macros alice, bob

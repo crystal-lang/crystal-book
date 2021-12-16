@@ -1,7 +1,5 @@
 # Hosting on GitLab
 
-- Go ahead and delete the default `travis.yml` that comes with the project. We won't be needing it.
-
 - Add and commit everything:
 
     ```console

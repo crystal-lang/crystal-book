@@ -163,21 +163,19 @@ end
 
 A `private` top-level method is only visible in the current file.
 
-!!! example "one.cr"
-    ```crystal
-    private def greet
-      puts "Hello"
-    end
+```crystal title="one.cr"
+private def greet
+  puts "Hello"
+end
 
-    greet # => "Hello"
-    ```
+greet # => "Hello"
+```
 
-!!! example "two.cr"
-    ```crystal
-    require "./one"
+```crystal title="two.cr"
+require "./one"
 
-    greet # undefined local variable or method 'greet'
-    ```
+greet # undefined local variable or method 'greet'
+```
 
 This allows you to define helper methods in a file that will only be known in that file.
 
@@ -185,20 +183,18 @@ This allows you to define helper methods in a file that will only be known in th
 
 A `private` top-level type is only visible in the current file.
 
-!!! example "one.cr"
-    ```crystal
-    private class Greeter
-      def self.greet
-        "Hello"
-      end
-    end
+```crystal title="one.cr"
+private class Greeter
+  def self.greet
+    "Hello"
+  end
+end
 
-    Greeter.greet # => "Hello"
-    ```
+Greeter.greet # => "Hello"
+```
 
-!!! example "two.cr"
-    ```crystal
-    require "./one"
+```crystal title="two.cr"
+require "./one"
 
-    Greeter.greet # undefined constant 'Greeter'
-    ```
+Greeter.greet # undefined constant 'Greeter'
+```
