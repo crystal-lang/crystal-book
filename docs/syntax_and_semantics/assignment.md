@@ -215,7 +215,7 @@ tail1 = temp[-2]
 tail2 = temp[-1]
 ```
 
-If the expression does not have enough elements and the splat appears in the middle of the targets, [`IndexError`](https://crystal-lang.org/api/latest/IndexError.html) is raised:
+If the expression does not have enough elements and the splat appears in the middle of the targets, [`IndexError`](https://crystal-lang.org/api/IndexError.html) is raised:
 
 ```crystal
 a, b, *c, d, e, f = [1, 2, 3, 4]
@@ -234,9 +234,9 @@ e = temp[-2]
 f = temp[-1]
 ```
 
-The right-hand side expression must be an [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html). Both the size check and the `Indexable` check occur even without the `strict_multi_assign` flag (see [One-to-many assignment](#one-to-many-assignment) above).
+The right-hand side expression must be an [`Indexable`](https://crystal-lang.org/api/Indexable.html). Both the size check and the `Indexable` check occur even without the `strict_multi_assign` flag (see [One-to-many assignment](#one-to-many-assignment) above).
 
-A [`Tuple`](https://crystal-lang.org/api/latest/Tuple.html) is formed if there are multiple values:
+A [`Tuple`](https://crystal-lang.org/api/Tuple.html) is formed if there are multiple values:
 
 ```crystal
 *a, b, c = 3, 4, 5, 6, 7
