@@ -146,3 +146,4 @@
 * [Manuals](man/README.md)
     * [Using the Compiler](man/crystal/README.md)
     * [The Shards Command](man/shards/README.md)
+    * [Required libraries](required_libraries.md)
