@@ -17,7 +17,7 @@ puts "Hello World!"
 !!! info inline end
     The name `puts` is short for “put string”.
 
-The entire program consists of a call to the method [`puts`](https://crystal-lang.org/api/latest/toplevel.html#puts%28%2Aobjects%29%3ANil-class-method) with the string `Hello World!` as an argument.
+The entire program consists of a call to the method [`puts`](https://crystal-lang.org/api/toplevel.html#puts%28%2Aobjects%29%3ANil-class-method) with the string `Hello World!` as an argument.
 
 This method prints the string (plus a trailing newline character) to the [standard output](https://en.wikipedia.org/wiki/Standard_output).
 

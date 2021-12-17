@@ -1,6 +1,6 @@
 # Regular Expressions
 
-Regular expressions are represented by the [Regex](https://crystal-lang.org/api/latest/Regex.html) class.
+Regular expressions are represented by the [Regex](https://crystal-lang.org/api/Regex.html) class.
 
 A Regex is typically created with a regex literal using [PCRE](http://pcre.org/pcre.txt) syntax. It consists of a string of UTF-8 characters enclosed in forward slashes (`/`):
 

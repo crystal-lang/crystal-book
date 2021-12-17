@@ -77,7 +77,7 @@ end
 x # => nil
 ```
 
-`break` expressions with multiple arguments are packed into [`Tuple`](https://crystal-lang.org/api/latest/Tuple.html) instances:
+`break` expressions with multiple arguments are packed into [`Tuple`](https://crystal-lang.org/api/Tuple.html) instances:
 
 ```crystal
 x = while 2 > 1

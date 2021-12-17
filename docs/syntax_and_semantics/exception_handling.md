@@ -4,20 +4,20 @@ Crystal's way to do error handling is by raising and rescuing exceptions.
 
 ## Raising exception
 
-You raise exceptions by invoking a top-level `raise` method. Unlike other keywords, `raise` is a regular method with two overloads: [one accepting a String](https://crystal-lang.org/api/latest/toplevel.html#raise%28exception%3AException%29%3ANoReturn-class-method) and another [accepting an Exception instance](https://crystal-lang.org/api/latest/toplevel.html#raise%28message%3AString%29%3ANoReturn-class-method):
+You raise exceptions by invoking a top-level `raise` method. Unlike other keywords, `raise` is a regular method with two overloads: [one accepting a String](https://crystal-lang.org/api/toplevel.html#raise%28exception%3AException%29%3ANoReturn-class-method) and another [accepting an Exception instance](https://crystal-lang.org/api/toplevel.html#raise%28message%3AString%29%3ANoReturn-class-method):
 
 ```crystal
 raise "OH NO!"
 raise Exception.new("Some error")
 ```
 
-The String version just creates a new [Exception](https://crystal-lang.org/api/latest/Exception.html) instance with that message.
+The String version just creates a new [Exception](https://crystal-lang.org/api/Exception.html) instance with that message.
 
 Only `Exception` instances or subclasses can be raised.
 
 ## Defining custom exceptions
 
-To define a custom exception type, just subclass from [Exception](https://crystal-lang.org/api/latest/Exception.html):
+To define a custom exception type, just subclass from [Exception](https://crystal-lang.org/api/Exception.html):
 
 ```crystal
 class MyException < Exception
