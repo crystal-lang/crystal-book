@@ -23,7 +23,8 @@ def on_page_markdown(markdown, page, **kwargs):
             f"Suggested fix: '{good}'"
         )
 
-    return markdown.replace(
-        'https://crystal-lang.org/api/',
-        f'https://crystal-lang.org/api/{version}/'
+    return re.sub(
+        r'\bhttps?://(www\.)?crystal-lang\.org/api/(?!([0-9]+(\.[0-9]+)+|latest|master)/)',
+        f'https://crystal-lang.org/api/{version}/',
+        markdown
     )
