@@ -16,8 +16,8 @@ jobs:
         id: branch
         shell: bash -x {0}
         run: |
-          if [[ $GITHUB_REF =~ ^refs/heads/(master|[0-9][0-9.]+)$ ]]; then
-            echo "::set-output name=branch::${BASH_REMATCH[1]}"
+          if [[ $GITHUB_REF =~ ^refs/heads/(master|release/[0-9][0-9.]+)$ ]]; then
+            echo "::set-output name=branch::${BASH_REMATCH[1]#release/}"
           fi
       - name: Install Crystal
         id: crystal
