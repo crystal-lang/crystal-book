@@ -85,4 +85,3 @@ extra_javascript:
   - assets/vendor/carcin-play/carcin-play.js
   - assets/vendor/ansi_up/ansi_up.min.js
   - assets/crystal-play.js
-  - assets/script.js
