@@ -15,7 +15,7 @@ sum 1, 2, 3      # => 6
 sum 1, 2, 3, 4.5 # => 10.5
 ```
 
-The passed arguments become a [Tuple](https://crystal-lang.org/api/latest/Tuple.html) in the method's body:
+The passed arguments become a [Tuple](https://crystal-lang.org/api/Tuple.html) in the method's body:
 
 ```crystal
 # elements is Tuple(Int32, Int32, Int32)

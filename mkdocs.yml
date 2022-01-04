@@ -28,6 +28,7 @@ theme:
     repo: fontawesome/brands/github
   favicon: https://crystal-lang.org/favicon.ico
   logo: assets/crystal-circ.svg
+  custom_dir: overrides
   features:
     - navigation.tabs
 
@@ -84,4 +85,3 @@ extra_javascript:
   - assets/vendor/carcin-play/carcin-play.js
   - assets/vendor/ansi_up/ansi_up.min.js
   - assets/crystal-play.js
-  - assets/script.js
