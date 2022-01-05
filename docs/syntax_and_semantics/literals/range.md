@@ -1,6 +1,6 @@
 # Range
 
-A [Range](https://crystal-lang.org/api/latest/Range.html) represents an interval between two values. It is typically constructed with a range literal, consisting of two or three dots:
+A [Range](https://crystal-lang.org/api/Range.html) represents an interval between two values. It is typically constructed with a range literal, consisting of two or three dots:
 
 * `x..y`: Two dots denote an inclusive range, including `x` and `y` and all values in between (in mathematics: `[x, y]`) .
 * `x...y`: Three dots denote an exclusive range, including `x` and all values up to but not including `y` (in mathematics: `[x, y)`).

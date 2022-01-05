@@ -129,7 +129,6 @@
         * [Hosting on GitLab](guides/hosting/gitlab.md)
     * [Continuous Integration](guides/ci/README.md)
         * [GitHub Actions](guides/ci/gh-actions.md)
-        * [Travis CI](guides/ci/travis.md)
         * [CircleCI](guides/ci/circleci.md)
     * [Static Linking](guides/static_linking.md)
     * [Database](database/README.md)

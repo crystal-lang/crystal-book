@@ -111,7 +111,7 @@ p! -5.abs,   # absolute value
 ```
 
 !!! info
-    A full list of numerical methods is available in [the Number API docs](https://crystal-lang.org/api/latest/Number.html) (also check subtypes).
+    A full list of numerical methods is available in [the Number API docs](https://crystal-lang.org/api/Number.html) (also check subtypes).
 
 ### Math Methods
 
@@ -128,7 +128,7 @@ p! Math.cos(1),     # cosine
 ```
 
 !!! info
-    A full list of math methods is available in [the Math API docs](https://crystal-lang.org/api/latest/Math.html).
+    A full list of math methods is available in [the Math API docs](https://crystal-lang.org/api/Math.html).
 
 ## Constants
 

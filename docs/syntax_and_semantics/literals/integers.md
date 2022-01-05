@@ -4,14 +4,14 @@ There are four signed integer types, and four unsigned integer types:
 
 | Type | Length  | Minimum Value | Maximum Value |
 | ---------- | -----------: | -----------: |-----------: |
-| [Int8](https://crystal-lang.org/api/latest/Int8.html)  | 8       | -128 | 127 |
-| [Int16](https://crystal-lang.org/api/latest/Int16.html)  | 16 | −32,768 | 32,767 |
-| [Int32](https://crystal-lang.org/api/latest/Int32.html) | 32  | −2,147,483,648 | 2,147,483,647 |
-| [Int64](https://crystal-lang.org/api/latest/Int64.html)   |  64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
-| [UInt8](https://crystal-lang.org/api/latest/UInt8.html) | 8 |  0 | 255 |
-| [UInt16](https://crystal-lang.org/api/latest/UInt16.html) | 16 | 0 | 65,535 |
-| [UInt32](https://crystal-lang.org/api/latest/UInt32.html) | 32 |  0 | 4,294,967,295 |
-| [UInt64](https://crystal-lang.org/api/latest/UInt64.html) | 64 | 0 | 2<sup>64</sup> - 1 |
+| [Int8](https://crystal-lang.org/api/Int8.html)  | 8       | -128 | 127 |
+| [Int16](https://crystal-lang.org/api/Int16.html)  | 16 | −32,768 | 32,767 |
+| [Int32](https://crystal-lang.org/api/Int32.html) | 32  | −2,147,483,648 | 2,147,483,647 |
+| [Int64](https://crystal-lang.org/api/Int64.html)   |  64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
+| [UInt8](https://crystal-lang.org/api/UInt8.html) | 8 |  0 | 255 |
+| [UInt16](https://crystal-lang.org/api/UInt16.html) | 16 | 0 | 65,535 |
+| [UInt32](https://crystal-lang.org/api/UInt32.html) | 32 |  0 | 4,294,967,295 |
+| [UInt64](https://crystal-lang.org/api/UInt64.html) | 64 | 0 | 2<sup>64</sup> - 1 |
 
 An integer literal is an optional `+` or `-` sign, followed by
 a sequence of digits and underscores, optionally followed by a suffix.
