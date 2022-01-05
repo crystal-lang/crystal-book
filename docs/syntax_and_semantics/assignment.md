@@ -173,7 +173,7 @@ age = temp[1]
 source = temp[2]
 ```
 
-Additionally, if the [`strict_multi_assign` flag](compile_time_flags.md) is provided, the number of elements must match the number of targets, and the right-hand side must be an [`Indexable`](https://crystal-lang.org/api/latest/Indexable.html):
+Additionally, if the [`strict_multi_assign` flag](compile_time_flags.md) is provided, the number of elements must match the number of targets, and the right-hand side must be an [`Indexable`](https://crystal-lang.org/api/Indexable.html):
 
 ```crystal
 name, age, source = "Crystal, 123, GitHub".split(", ")
