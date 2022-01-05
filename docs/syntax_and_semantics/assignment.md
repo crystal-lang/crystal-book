@@ -159,7 +159,7 @@ objects[1] = temp1
 objects[2] = temp2
 ```
 
-## One-to-many assignment
+### One-to-many assignment
 
 If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
 
@@ -190,7 +190,7 @@ source = temp[2]
 a, b = {0 => "x", 1 => "y"} # Error: right-hand side of one-to-many assignment must be an Indexable, not Hash(Int32, String)
 ```
 
-## Splat assignment
+### Splat assignment
 
 The left-hand side of an assignment may contain one splat, which collects any values not assigned to the other targets. A [range](literals/range.md) index is used if the right-hand side has one expression:
 
