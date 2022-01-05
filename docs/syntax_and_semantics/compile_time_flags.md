@@ -136,6 +136,7 @@ true
 | `without_zlib` | Build the compiler without Zlib support
 | `without_playground` | Build the compiler without playground (`crystal play`)
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
+| `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 
 ### User code features
 
