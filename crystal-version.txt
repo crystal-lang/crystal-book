@@ -1,0 +1,4 @@
+Crystal 1.2.2 [6529d725a] (2021-11-10)
+
+LLVM: 10.0.0
+Default target: x86_64-unknown-linux-gnu
