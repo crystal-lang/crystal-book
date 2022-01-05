@@ -21,8 +21,8 @@ end
 
 foo 0xFFFF_u16 # OK, an UInt16 always fit an Int32
 bar 0xFFFF_u16 # OK, an UInt16 always fit an Float32
-bar (foo 1)    # Fails, casting an Int32 to a Float32 might lose precision
-bar64 (bar 1)  # OK, a Float32 can be autocasted to a Float64
+bar(foo 1)     # Fails, casting an Int32 to a Float32 might lose precision
+bar64(bar 1)   # OK, a Float32 can be autocasted to a Float64
 ```
 
 Number literals are always casted. Expression are casted too (like in the last example above), unless the flag `no_number_autocast` is passed to the compiler (see [Compiler features](compile_time_flags.md#compiler-features)).
