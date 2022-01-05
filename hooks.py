@@ -4,7 +4,7 @@ import re
 
 
 log = logging.getLogger('mkdocs')
-version = os.getenv('CRYSTAL_VERSION', 'latest')
+version = os.getenv('CRYSTAL_VERSION', 'master')
 
 
 def on_page_markdown(markdown, page, **kwargs):
