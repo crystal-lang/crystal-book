@@ -34,8 +34,14 @@ jobs:
           restore-keys: pip-
       - name: Install dependencies
         run: make deps
+      - name: Determine a version for API doc links
+        shell: bash -x {0}
+        run: |
+          if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
+            echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
+          fi
       - name: Build book
-        run: CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }} LINT=true make build
+        run: LINT=true make build
       - name: Build versions file
         if: github.event_name == 'push' && steps.branch.outputs.branch != null
         run: scripts/docs-versions.sh origin | tee /dev/stderr > versions.json
