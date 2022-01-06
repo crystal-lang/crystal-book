@@ -126,6 +126,7 @@ true
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314))
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising.
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
+| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation.
 
 ### Compiler features
