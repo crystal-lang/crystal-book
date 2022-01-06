@@ -17,7 +17,7 @@ The types of the parameters are mandatory, except when directly sending a proc l
 
 The return type is inferred from the proc's body, but can also be provided explicitly:
 
-```crystal
+```
 # A proc returning an Int32 or String
 -> : Int32 | String { 1 } # Proc(Int32 | String)
 
