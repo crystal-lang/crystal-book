@@ -240,3 +240,33 @@ end
 
 Both clauses have branches with the same conditions but in a different order and they behave differently.
 The first matching condition selects which branch executes.
+
+## Iteration
+
+Crystal offers several ways to do iteration. If iterating over an object, a natural way is to use `each`:
+
+```crystal-play
+vals = ["one", "two", "three", "four"]
+vals.each { |num| puts num }
+```
+
+The `loop` construct can also be used:
+
+```crystal-play
+count = 0
+loop do
+  puts "Crystal is awesome!"
+  count = count + 1
+  break if count == 5
+end
+```
+
+Another way is to use `while`:
+
+```crystal-play
+count = 0
+while count < 6
+  puts "Crystal is awesome!"
+  count = count + 1
+end
+```
