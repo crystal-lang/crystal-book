@@ -268,8 +268,8 @@ If one wants to increment the counter directly, `until` can be used:
 ```crystal-play
 i = 0
 until i == 5
- i += 1
- puts "Crystal is awesome!"
+  i += 1
+  puts "Crystal is awesome!"
 end
 ```
 
