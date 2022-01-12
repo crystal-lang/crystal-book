@@ -250,7 +250,40 @@ vals = ["one", "two", "three", "four"]
 vals.each { |num| puts num }
 ```
 
-The `loop` construct can also be used:
+It is also possible to get the index using `each_With_index`:
+
+```crystal-play
+vals = ["one", "two", "three", "four"]
+vals.each_with_index { |num, id| puts "#{num} is #{id}" }
+```
+
+`upto` allows iterations in a range:
+
+```crystal-play
+1.upto(5) { |i| puts "Crystal is awesom!" }
+```
+
+If one wants to increment the counter directly, `until` can be used:
+
+```crystal-play
+i = 0
+until i == 5
+ i += 1
+ puts "Crystal is awesome!"
+end
+```
+
+The `while` construct can also be used:
+
+```crystal-play
+i = 0
+while i < 6
+  puts "Crystal is awesome!"
+  i += 1
+end
+```
+
+Another way is to use the `loop` function:
 
 ```crystal-play
 count = 0
@@ -258,15 +291,5 @@ loop do
   puts "Crystal is awesome!"
   count = count + 1
   break if count == 5
-end
-```
-
-Another way is to use `while`:
-
-```crystal-play
-count = 0
-while count < 6
-  puts "Crystal is awesome!"
-  count = count + 1
 end
 ```
