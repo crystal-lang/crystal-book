@@ -243,7 +243,7 @@ The first matching condition selects which branch executes.
 
 ## Iteration
 
-Crystal offers several ways to do iteration. If iterating over an object, a natural way is to use `each`:
+Crystal offers several ways to do iteration. If iterating over an _iterable_ object, like an array, a natural way is to use `each`:
 
 ```crystal-play
 vals = ["one", "two", "three", "four"]
