@@ -243,7 +243,19 @@ The first matching condition selects which branch executes.
 
 ## Iteration
 
-Crystal offers several ways to do iteration. If iterating over an _iterable_ object, like an array, a natural way is to use `each`:
+Crystal offers several ways to do iteration. `upto` allows iterations in a range:
+
+```crystal-play
+1.upto(5) { |i| puts "Crystal is awesome #{i}!" }
+```
+
+or if the index is not required,
+
+```crystal-play
+1.upto(5) { puts "Crystal is awesome!" }
+```
+
+If iterating over an _iterable_ object, like an array, a natural way is to use `each`:
 
 ```crystal-play
 vals = ["one", "two", "three", "four"]
@@ -255,12 +267,6 @@ It is also possible to get the index using `each_with_index`:
 ```crystal-play
 vals = ["one", "two", "three", "four"]
 vals.each_with_index { |num, id| puts "#{num} is #{id}" }
-```
-
-`upto` allows iterations in a range:
-
-```crystal-play
-1.upto(5) { |i| puts "Crystal is awesome #{i}!" }
 ```
 
 If one wants to increment the counter directly, `until` can be used:
