@@ -250,7 +250,7 @@ vals = ["one", "two", "three", "four"]
 vals.each { |num| puts num }
 ```
 
-It is also possible to get the index using `each_With_index`:
+It is also possible to get the index using `each_with_index`:
 
 ```crystal-play
 vals = ["one", "two", "three", "four"]
