@@ -260,7 +260,7 @@ vals.each_with_index { |num, id| puts "#{num} is #{id}" }
 `upto` allows iterations in a range:
 
 ```crystal-play
-1.upto(5) { |i| puts "Crystal is awesom!" }
+1.upto(5) { |i| puts "Crystal is awesome #{i}!" }
 ```
 
 If one wants to increment the counter directly, `until` can be used:
