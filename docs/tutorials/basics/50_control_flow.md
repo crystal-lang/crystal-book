@@ -240,3 +240,130 @@ end
 
 Both clauses have branches with the same conditions but in a different order and they behave differently.
 The first matching condition selects which branch executes.
+
+## Loops
+
+This section delves into reducing repetition by letting code repeat itself in a loop.
+
+The basic feature is the `while` clause. Its structured quite similar to an `if` clause:
+The keyword `while` designates the begin and is followed by an expression serving as the loop condition.
+All subsequent expressions are part of the loop until the closing keyword `end`.
+The loop continues to repeat itself as long as the return value of the condition is *truthy*.
+
+Let's try a simple program for counting from 1 to 10:
+
+```{.crystal .crystal-play}
+counter = 0
+
+while counter < 10
+  counter += 1
+
+  puts "Counter: #{counter}"
+end
+```
+
+The code between `while` and `end` is executed 10 times. It prints the current counter value and increases it by one.
+After the 10th iteration, the value of `counter` is `10`, thus `counter < 10` fails and the loop breaks.
+
+An alternative is to replace `while` with the keyword `until` which expects just the opposite truthiness. `until x` is equivalent to `while !x`.
+
+```crystal-play
+counter = 0
+
+until counter > 9
+  counter += 1
+
+  puts "Counter: #{counter}"
+end
+```
+
+!!! tip
+    You can find more details on these expressions in the language specification: [`while`](../../syntax_and_semantics/while.md) and [`until`](../../syntax_and_semantics/until.md).
+
+### Infinite loops
+
+When working with loops, it's important to care about the loop condition failing at some point.
+Otherwise, it wouldn't stop ever and continue to all eternity – or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
+
+For example, if we missed the expression for incrementing the counter, it would never reach `10` to break the loop.
+Or if the condition was `counter > 0`, it would match for all values: they only increase from `1`.
+This would not technically be infinite, as it will fail with a math error when the counter reaches the maximum value of a 32-bit integer. But conceptually that's similar to an infinite loop.
+The point is, such logic errors can be easy to miss. It serves to always pay attention when writing loops.
+A good practice for index variables (such as `counter` in our example) is to increment them at the beginning of the loop.
+That makes it harder to forget that.
+
+!!! tip
+    Fortunately, there are many features in the language that relieve the burdon of writing loops manually
+    and also take care of ensuring valid break conditions. A few of them will be introduced in following lessons.
+
+In some cases, the intention is to really have an endless loop.
+An example would be a server that always repeats waiting for a connection, or
+a command processor waiting for user input.
+Then it should be obvious of course, and not hidden in a complex, never-failing loop condition. The most plain way to express that is `while true`.
+The condition `true` is always truthy, so the loop repeats endlessly.
+
+```cr
+while true
+  puts "Hi, what's your name? (hit Enter when done)"
+
+  # `gets` returns input from the console
+  name = gets
+
+  puts "Nice to meet you, #{name}."
+  puts "Now, let's repeat."
+end
+```
+
+!!! note
+    This example is not an interactive playground by choice because the playground can't
+    handle non self-terminating programs, and processing user input.
+    It would just time out and print an error.
+    You can compile and run this code with a local compiler, though.
+
+    To stop the program, hit <kbd>Ctrl+C</kbd>. This sends a signal to the process asking it
+    to exit.
+
+### Skipping and Breaking
+
+It can be useful to skip some iterations in between, or stop the iteration entirely on some condition.
+
+The keyword `next` inside a loop body skips to the next iteration, ignoring any expressions left in the current iteration.
+If the loop condition isn't met, the loop finishes and the body won't execute another time.
+
+```{.crystal .crystal-play}
+counter = 0
+
+while counter < 10
+  counter += 1
+
+  if counter % 3 == 0
+    next
+  end
+
+  puts "Counter: #{counter}"
+end
+```
+
+This example could've easily be written without `next` by placing the `puts` expression in a conditional instead.
+The value of `next` becomes apparent when there are many more expressions in the method body to be skipped.
+
+Loop conditions can be difficult to calculate, for example because they require multiple steps or depend on input that needs to be determined.
+In such situations, it's not very practical to write all the logic in the loop condition.
+The keyword `break` can be used anywhere in a loop body and serves as an additional option to break from a loop regardless of its loop condition.
+Control flow immediately continues after the end of the loop.
+
+```{.crystal .crystal-play}
+counter = 0
+
+while true
+  counter += 1
+
+  puts "Counter: #{counter}"
+
+  if counter >= 10
+    break
+  end
+end
+
+puts "done"
+```
