@@ -267,7 +267,7 @@ After the 10th iteration, the value of `counter` is `10`, thus `counter < 10` fa
 
 An alternative is to replace `while` with the keyword `until` which expects just the opposite truthiness. `until x` is equivalent to `while !x`.
 
-```crystal-play
+```{.crystal .crystal-play}
 counter = 0
 
 until counter > 9
