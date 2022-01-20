@@ -246,7 +246,7 @@ The first matching condition selects which branch executes.
 This section delves into reducing repetition by letting code repeat itself in a loop.
 
 The basic feature is the `while` clause. Its structured quite similar to an `if` clause:
-The keyword `while` designates the begin and is followed by an expression serving as the loop condition.
+The keyword `while` designates the beginning and is followed by an expression serving as the loop condition.
 All subsequent expressions are part of the loop until the closing keyword `end`.
 The loop continues to repeat itself as long as the return value of the condition is *truthy*.
 
