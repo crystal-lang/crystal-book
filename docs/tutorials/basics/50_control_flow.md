@@ -283,7 +283,7 @@ end
 ### Infinite loops
 
 When working with loops, it's important to care about the loop condition failing at some point.
-Otherwise, it wouldn't stop ever and continue to all eternity – or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
+Otherwise, it would continue forever or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
 
 For example, if we missed the expression for incrementing the counter, it would never reach `10` to break the loop.
 Or if the condition was `counter > 0`, it would match for all values: they only increase from `1`.
