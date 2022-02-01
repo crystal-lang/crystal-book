@@ -40,6 +40,8 @@ jobs:
           if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
             echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
           fi
+      - name: Populate sample version of Crystal
+        run: crystal --version | tee crystal-version.txt
       - name: Build book
         run: LINT=true make build
       - name: Build versions file
