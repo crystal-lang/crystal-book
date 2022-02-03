@@ -134,11 +134,11 @@ Tags can be used to group specs, allowing to only run a subset of specs when pro
 ```crystal
 it "is slow", tags: "slow" do
   sleep 60
-  true.should be(true)
+  true.should be_true
 end
 
 it "is fast", tags: "fast" do
-  true.should be(true)
+  true.should be_true
 end
 ```
 
