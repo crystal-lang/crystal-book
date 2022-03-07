@@ -243,7 +243,7 @@ The first matching condition selects which branch executes.
 
 ## Loops
 
-This section delves into reducing repetition by letting code repeat itself in a loop.
+This section delves into writing code that it will repeat until a condition (aka the `loop condition`) is met
 
 The basic feature is the `while` clause. Its structured quite similar to an `if` clause:
 The keyword `while` designates the beginning and is followed by an expression serving as the loop condition.
@@ -270,7 +270,7 @@ An alternative is to replace `while` with the keyword `until` which expects just
 ```{.crystal .crystal-play}
 counter = 0
 
-until counter > 9
+until counter >= 10
   counter += 1
 
   puts "Counter: #{counter}"
@@ -285,10 +285,16 @@ end
 When working with loops, it's important to care about the loop condition failing at some point.
 Otherwise, it would continue forever or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
 
-For example, if we missed the expression for incrementing the counter, it would never reach `10` to break the loop.
+In this example, not incrementing the counter it would be the same as writing: 
+
+```
+while true
+  puts "Counter: #{counter}"
+end
+```
 Or if the condition was `counter > 0`, it would match for all values: they only increase from `1`.
 This would not technically be infinite, as it will fail with a math error when the counter reaches the maximum value of a 32-bit integer. But conceptually that's similar to an infinite loop.
-The point is, such logic errors can be easy to miss. It serves to always pay attention when writing loops.
+Such logic errors can be easy to miss and so it's very important to pay attention when writing the loop condition and also taking care of meeting said breaking case
 A good practice for index variables (such as `counter` in our example) is to increment them at the beginning of the loop.
 That makes it harder to forget that.
 
