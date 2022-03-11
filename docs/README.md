@@ -1,6 +1,7 @@
 ---
 hide:
   - toc        # Hide table of contents
+  - navigation # Hide sidebar nabigation
 ---
 
 # Crystal Book
