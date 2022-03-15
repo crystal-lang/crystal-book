@@ -243,7 +243,7 @@ The first matching condition selects which branch executes.
 
 ## Loops
 
-This section delves into writing code that it will repeat until a condition (aka the `loop condition`) is met
+This section introduces the basics of repeated execution of code.
 
 The basic feature is the `while` clause. Its structured quite similar to an `if` clause:
 The keyword `while` designates the beginning and is followed by an expression serving as the loop condition.
@@ -282,10 +282,10 @@ end
 
 ### Infinite loops
 
-When working with loops, it's important to care about the loop condition failing at some point.
+When working with loops, it's important to care about the loop condition being *falsey* at some point.
 Otherwise, it would continue forever or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
 
-In this example, not incrementing the counter it would be the same as writing: 
+In this example, not incrementing the counter it would be the same as writing:
 
 ```
 while true
@@ -299,8 +299,8 @@ A good practice for index variables (such as `counter` in our example) is to inc
 That makes it harder to forget that.
 
 !!! tip
-    Fortunately, there are many features in the language that relieve the burdon of writing loops manually
-    and also take care of ensuring valid break conditions. A few of them will be introduced in following lessons.
+    Fortunately, there are many features in the language that relieve the burden of writing loops manually
+    and also take care of ensuring valid breaking conditions. A few of them will be introduced in following lessons.
 
 In some cases, the intention is to really have an endless loop.
 An example would be a server that always repeats waiting for a connection, or
