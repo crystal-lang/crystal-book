@@ -143,6 +143,7 @@
         * [Strings](tutorials/basics/40_strings.md)
         * [Control Flow](tutorials/basics/50_control_flow.md)
         * [Methods](tutorials/basics/60_methods.md)
+        * [Collections](tutorials/basics/70_collections.md)
 * [Manuals](man/README.md)
     * [Using the Compiler](man/crystal/README.md)
     * [The Shards Command](man/shards/README.md)

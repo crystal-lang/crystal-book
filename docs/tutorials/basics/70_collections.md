@@ -1,12 +1,21 @@
-# Enumerable
+# Collections
 
-The `Enumerable` module provides methods that implement common solutions over collections.
+Collections can be thinked as containers of elements. If a collection implements the method `#each` (so that it can be traversed) then said collection may include the mixin `Enumerable`, which provides methods that implement common solutions over collections.
+
+Examples of collections that includes `Enumerable` are:
+- [Array](https://crystal-lang.org/api/latest/Array.html) (includes `Enumerable` through `Indexable`)
+- [Hash](https://crystal-lang.org/api/latest/Hash.html)
+- [Set](https://crystal-lang.org/api/latest/Set.html)
+
+[Here](https://crystal-lang.org/api/latest/Enumerable.html#direct-including-types) is a list of other types (not necessarily collections) that _direct include_ `Enumerable`.
+
+In this section we will review some methods implemented in `Enumerable`.
 
 ## Enumerable#map
 
-For example, given a array of `Int32` we may apply a method that sums 1 to every element. Another example, we want to multiply every element by 2.
+Let's start with the following two examples: given a array of `Int32` we may apply a method that sums 1 to every element. The other example: we want to multiply every element by 2.
 
-Let's write the two examples:
+Let's write them:
 
 **+1 example**
 ```{.crystal .crystal-play}
@@ -36,7 +45,7 @@ Done!
 
 Although now it's easy to see that both implementations have the same structure, we are repeating the same logic!
 
-It would be great to have a method to go through each element an apply a method to said element.
+It would be great to have a way of going through the collection  applying a method to each one of the elements.
 
 Well, we are in luck, because [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method) does exactly that.
 
@@ -60,7 +69,7 @@ puts times2 # => [2, 4, 6]
 
 Great!
 
-We wrote the examples using `each`, we detect the pattern used and we learned about `Enumerable#map`. Now let's see [Enumerable#map implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L905):
+We wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#map`. Now let's see [Enumerable#map implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L905):
 
 ```crystal
   def map(& : T -> U) : Array(U) forall U
@@ -70,9 +79,11 @@ We wrote the examples using `each`, we detect the pattern used and we learned ab
   end
 ```
 
-No magic here, right? :) Just the structure extracted to a method called `map`.
+No magic here, right? :) Just the structure we found, extracted to a method with a given name: `map`.
 
-A related method to know: [`map_with_index`](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method)
+Related methods:
+
+- [`map_with_index`](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method)
 
 ## Enumerable#select
 
@@ -110,9 +121,9 @@ puts str3 # => ["Hello", "Crystal!"]
 
 And so the pattern appears. Again, we are repeating the same logic!
 
-It would be great to have a method to go through each element an selects the elements the comply to a given condition.
+It would be great to have a method to go through the collection selecting the ones that complies to a given condition.
 
-As we can imagen, there is such method and is called [Enumerable#select](https://crystal-lang.org/api/latest/Enumerable.html#select%28%26%3AT-%3E%29-instance-method).
+As we can imagine, there is such method and it's called [Enumerable#select](https://crystal-lang.org/api/latest/Enumerable.html#select%28%26%3AT-%3E%29-instance-method).
 
 Let's re-write the examples:
 
@@ -134,7 +145,7 @@ str3 = arr.select { |elem| elem.size > 3 }
 puts str3 # => ["Hello", "Crystal!"]
 ```
 
-So, we wrote the examples using `each`, we detect the pattern used and we learned about `Enumerable#select`. Let's see [Enumerable#select implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L1408):
+So, we wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#select`. Let's see [Enumerable#select implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L1408):
 
 ```crystal
   def select(& : T ->)
@@ -146,7 +157,9 @@ So, we wrote the examples using `each`, we detect the pattern used and we learne
 
 There we have the structure!
 
-Related method: [Enumerable#reject](https://crystal-lang.org/api/latest/Enumerable.html#reject%28%26%3AT-%3E%29-instance-method)
+Related methods:
+
+- [Enumerable#reject](https://crystal-lang.org/api/latest/Enumerable.html#reject%28%26%3AT-%3E%29-instance-method)
 
 ## Enumerable#reduce
 
@@ -169,7 +182,7 @@ puts sum # => 6
 
 **Any empty?**
 
-And in the second example we return if there is an empty string in the array.
+And in the second example we return if there is an empty string.
 
 ```{.crystal .crystal-play}
 arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
@@ -185,7 +198,7 @@ puts empty_str # => false
 This time the pattern is a little more difficult to see but it's there!
 We can break the example as follows: First we declare a variable (let's call it "accumulator") with an initial value. Then as we go through the elements in the array, we "accumulate" the result of applying a method to the "accumulator" and the current element (in the first example the method was `+`, in the second was `||`)
 
-So, what we need is a method which can go through each element, starting with an `initial value` an applying a method to the `accumulated value` and said element.
+So, what we need is a method which can go through the collection, starting with an `initial value` and applying a binary operation between the `accumulated value` and the current element.
 
 Drumroll please ... the method is called [Enumerable#reduce](https://crystal-lang.org/api/latest/Enumerable.html#reduce%28%26%29-instance-method).
 
@@ -209,7 +222,7 @@ empty_str = arr.reduce(false) { |accum, elem| accum || elem.empty?}
 puts empty_str # => false
 ```
 
-So, we wrote the examples using `each`, we detect the pattern used and we learned about `Enumerable#reduce`. Let's see [Enumerable#reduce implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L709) using an initial value:
+So, we wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#reduce`. Let's see [Enumerable#reduce implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L709) using an initial value:
 
 ```crystal
   def reduce(memo)
@@ -222,7 +235,7 @@ So, we wrote the examples using `each`, we detect the pattern used and we learne
 
 It's worth mention that `reduce` is the base for other methods. Let's see one of them related to the first example:
 
-### Enumerable###sum
+### Enumerable#sum
 We can write our first example with [Enumerable#sum](https://crystal-lang.org/api/1.3.2/Enumerable.html#sum%28initial%29-instance-method) like this:
 
 ```{.crystal .crystal-play}
@@ -248,7 +261,7 @@ puts arr.sum # => 6
   end
 ```
 
-### Enumerable###any?
+### Enumerable#any?
 
 In case you are wondering if there is an `any?` method we can re-write the `Any empty? example` ...
 
@@ -268,9 +281,9 @@ arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
 puts arr.any? &.empty? # => false
 ```
 
-`&` refers to the value passed to the block. You can read more about this [here](https://crystal-lang.org/reference/1.3/syntax_and_semantics/blocks_and_procs.html#short-one-parameter-syntax).
+`&` refers to the value passed to the block. You can read more about it [here](https://crystal-lang.org/reference/latest/syntax_and_semantics/blocks_and_procs.html#short-one-parameter-syntax).
 
 **the long answer is: Yes! But ...**
 the method [Enumerable#any?](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L81) is not implemented using `Enumerable#reduce` but with `each` so to "break the loop" once we find an element that satisfies the condition.
 
-As you can imagine there are a lot more methods in `Enumerable` and it's a good practice to read [its documentation](https://crystal-lang.org/api/latest/Enumerable.html) at least once so we have an idea of what we can do with enumerable collections.
+There are a lot more methods in `Enumerable` and it's a good practice to read [its documentation](https://crystal-lang.org/api/latest/Enumerable.html) at least once so we have an idea of what we can do with enumerable collections.
