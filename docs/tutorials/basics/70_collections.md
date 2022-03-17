@@ -282,7 +282,7 @@ arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
 puts arr.any? &.empty? # => false
 ```
 
-`&` refers to the value passed to the block. You can read more about it [here](https://crystal-lang.org/reference/latest/syntax_and_semantics/blocks_and_procs.html#short-one-parameter-syntax).
+`&` refers to the value passed to the block. You can read more about it [here](../../syntax_and_semantics/blocks_and_procs.md#short-one-parameter-syntax).
 
 **the long answer is: Yes! But ...**
 the method [Enumerable#any?](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L81) is not implemented using `Enumerable#reduce` but with `each` so to "break the loop" once we find an element that satisfies the condition.
