@@ -18,7 +18,7 @@ Let's start with the following two examples: given a array of `Int32` we may app
 
 Let's write them:
 
-**+1 example**
+**Plus1 example**
 ```{.crystal .crystal-play}
 arr = [1, 2, 3]
 plus1 = [] of Int32
@@ -30,7 +30,7 @@ arr.each { |elem|
 puts plus1 # => [2, 3, 4]
 ```
 
-***2 example**
+**Times2 example**
 ```{.crystal .crystal-play}
 arr = [1, 2, 3]
 times2 = [] of Int32
@@ -52,7 +52,7 @@ Well, we are in luck, because [Enumerable#map](https://crystal-lang.org/api/Enum
 
 Let's re-write the examples:
 
-**+1 example using Enumerable#map**
+**Plus1 example using Enumerable#map**
 ```{.crystal .crystal-play}
 arr = [1, 2, 3]
 plus1 = arr.map { |elem| elem + 1}
@@ -60,7 +60,7 @@ plus1 = arr.map { |elem| elem + 1}
 puts plus1 # => [2, 3, 4]
 ```
 
-***2 example using Enumerable#map**
+**Times2 example using Enumerable#map**
 ```{.crystal .crystal-play}
 arr = [1, 2, 3]
 times2 = arr.map { |elem| elem * 2}
