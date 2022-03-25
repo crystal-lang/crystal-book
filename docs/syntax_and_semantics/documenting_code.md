@@ -200,7 +200,7 @@ class InternalHelper
 end
 ```
 
-This directive needs to be the first line in a doc comment. Leading whitespace if
+This directive needs to be the first line in a doc comment. Leading whitespace is
 optional.
 Following comment lines can be used for internal documentation.
 
