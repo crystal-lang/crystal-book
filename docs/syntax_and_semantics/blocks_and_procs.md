@@ -67,6 +67,7 @@ end
 
 # Same as:
 open(file("foo.cr")) do
+  something
 end
 ```
 
@@ -74,6 +75,7 @@ You wouldn't want the above to be:
 
 ```crystal
 open(file("foo.cr") do
+  something
 end)
 ```
 
