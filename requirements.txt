@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-click==8.1.0
+click==8.1.1
     # via mkdocs
 ghp-import==2.0.2
     # via mkdocs
@@ -43,7 +43,7 @@ mkdocs-material-extensions==1.0.3
     # via mkdocs-material
 mkdocs-redirects==1.0.4
     # via -r requirements.in
-mkdocs-section-index==0.3.3
+mkdocs-section-index==0.3.4
     # via -r requirements.in
 mkdocs-simple-hooks==0.1.5
     # via -r requirements.in
