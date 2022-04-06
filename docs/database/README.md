@@ -7,7 +7,8 @@ The following packages are compliant with crystal-db
 * [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) for sqlite
 * [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) for mysql & mariadb
 * [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
-
+And several others.
+ 
 This guide presents the api of crystal-db, the sql commands might need to be adapted for the concrete driver due to differences between postgres, mysql and sqlite.
 
 Also some drivers may offer additional functionality like postgres `LISTEN`/`NOTIFY`.
@@ -43,7 +44,7 @@ Other connection uris are
 
 * `sqlite3:///path/to/data.db`
 * `mysql://user:password@server:port/database`
-* `postgres://server:port/database`
+* `postgres://user:password@server:port/database`
 
 Alternatively you can use a non yielding `DB.open` method as long as `Database#close` is called at the end.
 
