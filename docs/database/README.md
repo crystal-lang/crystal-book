@@ -76,6 +76,8 @@ db.exec "insert into contacts values (?, ?)", "John", 30
 # Postgres
 db.exec "insert into contacts values ($1, $2)", "Sarah", 33
 ```
+Query parameters are accomplished typically using PreparedStatements under the hood,
+though this can be disabled via a connection string option `prepared_statements=false`.
 
 ## Query
 
@@ -85,6 +87,16 @@ To perform a query and get the result set use `Database#query`, arguments can be
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|
+  rs.each do
+    # ... perform for each row in the ResultSet
+  end
+end
+```
+
+You can also use query parameters:
+
+```crystal
+db.query("select name from contacts where age = ?", 33) do |rs|
   rs.each do
     # ... perform for each row in the ResultSet
   end
@@ -105,7 +117,7 @@ db.query "select name, age from contacts order by age desc" do |rs|
 end
 ```
 
-There are many convenient query methods built on top of `#query`.
+There are many convenient query methods built on top of `#query` to make this easier.
 
 You can read multiple columns at once:
 
@@ -125,4 +137,5 @@ Or read a scalar value without dealing explicitly with the ResultSet:
 max_age = db.scalar "select max(age) from contacts"
 ```
 
+There are many other helper methods to query with types, query column names with types, etc.
 All available methods to perform statements in a database are defined in `DB::QueryMethods`.
