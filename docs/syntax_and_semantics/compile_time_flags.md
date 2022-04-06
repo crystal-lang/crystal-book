@@ -9,7 +9,7 @@ User-provided flags are passed to the compiler, which allow them to be used as f
 ## Querying flags
 
 A flag is just a named identifier which is either set or not.
-The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/1.2.1/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
+The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
 literal and returns a bool literal indicating the flag's state.
 
 The following program shows the use of compile-time flags by printing the target OS family.
@@ -26,7 +26,7 @@ The following program shows the use of compile-time flags by printing the target
 {% end %}
 ```
 
-There's also the macro method [`host_flag?`](https://crystal-lang.org/api/1.2.1/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method)
+There's also the macro method [`host_flag?`](https://crystal-lang.org/api/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method)
 which returns whether a flag is set for the *host* platform, which can differ
 from the target platform (queried by `flag?`) during cross-compilation.
 
@@ -126,6 +126,7 @@ true
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314))
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising.
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
+| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation.
 
 ### Compiler features
@@ -136,6 +137,7 @@ true
 | `without_zlib` | Build the compiler without Zlib support
 | `without_playground` | Build the compiler without playground (`crystal play`)
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
+| `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 
 ### User code features
 

@@ -158,9 +158,9 @@ end
 
 The compiler implicitly adds some admonitions to doc comments:
 
-* The [`@[Deprecated]`](https://crystal-lang.org/api/latest/Deprecated.html) annotation
+* The [`@[Deprecated]`](https://crystal-lang.org/api/Deprecated.html) annotation
   adds a `DEPRECATED` admonition.
-* The [`@[Experimental]`](https://crystal-lang.org/api/latest/Experimental.html) annotation
+* The [`@[Experimental]`](https://crystal-lang.org/api/Experimental.html) annotation
   adds an `EXPERIMENTAL` admonition.
 
 ## Directives
@@ -200,7 +200,7 @@ class InternalHelper
 end
 ```
 
-This directive needs to be the first line in a doc comment. Leading whitespace if
+This directive needs to be the first line in a doc comment. Leading whitespace is
 optional.
 Following comment lines can be used for internal documentation.
 

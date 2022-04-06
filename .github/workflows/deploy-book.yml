@@ -12,8 +12,18 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v2
+      - name: Extract branch name to deploy
+        id: branch
+        shell: bash -x {0}
+        run: |
+          if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(master|release/[0-9][0-9.]+)$ ]]; then
+            echo "::set-output name=branch::${BASH_REMATCH[2]#release/}"
+          fi
       - name: Install Crystal
+        id: crystal
         uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{ steps.branch.outputs.branch }}
       - name: Install Python
         uses: actions/setup-python@v2
       - name: Cache dependencies
@@ -24,17 +34,16 @@ jobs:
           restore-keys: pip-
       - name: Install dependencies
         run: make deps
-      - name: Build book
-        run: LINT=true make build
-      - name: Disallow unchecked intra-site links
-        run: make check_internal_links
-      - name: Extract branch name to deploy
-        id: branch
+      - name: Determine a version for API doc links
         shell: bash -x {0}
         run: |
-          if [[ $GITHUB_REF =~ ^refs/heads/(master|[0-9][0-9.]+)$ ]]; then
-            echo "::set-output name=branch::${BASH_REMATCH[1]}"
+          if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
+            echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
           fi
+      - name: Populate sample version of Crystal
+        run: crystal --version | tee crystal-version.txt
+      - name: Build book
+        run: LINT=true make build
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v1

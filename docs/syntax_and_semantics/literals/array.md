@@ -1,6 +1,6 @@
 # Array
 
-An [Array](https://crystal-lang.org/api/latest/Array.html) is an ordered and integer-indexed generic collection of elements of a specific type `T`.
+An [Array](https://crystal-lang.org/api/Array.html) is an ordered and integer-indexed generic collection of elements of a specific type `T`.
 
 Arrays are typically created with an array literal denoted by square brackets (`[]`) and individual elements separated by a comma (`,`).
 
@@ -90,7 +90,7 @@ The splat operator can be used inside array and array-like literals to insert mu
 Set{1, *coll, 2, 3}
 ```
 
-The only requirement is that `coll`'s type must include [`Enumerable`](https://crystal-lang.org/api/latest/Enumerable.html). The above is equivalent to:
+The only requirement is that `coll`'s type must include [`Enumerable`](https://crystal-lang.org/api/Enumerable.html). The above is equivalent to:
 
 ```crystal
 array = Array(typeof(...)).new

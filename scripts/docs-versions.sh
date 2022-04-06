@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-branches=( $(git ls-remote --heads "${1:-.}" | grep -P -o '(?<=refs/heads/)[0-9][0-9.]+' | sort -V -r) )
+branches=( $(git ls-remote --heads "${1:-.}" | grep -P -o '(?<=refs/heads/release/)[0-9][0-9.]+' | sort -V -r) )
 latest_version="${branches[0]}"
 
 {

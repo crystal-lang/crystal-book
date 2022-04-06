@@ -144,7 +144,6 @@ Hello Crystal!
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
 * `--link-flags FLAGS`: Additional flags to pass to the linker.
-* `--lto=thin`: Use ThinLTO, improving performance on release builds.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
@@ -178,7 +177,6 @@ Hello World!
 
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
-* `--lto=thin`: Use ThinLTO, improves performance.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.

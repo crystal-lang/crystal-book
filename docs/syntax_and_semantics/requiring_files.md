@@ -10,7 +10,21 @@ Once a file is required, the compiler remembers its absolute path and later `req
 
 This looks up "filename" in the require path.
 
-By default the require path is the location of the standard library that comes with the compiler, and the "lib" directory relative to the current working directory (given by `pwd` in a Unix shell). These are the only places that are looked up.
+By default, the require path includes two locations:
+
+* the `lib` directory relative to the current working directory (this is where dependencies are looked up)
+* the location of the standard library that comes with the compiler
+
+These are the only places that are looked up.
+
+The exact paths used by the compiler can be queried as `crystal env CRYSTAL_PATH`:
+
+```console
+$ crystal env CRYSTAL_PATH
+lib:/usr/bin/../share/crystal/src
+```
+
+These lookup paths can be overridden by defining the [`CRYSTAL_PATH` environment variable](../using_the_compiler/README.md#environment-variables).
 
 The lookup goes like this:
 
@@ -79,11 +93,10 @@ The lookup goes like this:
 * Otherwise a compile-time error is issued.
 
 This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from [specs](../guides/testing.md):
-q
-!!! example "spec/spec_helper.cr"
-    ```crystal
-    require "../src/project"
-    ```
+
+```crystal title="spec/spec_helper.cr"
+require "../src/project"
+```
 
 ## Other forms
 

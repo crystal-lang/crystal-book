@@ -92,6 +92,7 @@
         * [as](syntax_and_semantics/as.md)
         * [as?](syntax_and_semantics/as_question.md)
         * [typeof](syntax_and_semantics/typeof.md)
+    * [Type autocasting](syntax_and_semantics/autocasting.md)
     * [Macros](syntax_and_semantics/macros/README.md)
         * [Macro methods](syntax_and_semantics/macros/macro_methods.md)
         * [Hooks](syntax_and_semantics/macros/hooks.md)

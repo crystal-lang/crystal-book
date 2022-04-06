@@ -16,7 +16,7 @@ offsetof(Foo, @y) # => 8
 offsetof(Foo, @z) # => 10
 ```
 
-The second form accepts any [`Tuple`](https://crystal-lang.org/api/latest/Tuple.html) instance type as first argument and an integer literal index as second argument, and returns the byte offset of the corresponding tuple element relative to an instance of the given type:
+The second form accepts any [`Tuple`](https://crystal-lang.org/api/Tuple.html) instance type as first argument and an integer literal index as second argument, and returns the byte offset of the corresponding tuple element relative to an instance of the given type:
 
 ```crystal
 offsetof(Tuple(Int64, Int8, UInt16), 0) # => 0

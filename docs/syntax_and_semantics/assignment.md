@@ -135,18 +135,6 @@ a # => 2
 b # => 1
 ```
 
-If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
-
-```crystal
-name, age, source = "Crystal, 123, GitHub".split(", ")
-
-# The above is the same as this:
-temp = "Crystal, 123, GitHub".split(", ")
-name = temp[0]
-age = temp[1]
-source = temp[2]
-```
-
 Multiple assignment is also available to methods that end with `=`:
 
 ```crystal
@@ -171,6 +159,97 @@ objects[1] = temp1
 objects[2] = temp2
 ```
 
+### One-to-many assignment
+
+If the right-hand side contains just one expression, the type is indexed for each variable on the left-hand side like so:
+
+```crystal
+name, age, source = "Crystal, 123, GitHub".split(", ")
+
+# The above is the same as this:
+temp = "Crystal, 123, GitHub".split(", ")
+name = temp[0]
+age = temp[1]
+source = temp[2]
+```
+
+Additionally, if the [`strict_multi_assign` flag](compile_time_flags.md) is provided, the number of elements must match the number of targets, and the right-hand side must be an [`Indexable`](https://crystal-lang.org/api/Indexable.html):
+
+```crystal
+name, age, source = "Crystal, 123, GitHub".split(", ")
+
+# The above is the same as this:
+temp = "Crystal, 123, GitHub".split(", ")
+if temp.size != 3 # number of targets
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+name = temp[0]
+age = temp[1]
+source = temp[2]
+
+a, b = {0 => "x", 1 => "y"} # Error: right-hand side of one-to-many assignment must be an Indexable, not Hash(Int32, String)
+```
+
+### Splat assignment
+
+The left-hand side of an assignment may contain one splat, which collects any values not assigned to the other targets. A [range](literals/range.md) index is used if the right-hand side has one expression:
+
+```crystal
+head, *rest = [1, 2, 3, 4, 5]
+
+# Same as:
+temp = [1, 2, 3, 4, 5]
+head = temp[0]
+rest = temp[1..]
+```
+
+Negative indices are used for targets after the splat:
+
+```crystal
+*rest, tail1, tail2 = [1, 2, 3, 4, 5]
+
+# Same as:
+temp = [1, 2, 3, 4, 5]
+rest = temp[..-3]
+tail1 = temp[-2]
+tail2 = temp[-1]
+```
+
+If the expression does not have enough elements and the splat appears in the middle of the targets, [`IndexError`](https://crystal-lang.org/api/IndexError.html) is raised:
+
+```crystal
+a, b, *c, d, e, f = [1, 2, 3, 4]
+
+# Same as:
+temp = [1, 2, 3, 4]
+if temp.size < 5 # number of non-splat assignment targets
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+# note that the following assignments would incorrectly not raise if the above check is absent
+a = temp[0]
+b = temp[1]
+c = temp[2..-4]
+d = temp[-3]
+e = temp[-2]
+f = temp[-1]
+```
+
+The right-hand side expression must be an [`Indexable`](https://crystal-lang.org/api/Indexable.html). Both the size check and the `Indexable` check occur even without the `strict_multi_assign` flag (see [One-to-many assignment](#one-to-many-assignment) above).
+
+A [`Tuple`](https://crystal-lang.org/api/Tuple.html) is formed if there are multiple values:
+
+```crystal
+*a, b, c = 3, 4, 5, 6, 7
+
+# Same as:
+temp1 = {3, 4, 5}
+temp2 = 6
+temp3 = 7
+a = temp1
+b = temp2
+c = temp3
+```
+
 ## Underscore
 
 The underscore can appear on the left-hand side of any assignment. Assigning a value to it has no effect and the underscore cannot be read from:
@@ -191,4 +270,18 @@ temp = "main.cr".partition(".")
 before = temp[0]
 _ = temp[1] # this line has no effect
 after = temp[2]
+```
+
+Assignments to `*_` are dropped altogether, so multiple assignments can be used to extract the first and last elements in a value efficiently, without creating an intermediate object for the elements in the middle:
+
+```crystal
+first, *_, last = "127.0.0.1".split(".")
+
+# Same as:
+temp = "127.0.0.1".split(".")
+if temp.size < 2
+  raise IndexError.new("Multiple assignment count mismatch")
+end
+first = temp[0]
+last = temp[-1]
 ```
