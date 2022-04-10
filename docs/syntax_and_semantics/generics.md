@@ -101,6 +101,7 @@ When using Generics this is also possible, meaning a `class` can be defined with
 ```crystal
 class Foo(*T)
   getter content
+
   def initialize(*@content : *T)
   end
 end
