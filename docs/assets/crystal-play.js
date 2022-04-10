@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var play = new CarcinPlay(code.innerText, wrapper, {language: "crystal"});
 
     // TODO: Enable clipboard from codemirror
-    var clipboardButton = parent.querySelector("button[data-clipboard-target");
-    parent.removeChild(clipboardButton);
+    var clipboardButton = parent.querySelector("button[data-clipboard-target]");
+    if (clipboardButton) {
+      parent.removeChild(clipboardButton);
+    }
 
     /*
     if(ClipboardJS.isSupported()){
