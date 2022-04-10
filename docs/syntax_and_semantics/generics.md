@@ -91,3 +91,43 @@ end
 class GenericChild(T) < Parent(T)
 end
 ```
+
+## Generics with variable number of arguments
+
+As we can read in [Splats and Tuples](./splats_and_tuples.md) a method _can receive a variable number of arguments_.
+
+When using Generics this is also possible, meaning a `class` can be defined with a variable number of arguments:
+
+```crystal
+class Foo(*T)
+  getter content
+  def initialize(*@content : *T)
+  end
+end
+
+foo = Foo.new(42, "Life, the Universe, and Everything")
+puts foo.content # => {42, "Life, the Universe, and Everything"}
+```
+
+We can also use it when defining a `class` by inheritance:
+
+```crystal
+class Parent(*T)
+end
+
+class StringChild < Parent(String)
+end
+
+class Int32StringChild < Parent(Int32, String)
+end
+```
+
+And if we need to instantiate a `class` with 0 arguments? In that case we may do:
+
+```crystal
+class Parent(*T)
+end
+
+class NoArgumentChild < Parent()
+end
+```
