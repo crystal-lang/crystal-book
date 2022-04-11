@@ -117,7 +117,7 @@ def adds_2(n : Int32 = 0)
   n + 2
 end
 
-puts adds_2 40 # => 42
+puts adds_2 40  # => 42
 puts adds_2(40) # => 42 syntactically equivalent method call with parentheses
 ```
 
@@ -139,7 +139,7 @@ def times_2(n : Int32) : Int32
   n * 2
 end
 
-puts build_even_number 7 # => 14
+puts build_even_number 7  # => 14
 puts build_even_number 28 # => 28
 ```
 
