@@ -107,3 +107,61 @@ say_hello 3
 
 Overloading isn't defined just by type restrictions. The number of arguments as well as named arguments are also
 relevant characteristics.
+
+## Return value
+
+Methods may also return a value:
+
+```crystal-play
+def adds_2(n : Int32 = 0)
+  n + 2
+end
+
+puts adds_2 40 # => 42
+puts adds_2(40) # => 42 syntactically equivalent method call with parentheses
+```
+
+The keyword `return` is not necessary and methods will always return the result of executing the last line.
+
+The following example usest the `return` keyword and _implicit_ `return`:
+
+```crystal-play
+# This method returns:
+# - the same number if it's even,
+# - the number multiplied by 2 if it's odd.
+def build_even_number(n : Int32 = 0)
+  return n if n.even?
+
+  times_2(n)
+end
+
+def times_2(n : Int32) : Int32
+  n * 2
+end
+
+puts build_even_number 7 # => 14
+puts build_even_number 28 # => 28
+```
+
+### Return type
+
+As we can see in the previous example, in `times_2` definition we provide type information for the returned value. Here is another example:
+
+```crystal-play
+def hello_message_for(recipient : String) : String
+  "Hello #{recipient}!"
+end
+
+puts hello_message_for "Crystal" # => "Hello Crystal!"
+```
+
+This is really useful for finding errors at compile time:
+
+```crystal
+def hello_message_for(recipient : String) : String
+  "Hello #{recipient}!"
+  42
+end
+
+puts hello_message_for "Crystal" # => Error: method top-level hello_message_for must return String but it is returning Int32
+```
