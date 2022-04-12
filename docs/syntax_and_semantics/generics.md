@@ -94,11 +94,11 @@ end
 
 ## Generics with variable number of arguments
 
-As we can read in [Splats and Tuples](./splats_and_tuples.md) a method _can receive a variable number of arguments_.
+We may define a Generic class with a variable number of arguments using the [splat operator](./operators.md#splats).
 
-When using Generics this is also possible, meaning a `class` can be defined with a variable number of arguments:
+Let's see an example where we define a Generic class called `Foo` and then we will use it with two type parameters `Int32` and `String`:
 
-```crystal
+```crystal-play
 class Foo(*T)
   getter content
 
@@ -106,29 +106,54 @@ class Foo(*T)
   end
 end
 
-foo = Foo.new(42, "Life, the Universe, and Everything")
+foo = Foo(Int32, String).new(42, "Life, the Universe, and Everything")
+
+puts typeof(foo) # => Foo(Int32, String)
 puts foo.content # => {42, "Life, the Universe, and Everything"}
 ```
 
-We can also use it when defining a `class` by inheritance:
+In the following example we define classes by inheritance, specifying instances for the generic types:
 
 ```crystal
 class Parent(*T)
 end
 
+# We define `StringChild` inheriting from `Parent` class
+# using `String` for generic type argument:
 class StringChild < Parent(String)
 end
 
+# We define `Int32StringChild` inheriting from `Parent` class
+# using `Int32` and `String` for generic type arguments:
 class Int32StringChild < Parent(Int32, String)
 end
 ```
 
 And if we need to instantiate a `class` with 0 arguments? In that case we may do:
 
+```crystal-play
+class Parent(*T)
+end
+
+foo = Parent().new
+puts typeof(foo) # => Parent()
+```
+
+But we should not mistake 0 arguments with not specifying the generic type variables. The following examples will raise an error:
+
 ```crystal
 class Parent(*T)
 end
 
-class NoArgumentChild < Parent()
+foo = Parent.new # => Error: can't infer the type parameter T for the generic class Parent(*T). Please provide it explicitly
+```
+
+```crystal
+class Parent(*T)
 end
+
+class Foo < Parent
+end
+
+# => Error: generic type arguments must be specified when inheriting Parent(*T)
 ```
