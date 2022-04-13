@@ -96,7 +96,7 @@ end
 
 We may define a Generic class with a variable number of arguments using the [splat operator](./operators.md#splats).
 
-Let's see an example where we define a Generic class called `Foo` and then we will use it with two type parameters `Int32` and `String`:
+Let's see an example where we define a Generic class called `Foo` and then we will use it with different number of type variables:
 
 ```crystal-play
 class Foo(*T)
@@ -106,10 +106,17 @@ class Foo(*T)
   end
 end
 
+# 2 type variables:
+# (explicitly specifying type variables)
 foo = Foo(Int32, String).new(42, "Life, the Universe, and Everything")
 
 puts typeof(foo) # => Foo(Int32, String)
 puts foo.content # => {42, "Life, the Universe, and Everything"}
+
+# 3 type variables:
+# (type variables inferred by the compiler)
+bar = Foo.new("Hello", ["Crystal", "!"], 140)
+puts typeof(bar) # => Foo(String, Array(String), Int32)
 ```
 
 In the following example we define classes by inheritance, specifying instances for the generic types:
@@ -146,14 +153,7 @@ class Parent(*T)
 end
 
 foo = Parent.new # => Error: can't infer the type parameter T for the generic class Parent(*T). Please provide it explicitly
-```
 
-```crystal
-class Parent(*T)
+class Foo < Parent # => Error: generic type arguments must be specified when inheriting Parent(*T)
 end
-
-class Foo < Parent
-end
-
-# => Error: generic type arguments must be specified when inheriting Parent(*T)
 ```
