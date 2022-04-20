@@ -6,6 +6,7 @@
   background-color: var(--md-code-bg-color);
   color: var(--md-code-fg-color);
   font-family: "Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace;
+  font-size: 0.85em; /* https: //github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss#L209 */
 }
 
 .cm-s-mkdocs-material .CodeMirror-scrollbar-filler, .cm-s-mkdocs-material .CodeMirror-gutter-filler {
