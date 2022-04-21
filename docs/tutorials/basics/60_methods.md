@@ -108,27 +108,28 @@ say_hello 3
 Overloading isn't defined just by type restrictions. The number of arguments as well as named arguments are also
 relevant characteristics.
 
-## Return value
+## Returning a value
 
 Methods may also return a value:
 
 ```crystal-play
-def adds_2(n : Int32 = 0)
+def adds_2(n : Int32)
   n + 2
 end
 
 puts adds_2 40
 ```
 
-The keyword `return` is not necessary and methods will always return the result of executing the last line.
+!!! note
+    The keyword `return` is not necessary and methods will always return the result of executing the last line.
 
-The following example usest the `return` keyword and _implicit_ `return`:
+The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
 
 ```crystal-play
 # This method returns:
 # - the same number if it's even,
 # - the number multiplied by 2 if it's odd.
-def build_even_number(n : Int32 = 0)
+def build_even_number(n : Int32)
   return n if n.even?
 
   times_2(n)
@@ -164,3 +165,31 @@ end
 
 hello_message_for "Crystal" # => Error: method top-level hello_message_for must return String but it is returning Int32
 ```
+
+Let's try one more example, just to highlight how useful it is to provide type information:
+
+```crystal-play
+def hello_message_for(recipient : String)
+  "Hello #{recipient}!"
+  42
+end
+
+puts hello_message_for "Crystal"
+```
+
+The above example works! (although we were expecting to print `Hello Crystal` instead of `42`).
+
+Now let's see what happens when we try to use the returned value as a `String`:
+
+```crystal
+def hello_message_for(recipient : String)
+  "Hello #{recipient}!"
+  42
+end
+
+(hello_message_for "Crystal") + "!!" # => Error: no overload matches 'Int32#+' with type String
+```
+
+The compiler is telling us that there is no `Int32#+` method that takes a `String` value as an argument.
+
+As we can see, this last Error message is not as accurate as when using type information since the compiler cannot know that we intend the method `hello_message_for` to return a String.
