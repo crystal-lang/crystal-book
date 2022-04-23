@@ -19,6 +19,9 @@ These instructions and courses help you get to know the language and how to use 
 ### [Getting started](getting_started/README.md)
 Install Crystal and get it running.
 
+* [Install](https://crystal-lang.org/install)
+* [Try Online](https://play.crystal-lang.org/#/cr)
+
   </div>
   <div class="card" markdown="1">
 
