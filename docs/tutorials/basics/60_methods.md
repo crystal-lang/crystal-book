@@ -121,7 +121,7 @@ puts adds_2 40
 ```
 
 !!! note
-    The keyword `return` is not necessary and methods will always return the result of executing the last line.
+    In the previous example, the use of the keyword `return` in method `adds_2` would be redundant since methods always return the evaluation of the last line.
 
 The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
 
@@ -192,4 +192,4 @@ end
 
 The compiler is telling us that there is no `Int32#+` method that takes a `String` value as an argument.
 
-As we can see, this last Error message is not as accurate as when using type information since the compiler cannot know that we intend the method `hello_message_for` to return a String.
+As we can see, this last error message is not as accurate as when using type information since the compiler cannot know that we intend the method `hello_message_for` to return a `String`.
