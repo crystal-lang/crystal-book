@@ -110,7 +110,7 @@ relevant characteristics.
 
 ## Returning a value
 
-Methods may also return a value:
+Methods return a value which becomes the value of the method call. By default, it's the value of the last expression in the method:
 
 ```crystal-play
 def adds_2(n : Int32)
@@ -120,8 +120,7 @@ end
 puts adds_2 40
 ```
 
-!!! note
-    In the previous example, the use of the keyword `return` in method `adds_2` would be redundant since methods always return the evaluation of the last line.
+A method can return at any place in its body using the `return` statement. The argument passed to `return` becomes the method's return value. If there is no argument, it's `nil`.
 
 The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
 
@@ -132,10 +131,6 @@ The following example illustrates the use of an _explicit_ and an _implicit_ `re
 def build_even_number(n : Int32)
   return n if n.even?
 
-  times_2(n)
-end
-
-def times_2(n : Int32) : Int32
   n * 2
 end
 
@@ -145,51 +140,26 @@ puts build_even_number 28
 
 ### Return type
 
-As we can see in the previous example, in `times_2` definition we provide type information for the returned value. Here is another example:
-
-```crystal-play
-def hello_message_for(recipient : String) : String
-  "Hello #{recipient}!"
-end
-
-puts hello_message_for "Crystal"
-```
-
-This is really useful for finding errors at compile time:
+Let's begin defining a method that we expect it will return an `Int32` value, but mistakenly returns a `String`:
 
 ```crystal
-def hello_message_for(recipient : String) : String
-  "Hello #{recipient}!"
-  42
+def life_universe_and_everything
+  "Fortytwo"
 end
 
-hello_message_for "Crystal" # => Error: method top-level hello_message_for must return String but it is returning Int32
+puts life_universe_and_everything + 1 # Error: no overload matches 'String#+' with type Int32
 ```
 
-Let's try one more example, just to highlight how useful it is to provide type information:
+Because we never told the compiler we were expecting the method to return an `Int32`, the best the compiler can do is to tell us that there is no `String#+` method that takes an `Int32` value as an argument (i.e. the compiler is pointing at the moment when we use the value but not at the root of the bug: the type of the method's return value).
 
-```crystal-play
-def hello_message_for(recipient : String)
-  "Hello #{recipient}!"
-  42
-end
-
-puts hello_message_for "Crystal"
-```
-
-The above example works! (although we were expecting to print `Hello Crystal` instead of `42`).
-
-Now let's see what happens when we try to use the returned value as a `String`:
+The error message can be more accurate if using type information, so let's try again the example but now specifying the type:
 
 ```crystal
-def hello_message_for(recipient : String)
-  "Hello #{recipient}!"
-  42
+def life_universe_and_everything : Int32
+  "Fortytwo"
 end
 
-(hello_message_for "Crystal") + "!!" # => Error: no overload matches 'Int32#+' with type String
+puts life_universe_and_everything + 1 # Error: method top-level life_universe_and_everything must return Int32 but it is returning String
 ```
 
-The compiler is telling us that there is no `Int32#+` method that takes a `String` value as an argument.
-
-As we can see, this last error message is not as accurate as when using type information since the compiler cannot know that we intend the method `hello_message_for` to return a `String`.
+Now the compiler can show us exactly where the problem is originated. As we can see, providing type information is really useful for finding errors at compile time.
