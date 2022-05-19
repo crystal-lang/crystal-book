@@ -8,7 +8,7 @@ A concurrent system is one that can be in charge of many tasks, although not nec
 
 At the moment of this writing, Crystal has concurrency support but not parallelism: several tasks can be executed, and a bit of time will be spent on each of these, but two code paths are never executed at the same exact time.
 
-A Crystal program executes in a single operating system thread, except the Garbage Collector (GC) which implements a concurrent mark-and-sweep (currently [Boehm GC](http://www.hboehm.info/gc/)).
+Crystal is still single threaded by default. Parallelism is supported, but is currently considered experimental. Checkout [Parallelism in Crystal - The Crystal Programming Language for more information](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html), only one exception, the Garbage Collector (GC) which implements a concurrent mark-and-sweep (currently [Boehm GC](http://www.hboehm.info/gc/)).
 
 ### Fibers
 
@@ -219,10 +219,13 @@ This prints:
 ```
 Before receive
 Before send
+After send
 After receive
 ```
 
-First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked, and so execution continues at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes, so the program exits without giving the other fiber a chance to print "After send".
+First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked, Note that this `send` does not occupy space in the channel, This is because there is a `receive` invoked prior to the first `send`, so this `send` not got blocked. Fiber only switch out when blocked or executing to completion, so, will continue the codes after `send`, switch back to main fiber when finish `puts "After send"`.
+
+Main fiber then resume at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes.
 
 In the above example we used `nil` just to communicate that the fiber ended. We can also use channels to communicate values between fibers:
 
@@ -250,13 +253,14 @@ Output:
 ```
 Before first receive
 Before first send
+Before second send
 1
 Before second receive
-Before second send
 2
+
 ```
 
-Note that when the program executes a `receive`, that fiber blocks and execution continues with the other fiber. When `send` is executed, execution continues with the fiber that was waiting on that channel.
+Note that when the program executes a `receive`, that fiber blocks and execution continues with the other fiber. When `channel.send(1)` is executed, execution continues because non-blocked, until `channel.send(2)`, because channel blocked, execution continues with the fiber that was waiting on that channel.
 
 Here we are sending literal values, but the spawned fiber might compute this value by, for example, reading a file, or getting it from a socket. When this fiber will have to wait for I/O, other fibers will be able to continue executing code until I/O is ready, and finally when the value is ready and sent through the channel, the main fiber will receive it. For example:
 
