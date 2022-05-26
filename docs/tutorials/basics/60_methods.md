@@ -107,3 +107,59 @@ say_hello 3
 
 Overloading isn't defined just by type restrictions. The number of arguments as well as named arguments are also
 relevant characteristics.
+
+## Returning a value
+
+Methods return a value which becomes the value of the method call. By default, it's the value of the last expression in the method:
+
+```crystal-play
+def adds_2(n : Int32)
+  n + 2
+end
+
+puts adds_2 40
+```
+
+A method can return at any place in its body using the `return` statement. The argument passed to `return` becomes the method's return value. If there is no argument, it's `nil`.
+
+The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
+
+```crystal-play
+# This method returns:
+# - the same number if it's even,
+# - the number multiplied by 2 if it's odd.
+def build_even_number(n : Int32)
+  return n if n.even?
+
+  n * 2
+end
+
+puts build_even_number 7
+puts build_even_number 28
+```
+
+### Return type
+
+Let's begin defining a method that we expect it will return an `Int32` value, but mistakenly returns a `String`:
+
+```crystal
+def life_universe_and_everything
+  "Fortytwo"
+end
+
+puts life_universe_and_everything + 1 # Error: no overload matches 'String#+' with type Int32
+```
+
+Because we never told the compiler we were expecting the method to return an `Int32`, the best the compiler can do is to tell us that there is no `String#+` method that takes an `Int32` value as an argument (i.e. the compiler is pointing at the moment when we use the value but not at the root of the bug: the type of the method's return value).
+
+The error message can be more accurate if using type information, so let's try again the example but now specifying the type:
+
+```crystal
+def life_universe_and_everything : Int32
+  "Fortytwo"
+end
+
+puts life_universe_and_everything + 1 # Error: method top-level life_universe_and_everything must return Int32 but it is returning String
+```
+
+Now the compiler can show us exactly where the problem is originated. As we can see, providing type information is really useful for finding errors at compile time.
