@@ -294,9 +294,9 @@ end
 ```
 Or if the condition was `counter > 0`, it would match for all values: they only increase from `1`.
 This would not technically be infinite, as it will fail with a math error when the counter reaches the maximum value of a 32-bit integer. But conceptually that's similar to an infinite loop.
-Such logic errors can be easy to miss and so it's very important to pay attention when writing the loop condition and also taking care of meeting said breaking case
+Such logic errors can be easy to miss and so it's very important to pay attention when writing the loop condition and also taking care of meeting said breaking case.
 A good practice for index variables (such as `counter` in our example) is to increment them at the beginning of the loop.
-That makes it harder to forget that.
+That makes it harder to forget to update them.
 
 !!! tip
     Fortunately, there are many features in the language that relieve the burden of writing loops manually
@@ -351,7 +351,7 @@ end
 ```
 
 This example could've easily be written without `next` by placing the `puts` expression in a conditional instead.
-The value of `next` becomes apparent when there are many more expressions in the method body to be skipped.
+The worth of `next` becomes apparent when there are many more expressions in the method body to be skipped.
 
 Loop conditions can be difficult to calculate, for example because they require multiple steps or depend on input that needs to be determined.
 In such situations, it's not very practical to write all the logic in the loop condition.
