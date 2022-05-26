@@ -69,19 +69,15 @@ To execute sql statements you can use `Database#exec`
 db.exec "create table contacts (name varchar(30), age int)"
 ```
 
-To avoid [SQL injection](https://owasp.org/www-community/attacks/SQL_Injection) values can be provided as query parameters.
-The syntax for using query parameters depends on the database driver because they are typically just passed through to the database. MySQL uses `?` for parameter expansion and assignment is based on argument order. PostgreSQL uses `$n` where `n` is the ordinal number of the argument (starting with 1).
-
 ```crystal
-# MySQL
-db.exec "insert into contacts values (?, ?)", "John", 30
-# Postgres
-db.exec "insert into contacts values ($1, $2)", "Sarah", 33
+db.exec "insert into contacts (name, age) values ('abc', 30)"
 ```
+
+Values can be provided as query parameters, see below.
 
 ## Query
 
-To perform a query and get the result set use `Database#query`, arguments can be used as in `Database#exec`.
+To perform a query and get the result set use `Database#query`.
 
 `Database#query` returns a `ResultSet` that needs to be closed. As in `Database#open`, if called with a block, the `ResultSet` will be closed implicitly.
 
@@ -92,6 +88,28 @@ db.query "select name, age from contacts order by age desc" do |rs|
   end
 end
 ```
+
+Values can be provided as query parameters, see below.
+
+## Query Parameters
+
+To avoid [SQL injection](https://owasp.org/www-community/attacks/SQL_Injection) values can be provided as query parameters.
+The syntax for using query parameters depends on the database driver because they are typically just passed through to the database. MySQL uses `?` for parameter expansion and assignment is based on argument order. PostgreSQL uses `$n` where `n` is the ordinal number of the argument (starting with 1).
+
+```crystal
+# MySQL
+db.exec "insert into contacts values (?, ?)", "John", 30
+# Postgres
+db.exec "insert into contacts values ($1, $2)", "Sarah", 33
+# Queries:
+db.query("select name from contacts where age = ?", 33) do |rs|
+  rs.each do
+    # ... perform for each row in the ResultSet
+  end
+end
+```
+
+## Reading Query Results
 
 When reading values from the database there is no type information during compile time that crystal can use. You will need to call `rs.read(T)` with the type `T` you expect to get from the database.
 
@@ -107,7 +125,7 @@ db.query "select name, age from contacts order by age desc" do |rs|
 end
 ```
 
-There are many convenient query methods built on top of `#query`.
+There are many convenient query methods built on top of `#query` to make this easier.
 
 You can read multiple columns at once:
 
@@ -127,4 +145,5 @@ Or read a scalar value without dealing explicitly with the ResultSet:
 max_age = db.scalar "select max(age) from contacts"
 ```
 
+There are many other helper methods to query with types, query column names with types, etc.
 All available methods to perform statements in a database are defined in `DB::QueryMethods`.
