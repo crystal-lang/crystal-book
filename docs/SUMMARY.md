@@ -11,6 +11,7 @@
     * [Governance document](./governance.md)
 * Specification
     * [About this guide](syntax_and_semantics/README.md)
+    * [The Program](syntax_and_semantics/the_program.md)
     * [Comments](syntax_and_semantics/comments.md)
     * [Documenting code](syntax_and_semantics/documenting_code.md)
     * [Literals](syntax_and_semantics/literals/README.md)
@@ -53,7 +54,6 @@
     * [Requiring files](syntax_and_semantics/requiring_files.md)
     * [Types and methods](syntax_and_semantics/types_and_methods.md)
         * [Everything is an object](syntax_and_semantics/everything_is_an_object.md)
-        * [The Program](syntax_and_semantics/the_program.md)
         * [Classes and methods](syntax_and_semantics/classes_and_methods.md)
             * [new, initialize and allocate](syntax_and_semantics/new,_initialize_and_allocate.md)
             * [Methods and instance variables](syntax_and_semantics/methods_and_instance_variables.md)
