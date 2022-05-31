@@ -44,4 +44,4 @@ def greet
 end
 ```
 
-This is a byproduct of multi-threading in Crystal. Due to the existince of Fibers, Crystal does not know at compile-time whether the instance variable will still be non-`Nil` when the usage in the `if` branch is reached.
+This is a byproduct of multi-threading in Crystal. Due to the existence of Fibers, Crystal does not know at compile-time whether the instance variable will still be non-`Nil` when the usage in the `if` branch is reached.
