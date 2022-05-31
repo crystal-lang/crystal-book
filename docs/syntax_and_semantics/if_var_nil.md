@@ -37,7 +37,7 @@ You can solve this by storing the value in a local variable first:
 def greet
   name = @name
   unless name.nil?
-    puts "Hello, #{name.upcase}" # Error: undefined method 'upcase' for Nil (compile-time type is (String | Nil))
+    puts "Hello, #{name.upcase}" # name will be String - no compile error
   else
     puts "Hello"
   end
