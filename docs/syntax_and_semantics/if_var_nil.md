@@ -11,9 +11,9 @@ else
 end
 ```
 
-## Instsance Variables
+## Instance Variables
 
-Type restriction through `if var.nil?` only occurs with local variables. The type of an instance variable in a similar code example to the one above will still be nilable, and will throw a compile error since `greet` expects a `String` in the `unless` branch.
+Type restriction through `if var.nil?` only occurs with local variables. The type of an instance variable in a similar code example to the one above will still be nilable and will throw a compile error since `greet` expects a `String` in the `unless` branch.
 
 ```crystal
 class Person
