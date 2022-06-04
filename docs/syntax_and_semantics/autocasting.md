@@ -40,8 +40,7 @@ def foo(x : Int128)
   x
 end
 
-bar = 1_i32
-foo bar # Error: ambiguous call, implicit cast of Int32 matches all of Int64, Int128
+foo 1_i32 # Error: ambiguous call, implicit cast of Int32 matches all of Int64, Int128
 ```
 
 Autocasting at the moment works only in two scenarios: at function calls, as shown so far, and at class/instance variable initialization. The following example shows an example of two situations for an instance variable: casting at initialization works, but casting at an assignment doesn't:

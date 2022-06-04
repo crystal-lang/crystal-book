@@ -63,7 +63,7 @@ Besides the single symbol literal, there is also a percent literal to create an 
 %i(foo(bar) baz) # => [:"foo(bar)", :baz]
 ```
 
-Identifiers may contain any unicode characters. Individual symbols are separated by a single space character (` `) which must be escaped to use it as a part of an identifier.
+Identifiers may contain any unicode characters. Individual symbols are separated by a single space character, which must be escaped to use it as a part of an identifier.
 
 ```crystal
 %i(foo\ bar baz) # => [:"foo bar", :baz]

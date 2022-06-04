@@ -50,7 +50,7 @@ end
 # => Method added: generate_random_number
 ```
 
-Both `method_missing` and `method_added` only apply to calls or methods in the same class that the macro is defined in, or only in the top level if the macro is defined outside of a class. For example:
+Both `method_missing` and `method_added` only apply to calls or methods in the same class that the macro is defined in or it descendants, or only in the top level if the macro is defined outside of a class. For example:
 
 ```crystal
 macro method_missing(call)

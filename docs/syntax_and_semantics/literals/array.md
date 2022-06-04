@@ -17,7 +17,7 @@ The array's generic type argument `T` is inferred from the types of the elements
 [1, "hello", 'x'] # => Array(Int32 | String | Char)
 ```
 
-An explicit type can be specified by immediately following the closing bracket with `of` and a type, each separated by whitespace. This overwrites the inferred type and can be used for example to create an array that holds only some types initially but can accept other types later.
+An explicit type can be specified by immediately following the closing bracket with `of` and a type, each separated by ` | `. This overwrites the inferred type and can be used for example to create an array that holds only some types initially but can accept other types later.
 
 ```crystal
 array_of_numbers = [1, 2, 3] of Float64 | Int32 # => Array(Float64 | Int32)
