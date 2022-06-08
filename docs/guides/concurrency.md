@@ -260,7 +260,7 @@ Before second receive
 
 ```
 
-Note that when the program executes a `receive`, that fiber blocks and execution continues with the other fiber. When `channel.send(1)` is executed, execution continues because non-blocked, until `channel.send(2)`, because channel blocked, execution continues with the fiber that was waiting on that channel.
+Note that when the program executes a `receive`, the current fiber blocks and execution continues with the other fiber. When `channel.send(1)` is executed, execution continues because `send` is non-blocking if the channel is not yet full. However, `channel.send(2)` does cause the fiber to block because the channel (which has a size of 1 by default) is full, so execution continues with the fiber that was waiting on that channel.
 
 Here we are sending literal values, but the spawned fiber might compute this value by, for example, reading a file, or getting it from a socket. When this fiber will have to wait for I/O, other fibers will be able to continue executing code until I/O is ready, and finally when the value is ready and sent through the channel, the main fiber will receive it. For example:
 
