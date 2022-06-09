@@ -225,7 +225,7 @@ After receive
 
 First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked. Note that this `send` does not occupy space in the channel because there is a `receive` invoked prior to the first `send`, `send` is not blocked. Fibers only switch out when blocked or executing to completion. So the spawned fiber will continue after `send`, and execution will switch back to main fiber once `puts "After send"` is executed.
 
-Main fiber then resume at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes.
+The main fiber then resumes at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes.
 
 In the above example we used `nil` just to communicate that the fiber ended. We can also use channels to communicate values between fibers:
 
