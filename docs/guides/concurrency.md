@@ -8,7 +8,7 @@ A concurrent system is one that can be in charge of many tasks, although not nec
 
 At the moment of this writing, Crystal has concurrency support but not parallelism: several tasks can be executed, and a bit of time will be spent on each of these, but two code paths are never executed at the same exact time.
 
-Crystal is still single-threaded by default, except for the garbage collector (currently [Boehm GC](http://www.hboehm.info/gc/)). Parallelism is supported, but it is currently considered experimental. Check out [this Crystal Blog post about parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html) for more information.
+A Crystal program by default executes in a single operating system thread, except for the garbage collector (currently [Boehm GC](http://www.hboehm.info/gc/)). Parallelism is supported, but it is currently considered experimental. Check out [this Crystal Blog post about parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html) for more information.
 
 ### Fibers
 
