@@ -280,7 +280,7 @@ rescue ex
 end
 ```
 
-There is a way to rollback the changes in the `inner-transaction` but keep the ones in the `outer-transaction`. Use `rollback` in the `inner_tx` object. This will rollback **only** then inner-transaction. Here is the example:
+There is a way to rollback the changes in the `inner-transaction` but keep the ones in the `outer-transaction`. Use `rollback` in the `inner_tx` object. This will rollback **only** the inner-transaction. Here is the example:
 
 ```crystal
 db = get_bank_db

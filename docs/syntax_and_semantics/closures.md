@@ -75,10 +75,6 @@ This is because the captured block could have been potentially stored in a class
 This also happens with regular proc literals, even if it's evident that the proc wasn't invoked or stored:
 
 ```crystal
-def capture(&block)
-  block
-end
-
 x = 1
 ->{ x = "hello" }
 
