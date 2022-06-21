@@ -1,4 +1,4 @@
-Crystal 1.3.0 [a3ee70ca0] (2022-01-06)
+Crystal 1.4.1 [b7377c041] (2022-04-22)
 
-LLVM: 10.0.0
+LLVM: 13.0.0
 Default target: x86_64-unknown-linux-gnu
