@@ -95,6 +95,6 @@ abstract class Animal
 end
 ```
 
-By marking a method as `abstract` the compiler will check that all subclasses implement this method, even if a program doesn't use them.
+By marking a method as `abstract` the compiler will check that all subclasses implement this method (matching the arguments types and names), even if a program doesn't use them.
 
 Abstract methods can also be defined in modules, and the compiler will check that including types implement them.
