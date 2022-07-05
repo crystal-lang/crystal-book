@@ -29,7 +29,7 @@ Hello World!
 By default, the generated executables are not fully optimized. The `--release` flag can be used to enable optimizations.
 
 ```console
-crystal build hello_world.cr --release
+$ crystal build hello_world.cr --release
 ```
 
 Compiling without release mode is much faster and the resulting binaries still offer pretty good performance.
@@ -44,7 +44,7 @@ To reduce the binary size for distributable files, the `--no-debug` flag can be 
 The `--static` flag can be used to build a statically-linked executable:
 
 ```console
-crystal build hello_world.cr --release --static
+$ crystal build hello_world.cr --release --static
 ```
 
 !!! note
@@ -312,9 +312,9 @@ The following options can be combined to filter the list of specs to run.
 * `--line <line>`: Runs examples whose line matches `line`.
 * `--location <file>:<line>`: Runs example(s) at `line` in `file` (multiple options allowed).
 * `--tag <tag>`: Runs examples with the specified tag, or excludes examples by adding `~` before the tag (multiple options allowed).
-  * `--tag a --tag b` will include specs tagged with `a` OR `b`.
-  * `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
-  * `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
+    * `--tag a --tag b` will include specs tagged with `a` OR `b`.
+    * `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
+    * `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
 
 Example:
 
