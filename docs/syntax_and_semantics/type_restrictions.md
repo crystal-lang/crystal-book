@@ -85,6 +85,7 @@ In some cases it is possible to restrict the type of a method's parameter based 
 ```crystal
 class Foo
   @x : Int64
+
   def initialize(x)
     @x = x
   end
