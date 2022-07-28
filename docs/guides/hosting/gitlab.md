@@ -131,11 +131,11 @@ where `<VERSION>` is the version number prefixed with a `v` like this: `v0.1.0`.
 
 ### Mirror to GitHub
 
-At the moment, crystalshards.xyz only uses the GitHub API, so if you want your library to be indexed on that service you can set up a "push mirror" from GitLab to GitHub.
+Projects on GitHub have typically more exposure and better integration with other services, so if you want your library to be hosted there as well, you can set up a "push mirror" from GitLab to GitHub.
 
 1. Create a GitHub repository with the same name as your project.
 2. Follow the instructions here: https://docs.gitlab.com/ee/workflow/repository_mirroring.html#setting-up-a-push-mirror-from-gitlab-to-github-core
-3. Edit your GitHub description. The first few words of this description will show up in the search results of `crystalshards.xyz` but not the whole string, so for example, you could use the following
+3. Edit your GitHub description. You could use the following
     * Description: Words that are the same forwards and backwards. This is a mirror of:
     * Link: https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/
 
