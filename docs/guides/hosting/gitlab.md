@@ -137,6 +137,6 @@ Projects on GitHub have typically more exposure and better integration with othe
 2. Follow the instructions here: https://docs.gitlab.com/ee/workflow/repository_mirroring.html#setting-up-a-push-mirror-from-gitlab-to-github-core
 3. Edit your GitHub description. You could use the following
     * Description: Words that are the same forwards and backwards. This is a mirror of:
-    * Link: https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/
+    * Link: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/`
 
 This is a push mirror and that means changes will only propagate one way. So be sure to let potential collaborators know that pull requests and issues should be submitted to your GitLab project.
