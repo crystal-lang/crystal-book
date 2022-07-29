@@ -1,0 +1,94 @@
+/*
+  Name:       mkdocs-material
+*/
+
+.cm-s-mkdocs-material.CodeMirror {
+  background-color: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  font-family: "Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace;
+  font-size: 0.85em; /* https: //github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss#L209 */
+}
+
+.cm-s-mkdocs-material .CodeMirror-scrollbar-filler, .cm-s-mkdocs-material .CodeMirror-gutter-filler {
+  background-color: white; /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+
+.cm-s-mkdocs-material .CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+}
+.cm-s-mkdocs-material .CodeMirror-linenumbers {}
+.cm-s-mkdocs-material .CodeMirror-linenumber {
+  color: #999;
+}
+
+.cm-s-mkdocs-material .CodeMirror-guttermarker { color: black; }
+.cm-s-mkdocs-material .CodeMirror-guttermarker-subtle { color: #999; }
+
+/* CURSOR */
+
+.cm-s-mkdocs-material .CodeMirror-cursor {
+  border-left: 1px solid black;
+}
+/* Shown when moving in bi-directional text */
+.cm-s-mkdocs-material .CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid silver;
+}
+.cm-s-mkdocs-material .cm-fat-cursor .CodeMirror-cursor {
+  background: #7e7;
+}
+.cm-s-mkdocs-material .cm-fat-cursor-mark {
+  background-color: rgba(20, 255, 20, 0.5);
+}
+.cm-s-mkdocs-material .cm-animate-fat-cursor {
+  background-color: #7e7;
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+.cm-s-mkdocs-material .CodeMirror-overwrite .CodeMirror-cursor {}
+
+.cm-s-mkdocs-material .CodeMirror-ruler {
+  border-left: 1px solid #ccc;
+}
+
+/* DEFAULT THEME */
+
+.cm-s-mkdocs-material .cm-header {color: blue;}
+.cm-s-mkdocs-material .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-mkdocs-material .cm-keyword { color: var(--md-code-hl-keyword-color); }
+.cm-s-mkdocs-material .cm-atom { color: var(--md-code-hl-string-color); }
+.cm-s-mkdocs-material .cm-number { color: var(--md-code-hl-number-color); }
+.cm-s-mkdocs-material .cm-def { color: var(--md-code-hl-function-color); }
+.cm-s-mkdocs-material .cm-variable { color: var(--md-code-hl-name-color); }
+
+/*.cm-s-mkdocs-material .cm-variable { color: var(--md-code-hl-variable-color); }*/
+.cm-s-mkdocs-material .cm-punctuation { color: var(--md-code-hl-punctuation-color); }
+.cm-s-mkdocs-material .cm-property { color: var(--md-code-hl-name-color); }
+.cm-s-mkdocs-material .cm-operator { color: var(--md-code-hl-operator-color); }
+.cm-s-mkdocs-material .cm-variable-2 { color: var(--md-code-hl-constant-color); }
+.cm-s-mkdocs-material .cm-variable-3 { color: yellow; }
+.cm-s-mkdocs-material .cm-type { color: var(--md-code-hl-keyword-color); }
+.cm-s-mkdocs-material .cm-comment { color: var(--md-code-hl-comment-color); }
+.cm-s-mkdocs-material .cm-string { color: var(--md-code-hl-string-color); }
+.cm-s-mkdocs-material .cm-string-2 { color: var(--md-code-hl-special-color); }
+.cm-s-mkdocs-material .cm-meta {color: #555;}
+.cm-s-mkdocs-material .cm-qualifier {color: #555;}
+.cm-s-mkdocs-material .cm-builtin { color: var(--md-code-hl-constant-color); }
+.cm-s-mkdocs-material .cm-bracket {color: #997;}
+.cm-s-mkdocs-material .cm-tag { color: var(--md-code-hl-function-color); }
+.cm-s-mkdocs-material .cm-attribute {color: #00c;}
+.cm-s-mkdocs-material .cm-hr {color: #999;}
+.cm-s-mkdocs-material .cm-link {color: #00c;}
+
+.cm-s-mkdocs-material .cm-error {color: #f00;}
+.cm-s-mkdocs-material .cm-invalidchar {color: #f00;}
+

@@ -1,0 +1,6 @@
+# https://app.netlify.com is used to build deploy previews for every PR
+# This file documents the settings. Each value overrides anything configured in Netlify's Config UI
+[build]
+  command = "mkdocs build -d site --strict"
+  publish = "site/"
+
