@@ -1,4 +1,4 @@
-# Structs and Records
+# Structs
 
 Instead of defining a type with `class` you can do so with `struct`:
 
@@ -96,58 +96,31 @@ A struct can also include modules and can be generic, just like a class.
 
 ## Records
 
-Records are a simplified way to create a Struct _(they have default initializer)._
+The Crystal [Standard Library](https://crystal-lang.org/api) provides the [`record`](https://crystal-lang.org/api/toplevel.html#record(name,*properties)-macro) macro. It simplifies the definition of basic struct types with an initializer and some helper methods.
 
-**Record Definitions**
-```
-record Foo, id : Int32, name : String
-# or
-record(Foo, id : Int32, name : String)
+```crystal
+record Point, x : Int32, y : Int32
+
+Point.new 1, 2 # => #<Point(@x=1, @y=2)>
 ```
 
-Like structs, records can also have custom behaviors - defined with:
-```
-record(Foo, name : String, id : Int32) do
-  def to_s
-    puts "Foo: id: #{id}; name: #{name}"
+The `record` macro expands to the following struct definition:
+
+```cr
+struct Point
+  getter x : Int32
+
+  getter y : Int32
+
+  def initialize(@x : Int32, @y : Int32)
+  end
+
+  def copy_with(x _x = @x, y _y = @y)
+    self.class.new(_x, _y)
+  end
+
+  def clone
+    self.class.new(@x.clone, @y.clone)
   end
 end
-```
-
-Records can be a flexible data structure (tuples and others require a fixed data structure - without `nil`s).
-
-For example if you need a simple data structure that may or maynot have all the data you can define a record with the following parameters `name : String? = nil`
-```
-record Foo, id : Int32, name : String? = nil do
-  def to_s
-    puts "Foo: id: #{id}; name: #{name}"
-  end
-end
-```
-
-**Record Usage:**
-Record assignment is done using:
-```
-foo1 = Foo.new(1)
-# => Foo(id: 1, name: nil)
-
-
-foo2 = Foo.new(2, "Bar")
-# => Foo(id: 2, name: "Bar")
-```
-
-Record usage looks like:
-```
-puts "id: #{foo1.id}"
-# => id: 1
-puts "name: #{foo1.name}"
-# => name:
-puts foo1.to_s
-# => Foo: id: 1; name:
-puts "id: #{foo2.id}"
-# => id: 2
-puts "name: #{foo2.name}"
-# => name: Bar
-puts foo2.to_s
-# => Foo: id: 2; name: Bar
 ```
