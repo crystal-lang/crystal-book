@@ -138,7 +138,7 @@ This check is good to add as a step in [continuous integration](ci/README.md).
 
 Your `shard.yml`'s `name` property should be concise and descriptive.
 
-- Search [crystalshards.xyz](https://crystalshards.xyz/) to check if your name is already taken.
+- Search any of the available [shard databases](https://crystal-lang.org/community/#shards) to check if your name is already taken.
 
 e.g.
 
