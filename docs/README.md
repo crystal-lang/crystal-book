@@ -26,10 +26,10 @@ Install Crystal and get it running.
   </div>
   <div class="card" markdown="1">
 
-### Tutorials
+### Tutorials and learning resources
 Introductory courses for beginners and advanced learners.
 
-* [Basics](tutorials/basics/README.md)
+* [Language introduction](tutorials/basics/README.md)
 
   </div>
   <div class="card" markdown="1">
