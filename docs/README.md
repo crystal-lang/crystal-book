@@ -37,6 +37,11 @@ Introductory courses for beginners and advanced learners.
 ### [Guides](guides/README.md)
 Detailed examples for practical applications.
 
+* [Performance tips](guides/performance.md)
+* [Concurrency](guides/concurrency.md)
+* [Testing](guides/testing.md)
+* [Writing Shards](guides/writing_shards.md)
+
   </div>
   <div class="card" markdown="1">
 
