@@ -88,6 +88,8 @@ Discover the ecosystem of Crystal libraries.
 ### [Compiler Manual](using_the_compiler/README.md)
 Instructions on how to use the compiler and tools.
 
+* [Static linking](guides/static_linking.md)
+
   </div>
   <div class="card" markdown="1">
 
