@@ -131,7 +131,7 @@
         * [Connection pool](database/connection_pool.md)
         * [Transactions](database/transactions.md)
     * [Coding style](conventions/coding_style.md)
-* Tutorials
+* [Tutorials](tutorials/README.md)
     * [Getting started](getting_started/README.md)
         * [An HTTP Server](getting_started/http_server.md)
         * [A Command Line Application](getting_started/cli.md)
