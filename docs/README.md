@@ -125,6 +125,7 @@ How we take the decisions that guide the language and its community.
 
 ### Developer resources
 
+* [Developer Wiki](https://github.com/crystal-lang/crystal/wiki/)
 * [All required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)
 * [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
 * [Coding style](conventions/coding_style.md)
