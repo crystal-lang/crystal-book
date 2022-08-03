@@ -15,7 +15,7 @@ To install from source, download or clone [the repository](https://github.com/cr
 
 `shards` requires the presence of a `shard.yml` file in the project folder (working directory). This file describes the project and lists dependencies that are required to build it.
 A default file can be created by running [`shards init`](#shards-install).
-The file's contents are explained in the [*Writing a Shard* guide](../guides/writing_shards.md) and a detailed description of the file format is provided by the [shard.yml specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc).
+The file's contents are explained in the [*Writing a Shard* guide](../../guides/writing_shards.md) and a detailed description of the file format is provided by the [shard.yml specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc).
 
 Running [`shards install`](#shards-install) resolves and installs the specified dependencies.
 The installed versions are written into a `shard.lock` file for using the exact same dependency versions when running `shards install` again.

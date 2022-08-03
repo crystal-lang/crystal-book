@@ -53,6 +53,8 @@ plugins:
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
         overview/index.md: syntax_and_semantics/README.md
         overview/hello_world.md: getting_started/README.md
+        using_the_compiler/README.md: manuals/using_the_compiler/README.md 
+        the_shards_command/README.md: manuals/the_shards_command/README.md
   - code-validator:
       enabled: !ENV [LINT, false]
       identifiers:

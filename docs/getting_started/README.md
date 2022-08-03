@@ -44,7 +44,7 @@ Run a command followed by --help to see command-specific information, ex:
     crystal <command> --help
 ```
 
-More details about using the compiler can be found on the manpage `man crystal` or in our [compiler manual](../using_the_compiler/README.md).
+More details about using the compiler can be found on the manpage `man crystal` or in our [compiler manual](../manuals/using_the_compiler/README.md).
 
 ## Hello Crystal
 

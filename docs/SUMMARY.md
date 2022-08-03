@@ -142,3 +142,6 @@
         * [Strings](tutorials/basics/40_strings.md)
         * [Control Flow](tutorials/basics/50_control_flow.md)
         * [Methods](tutorials/basics/60_methods.md)
+* [Manuals](manuals/README.md)
+    * [Using the Compiler](manuals/using_the_compiler/README.md)
+    * [The Shards Command](manuals/the_shards_command/README.md)

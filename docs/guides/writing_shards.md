@@ -6,7 +6,7 @@ How to write and release Crystal Shards.
 
 Simply put, a Shard is a package of Crystal code, made to be shared-with and used-by other projects.
 
-See [the Shards command](../the_shards_command/README.md) for details.
+See [the Shards command](../manuals/the_shards_command/README.md) for details.
 
 ## Introduction
 
@@ -18,13 +18,13 @@ In this tutorial, we'll be making a Crystal library called _palindrome-example_.
 
 In order to release a Crystal Shard, and follow along with this tutorial, you will need the following:
 
-* A working installation of the [Crystal compiler](../using_the_compiler/README.md)
+* A working installation of the [Crystal compiler](../manuals/using_the_compiler/README.md)
 * A working installation of [Git](https://git-scm.com)
 * A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account
 
 ### Creating the Project
 
-Begin by using [the Crystal compiler](../using_the_compiler/README.md)'s `init lib` command to create a Crystal library with the standard directory structure.
+Begin by using [the Crystal compiler](../manuals/using_the_compiler/README.md)'s `init lib` command to create a Crystal library with the standard directory structure.
 
 In your terminal: `crystal init lib <YOUR-SHARD-NAME>`
 
