@@ -139,7 +139,7 @@ Hello Crystal!
 
 **Common options:**
 
-* `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
+* `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout (see [*Cross Compilation* guide](../guides/compilation/cross-compilation.md)).
 * `-D FLAG, --define FLAG`: Define a compile-time flag.
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
