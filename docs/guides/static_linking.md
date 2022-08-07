@@ -62,9 +62,9 @@ If you want to statically link dependencies, you need to have their static libra
 Most systems don't install static libraries by default, so you need to install them explicitly.
 First you have to know which libraries your program links against.
 
-!!! note
-    Static libraries have the file extension `.a` on POSIX and `.lib` on Windows.
-    Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
+NOTE:
+Static libraries have the file extension `.a` on POSIX and `.lib` on Windows.
+Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
 
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
 on macOS is `otool -L`.
@@ -105,6 +105,6 @@ The individual libraries are `libpcre`, `libgc` and the rest is `musl` (`libc`).
 
 In order to link this program statically, we need static versions of these three libraries.
 
-!!! note
-    The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
-    If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.
+NOTE:
+The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
+If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.

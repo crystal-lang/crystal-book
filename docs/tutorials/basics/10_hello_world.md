@@ -8,11 +8,11 @@ In Crystal this is pretty simple, maybe a little bit boring:
 puts "Hello World!"
 ```
 
-!!! tip
-    You can build and run code examples interactively in this tutorial by clicking the `Run` button (thanks to [carc.in](https://carc.in)).
-    The output is shown directly inline.
-
-    If you want to follow along locally, follow the [installation](https://crystal-lang.org/install/) and [getting started](../../getting_started/README.md) instructions.
+> TIP:
+> You can build and run code examples interactively in this tutorial by clicking the `Run` button (thanks to [carc.in](https://carc.in)).
+> The output is shown directly inline.
+>
+> If you want to follow along locally, follow the [installation](https://crystal-lang.org/install/) and [getting started](../../getting_started/README.md) instructions.
 
 !!! info inline end
     The name `puts` is short for “put string”.

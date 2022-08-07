@@ -19,12 +19,12 @@ p! 100_000.0, typeof(100_000.0)
 
 Float values print with a decimal point. Integer values don't.
 
-!!! info
-    There are quite a few more numeric types, but most of them are intended only for special use cases such as binary protocols,
-    specific numeric algorithms, and performance optimization. You probably don't need them for everyday programs.
-
-    See [Integer literal reference](../../syntax_and_semantics/literals/integers.md) and [Float literal reference](../../syntax_and_semantics/literals/floats.md)
-    for a full reference on all primitive number types and alternative representations.
+> INFO:
+> There are quite a few more numeric types, but most of them are intended only for special use cases such as binary protocols,
+> specific numeric algorithms, and performance optimization. You probably don't need them for everyday programs.
+>
+> See [Integer literal reference](../../syntax_and_semantics/literals/integers.md) and [Float literal reference](../../syntax_and_semantics/literals/floats.md)
+> for a full reference on all primitive number types and alternative representations.
 
 ## Arithmetic
 
@@ -80,8 +80,7 @@ As you can see, the result of most of these operations between integer operands 
 The division operator (`/`) is an exception. It always returns a float value. The floor division operator (`//`) however returns an integer value, but it's obviously reduced to integer precision.
 An operation between integer and float operands always returns a float value. Otherwise, the return type is usually the type of the first operand.
 
-!!! info
-    A full list of operators is available in [the Operator reference](../../syntax_and_semantics/operators.md#arithmetic-operators).
+INFO: A full list of operators is available in [the Operator reference](../../syntax_and_semantics/operators.md#arithmetic-operators).
 
 #### Precedence
 
@@ -96,8 +95,7 @@ p! 4 + 5 * 2,
   (4 + 5) * 2
 ```
 
-!!! info
-    All the precedence rules are detailed in the [the Operator reference](../../syntax_and_semantics/operators.md#operator-precedence).
+INFO: All the precedence rules are detailed in the [the Operator reference](../../syntax_and_semantics/operators.md#operator-precedence).
 
 ### Number Methods
 
@@ -110,8 +108,7 @@ p! -5.abs,   # absolute value
   10.gcd(16) # greatest common divisor
 ```
 
-!!! info
-    A full list of numerical methods is available in [the Number API docs](https://crystal-lang.org/api/Number.html) (also check subtypes).
+INFO: A full list of numerical methods is available in [the Number API docs](https://crystal-lang.org/api/Number.html) (also check subtypes).
 
 ### Math Methods
 
@@ -127,8 +124,7 @@ p! Math.cos(1),     # cosine
   Math.sqrt(9)      # square root
 ```
 
-!!! info
-    A full list of math methods is available in [the Math API docs](https://crystal-lang.org/api/Math.html).
+INFO: A full list of math methods is available in [the Math API docs](https://crystal-lang.org/api/Math.html).
 
 ## Constants
 
