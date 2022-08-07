@@ -74,9 +74,10 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences
+  - pymdownx.snippets
+  - callouts
   - toc:
       permalink: true
-  - pymdownx.snippets
 
 extra_javascript:
   - assets/vendor/codemirror/codemirror.min.js

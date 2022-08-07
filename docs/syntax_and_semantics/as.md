@@ -29,8 +29,8 @@ If it is impossible for a type to be restricted by another type, a compile-time 
 1.as(String) # Compile-time error
 ```
 
-!!! note
-    You can't use `as` to convert a type to an unrelated type: `as` is not like a `cast` in other languages. Methods on integers, floats and chars are provided for these conversions. Alternatively, use pointer casts as explained below.
+NOTE:
+You can't use `as` to convert a type to an unrelated type: `as` is not like a `cast` in other languages. Methods on integers, floats and chars are provided for these conversions. Alternatively, use pointer casts as explained below.
 
 ## Converting between pointer types
 

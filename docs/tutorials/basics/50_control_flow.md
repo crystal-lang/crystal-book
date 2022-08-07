@@ -102,10 +102,10 @@ if message.starts_with?("Hello")
 end
 ```
 
-!!! note
-    Technically, this program still runs in a predefined order. The fixed message always matches and makes the condition truthy.
-    But let's assume we don't define the value of the message in the source code. It could just as well come from user input,
-    for example a chat client.
+NOTE:
+Technically, this program still runs in a predefined order. The fixed message always matches and makes the condition truthy.
+But let's assume we don't define the value of the message in the source code. It could just as well come from user input,
+for example a chat client.
 
 If the message has a value that does not start with `Hello`, the conditional branch skips, and the program prints nothing.
 
@@ -161,10 +161,10 @@ Try to remove the conditional or change the condition to `true`: a type error sh
 use a `Nil` value in that expression.
 With the proper condition, the compiler knows that `index` can't be `nil` inside the branch and it can be used as a numeric input.
 
-!!! tip
-    A shorter form for `if !index.nil?` is `if index`, which is mostly equivalent.
-    It only makes a difference if you wanted to tell apart whether a falsey value is `nil` or `false`
-    because the former condition matches for `false`, while the latter does not.
+TIP:
+A shorter form for `if !index.nil?` is `if index`, which is mostly equivalent.
+It only makes a difference if you wanted to tell apart whether a falsey value is `nil` or `false`
+because the former condition matches for `false`, while the latter does not.
 
 ### Else
 
@@ -278,8 +278,7 @@ until counter >= 10
 end
 ```
 
-!!! tip
-    You can find more details on these expressions in the language specification: [`while`](../../syntax_and_semantics/while.md) and [`until`](../../syntax_and_semantics/until.md).
+TIP: You can find more details on these expressions in the language specification: [`while`](../../syntax_and_semantics/while.md) and [`until`](../../syntax_and_semantics/until.md).
 
 ### Infinite loops
 
@@ -300,9 +299,9 @@ Such logic errors can be easy to miss and so it's very important to pay attentio
 A good practice for index variables (such as `counter` in our example) is to increment them at the beginning of the loop.
 That makes it harder to forget to update them.
 
-!!! tip
-    Fortunately, there are many features in the language that relieve the burden of writing loops manually
-    and also take care of ensuring valid breaking conditions. A few of them will be introduced in following lessons.
+TIP:
+Fortunately, there are many features in the language that relieve the burden of writing loops manually
+and also take care of ensuring valid breaking conditions. A few of them will be introduced in following lessons.
 
 In some cases, the intention is to really have an endless loop.
 An example would be a server that always repeats waiting for a connection, or
@@ -322,14 +321,14 @@ while true
 end
 ```
 
-!!! note
-    This example is not an interactive playground by choice because the playground can't
-    handle non self-terminating programs, and processing user input.
-    It would just time out and print an error.
-    You can compile and run this code with a local compiler, though.
-
-    To stop the program, hit <kbd>Ctrl+C</kbd>. This sends a signal to the process asking it
-    to exit.
+> NOTE:
+> This example is not an interactive playground by choice because the playground can't
+> handle non self-terminating programs, and processing user input.
+> It would just time out and print an error.
+> You can compile and run this code with a local compiler, though.
+>
+> To stop the program, hit <kbd>Ctrl+C</kbd>. This sends a signal to the process asking it
+> to exit.
 
 ### Skipping and Breaking
 

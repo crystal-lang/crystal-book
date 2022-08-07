@@ -10,8 +10,7 @@
 
 * Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-    !!! note
-        If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
+    NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
 
     ```console
     $ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
