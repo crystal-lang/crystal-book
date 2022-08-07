@@ -183,7 +183,7 @@ Oh no! It’s broken: we need to handle **invalid options** and **invalid parame
 
 So, let's add this option handler and merge all these CLI applications into one fabulous CLI application!
 
-#### All My CLI: The complete application!
+#### All My CLI: The complete application
 
 Here’s the final result, with invalid/missing options handling, plus other new options:
 

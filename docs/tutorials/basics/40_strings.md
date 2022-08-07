@@ -106,7 +106,6 @@ The methods `#camelcase` and `#underscore` don't change this particular string, 
 Let's take a more detailed look at a string and what we can know about it. First of all, a string
 has a length, i.e. the number of characters it contains. This value is available as `String#size`.
 
-
 ```crystal-play
 message = "Hello World! Greetings from Crystal."
 

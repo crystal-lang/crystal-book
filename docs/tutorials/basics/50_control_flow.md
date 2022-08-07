@@ -293,6 +293,7 @@ while true
   puts "Counter: #{counter}"
 end
 ```
+
 Or if the condition was `counter > 0`, it would match for all values: they only increase from `1`.
 This would not technically be infinite, as it will fail with a math error when the counter reaches the maximum value of a 32-bit integer. But conceptually that's similar to an infinite loop.
 Such logic errors can be easy to miss and so it's very important to pay attention when writing the loop condition and also taking care of meeting said breaking case.

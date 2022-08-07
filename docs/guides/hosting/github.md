@@ -39,7 +39,7 @@ This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAM
 
 Click "Create a new release".
 
-According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md), 
+According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md),
 > When libraries are installed from Git repositories, the repository is expected to have version tags following a semver-like format, prefixed with a `v`. Examples: v1.2.3, v2.0.0-rc1 or v2017.04.1
 
 Accordingly, in the input that says `tag version`, type `v0.1.0`. Make sure this matches the `version` in `shard.yml`. Title it `v0.1.0` and write a short description for the release.

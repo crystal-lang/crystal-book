@@ -128,15 +128,15 @@ Core team membership acknowledges sustained and valuable efforts that align well
 
 It is granted by receiving at least two-thirds positive votes of active core team members in a vote that is open for two weeks and with no veto by the steering council.
 
-Core team members are always looking for promising contributors, teaching them how the project is managed, and submitting their names to the core team's vote when they're ready. There's no time limit on core team membership. 
+Core team members are always looking for promising contributors, teaching them how the project is managed, and submitting their names to the core team's vote when they're ready. There's no time limit on core team membership.
 
 ### Inactive members
 
 In order to provide the general public with a reasonable idea of how many people maintain Crystal, core team members who have stopped contributing are encouraged to declare themselves as _inactive_. Core team members will be categorized as inactive when:
 
- * They voluntarily indicate they want to do so.
+* They voluntarily indicate they want to do so.
 
- * They are unresponsive to voting calls.
+* They are unresponsive to voting calls.
 
 Inactive members lose their active privileges like voting and commit access. At any point, an inactive member can resume their contributions without a need for a new vote to occur.
 
