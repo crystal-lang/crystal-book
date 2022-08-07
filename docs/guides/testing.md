@@ -195,26 +195,24 @@ Many projects use a custom spec helper file, usually named `spec/spec_helper.cr`
 
 This file is used to require `spec` and other includes like code from the project needed for every spec file. This is also a good place to define global helper methods that make writing specs easier and avoid code duplication.
 
-!!! example "spec/spec_helper.cr"
-    ```crystal
-    require "spec"
-    require "../src/my_project.cr"
+```crystal title="spec/spec_helper.cr"
+require "spec"
+require "../src/my_project.cr"
 
-    def create_test_object(name)
-      project = MyProject.new(option: false)
-      object = project.create_object(name)
-      object
-    end
-    ```
+def create_test_object(name)
+  project = MyProject.new(option: false)
+  object = project.create_object(name)
+  object
+end
+```
 
-!!! example "spec/my_project_spec.cr"
-    ```crystal
-    require "./spec_helper"
+```crystal title="spec/my_project_spec.cr"
+require "./spec_helper"
 
-    describe "MyProject::Object" do
-      it "is created" do
-        object = create_test_object(name)
-        object.should_not be_nil
-      end
-    end
-    ```
+describe "MyProject::Object" do
+  it "is created" do
+    object = create_test_object(name)
+    object.should_not be_nil
+  end
+end
+```
