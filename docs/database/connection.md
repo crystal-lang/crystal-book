@@ -6,10 +6,10 @@ In Crystal we have two ways of building this connection. And so, coming up next,
 
 ## DB module
 
-> _Give me a place to stand, and I shall move the earth._  
+> *Give me a place to stand, and I shall move the earth.*  
 > Archimedes
 
-The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: _is a unified interface for database access_.
+The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: *is a unified interface for database access*.
 
 One of the methods implemented in this module is `DB#connect`. Using this method is the **first way** for creating a connection. Let's see how to use it.
 
@@ -31,7 +31,7 @@ cnn.close
 
 It's worth mentioning that the method returns a `DB::Connection` object. Although more specifically, it returns a `MySql::Connection` object, it doesn't matter because all types of connections should be polymorphic. So hereinafter we will work with a `DB::Connection` instance, helping us to abstract from specific issues of each database engine.
 
-When creating a connection _manually_ (as we are doing here) we are responsible for managing this resource, and so we must close the connection when we are done using it. Regarding the latter, this little details can be the cause of huge bugs! Crystal, being _a language for humans_, give us a more safe way of _manually_ creating a connection using blocks, like this:
+When creating a connection *manually* (as we are doing here) we are responsible for managing this resource, and so we must close the connection when we are done using it. Regarding the latter, this little details can be the cause of huge bugs! Crystal, being *a language for humans*, give us a more safe way of *manually* creating a connection using blocks, like this:
 
 ```crystal
 require "mysql"
@@ -108,7 +108,7 @@ DB.open "mysql://root:root@localhost/test" do |db|
 end
 ```
 
-And we want a _safe_ way (i.e. no need for us to release the connection) to request and use a connection from the `database`, we could use `Database#using_connection`:
+And we want a *safe* way (i.e. no need for us to release the connection) to request and use a connection from the `database`, we could use `Database#using_connection`:
 
 ```crystal
 require "mysql"

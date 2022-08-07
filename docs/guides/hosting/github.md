@@ -34,7 +34,7 @@ Add the following markdown build badge below the description in your README to i
 [![GitHub release](https://img.shields.io/github/release/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg)](https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>/releases)
 ```
 
-Start by navigating to your repository's _releases_ page.
+Start by navigating to your repository's *releases* page.
 This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
 
 Click "Create a new release".

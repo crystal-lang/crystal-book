@@ -335,7 +335,7 @@ Great! That was easy! Now imagine using this string as the banner for our All My
 parser.banner = "#{"The Beatles".colorize(:yellow).on(:black)} App"
 ```
 
-For our second application, we will add a *text decoration* (`blink`in this case):
+For our second application, we will add a _text decoration_ (`blink`in this case):
 
 ```crystal title="let_it_cli.cr"
 require "colorize"

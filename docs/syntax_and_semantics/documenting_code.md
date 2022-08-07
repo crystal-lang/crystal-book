@@ -264,7 +264,7 @@ Some documentation common to every *id*.
 ```
 
 !!! note
-    Inheriting documentation only works on _instance_, non-constructor methods.
+    Inheriting documentation only works on *instance*, non-constructor methods.
 
 ## A Complete Example
 

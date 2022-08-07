@@ -67,9 +67,9 @@ DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 
 ### Acronyms
 
-In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
+In class names, acronyms are *all-uppercase*. For example, `HTTP`, and `LibXML`.
 
-In method names, acronyms are _all-lowercase_. For example `#from_json`, `#to_io`.
+In method names, acronyms are *all-lowercase*. For example `#from_json`, `#to_io`.
 
 ### Libs
 
