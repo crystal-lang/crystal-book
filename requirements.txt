@@ -33,7 +33,7 @@ mkdocs==1.3.0
     #   mkdocs-redirects
     #   mkdocs-section-index
     #   mkdocs-simple-hooks
-mkdocs-code-validator==0.1.2
+mkdocs-code-validator==0.1.3
     # via -r requirements.in
 mkdocs-literate-nav==0.4.1
     # via -r requirements.in
