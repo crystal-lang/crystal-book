@@ -19,7 +19,7 @@ Mutable structs are still allowed, but you should be careful when writing code i
 
 ## Passing by value
 
-A struct is _always_ passed by value, even when you return `self` from the method of that struct:
+A struct is *always* passed by value, even when you return `self` from the method of that struct:
 
 ```crystal
 struct Counter
@@ -37,7 +37,7 @@ counter.plus.plus # => Counter(@count=2)
 puts counter      # => Counter(@count=1)
 ```
 
-Notice that the chained calls of `plus` return the expected result, but only the first call to it modifies the variable `counter`, as the second call operates on the _copy_ of the struct passed to it from the first call, and this copy is discarded after the expression is executed.
+Notice that the chained calls of `plus` return the expected result, but only the first call to it modifies the variable `counter`, as the second call operates on the *copy* of the struct passed to it from the first call, and this copy is discarded after the expression is executed.
 
 You should also be careful when working on mutable types inside of the struct:
 
@@ -68,13 +68,13 @@ puts strukt.array   # => ["str", "foo"]
 What happens with the `strukt` here:
 
 * `Array` is passed by reference, so the reference to `["str"]` is stored in the property of `strukt`
-* when `strukt` is passed to `modify`, a _copy_ of the `strukt` is passed with the reference to array inside it
+* when `strukt` is passed to `modify`, a *copy* of the `strukt` is passed with the reference to array inside it
 * the array referenced by `array` is modified (element inside it is added) by `object.array << "foo"`
 * this is also reflected in the original `strukt` as it holds reference to the same array
-* `object.array = ["new"]` replaces the reference in the _copy_ of `strukt` with the reference to the new array
+* `object.array = ["new"]` replaces the reference in the *copy* of `strukt` with the reference to the new array
 * `object.array << "bar"` appends to this newly created array
 * `modify` returns the reference to this new array and its content is printed
-* the reference to this new array was held only in the _copy_ of `strukt`, but not in the original, so that's why the original `strukt` only retained the result of the first statement, but not of the other two statements
+* the reference to this new array was held only in the *copy* of `strukt`, but not in the original, so that's why the original `strukt` only retained the result of the first statement, but not of the other two statements
 
 `Klass` is a class, so it is passed by reference to `modify`, and `object.array = ["new"]` saves the reference to the newly created array in the original `klass` object, not in the copy as it was with the `strukt`.
 

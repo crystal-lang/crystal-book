@@ -80,7 +80,7 @@ While that pipeline is running, let's attach some badges to the project to show 
 
 A badge is just a link with an image. So let's create a link to our pipeline and fetch a badge image from the [Gitlab Pipeline Badges API](https://docs.gitlab.com/ee/user/project/pipelines/settings.html#pipeline-badges).
 
-In the _Badges_ section of the _General_ settings, we'll first add a release badge. The link is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/pipelines` and the _Badge Image URL_ is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/badges/master/pipeline.svg`.
+In the *Badges* section of the *General* settings, we'll first add a release badge. The link is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/pipelines` and the *Badge Image URL* is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/badges/master/pipeline.svg`.
 
 And now if the pipleline has finished we'll have docs and we can link to them with a generic badge from `shields.io`.
 
@@ -97,7 +97,7 @@ According to [the Crystal Shards README](https://github.com/crystal-lang/shards/
 
 GitLab also has a [releases feature](https://docs.gitlab.com/ee/workflow/releases.html) that let's you associate files and a description with this tag. That way you can (for example) distribute binaries.
 
-As you'll see from the [releases docs](https://docs.gitlab.com/ee/workflow/releases.html), you can either create an _annotated_ tag along with release notes/files in the UI:
+As you'll see from the [releases docs](https://docs.gitlab.com/ee/workflow/releases.html), you can either create an *annotated* tag along with release notes/files in the UI:
 
 ![gitlab new tags UI](./gitlab_tags_new.png)
 

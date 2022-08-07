@@ -132,7 +132,7 @@ Core team members are always looking for promising contributors, teaching them h
 
 ### Inactive members
 
-In order to provide the general public with a reasonable idea of how many people maintain Crystal, core team members who have stopped contributing are encouraged to declare themselves as _inactive_. Core team members will be categorized as inactive when:
+In order to provide the general public with a reasonable idea of how many people maintain Crystal, core team members who have stopped contributing are encouraged to declare themselves as *inactive*. Core team members will be categorized as inactive when:
 
 * They voluntarily indicate they want to do so.
 
@@ -142,7 +142,7 @@ Inactive members lose their active privileges like voting and commit access. At 
 
 ### Core team alumni
 
-Members who haven't made any non-trivial contribution in two years will be categorized as _alumni_. To record and honor their contributions, core team alumni will continue to be listed alongside active and inactive core team members; and, if they later want to resume contributing, they can ask to be considered back again **subject to core team voting**.
+Members who haven't made any non-trivial contribution in two years will be categorized as *alumni*. To record and honor their contributions, core team alumni will continue to be listed alongside active and inactive core team members; and, if they later want to resume contributing, they can ask to be considered back again **subject to core team voting**.
 
 The initial active core team members will consist of everyone currently listed in the "Crystallers" team on Github (access granted for core members only) that have been active in the past two years, and the initial alumni will consist of everyone in that list that have been inactive in the past two years.
 

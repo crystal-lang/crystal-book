@@ -2,7 +2,7 @@
 
 How to write and release Crystal Shards.
 
-## _What's a Shard?_
+## *What's a Shard?*
 
 Simply put, a Shard is a package of Crystal code, made to be shared-with and used-by other projects.
 
@@ -10,7 +10,7 @@ See [the Shards command](../the_shards_command/README.md) for details.
 
 ## Introduction
 
-In this tutorial, we'll be making a Crystal library called _palindrome-example_.
+In this tutorial, we'll be making a Crystal library called *palindrome-example*.
 
 > For those who don't know, a palindrome is a word which is spelled the same way forwards as it is backwards. e.g. racecar, mom, dad, kayak, madam
 
@@ -161,10 +161,10 @@ A description should be:
 It's hard for anyone to use your project if they can't find it.
 There are several services for discovering shards, a list is available on the [Crystal Community page](https://crystal-lang.org/community/#shards).
 
-There are people looking for the _exact_ functionality of our library and the _general_ functionality of our library.
+There are people looking for the *exact* functionality of our library and the *general* functionality of our library.
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.
 
-Our `name` is already descriptive enough for Bob's search of "palindrome". We don't need to repeat the _palindrome_ keyword. Instead, we'll catch Susan's search for "spelling" and Felipe's search for "text".
+Our `name` is already descriptive enough for Bob's search of "palindrome". We don't need to repeat the *palindrome* keyword. Instead, we'll catch Susan's search for "spelling" and Felipe's search for "text".
 
 ```yaml
 description: |

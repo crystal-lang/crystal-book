@@ -69,7 +69,7 @@ Welcome to The Beatles App!
     -h, --help                       Show help
 ```
 
-Let's build another _fabulous_ application with the following feature:
+Let's build another *fabulous* application with the following feature:
 
 By default (i.e. no options given) the application will display the names of the Fab Four. But, if we pass the option `-t` / `--twist` it will display the names in uppercase:
 
@@ -126,7 +126,7 @@ RINGO STARR
 
 #### Parameterized options
 
-Let’s create another application: _when passing the option `-g` / `--goodbye_hello`, the application will say hello to a given name **passed as a parameter to the option**_.
+Let’s create another application: *when passing the option `-g` / `--goodbye_hello`, the application will say hello to a given name **passed as a parameter to the option***.
 
 ```crystal title="hello_goodbye.cr"
 require "option_parser"
@@ -256,7 +256,7 @@ end
 
 ### Request for user input
 
-Sometimes, we may need the user to input a value. How do we _read_ that value?
+Sometimes, we may need the user to input a value. How do we *read* that value?
 Easy, peasy! Let’s create a new application: the Fab Four will sing with us any phrase we want. When running the application, it will request a phrase to the user and the magic will happen!
 
 ```crystal title="let_it_cli.cr"
@@ -317,7 +317,7 @@ puts "The Beatles are singing: 🎵#{lyrics.upcase}🎶🎸🥁"
 ## Output
 
 Now, we will focus on the second main topic: our application’s output.
-For starters, our applications already display information but (I think) we could do better. Let’s add more _life_ (i.e. colors!) to the outputs.
+For starters, our applications already display information but (I think) we could do better. Let’s add more *life* (i.e. colors!) to the outputs.
 
 And to accomplish this, we will be using the [`Colorize`](https://crystal-lang.org/api/Colorize.html) module.
 
@@ -335,7 +335,7 @@ Great! That was easy! Now imagine using this string as the banner for our All My
 parser.banner = "#{"The Beatles".colorize(:yellow).on(:black)} App"
 ```
 
-For our second application, we will add a _text decoration_ (`blink`in this case):
+For our second application, we will add a *text decoration* (`blink`in this case):
 
 ```crystal title="let_it_cli.cr"
 require "colorize"
@@ -356,7 +356,7 @@ lyrics = user_input.presence || default_lyrics
 puts "The Beatles are singing: #{"🎵#{lyrics}🎶🎸🥁".colorize.mode(:blink)}"
 ```
 
-Let’s try the renewed application … and _hear_ the difference!!
+Let’s try the renewed application … and *hear* the difference!!
 **Now** we have two fabulous apps!!
 
 You may find a list of **available colors** and **text decorations** in the [API documentation](https://crystal-lang.org/api/Colorize.html).
@@ -374,7 +374,7 @@ In case we want to build richer CLI applications, there are libraries that can h
 As stated in the documentation for the [GNU Readline Library](http://www.gnu.org/software/readline/), `Readline` is a library that provides a set of functions for use by applications that allow users to edit command lines as they are typed in.
 `Readline` has some great features: filename autocompletion out of the box; custom auto-completion method; keybinding, just to mention a few. If we want to try it then the [crystal-lang/crystal-readline](https://github.com/crystal-lang/crystal-readline) shard will give us an easy API to use `Readline`.
 
-On the other hand, we have `NCurses`(New Curses). This library allows developers to create _graphical_ user interfaces in the terminal. As its name implies, it is an improved version of the library named `Curses`, which was developed to support a text-based dungeon-crawling adventure game called Rogue!
+On the other hand, we have `NCurses`(New Curses). This library allows developers to create *graphical* user interfaces in the terminal. As its name implies, it is an improved version of the library named `Curses`, which was developed to support a text-based dungeon-crawling adventure game called Rogue!
 As you can imagine, there are already [a couple of shards](https://crystalshards.org/shards/search?q=ncurses) in the ecosystem that will allow us to use `NCurses` in Crystal!
 
 And so we have reached The End 😎🎶

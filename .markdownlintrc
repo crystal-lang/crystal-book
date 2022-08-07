@@ -8,7 +8,7 @@
   "ul-style": "asterisk",
   "ul-indent": {"indent": 4},  // Python-Markdown doesn't recognize lists otherwise
 
-  "emphasis-style": {"style": "consistent"},
+  "emphasis-style": {"style": "asterisk"},
   "strong-style": {"style": "asterisk"},
 
   "no-duplicate-heading": "siblings_only",
