@@ -115,7 +115,7 @@ $ git push origin master --follow-tags
 
 and then use the UI to add/edit the release note and attach files.
 
-**Best Practices**
+**Best Practices:**
 
 * Use the `-a` option to create an annotated tag for releases.
 * Follow [Semantic Versioning](http://semver.org/).

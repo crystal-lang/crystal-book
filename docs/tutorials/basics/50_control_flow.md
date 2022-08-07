@@ -75,6 +75,7 @@ p! "foo" && nil,
 
 The `NOT`, `XOR`, and equivalence operators always return a `Bool` value (`true` or `false`).
 
+<!-- markdownlint-disable-next-line no-duplicate-heading -->
 ## Control Flow
 
 Controlling the flow of a program means taking different paths based on conditions.

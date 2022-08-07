@@ -1,3 +1,5 @@
+# Built-in annotations
+
 The Crystal standard library includes some pre-defined annotations:
 
 ## Link
