@@ -1,14 +1,14 @@
 # Hosting on GitHub
 
-- Create a repository with the same `name` and `description` as specified in your `shard.yml`.
+* Create a repository with the same `name` and `description` as specified in your `shard.yml`.
 
-- Add and commit everything:
+* Add and commit everything:
 
     ```console
     $ git add -A && git commit -am "shard complete"
     ```
 
-- Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
+* Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
     !!! note
         If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
@@ -17,7 +17,7 @@
     $ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
-- Push it:
+* Push it:
 
     ```console
     $ git push public master

@@ -14,9 +14,9 @@ The steering council is a committee formed ideally by an odd and small number of
 
 The current steering council consists of:
 
-- Ary Borenszweig
-- Brian Cardiff
-- Juan Wajnerman
+* Ary Borenszweig
+* Brian Cardiff
+* Juan Wajnerman
 
 ### Mandate
 

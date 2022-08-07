@@ -67,14 +67,14 @@ puts strukt.array   # => ["str", "foo"]
 
 What happens with the `strukt` here:
 
-- `Array` is passed by reference, so the reference to `["str"]` is stored in the property of `strukt`
-- when `strukt` is passed to `modify`, a _copy_ of the `strukt` is passed with the reference to array inside it
-- the array referenced by `array` is modified (element inside it is added) by `object.array << "foo"`
-- this is also reflected in the original `strukt` as it holds reference to the same array
-- `object.array = ["new"]` replaces the reference in the _copy_ of `strukt` with the reference to the new array
-- `object.array << "bar"` appends to this newly created array
-- `modify` returns the reference to this new array and its content is printed
-- the reference to this new array was held only in the _copy_ of `strukt`, but not in the original, so that's why the original `strukt` only retained the result of the first statement, but not of the other two statements
+* `Array` is passed by reference, so the reference to `["str"]` is stored in the property of `strukt`
+* when `strukt` is passed to `modify`, a _copy_ of the `strukt` is passed with the reference to array inside it
+* the array referenced by `array` is modified (element inside it is added) by `object.array << "foo"`
+* this is also reflected in the original `strukt` as it holds reference to the same array
+* `object.array = ["new"]` replaces the reference in the _copy_ of `strukt` with the reference to the new array
+* `object.array << "bar"` appends to this newly created array
+* `modify` returns the reference to this new array and its content is printed
+* the reference to this new array was held only in the _copy_ of `strukt`, but not in the original, so that's why the original `strukt` only retained the result of the first statement, but not of the other two statements
 
 `Klass` is a class, so it is passed by reference to `modify`, and `object.array = ["new"]` saves the reference to the newly created array in the original `klass` object, not in the copy as it was with the `strukt`.
 
