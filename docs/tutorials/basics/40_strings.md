@@ -28,8 +28,8 @@ name = 6
 puts "Hello #{name}!"
 ```
 
-!!! note
-    An alternative to interpolation is concatenation. Instead of `"Hello #{name}!"` you could write `"Hello " + name + "!"`. But that's bulkier and has some gotchas with non-string types. Interpolation is generally preferred over concatenation.
+NOTE:
+An alternative to interpolation is concatenation. Instead of `"Hello #{name}!"` you could write `"Hello " + name + "!"`. But that's bulkier and has some gotchas with non-string types. Interpolation is generally preferred over concatenation.
 
 ## Escaping
 
@@ -47,8 +47,7 @@ There are other escape sequences: For example non-printable characters such as a
 puts "I say: \"Hello \\\n\tWorld!\""
 ```
 
-!!! tip
-    You can find more info on available escape sequences in the [string literal reference](../../syntax_and_semantics/literals/string.md#escaping).
+TIP: You can find more info on available escape sequences in the [string literal reference](../../syntax_and_semantics/literals/string.md#escaping).
 
 ### Alternative Delimiters
 
@@ -60,8 +59,7 @@ puts %(I say: "Hello World!")
 
 Escape sequences and interpolation still work the same way.
 
-!!! tip
-    You can find more info on alternative delimiters in the [string literal reference](../../syntax_and_semantics/literals/string.md#percent-string-literals).
+TIP: You can find more info on alternative delimiters in the [string literal reference](../../syntax_and_semantics/literals/string.md#percent-string-literals).
 
 ## Unicode
 
@@ -220,8 +218,7 @@ b = "Crystal is awesome".index("meh")
 p! b, typeof(b)
 ```
 
-!!! tip
-    We'll cover `nil` more deeply in the next lesson.
+TIP: We'll cover `nil` more deeply in the next lesson.
 
 ## Extracting Substrings
 
@@ -298,5 +295,4 @@ p! message.sub("World", "Crystal"),
   message.gsub("World", "Crystal")
 ```
 
-!!! tip
-    You can find more detailed info in the [string literal reference](../../syntax_and_semantics/literals/string.md) and [String API docs](https://crystal-lang.org/api/String.html).
+TIP: You can find more detailed info in the [string literal reference](../../syntax_and_semantics/literals/string.md) and [String API docs](https://crystal-lang.org/api/String.html).
