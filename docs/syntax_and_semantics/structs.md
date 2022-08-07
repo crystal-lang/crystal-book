@@ -93,3 +93,34 @@ ary = [] of Point
 If `Point` is inherited, an array of such type should also account for the fact that other types can be inside it, so the size of each element should grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited from. Abstract structs, on the other hand, will have descendants, so it is expected that an array of them will account for the possibility of having multiple types inside it.
 
 A struct can also include modules and can be generic, just like a class.
+
+## Records
+
+The Crystal [Standard Library](https://crystal-lang.org/api) provides the [`record`](https://crystal-lang.org/api/toplevel.html#record(name,*properties)-macro) macro. It simplifies the definition of basic struct types with an initializer and some helper methods.
+
+```crystal
+record Point, x : Int32, y : Int32
+
+Point.new 1, 2 # => #<Point(@x=1, @y=2)>
+```
+
+The `record` macro expands to the following struct definition:
+
+```cr
+struct Point
+  getter x : Int32
+
+  getter y : Int32
+
+  def initialize(@x : Int32, @y : Int32)
+  end
+
+  def copy_with(x _x = @x, y _y = @y)
+    self.class.new(_x, _y)
+  end
+
+  def clone
+    self.class.new(@x.clone, @y.clone)
+  end
+end
+```
