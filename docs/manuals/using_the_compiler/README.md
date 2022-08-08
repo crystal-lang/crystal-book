@@ -47,8 +47,7 @@ The `--static` flag can be used to build a statically-linked executable:
 $ crystal build hello_world.cr --release --static
 ```
 
-!!! note
-    Building fully statical linked executables is currently only supported on Alpine Linux.
+NOTE: Building fully statical linked executables is currently only supported on Alpine Linux.
 
 More information about statically linking [can be found in the Static Linking guide](../../guides/static_linking.md).
 
@@ -170,8 +169,7 @@ $ echo 'puts "Hello World"' | crystal eval
 Hello World!
 ```
 
-!!! note
-    When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
+NOTE: When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
 
 **Common options:**
 
