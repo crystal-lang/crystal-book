@@ -1,7 +1,7 @@
 ---
 hide:
   - toc        # Hide table of contents
-  - navigation # Hide sidebar nabigation
+  - navigation # Hide sidebar navigation
 ---
 
 # Crystal Book
@@ -26,10 +26,11 @@ Install Crystal and get it running.
   </div>
   <div class="card" markdown="1">
 
-### Tutorials and learning resources
-Introductory courses for beginners and advanced learners.
+### Tutorials
+Introductory material for beginners.
 
 * [Language introduction](tutorials/basics/README.md)
+* [Crystal for Rubyists](https://github.com/crystal-lang/crystal/wiki/Crystal-for-Rubyists)
 
   </div>
   <div class="card" markdown="1">
@@ -37,7 +38,7 @@ Introductory courses for beginners and advanced learners.
 ### [Guides](guides/README.md)
 Detailed examples for practical applications.
 
-* [Performance tips](guides/performance.md)
+* [Performance](guides/performance.md)
 * [Concurrency](guides/concurrency.md)
 * [Testing](guides/testing.md)
 * [Writing Shards](guides/writing_shards.md)
