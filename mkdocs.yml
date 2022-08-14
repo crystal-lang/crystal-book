@@ -53,6 +53,7 @@ plugins:
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
         overview/index.md: syntax_and_semantics/README.md
         overview/hello_world.md: getting_started/README.md
+        governance.md: https://crystal-lang.org/community/governance
   - code-validator:
       enabled: !ENV [LINT, false]
       identifiers:
