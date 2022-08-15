@@ -128,7 +128,7 @@ Our standards and expectations about working together as a community.
   </div>
   <div class="card" markdown="1">
 
-### [Governance document](governance.md)
+### [Governance document](https://crystal-lang.org/community/governance)
 
 How we take the decisions that guide the language and its community.
 
