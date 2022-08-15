@@ -305,7 +305,6 @@ A_CONSTANT = 0
 {% end %}
 ```
 
-
 ## Method information
 
 When a macro is invoked you can access the method, the macro is in with a special instance variable: `@def`. The type of this variable is [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html) unless the macro is outside of a method, in this case it's [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).

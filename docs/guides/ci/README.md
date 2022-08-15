@@ -3,7 +3,7 @@
 The ability of having immediate feedback on what we are working should be one of the most important characteristics in software development. Imagine making one change to our source code and having to wait 2 weeks to see if it broke something? oh! That would be a nightmare! For this, Continuous Integration will help a team to have immediate and frequent feedback about the status of what they are building.
 
 Martin Fowler [defines Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) as
-_a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly._
+*a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.*
 
 In the next subsections, we are going to present two continuous integration tools: [GitHub Actions](https://docs.github.com/actions) and [Circle CI](https://circleci.com/), and use them with a Crystal example application.
 

@@ -4,8 +4,6 @@ The program is the entirety of the source code worked by the compiler. The sourc
 
 The program’s source code must be encoded in UTF-8.
 
-
-
 ## Top-level scope
 
 Features such as types, constants, macros and methods defined outside any other namespace are in the top-level scope.

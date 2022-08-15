@@ -2,7 +2,7 @@
 
 How to write and release Crystal Shards.
 
-## _What's a Shard?_
+## *What's a Shard?*
 
 Simply put, a Shard is a package of Crystal code, made to be shared-with and used-by other projects.
 
@@ -10,7 +10,7 @@ See [the Shards command](../the_shards_command/README.md) for details.
 
 ## Introduction
 
-In this tutorial, we'll be making a Crystal library called _palindrome-example_.
+In this tutorial, we'll be making a Crystal library called *palindrome-example*.
 
 > For those who don't know, a palindrome is a word which is spelled the same way forwards as it is backwards. e.g. racecar, mom, dad, kayak, madam
 
@@ -74,13 +74,13 @@ The code you write is up to you, but how you write it impacts whether people wan
 
 #### Testing the Code
 
-- Test your code. All of it. It's the only way for anyone, including you, to know if it works.
-- Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
+* Test your code. All of it. It's the only way for anyone, including you, to know if it works.
+* Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
 
 #### Documentation
 
-- Document your code with comments. All of it. Even the private methods.
-- Crystal has [a built-in documentation generator](../syntax_and_semantics/documenting_code.md). Use it!
+* Document your code with comments. All of it. Even the private methods.
+* Crystal has [a built-in documentation generator](../syntax_and_semantics/documenting_code.md). Use it!
 
 Run `crystal docs` to convert your code and comments into interlinking API documentation. Open the files in the `/docs/` directory with a web browser to see how your documentation is looking along the way.
 
@@ -110,8 +110,8 @@ NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-ge
 
 #### Coding Style
 
-- It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
-- Utilize Crystal's [built-in code formatter](../syntax_and_semantics/documenting_code.md) to automatically format all `.cr` files in a directory.
+* It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
+* Utilize Crystal's [built-in code formatter](../syntax_and_semantics/documenting_code.md) to automatically format all `.cr` files in a directory.
 
 e.g.
 
@@ -137,7 +137,7 @@ This check is good to add as a step in [continuous integration](ci/README.md).
 
 Your `shard.yml`'s `name` property should be concise and descriptive.
 
-- Search any of the available [shard databases](https://crystal-lang.org/community/#shards) to check if your name is already taken.
+* Search any of the available [shard databases](https://crystal-lang.org/community/#shards) to check if your name is already taken.
 
 e.g.
 
@@ -161,10 +161,10 @@ A description should be:
 It's hard for anyone to use your project if they can't find it.
 There are several services for discovering shards, a list is available on the [Crystal Community page](https://crystal-lang.org/community/#shards).
 
-There are people looking for the _exact_ functionality of our library and the _general_ functionality of our library.
+There are people looking for the *exact* functionality of our library and the *general* functionality of our library.
 e.g. Bob needs a palindrome library, but Felipe is just looking for libraries involving text and Susan is looking for libraries involving spelling.
 
-Our `name` is already descriptive enough for Bob's search of "palindrome". We don't need to repeat the _palindrome_ keyword. Instead, we'll catch Susan's search for "spelling" and Felipe's search for "text".
+Our `name` is already descriptive enough for Bob's search of "palindrome". We don't need to repeat the *palindrome* keyword. Instead, we'll catch Susan's search for "spelling" and Felipe's search for "text".
 
 ```yaml
 description: |
