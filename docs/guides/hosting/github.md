@@ -1,14 +1,14 @@
 # Hosting on GitHub
 
-- Create a repository with the same `name` and `description` as specified in your `shard.yml`.
+* Create a repository with the same `name` and `description` as specified in your `shard.yml`.
 
-- Add and commit everything:
+* Add and commit everything:
 
     ```console
     $ git add -A && git commit -am "shard complete"
     ```
 
-- Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
+* Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
     NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
 
@@ -16,7 +16,7 @@
     $ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
-- Push it:
+* Push it:
 
     ```console
     $ git push public master
@@ -33,12 +33,12 @@ Add the following markdown build badge below the description in your README to i
 [![GitHub release](https://img.shields.io/github/release/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg)](https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>/releases)
 ```
 
-Start by navigating to your repository's _releases_ page.
+Start by navigating to your repository's *releases* page.
 This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
 
 Click "Create a new release".
 
-According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md), 
+According to [the Crystal Shards README](https://github.com/crystal-lang/shards/blob/master/README.md),
 > When libraries are installed from Git repositories, the repository is expected to have version tags following a semver-like format, prefixed with a `v`. Examples: v1.2.3, v2.0.0-rc1 or v2017.04.1
 
 Accordingly, in the input that says `tag version`, type `v0.1.0`. Make sure this matches the `version` in `shard.yml`. Title it `v0.1.0` and write a short description for the release.

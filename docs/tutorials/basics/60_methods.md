@@ -122,7 +122,7 @@ puts adds_2 40
 
 A method can return at any place in its body using the `return` statement. The argument passed to `return` becomes the method's return value. If there is no argument, it's `nil`.
 
-The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
+The following example illustrates the use of an *explicit* and an *implicit* `return`:
 
 ```crystal-play
 # This method returns:

@@ -29,7 +29,7 @@ foo.method = 5
 foo[0] = 6
 ```
 
-### Method as assignment target
+## Method as assignment target
 
 A method ending with an equals sign (`=`) is called a setter method. It can be used
 as the target of an assignment. The semantics of the assignment operator apply as
@@ -67,7 +67,7 @@ list.[]=(2, 3)
 list[2] = 3
 ```
 
-### Combined assignments
+## Combined assignments
 
 [Combined assignments](operators.md#combined-assignments) are a combination of an
 assignment operator and another operator.

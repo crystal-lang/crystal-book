@@ -1,0 +1,19 @@
+{
+  "default": true,
+
+  "no-inline-html": false,
+  "line-length": false,
+
+  "ol-prefix": {"style": "ordered"},  // use 1. 2. 3. not 1. 1. 1.
+  "ul-style": "asterisk",
+  "ul-indent": {"indent": 4},  // Python-Markdown doesn't recognize lists otherwise
+
+  "emphasis-style": {"style": "asterisk"},
+  "strong-style": {"style": "asterisk"},
+
+  "no-duplicate-heading": "siblings_only",
+  "no-bare-urls": false,
+
+  "fenced-code-language": false,
+  "commands-show-output": false
+}

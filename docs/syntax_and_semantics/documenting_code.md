@@ -127,14 +127,14 @@ Unicorn.new.speak # => "I'm a unicorn"
 
 Several admonition keywords are supported to visually highlight problems, notes and/or possible issues.
 
-- `BUG`
-- `DEPRECATED`
-- `EXPERIMENTAL`
-- `FIXME`
-- `NOTE`
-- `OPTIMIZE`
-- `TODO`
-- `WARNING`
+* `BUG`
+* `DEPRECATED`
+* `EXPERIMENTAL`
+* `FIXME`
+* `NOTE`
+* `OPTIMIZE`
+* `TODO`
+* `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
@@ -263,7 +263,7 @@ Some documentation specific to *id*'s usage within `Child`.
 Some documentation common to every *id*.
 ```
 
-NOTE: Inheriting documentation only works on _instance_, non-constructor methods.
+NOTE: Inheriting documentation only works on *instance*, non-constructor methods.
 
 ## A Complete Example
 

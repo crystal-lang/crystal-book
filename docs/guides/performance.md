@@ -173,7 +173,7 @@ There are two ways to solve this:
     puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
     ```
 
-1. Move the array to a constant.
+2. Move the array to a constant.
 
     ```crystal
     LANGS = ["crystal", "ruby", "java"]

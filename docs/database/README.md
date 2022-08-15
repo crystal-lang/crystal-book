@@ -9,7 +9,7 @@ The following packages are compliant with crystal-db
 * [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
 
 And several [more](https://github.com/crystal-lang/crystal-db).
- 
+
 This guide presents the api of crystal-db, the sql commands might need to be adapted for the concrete driver due to differences between postgres, mysql and sqlite.
 
 Also some drivers may offer additional functionality like postgres `LISTEN`/`NOTIFY`.
