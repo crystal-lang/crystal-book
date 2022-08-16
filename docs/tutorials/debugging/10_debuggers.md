@@ -1,7 +1,6 @@
-# Debugging Crystal Programs
+# Debuggers
 
 ## Tools
 
-### GDB
-
-### LLVM
+* [GDB](https://www.sourceware.org/gdb/)
+* [LLDB](https://lldb.llvm.org/)

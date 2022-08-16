@@ -4,5 +4,5 @@ This course targets experienced Crystal programmers and discusses common tools a
 
 Contents:
 
-* [Debuggers](10_debuggers.md) – Introduction to common debugger tools compatible with Crystal
+* [Debuggers](10_debuggers.md) – Introduction to common debugging tools compatible with Crystal
 * [Caveats](20_caveats.md) – Gotchas and limitations when debugging Crystal code

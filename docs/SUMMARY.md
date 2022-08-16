@@ -144,5 +144,5 @@
         * [Control Flow](tutorials/basics/50_control_flow.md)
         * [Methods](tutorials/basics/60_methods.md)
     * [Debugging](tutorials/debugging/README.md)
-        * [Debugging Crystal Programs](tutorials/debugging/10_debuggers.md)
+        * [Debuggers](tutorials/debugging/10_debuggers.md)
         * [Caveats](tutorials/debugging/20_caveats.md)
