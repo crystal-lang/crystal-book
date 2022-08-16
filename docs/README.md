@@ -32,6 +32,7 @@ Install Crystal and get it running.
 Introductory courses for beginners and advanced learners.
 
 * [Basics](tutorials/basics/README.md)
+* [Debugging](tutorials/debugging/README.md)
 
   </div>
   <div class="card" markdown="1">
