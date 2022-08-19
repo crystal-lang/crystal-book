@@ -32,7 +32,6 @@ Install Crystal and get it running.
 Introductory material for beginners.
 
 * [Language introduction](tutorials/basics/README.md)
-* [Crystal for Rubyists](https://github.com/crystal-lang/crystal/wiki/Crystal-for-Rubyists)
 
   </div>
   <div class="card" markdown="1">
