@@ -88,7 +88,7 @@ Discover the ecosystem of Crystal libraries.
 
 * [Discovering Shards](https://crystal-lang.org/community/#shards)
 * [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
-* [Shards Manual](manuals/the_shards_command/README.md)
+* [Shards Manual](man/shards/README.md)
 
   </div>
   <div class="card" markdown="1">
@@ -97,9 +97,9 @@ Discover the ecosystem of Crystal libraries.
 
 Instructions on how to use the compiler and tools.
 
-* [Compiler manual](manuals/using_the_compiler/README.md)
+* [Compiler manual](man/crystal/README.md)
 * [Static linking](guides/static_linking.md)
-* [Shards Manual](manuals/the_shards_command/README.md)
+* [Shards Manual](man/shards/README.md)
 
   </div>
   <div class="card" markdown="1">

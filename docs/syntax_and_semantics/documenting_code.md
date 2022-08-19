@@ -7,7 +7,7 @@ By default, all public methods, macros, types and constants are
 considered part of the API documentation.
 
 TIP:
-The compiler command [`crystal docs`](../manuals/using_the_compiler/#crystal-docs)
+The compiler command [`crystal docs`](../man/crystal/#crystal-docs)
 automatically extracts the API documentation and generates a website to
 present it.
 

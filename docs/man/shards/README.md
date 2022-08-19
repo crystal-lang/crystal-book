@@ -21,7 +21,7 @@ Running [`shards install`](#shards-install) resolves and installs the specified 
 The installed versions are written into a `shard.lock` file for using the exact same dependency versions when running `shards install` again.
 
 If your shard builds an application, both `shard.yml` and `shard.lock` should be checked into version control to provide reproducible dependency installs.
-If it is only a library for other shards to depend on, `shard.lock` should *not* be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../using_the_compiler/README.md#crystal-init) does this automatically when initializing a `lib` repository).
+If it is only a library for other shards to depend on, `shard.lock` should *not* be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../crystal/README.md#crystal-init) does this automatically when initializing a `lib` repository).
 
 ## Shards commands
 
