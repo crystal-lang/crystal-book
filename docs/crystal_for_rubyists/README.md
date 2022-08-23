@@ -1,3 +1,5 @@
+# Crystal for Rubyists
+
 Although Crystal has a Ruby-like syntax, Crystal is a different language, not another Ruby implementation. For this reason, and mostly because it's a compiled, statically typed language, the language has some big differences when compared to Ruby.
 
 ## Crystal as a compiled language
@@ -99,7 +101,9 @@ end
 
 will generate an error message like
 
+```text
     in line 1: too many block arguments (given 2, expected maximum 1)
+```
 
 However omitting unneeded arguments is fine (as it is in Ruby), ex:
 
@@ -146,11 +150,13 @@ end
 In Ruby `.each` returns the receiver for many built-in collections like `Array` and `Hash`, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported. Alternately, one can use `.tap`.
 
 Ruby:
+
 ```ruby
 [1, 2].each { "foo" } # => [1, 2]
 ```
 
 Crystal:
+
 ```crystal
 [1, 2].each { "foo" } # => nil
 [1, 2].tap &.each { "foo" } # => [1, 2]
@@ -165,6 +171,7 @@ Crystal:
 In some cases [macros](../syntax_and_semantics/macros/README.md) can be used for reflection.
 
 ## Semantic differences
+
 ### Single versus double-quoted strings
 
 In Ruby, string literals can be delimited with single or double quotes. A double-quoted string in Ruby is subject to variable interpolation inside the literal, while a single-quoted string is not.
@@ -178,6 +185,7 @@ X = "ho"
 puts '"cute"' # Not valid in crystal, use "\"cute\"", %{"cute"}, or %("cute")
 puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
+
 Triple quoted strings literals of Ruby or Python are not supported, but string literals can have newlines embedded in them:
 
 ```ruby
@@ -270,7 +278,9 @@ Examples for all of the above:
 * There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
 
 ### `for` loops
+
 `for` loops are not supported but you can add them via macro:
+
 ```crystal
 macro for(expr)
   {{expr.args.first.args.first}}.each do |{{expr.name.id}}|
@@ -311,6 +321,7 @@ The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced b
 | `attr_writer`   | `setter`   |
 
 Example:
+
 ```crystal
   getter :name, :bday
 ```
@@ -323,6 +334,7 @@ In addition, Crystal added accessor macros for nilable or boolean instance varia
 | `getter?`   |
 
 Example:
+
 ```crystal
 class Person
   getter? happy = true
@@ -351,14 +363,16 @@ puts Person.new.feeling?
 Read more about [getter?](https://crystal-lang.org/api/Object.html#getter?(*names,&block)-macro) and/or [property?](https://crystal-lang.org/api/Object.html#property?(*names,&block)-macro) in the documentation.
 
 ### Consistent dot notation
+
 For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
 ### Crystal keywords
+
 Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
 
 #### Available keywords
 
-```
+```text
 abstract   do       if                nil?           select          union
 alias      else     in                of             self            unless
 as         elsif    include           out            sizeof          until
@@ -372,6 +386,7 @@ def        fun      nil               return         uninitialized
 ```
 
 ### Private methods
+
 Crystal requires each private method to be prefixed with the `private` keyword:
 
 ```crystal
@@ -381,6 +396,7 @@ end
 ```
 
 ### Pseudo Constants
+
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
 
 > [Read more about Pseudo Constants in the Crystal documentation.](../syntax_and_semantics/constants.md#pseudo-constants)
@@ -399,8 +415,9 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
     * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
 
 ## Crystal Shards for Ruby Gems
+
 Many popular Ruby gems have been ported or rewritten in Crystal. [Here are some of the equivalent Crystal Shards for Ruby Gems](https://github.com/crystal-lang/crystal/wiki/Crystal-Shards-for-Ruby-Gems).
 
--------
+***
 
-For other questions regarding differences between Ruby and Crystal, visit the FAQ: https://github.com/crystal-lang/crystal/wiki/FAQ.
+For other questions regarding differences between Ruby and Crystal, visit the [FAQ](https://github.com/crystal-lang/crystal/wiki/FAQ).

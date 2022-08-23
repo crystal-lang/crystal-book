@@ -1,3 +1,5 @@
+# Metaprogramming
+
 Metaprogramming in Crystal is not the same as in Ruby. The links on this page will hopefully provide some insight into those differences and how to overcome them.
 
 ## Differences between Ruby and Crystal
@@ -13,7 +15,9 @@ Crystal does support `include` and `extend`. But all code included or extended m
 But all is not lost for the intrepid metaprogrammer! Crystal still has powerful facilities for compile-time code generation. We just need to adjust our Ruby techniques a bit to work under the Crystal environment.
 
 ### Overriding #new via `extend`
+
 In Ruby we can do some powerful things by overriding the `new` method on a class.
+
 ```ruby
 module ClassMethods
   def new(*args)
@@ -41,9 +45,11 @@ end
 foo = Foo.new('Quxo') # => Calling overridden method.
 p foo.class # => Bar
 ```
+
 As seen in the example above, the `Foo` instance calls its normal constructor. When we `extend` it and override `new` we can inject all sorts of things into the process. The above example shows minimal interference and just allocates an instance of the object and initializes it. This instance is returned back from the constructor.
 
 In the next example, we override `new` and return a completely different kind of class!
+
 ```ruby
 class Bar
   def initialize(foo)
@@ -69,11 +75,13 @@ end
 foo = Foo.new('Quxo') # => Calling overridden method.
 p foo.class # => Bar
 ```
+
 This allows for very powerful meta programming at runtime. We can wrap a class in another class as a proxy and return a reference to this new proxy object.
 
 Is the same kind of magic possible with Crystal? I wouldn't have written this section if it were impossible. But it does have some caveats that we'll get to later.
 
 Here's the original class in Crystal and the expected behavior.
+
 ```crystal
 module ClassMethods
   macro extended
@@ -100,18 +108,23 @@ foo = Foo.new(5)
 puts foo.class
 # Foo.new("string")
 ```
+
 This example makes use of the `macro extended` hook. This hook is called whenever a class body executes the `extend` method. We are able to use this macro to write a replacement `new` method.
 
 (Need clarity on the method signature details. Removing the @number type declaration Foo  causes the override to silently fail. Adding "number : Int32" to the Foo class initialize signature also causes the override to fail. There are some subtleties here with method overloads that I am missing. Need more experimentation. Examples above still work though...)
 
 ### Generating Methods via `method_missing` Macro
+
 Sample code + explanation
 
 ### How to Mimic `send` Using `record`s and Generated Lookup Tables
+
 Sample code + explanation
 
 ### Crystal Approach to `alias_method`
+
 Sometimes we want to reopen a class and redefine a previously defined method to have some new behavior. Plus, we probably want the original method to still be accessible too. In Ruby, we use `alias_method` for this purpose. Example:
+
 ```ruby
 class Klass
   def salute
@@ -134,7 +147,9 @@ end
 
 Klass.new.salute # => Calling method...\nAloha!\n... Method called
 ```
+
 Performing the same work in Crystal is fairly straight forward. Crystal provides a method called `previous_def` which can access the previously defined version of the method. To make the same example work in Crystal, it would look similar to this:
+
 ```crystal
 class Klass
   def salute
@@ -160,7 +175,9 @@ end
 
 Klass.new.salute # => Calling method...\nAloha!\n... Method called
 ```
+
 Each time we reopen the class `previous_def` is set to the prior method definition so we can use this to build an alias method chain at compile time much like in Ruby. However, we do lose access to the original method definition each time we extend the chain. Unlike in Ruby where we are giving the old method an explicit name that we could refer to somewhere else, Crystal does not provide that facility.
 
 ### General Resources
+
 Ary Borenszweig (@asterite on gitter) gave a talk at a conference in 2016 covering macros. It can be [seen here](https://vimeo.com/190927958).
