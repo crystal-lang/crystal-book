@@ -47,8 +47,7 @@ The `--static` flag can be used to build a statically-linked executable:
 $ crystal build hello_world.cr --release --static
 ```
 
-!!! note
-    Building fully statical linked executables is currently only supported on Alpine Linux.
+NOTE: Building fully statical linked executables is currently only supported on Alpine Linux.
 
 More information about statically linking [can be found in the Static Linking guide](../guides/static_linking.md).
 
@@ -66,10 +65,8 @@ $ crystal init app myapp
     create  myapp/.editorconfig
     create  myapp/LICENSE
     create  myapp/README.md
-    create  myapp/.travis.yml
     create  myapp/shard.yml
     create  myapp/src/myapp.cr
-    create  myapp/src/myapp/version.cr
     create  myapp/spec/spec_helper.cr
     create  myapp/spec/myapp_spec.cr
 Initialized empty Git repository in /home/crystal/myapp/.git/
@@ -146,7 +143,6 @@ Hello Crystal!
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
 * `--link-flags FLAGS`: Additional flags to pass to the linker.
-* `--lto=thin`: Use ThinLTO, improving performance on release builds.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
@@ -173,14 +169,12 @@ $ echo 'puts "Hello World"' | crystal eval
 Hello World!
 ```
 
-!!! note
-    When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
+NOTE: When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
 
 **Common options:**
 
 * `-o <output_file>`: Define the name of the binary executable.
 * `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
-* `--lto=thin`: Use ThinLTO, improves performance.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
@@ -222,7 +216,6 @@ $ crystal init lib my_cool_lib
     create  my_cool_lib/.editorconfig
     create  my_cool_lib/LICENSE
     create  my_cool_lib/README.md
-    create  my_cool_lib/.travis.yml
     create  my_cool_lib/shard.yml
     create  my_cool_lib/src/my_cool_lib.cr
     create  my_cool_lib/spec/spec_helper.cr
@@ -386,3 +379,5 @@ The following environment variables are used by the Crystal compiler if set in t
 * `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
 * `CRYSTAL_VERSION` is only available as output of [`crystal env`](#crystal-env). The compiler neither sets nor reads it.
 * `CRYSTAL_LIBRARY_PATH`: The compiler uses the paths in this variable as a first lookup destination for static and dynamic libraries that are to be linked. For example, if static libraries are put in `build/libs`, setting the environment variable accordingly will tell the compiler to look for libraries there.
+
+The compiler conforms to [`NO_COLOR`](https://no-color.org/) and turns off ANSI color escapes in the terminal when the environment variable `NO_COLOR` is present (has a value other than the empty string).

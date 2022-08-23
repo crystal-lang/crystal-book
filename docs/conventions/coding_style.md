@@ -4,7 +4,7 @@ This style is used in the standard library. You can use it in your own project t
 
 ## Naming
 
-__Type names__ are camelcased. For example:
+**Type names** are PascalCased. For example:
 
 ```crystal
 class ParseError < Exception
@@ -27,7 +27,7 @@ enum Time::DayOfWeek
 end
 ```
 
-__Method names__ are underscore-cased. For example:
+**Method names** are snake_cased. For example:
 
 ```crystal
 class Person
@@ -42,7 +42,7 @@ class Person
 end
 ```
 
-__Variable names__ are underscore-cased. For example:
+**Variable names** are snake_cased. For example:
 
 ```crystal
 class Greeting
@@ -58,7 +58,7 @@ class Greeting
 end
 ```
 
-__Constants__ are screaming-cased. For example:
+**Constants** are SCREAMING_SNAKE_CASED. For example:
 
 ```crystal
 LUCKY_NUMBERS     = [3, 7, 11]
@@ -67,9 +67,9 @@ DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 
 ### Acronyms
 
-In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
+In class names, acronyms are *all-uppercase*. For example, `HTTP`, and `LibXML`.
 
-In method names, acronyms are _all-lowercase_.  For example `#from_json`,  `#to_io`.
+In method names, acronyms are *all-lowercase*. For example `#from_json`, `#to_io`.
 
 ### Libs
 
@@ -79,18 +79,18 @@ In method names, acronyms are _all-lowercase_.  For example `#from_json`,  `#to_
 
 Within a project:
 
-- `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
-- `src/` contains the project's source code.
-- `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
-- `bin/` contains any executables.
+* `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
+* `src/` contains the project's source code.
+* `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
+* `bin/` contains any executables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with _underscore-case_.
+File paths match the namespace of their contents. Files are named after the class or namespace they define, with *snake_case*.
 
 For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
 
-## Whitespace
+## Indentation
 
-Use __two spaces__ to indent code inside namespaces, methods, blocks or other nested contexts. For example:
+Use **two spaces** to indent code inside namespaces, methods, blocks or other nested contexts. For example:
 
 ```crystal
 module Scorecard
@@ -108,7 +108,7 @@ module Scorecard
 end
 ```
 
-Within a class, separate method definitions, constants and inner class definitions with __one newline__. For example:
+Within a class, separate method definitions, constants and inner class definitions with **one newline**. For example:
 
 ```crystal
 module Money

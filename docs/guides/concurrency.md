@@ -4,11 +4,11 @@
 
 The definitions of "concurrency" and "parallelism" sometimes get mixed up, but they are not the same.
 
-A concurrent system is one that can be in charge of many tasks, although not necessarily it is executing them at the same time. You can think of yourself being in the kitchen cooking: you chop an onion, put it to fry, and while it's being fried you chop a tomato, but you are not doing all of those things at the same time: you distribute your time between those tasks. Parallelism would be to stir fry onions with one hand while with the other one you chop a tomato.
+A concurrent system is one that can be in charge of many tasks, although not necessarily executing them at the same time. You can think of yourself being in the kitchen cooking: you chop an onion, put it to fry, and while it's being fried you chop a tomato, but you are not doing all of those things at the same time: you distribute your time between those tasks. Parallelism would be to stir fry onions with one hand while with the other one you chop a tomato.
 
 At the moment of this writing, Crystal has concurrency support but not parallelism: several tasks can be executed, and a bit of time will be spent on each of these, but two code paths are never executed at the same exact time.
 
-A Crystal program executes in a single operating system thread, except the Garbage Collector (GC) which implements a concurrent mark-and-sweep (currently [Boehm GC](http://www.hboehm.info/gc/)).
+A Crystal program by default executes in a single operating system thread, except for the garbage collector (currently [Boehm GC](http://www.hboehm.info/gc/)). Parallelism is supported, but it is currently considered experimental. Check out [this Crystal Blog post about parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html) for more information.
 
 ### Fibers
 
@@ -170,7 +170,7 @@ end
 Fiber.yield
 ```
 
-Now it works because we are creating a [Proc](https://crystal-lang.org/api/latest/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
+Now it works because we are creating a [Proc](https://crystal-lang.org/api/Proc.html) and we invoke it passing `i`, so the value gets copied and now the spawned fiber receives a copy.
 
 To avoid all this boilerplate, the standard library provides a `spawn` macro that accepts a call expression and basically rewrites it to do the above. Using it, we end up with:
 
@@ -219,10 +219,13 @@ This prints:
 ```
 Before receive
 Before send
+After send
 After receive
 ```
 
-First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked, and so execution continues at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes, so the program exits without giving the other fiber a chance to print "After send".
+First, the program spawns a fiber but doesn't execute it yet. When we invoke `channel.receive`, the main fiber blocks and execution continues with the spawned fiber. Then `channel.send(nil)` is invoked. Note that this `send` does not occupy space in the channel because there is a `receive` invoked prior to the first `send`, `send` is not blocked. Fibers only switch out when blocked or executing to completion. So the spawned fiber will continue after `send`, and execution will switch back to main fiber once `puts "After send"` is executed.
+
+The main fiber then resumes at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes.
 
 In the above example we used `nil` just to communicate that the fiber ended. We can also use channels to communicate values between fibers:
 
@@ -250,13 +253,14 @@ Output:
 ```
 Before first receive
 Before first send
+Before second send
 1
 Before second receive
-Before second send
 2
+
 ```
 
-Note that when the program executes a `receive`, that fiber blocks and execution continues with the other fiber. When `send` is executed, execution continues with the fiber that was waiting on that channel.
+Note that when the program executes a `receive`, the current fiber blocks and execution continues with the other fiber. When `channel.send(1)` is executed, execution continues because `send` is non-blocking if the channel is not yet full. However, `channel.send(2)` does cause the fiber to block because the channel (which has a size of 1 by default) is full, so execution continues with the fiber that was waiting on that channel.
 
 Here we are sending literal values, but the spawned fiber might compute this value by, for example, reading a file, or getting it from a socket. When this fiber will have to wait for I/O, other fibers will be able to continue executing code until I/O is ready, and finally when the value is ready and sent through the channel, the main fiber will receive it. For example:
 
@@ -371,10 +375,81 @@ Output:
 Before send 1
 Before send 2
 Before send 3
+After send
 1
 2
-After send
 3
 ```
 
-Note that the first 2 sends are executed without switching to another fiber. However, in the third send the channel's buffer is full, so execution goes to the main fiber. Here the two values are received and the channel is depleted. At the third `receive` the main fiber blocks and execution goes to the other fiber, which sends more values, finishes, etc.
+Note that the first `send` does not occupy space in the channel. This is because there is a `receive` invoked prior to the first `send` whereas the other 2 `send` invocations take place before their respective `receive`. The number of `send` calls do not exceed the bounds of the buffer and so the send fiber runs uninterrupted to completion.
+
+Here's an example where all space in the buffer gets occupied:
+
+```crystal
+# A buffered channel of capacity 1
+channel = Channel(Int32).new(1)
+
+spawn do
+  puts "Before send 1"
+  channel.send(1)
+  puts "Before send 2"
+  channel.send(2)
+  puts "Before send 3"
+  channel.send(3)
+  puts "End of send fiber"
+end
+
+3.times do |i|
+  puts channel.receive
+end
+```
+
+Output:
+
+```
+Before send 1
+Before send 2
+Before send 3
+1
+2
+3
+```
+
+Note that "End of send fiber" does not appear in the output because we `receive` the 3 `send` calls which means `3.times` runs to completion and in turn unblocks the main fiber which executes to completion.
+
+Here's the same snippet as the one we just saw - with the addition of a `Fiber.yield` call at the very bottom:
+
+```crystal
+# A buffered channel of capacity 1
+channel = Channel(Int32).new(1)
+
+spawn do
+  puts "Before send 1"
+  channel.send(1)
+  puts "Before send 2"
+  channel.send(2)
+  puts "Before send 3"
+  channel.send(3)
+  puts "End of send fiber"
+end
+
+3.times do |i|
+  puts channel.receive
+end
+
+Fiber.yield
+```
+
+Output:
+
+```
+Before send 1
+Before send 2
+Before send 3
+1
+2
+3
+End of send fiber
+```
+
+With the addition of a `Fiber.yield` call at the end of the snippet we see the "End of send fiber" message in the output which would have otherwise been missed due to the main fiber executing to completion.

@@ -4,6 +4,7 @@ on:
   pull_request:
   schedule:
     - cron: '0 6 * * 1'  # Every Monday 6 AM UTC
+
 jobs:
   build:
     name: Deploy book
@@ -11,7 +12,19 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v2
-      - name: Set up Python
+      - name: Extract branch name to deploy
+        id: branch
+        shell: bash -x {0}
+        run: |
+          if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(master|release/[0-9][0-9.]+)$ ]]; then
+            echo "::set-output name=branch::${BASH_REMATCH[2]#release/}"
+          fi
+      - name: Install Crystal
+        id: crystal
+        uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{ steps.branch.outputs.branch }}
+      - name: Install Python
         uses: actions/setup-python@v2
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -19,16 +32,40 @@ jobs:
           path: ~/.cache/pip
           key: pip-${{ hashFiles('requirements.txt') }}
           restore-keys: pip-
+      - name: Install dependencies
+        run: make deps
+      - name: Determine a version for API doc links
+        shell: bash -x {0}
+        run: |
+          if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
+            echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
+          fi
+      - name: Populate sample version of Crystal
+        run: crystal --version | tee crystal-version.txt
       - name: Build book
-        run: make build
+        run: LINT=true make build
       - name: Configure AWS Credentials
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy book
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          aws s3 sync ./site s3://crystal-book/reference --delete
+        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
+        run: aws s3 sync ./site s3://crystal-book/reference/${{ steps.branch.outputs.branch }} --delete
+
+  lint:
+    name: Check style issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm install -g markdownlint-cli@0.32.1
+      - name: Check Markdown style
+        run: markdownlint docs

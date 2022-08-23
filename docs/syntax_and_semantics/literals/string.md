@@ -1,6 +1,6 @@
 # String
 
-A [String](https://crystal-lang.org/api/latest/String.html) represents an immutable sequence of UTF-8 characters.
+A [String](https://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
 
 A String is typically created with a string literal enclosing UTF-8 characters in double quotes (`"`):
 
@@ -17,6 +17,7 @@ Available escape sequences:
 ```crystal
 "\""                  # double quote
 "\\"                  # backslash
+"\#"                  # hash character (to escape interpolation)
 "\a"                  # alert
 "\b"                  # backspace
 "\e"                  # escape
@@ -66,18 +67,18 @@ b = 2
 "sum: #{a} + #{b} = #{a + b}" # => "sum: 1 + 2 = 3"
 ```
 
-String interpolation is also possible with [String#%](https://crystal-lang.org/api/latest/String.html#%25%28other%29-instance-method).
+String interpolation is also possible with [String#%](https://crystal-lang.org/api/String.html#%25%28other%29-instance-method).
 
 Any expression may be placed inside the interpolated section, but it’s best to keep the expression small for readability.
 
-Interpolation can be disabled by escaping the `#` character with a backslash or by using a non-interpolating string literal like `%q()`.
+Interpolation can be disabled by escaping the hash character (`#`) with a backslash or by using a non-interpolating string literal like `%q()`.
 
 ```crystal
 "\#{a + b}"  # => "#{a + b}"
 %q(#{a + b}) # => "#{a + b}"
 ```
 
-Interpolation is implemented using a [String::Builder](https://crystal-lang.org/api/latest/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
+Interpolation is implemented using a [String::Builder](https://crystal-lang.org/api/String/Builder.html) and invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`. The expression `"sum: #{a} + #{b} = #{a + b}"` is equivalent to:
 
 ```crystal
 String.build do |io|
@@ -114,7 +115,7 @@ name = "world"
 
 ### Percent string array literal
 
-Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/latest/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
+Besides the single string literal, there is also a percent literal to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` and a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
 
 ```crystal
 %w(foo bar baz)  # => ["foo", "bar", "baz"]
@@ -122,6 +123,7 @@ Besides the single string literal, there is also a percent literal to create an 
 %w(foo(bar) baz) # => ["foo(bar)", "baz"]
 ```
 
+<!-- markdownlint-disable-next-line no-space-in-code -->
 Note that literal denoted by `%w` does not apply interpolation nor escapes except spaces. Since strings are separated by a single space character (` `) which must be escaped to use it as a part of a string.
 
 ```crystal

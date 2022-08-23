@@ -1,12 +1,12 @@
 # Proc
 
-A [Proc](https://crystal-lang.org/api/latest/Proc.html) represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:
+A [Proc](https://crystal-lang.org/api/Proc.html) represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:
 
 ```crystal
 # A proc without parameters
 ->{ 1 } # Proc(Int32)
 
-# A proc with one parameters
+# A proc with one parameter
 ->(x : Int32) { x.to_s } # Proc(Int32, String)
 
 # A proc with two parameters
@@ -15,15 +15,27 @@ A [Proc](https://crystal-lang.org/api/latest/Proc.html) represents a function po
 
 The types of the parameters are mandatory, except when directly sending a proc literal to a lib `fun` in C bindings.
 
-The return type is inferred from the proc's body.
+The return type is inferred from the proc's body, but can also be provided explicitly:
 
-A special `new` method is provided too:
+```
+# A proc returning an Int32 or String
+-> : Int32 | String { 1 } # Proc(Int32 | String)
+
+# A proc with one parameter and returning Nil
+->(x : Array(String)) : Nil { x.delete("foo") } # Proc(Array(String), Nil)
+
+# The return type must match the proc's body
+->(x : Int32) : Bool { x.to_s } # Error: expected Proc to return Bool, not String
+```
+
+A `new` method is provided too, which creates a `Proc` from a [captured block](../capturing_blocks.md). This form is mainly useful with [aliases](../alias.md):
 
 ```crystal
 Proc(Int32, String).new { |x| x.to_s } # Proc(Int32, String)
-```
 
-This form allows you to specify the return type and to check it against the proc's body.
+alias Foo = Int32 -> String
+Foo.new { |x| x.to_s } # same proc as above
+```
 
 ## The Proc type
 
@@ -33,8 +45,8 @@ To denote a Proc type you can write:
 # A Proc accepting a single Int32 argument and returning a String
 Proc(Int32, String)
 
-# A proc accepting no arguments and returning Void
-Proc(Void)
+# A proc accepting no arguments and returning Nil
+Proc(Nil)
 
 # A proc accepting two arguments (one Int32 and one String) and returning a Char
 Proc(Int32, String, Char)

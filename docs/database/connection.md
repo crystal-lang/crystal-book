@@ -6,10 +6,10 @@ In Crystal we have two ways of building this connection. And so, coming up next,
 
 ## DB module
 
-> _Give me a place to stand, and I shall move the earth._  
+> *Give me a place to stand, and I shall move the earth.*  
 > Archimedes
 
-The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: _is a unified interface for database access_.
+The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: *is a unified interface for database access*.
 
 One of the methods implemented in this module is `DB#connect`. Using this method is the **first way** for creating a connection. Let's see how to use it.
 
@@ -31,14 +31,14 @@ cnn.close
 
 It's worth mentioning that the method returns a `DB::Connection` object. Although more specifically, it returns a `MySql::Connection` object, it doesn't matter because all types of connections should be polymorphic. So hereinafter we will work with a `DB::Connection` instance, helping us to abstract from specific issues of each database engine.
 
-When creating a connection _manually_ (as we are doing here) we are responsible for managing this resource, and so we must close the connection when we are done using it. Regarding the latter, this little details can be the cause of huge bugs! Crystal, being _a language for humans_, give us a more safe way of _manually_ creating a connection using blocks, like this:
+When creating a connection *manually* (as we are doing here) we are responsible for managing this resource, and so we must close the connection when we are done using it. Regarding the latter, this little details can be the cause of huge bugs! Crystal, being *a language for humans*, give us a more safe way of *manually* creating a connection using blocks, like this:
 
 ```crystal
 require "mysql"
 
 DB.connect "mysql://root:root@localhost/test" do |cnn|
   puts typeof(cnn) # => DB::Connection
-end # the connection will be closed here
+end                # the connection will be closed here
 ```
 
 Ok, now we have a connection, let's use it!
@@ -70,9 +70,9 @@ DB.connect "mysql://root:root@localhost/test" do |cnn|
 end
 ```
 
-First, in this example, we are using a transaction (check the [transactions](https://crystal-lang.org/reference/database/transactions.html) section for more information on this topic)
+First, in this example, we are using a transaction (check the [transactions](transactions.md) section for more information on this topic)
 Second, it's important to notice that the connection given by the transaction **is the same connection** that we were working with, before the transaction begin. That is, there is only **one** connection at all times in our program.
-And last, we are using the method `#exec` and `#query`. You may read more about executing queries in the [database](https://crystal-lang.org/reference/database/) section.
+And last, we are using the method `#exec` and `#query`. You may read more about executing queries in the [database](README.md) section.
 
 Now that we have a good idea about creating a connection, let's present the **second way** for creating one: `DB#open`
 
@@ -90,7 +90,7 @@ As with a connection, we should close the database once we don't need it anymore
 Or instead, we could use a block and let Crystal close the database for us!
 
 But, where is the connection?
-Well, we should be asking for the **connections**. When a database is created, a pool of connections is created with connections to the database prepared and ready to use! (Do you want to read more about **pool of connections**? In the [connection pool](https://crystal-lang.org/reference/database/connection_pool.html) section you may read all about this interesting topic!)
+Well, we should be asking for the **connections**. When a database is created, a pool of connections is created with connections to the database prepared and ready to use! (Do you want to read more about **pool of connections**? In the [connection pool](connection_pool.md) section you may read all about this interesting topic!)
 
 How do we use a connection from the `database` object?
 For this, we could ask the database for a connection using the method `Database#checkout`. But, doing this will require to explicitly return the connection to the pool using `Connection#release`. Here is an example:
@@ -108,7 +108,7 @@ DB.open "mysql://root:root@localhost/test" do |db|
 end
 ```
 
-And we want a _safe_ way (i.e. no need for us to release the connection) to request and use a connection from the `database`, we could use `Database#using_connection`:
+And we want a *safe* way (i.e. no need for us to release the connection) to request and use a connection from the `database`, we could use `Database#using_connection`:
 
 ```crystal
 require "mysql"

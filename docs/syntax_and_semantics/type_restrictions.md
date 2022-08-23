@@ -78,6 +78,31 @@ def handle_path(path : String)
 end
 ```
 
+## Restrictions from instance variables
+
+In some cases it is possible to restrict the type of a method's parameter based on its usage. For instance, consider the following example:
+
+```crystal
+class Foo
+  @x : Int64
+
+  def initialize(x)
+    @x = x
+  end
+end
+```
+
+In this case we know that the parameter `x` from the initialization function must be an `Int64`, and there is no point in leave it unrestricted.
+
+When the compiler finds an assignment from a method parameter to an instance variable, then it inserts such a restriction. In the example above, calling `Foo.new "hi"` fails with (note the type restriction):
+
+```
+Error: no overload matches 'Foo.new' with type String
+
+Overloads are:
+ - Foo.new(x : ::Int64)
+```
+
 ## self restriction
 
 A special type restriction is `self`:

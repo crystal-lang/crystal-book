@@ -69,24 +69,23 @@ This philosophy of appending to an IO instead of returning an intermediate strin
 
 Let's compare the times:
 
-!!! example "io_benchmark.cr"
-    ```crystal
-    require "benchmark"
+```crystal title="io_benchmark.cr"
+require "benchmark"
 
-    io = IO::Memory.new
+io = IO::Memory.new
 
-    Benchmark.ips do |x|
-      x.report("without to_s") do
-        io << 123
-        io.clear
-      end
+Benchmark.ips do |x|
+  x.report("without to_s") do
+    io << 123
+    io.clear
+  end
 
-      x.report("with to_s") do
-        io << 123.to_s
-        io.clear
-      end
-    end
-    ```
+  x.report("with to_s") do
+    io << 123.to_s
+    io.clear
+  end
+end
+```
 
 Output:
 
@@ -174,7 +173,7 @@ There are two ways to solve this:
     puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
     ```
 
-1. Move the array to a constant.
+2. Move the array to a constant.
 
     ```crystal
     LANGS = ["crystal", "ruby", "java"]
@@ -200,31 +199,30 @@ You shouldn't always use a struct, though. Structs are passed by value, so if yo
 
 For example:
 
-!!! example "class_vs_struct.cr'
-    ```crystal
-    require "benchmark"
+```crystal title="class_vs_struct.cr"
+require "benchmark"
 
-    class PointClass
-      getter x
-      getter y
+class PointClass
+  getter x
+  getter y
 
-      def initialize(@x : Int32, @y : Int32)
-      end
-    end
+  def initialize(@x : Int32, @y : Int32)
+  end
+end
 
-    struct PointStruct
-      getter x
-      getter y
+struct PointStruct
+  getter x
+  getter y
 
-      def initialize(@x : Int32, @y : Int32)
-      end
-    end
+  def initialize(@x : Int32, @y : Int32)
+  end
+end
 
-    Benchmark.ips do |x|
-      x.report("class") { PointClass.new(1, 2) }
-      x.report("struct") { PointStruct.new(1, 2) }
-    end
-    ```
+Benchmark.ips do |x|
+  x.report("class") { PointClass.new(1, 2) }
+  x.report("struct") { PointStruct.new(1, 2) }
+end
+```
 
 Output:
 

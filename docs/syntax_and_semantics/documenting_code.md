@@ -6,10 +6,10 @@ preceding the definition of the respective feature.
 By default, all public methods, macros, types and constants are
 considered part of the API documentation.
 
-!!! tip
-    The compiler command [`crystal docs`](../using_the_compiler/#crystal-docs)
-    automatically extracts the API documentation and generates a website to
-    present it.
+TIP:
+The compiler command [`crystal docs`](../using_the_compiler/#crystal-docs)
+automatically extracts the API documentation and generates a website to
+present it.
 
 ## Association
 
@@ -46,9 +46,9 @@ def horns
 end
 ```
 
-!!! tip
-    It is generally advised to use descriptive, third person present tense:
-    `Returns the number of horns this unicorn has` (instead of an imperative `Return the number of horns this unicorn has`).
+TIP:
+It is generally advised to use descriptive, third person present tense:
+`Returns the number of horns this unicorn has` (instead of an imperative `Return the number of horns this unicorn has`).
 
 ## Markup
 
@@ -74,7 +74,7 @@ documented namespace can be accessed with relative names:
 
 Features in other namespaces are referenced with the fully-qualified type path: `Unicorn#horns`, `Unicorn.new`, `Unicorn::CONST`.
 
-Different overloads of a method can be identified by the full signature `.new(name)`, `,new(name, age)`.
+Different overloads of a method can be identified by the full signature `.new(name)`, `.new(name, age)`.
 
 ### Parameters
 
@@ -127,12 +127,14 @@ Unicorn.new.speak # => "I'm a unicorn"
 
 Several admonition keywords are supported to visually highlight problems, notes and/or possible issues.
 
-- `BUG`
-- `DEPRECATED`
-- `FIXME`
-- `NOTE`
-- `OPTIMIZE`
-- `TODO`
+* `BUG`
+* `DEPRECATED`
+* `EXPERIMENTAL`
+* `FIXME`
+* `NOTE`
+* `OPTIMIZE`
+* `TODO`
+* `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
@@ -156,9 +158,9 @@ end
 
 The compiler implicitly adds some admonitions to doc comments:
 
-* The [`@[Deprecated]`](https://crystal-lang.org/api/latest/Deprecated.html) annotation
+* The [`@[Deprecated]`](https://crystal-lang.org/api/Deprecated.html) annotation
   adds a `DEPRECATED` admonition.
-* The [`@[Experimental]`](https://crystal-lang.org/api/latest/Experimental.html) annotation
+* The [`@[Experimental]`](https://crystal-lang.org/api/Experimental.html) annotation
   adds an `EXPERIMENTAL` admonition.
 
 ## Directives
@@ -198,7 +200,7 @@ class InternalHelper
 end
 ```
 
-This directive needs to be the first line in a doc comment. Leading whitespace if
+This directive needs to be the first line in a doc comment. Leading whitespace is
 optional.
 Following comment lines can be used for internal documentation.
 
@@ -261,8 +263,7 @@ Some documentation specific to *id*'s usage within `Child`.
 Some documentation common to every *id*.
 ```
 
-!!! note
-    Inheriting documentation only works on _instance_, non-constructor methods.
+NOTE: Inheriting documentation only works on *instance*, non-constructor methods.
 
 ## A Complete Example
 

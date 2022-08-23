@@ -1,6 +1,6 @@
 # Testing Crystal Code
 
-Crystal comes with a fully-featured spec library in the [`Spec` module](https://crystal-lang.org/api/latest/Spec.html). It provides a structure for writing executable examples of how your code should behave.
+Crystal comes with a fully-featured spec library in the [`Spec` module](https://crystal-lang.org/api/Spec.html). It provides a structure for writing executable examples of how your code should behave.
 
 Inspired by [Rspec](http://rspec.info/), it includes a domain specific language (DSL) that allows you to write examples in a way similar to plain english.
 
@@ -55,7 +55,7 @@ Expectations define if the value being tested (*actual*) matches a certain value
 ### Equivalence, Identity and Type
 
 There are methods to create expectations which test for equivalence (`eq`), identity (`be`), type (`be_a`), and nil (`be_nil`).
-Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/latest/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
+Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
 
 ```crystal
 actual.should eq(expected)   # passes if actual == expected
@@ -86,9 +86,9 @@ actual.should be >= expected # passes if actual >= expected
 
 ```crystal
 actual.should be_close(expected, delta) # passes if actual is within delta of expected:
-                                        # (actual - expected).abs <= delta
-actual.should contain(expected)         # passes if actual.includes?(expected)
-actual.should match(expected)           # passes if actual =~ expected
+#                                         (actual - expected).abs <= delta
+actual.should contain(expected) # passes if actual.includes?(expected)
+actual.should match(expected)   # passes if actual =~ expected
 ```
 
 ### Expecting errors
@@ -134,17 +134,17 @@ Tags can be used to group specs, allowing to only run a subset of specs when pro
 ```crystal
 it "is slow", tags: "slow" do
   sleep 60
-  true.should be(true)
+  true.should be_true
 end
 
 it "is fast", tags: "fast" do
-  true.should be(true)
+  true.should be_true
 end
 ```
 
 Tagging an example group (`describe` or `context`) extends to all of the contained examples.
 
-Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/latest/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/latest/Array.html) or [`Set`](https://crystal-lang.org/api/latest/Set.html).
+Multiple tags can be specified by giving an [`Enumerable`](https://crystal-lang.org/api/Enumerable.html), such as [`Array`](https://crystal-lang.org/api/Array.html) or [`Set`](https://crystal-lang.org/api/Set.html).
 
 ## Running specs
 
@@ -195,26 +195,24 @@ Many projects use a custom spec helper file, usually named `spec/spec_helper.cr`
 
 This file is used to require `spec` and other includes like code from the project needed for every spec file. This is also a good place to define global helper methods that make writing specs easier and avoid code duplication.
 
-!!! example "spec/spec_helper.cr"
-    ```crystal
-    require "spec"
-    require "../src/my_project.cr"
+```crystal title="spec/spec_helper.cr"
+require "spec"
+require "../src/my_project.cr"
 
-    def create_test_object(name)
-      project = MyProject.new(option: false)
-      object = project.create_object(name)
-      object
-    end
-    ```
+def create_test_object(name)
+  project = MyProject.new(option: false)
+  object = project.create_object(name)
+  object
+end
+```
 
-!!! example "spec/my_project_spec.cr"
-    ```crystal
-    require "./spec_helper"
+```crystal title="spec/my_project_spec.cr"
+require "./spec_helper"
 
-    describe "MyProject::Object" do
-      it "is created" do
-        object = create_test_object(name)
-        object.should_not be_nil
-      end
-    end
-    ```
+describe "MyProject::Object" do
+  it "is created" do
+    object = create_test_object(name)
+    object.should_not be_nil
+  end
+end
+```

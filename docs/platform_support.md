@@ -17,8 +17,7 @@ Tier 1 platforms can be thought of as “guaranteed to work”. Specifically the
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
 | x86_64-darwin | ✓ | ✓ | 64-bit OSX (10.7+, Lion+) |
-| x86_64-linux-gnu | ✓ | ✓ | 64-bit Linux (2.6.18+) |
-| i386-linux-gnu | ✓ | ✓ | 32-bit Linux (2.6.18+) |
+| x86_64-linux-gnu | ✓ | ✓ | 64-bit Linux (kernel 2.6.18+, GNU libc) |
 
 ***
 
@@ -28,11 +27,13 @@ Tier 2 platforms can be thought of as “expected to build”. Automated tests a
 
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
-| aarch64-linux-gnu | ✓ | ✓ | ARM 64-bit Linux (GNU, hardfloat) |
-| aarch64-linux-musl | ✓ | ✓ | ARM 64-bit Linux (MUSL, hardfloat) |
-| arm-linux-gnueabihf | ✓ | ✓ | ARM 32-bit Linux (GNU, hardfloat) |
-| i386-linux-musl | ✓ | ✓ | 32-bit Linux (MUSL) |
-| x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL) |
+| aarch64-darwin | ✓ | ✓ | ARM 64-bit OSX (Apple Silicon) |
+| aarch64-linux-gnu | ✓ | ✓ | ARM 64-bit Linux (GNU libc, hardfloat) |
+| aarch64-linux-musl | ✓ | ✓ | ARM 64-bit Linux (MUSL libc, hardfloat) |
+| arm-linux-gnueabihf | ✓ | ✓ | ARM 32-bit Linux (GNU libc, hardfloat) |
+| i386-linux-gnu | ✓ | ✓ | 32-bit Linux (kernel 2.6.18+, GNU libc) |
+| i386-linux-musl | ✓ | ✓ | 32-bit Linux (MUSL libc) |
+| x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL libc) |
 | x86_64-openbsd | ✓ | ✓ | 64-bit OpenBSD (6.x) |
 | x86_64-freebsd | ✓ | ✓ | 64-bit FreeBSD (11.x) |
 
@@ -45,8 +46,8 @@ Tier 3 platforms are those which the Crystal codebase has some sort of support f
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
 | x86_64-windows-msvc |  |  | 64-bit MSVC (Windows 7+) |
-| aarch64-darwin | | | ARM 64-bit OSX (Apple Silicon) |
 | x86_64-unknown-dragonfly | | | 64-bit DragonFlyBSD |
 | x86_64-unknown-netbsd | | | 64-bit NetBSD |
+| wasm32-unknown-wasi | | | WebAssembly (WASI libc) |
 
 Note: big thanks go to the Rust team for putting together such a clear doc on Rust's platform support. We felt it was so close to what we were needing in Crystal, that we basically copied many chunks of their document. See https://forge.rust-lang.org/platform-support.html.

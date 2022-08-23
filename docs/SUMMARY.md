@@ -1,6 +1,6 @@
 # Summary
 
-* [Home](README.md)
+* [Welcome](README.md)
     * [Getting started](getting_started/README.md)
         * [An HTTP Server](getting_started/http_server.md)
         * [A Command Line Application](getting_started/cli.md)
@@ -9,8 +9,8 @@
     * [Coding style](conventions/coding_style.md)
     * [Platform Support](platform_support.md)
 * Specification
-    * [Syntax and semantics](syntax_and_semantics/README.md)
-    * [About this guide](overview/README.md)
+    * [About this guide](syntax_and_semantics/README.md)
+    * [The Program](syntax_and_semantics/the_program.md)
     * [Comments](syntax_and_semantics/comments.md)
     * [Documenting code](syntax_and_semantics/documenting_code.md)
     * [Literals](syntax_and_semantics/literals/README.md)
@@ -53,7 +53,6 @@
     * [Requiring files](syntax_and_semantics/requiring_files.md)
     * [Types and methods](syntax_and_semantics/types_and_methods.md)
         * [Everything is an object](syntax_and_semantics/everything_is_an_object.md)
-        * [The Program](syntax_and_semantics/the_program.md)
         * [Classes and methods](syntax_and_semantics/classes_and_methods.md)
             * [new, initialize and allocate](syntax_and_semantics/new,_initialize_and_allocate.md)
             * [Methods and instance variables](syntax_and_semantics/methods_and_instance_variables.md)
@@ -92,6 +91,7 @@
         * [as](syntax_and_semantics/as.md)
         * [as?](syntax_and_semantics/as_question.md)
         * [typeof](syntax_and_semantics/typeof.md)
+    * [Type autocasting](syntax_and_semantics/autocasting.md)
     * [Macros](syntax_and_semantics/macros/README.md)
         * [Macro methods](syntax_and_semantics/macros/macro_methods.md)
         * [Hooks](syntax_and_semantics/macros/hooks.md)
@@ -129,7 +129,6 @@
         * [Hosting on GitLab](guides/hosting/gitlab.md)
     * [Continuous Integration](guides/ci/README.md)
         * [GitHub Actions](guides/ci/gh-actions.md)
-        * [Travis CI](guides/ci/travis.md)
         * [CircleCI](guides/ci/circleci.md)
     * [Static Linking](guides/static_linking.md)
     * [Crystal for Rubyists](crystal_for_rubyists/README.md)

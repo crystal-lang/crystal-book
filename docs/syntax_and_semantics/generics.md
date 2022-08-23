@@ -91,3 +91,69 @@ end
 class GenericChild(T) < Parent(T)
 end
 ```
+
+## Generics with variable number of arguments
+
+We may define a Generic class with a variable number of arguments using the [splat operator](./operators.md#splats).
+
+Let's see an example where we define a Generic class called `Foo` and then we will use it with different number of type variables:
+
+```crystal-play
+class Foo(*T)
+  getter content
+
+  def initialize(*@content : *T)
+  end
+end
+
+# 2 type variables:
+# (explicitly specifying type variables)
+foo = Foo(Int32, String).new(42, "Life, the Universe, and Everything")
+
+p typeof(foo) # => Foo(Int32, String)
+p foo.content # => {42, "Life, the Universe, and Everything"}
+
+# 3 type variables:
+# (type variables inferred by the compiler)
+bar = Foo.new("Hello", ["Crystal", "!"], 140)
+p typeof(bar) # => Foo(String, Array(String), Int32)
+```
+
+In the following example we define classes by inheritance, specifying instances for the generic types:
+
+```crystal
+class Parent(*T)
+end
+
+# We define `StringChild` inheriting from `Parent` class
+# using `String` for generic type argument:
+class StringChild < Parent(String)
+end
+
+# We define `Int32StringChild` inheriting from `Parent` class
+# using `Int32` and `String` for generic type arguments:
+class Int32StringChild < Parent(Int32, String)
+end
+```
+
+And if we need to instantiate a `class` with 0 arguments? In that case we may do:
+
+```crystal-play
+class Parent(*T)
+end
+
+foo = Parent().new
+p typeof(foo) # => Parent()
+```
+
+But we should not mistake 0 arguments with not specifying the generic type variables. The following examples will raise an error:
+
+```crystal
+class Parent(*T)
+end
+
+foo = Parent.new # Error: can't infer the type parameter T for the generic class Parent(*T). Please provide it explicitly
+
+class Foo < Parent # Error: generic type arguments must be specified when inheriting Parent(*T)
+end
+```

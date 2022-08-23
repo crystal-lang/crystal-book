@@ -2,7 +2,7 @@
 
 Hi and welcome to Crystal's Reference Book!
 
-First let's make sure to [install the compiler](https://crystal-lang.org/install/) so that we may try all the examples listed in this book.
+First, let's make sure to [install the compiler](https://crystal-lang.org/install/) so that we may try all the examples listed in this book.
 
 Once installed, the Crystal compiler should be available as `crystal` command.
 
@@ -40,7 +40,7 @@ Command:
     help, --help, -h         show this help
     version, --version, -v   show version
 
-Run a command followed by --help to see command specific information, ex:
+Run a command followed by --help to see command-specific information, ex:
     crystal <command> --help
 ```
 
@@ -50,10 +50,9 @@ More details about using the compiler can be found on the manpage `man crystal` 
 
 The following example is the classic Hello World. In Crystal it looks like this:
 
-!!! example "hello_world.cr"
-    ```crystal
-    puts "Hello World!"
-    ```
+```crystal title="hello_world.cr"
+puts "Hello World!"
+```
 
 We may run our example like this:
 
@@ -62,12 +61,11 @@ $ crystal hello_world.cr
 Hello World!
 ```
 
-!!! note
-    The main routine is simply the program itself. There's no need to define a "main" function or something similar.
+NOTE: The main routine is simply the program itself. There's no need to define a "main" function or something similar.
 
 Next you might want to start with the [Introduction Tour](../tutorials/basics/README.md) to get acquainted with the language.
 
 Here we have two more examples to continue our first steps in Crystal:
 
-- [HTTP Server](./http_server.md)
-- [Command Line Application](./cli.md)
+* [HTTP Server](./http_server.md)
+* [Command Line Application](./cli.md)

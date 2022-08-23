@@ -13,7 +13,7 @@ proc = int_to_int { |x| x + 1 }
 proc.call(1) # => 2
 ```
 
-The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [`Proc(Int32, Int32)`](https://crystal-lang.org/api/latest/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
+The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [`Proc(Int32, Int32)`](https://crystal-lang.org/api/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
 
 In this way a block can be saved as a callback:
 
@@ -45,7 +45,7 @@ def some_proc(&block : Int32 ->)
 end
 
 proc = some_proc { |x| x + 1 }
-proc.call(1) # void
+proc.call(1) # => nil
 ```
 
 To have something returned, either specify the return type or use an underscore to allow any return type:

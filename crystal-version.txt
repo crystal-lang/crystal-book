@@ -1,4 +1,4 @@
-Crystal 0.36.1 [c3a3c1823] (2021-02-02)
+Crystal 1.5.0 (2022-07-06)
 
-LLVM: 10.0.0
-Default target: x86_64-apple-macosx
+LLVM: 14.0.6
+Default target: x86_64-unknown-linux-gnu

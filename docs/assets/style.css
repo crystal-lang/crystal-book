@@ -1,14 +1,17 @@
-.md-header {
+.md-header, .md-sidebar--primary {
     /* pull z-index up to be above the codemirror gutters (z-index: 3).
      * original value is z-index: 2 */
-    z-index: 10;
+    z-index: 20;
+}
+.md-overlay {
+    z-index: 15;
 }
 
-.md-header-nav__button.md-logo {
+.md-header__button.md-logo {
     padding: 0;
     margin: 0.4rem;
 }
-.md-header-nav__button.md-logo img {
+.md-header__button.md-logo img {
     width: 1.6rem;
     height: 1.6rem;
 }
@@ -17,13 +20,34 @@
     font-size: 0.72rem;
 }
 
-.md-header {
-    /* place it above codemirror gutter */
-    z-index: 10;
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+    margin: 2em 0;
 }
-@media screen and (max-width: 76.1875em) {
-    .md-sidebar--primary {
-        /* place it above codemirror gutter */
-        z-index: 10;
-    }
+.cards .card {
+    display: block;
+}
+.cards .card > h3 {
+    margin: 0;
+}
+.cards .card > p {
+    color: var(--md-default-fg-color--light);
+    margin: 0;
+}
+.cards .card > ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.cards .card > ul > li {
+    margin: 0;
+}
+
+.cards .card > ul > li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.3em;
 }
