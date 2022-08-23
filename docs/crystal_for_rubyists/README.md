@@ -56,9 +56,9 @@ If any operation on a Ruby `Fixnum` exceeds its range, the value is automaticall
 Crystal will instead raise an `OverflowError` on overflow. For example:
 
 ```crystal
-x = 127_i8  # An Int8 type
-x # => 127
-x += 1 # Unhandled exception: Arithmetic overflow (OverflowError)
+x = 127_i8 # An Int8 type
+x          # => 127
+x += 1     # Unhandled exception: Arithmetic overflow (OverflowError)
 ```
 
 Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/BigInt.html), [`BigRational`](https://crystal-lang.org/api/BigRational.html).
@@ -158,7 +158,7 @@ Ruby:
 Crystal:
 
 ```crystal
-[1, 2].each { "foo" } # => nil
+[1, 2].each { "foo" }       # => nil
 [1, 2].tap &.each { "foo" } # => [1, 2]
 ```
 
@@ -215,10 +215,10 @@ In Crystal an exception is thrown in those cases:
 ```crystal
 # Crystal
 a = [1, 2, 3]
-a[10] #=> raises IndexError
+a[10] # => raises IndexError
 
 h = {"a" => 1}
-h[1] #=> raises KeyError
+h[1] # => raises KeyError
 ```
 
 The reason behind this change is that it would be very annoying to program in this way if every `Array` or `Hash` access could return `nil` as a potential value. This wouldn't work:
@@ -226,7 +226,7 @@ The reason behind this change is that it would be very annoying to program in th
 ```crystal
 # Crystal
 a = [1, 2, 3]
-a[0] + a[1] #=> Error: undefined method `+` for Nil
+a[0] + a[1] # => Error: undefined method `+` for Nil
 ```
 
 If you do want to get `nil` if the index/key is not found, you can use the `[]?` method:
@@ -234,7 +234,7 @@ If you do want to get `nil` if the index/key is not found, you can use the `[]?`
 ```crystal
 # Crystal
 a = [1, 2, 3]
-value = a[4]? #=> return a value of type Int32 | Nil
+value = a[4]? # => return a value of type Int32 | Nil
 if value
   puts "The number at index 4 is : #{value}"
 else
@@ -323,7 +323,7 @@ The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced b
 Example:
 
 ```crystal
-  getter :name, :bday
+getter :name, :bday
 ```
 
 In addition, Crystal added accessor macros for nilable or boolean instance variables. They have a question mark (`?`) in the name:
