@@ -38,13 +38,13 @@ $ crystal build foo.cr --release
 
 When writing benchmarks or testing performance, always remember to compile in release mode.
 
-You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command).
+You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command). Alternatively, you can read [the manual](../using_the_compiler/README.md).
 
 ## Types
 
 ### Bool
 
-`true` and `false` are of type _Bool_ rather than instances of classes _TrueClass_ or _FalseClass_.
+`true` and `false` are of type [`Bool`](https://crystal-lang.org/api/Bool.html) rather than instances of classes `TrueClass` or `FalseClass`.
 
 ### Integers
 
@@ -59,7 +59,7 @@ x # => 127
 x += 1 # Unhandled exception: Arithmetic overflow (OverflowError)
 ```
 
-Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/latest/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/latest/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/latest/BigInt.html), [`BigRational`](https://crystal-lang.org/api/latest/BigRational.html).
+Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/BigInt.html), [`BigRational`](https://crystal-lang.org/api/BigRational.html).
 
 See the language reference on [Integers](../syntax_and_semantics/literals/integers.md).
 
@@ -85,7 +85,7 @@ Where Ruby has a a couple of alternative constructs, Crystal has one.
 
 * trailing `while`/`until` are missing. Note however that [if as a suffix](../syntax_and_semantics/as_a_suffix.md) is still available
 * `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
-* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->`
+* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->` (see [this](../syntax_and_semantics/blocks_and_procs.md) for reference).
 * For `require_relative "foo"` use `require "./foo"`
 
 ## No autosplat for arrays and enforced maximum block arity
@@ -348,7 +348,7 @@ puts Person.new.feeling?
 # => happy
 ```
 
-Read more about [getter?](https://crystal-lang.org/api/latest/Object.html#getter?(*names,&block)-macro) and/or [property?](https://crystal-lang.org/api/latest/Object.html#property?(*names,&block)-macro) in the documentation.
+Read more about [getter?](https://crystal-lang.org/api/Object.html#getter?(*names,&block)-macro) and/or [property?](https://crystal-lang.org/api/Object.html#property?(*names,&block)-macro) in the documentation.
 
 ### Consistent dot notation
 For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
