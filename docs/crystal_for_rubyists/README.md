@@ -408,11 +408,10 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 | `__LINE__` | `__LINE__` | The current line number in the currently executing crystal file. |
 | `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
 
-!!! tip
-    Further reading about `__DIR__` vs. `__dir__`:
-
-    * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
-    * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
+> TIP: Further reading about `__DIR__` vs. `__dir__`:
+>
+> * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
+> * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
 
 ## Crystal Shards for Ruby Gems
 
