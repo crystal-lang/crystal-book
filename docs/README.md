@@ -36,18 +36,6 @@ Introductory material for beginners.
   </div>
   <div class="card" markdown="1">
 
-### [Guides](guides/README.md)
-
-Detailed examples for practical applications.
-
-* [Performance](guides/performance.md)
-* [Concurrency](guides/concurrency.md)
-* [Testing](guides/testing.md)
-* [Writing Shards](guides/writing_shards.md)
-
-  </div>
-  <div class="card" markdown="1">
-
 ### Tools
 
 * [Online Playgrounds](https://github.com/crystal-lang/crystal/wiki/Online-playgrounds)
@@ -85,6 +73,7 @@ Documentation of the standard library.
 
 Discover the ecosystem of Crystal libraries.
 
+* [Writing Shards](guides/writing_shards.md)
 * [Discovering Shards](https://crystal-lang.org/community/#shards)
 * [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
 * [Shards Manual](man/shards/README.md)
@@ -92,13 +81,24 @@ Discover the ecosystem of Crystal libraries.
   </div>
   <div class="card" markdown="1">
 
-### Manuals
+### [Guides](guides/README.md)
+
+Detailed examples for practical applications.
+
+* [Performance](guides/performance.md)
+* [Concurrency](guides/concurrency.md)
+* [Testing](guides/testing.md)
+* [Database](database/README.md)
+
+  </div>
+  <div class="card" markdown="1">
+
+### The compiler
 
 Instructions on how to use the compiler and tools.
 
 * [Compiler manual](man/crystal/README.md)
 * [Static linking](guides/static_linking.md)
-* [Shards Manual](man/shards/README.md)
 
   </div>
   <div class="card" markdown="1">
