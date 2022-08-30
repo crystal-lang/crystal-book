@@ -125,6 +125,8 @@
         * [GitHub Actions](guides/ci/gh-actions.md)
         * [CircleCI](guides/ci/circleci.md)
     * [Static Linking](guides/static_linking.md)
+    * [Crystal for Rubyists](crystal_for_rubyists/README.md)
+        * [Metaprogramming Help](crystal_for_rubyists/metaprogramming_help.md)
     * [Database](database/README.md)
         * [Connection](database/connection.md)
         * [Connection pool](database/connection_pool.md)
