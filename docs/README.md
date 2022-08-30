@@ -149,7 +149,7 @@ How we take the decisions that guide the language and its community.
 * [All required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)
 * [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
 * [Coding style](conventions/coding_style.md)
-* [Platform Support](platform_support.md)
+* [Platform Support](syntax_and_semantics/platform_support.md)
 * [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
 
   </div>
