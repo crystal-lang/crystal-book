@@ -73,10 +73,10 @@ Documentation of the standard library.
 
 Discover the ecosystem of Crystal libraries.
 
-* [Writing Shards](guides/writing_shards.md)
 * [Discovering Shards](https://crystal-lang.org/community/#shards)
 * [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
 * [Shards Manual](man/shards/README.md)
+* [Writing Shards](guides/writing_shards.md)
 
   </div>
   <div class="card" markdown="1">
