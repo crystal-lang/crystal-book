@@ -23,6 +23,7 @@ Install Crystal and get it running.
 
 * [Install](https://crystal-lang.org/install)
 * [Try Online](https://play.crystal-lang.org/#/cr)
+* [Crystal for Rubyists](crystal_for_rubyists/README.md)
 
   </div>
   <div class="card" markdown="1">
