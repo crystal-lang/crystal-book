@@ -15,13 +15,13 @@ To install from source, download or clone [the repository](https://github.com/cr
 
 `shards` requires the presence of a `shard.yml` file in the project folder (working directory). This file describes the project and lists dependencies that are required to build it.
 A default file can be created by running [`shards init`](#shards-install).
-The file's contents are explained in the [*Writing a Shard* guide](../guides/writing_shards.md) and a detailed description of the file format is provided by the [shard.yml specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc).
+The file's contents are explained in the [*Writing a Shard* guide](../../guides/writing_shards.md) and a detailed description of the file format is provided by the [shard.yml specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc).
 
 Running [`shards install`](#shards-install) resolves and installs the specified dependencies.
 The installed versions are written into a `shard.lock` file for using the exact same dependency versions when running `shards install` again.
 
 If your shard builds an application, both `shard.yml` and `shard.lock` should be checked into version control to provide reproducible dependency installs.
-If it is only a library for other shards to depend on, `shard.lock` should *not* be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../using_the_compiler/README.md#crystal-init) does this automatically when initializing a `lib` repository).
+If it is only a library for other shards to depend on, `shard.lock` should *not* be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../crystal/README.md#crystal-init) does this automatically when initializing a `lib` repository).
 
 ## Shards commands
 

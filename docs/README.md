@@ -1,7 +1,7 @@
 ---
 hide:
   - toc        # Hide table of contents
-  - navigation # Hide sidebar nabigation
+  - navigation # Hide sidebar navigation
 ---
 
 # Crystal Book
@@ -29,16 +29,9 @@ Install Crystal and get it running.
 
 ### Tutorials
 
-Introductory courses for beginners and advanced learners.
+Introductory material for beginners.
 
-* [Basics](tutorials/basics/README.md)
-
-  </div>
-  <div class="card" markdown="1">
-
-### [Guides](guides/README.md)
-
-Detailed examples for practical applications.
+* [Language introduction](tutorials/basics/README.md)
 
   </div>
   <div class="card" markdown="1">
@@ -82,14 +75,30 @@ Discover the ecosystem of Crystal libraries.
 
 * [Discovering Shards](https://crystal-lang.org/community/#shards)
 * [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
-* [Shards Manual](the_shards_command/README.md)
+* [Shards Manual](man/shards/README.md)
+* [Writing Shards](guides/writing_shards.md)
 
   </div>
   <div class="card" markdown="1">
 
-### [Compiler Manual](using_the_compiler/README.md)
+### [Guides](guides/README.md)
+
+Detailed examples for practical applications.
+
+* [Performance](guides/performance.md)
+* [Concurrency](guides/concurrency.md)
+* [Testing](guides/testing.md)
+* [Database](database/README.md)
+
+  </div>
+  <div class="card" markdown="1">
+
+### The compiler
 
 Instructions on how to use the compiler and tools.
+
+* [Compiler manual](man/crystal/README.md)
+* [Static linking](guides/static_linking.md)
 
   </div>
   <div class="card" markdown="1">
@@ -140,7 +149,7 @@ How we take the decisions that guide the language and its community.
 * [All required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries)
 * [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
 * [Coding style](conventions/coding_style.md)
-* [Platform Support](platform_support.md)
+* [Platform Support](syntax_and_semantics/platform_support.md)
 * [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
 
   </div>

@@ -127,7 +127,7 @@ If any such thing is marked with `focus: true` then only those examples will run
 
 ## Tagging specs
 
-Tags can be used to group specs, allowing to only run a subset of specs when providing a `--tag` argument to the spec runner (see [Using the compiler](../using_the_compiler/README.md)).
+Tags can be used to group specs, allowing to only run a subset of specs when providing a `--tag` argument to the spec runner (see [Using the compiler](../man/crystal/README.md)).
 
 `describe`, `context` and `it` blocks can be tagged, like this:
 
