@@ -40,7 +40,7 @@ $ crystal build foo.cr --release
 
 When writing benchmarks or testing performance, always remember to compile in release mode.
 
-You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command). Alternatively, you can read [the manual](../using_the_compiler/README.md).
+You can check other commands and flags by invoking `crystal` without arguments, or `crystal` with a command and no arguments (for example `crystal build` will list all flags that can be used with that command). Alternatively, you can read [the manual](../man/crystal/README.md).
 
 ## Types
 
