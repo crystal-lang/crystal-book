@@ -54,10 +54,10 @@ When our application starts, the block passed to `OptionParser#parse` gets execu
 
 We can read all about `OptionParser` in [the official API documentation](https://crystal-lang.org/api/OptionParser.html). And from there we are one click away from the source code ... the actual proof that it is not magic!
 
-Now, let's run our application. We have two ways [using the compiler](../using_the_compiler/README.md):
+Now, let's run our application. We have two ways [using the compiler](../man/crystal/README.md):
 
-1. [Build the application](../using_the_compiler/README.md#crystal-build) and then run it.
-2. Compile and [run the application](../using_the_compiler/README.md#crystal-run), all in one command.
+1. [Build the application](../man/crystal/README.md#crystal-build) and then run it.
+2. Compile and [run the application](../man/crystal/README.md#crystal-run), all in one command.
 
 We are going to use the second way:
 

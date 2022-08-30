@@ -24,7 +24,7 @@ $ crystal env CRYSTAL_PATH
 lib:/usr/bin/../share/crystal/src
 ```
 
-These lookup paths can be overridden by defining the [`CRYSTAL_PATH` environment variable](../using_the_compiler/README.md#environment-variables).
+These lookup paths can be overridden by defining the [`CRYSTAL_PATH` environment variable](../man/crystal/README.md#environment-variables).
 
 The lookup goes like this:
 

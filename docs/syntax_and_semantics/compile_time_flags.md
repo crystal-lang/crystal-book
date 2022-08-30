@@ -37,7 +37,7 @@ The compiler defines a couple of implicit flags. They describe either the target
 ### Target platform flags
 
 Platform-specific flags derive from the [target triple](http://llvm.org/docs/LangRef.html#target-triple).
-See [Platform Support](../platform_support.md) for a list of supported target platforms.
+See [Platform Support](platform_support.md) for a list of supported target platforms.
 
 `crystal --version` shows the default target triple of the compiler. It can be changed with the `--target` option.
 
