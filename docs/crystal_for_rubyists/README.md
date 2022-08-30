@@ -279,7 +279,7 @@ Examples for all of the above:
 
 ### `for` loops
 
-`for` loops are not supported but you can add them via macro:
+`for` loops are not supported. Instead, we encourage you to use `Enumerable#each`. If you still want a `for`, you can add them via macro:
 
 ```crystal
 macro for(expr)
@@ -288,8 +288,8 @@ macro for(expr)
   end
 end
 
-for i in [1,2,3] do
- puts i
+for i ∈ [1, 2, 3] do # You can replace ∈ with any other word or character, just not `in`
+  puts i
 end
 # note the trailing 'do' as block-opener!
 ```
