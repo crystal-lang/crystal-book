@@ -78,7 +78,7 @@ Different overloads of a method can be identified by the full signature `.new(na
 
 ### Parameters
 
-When refering to parameters, it is recommended to write their name *italicized* (`*italicized*`):
+When referring to parameters, it is recommended to write their name *italicized* (`*italicized*`):
 
 ```crystal
 # Creates a unicorn with the specified number of *horns*.
