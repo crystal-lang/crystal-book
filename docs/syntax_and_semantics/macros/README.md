@@ -108,7 +108,7 @@ struct Some::Namespace::Foo; end
 {{ parse_type("Some::Namespace::Foo").resolve.struct? }} # => true
 {{ parse_type("MY_CONST").resolve }}                     # => 1234
 
-{{ parse_type("MissingType").resolve }}   # Error: undefined constant MissingType
+{{ parse_type("MissingType").resolve }} # Error: undefined constant MissingType
 ```
 
 See the API docs for more examples.
