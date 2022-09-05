@@ -96,7 +96,7 @@ define_method :foo, 1
 
 ### parse_type
 
-While most AST nodes will be obtained via either manually passed arguments, hard coded values, or retrieved from either the [type](#type-information) or [method](#method-information) information helper variables. There may be some cases where the node you need is not directly accessible, such as if you use information from different contexts to construct the path to the desired type/constant.
+Most AST nodes are obtained via either manually passed arguments, hard coded values, or retrieved from either the [type](#type-information) or [method](#method-information) information helper variables. Yet there might be cases in which a node is not directly accessible, such as if you use information from different contexts to construct the path to the desired type/constant.
 
 In such cases the [`parse_type`](https://crystal-lang.org/api/Crystal/Macros.html#parse_type%28type_name%3AStringLiteral%29%3APath%7CGeneric%7CProcNotation%7CMetaclass-instance-method) macro method can help by parsing the provided [`StringLiteral`](https://crystal-lang.org/api/Crystal/Macros/StringLiteral.html) into something that can be resolved into the desired AST node.
 
