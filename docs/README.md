@@ -44,6 +44,14 @@ Introductory material for beginners.
 
   </div>
 
+  <div class="card" markdown="1">
+
+### [External resources](https://crystal-lang.org/learning)
+
+A collection of external resources to help you take the most of the language.
+
+  </div>
+
 </div>
 
 ---
