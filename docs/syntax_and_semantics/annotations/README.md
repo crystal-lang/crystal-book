@@ -1,6 +1,6 @@
 # Annotations
 
-Annotations can be used to add metadata to certain features in the source code. Types, methods and instance variables may be annotated.  User-defined annotations, such as the standard library's [JSON::Field](https://crystal-lang.org/api/JSON/Field.html), are defined using the `annotation` keyword.  A number of [built-in annotations](built_in_annotations.md) are provided by the compiler.
+Annotations can be used to add metadata to certain features in the source code. Types, methods, instance variables, and method/macro parameters may be annotated.  User-defined annotations, such as the standard library's [JSON::Field](https://crystal-lang.org/api/JSON/Field.html), are defined using the `annotation` keyword.  A number of [built-in annotations](built_in_annotations.md) are provided by the compiler.
 
 Users can define their own annotations using the `annotation` keyword, which works similarly to defining a `class` or `struct`.
 
@@ -14,6 +14,7 @@ The annotation can then be applied to various items, including:
 * Instance and class methods
 * Instance variables
 * Classes, structs, enums, and modules
+* Method and macro parameters (though the latter are currently unaccessable)
 
 ```crystal
 annotation MyAnnotation
@@ -30,6 +31,18 @@ end
 
 @[MyAnnotation]
 module MyModule
+end
+
+def method1(@[MyAnnotation] foo)
+end
+
+def method2(
+  @[MyAnnotation]
+  bar
+)
+end
+
+def method3(@[MyAnnotation] & : String ->)
 end
 ```
 
@@ -177,11 +190,13 @@ annotation_read
 
 ## Reading
 
-Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), or [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
+Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html), or [`Arg`](https://crystal-lang.org/api/Crystal/Macros/Arg.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
 NOTE: If multiple annotations of the same type are applied, the `.annotation` method will return the *last* one.
 
 The [`@type`](../macros/#type-information) and [`@def`](../macros/#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
+
+TIP: Checkout the [`parse_type`](../macros/README.md#parse_type) method for a more advanced way to obtain a `TypeNode`.
 
 The `TypeNode.instance_vars` can be used to get an array of instance variable `MetaVar` objects that would allow reading annotations defined on those instance variables.
 
@@ -195,6 +210,9 @@ annotation MyMethod
 end
 
 annotation MyIvar
+end
+
+annotation MyParameter
 end
 
 @[MyClass]
@@ -219,8 +237,22 @@ def my_method
   pp {{ @def.annotation(MyMethod).stringify }}
 end
 
+def method_params(
+  @[MyParameter(index: 0)]
+  value : Int32,
+  @[MyParameter(index: 1)] metadata,
+  @[MyParameter(index: 2)] & : -> String
+)
+  pp {{ @def.args[0].annotation(MyParameter).stringify }}
+  pp {{ @def.args[1].annotation(MyParameter).stringify }}
+  pp {{ @def.block_arg.annotation(MyParameter).stringify }}
+end
+
 Foo.new.properties
 my_method
+method_params 10, false do
+  "foo"
+end
 pp {{ Foo.annotation(MyClass).stringify }}
 
 # Which would print
@@ -228,8 +260,13 @@ pp {{ Foo.annotation(MyClass).stringify }}
 "@[MyIvar]"
 "@[MyIvar]"
 "@[MyMethod]"
+"@[MyParameter(index: 0)]"
+"@[MyParameter(index: 1)]"
+"@[MyParameter(index: 2)]"
 "@[MyClass]"
 ```
+
+WARNING: Annotations can only be read off of typed block parameters. See https://github.com/crystal-lang/crystal/issues/5334.
 
 ### Reading Multiple Annotations
 
