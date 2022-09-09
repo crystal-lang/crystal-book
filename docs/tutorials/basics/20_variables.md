@@ -17,9 +17,9 @@ This program prints the string `Hello Penny!` three times to the standard output
 
 The name of a variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letters are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
-!!! note
-    The kind of variables this lesson discusses is called *local variables*.
-    Other kinds will be introduced later. For now, we focus on local variables only.
+NOTE:
+The kind of variables this lesson discusses is called *local variables*.
+Other kinds will be introduced later. For now, we focus on local variables only.
 
 ## Type
 
@@ -33,8 +33,7 @@ message = "Hello Penny!"
 p! typeof(message)
 ```
 
-!!! note
-    [`p!`](https://crystal-lang.org/api/toplevel.html#p!(*exps)-macro) is similar to `puts` as it prints the value to the standard output, but it also prints the expression in code. This makes it a useful tool for inspecting the state of a Crystal program and debugging.
+NOTE: [`p!`](https://crystal-lang.org/api/toplevel.html#p!(*exps)-macro) is similar to `puts` as it prints the value to the standard output, but it also prints the expression in code. This makes it a useful tool for inspecting the state of a Crystal program and debugging.
 
 ## Reassigning a Value
 

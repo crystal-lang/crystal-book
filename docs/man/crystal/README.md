@@ -47,10 +47,9 @@ The `--static` flag can be used to build a statically-linked executable:
 $ crystal build hello_world.cr --release --static
 ```
 
-!!! note
-    Building fully statical linked executables is currently only supported on Alpine Linux.
+NOTE: Building fully statical linked executables is currently only supported on Alpine Linux.
 
-More information about statically linking [can be found in the Static Linking guide](../guides/static_linking.md).
+More information about statically linking [can be found in the Static Linking guide](../../guides/static_linking.md).
 
 The compiler uses the `CRYSTAL_LIBRARY_PATH` environment variable as a first lookup destination for static and dynamic libraries that are to be linked. This can be used to provide static versions of libraries that are also available as dynamic libraries.
 
@@ -170,8 +169,7 @@ $ echo 'puts "Hello World"' | crystal eval
 Hello World!
 ```
 
-!!! note
-    When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
+NOTE: When running interactively, stdin can usually be closed by typing the end of transmission character (`Ctrl+D`).
 
 **Common options:**
 
@@ -227,7 +225,7 @@ Initialized empty Git repository in ~/my_cool_lib/.git/
 
 ### `crystal docs`
 
-The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [*Documenting Code*](../syntax_and_semantics/documenting_code.md)).
+The `crystal docs` command generates API documentation from inline docstrings in Crystal files (see [*Documenting Code*](../../syntax_and_semantics/documenting_code.md)).
 
 ```bash
 crystal docs [--output=<output_dir>] [--canonical-base-url=<url>] [<source_file>...]
@@ -370,7 +368,7 @@ crystal tool format [--check] [<path>...]
 `path` can be a file or folder name and include all Crystal files in that folder tree. Omitting `path` is equal to
 specifying the current working directory.
 
-The formatter also applies to Crystal code blocks in comments (see [*Documenting Code*](../syntax_and_semantics/documenting_code.md)).
+The formatter also applies to Crystal code blocks in comments (see [*Documenting Code*](../../syntax_and_semantics/documenting_code.md)).
 
 ## Environment variables
 

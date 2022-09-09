@@ -44,7 +44,7 @@ Run a command followed by --help to see command-specific information, ex:
     crystal <command> --help
 ```
 
-More details about using the compiler can be found on the manpage `man crystal` or in our [compiler manual](../using_the_compiler/README.md).
+More details about using the compiler can be found on the manpage `man crystal` or in our [compiler manual](../man/crystal/README.md).
 
 ## Hello Crystal
 
@@ -61,12 +61,11 @@ $ crystal hello_world.cr
 Hello World!
 ```
 
-!!! note
-    The main routine is simply the program itself. There's no need to define a "main" function or something similar.
+NOTE: The main routine is simply the program itself. There's no need to define a "main" function or something similar.
 
 Next you might want to start with the [Introduction Tour](../tutorials/basics/README.md) to get acquainted with the language.
 
 Here we have two more examples to continue our first steps in Crystal:
 
-- [HTTP Server](./http_server.md)
-- [Command Line Application](./cli.md)
+* [HTTP Server](./http_server.md)
+* [Command Line Application](./cli.md)

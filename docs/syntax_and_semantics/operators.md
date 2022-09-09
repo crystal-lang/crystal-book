@@ -178,7 +178,6 @@ ones.
 
 ### Binary
 
-
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
 | `&` | binary AND | `1 & 2` | yes | left |
@@ -225,13 +224,13 @@ proven faster than equality).
 
 #### Chaining Equality and Comparison
 
-Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=` 
-can be chained together and are interpreted as a compound expression. 
+Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=`
+can be chained together and are interpreted as a compound expression.
 For example `a <= b <= c` is treated as `a <= b && b <= c`
-and it is even possible to mix operators of the same 
-[operator precedence](#operator-precedence) 
-like `a >= b <= c > d`. 
-Operators with different precedences can be chained too, however, it is advised to avoid it, since it is makes the code harder to understand. For instance `a == b <= c` is interpreted as `a == b && b <= c`, while `a <= b == c` is interpreted as `a <= (b == c)`. 
+and it is even possible to mix operators of the same
+[operator precedence](#operator-precedence)
+like `a >= b <= c > d`.
+Operators with different precedences can be chained too, however, it is advised to avoid it, since it is makes the code harder to understand. For instance `a == b <= c` is interpreted as `a == b && b <= c`, while `a <= b == c` is interpreted as `a <= (b == c)`.
 
 ### Logical
 

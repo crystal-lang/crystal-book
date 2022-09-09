@@ -16,9 +16,9 @@ say_hello
 say_hello() # syntactically equivalent method call with parentheses
 ```
 
-!!! tip
-    Method calls are unambiguously indicated by parentheses after the name, but they can be omitted. It would only be
-    necessary for disambiguation, for example, if `say_hello` was also a local variable.
+TIP:
+Method calls are unambiguously indicated by parentheses after the name, but they can be omitted. It would only be
+necessary for disambiguation, for example, if `say_hello` was also a local variable.
 
 ## Arguments
 
@@ -36,12 +36,12 @@ say_hello "World"
 say_hello "Crystal"
 ```
 
-!!! tip
-    Arguments at method calls are typically placed in parentheses, but it can often be omitted. `say_hello "World"`
-    and `say_hello("World")` are syntactically equivalent.
-
-    It's generally recommended to use parentheses because it avoids ambiguity. But they're often omitted if the
-    expression reads like natural language.
+> TIP:
+> Arguments at method calls are typically placed in parentheses, but it can often be omitted. `say_hello "World"`
+> and `say_hello("World")` are syntactically equivalent.
+>
+> It's generally recommended to use parentheses because it avoids ambiguity. But they're often omitted if the
+> expression reads like natural language.
 
 ### Default arguments
 
@@ -122,7 +122,7 @@ puts adds_2 40
 
 A method can return at any place in its body using the `return` statement. The argument passed to `return` becomes the method's return value. If there is no argument, it's `nil`.
 
-The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
+The following example illustrates the use of an *explicit* and an *implicit* `return`:
 
 ```crystal-play
 # This method returns:

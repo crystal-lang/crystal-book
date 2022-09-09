@@ -53,6 +53,10 @@ plugins:
         conventions/documenting_code.md: syntax_and_semantics/documenting_code.md
         overview/index.md: syntax_and_semantics/README.md
         overview/hello_world.md: getting_started/README.md
+        using_the_compiler/README.md: man/crystal/README.md
+        the_shards_command/README.md: man/shards/README.md
+        governance.md: https://crystal-lang.org/community/governance
+        platform_support.md: syntax_and_semantics/platform_support.md
   - code-validator:
       enabled: !ENV [LINT, false]
       identifiers:
@@ -71,12 +75,15 @@ plugins:
 markdown_extensions:
   - admonition
   - md_in_html
+  - pymdownx.betterem:
+      smart_enable: all
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences
+  - pymdownx.snippets
+  - callouts
   - toc:
       permalink: true
-  - pymdownx.snippets
 
 extra_javascript:
   - assets/vendor/codemirror/codemirror.min.js

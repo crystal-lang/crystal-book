@@ -6,10 +6,10 @@ preceding the definition of the respective feature.
 By default, all public methods, macros, types and constants are
 considered part of the API documentation.
 
-!!! tip
-    The compiler command [`crystal docs`](../using_the_compiler/#crystal-docs)
-    automatically extracts the API documentation and generates a website to
-    present it.
+TIP:
+The compiler command [`crystal docs`](../man/crystal/#crystal-docs)
+automatically extracts the API documentation and generates a website to
+present it.
 
 ## Association
 
@@ -46,9 +46,9 @@ def horns
 end
 ```
 
-!!! tip
-    It is generally advised to use descriptive, third person present tense:
-    `Returns the number of horns this unicorn has` (instead of an imperative `Return the number of horns this unicorn has`).
+TIP:
+It is generally advised to use descriptive, third person present tense:
+`Returns the number of horns this unicorn has` (instead of an imperative `Return the number of horns this unicorn has`).
 
 ## Markup
 
@@ -127,14 +127,14 @@ Unicorn.new.speak # => "I'm a unicorn"
 
 Several admonition keywords are supported to visually highlight problems, notes and/or possible issues.
 
-- `BUG`
-- `DEPRECATED`
-- `EXPERIMENTAL`
-- `FIXME`
-- `NOTE`
-- `OPTIMIZE`
-- `TODO`
-- `WARNING`
+* `BUG`
+* `DEPRECATED`
+* `EXPERIMENTAL`
+* `FIXME`
+* `NOTE`
+* `OPTIMIZE`
+* `TODO`
+* `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
@@ -263,8 +263,7 @@ Some documentation specific to *id*'s usage within `Child`.
 Some documentation common to every *id*.
 ```
 
-!!! note
-    Inheriting documentation only works on _instance_, non-constructor methods.
+NOTE: Inheriting documentation only works on *instance*, non-constructor methods.
 
 ## A Complete Example
 

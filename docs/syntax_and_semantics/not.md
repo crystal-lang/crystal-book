@@ -1,4 +1,4 @@
-# if !
+# `if !`
 
 The `!` operator returns a `Bool` that results from negating the [truthiness](truthy_and_falsey_values.md) of a value.
 

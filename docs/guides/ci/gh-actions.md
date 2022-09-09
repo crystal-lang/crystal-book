@@ -23,16 +23,16 @@ jobs:
 
 To get started with [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration#about-continuous-integration-using-github-actions), commit this YAML file into your Git repository under the directory `.github/workflows/`, push it to GitHub, and observe the Actions tab.
 
-!!! tip "Quickstart"
-    Check out [**Configurator for *install-crystal* action**](https://crystal-lang.github.io/install-crystal/configurator.html) to quickly get a config with the CI features you need. Or continue reading for more details.
+TIP: **Quickstart.**
+Check out [**Configurator for *install-crystal* action**](https://crystal-lang.github.io/install-crystal/configurator.html) to quickly get a config with the CI features you need. Or continue reading for more details.
 
 This runs on GitHub's [default](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) "latest Ubuntu" container. It downloads the source code from the repository itself (directly into the current directory), installs Crystal via [Crystal's official GitHub Action](https://github.com/crystal-lang/install-crystal), then runs the specs, assuming they are there in the `spec/` directory.
 
 If any step fails, the build will show up as failed, notify the author and, if it's a push, set the overall build status of the project to failing.
 
-!!! tip
-    For a healthier codebase, consider these flags for `crystal spec`:  
-    `--order=random` `--error-on-warnings`
+TIP:
+For a healthier codebase, consider these flags for `crystal spec`:  
+`--order=random` `--error-on-warnings`
 
 ### No specs?
 
@@ -168,8 +168,8 @@ The safe approach is to add the [actions/cache](https://github.com/actions/cache
         run: shards update
 ```
 
-!!! danger "Important"
-    You **must** use the separate [`key` and `restore-keys`](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#matching-a-cache-key). With just a static key, the cache would save only the state after the very first run and then keep reusing it forever, regardless of any changes.
+DANGER: **Important.**
+You **must** use the separate [`key` and `restore-keys`](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#matching-a-cache-key). With just a static key, the cache would save only the state after the very first run and then keep reusing it forever, regardless of any changes.
 
 But this saves us only the time spent *downloading* the repositories initially.
 

@@ -2,7 +2,7 @@
 
 Methods are public by default: the compiler will always let you invoke them. There is no `public` keyword for this reason.
 
-Methods _can_ be marked as `private` or `protected`.
+Methods *can* be marked as `private` or `protected`.
 
 ## Private methods
 

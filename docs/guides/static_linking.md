@@ -2,7 +2,7 @@
 
 Crystal supports static linking, i.e. it can link a binary with static libraries so that these libraries don't need to be available as runtime dependencies. This improves portability at the cost of larger binaries.
 
-Static linking can be enabled using the `--static` compiler flag. See [the usage instructions](../using_the_compiler/README.md#creating-a-statically-linked-executable) in the language reference.
+Static linking can be enabled using the `--static` compiler flag. See [the usage instructions](../man/crystal/README.md#creating-a-statically-linked-executable) in the language reference.
 
 When `--static` is given, linking static libraries is enabled, but it's not exclusive. The produced binary won't be fully static linked if the dynamic version of a library is higher in the compiler's library lookup chain than the static variant (or if the static library is entirely missing). In order to build a static binary you need to make sure that static versions of the linked libraries are available and the compiler can find them.
 
@@ -62,9 +62,9 @@ If you want to statically link dependencies, you need to have their static libra
 Most systems don't install static libraries by default, so you need to install them explicitly.
 First you have to know which libraries your program links against.
 
-!!! note
-    Static libraries have the file extension `.a` on POSIX and `.lib` on Windows.
-    Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
+NOTE:
+Static libraries have the file extension `.a` on POSIX and `.lib` on Windows.
+Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
 
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
 on macOS is `otool -L`.
@@ -105,6 +105,6 @@ The individual libraries are `libpcre`, `libgc` and the rest is `musl` (`libc`).
 
 In order to link this program statically, we need static versions of these three libraries.
 
-!!! note
-    The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
-    If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.
+NOTE:
+The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
+If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.
