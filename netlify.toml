@@ -5,4 +5,4 @@
   publish = "site/"
 
 [context.deploy-preview.environment]
-  LINT = false
+  LINT = "false"
