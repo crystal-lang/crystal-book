@@ -85,13 +85,13 @@ Here's the original class in Crystal and the expected behavior.
 ```crystal
 module ClassMethods
   macro extended
-   def self.new(number : Int32)
-     puts "Calling overridden new added from extend hook, arg is #{number}"
-     instance = allocate
-     instance.initialize(number)
-     instance
-   end
- end
+    def self.new(number : Int32)
+      puts "Calling overridden new added from extend hook, arg is #{number}"
+      instance = allocate
+      instance.initialize(number)
+      instance
+    end
+  end
 end
 
 class Foo
