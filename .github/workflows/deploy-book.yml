@@ -43,7 +43,7 @@ jobs:
       - name: Populate sample version of Crystal
         run: crystal --version | tee crystal-version.txt
       - name: Build book
-        run: LINT=true make build
+        run: make build
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v1
