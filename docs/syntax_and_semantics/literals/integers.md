@@ -17,8 +17,8 @@ There are five signed integer types, and five unsigned integer types:
 
 An integer literal is an optional `+` or `-` sign, followed by
 a sequence of digits and underscores, optionally followed by a suffix.
-If no suffix is present, the literal's type is the lowest between `Int32`, `Int64` and `UInt64`
-in which the number fits (at the moment, `128` bit integers must always be suffixed):
+If no suffix is present, the literal's type is `Int32` if the value fits into `Int32`'s range,
+and `Int64` otherwise. Integers outside `Int64`'s range must always be suffixed:
 
 ```crystal
 1 # Int32
@@ -38,9 +38,17 @@ in which the number fits (at the moment, `128` bit integers must always be suffi
 +10 # Int32
 -20 # Int32
 
-2147483648          # Int64
-9223372036854775808 # UInt64
+2147483647  # Int32
+2147483648  # Int64
+-2147483648 # Int32
+-2147483649 # Int64
+
+9223372036854775807     # Int64
+9223372036854775808_u64 # UInt64
 ```
+
+Suffix-less integer literals larger than `Int64`'s maximum value but representable within
+`UInt64`'s range are deprecated, e.g. `9223372036854775808`.
 
 The underscore `_` before the suffix is optional.
 
