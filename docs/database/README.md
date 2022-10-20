@@ -61,6 +61,8 @@ ensure
 end
 ```
 
+Alternatively, you can use `DB.connect` method to open a single connection to the database instead of a pool.
+
 ## Exec
 
 To execute sql statements you can use `Database#exec`
@@ -107,6 +109,26 @@ db.query("select name from contacts where age = ?", 33) do |rs|
     # ... perform for each row in the ResultSet
   end
 end
+```
+
+Query parameters are effected under the covers with prepared statements (sometimes cached), 
+or insertion on the client side, depending on the driver, but will always avoid SQL Injection.
+
+If you want to manually use prepared statements, you can with the `build` method:
+
+```crystal
+# MySQL
+prepared_statement = db.build("select * from contacts where id=?")
+# Postgres
+prepared_statement = db.build("select * from contacts where id=$1")
+# Use prepared statement:
+prepared_statement.query(3) do |rs|
+  # ... use rs
+end
+prepared_statement.query(4) do |rs|
+  # ... use rs
+end
+prepared_statement.close
 ```
 
 ## Reading Query Results
