@@ -111,7 +111,7 @@ db.query("select name from contacts where age = ?", 33) do |rs|
 end
 ```
 
-Query parameters are effected under the covers with prepared statements (sometimes cached), 
+Query parameters are effected under the covers with prepared statements (sometimes cached),
 or insertion on the client side, depending on the driver, but will always avoid SQL Injection.
 
 If you want to manually use prepared statements, you can with the `build` method:
