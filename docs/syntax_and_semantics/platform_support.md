@@ -35,7 +35,7 @@ Tier 2 platforms can be thought of as “expected to build”. Automated tests a
 | i386-linux-musl | ✓ | ✓ | 32-bit Linux (MUSL libc) |
 | x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL libc) |
 | x86_64-openbsd | ✓ | ✓ | 64-bit OpenBSD (6.x) |
-| x86_64-freebsd | ✓ | ✓ | 64-bit FreeBSD (11.x) |
+| x86_64-freebsd | ✓ | ✓ | 64-bit FreeBSD (12.x) |
 
 ***
 
