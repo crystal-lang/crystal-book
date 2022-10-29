@@ -1,20 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "schedule": ["after 5am and before 8am on the first day of the month"],
+  "extends": ["config:base"],
+  "enabledManagers": ["pip-compile", "github-actions"],
+  "pip-compile": {
+    "fileMatch": ["(^|/)requirements\\.in$"]
+  },
   "packageRules": [
     {
       "groupName": "GH Actions",
-      "matchManagers": ["github-actions"]
+      "matchManagers": ["github-actions"],
+      "schedule": ["after 5am and before 8am on the first day of the month"]
+    },
+    {
+      "groupName": "Docs (Python)",
+      "matchManagers": ["pip-compile"],
+      "matchPaths": ["+(docs/requirements.in)"],
+      "schedule": ["after 5am and before 8am on the first day of the month"]
     }
-  ],
-  "pip-compile": {
-    "fileMatch": ["(^|/)requirements\\.in$"],
-    "schedule": ["after 5am and before 8am on the first day of the month"]
-  },
-  "pip_requirements": {
-    "enabled": false
-  }
+  ]
 }
