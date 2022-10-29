@@ -2,5 +2,22 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "schedule": ["after 5am and before 8am on the first day of the month"],
+  "pip-compile": {
+    "fileMatch": ["(^|/)requirements\\.in$"]
+  },
+  "pip_requirements": {
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "groupName": "Docs (Python)",
+      "matchPaths": ["+(requirements.in)"]
+    },
+    {
+      "groupName": "GH Actions",
+      "matchPaths": ["+(.github/**/*.yml)"]
+    }
   ]
 }
