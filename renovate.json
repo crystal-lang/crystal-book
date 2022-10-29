@@ -4,20 +4,17 @@
     "config:base"
   ],
   "schedule": ["after 5am and before 8am on the first day of the month"],
+  "packageRules": [
+    {
+      "groupName": "GH Actions",
+      "matchManagers": ["github-actions"]
+    }
+  ],
   "pip-compile": {
-    "fileMatch": ["(^|/)requirements\\.in$"]
+    "fileMatch": ["(^|/)requirements\\.in$"],
+    "schedule": ["after 5am and before 8am on the first day of the month"]
   },
   "pip_requirements": {
     "enabled": false
-  },
-  "packageRules": [
-    {
-      "groupName": "Docs (Python)",
-      "matchPaths": ["+(requirements.in)"]
-    },
-    {
-      "groupName": "GH Actions",
-      "matchPaths": ["+(.github/**/*.yml)"]
-    }
-  ]
+  }
 }
