@@ -120,7 +120,29 @@ This example makes use of the `macro extended` hook. This hook is called wheneve
 
 ### Generating Methods via `method_missing` Macro
 
-[Here](https://github.com/zw963/hashr/blob/master/src/hashr.cr) is a very simple example for how to use method_missing macro, you can check the spec code [here](https://github.com/zw963/hashr/blob/master/spec/hashr_spec.cr), it shows what method_missing macro does.
+Following is a very simple example that demonstrates how to use `method_missing` macro tocreate the missing method based on the existence of receiver JSON object's key
+
+```cr
+class Hashr
+  getter obj
+
+  def initialize(json : Hash(String, JSON::Any) | JSON::Any)
+    @obj = json
+  end
+
+  macro method_missing(key)
+    def {{ key.id }}
+      value = obj[{{ key.id.stringify }}]
+
+      Hashr.new(value)
+    end
+  end
+
+  def ==(other)
+    obj == other
+  end
+end
+```
 
 ### How to Mimic `send` Using `record`s and Generated Lookup Tables
 
