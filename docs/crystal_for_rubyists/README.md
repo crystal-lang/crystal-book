@@ -105,14 +105,6 @@ will generate an error message like
     in line 1: too many block arguments (given 2, expected maximum 1)
 ```
 
-Following code works.
-
-```cr
-[[1, "A"], [2, "B"]].each do |e|
-  pp e[0]
-  pp e[1]
-end
-```
 However omitting unneeded arguments is fine (as it is in Ruby), ex:
 
 ```cr
@@ -150,6 +142,15 @@ You can also explicitly unpack to get the same result as Ruby's autosplat:
 [[1, "A"], [2, "B"]].each do |(a, b)|
   pp a
   pp b
+end
+```
+
+Following code works as well, but prefer former.
+
+```cr
+[[1, "A"], [2, "B"]].each do |e|
+  pp e[0]
+  pp e[1]
 end
 ```
 
