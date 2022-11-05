@@ -42,8 +42,10 @@ class Foo
   extend ClassMethods
 end
 
-foo = Foo.new('Quxo') # => Calling overridden method.
-p foo.class # => Bar
+foo = Foo.new('Quxo')
+# => Calling overridden new method with args ["Quxo"]
+# => Calling Foo.new with arg Quxo
+p foo.class # => Foo
 ```
 
 As seen in the example above, the `Foo` instance calls its normal constructor. When we `extend` it and override `new` we can inject all sorts of things into the process. The above example shows minimal interference and just allocates an instance of the object and initializes it. This instance is returned back from the constructor.
@@ -72,7 +74,9 @@ class Foo
   end
 end
 
-foo = Foo.new('Quxo') # => Calling overridden method.
+foo = Foo.new('Quxo')
+# => Calling overridden new method with args ["Quxo"]
+# => This arg was an instance of class Foo
 p foo.class # => Bar
 ```
 
@@ -105,8 +109,9 @@ class Foo
 end
 
 foo = Foo.new(5)
-puts foo.class
-# Foo.new("string")
+# => Calling overridden new added from extend hook, arg is 5
+# => Foo.initialize called with number 5
+puts foo.class # Foo
 ```
 
 This example makes use of the `macro extended` hook. This hook is called whenever a class body executes the `extend` method. We are able to use this macro to write a replacement `new` method.
@@ -115,7 +120,7 @@ This example makes use of the `macro extended` hook. This hook is called wheneve
 
 ### Generating Methods via `method_missing` Macro
 
-Sample code + explanation
+[Here](https://github.com/zw963/hashr/blob/master/src/hashr.cr) is a very simple example for how to use method_missing macro, you can check the spec code [here](https://github.com/zw963/hashr/blob/master/spec/hashr_spec.cr), it shows what method_missing macro does.
 
 ### How to Mimic `send` Using `record`s and Generated Lookup Tables
 
@@ -145,7 +150,10 @@ class Klass
   alias_method :salute, :salute_with_log
 end
 
-Klass.new.salute # => Calling method...\nAloha!\n... Method called
+Klass.new.salute
+# => Calling method...
+# => Aloha!
+# => ... Method called
 ```
 
 Performing the same work in Crystal is fairly straight forward. Crystal provides a method called `previous_def` which can access the previously defined version of the method. To make the same example work in Crystal, it would look similar to this:
@@ -173,7 +181,10 @@ class Klass
   end
 end
 
-Klass.new.salute # => Calling method...\nAloha!\n... Method called
+Klass.new.salute
+# => Calling method...
+# => Aloha!
+# => ... Method called
 ```
 
 Each time we reopen the class `previous_def` is set to the prior method definition so we can use this to build an alias method chain at compile time much like in Ruby. However, we do lose access to the original method definition each time we extend the chain. Unlike in Ruby where we are giving the old method an explicit name that we could refer to somewhere else, Crystal does not provide that facility.
