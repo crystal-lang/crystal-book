@@ -105,6 +105,14 @@ will generate an error message like
     in line 1: too many block arguments (given 2, expected maximum 1)
 ```
 
+Following code works.
+
+```cr
+[[1, "A"], [2, "B"]].each do |e|
+  pp e[0]
+  pp e[1]
+end
+```
 However omitting unneeded arguments is fine (as it is in Ruby), ex:
 
 ```cr
@@ -308,7 +316,7 @@ process_data(b: 2, a: "one")
 
 This is because, in ruby, `process_data(b: 2, a: "one")` is syntax sugar for `process_data({b: 2, a: "one"})`.
 
-In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `processData` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
+In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `process_data` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
 
 ### Properties
 
@@ -368,7 +376,7 @@ For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
 ### Crystal keywords
 
-Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
+Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select { |x| x > "good" }`.
 
 #### Available keywords
 
