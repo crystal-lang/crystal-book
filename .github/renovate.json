@@ -3,7 +3,6 @@
   "extends": ["config:base"],
   "enabledManagers": ["pip-compile", "github-actions"],
   "separateMajorMinor": false,
-  "schedule": ["after 5am and before 8am on the first day of the month"],
   "pip-compile": {
     "fileMatch": ["(^|/)requirements\\.in$"]
   },
