@@ -14,7 +14,7 @@
       "schedule": ["after 5am and before 8am on the first day of the month"]
     },
     {
-      "groupName": "Docs (Python)",
+      "groupName": "Docs Python deps",
       "matchManagers": ["pip-compile"],
       "matchFiles": ["requirements.in"],
       "schedule": ["after 5am and before 8am on the first day of the month"]
