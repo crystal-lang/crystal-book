@@ -16,7 +16,7 @@
     {
       "groupName": "Docs (Python)",
       "matchManagers": ["pip-compile"],
-      "matchFiles": ["docs/requirements.in"],
+      "matchFiles": ["requirements.in"],
       "schedule": ["after 5am and before 8am on the first day of the month"]
     }
   ]
