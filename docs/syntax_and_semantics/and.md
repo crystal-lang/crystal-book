@@ -5,13 +5,12 @@ An `&&` (and) evaluates its left hand side. If it's *truthy*, it evaluates its r
 You can think an `&&` as syntax sugar of an `if`:
 
 ```crystal
-some_exp1 && some_exp2
+result = some_exp1 && some_exp2
 
 # The above is the same as:
-tmp = some_exp1
-if tmp
+result = if some_exp1
   some_exp2
 else
-  tmp
+  some_exp1
 end
 ```
