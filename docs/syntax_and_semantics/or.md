@@ -5,13 +5,12 @@ An `||` (or) evaluates its left hand side. If it's *falsey*, it evaluates its ri
 You can think an `||` as syntax sugar of an `if`:
 
 ```crystal
-some_exp1 || some_exp2
+result = some_exp1 || some_exp2
 
 # The above is the same as:
-tmp = some_exp1
-if tmp
-  tmp
-else
+result = if !some_exp1
   some_exp2
+else
+  some_exp1
 end
 ```
