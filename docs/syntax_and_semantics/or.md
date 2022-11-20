@@ -6,8 +6,11 @@ You can think an `||` as syntax sugar of an `if`:
 
 ```crystal
 some_exp1 || some_exp2
+```
 
-# The above is the same as:
+The above is equivalent to:
+
+```crystal
 tmp = some_exp1
 if tmp
   tmp
