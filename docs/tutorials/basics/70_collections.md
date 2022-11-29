@@ -8,7 +8,7 @@ Examples of collections that includes `Enumerable` are:
 - [Hash](https://crystal-lang.org/api/Hash.html)
 - [Set](https://crystal-lang.org/api/Set.html)
 
-[Here](https://crystal-lang.org/api/Enumerable.html#direct-including-types) is a list of other types (not necessarily collections) that _direct include_ `Enumerable`.
+[Here](https://crystal-lang.org/api/Enumerable.html#direct-including-types) is a list of other types (not necessarily collections) that *direct include* `Enumerable`.
 
 In this section we will review some methods implemented in `Enumerable`.
 
@@ -18,8 +18,9 @@ Let's start with the following two examples: given a array of `Int32` we may app
 
 Let's write them:
 
-**Plus1 example**
-```{.crystal .crystal-play}
+### Plus1 example
+
+```crystal-play
 arr = [1, 2, 3]
 plus1 = [] of Int32
 
@@ -30,8 +31,9 @@ arr.each { |elem|
 puts plus1 # => [2, 3, 4]
 ```
 
-**Times2 example**
-```{.crystal .crystal-play}
+### Times2 example
+
+```crystal-play
 arr = [1, 2, 3]
 times2 = [] of Int32
 
@@ -52,18 +54,20 @@ Well, we are in luck, because [Enumerable#map](https://crystal-lang.org/api/Enum
 
 Let's re-write the examples:
 
-**Plus1 example using Enumerable#map**
-```{.crystal .crystal-play}
+### Plus1 example using Enumerable#map
+
+```crystal-play
 arr = [1, 2, 3]
-plus1 = arr.map { |elem| elem + 1}
+plus1 = arr.map { |elem| elem + 1 }
 
 puts plus1 # => [2, 3, 4]
 ```
 
-**Times2 example using Enumerable#map**
-```{.crystal .crystal-play}
+### Times2 example using Enumerable#map
+
+```crystal-play
 arr = [1, 2, 3]
-times2 = arr.map { |elem| elem * 2}
+times2 = arr.map { |elem| elem * 2 }
 
 puts times2 # => [2, 4, 6]
 ```
@@ -73,11 +77,11 @@ Great!
 We wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#map`. Now let's see [Enumerable#map implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L905):
 
 ```crystal
-  def map(& : T -> U) : Array(U) forall U
-    ary = [] of U
-    each { |e| ary << yield e }
-    ary
-  end
+def map(& : T -> U) : Array(U) forall U
+  ary = [] of U
+  each { |e| ary << yield e }
+  ary
+end
 ```
 
 No magic here, right? :) Just the structure we found, extracted to a method with a given name: `map`.
@@ -90,11 +94,11 @@ Related methods:
 
 Let's move on to another two examples:
 
-**Even example**
+### Even example
 
 In this example we keep only even numbers
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3, 4, 5]
 even = [] of Int32
 
@@ -105,11 +109,11 @@ arr.each { |elem|
 puts even # => [2, 4]
 ```
 
-**String-length example**
+### String-length example
 
 And in this example we keep `strings` which length is more than 3.
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Hello", "Crystal!", "ABC", "Foo"]
 str3 = [] of String
 
@@ -128,18 +132,18 @@ As we can imagine, there is such method and it's called [Enumerable#select](http
 
 Let's re-write the examples:
 
-**Even example using Enumerable#select**
+### Even example using Enumerable#select
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3, 4, 5]
 even = arr.select { |elem| elem.even? }
 
 puts even # => [2, 4]
 ```
 
-**String-length example using Enumerable#select**
+### String-length example using Enumerable#select
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Hello", "Crystal!", "ABC", "Foo"]
 str3 = arr.select { |elem| elem.size > 3 }
 
@@ -149,11 +153,11 @@ puts str3 # => ["Hello", "Crystal!"]
 So, we wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#select`. Let's see [Enumerable#select implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L1408):
 
 ```crystal
-  def select(& : T ->)
-    ary = [] of T
-    each { |e| ary << e if yield e }
-    ary
-  end
+def select(& : T ->)
+  ary = [] of T
+  each { |e| ary << e if yield e }
+  ary
+end
 ```
 
 There we have the structure!
@@ -166,11 +170,11 @@ Related methods:
 
 This next one method is not as easy as the previous ones. But, as we did before, let's start with 2 examples, then we will try to identify an structure and hopefully we will find a method already implementing what we need.
 
-**Add all the things!**
+### Add all the things
 
 In the first example we will add all the numbers.
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3]
 sum = 0
 
@@ -181,11 +185,11 @@ arr.each { |elem|
 puts sum # => 6
 ```
 
-**Any empty?**
+### Any empty?
 
 And in the second example we return if there is an empty string.
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
 empty_str = false
 
@@ -205,20 +209,20 @@ Drumroll please ... the method is called [Enumerable#reduce](https://crystal-lan
 
 Let's re-write the examples:
 
-**Add all the things! using Enumerable#reduce**
+### Add all the things! using Enumerable#reduce
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3]
 sum = arr.reduce(0) { |accum, elem| accum + elem }
 
 puts sum # => 6
 ```
 
-**Any empty? using Enumerable#reduce**
+### Any empty? using Enumerable#reduce
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
-empty_str = arr.reduce(false) { |accum, elem| accum || elem.empty?}
+empty_str = arr.reduce(false) { |accum, elem| accum || elem.empty? }
 
 puts empty_str # => false
 ```
@@ -226,20 +230,21 @@ puts empty_str # => false
 So, we wrote the examples using `each`, we detect the hidden pattern and we learned about `Enumerable#reduce`. Let's see [Enumerable#reduce implementation](https://github.com/crystal-lang/crystal/blob/932f193ae/src/enumerable.cr#L709) using an initial value:
 
 ```crystal
-  def reduce(memo)
-    each do |elem|
-      memo = yield memo, elem
-    end
-    memo
+def reduce(memo)
+  each do |elem|
+    memo = yield memo, elem
   end
+  memo
+end
 ```
 
 It's worth mention that `reduce` is the base for other methods. Let's see one of them related to the first example:
 
 ### Enumerable#sum
+
 We can write our first example with [Enumerable#sum](https://crystal-lang.org/api/Enumerable.html#sum%28initial%29-instance-method) like this:
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3]
 sum = arr.sum(0)
 
@@ -248,7 +253,7 @@ puts sum # => 6
 
 We can also use it without an initial value in which case the first element would be the initial value. Is the same behaviour as in `Enumerable#reduce`.
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = [1, 2, 3]
 puts arr.sum # => 6
 ```
@@ -257,27 +262,25 @@ puts arr.sum # => 6
 ) is the implementation:
 
 ```crystal
-  def sum(initial, & : T ->)
-    reduce(initial) { |memo, e| memo + (yield e) }
-  end
+def sum(initial, & : T ->)
+  reduce(initial) { |memo, e| memo + (yield e) }
+end
 ```
 
 ### Enumerable#any?
 
 In case you are wondering if there is an `any?` method we can re-write the `Any empty? example` ...
 
-**the short answer is: Yes!**
+**the short answer is: Yes!** It's called [Enumerable#any?](https://crystal-lang.org/api/Enumerable.html#any%3F%28%26%3AT-%3E%29%3ABool-instance-method) and so we can write the example like this:
 
-It's called [Enumerable#any?](https://crystal-lang.org/api/Enumerable.html#any%3F%28%26%3AT-%3E%29%3ABool-instance-method) and so we can write the example like this:
-
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
 puts arr.any? { |str| str.empty? } # => false
 ```
 
 Even more, we have a more concise way of writing it:
 
-```{.crystal .crystal-play}
+```crystal-play
 arr = ["Crystal", "A", "language", "for", "humans", "and", "computers"]
 puts arr.any? &.empty? # => false
 ```
