@@ -211,3 +211,23 @@ These steps would be followed by some action to publish the produced executable 
     Then consider linking to the latest "nightly" build using the external service https://nightly.link/
 
 Distributing executables for macOS ([search for examples](https://github.com/search?q=%22macos-latest%22+%22shards+build%22+%22--release%22+dylib+path%3A.github%2Fworkflows&type=Code)) and Windows ([search for examples](https://github.com/search?l=YAML&q=%22windows-latest%22+%22shards+build%22+%22--release%22+path%3A.github%2Fworkflows&type=Code)) is also possible.
+
+## Displaying action status
+
+To display action status, for example in the README.md of your project, set name at the very top of your [workflow file](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#create-an-example-workflow):
+
+!!! example ".github/workflows/ci.yml"
+    ```yaml
+    name: Project CI
+
+    on:
+      push:
+      pull_request:
+        branches: [master]
+    ```
+
+Then use the following link template in your .md file, replacing seven all caps placeholders with appropriate values:
+
+```
+[![WORKFLOW NAME](https://github.com/USER/PROJECT/workflows/WORKFLOW%20NAME/badge.svg)](https://github.com/USER/PROJECT/actions?query=workflow%3A%22WORKFLOW+NAME%22+event%3Apush+branch%3Amaster)
+```
