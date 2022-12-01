@@ -118,9 +118,7 @@ If you want to manually use prepared statements, you can with the `build` method
 
 ```crystal
 # MySQL
-mysql_prepared_statement = mysql_db.build("select * from contacts where id=?")
-# Postgres
-postgres_prepared_statement = postgres_db.build("select * from contacts where id=$1")
+prepared_statement = db.build("select * from contacts where id=?") # Use "... where id=$1" for PostgreSQL
 # Use prepared statement:
 prepared_statement.query(3) do |rs|
   # ... use rs
