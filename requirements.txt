@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-certifi==2022.9.24
+certifi==2022.12.7
     # via requests
 charset-normalizer==2.1.1
     # via requests
