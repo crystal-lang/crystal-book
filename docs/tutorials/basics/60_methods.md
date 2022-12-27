@@ -166,268 +166,29 @@ Now the compiler can show us exactly where the problem is originated. As we can 
 
 ## Blocks
 
-Methods may receive a `block of code` (or simply a `block`) as an argument. And using the keyword `yield` indicates the place in the method's body where we want to "place" said `block`:
+While working with _collections_ (just as an example) we may have came across code that looks like this:
 
 ```crystal-play
-def with_42
-  yield
-end
-
-with_42 do
-  puts 42
+["Hello", "World", 42].each do |elem|
+  puts elem
 end
 ```
 
-### Blocks with parameters
-
-We can parameterize `blocks` like this:
-
-```crystal
-some_method do |param1, param2|
-end
-```
-
-And using *curly braces* notation would be:
-
-``` crystal
-some_method { |param1, param2| }
-```
-
-We can rewrite our previous example, so that the `block` receives the number `42` as an argument.
+or maybe something like this:
 
 ```crystal-play
-def with_42
-  yield 42
+arr = [1, 2, 3].map do |elem|
+  elem * 2
 end
 
-with_42 do |number|
-  puts number
-end
+puts arr
 ```
 
-And we can go a little further parameterizing also the method `#with_42` to receive not only the `block` but also the `number`:
+In the first example we are using the method [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
+And in the second example we are using the method [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method).
 
-```crystal-play
-def with_number(n : Int32)
-  yield n
-end
+To both methods we are passing a _block of code_ (delimited by the keywords `do` and `end`) as an argument.
 
-with_number(42) do |number|
-  puts number
-end
+This _block of code_, commonly called _block_ is a sequence of interactions, which will be executed at some point. When exactly? It depends on the method that receives the _block_ as a parameter (in these examples `each` and `map`).
 
-with_number(24) do |number|
-  puts number
-end
-```
-
-### Blocks' returned value
-
-A `block`, by default, returns the value of the last expression (the same as a method).
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-with_number(41) do |number|
-  number + 1
-end
-```
-
-#### Returning keywords
-
-We can use the `return` keyword ... but, let's see the following example:
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-def test_number(n)
-  with_number(n) do |number|
-    # this block returns if the number is negative
-    return number if number.negative?
-    number + 1
-  end
-
-  puts "Inside `#test_number` method after `#with_number`"
-end
-
-test_number(42)
-```
-
-Outputs:
-
-```console
-
-43
-Inside `#test_number` method after `#with_number`
-```
-
-And if we want to `test_number(-1)` we would expect:
-
-```console
-
--1
-Inside `#test_number` method after `#with_number`
-```
-
-Let's see ...
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-def test_number(n)
-  with_number(n) do |number|
-    # this block returns if the number is negative
-    return number if number.negative?
-    number + 1
-  end
-
-  puts "Inside `#test_number` method after `#with_number`"
-end
-
-test_number(-1)
-```
-
-The output is empty! This is because Crystal implements *full closures*, meaning that using `return` inside the block will return, not only from the `block` itself but, from the method where the `block` is defined (`#test_number` in the above example).
-
-If we want to return only from the `block` then we can use the `next` keyword:
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-def test_number(n)
-  with_number(n) do |number|
-    # this block returns if the number is negative
-    next number if number.negative?
-    number + 1
-  end
-
-  puts "Inside `#test_number` method after `#with_number`"
-end
-
-test_number(-1)
-```
-
-The last keyword for returning from a `block` is `break`. Let's see how it behaves:
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-def test_number(n)
-  with_number(n) do |number|
-    # this block returns if the number is negative
-    break number if number.negative?
-    number + 1
-  end
-
-  puts "Inside `#test_number` method after `#with_number`"
-end
-
-test_number(-1)
-```
-
-The ouput is
-
-```console
-
-Inside `#test_number` method after `#with_number`
-```
-
-As we can see the behaviour is something between using `return` and `next`. With `break` we return from the `block` and from the method yielding the `block` (`#with_number` in this example) but not from the method where the `block` is defined.
-
-### Non-captured blocks
-
-Up to here we've been using `non-captured blocks`, meaning that **the `non-captured block` is inlined** in the place where we use `yield`. So this code:
-
-```crystal-play
-def with_number(n : Int32)
-  result = yield n
-  puts result
-end
-
-with_number(41) do |number|
-  number + 1
-end
-```
-
-it's the same as:
-
-```crystal-play
-def with_number(n : Int32)
-  number = n
-  result = number + 1
-  puts result
-end
-
-with_number(41)
-```
-
-### Captured blocks
-
-When a `block` is captured then a [Proc](../../syntax_and_semantics/literals/proc.md) is created with its `context` (ie. its [closure](../../syntax_and_semantics/closures.md)). This means that **the `captured block` is not inlined**.
-
-To capture a `block` we need to add it as a parameter, specifying its name and type.
-
-```crystal-play
-def with_number(n : Int32, &block : Int32 -> Int32)
-  result = block.call n
-  puts result
-
-  puts typeof(block) # => Proc(Int32, Int32)
-end
-
-with_number(41) do |number|
-  number + 1
-end
-```
-
-Note that we don't use `yield`. Instead we invoke the `block`'s method `#call`.
-
-#### Returning keywords with captured blocks
-
-When using `captured blocks` we can only use `next` for returning from the `captured block`:
-
-```crystal-play
-def with_number(n : Int32, &block : Int32 -> Int32)
-  result = block.call n
-  puts result
-end
-
-def test_number(n)
-  with_number(n) do |number|
-    # this block returns if the number is negative
-    next number if number.negative?
-    number + 1
-  end
-
-  puts "Inside `#test_number` method after `#with_number`"
-end
-
-test_number(-1)
-```
-
-Trying to use `return` or `break` in a `captured block` will error:
-
-```console
-
-Error: can't return from captured block, use next
-```
-
-```console
-
-Error: can't break from captured block, try using `next`.
-```
+_Blocks_ is a really interesting and important topic, so it has its own section. Let's continue there!
