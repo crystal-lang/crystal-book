@@ -98,12 +98,7 @@ The abstracted structure declared in the `with_array` method is very common and 
 
 ## Blocks with parameters
 
-Like methods, _blocks_ may receive parameters:
-
-```crystal
-some_method do |param1, param2, param3|
-end
-```
+Like methods, _blocks_ may receive parameters declared like this: `| param1, param2, ... |`.
 
 Let's see an example:
 
@@ -112,7 +107,7 @@ def other_method
   yield 42, "Hello", [1, "Crystal", 3]
 end
 
-other_method do |n, s, arr|
+other_method do |n, s, arr| # here the block declare 3 parameters
   puts "#{s} #{arr[1]}"
   puts n
 end
@@ -134,7 +129,9 @@ end
 
 ### Unpacking parameters
 
-Let's suppose we have an array of arrays and our _block_ prints each element in each array. One way to implement this would be:
+Now let's suppose we have an array of arrays. And we want to print each  array in the following way: _the first element followed by a hyphen, followed by the second element_.
+
+One way to implement this would be:
 
 ```crystal-play
 arr = [["one", 42], ["two", 24]]
@@ -143,7 +140,7 @@ arr.each do |arg|
 end
 ```
 
-This works, but there is a concise way of writing the same but using parameter unpacking:
+This works, but there is a more readable way of writing the same but using parameter unpacking::
 
 ```crystal-play
 arr = [["one", 42], ["two", 24]]
@@ -152,13 +149,13 @@ arr.each do |(word, number)|
 end
 ```
 
-**Note:** we use parentheses to unpack the argument in the different block parameters.
+**Note:** we use parentheses to unpack the argument into the different block parameters.
 
 Unpacking arguments into parameters works only if the argument's type responds to `[i]` (with `i` an `integer`). In our example `Array` inherits [Indexable#[ ]](https://crystal-lang.org/api/latest/Indexable.html#%5B%5D%28index%3AInt%29-instance-method)
 
 ### Splats
 
-When the expected _block_ argument is a [Tuple](../syntax_and_semantics/literals/tuple.html) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.html#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
+When the _block_ parameter is a [Tuple](../syntax_and_semantics/literals/tuple.html) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.html#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
 
 
 ```crystal-play
@@ -168,9 +165,9 @@ arr.each do |word, number|
 end
 ```
 
-**Note:** `Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/latest/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we also can use _unpacking_.
+**Note:** `Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/latest/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we can also use _unpacking_.
 
-### Block's returned value
+## Blocks' returned value
 
 A _block_, by default, returns the value of the last expression (the same as a method).
 
@@ -185,7 +182,7 @@ with_number(41) do |number|
 end
 ```
 
-#### Returning keywords
+### Returning keywords
 
 We can use the `return` keyword ... but, let's see the following example:
 
@@ -285,7 +282,7 @@ end
 test_number(-1)
 ```
 
-The ouput is
+The output is
 
 ```console
 
@@ -293,3 +290,61 @@ Inside `#test_number` method after `#with_number`
 ```
 
 As we can see the behaviour is something between using `return` and `next`. With `break` we return from the _block_ and from the method yielding the _block_ (`#with_number` in this example) but not from the method where the `block` is defined.
+
+## Type restrictions
+
+Until now we have been using _blocks_ without any kind of type restrictions, moreover, we did not declare the block as a method parameter (it was implied by the use of `yield`).
+
+So first, we will declare a _block_ as a method parameter: it should be placed last and the parameter's name should be prefixed by `&`. Then we can use `yield` as before.
+
+```crystal-play
+def transform_string(word, &block)
+  block_result = yield word
+  puts block_result
+end
+
+transform_string "crystal" do |word|
+  word.capitalize
+end
+```
+
+Now, we can add type restrictions to our method's parameters:
+
+```crystal-play
+def transform_string(word : String, &block : String -> String)
+  block_result = yield word
+  puts block_result
+end
+
+transform_string "crystal" do |word|
+  word.capitalize
+end
+```
+
+Let's focus on the block's type `&block : String -> String`. What we are saying is that the block will receive a `String` and return a `String`.
+
+So, if the block tries to return an `Int` the compiler will say:
+
+```crystal
+def transform_string(word : String, &block : String -> String)
+  block_result = yield word
+  puts block_result
+end
+
+transform_string "crystal" do |word|
+  42 # Error: expected block to return String, not Int32
+end
+```
+
+Or if we try to give an `Array(String)` as an input to the block, the compiler will say:
+
+```crystal
+def transform_string(word : String, &block : String -> String)
+  block_result = yield [word] # Error: argument #1 of yield expected to be String, not Array(String)
+  puts block_result
+end
+
+transform_string "crystal" do |word|
+  word.capitalize
+end
+```
