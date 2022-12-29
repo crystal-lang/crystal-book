@@ -348,3 +348,74 @@ transform_string "crystal" do |word|
   word.capitalize
 end
 ```
+
+## Alternative syntaxes
+
+We almost at the end of this section. Let's see some other interesting ways of writing _blocks_.
+
+### Curly braces
+
+Another way of defining a _block_ is using `{...}` instead of `do ... end`. Here is one of the examples we have already seen but written with _curly braces syntax_:
+
+```crystal-play
+def other_method
+  yield 42, "Hello", [1, "Crystal", 3]
+end
+
+other_method { |n, s, arr|
+  puts "#{s} #{arr[1]}"
+  puts n
+}
+```
+
+Here is the  `_` example written with _curly braces syntax_ and in one line:
+
+```crystal-play
+def other_method
+  yield 42, "Hello", [1, "Crystal", 3]
+end
+
+other_method { |_, _, arr| puts arr[1] }
+```
+
+The main difference between using `do ... end` and `{ ... }` is how they bind the call:
+
+- `do ... end` binds to left-most call
+- `{ ... }` binds to the right-most call
+
+```crystal-play
+def generate_number()
+  42
+end
+
+def with_double(n : Int32)
+  yield n * 2
+end
+
+with_double generate_number do |n|
+  puts n
+end
+
+# Same as:
+with_double(generate_number) do |n|
+  puts n
+end
+```
+
+But with `curly braces syntax`:
+
+```crystal
+def generate_number()
+  42
+end
+
+def with_double(n : Int32)
+  yield n * 2
+end
+
+with_double generate_number { |n| puts n } # Error: 'generate_number' is not expected to be invoked with a block, but a block was given
+```
+
+The error is because with _curly braces_ we are writing: `with_double(generate_number { |n| puts n })` instead of `with_double(generate_number) { |n| puts n }`
+
+### Short one-parameter syntax
