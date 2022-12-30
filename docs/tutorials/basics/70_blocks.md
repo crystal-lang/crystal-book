@@ -419,3 +419,47 @@ with_double generate_number { |n| puts n } # Error: 'generate_number' is not exp
 The error is because with _curly braces_ we are writing: `with_double(generate_number { |n| puts n })` instead of `with_double(generate_number) { |n| puts n }`
 
 ### Short one-parameter syntax
+
+We can use a short syntax with the block parameter if:
+- It is a single block parameter.
+- One method is invoked on the block parameter.
+
+For example
+
+```crystal-play
+def transform_hello_crystal
+  puts yield "hello crystal"
+end
+
+transform_hello_crystal { |param| param.capitalize }
+
+# and here is using short one-parameter syntax:
+transform_hello_crystal(&.capitalize)
+
+# and we can omit parentheses:
+transform_hello_crystal &.capitalize
+```
+
+The output should be "Hello crystal". What if we want to capitalize every word.
+
+```crystal-play
+def transform_hello_crystal
+  puts yield "hello crystal"
+end
+
+transform_hello_crystal &.split.map(&.capitalize).join(' ')
+```
+
+Great! Let's explain it step by step:
+
+First we split the block parameter using the _short one-parameter syntax_ `&.split`. Then, we chained the result applying `map` and using again the _short one-parameter syntax_ `.map(&.capitalize)`. And finally we join the `array` of `strings` using `join(' ')`.
+
+Now, what if we want to parameterize the string we transform. Can we still use the _short one-parameter syntax_? The answer is yes! Let's see:
+
+```crystal-play
+def transform_string(word : String)
+  puts yield word
+end
+
+transform_string("hello crystal", &.split.map(&.capitalize).join(' '))
+```
