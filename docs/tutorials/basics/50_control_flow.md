@@ -4,7 +4,7 @@
 
 ### Nil
 
-The most simplistic type is `Nil`. It has only a single value: `nil` and represents
+The simplest type is `Nil`. It has only a single value: `nil` and represents
 the absence of an actual value.
 
 Remember [`String#index` from last lesson](./40_strings.md#indexing-substrings)?
