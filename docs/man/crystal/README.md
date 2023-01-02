@@ -47,7 +47,7 @@ The `--static` flag can be used to build a statically-linked executable:
 $ crystal build hello_world.cr --release --static
 ```
 
-NOTE: Building fully statical linked executables is currently only supported on Alpine Linux.
+NOTE: Building fully statically linked executables is currently only supported on Alpine Linux.
 
 More information about statically linking [can be found in the Static Linking guide](../../guides/static_linking.md).
 
