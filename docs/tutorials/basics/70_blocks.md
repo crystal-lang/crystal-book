@@ -19,7 +19,7 @@ with_42 do
 end
 ```
 
-Or the **places** where we want to execute the _block_:
+We can also use `yield` in more than one place:
 
 ```crystal-play
 def three_times
@@ -32,7 +32,7 @@ three_times do
   puts 42
 end
 
-Let's see another example with a common use scenario for _blocks_: collections.
+Let's see another examples with a common use scenario for _blocks_: collections.
 
 Here are two examples:
 
@@ -462,4 +462,106 @@ def transform_string(word : String)
 end
 
 transform_string("hello crystal", &.split.map(&.capitalize).join(' '))
+```
+
+## Under the hood
+
+Before finishing this section of the tutorial, it would be a good idea to see how _blocks_ work under the hood.
+
+First, it's important to note that in this section we have only seen _blocks_ that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.html), but we will leave it for later in the tutorial.
+
+In a method that receives a _block_, when we write `yield`, the compiler will inline the _block of code_, which means that this:
+
+```crystal-play
+def with_number(n : Int32)
+  block_result = yield n
+  puts block_result
+end
+
+with_number 41 do |number|
+  number + 1
+end
+```
+
+will be rewrite as:
+
+```crystal-play
+def with_number(n : Int32)
+  number = n
+  block_result = number + 1
+  puts block_result
+end
+
+with_number 41
+```
+
+Let's see one last example using collections:
+
+```crystal-lang
+[1, 2, 3].each do |n|
+  puts n
+end
+```
+
+The implementation of [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method) is the following:
+
+```crystal
+def each(& : T ->)
+  each_index do |i|
+    yield unsafe_fetch(i)
+  end
+end
+```
+
+So the rewrite will be:
+
+```crystal
+def each(& : T ->)
+  each_index do |i|
+    n = unsafe_fetch(i)
+    puts n
+  end
+end
+```
+
+Finally, `each_index` is defined as:
+
+```crystal
+def each_index(& : Int32 ->) : Nil
+  i = 0
+  while i < size
+    yield i
+    i += 1
+  end
+end
+```
+
+And so, `each_index` will be rewriten as:
+
+```crystal
+def each_index(& : Int32 ->) : Nil
+  i = 0
+  while i < size
+    j = i # j is block's parameter
+    n = unsafe_fetch(j)
+    puts n
+    i += 1
+  end
+end
+```
+
+Here we can test the resulting method:
+
+```crystal-play
+def puts_each_index(arr)
+  i = 0
+  while i < arr.size
+    j = i
+    n = arr.unsafe_fetch(j)
+    puts n
+    i += 1
+  end
+end
+
+puts_each_index [1, 2, 3]
 ```
