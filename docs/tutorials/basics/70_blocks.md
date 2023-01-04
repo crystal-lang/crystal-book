@@ -42,7 +42,7 @@ arr = [1, 2, 3]
 index = 0
 
 while index < arr.size
-  elem =  arr[index]
+  elem = arr[index]
 
   puts elem + 42
 
@@ -52,7 +52,7 @@ end
 
 ```crystal-play
 # Example 2
-arr = ["John", "Paul", "George","Ringo"]
+arr = ["John", "Paul", "George", "Ringo"]
 index = 0
 
 while index < arr.size
@@ -87,7 +87,7 @@ with_array [1, 2, 3] do |elem|
 end
 
 # Example 2
-with_array ["John", "Paul", "George","Ringo"] do |elem|
+with_array ["John", "Paul", "George", "Ringo"] do |elem|
   puts "Hello #{elem}"
 end
 ```
@@ -157,7 +157,7 @@ Unpacking arguments into parameters works only if the argument's type responds t
 
 ### Splats
 
-When the *block* parameter is a [Tuple](../syntax_and_semantics/literals/tuple.md) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.md#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
+When the *block* parameter is a [Tuple](../../syntax_and_semantics/literals/tuple.md) we can use auto-splatting (see [Splats](../../syntax_and_semantics/operators.md#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
 
 ```crystal-play
 arr = [{"one", 42}, {"two", 24}]
@@ -471,7 +471,7 @@ transform_string("hello crystal", &.split.map(&.capitalize).join(' '))
 
 Before finishing this section of the tutorial, it would be a good idea to see how *blocks* work under the hood.
 
-First, it's important to note that in this section we have only seen *blocks* that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.md), but we will leave it for later in the tutorial.
+First, it's important to note that in this section we have only seen *blocks* that we use with the keyword `yield`. There is [another kind of block](../../syntax_and_semantics/capturing_blocks.md), but we will leave it for later in the tutorial.
 
 In a method that receives a *block*, when we write `yield`, the compiler will inline the *block of code*, which means that this:
 
