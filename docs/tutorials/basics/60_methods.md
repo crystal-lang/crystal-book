@@ -166,7 +166,7 @@ Now the compiler can show us exactly where the problem is originated. As we can 
 
 ## Blocks
 
-While working with _collections_ (just as an example) we may have came across code that looks like this:
+While working with *collections* (just as an example) we may have came across code that looks like this:
 
 ```crystal-play
 ["Hello", "World", 42].each do |elem|
@@ -187,8 +187,8 @@ puts arr
 In the first example we are using the method [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
 And in the second example we are using the method [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method).
 
-To both methods we are passing a _block of code_ (delimited by the keywords `do` and `end`) as an argument.
+To both methods we are passing a *block of code* (delimited by the keywords `do` and `end`) as an argument.
 
-This _block of code_, commonly called _block_ is a sequence of interactions, which will be executed at some point. When exactly? It depends on the method that receives the _block_ as a parameter (in these examples `each` and `map`).
+This *block of code*, commonly called *block* is a sequence of interactions, which will be executed at some point. When exactly? It depends on the method that receives the *block* as a parameter (in these examples `each` and `map`).
 
-_Blocks_ is a really interesting and important topic, so it has its own section. Let's continue there!
+*Blocks* is a really interesting and important topic, so it has its own section. Let's continue [there](70_blocks.md)!

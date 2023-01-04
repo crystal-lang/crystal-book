@@ -1,13 +1,12 @@
 # Blocks
 
-As we already mentioned in the [methods](./60_methods.html#blocks) section, _blocks_ is an interesting and important topic. So let's start defining them:
+As we already mentioned in the [methods](./60_methods.html#blocks) section, *blocks* is an interesting and important topic. So let's start defining them:
 
-A _block of code_ or _block_ for short, is a way to abstract a sequence of interactions between objects. They are commonly used as a method parameter, as a way to parameterize (forgive the redundancy) part of its behavior.
+A *block of code* or *block* for short, is a way to abstract a sequence of interactions between objects. They are commonly used as a method parameter, as a way to parameterize (forgive the redundancy) part of its behavior.
 
+## Blocks and Methods
 
-# Blocks and Methods
-
-Methods may receive a _block_ as an argument. And using the keyword `yield` indicates the place in the method's body where we want to "place" said `block`:
+Methods may receive a *block* as an argument. And using the keyword `yield` indicates the place in the method's body where we want to "place" said `block`:
 
 ```crystal-play
 def with_42
@@ -32,7 +31,7 @@ three_times do
   puts 42
 end
 
-Let's see another examples with a common use scenario for _blocks_: collections.
+Let's see another examples with a common use scenario for *blocks*: collections.
 
 Here are two examples:
 
@@ -64,9 +63,9 @@ while index < arr.size
 end
 ```
 
-As we can see in the above examples, the structures are the same: we want to traverse the array and do _something_ with the current element at each step. And here is where _blocks_ come handy: we can parameterize that _something_ we want to execute.
+As we can see in the above examples, the structures are the same: we want to traverse the array and do *something* with the current element at each step. And here is where *blocks* come handy: we can parameterize that *something* we want to execute.
 
-So let's rewrite the examples. We are going to declare a new method that will abstract the structure duplicated in both examples: It will receive the array and what we want to do at each step using a _block_:
+So let's rewrite the examples. We are going to declare a new method that will abstract the structure duplicated in both examples: It will receive the array and what we want to do at each step using a *block*:
 
 ```crystal-play
 def with_array(arr)
@@ -98,7 +97,7 @@ The abstracted structure declared in the `with_array` method is very common and 
 
 ## Blocks with parameters
 
-Like methods, _blocks_ may receive parameters declared like this: `| param1, param2, ... |`.
+Like methods, *blocks* may receive parameters declared like this: `| param1, param2, ... |`.
 
 Let's see an example:
 
@@ -115,7 +114,7 @@ end
 
 ### Underscore
 
-What happens if the _block_ we are providing does not use all the passed arguments? In that case we can use an underscore just to indicate that an expected parameter it's not used by the block (so no name needed):
+What happens if the *block* we are providing does not use all the passed arguments? In that case we can use an underscore just to indicate that an expected parameter it's not used by the block (so no name needed):
 
 ```crystal-play
 def other_method
@@ -129,7 +128,7 @@ end
 
 ### Unpacking parameters
 
-Now let's suppose we have an array of arrays. And we want to print each  array in the following way: _the first element followed by a hyphen, followed by the second element_.
+Now let's suppose we have an array of arrays. And we want to print each  array in the following way: *the first element followed by a hyphen, followed by the second element*.
 
 One way to implement this would be:
 
@@ -155,8 +154,7 @@ Unpacking arguments into parameters works only if the argument's type responds t
 
 ### Splats
 
-When the _block_ parameter is a [Tuple](../syntax_and_semantics/literals/tuple.html) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.html#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
-
+When the *block* parameter is a [Tuple](../syntax_and_semantics/literals/tuple.html) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.html#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
 
 ```crystal-play
 arr = [{"one", 42}, {"two", 24}]
@@ -165,11 +163,11 @@ arr.each do |word, number|
 end
 ```
 
-**Note:** `Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/latest/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we can also use _unpacking_.
+**Note:** `Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/latest/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we can also use *unpacking*.
 
 ## Blocks' returned value
 
-A _block_, by default, returns the value of the last expression (the same as a method).
+A *block*, by default, returns the value of the last expression (the same as a method).
 
 ```crystal-play
 def with_number(n : Int32)
@@ -240,9 +238,9 @@ end
 test_number(-1)
 ```
 
-The output is empty! This is because Crystal implements *full closures*, meaning that using `return` inside the block will return, not only from the _block_ itself but, from the method where the _block_ is defined (i.e. `#test_number` in the above example).
+The output is empty! This is because Crystal implements *full closures*, meaning that using `return` inside the block will return, not only from the *block* itself but, from the method where the *block* is defined (i.e. `#test_number` in the above example).
 
-If we want to return only from the _block_ then we need to use the keyword `next`:
+If we want to return only from the *block* then we need to use the keyword `next`:
 
 ```crystal-play
 def with_number(n : Int32)
@@ -262,7 +260,7 @@ end
 test_number(-1)
 ```
 
-The last keyword for returning from a _block_ is `break`. Let's see how it behaves:
+The last keyword for returning from a *block* is `break`. Let's see how it behaves:
 
 ```crystal-play
 def with_number(n : Int32)
@@ -289,13 +287,13 @@ The output is
 Inside `#test_number` method after `#with_number`
 ```
 
-As we can see the behaviour is something between using `return` and `next`. With `break` we return from the _block_ and from the method yielding the _block_ (`#with_number` in this example) but not from the method where the `block` is defined.
+As we can see the behaviour is something between using `return` and `next`. With `break` we return from the *block* and from the method yielding the *block* (`#with_number` in this example) but not from the method where the `block` is defined.
 
 ## Type restrictions
 
-Until now we have been using _blocks_ without any kind of type restrictions, moreover, we did not declare the block as a method parameter (it was implied by the use of `yield`).
+Until now we have been using *blocks* without any kind of type restrictions, moreover, we did not declare the block as a method parameter (it was implied by the use of `yield`).
 
-So first, we will declare a _block_ as a method parameter: it should be placed last and the parameter's name should be prefixed by `&`. Then we can use `yield` as before.
+So first, we will declare a *block* as a method parameter: it should be placed last and the parameter's name should be prefixed by `&`. Then we can use `yield` as before.
 
 ```crystal-play
 def transform_string(word, &block)
@@ -351,11 +349,11 @@ end
 
 ## Alternative syntaxes
 
-We almost at the end of this section. Let's see some other interesting ways of writing _blocks_.
+We almost at the end of this section. Let's see some other interesting ways of writing *blocks*.
 
 ### Curly braces
 
-Another way of defining a _block_ is using `{...}` instead of `do ... end`. Here is one of the examples we have already seen but written with _curly braces syntax_:
+Another way of defining a *block* is using `{...}` instead of `do ... end`. Here is one of the examples we have already seen but written with *curly braces syntax*:
 
 ```crystal-play
 def other_method
@@ -368,7 +366,7 @@ other_method { |n, s, arr|
 }
 ```
 
-Here is the  `_` example written with _curly braces syntax_ and in one line:
+Here is the  `_` example written with *curly braces syntax* and in one line:
 
 ```crystal-play
 def other_method
@@ -416,11 +414,12 @@ end
 with_double generate_number { |n| puts n } # Error: 'generate_number' is not expected to be invoked with a block, but a block was given
 ```
 
-The error is because with _curly braces_ we are writing: `with_double(generate_number { |n| puts n })` instead of `with_double(generate_number) { |n| puts n }`
+The error is because with *curly braces* we are writing: `with_double(generate_number { |n| puts n })` instead of `with_double(generate_number) { |n| puts n }`
 
 ### Short one-parameter syntax
 
 We can use a short syntax with the block parameter if:
+
 - It is a single block parameter.
 - One method is invoked on the block parameter.
 
@@ -452,9 +451,9 @@ transform_hello_crystal &.split.map(&.capitalize).join(' ')
 
 Great! Let's explain it step by step:
 
-First we split the block parameter using the _short one-parameter syntax_ `&.split`. Then, we chained the result applying `map` and using again the _short one-parameter syntax_ `.map(&.capitalize)`. And finally we join the `array` of `strings` using `join(' ')`.
+First we split the block parameter using the *short one-parameter syntax* `&.split`. Then, we chained the result applying `map` and using again the *short one-parameter syntax* `.map(&.capitalize)`. And finally we join the `array` of `strings` using `join(' ')`.
 
-Now, what if we want to parameterize the string we transform. Can we still use the _short one-parameter syntax_? The answer is yes! Let's see:
+Now, what if we want to parameterize the string we transform. Can we still use the *short one-parameter syntax*? The answer is yes! Let's see:
 
 ```crystal-play
 def transform_string(word : String)
@@ -466,11 +465,11 @@ transform_string("hello crystal", &.split.map(&.capitalize).join(' '))
 
 ## Under the hood
 
-Before finishing this section of the tutorial, it would be a good idea to see how _blocks_ work under the hood.
+Before finishing this section of the tutorial, it would be a good idea to see how *blocks* work under the hood.
 
-First, it's important to note that in this section we have only seen _blocks_ that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.html), but we will leave it for later in the tutorial.
+First, it's important to note that in this section we have only seen *blocks* that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.html), but we will leave it for later in the tutorial.
 
-In a method that receives a _block_, when we write `yield`, the compiler will inline the _block of code_, which means that this:
+In a method that receives a *block*, when we write `yield`, the compiler will inline the *block of code*, which means that this:
 
 ```crystal-play
 def with_number(n : Int32)
