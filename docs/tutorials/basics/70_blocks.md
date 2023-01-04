@@ -1,6 +1,6 @@
 # Blocks
 
-As we already mentioned in the [methods](./60_methods.html#blocks) section, *blocks* is an interesting and important topic. So let's start defining them:
+As we already mentioned in the [methods](./60_methods.md#blocks) section, *blocks* is an interesting and important topic. So let's start defining them:
 
 A *block of code* or *block* for short, is a way to abstract a sequence of interactions between objects. They are commonly used as a method parameter, as a way to parameterize (forgive the redundancy) part of its behavior.
 
@@ -30,6 +30,7 @@ end
 three_times do
   puts 42
 end
+```
 
 Let's see another examples with a common use scenario for *blocks*: collections.
 
@@ -91,9 +92,10 @@ with_array ["John", "Paul", "George","Ringo"] do |current_elem|
 end
 ```
 
-The abstracted structure declared in the `with_array` method is very common and that's why it's already implemented in [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
+The abstracted structure declared in the `with_array` method is very common and that's why it's already implemented in [Indexable#each](https://crystal-lang.org/api/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
 
-**Note:** both blocks declare a parameter (the current element while traversing the array) which we will see next.
+NOTE:
+Both blocks declare a parameter (the current element while traversing the array) which we will see next.
 
 ## Blocks with parameters
 
@@ -148,13 +150,14 @@ arr.each do |(word, number)|
 end
 ```
 
-**Note:** we use parentheses to unpack the argument into the different block parameters.
+NOTE:
+We use parentheses to unpack the argument into the different block parameters.
 
-Unpacking arguments into parameters works only if the argument's type responds to `[i]` (with `i` an `integer`). In our example `Array` inherits [Indexable#[ ]](https://crystal-lang.org/api/latest/Indexable.html#%5B%5D%28index%3AInt%29-instance-method)
+Unpacking arguments into parameters works only if the argument's type responds to `[i]` (with `i` an `integer`). In our example `Array` inherits [Indexable#[ ]](https://crystal-lang.org/api/Indexable.html#%5B%5D%28index%3AInt%29-instance-method)
 
 ### Splats
 
-When the *block* parameter is a [Tuple](../syntax_and_semantics/literals/tuple.html) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.html#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
+When the *block* parameter is a [Tuple](../syntax_and_semantics/literals/tuple.md) we can use auto-splatting (see [Splats](../syntax_and_semantics/operators.md#splats)) as a way of destructuring the `tuple` in block parameters (and without the need of parentheses).
 
 ```crystal-play
 arr = [{"one", 42}, {"two", 24}]
@@ -163,7 +166,8 @@ arr.each do |word, number|
 end
 ```
 
-**Note:** `Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/latest/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we can also use *unpacking*.
+NOTE:
+`Tuples` also implements [Tuple#[ ]](https://crystal-lang.org/api/Tuple.html#%5B%5D%28index%3AInt%29-instance-method) meaning that we can also use *unpacking*.
 
 ## Blocks' returned value
 
@@ -467,7 +471,7 @@ transform_string("hello crystal", &.split.map(&.capitalize).join(' '))
 
 Before finishing this section of the tutorial, it would be a good idea to see how *blocks* work under the hood.
 
-First, it's important to note that in this section we have only seen *blocks* that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.html), but we will leave it for later in the tutorial.
+First, it's important to note that in this section we have only seen *blocks* that we use with the keyword `yield`. There is [another kind of block](../syntax_and_semantics/capturing_blocks.md), but we will leave it for later in the tutorial.
 
 In a method that receives a *block*, when we write `yield`, the compiler will inline the *block of code*, which means that this:
 
@@ -502,7 +506,7 @@ Let's see one last example using collections:
 end
 ```
 
-The implementation of [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method) is the following:
+The implementation of [Indexable#each](https://crystal-lang.org/api/Indexable.html#each%28%26%3AT-%3E%29-instance-method) is the following:
 
 ```crystal
 def each(& : T ->)

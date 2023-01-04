@@ -184,8 +184,8 @@ end
 puts arr
 ```
 
-In the first example we are using the method [Indexable#each](https://crystal-lang.org/api/latest/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
-And in the second example we are using the method [Enumerable#map](https://crystal-lang.org/api/latest/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method).
+In the first example we are using the method [Indexable#each](https://crystal-lang.org/api/Indexable.html#each%28%26%3AT-%3E%29-instance-method).
+And in the second example we are using the method [Enumerable#map](https://crystal-lang.org/api/Enumerable.html#map%28%26%3AT-%3EU%29%3AArray%28U%29forallU-instance-method).
 
 To both methods we are passing a *block of code* (delimited by the keywords `do` and `end`) as an argument.
 
