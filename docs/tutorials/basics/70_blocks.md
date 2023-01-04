@@ -66,7 +66,7 @@ end
 
 As we can see in the above examples, the structures are the same: we want to traverse the array and do *something* with the current element at each step. And here is where *blocks* come handy: we can parameterize that *something* we want to execute.
 
-So let's rewrite the examples. We are going to declare a new method that will abstract the structure duplicated in both examples: It will receive the array and what we want to do at each step using a *block*:
+Now, let's rewrite the examples. We are going to declare a new method that will abstract the structure duplicated in both examples: It will receive the array and what we want to do at each step using a *block*:
 
 ```crystal-play
 def with_array(arr)
@@ -82,13 +82,13 @@ def with_array(arr)
 end
 
 # Example 1
-with_array [1, 2, 3] do |current_elem|
+with_array [1, 2, 3] do |elem|
   puts elem + 42
 end
 
 # Example 2
-with_array ["John", "Paul", "George","Ringo"] do |current_elem|
-  puts "Hello #{current_elem}"
+with_array ["John", "Paul", "George","Ringo"] do |elem|
+  puts "Hello #{elem}"
 end
 ```
 
@@ -386,7 +386,7 @@ The main difference between using `do ... end` and `{ ... }` is how they bind th
 - `{ ... }` binds to the right-most call
 
 ```crystal-play
-def generate_number()
+def generate_number
   42
 end
 
@@ -407,7 +407,7 @@ end
 But with `curly braces syntax`:
 
 ```crystal
-def generate_number()
+def generate_number
   42
 end
 
