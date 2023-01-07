@@ -11,6 +11,9 @@ A Regex is typically created with a regex literal using [PCRE](http://pcre.org/p
 /あ/
 ```
 
+> NOTE: The compiler expects the syntax of the original PCRE library. Support for the newer PCRE2 library at runtime was added in 1.7.0.
+> It can be opted-in with the compiler flag `-Duse_pcre2`.
+
 ## Escaping
 
 Regular expressions support the same [escape sequences as String literals](./string.md).
