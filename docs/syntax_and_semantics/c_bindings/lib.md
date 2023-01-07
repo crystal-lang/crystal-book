@@ -26,5 +26,5 @@ Lib functions are visible in the macro language anywhere in the program.
 lib LibFoo
   fun foo
 end
-{% if LibFoo.methods %} # => [fun foo]
+{{ LibFoo.methods }} # => [fun foo]
 ```
