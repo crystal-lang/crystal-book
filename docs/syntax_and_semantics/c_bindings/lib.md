@@ -17,3 +17,15 @@ Attributes are used to pass flags to the linker to find external libraries:
 * `@[Link(framework: "Cocoa")]` will pass `-framework Cocoa` to the linker (only useful in macOS).
 
 Attributes can be omitted if the library is implicitly linked, as in the case of libc.
+
+## Reflection
+
+Lib functions are visible in the macro language anywhere in the program using the method [`TypeNode#methods`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html#methods%3AArrayLiteral%28Def%29-instance-method):
+
+```crystal
+lib LibFoo
+  fun foo
+end
+
+{{ LibFoo.methods }} # => [fun foo]
+```
