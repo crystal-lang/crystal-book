@@ -11,7 +11,7 @@ A Regex is typically created with a regex literal using [PCRE](http://pcre.org/p
 /あ/
 ```
 
-> NOTE: The compiler expects the syntax of the original PCRE library. Support for the newer PCRE2 library at runtime was added in 1.7.0.
+> NOTE: The compiler expects the syntax of the original [PCRE](https://www.pcre.org/original/doc/html/pcrepattern.html)  library. Support for the newer [PCRE2](https://www.pcre.org/current/doc/html/pcre2syntax.html) library at runtime was added in 1.7.0.
 > It can be opted-in with the compiler flag `-Duse_pcre2`.
 
 ## Escaping
