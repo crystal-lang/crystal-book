@@ -30,7 +30,7 @@ In the above example, even though `x` is a local variable, it was captured by th
 The compiler is usually moderately smart about the type of local variables. For example:
 
 ```crystal
-def foo
+def foo(&)
   yield
 end
 

@@ -4,7 +4,7 @@ Methods can accept a block of code that is executed
 with the `yield` keyword. For example:
 
 ```crystal
-def twice
+def twice(&)
   yield
   yield
 end
@@ -88,7 +88,7 @@ Two methods, one that yields and another that doesn't, are considered different 
 The `yield` expression is similar to a call and can receive arguments. For example:
 
 ```crystal
-def twice
+def twice(&)
   yield 1
   yield 2
 end
@@ -109,7 +109,7 @@ twice { |i| puts "Got #{i}" }
 You can `yield` many values:
 
 ```crystal
-def many
+def many(&)
   yield 1, 2, 3
 end
 
@@ -123,7 +123,7 @@ end
 A block can specify fewer parameters than the arguments yielded:
 
 ```crystal
-def many
+def many(&)
   yield 1, 2, 3
 end
 
@@ -137,7 +137,7 @@ end
 It's an error specifying more block parameters than the arguments yielded:
 
 ```crystal
-def twice
+def twice(&)
   yield
   yield
 end
@@ -149,7 +149,7 @@ end
 Each block parameter has the type of every yield expression in that position. For example:
 
 ```crystal
-def some
+def some(&)
   yield 1, 'a'
   yield true, "hello"
   yield 2, nil
@@ -164,7 +164,7 @@ end
 The [underscore](assignment.md#underscore) is also allowed as a block parameter:
 
 ```crystal
-def pairs
+def pairs(&)
   yield 1, 2
   yield 2, 4
   yield 3, 6
@@ -239,7 +239,7 @@ method(&.[index])
 The `yield` expression itself has a value: the last expression of the block. For example:
 
 ```crystal
-def twice
+def twice(&)
   v1 = yield 1
   puts v1
 
@@ -265,7 +265,7 @@ ary.select { |x| x % 2 == 1 } # => [1, 3]
 A dummy transformation method:
 
 ```crystal
-def transform(value)
+def transform(value, &)
   yield value
 end
 
@@ -293,7 +293,7 @@ transform_int(3) { |x| "foo" } # Error: expected block to return Int32, not Stri
 A `break` expression inside a block exits early from the method:
 
 ```crystal
-def thrice
+def thrice(&)
   puts "Before 1"
   yield 1
   puts "Before 2"
@@ -315,7 +315,7 @@ The above prints "Before 1" and "Before 2". The `thrice` method didn't execute t
 `break` can also accept arguments: these become the method's return value. For example:
 
 ```crystal
-def twice
+def twice(&)
   yield 1
   yield 2
 end
@@ -357,7 +357,7 @@ value # => nil
 The `next` expression inside a block exits early from the block (not the method). For example:
 
 ```crystal
-def twice
+def twice(&)
   yield 1
   yield 2
 end
@@ -379,7 +379,7 @@ end
 The `next` expression accepts arguments, and these give the value of the `yield` expression that invoked the block:
 
 ```crystal
-def twice
+def twice(&)
   v1 = yield 1
   puts v1
 
@@ -412,11 +412,11 @@ class Foo
     1
   end
 
-  def yield_with_self
+  def yield_with_self(&)
     with self yield
   end
 
-  def yield_normally
+  def yield_normally(&)
     yield
   end
 end
@@ -477,7 +477,7 @@ end
 When using blocks with `yield`, the blocks are **always** inlined: no closures, calls or function pointers are involved. This means that this:
 
 ```crystal
-def twice
+def twice(&)
   yield 1
   yield 2
 end
@@ -510,7 +510,7 @@ This is `Int#times` definition:
 
 ```crystal
 struct Int
-  def times
+  def times(&)
     i = 0
     while i < self
       yield i

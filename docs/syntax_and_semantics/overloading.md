@@ -60,7 +60,7 @@ class Person
 
   # Yields the current age of this person and increases
   # its age by the value returned by the block
-  def become_older
+  def become_older(&)
     @age += yield @age
   end
 end

@@ -36,7 +36,7 @@ class Foo
     "***#{ {{value}} }***"
   end
 
-  def yield_with_self
+  def yield_with_self(&)
     with self yield
   end
 end
