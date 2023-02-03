@@ -120,7 +120,7 @@ This example makes use of the `macro extended` hook. This hook is called wheneve
 
 ### Generating Methods via `method_missing` Macro
 
-Following is a very simple example that demonstrates how to use `method_missing` macro tocreate the missing method based on the existence of receiver JSON object's key
+Following is a very simple example that demonstrates how to use `method_missing` macro to create the missing method based on the existence of receiver JSON object's key
 
 ```cr
 class Hashr
