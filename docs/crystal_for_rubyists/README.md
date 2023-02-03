@@ -145,6 +145,15 @@ You can also explicitly unpack to get the same result as Ruby's autosplat:
 end
 ```
 
+Following code works as well, but prefer former.
+
+```cr
+[[1, "A"], [2, "B"]].each do |e|
+  pp e[0]
+  pp e[1]
+end
+```
+
 ## `#each` returns nil
 
 In Ruby `.each` returns the receiver for many built-in collections like `Array` and `Hash`, which allows for chaining methods off of that, but that can lead to some performance and codegen issues in Crystal, so that feature is not supported. Alternately, one can use `.tap`.
@@ -308,7 +317,7 @@ process_data(b: 2, a: "one")
 
 This is because, in ruby, `process_data(b: 2, a: "one")` is syntax sugar for `process_data({b: 2, a: "one"})`.
 
-In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `processData` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
+In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `process_data` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
 
 ### Properties
 
@@ -368,7 +377,7 @@ For example `File::exists?` in Ruby becomes `File.exists?` in Crystal.
 
 ### Crystal keywords
 
-Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select{ |x| x > "good" }`.
+Crystal added some new keywords, these can still be used as method names, but need to be called explicitly with a dot: e.g. `self.select { |x| x > "good" }`.
 
 #### Available keywords
 
