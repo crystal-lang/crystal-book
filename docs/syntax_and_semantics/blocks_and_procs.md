@@ -16,7 +16,7 @@ end
 
 The above program prints "Hello!" twice, once for each `yield`.
 
-To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block parameter, indicated as a last parameter prefixed with ampersand (`&`):
+To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block parameter, indicated as a last parameter prefixed with ampersand (`&`). In the example above we did this, making the argument anonymous (writing just the `&`). But it can be given a name:
 
 ```crystal
 def twice(&block)
@@ -24,6 +24,8 @@ def twice(&block)
   yield
 end
 ```
+
+The block parameter name is irrelevant in this example, but will be relevant in more advanced uses.
 
 To invoke a method and pass a block, you use `do ... end` or `{ ... }`. All of these are equivalent:
 
