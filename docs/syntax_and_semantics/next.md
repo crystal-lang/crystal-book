@@ -18,7 +18,7 @@ end
 `next` can also be used to exit from a block, for example:
 
 ```crystal
-def block
+def block(&)
   yield
 end
 
@@ -34,7 +34,7 @@ end
 Similar to [`break`](break.md), `next` can also take an argument which will then be returned by `yield`.
 
 ```crystal
-def block
+def block(&)
   puts yield
 end
 

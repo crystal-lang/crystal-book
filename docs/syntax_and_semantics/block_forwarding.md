@@ -28,7 +28,7 @@ def capture(&block)
   block
 end
 
-def twice
+def twice(&)
   yield
   yield
 end
@@ -67,11 +67,11 @@ twice &->say_hello
 To forward non-captured blocks, you must use `yield`:
 
 ```crystal
-def foo
+def foo(&)
   yield 1
 end
 
-def wrap_foo
+def wrap_foo(&)
   puts "Before foo"
   foo do |x|
     yield x
@@ -92,7 +92,7 @@ end
 You can also use the `&block` syntax to forward blocks, but then you have to at least specify the input types, and the generated code will involve closures and will be slower:
 
 ```crystal
-def foo
+def foo(&)
   yield 1
 end
 
