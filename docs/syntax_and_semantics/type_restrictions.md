@@ -215,10 +215,10 @@ def foo
 end
 ```
 
-A simple way to match against one or more elements of any type is to use `Object` as a restriction:
+A simple way to match against one or more elements of any type is to use `_` as a restriction:
 
 ```crystal
-def foo(*args : Object)
+def foo(*args : _)
 end
 
 foo()       # Error
@@ -272,4 +272,57 @@ end
 
 push(4, [1, 2, 3])      # OK
 push("oops", [1, 2, 3]) # Error
+```
+
+## Splat type restrictions
+
+If a splat parameter's restriction also has a splat, the restriction must name a [`Tuple`](https://crystal-lang.org/api/Tuple.html) type, and the arguments corresponding to the parameter must match the elements of the splat restriction:
+
+```crystal
+def foo(*x : *{Int32, String})
+end
+
+foo(1, "") # OK
+foo("", 1) # Error
+foo(1)     # Error
+```
+
+It is extremely rare to specify a tuple type in a splat restriction directly, since the above can be expressed by simply not using a splat (i.e. `def foo(x : Int32, y : String)`. However, if the restriction is a free variable instead, then it is inferred to be a `Tuple` containing the types of all corresponding arguments:
+
+```crystal
+def foo(*x : *T) forall T
+  T
+end
+
+foo(1, 2)  # => Tuple(Int32, Int32)
+foo(1, "") # => Tuple(Int32, String)
+foo(1)     # => Tuple(Int32)
+foo()      # => Tuple()
+```
+
+On the last line, `T` is inferred to be the empty tuple, which is not possible for a splat parameter having a non-splat restriction.
+
+Double splat parameters similarly support double splat type restrictions:
+
+```crystal
+def foo(**x : **T) forall T
+  T
+end
+
+foo(x: 1, y: 2)  # => NamedTuple(x: Int32, y: Int32)
+foo(x: 1, y: "") # => NamedTuple(x: Int32, y: String)
+foo(x: 1)        # => NamedTuple(x: Int32)
+foo()            # => NamedTuple()
+```
+
+Additionally, splat restrictions may be used inside a generic type as well, to extract multiple type arguments at once:
+
+```crystal
+def foo(x : Proc(*T, Int32)) forall T
+  T
+end
+
+foo(->(x : Int32, y : Int32) { x + y }) # => Tuple(Int32, Int32)
+foo(->(x : Bool) { x ? 1 : 0 })         # => Tuple(Bool)
+foo(-> { 1 })                           # => Tuple()
 ```
