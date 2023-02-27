@@ -93,3 +93,19 @@ end
 ```
 
 NOTE: The C `char` type is `UInt8` in Crystal, so a `char*` or a `const char*` is `UInt8*`. The `Char` type in Crystal is a unicode codepoint so it is represented by four bytes, making it similar to an `Int32`, not to an `UInt8`. There's also the alias `LibC::Char` if in doubt.
+
+## Top-level fun
+
+A `fun` defined at the top-level namespace defines and exports a C function that can be called by external C code:
+
+```crystal
+fun sum(x : Int32, y : Int32) : Int32
+  x + y
+end
+
+sum(1, 2) # => 3
+```
+
+Like lib funs, all parameter and return types are mandatory, and only valid types in C bindings are permitted. Like regular Crystal defs, they have a body and can be called directly by other Crystal code.
+
+Because Crystal programs are not meant to be used as shared libraries, top-level methods should be defined using the `def` keyword instead of `fun`. Exceptions are entry points used by the underlying operating system, such as the C `main` on most systems.
