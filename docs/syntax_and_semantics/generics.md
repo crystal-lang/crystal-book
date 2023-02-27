@@ -70,16 +70,18 @@ MyBox.nilable("foo") # : MyBox(String | Nil)
 In these examples, `T` is only inferred as a free variable, so the `T` of the receiver itself remains unbound. Thus it is an error to call other class methods where `T` cannot be inferred:
 
 ```crystal
-class Foo(T)
-  def initialize
+module Foo(T)
+  def self.foo
+    T
   end
 
-  def self.new(x : T)
-    new
+  def self.foo(x : T)
+    foo
   end
 end
 
-Foo.new(1) # Error: can't infer the type parameter T for the generic class Foo(T). Please provide it explicitly
+Foo.foo(1)        # Error: can't infer the type parameter T for the generic module Foo(T). Please provide it explicitly
+Foo(Int32).foo(1) # OK
 ```
 
 ## Generic structs and modules
