@@ -324,5 +324,5 @@ end
 
 foo(->(x : Int32, y : Int32) { x + y }) # => Tuple(Int32, Int32)
 foo(->(x : Bool) { x ? 1 : 0 })         # => Tuple(Bool)
-foo(-> { 1 })                           # => Tuple()
+foo(->{ 1 })                            # => Tuple()
 ```
