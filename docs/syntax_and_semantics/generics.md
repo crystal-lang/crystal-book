@@ -37,21 +37,52 @@ class MyDictionary(KeyType, ValueType)
 end
 ```
 
-## Type variables inference
+## Generic class methods
 
-Type restrictions in a generic type's constructor are free variables when type arguments were not specified, and then are used to infer them. For example:
+Type restrictions in a generic type's class method become free variables when the receiver's type arguments were not specified. Those free variables are then inferred from a call's arguments. For example, one can also write:
 
 ```crystal
-MyBox.new(1)       # : MyBox(Int32)
-MyBox.new("hello") # : MyBox(String)
+int_box = MyBox.new(1)          # : MyBox(Int32)
+string_box = MyBox.new("hello") # : MyBox(String)
 ```
 
 In the above code we didn't have to specify the type arguments of `MyBox`, the compiler inferred them following this process:
 
-* `MyBox.new(value)` delegates to `initialize(@value : T)`
-* `T` isn't bound to a type yet, so the compiler binds it to the type of the given argument
+* The compiler generates a `MyBox.new(value : T)` method, which has no explicitly defined free variables, from `MyBox#initialize(@value : T)`
+* The `T` in `MyBox.new(value : T)` isn't bound to a type yet, and `T` is a type parameter of `MyBox`, so the compiler binds it to the type of the given argument
+* The compiler-generated `MyBox.new(value : T)` calls `MyBox(T)#initialize(@value : T)`, where `T` is now bound
 
-In this way generic types are less tedious to work with.
+In this way generic types are less tedious to work with. Note that the `#initialize` method itself does not need to specify any free variables for this to work.
+
+The same type inference also works for class methods other than `.new`:
+
+```crystal
+class MyBox(T)
+  def self.nilable(x : T)
+    MyBox(T?).new(x)
+  end
+end
+
+MyBox.nilable(1)     # : MyBox(Int32 | Nil)
+MyBox.nilable("foo") # : MyBox(String | Nil)
+```
+
+In these examples, `T` is only inferred as a free variable, so the `T` of the receiver itself remains unbound. Thus it is an error to call other class methods where `T` cannot be inferred:
+
+```crystal
+module Foo(T)
+  def self.foo
+    T
+  end
+
+  def self.foo(x : T)
+    foo
+  end
+end
+
+Foo.foo(1)        # Error: can't infer the type parameter T for the generic module Foo(T). Please provide it explicitly
+Foo(Int32).foo(1) # OK
+```
 
 ## Generic structs and modules
 
