@@ -46,7 +46,7 @@ Tier 3 platforms are those which the Crystal codebase has some sort of support f
 | Target | Compiler | Std | Description |
 | ------ | -------- | --- | ----------- |
 | x86_64-windows-msvc |  |  | 64-bit MSVC (Windows 7+) |
-| aarch64-linux-android |  |  | ARM 64-bit Android (Bionic C runtime) |
+| aarch64-linux-android |  |  | ARM 64-bit Android (Bionic C runtime, API level 28+) |
 | x86_64-unknown-dragonfly | | | 64-bit DragonFlyBSD |
 | x86_64-unknown-netbsd | | | 64-bit NetBSD |
 | wasm32-unknown-wasi | | | WebAssembly (WASI libc) |
