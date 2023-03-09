@@ -49,5 +49,6 @@ Tier 3 platforms are those which the Crystal codebase has some sort of support f
 | x86_64-unknown-dragonfly | | | 64-bit DragonFlyBSD |
 | x86_64-unknown-netbsd | | | 64-bit NetBSD |
 | wasm32-unknown-wasi | | | WebAssembly (WASI libc) |
+| aarch64-linux-android | | | ARM 64-bit Android (API level 28+) |
 
 Note: big thanks go to the Rust team for putting together such a clear doc on Rust's platform support. We felt it was so close to what we were needing in Crystal, that we basically copied many chunks of their document. See https://forge.rust-lang.org/platform-support.html.
