@@ -89,6 +89,7 @@ The ABI is derived from the last component of the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
+| `android` | Android (Bionic C runtime)
 | `armhf` *(derived)* | ARM EABI with hard float
 | `gnu`     | GNU
 | `gnueabihf` | GNU EABI with hard float
