@@ -111,7 +111,14 @@ expect_raises(MyError, /error \w{7}/) do
 end
 ```
 
-They return the rescued exception so it can be used for further expectations, for example to verify specific properties of the exception.
+`expect_raises` returns the rescued exception so it can be used for further expectations, for example to verify specific properties of the exception. 
+
+```crystal
+ex = expect_raises(MyError) do
+  # Passes if this block raises an exception of type MyError.
+end
+ex.my_error_value.should eq "foo"
+```
 
 ## Focusing on a group of specs
 
