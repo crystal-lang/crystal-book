@@ -107,6 +107,8 @@ Detailed examples for practical applications.
 Instructions on how to use the compiler and tools.
 
 * [Compiler manual](man/crystal/README.md)
+* [Required libraries](man/required_libraries.md)
+* [Platform Support](syntax_and_semantics/platform_support.md)
 * [Static linking](guides/static_linking.md)
 
   </div>
@@ -155,10 +157,8 @@ How we take the decisions that guide the language and its community.
 
 ### Developer resources
 
-* [Required libraries](required_libraries.md)
 * [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
 * [Coding style](conventions/coding_style.md)
-* [Platform Support](syntax_and_semantics/platform_support.md)
 * [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
 
   </div>
