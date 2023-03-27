@@ -111,7 +111,7 @@ expect_raises(MyError, /error \w{7}/) do
 end
 ```
 
-`expect_raises` returns the rescued exception so it can be used for further expectations, for example to verify specific properties of the exception. 
+`expect_raises` returns the rescued exception so it can be used for further expectations, for example to verify specific properties of the exception.
 
 ```crystal
 ex = expect_raises(MyError) do
