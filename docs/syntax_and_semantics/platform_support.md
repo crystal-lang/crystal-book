@@ -14,41 +14,56 @@ Tier 1 platforms can be thought of as “guaranteed to work”. Specifically the
 * Automated testing is set up to run tests for the platform.
 * Documentation for how to use and how to build the platform is available.
 
-| Target | Compiler | Std | Description |
-| ------ | -------- | --- | ----------- |
-| x86_64-darwin | ✓ | ✓ | 64-bit OSX (10.7+, Lion+) |
-| x86_64-linux-gnu | ✓ | ✓ | 64-bit Linux (kernel 2.6.18+, GNU libc) |
+Only maintained operating system versions are fully supported. Obsolete versions are not guaranteed to work
+and drop into *Tier 2*.
+
+| Target | Description | Supported versions |
+| ------ | ----------- | ------------------ |
+| `x86_64-darwin` | x64 macOS (Intel) | 11+<br> *(testing only on 11; expected to work on 10.7+)* |
+| `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* |
 
 ***
 
 ## Tier 2
 
-Tier 2 platforms can be thought of as “expected to build”. Automated tests are not run so it’s not guaranteed to produce a working build, but platforms often work to quite a good degree and patches are always welcome!
+Tier 2 platforms can be thought of as “expected to work”.
 
-| Target | Compiler | Std | Description |
-| ------ | -------- | --- | ----------- |
-| aarch64-darwin | ✓ | ✓ | ARM 64-bit OSX (Apple Silicon) |
-| aarch64-linux-gnu | ✓ | ✓ | ARM 64-bit Linux (GNU libc, hardfloat) |
-| aarch64-linux-musl | ✓ | ✓ | ARM 64-bit Linux (MUSL libc, hardfloat) |
-| arm-linux-gnueabihf | ✓ | ✓ | ARM 32-bit Linux (GNU libc, hardfloat) |
-| i386-linux-gnu | ✓ | ✓ | 32-bit Linux (kernel 2.6.18+, GNU libc) |
-| i386-linux-musl | ✓ | ✓ | 32-bit Linux (MUSL libc) |
-| x86_64-linux-musl | ✓ | ✓ | 64-bit Linux (MUSL libc) |
-| x86_64-openbsd | ✓ | ✓ | 64-bit OpenBSD (6.x) |
-| x86_64-freebsd | ✓ | ✓ | 64-bit FreeBSD (12.x) |
+The requirements for *Tier 1* may be partially fulfilled, but are lacking in some way that prevents a solid gurantee.
+Details are described in the *Comment* column.
+
+| Target | Description | Supported versions | Comment |
+| ------ | ----------- | ------------------ | ------- |
+| `aarch64-darwin` | Aarch64 macOS (Apple Silicon) | 11+ | ❌ tests ✅ builds
+| `aarch64-linux-gnu` | Aarch64 Linux (hardfloat) | GNU libc 2.26+ | ✅ tests ❌ builds
+| `aarch64-linux-musl` | Aarch64 Linux (hardfloat) | MUSL libc 2.26+ | ✅ tests ❌ builds
+| `arm-linux-gnueabihf` | Aarch32 Linux (hardfloat) | GNU libc 2.26+ | ❌ tests ❌ builds
+| `i386-linux-gnu` | x86 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | ❌ tests ❌ builds
+| `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | ❌ tests ❌ builds
+| `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | ✅ tests ✅ builds
+| `x86_64-openbsd` | x64 OpenBSD | 6+ | ❌ tests ❌ builds
+| `x86_64-freebsd` | x64 FreeBSD | 12+ | ❌ tests ❌ builds
 
 ***
 
 ## Tier 3
 
-Tier 3 platforms are those which the Crystal codebase has some sort of support for, but which are not built or tested automatically, and may not work. Official builds are not available.
+Tier 3 platforms can be though of as “partially works”.
 
-| Target | Compiler | Std | Description |
-| ------ | -------- | --- | ----------- |
-| x86_64-windows-msvc |  |  | 64-bit MSVC (Windows 7+) |
-| aarch64-linux-android |  |  | ARM 64-bit Android (Bionic C runtime, API level 28+) |
-| x86_64-unknown-dragonfly | | | 64-bit DragonFlyBSD |
-| x86_64-unknown-netbsd | | | 64-bit NetBSD |
-| wasm32-unknown-wasi | | | WebAssembly (WASI libc) |
+The Crystal codebase has support for these platforms, but there are some major limitations.
+Most typically, some parts of the standard library are not supported completely.
+
+| Target | Description | Supported versions | Comment |
+| ------ | ----------- | ------------------ | ------- |
+| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | 🟡 tests<br> ✅ builds |
+| `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 28+ | ❌ tests<br> ❌ builds |
+| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | ❌ tests<br> ❌ builds |
+| `x86_64-unknown-netbsd` | x64 NetBSD | | ❌ tests<br> ❌ builds |
+| `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | 🟡 tests |
+| `interpreted` | Crystal's interpreter (`crystal i`) | | 🟡 tests |
+
+!!! info "Legend"
+    * ❌ means automated tests or builds are not available
+    * ✅ means automated tests or builds are available
+    * 🟡 means automated test are available, but the implementation is incomplete
 
 Note: big thanks go to the Rust team for putting together such a clear doc on Rust's platform support. We felt it was so close to what we were needing in Crystal, that we basically copied many chunks of their document. See https://forge.rust-lang.org/platform-support.html.
