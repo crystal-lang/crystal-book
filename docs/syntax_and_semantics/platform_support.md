@@ -47,7 +47,7 @@ Details are described in the *Comment* column.
 
 ## Tier 3
 
-Tier 3 platforms can be though of as “partially works”.
+Tier 3 platforms can be thought of as “partially works”.
 
 The Crystal codebase has support for these platforms, but there are some major limitations.
 Most typically, some parts of the standard library are not supported completely.
