@@ -59,7 +59,6 @@ Most typically, some parts of the standard library are not supported completely.
 | `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | ❌ tests<br> ❌ builds |
 | `x86_64-unknown-netbsd` | x64 NetBSD | | ❌ tests<br> ❌ builds |
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | 🟡 tests |
-| `interpreted` | Crystal's interpreter (`crystal i`) | | 🟡 tests |
 
 !!! info "Legend"
     * ❌ means automated tests or builds are not available
