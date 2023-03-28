@@ -61,12 +61,11 @@ Most typically, some parts of the standard library are not supported completely.
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
 
 !!! info "Legend"
-    * :material-selection-ellipse: means automated tests or builds are not available
-    * :material-checkbox-marked-circle: means automated tests or builds are available
-    * :material-circle-slice-5: means automated test are available, but the implementation is incomplete
-
-    This allows intermediary steps: :material-circle-slice-1: :material-circle-slice-6:
-
+    <ul>
+    <li>:material-selection-ellipse: means automated tests or builds are not available</li>
+    <li>:material-checkbox-marked-circle: means automated tests or builds are available</li>
+    <li>:material-circle-slice-5: means automated test are available, but the implementation is incomplete</li>
+    </li>
 
 !!! note
     Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
