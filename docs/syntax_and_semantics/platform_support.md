@@ -17,10 +17,10 @@ Tier 1 platforms can be thought of as “guaranteed to work”. Specifically the
 Only maintained operating system versions are fully supported. Obsolete versions are not guaranteed to work
 and drop into *Tier 2*.
 
-| Target | Description | Supported versions |
-| ------ | ----------- | ------------------ |
-| `x86_64-darwin` | x64 macOS (Intel) | 11+<br> *(testing only on 11; expected to work on 10.7+)* |
-| `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* |
+| Target | Description | Supported versions | Comment |
+| ------ | ----------- | ------------------ | ------- |
+| `x86_64-darwin` | x64 macOS<br> (Intel) | 11+<br> *(testing only on 11; expected to work on 10.7+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
+| `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 
 ***
 
@@ -33,15 +33,15 @@ Details are described in the *Comment* column.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `aarch64-darwin` | Aarch64 macOS (Apple Silicon) | 11+ | ❌ tests ✅ builds
-| `aarch64-linux-gnu` | Aarch64 Linux (hardfloat) | GNU libc 2.26+ | ✅ tests ❌ builds
-| `aarch64-linux-musl` | Aarch64 Linux (hardfloat) | MUSL libc 2.26+ | ✅ tests ❌ builds
-| `arm-linux-gnueabihf` | Aarch32 Linux (hardfloat) | GNU libc 2.26+ | ❌ tests ❌ builds
-| `i386-linux-gnu` | x86 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | ❌ tests ❌ builds
-| `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | ❌ tests ❌ builds
-| `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | ✅ tests ✅ builds
-| `x86_64-openbsd` | x64 OpenBSD | 6+ | ❌ tests ❌ builds
-| `x86_64-freebsd` | x64 FreeBSD | 12+ | ❌ tests ❌ builds
+| `aarch64-darwin` | Aarch64 macOS<br> (Apple Silicon) | 11+ | :material-selection-ellipse: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-linux-gnu` | Aarch64 Linux | GNU libc 2.26+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
+| `aarch64-linux-musl` | Aarch64 Linux | MUSL libc 1.2+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
+| `arm-linux-gnueabihf` | Aarch32 Linux<br> (hardfloat) | GNU libc 2.26+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `i386-linux-gnu` | x86 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
+| `x86_64-openbsd` | x64 OpenBSD | 6+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-freebsd` | x64 FreeBSD | 12+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 
 ***
 
@@ -54,11 +54,11 @@ Most typically, some parts of the standard library are not supported completely.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :yellow_circle: tests<br> :white_check_mark: builds |
-| `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 28+ | :red_circle: tests<br> :red_circle: builds |
-| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :red_circle: tests<br> :red_circle: builds |
-| `x86_64-unknown-netbsd` | x64 NetBSD | | :red_circle: tests<br> :red_circle: builds |
-| `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :yellow_circle: tests |
+| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
+| `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 28+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `x86_64-unknown-netbsd` | x64 NetBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
 
 !!! info "Original Unicode icons"
     * ❌ means automated tests or builds are not available
@@ -101,6 +101,13 @@ Most typically, some parts of the standard library are not supported completely.
     * :material-checkbox-blank-circle-outline: means automated tests or builds are not available
     * :material-checkbox-marked-circle: means automated tests or builds are available
     * :material-checkbox-blank-circle: means automated test are available, but the implementation is incomplete
+
+!!! info "Material combined"
+    * :material-selection-ellipse: means automated tests or builds are not available
+    * :material-checkbox-marked-circle: means automated tests or builds are available
+    * :material-circle-slice-5: means automated test are available, but the implementation is incomplete
+
+    This allows intermediary steps: :material-circle-slice-1: :material-circle-slice-6:
 
 !!! info "Octicons circle check 16"
     * :octicons-circle-slash-16: means automated tests or builds are not available
