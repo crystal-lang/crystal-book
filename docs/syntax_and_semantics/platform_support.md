@@ -54,15 +54,65 @@ Most typically, some parts of the standard library are not supported completely.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | 🟡 tests<br> ✅ builds |
-| `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 28+ | ❌ tests<br> ❌ builds |
-| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | ❌ tests<br> ❌ builds |
-| `x86_64-unknown-netbsd` | x64 NetBSD | | ❌ tests<br> ❌ builds |
-| `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | 🟡 tests |
+| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :yellow_circle: tests<br> :white_check_mark: builds |
+| `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 28+ | :red_circle: tests<br> :red_circle: builds |
+| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :red_circle: tests<br> :red_circle: builds |
+| `x86_64-unknown-netbsd` | x64 NetBSD | | :red_circle: tests<br> :red_circle: builds |
+| `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :yellow_circle: tests |
 
-!!! info "Legend"
+!!! info "Original Unicode icons"
     * ❌ means automated tests or builds are not available
     * ✅ means automated tests or builds are available
     * 🟡 means automated test are available, but the implementation is incomplete
 
-Note: big thanks go to the Rust team for putting together such a clear doc on Rust's platform support. We felt it was so close to what we were needing in Crystal, that we basically copied many chunks of their document. See https://forge.rust-lang.org/platform-support.html.
+!!! info "Unicode icons without cross"
+    * ⭕ means automated tests or builds are not available
+    * ✅ means automated tests or builds are available
+    * 🟡 means automated test are available, but the implementation is incomplete
+
+!!! info "Temoji circles + checkmark"
+    * :red_circle: means automated tests or builds are not available
+    * :white_check_mark: means automated tests or builds are available
+    * :yellow_circle: means automated test are available, but the implementation is incomplete
+
+!!! info "Temoji circles"
+    * :red_circle: means automated tests or builds are not available
+    * :green_circle: means automated tests or builds are available
+    * :yellow_circle: means automated test are available, but the implementation is incomplete
+
+!!! info "Material checkbock outline"
+    * :material-checkbox-blank-off-outline: means automated tests or builds are not available
+    * :material-checkbox-outline: means automated tests or builds are available
+    * :material-checkbox-blank-outline: means automated test are available, but the implementation is incomplete
+
+!!! info "Material checkbox"
+    * :material-checkbox-blank-off: means automated tests or builds are not available
+    * :material-checkbox-marked: means automated tests or builds are available
+    * :material-checkbox-blank: means automated test are available, but the implementation is incomplete
+
+!!! info "Material circle"
+    * :material-circle-outline: means automated tests or builds are not available
+    * :material-circle-slice-8: means automated tests or builds are available
+    * :material-circle-slice-4: means automated test are available, but the implementation is incomplete
+
+    This allows intermediary steps: :material-circle-slice-1: :material-circle-slice-6:
+
+!!! info "Material checkbox circle"
+    * :material-checkbox-blank-circle-outline: means automated tests or builds are not available
+    * :material-checkbox-marked-circle: means automated tests or builds are available
+    * :material-checkbox-blank-circle: means automated test are available, but the implementation is incomplete
+
+!!! info "Octicons circle check 16"
+    * :octicons-circle-slash-16: means automated tests or builds are not available
+    * :octicons-check-circle-16: means automated tests or builds are available
+    * :octicons-circle-16: means automated test are available, but the implementation is incomplete
+
+!!! info "Octicons circle check 24"
+    * :octicons-circle-slash-24: means automated tests or builds are not available
+    * :octicons-check-circle-24: means automated tests or builds are available
+    * :octicons-circle-24: means automated test are available, but the implementation is incomplete
+
+
+!!! note
+    Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
+    that we used as insipration for ours.
