@@ -60,64 +60,12 @@ Most typically, some parts of the standard library are not supported completely.
 | `x86_64-unknown-netbsd` | x64 NetBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
 
-!!! info "Original Unicode icons"
-    * ❌ means automated tests or builds are not available
-    * ✅ means automated tests or builds are available
-    * 🟡 means automated test are available, but the implementation is incomplete
-
-!!! info "Unicode icons without cross"
-    * ⭕ means automated tests or builds are not available
-    * ✅ means automated tests or builds are available
-    * 🟡 means automated test are available, but the implementation is incomplete
-
-!!! info "Temoji circles + checkmark"
-    * :red_circle: means automated tests or builds are not available
-    * :white_check_mark: means automated tests or builds are available
-    * :yellow_circle: means automated test are available, but the implementation is incomplete
-
-!!! info "Temoji circles"
-    * :red_circle: means automated tests or builds are not available
-    * :green_circle: means automated tests or builds are available
-    * :yellow_circle: means automated test are available, but the implementation is incomplete
-
-!!! info "Material checkbock outline"
-    * :material-checkbox-blank-off-outline: means automated tests or builds are not available
-    * :material-checkbox-outline: means automated tests or builds are available
-    * :material-checkbox-blank-outline: means automated test are available, but the implementation is incomplete
-
-!!! info "Material checkbox"
-    * :material-checkbox-blank-off: means automated tests or builds are not available
-    * :material-checkbox-marked: means automated tests or builds are available
-    * :material-checkbox-blank: means automated test are available, but the implementation is incomplete
-
-!!! info "Material circle"
-    * :material-circle-outline: means automated tests or builds are not available
-    * :material-circle-slice-8: means automated tests or builds are available
-    * :material-circle-slice-4: means automated test are available, but the implementation is incomplete
-
-    This allows intermediary steps: :material-circle-slice-1: :material-circle-slice-6:
-
-!!! info "Material checkbox circle"
-    * :material-checkbox-blank-circle-outline: means automated tests or builds are not available
-    * :material-checkbox-marked-circle: means automated tests or builds are available
-    * :material-checkbox-blank-circle: means automated test are available, but the implementation is incomplete
-
-!!! info "Material combined"
+!!! info "Legend"
     * :material-selection-ellipse: means automated tests or builds are not available
     * :material-checkbox-marked-circle: means automated tests or builds are available
     * :material-circle-slice-5: means automated test are available, but the implementation is incomplete
 
     This allows intermediary steps: :material-circle-slice-1: :material-circle-slice-6:
-
-!!! info "Octicons circle check 16"
-    * :octicons-circle-slash-16: means automated tests or builds are not available
-    * :octicons-check-circle-16: means automated tests or builds are available
-    * :octicons-circle-16: means automated test are available, but the implementation is incomplete
-
-!!! info "Octicons circle check 24"
-    * :octicons-circle-slash-24: means automated tests or builds are not available
-    * :octicons-check-circle-24: means automated tests or builds are available
-    * :octicons-circle-24: means automated test are available, but the implementation is incomplete
 
 
 !!! note
