@@ -404,6 +404,46 @@ private def method
 end
 ```
 
+### Hash syntax from Ruby to Crystal
+
+Crystal introduces a data type that is not available in Ruby, the Tuple.
+
+Typically in Ruby you can define a hash with several syntaxes:
+
+```ruby
+# A valid ruby hash declaration
+{ 
+  key1: "some value",
+  some_key2: "second value"
+}
+
+# This syntax in ruby is shorthand for the hash rocket => syntax
+{
+  :key1 => "some value",
+  :some_key2 => "second value"
+}
+```
+
+In Crystal, this is not the case. The hash rocket `=>` syntax is required to declare a hash in Crystal.
+
+```crystal
+# Creates a valid hash in Crystal
+{
+  :key1 => "some value",
+  :some_key2 => "second value"
+}
+
+# Creates a NamedTuple in Crystal
+{ 
+  key1: "some value",
+  some_key2: "second value"
+}
+```
+However, the hash shorthand syntax in Ruby creates a Tuple in Crystal, specifically a [NamedTuple](https://crystal-lang.org/api/latest/NamedTuple.html).
+
+Tuples are a fixed size, so these are best used for data structures that are known at compile time.
+
+
 ### Pseudo Constants
 
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
