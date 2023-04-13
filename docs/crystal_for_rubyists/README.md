@@ -427,7 +427,7 @@ Typically in Ruby you can define a hash with several syntaxes:
 In Crystal, this is not the case. The hash rocket `=>` syntax is required to declare a hash in Crystal.
 
 ```crystal
-# Creates a valid hash in Crystal
+# Creates a valid `Hash(Symbol, String)` in Crystal
 {
   :key1 => "some value",
   :some_key2 => "second value"
