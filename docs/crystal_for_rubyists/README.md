@@ -444,7 +444,6 @@ However, the hash shorthand syntax in Ruby creates a [NamedTuple](https://crysta
 
 Tuples are a fixed size, so these are best used for data structures that are known at compile time.
 
-
 ### Pseudo Constants
 
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
