@@ -315,7 +315,7 @@ foo(x: 1)        # => NamedTuple(x: Int32)
 foo()            # => NamedTuple()
 ```
 
-Additionally, splat restrictions may be used inside a generic type as well, to extract multiple type arguments at once:
+Additionally, single splat restrictions may be used inside a generic type as well, to extract multiple type arguments at once:
 
 ```crystal
 def foo(x : Proc(*T, Int32)) forall T
