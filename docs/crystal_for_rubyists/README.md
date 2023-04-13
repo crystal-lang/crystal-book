@@ -406,7 +406,7 @@ end
 
 ### Hash syntax from Ruby to Crystal
 
-Crystal introduces a data type that is not available in Ruby, the Tuple.
+Crystal introduces a data type that is not available in Ruby, the NamedTuple.
 
 Typically in Ruby you can define a hash with several syntaxes:
 
