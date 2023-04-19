@@ -131,7 +131,7 @@ Prints the version of the shard.
 
 A `shard.override.yml` file allows overriding the source and restriction of dependencies. An alternative location can be configured with the env var `SHARDS_OVERRIDE`.
 
-The file contains a YAML document with a single dependencies key. It has the same semantics as in shard.yml. Dependency configuration takes precedence over the configuration in shard.yml or any dependency’s shard.yml.
+The file contains a YAML document with a single `dependencies` key. It has the same semantics as in `shard.yml`. Dependency configuration takes precedence over the configuration in `shard.yml` or any dependency’s `shard.yml`.
 
 Use cases are local working copies, forcing a specific dependency version despite mismatching constraints, fixing a dependency, checking compatibility with unreleased dependency versions.
 
