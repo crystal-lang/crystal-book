@@ -16,7 +16,7 @@ Some package managers provide specific packages for static libraries, where `foo
 
 A fully statically linked program has no dynamic library dependencies at all. This is useful for delivering portable, pre-compiled binaries. Prominent examples of fully statically linked Crystal programs are the `crystal` and `shards` binaries from the official distribution packages.
 
-In order to link a program fully statically, all dependencies need to be available as static libraries at compiler time. This can be tricky sometimes, especially with common `libc` libraries.
+In order to link a program fully statically, all dependencies need to be available as static libraries at compile time. This can be tricky sometimes, especially with common `libc` libraries.
 
 ### Linux
 
