@@ -65,6 +65,14 @@ LUCKY_NUMBERS     = [3, 7, 11]
 DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 ```
 
+**Exception messages** are Sentence cased, although code or acronyms may start a message in lowercase. For example:
+
+```crystal
+raise ArgumentError.new("Cannot create a string with a null pointer")
+raise RuntimeError.new("getpeername failed")
+{% raise "Expected size to be an integer literal" %}
+```
+
 ### Acronyms
 
 In class names, acronyms are *all-uppercase*. For example, `HTTP`, and `LibXML`.
