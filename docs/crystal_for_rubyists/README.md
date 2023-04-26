@@ -440,7 +440,7 @@ In Crystal, this is not the case. The hash rocket `=>` syntax is required to dec
 }
 ```
 
-However, the hash shorthand syntax in Ruby creates a [NamedTuple](https://crystal-lang.org/api/latest/NamedTuple.html) in Crystal.
+However, the hash shorthand syntax in Ruby creates a [`NamedTuple`](https://crystal-lang.org/api/NamedTuple.html) in Crystal.
 
 `NamedTuple`s and regular [`Tuple`s](https://crystal-lang.org/api/Tuple.html) have a fixed size, so these are best used for data structures that are known at compile time.
 
