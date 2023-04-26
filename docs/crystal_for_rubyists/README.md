@@ -406,7 +406,7 @@ end
 
 ### Hash syntax from Ruby to Crystal
 
-Crystal introduces a data type that is not available in Ruby, the NamedTuple.
+Crystal introduces a data type that is not available in Ruby, the [`NamedTuple`](https://crystal-lang.org/api/NamedTuple.html).
 
 Typically in Ruby you can define a hash with several syntaxes:
 
@@ -424,7 +424,9 @@ Typically in Ruby you can define a hash with several syntaxes:
 }
 ```
 
-In Crystal, this is not the case. The hash rocket `=>` syntax is required to declare a hash in Crystal.
+In Crystal, this is not the case. The `Hash` rocket `=>` syntax is required to declare a hash in Crystal.
+
+However, the `Hash` shorthand syntax in Ruby creates a `NamedTuple` in Crystal.
 
 ```crystal
 # Creates a valid `Hash(Symbol, String)` in Crystal
@@ -433,14 +435,12 @@ In Crystal, this is not the case. The hash rocket `=>` syntax is required to dec
   :some_key2 => "second value"
 }
 
-# Creates a NamedTuple in Crystal
+# Creates a `NamedTuple(Symbol, String)` in Crystal
 { 
   key1: "some value",
   some_key2: "second value"
 }
 ```
-
-However, the hash shorthand syntax in Ruby creates a [`NamedTuple`](https://crystal-lang.org/api/NamedTuple.html) in Crystal.
 
 `NamedTuple`s and regular [`Tuple`s](https://crystal-lang.org/api/Tuple.html) have a fixed size, so these are best used for data structures that are known at compile time.
 
