@@ -194,7 +194,7 @@ Three base operators test equality:
 * `=~`: Checks whether the value of the first operand matches the value of the
 second operand with pattern matching.
 * `===`: Checks whether the left hand operand matches the right hand operand in
-  [case equality](case.md). This operator is applied in `case ... when`
+  [case subsumption](case.md). This operator is applied in `case ... when`
   conditions.
 
 The first two operators also have inversion operators (`!=` and `!~`) whose
@@ -210,7 +210,7 @@ proven faster than equality).
 | `!=` | not equals | `1 != 2` | yes | left |
 | `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
 | `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
-| `===` | [case equality](case.md) | `/foo/ === "foo"` | yes | left |
+| `===` | [case subsumption](case.md) | `/foo/ === "foo"` | yes | left |
 
 #### Comparison
 
