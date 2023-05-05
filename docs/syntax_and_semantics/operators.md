@@ -119,7 +119,7 @@ ones.
 | Shift | `<<`, `>>` |
 | Binary AND | `&` |
 | Binary OR/XOR | `|`,`^` |
-| Equality | `==`, `!=`, `=~`, `!~`, `===` |
+| Equality and Subsumption | `==`, `!=`, `=~`, `!~`, `===` |
 | Comparison | `<`, `<=`, `>`, `>=`, `<=>` |
 | Logical AND | `&&` |
 | Logical OR | `||` |
@@ -184,35 +184,48 @@ ones.
 | `|` | binary OR | `1 | 2` | yes | left |
 | `^` | binary XOR | `1 ^ 2` | yes | left |
 
-### Equality and Comparison
+### Relational operators
+
+<span id="equality-and-comparison" />
+
+Relational operators test a relation between two values.
+They include *equality* and *inequalities* and *subsumption*.
 
 #### Equality
 
-Three base operators test equality:
+The **equal operator** `==` checks whether the values of the operands are
+considered equal.
 
-* `==`: Checks whether the values of the operands are equal
-* `=~`: Checks whether the value of the first operand matches the value of the
-second operand with pattern matching.
-* `===`: Checks whether the left hand operand matches the right hand operand in
-  [case subsumption](case.md). This operator is applied in `case ... when`
-  conditions.
+The **not-equal operator** `!=` is a shortcut to express the inversion: `a != b`
+is supposed to be equivalent to `!(a == b)`.
 
-The first two operators also have inversion operators (`!=` and `!~`) whose
-semantical intention is just the inverse of the base operator: `a != b` is
-supposed to be equivalent to `!(a == b)` and `a !~ b` to `!(a =~ b)`.
-Nevertheless, these inversions can be defined with a custom implementation. This
-can be useful for example to improve performance (non-equality can often be
-proven faster than equality).
+Types that implement the not-equal operator must make sure to adhere to this.
+Special implementations can be useful for performance reasons because
+inequality can often be proven faster than equality.
+
+Both operators are expected to be commutative, i.e. `a == b` if and only if
+`b == a`. This is not enforced by the compiler and implementing types must
+take care themselves.
 
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
-| `==` | equals | `1 == 2` | yes | left |
-| `!=` | not equals | `1 != 2` | yes | left |
-| `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
-| `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
-| `===` | [case subsumption](case.md) | `/foo/ === "foo"` | yes | left |
+| `==` | equal | `1 == 2` | yes | left |
+| `!=` | not equal | `1 != 2` | yes | left |
 
-#### Comparison
+> INFO: The standard library defines [`Reference#same?`](https://crystal-lang.org/api/Reference.html#same?(other:Reference):Bool-instance-method) as another equality
+> test that is not an operator.
+> It checks for referential identity which determines whether two values reference
+> the same location in memory.
+
+#### Inequalities
+
+<span id="comparison" />
+
+Inequality operators describe the order between values.
+
+The **three-way comparison operator** `<=>` (also known as *spaceship operator*)
+expresses the total order between two elements expressed by the sign of its
+return value.
 
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
@@ -220,17 +233,46 @@ proven faster than equality).
 | `<=` | less or equal | `1 <= 2` | yes | left |
 | `>` | greater | `1 > 2` | yes | left |
 | `>=` | greater or equal | `1 >= 2` | yes | left |
-| `<=>` | comparison | `1 <=> 2` | yes | left |
+| `<=>` | three-way comparison | `1 <=> 2` | yes | left |
 
-#### Chaining Equality and Comparison
+> INFO: The standard library defines the [`Comparable`](https://crystal-lang.org/api/Comparable.html) module which derives all other inequality operators as well as
+> the equal operator from the three-way comparison operator.
 
-Equality and comparison operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=`
+#### Subsumption
+
+The **pattern match operator** `=~` checks whether the value of the first operand
+matches the value of the second operand with pattern matching.
+
+The **no pattern match operator** `!~` expresses the inverse.
+
+The **case subsumption operator** `===` (also, imprecisely called
+*case equality operator* or *triple equals*) checks whether the right hand
+operand is a member of the set described by the left hand operator.
+The exact interpretation varies depending on the involved data types.
+
+The compiler inserts this operator in [`case ... when` conditions](case.md).
+
+There is no inverse operator.
+
+| Operator | Description | Example | Overloadable | Associativity |
+|---|---|---|---|---|
+| `=~` | pattern match | `"foo" =~ /fo/` | yes | left |
+| `!~` | no pattern match | `"foo" !~ /fo/` | yes | left |
+| `===` | case subsumption | `/foo/ === "foo"` | yes | left |
+
+#### Chaining relational operators
+
+<span id="chaining-equality-and-comparison" />
+
+Relational operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=`
 can be chained together and are interpreted as a compound expression.
-For example `a <= b <= c` is treated as `a <= b && b <= c`
-and it is even possible to mix operators of the same
-[operator precedence](#operator-precedence)
-like `a >= b <= c > d`.
-Operators with different precedences can be chained too, however, it is advised to avoid it, since it is makes the code harder to understand. For instance `a == b <= c` is interpreted as `a == b && b <= c`, while `a <= b == c` is interpreted as `a <= (b == c)`.
+For example `a <= b <= c` is treated as `a <= b && b <= c`.
+It is possible to mix different operators: `a >= b <= c > d` is
+equivalent to `a >= b && b <= c && c > d`.
+
+It is advised to only combine operators of the same
+[precedence class](#operator-precedence) to avoid surprising bind behaviour.
+For instance, `a == b <= c` is equivalent to `a == b && b <= c`, while `a <= b == c` is equivalent to `a <= (b == c)`.
 
 ### Logical
 
