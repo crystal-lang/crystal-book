@@ -109,6 +109,8 @@ The compiler transforms it to an `if` expression.
 This list is sorted by precedence, so upper entries bind stronger than lower
 ones.
 
+<!-- markdownlint-disable no-space-in-code -->
+
 | Category | Operators |
 |---|---|
 | Index accessors | `[]`, `[]?` |
@@ -127,6 +129,8 @@ ones.
 | Conditional | `?:` |
 | Assignment | `=`, `[]=`, `+=`, `&+=`, `-=`, `&-=`, `*=`, `&*=`, `/=`, `//=`, `%=`, `|=`, `&=`,`^=`,`**=`,`<<=`,`>>=`, `||=`, `&&=` |
 | Splat | `*`, `**` |
+
+<!-- markdownlint-enable no-space-in-code -->
 
 ## List of operators
 
