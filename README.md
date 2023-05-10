@@ -26,6 +26,7 @@ Thank you very much!
 ```console
 $ git clone https://github.com/crystal-lang/crystal-book
 $ cd crystal-book
+$ pip install -r requirements.txt
 ```
 
 Live preview (at http://127.0.0.1:8000):
