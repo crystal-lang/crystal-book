@@ -30,6 +30,7 @@ theme:
   logo: assets/crystal-circ.svg
   custom_dir: overrides
   features:
+    - navigation.footer
     - navigation.tabs
 
 extra_css:
