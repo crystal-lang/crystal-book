@@ -431,7 +431,7 @@ However, the `Hash` shorthand syntax in Ruby creates a `NamedTuple` in Crystal.
 ```crystal
 # Creates a valid `Hash(Symbol, String)` in Crystal
 {
-  :key1 => "some value",
+  :key1      => "some value",
   :some_key2 => "second value",
 }
 
