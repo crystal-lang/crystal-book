@@ -224,7 +224,7 @@ take care themselves.
 Inequality operators describe the order between values.
 
 The **three-way comparison operator** `<=>` (also known as *spaceship operator*)
-expresses the total order between two elements expressed by the sign of its
+expresses the order between two elements expressed by the sign of its
 return value.
 
 | Operator | Description | Example | Overloadable | Associativity |
