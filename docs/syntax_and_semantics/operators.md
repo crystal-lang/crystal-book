@@ -189,7 +189,7 @@ ones.
 <span id="equality-and-comparison" />
 
 Relational operators test a relation between two values.
-They include *equality* and *inequalities* and *subsumption*.
+They include *equality*, *inequalities*, and *subsumption*.
 
 #### Equality
 
