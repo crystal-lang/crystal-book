@@ -1,6 +1,6 @@
 # Generics
 
-Generics allow you to parameterize a type based on other type. Consider a Box type:
+Generics allow you to parameterize a type based on another type. Generics provide type-polymorphism. Consider a Box type:
 
 ```crystal
 class MyBox(T)
@@ -48,9 +48,9 @@ string_box = MyBox.new("hello") # : MyBox(String)
 
 In the above code we didn't have to specify the type arguments of `MyBox`, the compiler inferred them following this process:
 
-* The compiler generates a `MyBox.new(value : T)` method, which has no explicitly defined free variables, from `MyBox#initialize(@value : T)`
-* The `T` in `MyBox.new(value : T)` isn't bound to a type yet, and `T` is a type parameter of `MyBox`, so the compiler binds it to the type of the given argument
-* The compiler-generated `MyBox.new(value : T)` calls `MyBox(T)#initialize(@value : T)`, where `T` is now bound
+- The compiler generates a `MyBox.new(value : T)` method, which has no explicitly defined free variables, from `MyBox#initialize(@value : T)`
+- The `T` in `MyBox.new(value : T)` isn't bound to a type yet, and `T` is a type parameter of `MyBox`, so the compiler binds it to the type of the given argument
+- The compiler-generated `MyBox.new(value : T)` calls `MyBox(T)#initialize(@value : T)`, where `T` is now bound
 
 In this way generic types are less tedious to work with. Note that the `#initialize` method itself does not need to specify any free variables for this to work.
 
