@@ -25,7 +25,7 @@ $ crystal -v
 
 and if we run: `crystal -h`, then Crystal will show all the accepted options and how to use them.
 
-So now the question would be: **do we need to implement an options parser?** No need to, Crystal got us covered with the class `OptionParser`. Let’s build an application using this parser!
+So now the question would be: **do we need to implement an options parser?** No need to, Crystal has us covered with the class `OptionParser`. Let’s build an application using this parser!
 
 At the start our CLI application has two options:
 
