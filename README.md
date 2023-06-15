@@ -26,6 +26,7 @@ Thank you very much!
 ```console
 $ git clone https://github.com/crystal-lang/crystal-book
 $ cd crystal-book
+$ pip install -r requirements.txt
 ```
 
 Live preview (at http://127.0.0.1:8000):
@@ -43,6 +44,59 @@ Build into the `site` directory (some functionality won't work if opening the fi
 
 ```console
 $ make build
+```
+
+### devenv environment
+
+This project includes configuration for a reproducible environment via [devenv.sh](https://devenv.sh/)
+with integrated pre-commit checks.
+
+Live preview (at http://127.0.0.1:8000):
+
+```console
+$ devenv up
+Building shell ...
+pre-commit-hooks.nix: hooks up to date
+17:37:13 system  | serve.1 started (pid=6507)
+17:37:13 serve.1 | INFO     -  Building documentation...
+17:37:13 serve.1 | INFO     -  Cleaning site directory
+17:37:16 serve.1 | INFO     -  Documentation built in 2.64 seconds
+17:37:16 serve.1 | INFO     -  [17:37:16] Watching paths for changes: 'docs', 'mkdocs.yml'
+17:37:16 serve.1 | INFO     -  [17:37:16] Serving on http://127.0.0.1:8000/reference/latest/
+````
+
+Build the site:
+
+```console
+$ devenv shell build
+Building shell ...
+pre-commit-hooks.nix: hooks up to date
+rm -rf ./site
+mkdocs build -d ./site  --strict
+INFO     -  Cleaning site directory
+INFO     -  Building documentation to directory: ./site
+INFO     -  Documentation built in 2.43 seconds
+```
+
+Enter the development shell and build the site from there:
+
+```console
+$ devenv shell
+Building shell ...
+Entering shell ...
+
+pre-commit-hooks.nix: hooks up to date
+$(devenv) make build
+mkdocs build -d ./site  --strict
+INFO     -  Cleaning site directory
+INFO     -  Building documentation to directory: ./site
+INFO     -  Documentation built in 2.43 seconds
+```
+
+Run pre-commit checks on the entire repository:
+
+```console
+$ devenv ci
 ```
 
 ### Adding a page

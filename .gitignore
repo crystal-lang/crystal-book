@@ -1,2 +1,7 @@
 site/
 .venv/
+
+# Devenv
+.devenv*
+devenv.local.nix
+.pre-commit-config.yaml

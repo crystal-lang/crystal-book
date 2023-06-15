@@ -2,8 +2,7 @@
 
 OUTPUT_DIR ?= ./site ## Build directory (default: ./site)
 
-MKDOCS ?= .venv/bin/mkdocs
-PIP ?= .venv/bin/pip
+MKDOCS ?= mkdocs
 
 DOCS_FILES := $(shell find docs -type f)
 
@@ -11,21 +10,13 @@ DOCS_FILES := $(shell find docs -type f)
 build: ## Build website into build directory
 build: $(OUTPUT_DIR)
 
-$(OUTPUT_DIR): $(DOCS_FILES) $(MKDOCS) mkdocs.yml
+$(OUTPUT_DIR): $(DOCS_FILES) mkdocs.yml
 	$(MKDOCS) build -d $(OUTPUT_DIR) --strict
 
 .PHONY: serve
 serve: ## Run live-preview server
-serve: $(MKDOCS) mkdocs.yml
+serve: mkdocs.yml
 	$(MKDOCS) serve
-
-deps: $(MKDOCS)
-
-$(MKDOCS): $(PIP) requirements.txt
-	$(PIP) install -q --no-deps -r requirements.txt && touch $(MKDOCS)
-
-$(PIP):
-	python3 -m venv .venv
 
 .PHONY: vendor
 vendor: ## Install assets from external sources
@@ -60,16 +51,12 @@ docs/assets/vendor/ansi_up/%:
 clean: ## Remove build directory
 	rm -rf $(OUTPUT_DIR)
 
-.PHONY: clean_deps
-clean_deps: ## Remove .venv directory
-	rm -rf .venv
-
 .PHONY: clean_vendor
 clean_vendor: ## Remove docs/assets/vendor directory
 	rm -rf docs/assets/vendor
 
 .PHONY: clean_all
-clean_all: clean clean_deps clean_vendor
+clean_all: clean clean_vendor
 
 .PHONY: format_api_docs_links
 format_api_docs_links:
