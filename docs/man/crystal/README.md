@@ -85,6 +85,7 @@ Not all of these files are required for every project, and some might need more 
 * [`crystal run`](#crystal-run): build and run program
 * [`crystal spec`](#crystal-spec): build and run specs
 * [`crystal tool`](#crystal-tool): run a compiler tool
+* [`crystal clear_cache`](#crystal-clear_cache): clear the compiler cache
 * `crystal help`: show help about commands and options
 * [`crystal version`](#crystal-version): show version
 
@@ -369,6 +370,10 @@ crystal tool format [--check] [<path>...]
 specifying the current working directory.
 
 The formatter also applies to Crystal code blocks in comments (see [*Documenting Code*](../../syntax_and_semantics/documenting_code.md)).
+
+### `crystal clear_cache`
+
+Clears the compiler cache located at [`CRYSTAL_CACHE_DIR`](#environment-variables).
 
 ## Environment variables
 
