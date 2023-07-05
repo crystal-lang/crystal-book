@@ -273,12 +273,14 @@ Example:
 
 ```console
 $ crystal env
-CRYSTAL_CACHE_DIR="/home/crystal/.cache/crystal"
-CRYSTAL_PATH="/usr/bin/../share/crystal/src:lib"
-CRYSTAL_VERSION="0.28.0"
-CRYSTAL_LIBRARY_PATH="/usr/bin/../lib/crystal/lib"
+CRYSTAL_CACHE_DIR=/home/crystal/.cache/crystal
+CRYSTAL_PATH=lib:/usr/bin/../share/crystal/src
+CRYSTAL_VERSION=1.9.0
+CRYSTAL_LIBRARY_PATH=/usr/bin/../lib/crystal
+CRYSTAL_LIBRARY_RPATH=''
+CRYSTAL_OPTS=''
 $ crystal env CRYSTAL_VERSION
-0.28.0
+1.9.0
 ```
 
 ### `crystal spec`

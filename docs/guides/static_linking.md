@@ -56,6 +56,14 @@ Alpine’s package manager APK is also easy to work with to install static libra
 
 macOS doesn't [officially support fully static linking](https://developer.apple.com/library/content/qa/qa1118/_index.html) because the required system libraries are not available as static libraries.
 
+### Windows
+
+Windows doesn't support fully static linking Because the Win32 libraries are not available as static libraries.
+
+Currently, static linking is the default mode of linking on Windows, and dynamic linking can be opted in via the `-Dpreview_dll` compile-time flag. In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows packages are distributed with both static and import libraries for all third-party dependencies, except for LLVM.
+
+Static linking implies using the static version of Microsoft's C runtime library (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+
 ## Identifying Static Dependencies
 
 If you want to statically link dependencies, you need to have their static libraries available.
@@ -63,11 +71,11 @@ Most systems don't install static libraries by default, so you need to install t
 First you have to know which libraries your program links against.
 
 NOTE:
-Static libraries have the file extension `.a` on POSIX and `.lib` on Windows.
+Static libraries have the file extension `.a` on POSIX and `.lib` on Windows. DLL import libraries on Windows also have the `.lib` extension.
 Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
 
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
-on macOS is `otool -L`.
+on macOS is `otool -L` and the equivalent on Windows is `dumpbin /dependents`.
 
 The following example shows the output of `ldd` for a simple *Hello World* program built with Crystal 0.36.1 and LLVM 10.0 on Ubuntu 18.04 LTS (in the `crystallang/crystal:0.36.1` docker image). The result varies on other systems and versions.
 
@@ -108,3 +116,19 @@ In order to link this program statically, we need static versions of these three
 NOTE:
 The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
 If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.
+
+## Dynamic library lookup
+
+The lookup paths of dynamic libraries at runtime can be controlled by the `CRYSTAL_LIBRARY_RPATH` environment variable during compilation. Currently this is supported on Linux and Windows.
+
+### Linux
+
+If `CRYSTAL_LIBRARY_RPATH` is defined during compilation, it is passed unmodified to the linker via an `-Wl,rpath` option. The exact behavior depends on the linker; usually, this is appended to the ELF executable's `DT_RUNPATH` or `DT_RPATH` dynamic tag entry. The special `$ORIGIN` / `$LIB` / `$PLATFORM` variables might not be supported on all platforms.
+
+### Windows
+
+The first time an executable loads a symbol from a DLL, the DLL is searched among the semicolon-separated paths in `CRYSTAL_LIBRARY_RPATH`, in the order they are declared, before the [default lookup order](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order#search-order-for-unpackaged-apps). `$ORIGIN` expands to the path of the running executable itself. For example, if the executable is located at `C:\foo\test.exe`, and `CRYSTAL_LIBRARY_RPATH=$ORIGIN\mylibs;C:\bar` during compilation, then DLLs are first searched in `C:\foo\mylibs`, then in `C:\bar`.
+
+The above search is performed inside a custom DLL delay-load routine implemented in the standard library. The compiler detects all DLL dependencies from their import libraries, inserting a `/DELAYLOAD` linker flag per DLL during compilation. The flags can be suppressed by using the `-Dno_win32_delay_load` compile-time flag, although the routine still remains available, so that individual libraries can be delay-loaded via explicit linker flags. Non-delay-loaded DLLs are loaded immediately upon program startup instead.
+
+When Crystal runs a file directly, e.g. `crystal run` or `crystal spec`, it uses the same mechanism to append the compiler's own directory to the `CRYSTAL_LIBRARY_RPATH` of the temporary executable. This allows the executable to pick up DLLs distributed along the compiler even when the compiler itself is not within `PATH`.
