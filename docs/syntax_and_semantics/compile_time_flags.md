@@ -142,7 +142,7 @@ true
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 | `preview_dll` | Enable dynamic linking on Windows; experimental |
-| `no_win32_delay_load` | Do not automatically delay-load all DLLs on Windows |
+| `preview_win32_delay_load` | Delay-load all DLLs on Windows; experimental |
 
 ### User code features
 
