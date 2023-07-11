@@ -20,11 +20,11 @@ or [`OpenSSL::Digest#finalize`](https://crystal-lang.org/api/OpenSSL/Digest.html
 
 **Notes**:
 
-- The `finalize` method will only be invoked once the object has been
+* The `finalize` method will only be invoked once the object has been
 fully initialized via the `initialize` method. If an exception is raised
 inside the `initialize` method, `finalize` won't be invoked. If your class
 defines a `finalize` method, be sure to catch any exceptions that might be
 raised in the `initialize` methods and free resources.
 
-- Allocating any new object instances during garbage-collection might result
+* Allocating any new object instances during garbage-collection might result
 in undefined behavior and most likely crashing your program.
