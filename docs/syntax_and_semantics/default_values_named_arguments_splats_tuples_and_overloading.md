@@ -148,7 +148,7 @@ def plan(begin begin_time, end end_time)
   puts "Planning between #{begin_time} and #{end_time}"
 end
 
-plan begin: Time.now, end: 2.days.from_now
+plan begin: Time.local, end: 2.days.from_now
 ```
 
 The second use case is making a method parameter more readable inside a method body:
