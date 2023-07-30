@@ -33,6 +33,14 @@ theme:
     - navigation.footer
     - navigation.tabs
 
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
+exclude_docs: |
+  SUMMARY.md
+
 extra_css:
   - assets/vendor/codemirror/codemirror.min.css
   - assets/style.css
@@ -85,7 +93,10 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
+      base_path:
+        - !relative $config_dir
   - callouts
   - toc:
       permalink: true
