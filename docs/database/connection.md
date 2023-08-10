@@ -6,7 +6,7 @@ In Crystal we have two ways of building this connection. And so, coming up next,
 
 ## DB module
 
-> *Give me a place to stand, and I shall move the earth.*  
+> *Give me a place to stand, and I shall move the earth.*
 > Archimedes
 
 The DB module, is our place to stand when working with databases in Crystal. As written in the documentation: *is a unified interface for database access*.
@@ -149,3 +149,29 @@ As we may notice, the `database` is polymorphic with a `connection` object with 
 Given the examples, it may come to our attention that **the number of connections is relevant**.
 If we are programming a short living application with only one user starting requests to the  database then a single connection managed by us (i.e. a `DB::Connection` object) should be enough (think of a command line application that receives parameters, then starts a request to the database and finally displays the result to the user)
 On the other hand, if we are building a system with many concurrent users and with heavy database access, then we should use a `DB::Database` object; which by using a connection pool will have a number of connections already prepared and ready to use (no bootstrap/initialization-time penalizations). Or imagine that you are building a long-living application (like a background job) then a connection pool will free you from the responsibility of monitoring the state of the connection: is it alive or does it need to reconnect?
+
+## Connection Configuration
+
+When using an `uri` to create a connection, we can specify not only the user, password, host, database, etc. but also some connection pool configuration and some custom options provided by each driver. Check each driver's documentation for more information.
+
+To mention a few examples:
+
+* [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) allows specifying `?journal_mode=WAL` to setup the [journal_mode](https://www.sqlite.org/pragma.html#pragma_journal_mode) to `WAL`.
+* [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) allows specifying `?encoding=utf8mb4_unicode_ci` to setup the collation & charset to `utf8mb4_unicode_ci`.
+* [will/crystal-pg](https://github.com/will/crystal-pg) allows specifying `?auth_methods=scram-sha-256` to allow only `scram-sha-256` authentication method.
+
+### Advanced Connection Setup
+
+In some cases the flexibility of the `uri` might not be enough. We can manually create a connection object or a database object if we want a connection pool. Each driver will provide a way to do this since each driver may have different options.
+
+```crystal
+# for a single connection
+connection = TheDriver::Connection.new(crystal_db_connection_options, driver_connection_options)
+
+# for a connection pool
+db = DB::Database.new(crystal_db_connection_options, crystal_db_pool_options) do
+  TheDriver::Connection.new(crystal_db_connection_options, driver_connection_options)
+end
+```
+
+In [crystal-db#181](https://github.com/crystal-lang/crystal-db/pull/181) we can see an example of using crystal-pg to connect to a postgres database through a SSH tunnel by manually creating the underlying `IO` that the connection will use.
