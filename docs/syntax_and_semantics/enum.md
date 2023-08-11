@@ -137,4 +137,4 @@ paint :red # automatically casts to `Color::Red`
 paint :yellow
 ```
 
-The same automatic casting does not apply to case statements. To use enums with case statements, see [case enum values](case.html#enum-values).
+The same automatic casting does not apply to case statements. To use enums with case statements, see [case enum values](case.md#enum-values).
