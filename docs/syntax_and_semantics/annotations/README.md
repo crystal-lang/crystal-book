@@ -194,7 +194,7 @@ Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Cryst
 
 NOTE: If multiple annotations of the same type are applied, the `.annotation` method will return the *last* one.
 
-The [`@type`](../macros/#type-information) and [`@def`](../macros/#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
+The [`@type`](../macros/README.md#type-information) and [`@def`](../macros/README.md#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
 TIP: Checkout the [`parse_type`](../macros/README.md#parse_type) method for a more advanced way to obtain a `TypeNode`.
 
