@@ -1,6 +1,7 @@
 # Enums
 
-This page is for [Crystal enums](https://crystal-lang.org/api/Enum.html). For C enums, see [C bindings enum](c_bindings/enum.md).
+!!! note
+    This page is for [Crystal enums](https://crystal-lang.org/api/Enum.html). For C enums, see [C bindings enum](c_bindings/enum.md).
 
 An enum is a set of integer values, where each value has an associated name. For example:
 
