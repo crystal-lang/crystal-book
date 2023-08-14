@@ -131,11 +131,7 @@ paint Color::Red
 
 paint :red # automatically casts to `Color::Red`
 
-# compile-time error:
-#   expected argument #1 to 'paint' to match a member of enum Color
-#
-#   Options are: :red, :green and :blue
-paint :yellow
+paint :yellow # Error: expected argument #1 to 'paint' to match a member of enum Color
 ```
 
 The same automatic casting does not apply to case statements. To use enums with case statements, see [case enum values](case.md#enum-values).
