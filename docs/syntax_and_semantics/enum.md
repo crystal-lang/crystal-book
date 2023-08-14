@@ -120,7 +120,7 @@ Class variables are allowed, but instance variables are not.
 
 ## Usage
 
-When a method parameter has an enum [type restriction](type_restrictions.md), it accepts either an enum constant or a Symbol. The Symbol will be automatically cast to an enum constant, raising a compile-time error if casting fails.
+When a method parameter has an enum [type restriction](type_restrictions.md), it accepts either an enum constant or a [symbol](literals/symbol.md). The symbol will be automatically cast to an enum constant, raising a compile-time error if casting fails.
 
 ```crystal
 def paint(color : Color)
