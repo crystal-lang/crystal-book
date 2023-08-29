@@ -1,5 +1,8 @@
 # Enums
 
+!!! note
+    This page is for [Crystal enums](https://crystal-lang.org/api/Enum.html). For C enums, see [C bindings enum](c_bindings/enum.md).
+
 An enum is a set of integer values, where each value has an associated name. For example:
 
 ```crystal
@@ -117,37 +120,18 @@ Class variables are allowed, but instance variables are not.
 
 ## Usage
 
-Enums are a type-safe alternative to [Symbol](https://crystal-lang.org/api/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.md) using an enum type:
+When a method parameter has an enum [type restriction](type_restrictions.md), it accepts either an enum constant or a [symbol](literals/symbol.md). The symbol will be automatically cast to an enum constant, raising a compile-time error if casting fails.
 
 ```crystal
 def paint(color : Color)
-  case color
-  when Color::Red
-    # ...
-  else
-    # Unusual, but still can happen
-    raise "unknown color: #{color}"
-  end
+  puts "Painting using the color #{color}"
 end
 
 paint Color::Red
+
+paint :red # automatically casts to `Color::Red`
+
+paint :yellow # Error: expected argument #1 to 'paint' to match a member of enum Color
 ```
 
-The above could also be implemented with a Symbol:
-
-```crystal
-def paint(color : Symbol)
-  case color
-  when :red
-    # ...
-  else
-    raise "unknown color: #{color}"
-  end
-end
-
-paint :red
-```
-
-However, if the programmer makes a typo, say `:reed`, the error will only be caught at runtime, while attempting to use `Color::Reed` will result in a compile-time error.
-
-The recommended thing to do is to use enums whenever possible, only use symbols for the internal implementation of an API, and avoid symbols for public APIs. But you are free to do what you want.
+The same automatic casting does not apply to case statements. To use enums with case statements, see [case enum values](case.md#enum-values).
