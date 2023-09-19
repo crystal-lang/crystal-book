@@ -38,7 +38,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 These libraries are required by different parts of the standard library, only when explicitly used.
 
-### Regular Exception engine
+### Regular Expression engine
 
 Engine implementation for the [`Regex`](https://crystal-lang.org/api/Regex.html) class.
 PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Regex documentation](../syntax_and_semantics/literals/regex.md)).
