@@ -1,7 +1,7 @@
 site_name: Crystal
 site_url: https://crystal-lang.org/reference/latest/
 repo_url: https://github.com/crystal-lang/crystal
-edit_uri: https://github.com/crystal-lang/crystal-book/tree/master/docs/
+edit_uri: https://github.com/crystal-lang/crystal-book/edit/master/docs/
 use_directory_urls: false
 
 extra:
@@ -26,10 +26,13 @@ theme:
     accent: blue
   icon:
     repo: fontawesome/brands/github
+    edit: material/pencil
+
   favicon: https://crystal-lang.org/favicon.ico
   logo: assets/crystal-circ.svg
   custom_dir: overrides
   features:
+    - content.action.edit
     - navigation.footer
     - navigation.tabs
 
