@@ -35,14 +35,18 @@ Additionally, fresh variables with respect to some other AST node can be declare
 macro fresh_vars_sample(*names)
   # First declare vars
   {% for name, index in names %}
-    print "Declaring: ", "%name{index}", '\n'
+    print "Declaring: ", stringify(%name{index}), '\n'
     %name{index} = {{index}}
   {% end %}
 
   # Then print them
   {% for name, index in names %}
-    print "%name{index}: ", %name{index}, '\n'
+    print stringify(%name{index}), ": ", %name{index}, '\n'
   {% end %}
+end
+
+macro stringify(var)
+  {{ var.stringify }}
 end
 
 fresh_vars_sample a, b, c
