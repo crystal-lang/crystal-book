@@ -379,11 +379,16 @@ Options:
 * `-fFORMAT`, `--format=FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
 * `-iPATH`, `--include=PATH`: Include path in output.
 * `-ePATH`, `--exclude=PATH`: Exclude path in output.
+* `--verbose`: Show skipped and heads of filtered paths
 * `--error-trace`: Show full error trace.
-* `--prelude`: Specify prelude to use. The default one initializes the garbage
+* `-h`, `--help`: Show this message
+* `--prelude PATH`: Specify prelude to use. The default one initializes the garbage
   collector. You can also use `--prelude=empty` to use no preludes. This can be
   useful for checking code generation for a specific source code file.
-* `--verbose`: Show skipped and heads of filtered paths
+* `-s`, `--stats`: Enable statistics output
+* `-p`, `--progress`: Enable progress output
+* `-t`, `--time`: Enable execution time output
+* `--stdin-filename`: Source file name to be read from STDIN
 
 ### `crystal tool format`
 
@@ -413,13 +418,13 @@ column is the length in lines.
 Options:
 
 * `-D FLAG`, `--define FLAG`: Define a compile-time flag
-* `-f text|json`, `--format text|json`: Output format `text` (default) or `json`
+* `-f FORMAT`, `--format FORMAT`: Output format `text` (default) or `json`
 * `--error-trace`: Show full error trace
 * `-h`, `--help`: Show this message
-* `-i <path>`, `--include <path>`: Include path
-* `-e <path>`, `--exclude <path>`: Exclude path (default: `lib`)
+* `-i PATH`, `--include PATH`: Include path
+* `-e PATH`, `--exclude PATH`: Exclude path (default: `lib`)
 * `--no-color`: Disable colored output
-* `--prelude`: Use given file as prelude
+* `--prelude PATH`: Use given file as prelude
 * `-s`, `--stats`: Enable statistics output
 * `-p`, `--progress`: Enable progress output
 * `-t`, `--time`: Enable execution time output
