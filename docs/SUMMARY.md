@@ -131,6 +131,7 @@
         * [Connection](database/connection.md)
         * [Connection pool](database/connection_pool.md)
         * [Transactions](database/transactions.md)
+    * [Profiling](guides/profiling.md)
     * [Coding style](conventions/coding_style.md)
 * [Tutorials](tutorials/README.md)
     * [Getting started](getting_started/README.md)
