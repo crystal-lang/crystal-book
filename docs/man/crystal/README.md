@@ -372,13 +372,13 @@ crystal tool dependencies [options] [programfile]
 
 Options:
 
-* `-DFLAG`, `--define=FLAG`: Define a compile-time flag. This is useful to
+* `-D FLAG`, `--define FLAG`: Define a compile-time flag. This is useful to
   conditionally define types, methods, or commands based on flags available at
   compile time. The default flags are from the target triple given with
   `--target-triple` or the hosts default, if none is given.
-* `-fFORMAT`, `--format=FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
-* `-iPATH`, `--include=PATH`: Include path in output.
-* `-ePATH`, `--exclude=PATH`: Exclude path in output.
+* `-f FORMAT`, `--format FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
+* `-i PATH`, `--include PATH`: Include path in output.
+* `-e PATH`, `--exclude PATH`: Exclude path in output.
 * `--verbose`: Show skipped and heads of filtered paths
 * `--error-trace`: Show full error trace.
 * `-h`, `--help`: Show this message
