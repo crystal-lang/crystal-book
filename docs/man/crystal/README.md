@@ -354,11 +354,41 @@ crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 ### `crystal tool`
 
 * `crystal tool context`: Show context for given location
+* [`crystal tool dependencies`](#crystal-tool-dependencies): Show tree of required source files
 * `crystal tool expand`: Show macro expansion for given location
 * [`crystal tool format`](#crystal-tool-format): Format Crystal files
 * `crystal tool hierarchy`: Show type hierarchy
 * `crystal tool implementations`: Show implementations for given call in location
 * `crystal tool types`: Show types of main variables
+* [`crystal tool unreachable`](#crystal-tool-unreachable): Show methods that are never called.
+
+### `crystal tool dependencies`
+
+Show tree of required source files.
+
+```
+crystal tool dependencies [options] [programfile]
+```
+
+Options:
+
+* `-D FLAG`, `--define FLAG`: Define a compile-time flag. This is useful to
+  conditionally define types, methods, or commands based on flags available at
+  compile time. The default flags are from the target triple given with
+  `--target-triple` or the hosts default, if none is given.
+* `-f FORMAT`, `--format FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
+* `-i PATH`, `--include PATH`: Include path in output.
+* `-e PATH`, `--exclude PATH`: Exclude path in output.
+* `--verbose`: Show skipped and heads of filtered paths
+* `--error-trace`: Show full error trace.
+* `-h`, `--help`: Show this message
+* `--prelude PATH`: Specify prelude to use. The default one initializes the garbage
+  collector. You can also use `--prelude=empty` to use no preludes. This can be
+  useful for checking code generation for a specific source code file.
+* `-s`, `--stats`: Enable statistics output
+* `-p`, `--progress`: Enable progress output
+* `-t`, `--time`: Enable execution time output
+* `--stdin-filename`: Source file name to be read from STDIN
 
 ### `crystal tool format`
 
@@ -372,6 +402,33 @@ crystal tool format [--check] [<path>...]
 specifying the current working directory.
 
 The formatter also applies to Crystal code blocks in comments (see [*Documenting Code*](../../syntax_and_semantics/documenting_code.md)).
+
+### `crystal tool unreachable`
+
+Show methods that are never called.
+
+```
+crystal tool unreachable [options] [programfile]
+```
+
+The output is a list of lines with columns separated by tab. The first column is
+the location of the def, the second column its reference name and the third
+column is the length in lines.
+
+Options:
+
+* `-D FLAG`, `--define FLAG`: Define a compile-time flag
+* `-f FORMAT`, `--format FORMAT`: Output format `text` (default) or `json`
+* `--error-trace`: Show full error trace
+* `-h`, `--help`: Show this message
+* `-i PATH`, `--include PATH`: Include path
+* `-e PATH`, `--exclude PATH`: Exclude path (default: `lib`)
+* `--no-color`: Disable colored output
+* `--prelude PATH`: Use given file as prelude
+* `-s`, `--stats`: Enable statistics output
+* `-p`, `--progress`: Enable progress output
+* `-t`, `--time`: Enable execution time output
+* `--stdin-filename`: Source file name to be read from STDIN
 
 ### `crystal clear_cache`
 
