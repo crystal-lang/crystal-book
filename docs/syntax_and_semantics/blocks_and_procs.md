@@ -455,6 +455,35 @@ end
 
 That means that any type that responds to `[]` with integers can be unpacked in a block parameter.
 
+Parameter unpacking can be nested.
+
+```crystal
+ary = [
+  {1, {2, {3, 4}}},
+]
+
+ary.each do |(w, (x, (y, z)))|
+  w # => 1
+  x # => 2
+  y # => 3
+  z # => 4 
+end
+```
+
+Splat parameters are supported.
+
+```crystal
+ary = [
+  [1, 2, 3, 4, 5],
+]
+
+ary.each do |(x, *y, z)|
+  x # => 1
+  y # => [2, 3, 4]
+  z # => 5
+end
+```
+
 For [Tuple](https://crystal-lang.org/api/Tuple.html) parameters you can take advantage of auto-splatting and do not need parentheses:
 
 ```crystal
