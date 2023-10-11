@@ -1,6 +1,6 @@
 # The shard `perf_tools`: profiling memory and fibers
 
-The shard [perf-tools](https://github.com/crystal-lang/perf-tools) contains a development shard with two handy tools: a memory profiler and a fiber profiler. In order to use it in your project, first add the dependency in the `shards.yml` file (detailed instructions in the readme). Then, follow instructions according to the case.
+The shard [perf-tools](https://github.com/crystal-lang/perf-tools) contains two handy tools: a memory profiler and a fiber profiler. In order to use it in your project, first add the dependency in the `shards.yml` file (detailed instructions in the readme). Then, follow instructions according to the case.
 
 ## Finding leaks with `perf_tools/mem_prof`
 
@@ -87,7 +87,7 @@ class Logger
 end
 ```
 
-The `MemProf` tool can be tweaked with other parameters as well, as how many stack traces to skip, from which size start considering allocations, etc.
+The `MemProf` tool can be tweaked with other parameters as well, such as how many stack traces to skip, which size to start considering allocations from, and more.
 
 ## Profiling fibers with `fiber_trace`
 
