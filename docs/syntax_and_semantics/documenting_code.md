@@ -1,4 +1,4 @@
-# Documenting code
+# Documenting code(BETA)
 
 Documentation for API features can be written in code comments directly
 preceding the definition of the respective feature.
