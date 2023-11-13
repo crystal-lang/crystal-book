@@ -4,11 +4,27 @@ hide:
   - navigation # Hide sidebar navigation
 ---
 
-# Crystal Book
+# Crystal Documentation
 
-Welcome to the documentation for the Crystal language.
+Welcome to the documentation for the Crystal language. Crystal is a language for humans and computers. These materials help humans understand the language and its ecosystem.
 
-Crystal is a language for humans and computers. These materials help humans understand the language and its ecosystem.
+Crystal is a modern, statically typed, compiled programming language. It is designed to be easy to learn and use, while still providing the performance and features of a traditional compiled language.
+
+Crystal is still under development, but it is already a powerful and versatile language that can be used for a wide range of applications. It is well-suited for web development, desktop applications, and systems programming.
+
+The Crystal documentation is designed to help you learn the language and get started with development. It includes tutorials, reference guides, and API documentation.
+
+If you are new to Crystal, I recommend starting with the tutorials. They will provide you with a basic understanding of the language and its syntax.
+
+Once you have a basic understanding of the language, you can refer to the reference guides for more detailed information on specific topics.
+
+The API documentation provides information on all of the Crystal language features, including classes, methods, and functions.
+
+I hope you find the Crystal documentation helpful. If you have any questions or feedback, please feel free to contact us.
+
+Sincerely,
+
+The Crystal Documentation Team
 
 ## Learning Materials
 
