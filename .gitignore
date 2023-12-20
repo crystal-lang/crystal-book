@@ -1,6 +1,5 @@
 site/
 .venv/
-__pycache__/
 
 # Devenv
 .devenv*
