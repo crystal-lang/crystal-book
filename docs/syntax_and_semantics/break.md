@@ -39,7 +39,7 @@ while true
 end
 
 # Output:
-"start1"
-"start2"
-"end1"
+# "start1"
+# "start2"
+# "end1"
 ```
