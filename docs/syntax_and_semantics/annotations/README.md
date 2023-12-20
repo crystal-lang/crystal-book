@@ -270,7 +270,7 @@ WARNING: Annotations can only be read off of typed block parameters. See https:/
 
 ### Reading Multiple Annotations
 
-If there are multiple annotations applied to the same node, the `#annotations(type : TypeNode)` method can be used to return an `ArrayLiteral` of all annotations of the provided *type*. An argless `#annotations` method also exists that will return _all_ annotations, irrespective of their type.
+If there are multiple annotations applied to the same node, the `#annotations(type : TypeNode)` method can be used to return an `ArrayLiteral` of all annotations of the provided *type*. An argless `#annotations` method also exists that will return *all* annotations, irrespective of their type.
 
 ```crystal
 annotation MyAnnotation; end
