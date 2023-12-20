@@ -342,6 +342,29 @@ end
 Foo.boo(0, 1)
 ```
 
+## Call Information
+
+When a macro is called, you can access the macro call stack with a special instance variable: `@caller`.
+This variable returns an `ArrayLiteral` of [`Call`](https://crystal-lang.org/api/Crystal/Macros/Call.html) nodes with the first element in the array being the most recent,
+unless it is called outside of a macro in which case it's a [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
+
+NOTE: As of now, the returned array will always only have a single element.
+
+Example:
+
+```crystal
+macro foo
+  {{ @caller.first.line_number }}
+end
+
+def bar
+  {{ @caller }}
+end
+
+foo # => 9
+bar # => nil
+```
+
 ## Constants
 
 Macros can access constants. For example:
