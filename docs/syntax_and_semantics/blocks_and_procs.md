@@ -374,13 +374,13 @@ foo do
 end
 
 # Output:
-# before yield
-# start foo1
-# before yield
-# start foo2
-# end foo1
-# after yield
-````
+# "before yield"
+# "start foo1"
+# "before yield"
+# "start foo2"
+# "end foo1"
+# "after yield"
+```
 
 Notice you do not get two `"after yield"` nor an `"end foo2"`.
 
