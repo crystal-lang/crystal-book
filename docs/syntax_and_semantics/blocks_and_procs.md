@@ -354,6 +354,36 @@ value = twice { break }
 value # => nil
 ```
 
+If a `break` is used within more than one nested block, only the immediate enclosing block is broken out of:
+
+```crystal
+def foo(&)
+  pp "before yield"
+  yield
+  pp "after yield"
+end
+
+foo do
+  pp "start foo1"
+  foo do
+    pp "start foo2"
+    break
+    pp "end foo2"
+  end
+  pp "end foo1"
+end
+
+# Output:
+# "before yield"
+# "start foo1"
+# "before yield"
+# "start foo2"
+# "end foo1"
+# "after yield"
+```
+
+Notice you do not get two `"after yield"` nor an `"end foo2"`.
+
 ## next
 
 The `next` expression inside a block exits early from the block (not the method). For example:

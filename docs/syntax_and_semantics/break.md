@@ -23,3 +23,23 @@ end
 
 puts foo # => "bar"
 ```
+
+If a `break` is used within more than one nested `while` loop, only the immediate enclosing loop is broken out of:
+
+```crystal
+while true
+  pp "start1"
+  while true
+    pp "start2"
+    break
+    pp "end2"
+  end
+  pp "end1"
+  break
+end
+
+# Output:
+# "start1"
+# "start2"
+# "end1"
+```
