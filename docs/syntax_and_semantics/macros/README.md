@@ -346,7 +346,7 @@ Foo.boo(0, 1)
 
 When a macro is called, you can access the macro call stack with a special instance variable: `@caller`.
 This variable returns an `ArrayLiteral` of [`Call`](https://crystal-lang.org/api/Crystal/Macros/Call.html) nodes with the first element in the array being the most recent.
-Outside of a macro or if the macro has no caller (e.g. a [hook](hook)) the value is a [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
+Outside of a macro or if the macro has no caller (e.g. a [hook](./hooks.md)) the value is a [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
 
 NOTE: As of now, the returned array will always only have a single element.
 
