@@ -345,8 +345,8 @@ Foo.boo(0, 1)
 ## Call Information
 
 When a macro is called, you can access the macro call stack with a special instance variable: `@caller`.
-This variable returns an `ArrayLiteral` of [`Call`](https://crystal-lang.org/api/Crystal/Macros/Call.html) nodes with the first element in the array being the most recent,
-unless it is called outside of a macro in which case it's a [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
+This variable returns an `ArrayLiteral` of [`Call`](https://crystal-lang.org/api/Crystal/Macros/Call.html) nodes with the first element in the array being the most recent.
+Outside of a macro or if the macro has no caller (e.g. a [hook](hook)) the value is a [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html).
 
 NOTE: As of now, the returned array will always only have a single element.
 
@@ -473,7 +473,7 @@ Notice the variables in the inner macro are not available within the `verbatim` 
 
 ## Comments
 
-Macro expressions are evaluated both within comments as well as compatible sections of code. This may be used to provide relevant documentation for expansions:
+Macro expressions are evaluated both within comments as well as compilable sections of code. This may be used to provide relevant documentation for expansions:
 
 ```crystal
 {% for name, index in ["foo", "bar", "baz"] %}
@@ -518,9 +518,9 @@ gen_method foo
 When generated, the docs for the `#foo` method would be like:
 
 ```text
-# Comment on macro call.
-#
-# Comment added via macro expansion.
+Comment on macro call.
+
+Comment added via macro expansion.
 ```
 
 ## Pitfalls
