@@ -419,6 +419,8 @@ Options:
 
 * `-D FLAG`, `--define FLAG`: Define a compile-time flag
 * `-f FORMAT`, `--format FORMAT`: Output format `text` (default) or `json`
+* `--tallies`: Print reachable methods and their call counts as well.
+* `--check`: Exit with error if there is any unreachable code.
 * `--error-trace`: Show full error trace
 * `-h`, `--help`: Show this message
 * `-i PATH`, `--include PATH`: Include path
