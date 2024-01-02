@@ -411,9 +411,13 @@ Show methods that are never called.
 crystal tool unreachable [options] [programfile]
 ```
 
-The output is a list of lines with columns separated by tab. The first column is
-the location of the def, the second column its reference name and the third
-column is the length in lines.
+The output is a list of lines with columns separated by tab.
+
+* tally (only with `--tallies` option; otherwise skipped)
+* location of the def (pathname plus line and column)
+* reference name
+* length in lines
+* annotations
 
 Options:
 
