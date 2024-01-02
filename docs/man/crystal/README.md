@@ -411,13 +411,15 @@ Show methods that are never called.
 crystal tool unreachable [options] [programfile]
 ```
 
-The output is a list of lines with columns separated by tab.
+The text output is a list of lines with columns separated by tab.
 
-* tally (only with `--tallies` option; otherwise skipped)
-* location of the def (pathname plus line and column)
-* reference name
-* length in lines
-* annotations
+Output fields:
+
+* `count`: sum of all calls to this method (only with `--tallies` option; otherwise skipped)
+* `location`: pathname, line and column, all separated by colon
+* `name`
+* `lines`: length of the def in lines
+* `annotations`
 
 Options:
 
