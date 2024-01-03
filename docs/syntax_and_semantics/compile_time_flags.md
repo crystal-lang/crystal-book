@@ -103,7 +103,7 @@ The compiler sets these flags based on compiler configuration.
 
 | Flag name | Description |
 |-----------|-------------|
-| `release` | Compiler operates in release mode (`--release` CLI option)
+| `release` | Compiler operates in release mode (`--release` or `-O3 --single-module` CLI option)
 | `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option)
 | `static`  | Compiler creates a statically linked executable (`--static` CLI option)
 | `docs`    | Code is processed to generate API docs (`crystal docs` command)
