@@ -411,14 +411,22 @@ Show methods that are never called.
 crystal tool unreachable [options] [programfile]
 ```
 
-The output is a list of lines with columns separated by tab. The first column is
-the location of the def, the second column its reference name and the third
-column is the length in lines.
+The text output is a list of lines with columns separated by tab.
+
+Output fields:
+
+* `count`: sum of all calls to this method (only with `--tallies` option; otherwise skipped)
+* `location`: pathname, line and column, all separated by colon
+* `name`
+* `lines`: length of the def in lines
+* `annotations`
 
 Options:
 
 * `-D FLAG`, `--define FLAG`: Define a compile-time flag
-* `-f FORMAT`, `--format FORMAT`: Output format `text` (default) or `json`
+* `-f FORMAT`, `--format FORMAT`: Output format `text` (default), `json`, or `csv`
+* `--tallies`: Print reachable methods and their call counts as well.
+* `--check`: Exit with error if there is any unreachable code.
 * `--error-trace`: Show full error trace
 * `-h`, `--help`: Show this message
 * `-i PATH`, `--include PATH`: Include path
