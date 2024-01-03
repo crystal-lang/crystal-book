@@ -112,7 +112,8 @@ Hello Crystal!
 
 **Common options:**
 
-* `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
+* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
 
@@ -142,7 +143,8 @@ Hello Crystal!
 * `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
 * `-D FLAG, --define FLAG`: Define a compile-time flag.
 * `-o <output_file>`: Define the name of the binary executable.
-* `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
+* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
 * `--link-flags FLAGS`: Additional flags to pass to the linker.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
@@ -175,7 +177,8 @@ NOTE: When running interactively, stdin can usually be closed by typing the end 
 **Common options:**
 
 * `-o <output_file>`: Define the name of the binary executable.
-* `--release`: Compile in release mode, doing extra work to apply optimizations to the generated code.
+* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
 * `--no-debug`: Skip any symbolic debug info, reducing the output file size.
 * `--progress`: Show progress during compilation.
 * `--static`: Link statically.
@@ -441,6 +444,19 @@ Options:
 ### `crystal clear_cache`
 
 Clears the compiler cache located at [`CRYSTAL_CACHE_DIR`](#environment-variables).
+
+## Optimizations
+
+The optimization level specifies the codegen effort for producing optimal code.
+It's a trade-off between compilation performance (decreasing per optimization level) and runtime performance (increasing per optimization level).
+
+Production builds should usually have the highest optimization level.
+Best results are achieved with `--release` which also implies `--single-module`.
+
+* `-O0`: No optimization (default)
+* `-O1`: Low optimization
+* `-O2`: Middle optimization
+* `-O3`: High optimization
 
 ## Environment variables
 
