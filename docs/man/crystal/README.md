@@ -305,16 +305,22 @@ Run `crystal spec --options` for available options.
 `runner_options` are provided to the compiled binary executable which runs the specs. They should be separated from
 the other arguments by a double dash (`--`).
 
-* `--verbose`: Prints verbose output, including all example names.
-* `--profile`: Prints the 10 slowest specs.
+* `--verbose`, `-v`: Prints verbose output, including all example names.
+* `--profile`, `-p`: Prints the 10 slowest specs.
 * `--fail-fast`: Abort the spec run on first failure.
 * `--junit_output <output_dir>`: Generates JUnit XML output.
+* `--tap`: Generates output for the [*Test Anything Protocol* (TAP)](https://testanything.org/).
+* `--(no-)color`: Enables ANSI colored output. The default mode automatically enables color if STDOUT is a TTY.
+* `--order <mode>`: Run examples in the given order. `<mode>` is either `default` (definition order), `random`, or a numeric seed value. Default value is `default`.
+* `--list-tags`: Lists all defined tags and exits.
+* `--dry-run`: Passes all tests without actually executing them.
+* `--help`, `-h`: Prints help and exits.
 
 The following options can be combined to filter the list of specs to run.
 
-* `--example <name>`: Runs examples whose full nested names include `name`.
-* `--line <line>`: Runs examples whose line matches `line`.
-* `--location <file>:<line>`: Runs example(s) at `line` in `file` (multiple options allowed).
+* `--example <name>`, `-e <name>`: Runs examples whose full nested names include `<name>`.
+* `--line <line>`, `-l <line>`: Runs examples whose line matches `<line>`.
+* `--location <file>:<line>`: Runs example(s) at `<line>` in `<file>` (multiple options allowed).
 * `--tag <tag>`: Runs examples with the specified tag, or excludes examples by adding `~` before the tag (multiple options allowed).
     * `--tag a --tag b` will include specs tagged with `a` OR `b`.
     * `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
