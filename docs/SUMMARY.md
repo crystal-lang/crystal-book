@@ -95,6 +95,8 @@
         * [pointerof](syntax_and_semantics/pointerof.md)
         * [sizeof](syntax_and_semantics/sizeof.md)
         * [instance_sizeof](syntax_and_semantics/instance_sizeof.md)
+        * [alignof](syntax_and_semantics/alignof.md)
+        * [instance_alignof](syntax_and_semantics/instance_alignof.md)
         * [offsetof](syntax_and_semantics/offsetof.md)
         * [Uninitialized variable declaration](syntax_and_semantics/declare_var.md)
     * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
