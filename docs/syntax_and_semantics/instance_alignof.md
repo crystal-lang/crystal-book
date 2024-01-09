@@ -1,6 +1,6 @@
 # instance_alignof
 
-The `instance_alignof` expression returns an `Int32` with the instance alignment of a given class. 
+The `instance_alignof` expression returns an `Int32` with the instance alignment of a given class.
 It's the equivalent to [`alignof`](alignof.md) but for reference types.
 For example:
 
