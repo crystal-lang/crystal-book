@@ -23,7 +23,10 @@ status=0
 find "${STDLIB_SRC}" -name '*.cr' -type f -not -path "${STDLIB_SRC}/compiler/**" -print0 \
   | xargs -0 "${CRYSTAL}" tool flags \
   | filter_missing "stdlib" || status=1
-${CRYSTAL} tool flags "${STDLIB_SRC}/compiler" \
-  | filter_missing "Ccompiler" || status=1
+
+{
+  ${CRYSTAL} tool flags "${STDLIB_SRC}/compiler"
+  grep --no-file -o -R -P '(?<=has_flag\?[( ]")[^"]+' "${STDLIB_SRC}/compiler"
+} | sort -u | filter_missing "compiler" || status=1
 
 exit ${status}
