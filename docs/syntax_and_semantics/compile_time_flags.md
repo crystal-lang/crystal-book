@@ -149,7 +149,9 @@ true
 | `without_playground` | Build the compiler without playground (`crystal play`)
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
+| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
 | `preview_dll` | Enable dynamic linking on Windows; experimental |
+| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
 | `preview_win32_delay_load` | Delay-load all DLLs on Windows; experimental |
 
 ### User code features
