@@ -503,6 +503,66 @@ Shards 0.17.4 ()
 
 ```
 
+### A bash script for make cross link `aarch64-linux-musl`/`x86_64-linux-musl` use `zig cc` automate
+It useful for the user(like me) often built ARM64 binary use docker buildx, docker is no longer needed anymore.
+
+We assume orignal shards rename to `shards.binary`, this script name is `shards`.
+
+```sh
+#!/usr/bin/env bash
+
+if [ "$1" == "build" ]; then
+    tmp_file="$(mktemp -d)/$$"
+    target=$(echo $* |sed 's#.*--target=\([a-z0-9_-]*\).*#\1#')
+    shards.binary build "${@:2}" |
+        grep '^cc ' |
+        sed "s#^cc#zig cc -target ${target}#" |
+        sed "s#-L[^ ]*#-L$HOME/Crystal/static_libraries/${target}#" |
+        sed "s#\(.*\)#\1 -lunwind#" |
+        tee $tmp_file
+    chmod +x $tmp_file && sh -x $tmp_file
+else
+    exec -a shards shards.binary "$@"
+fi
+```
+
+Use it.
+
+```sh
+ ╰─ $ cd ~/Crystal/crystal-lang/shards
+
+ ╰─ $ git clean -fdx
+Removing bin/shards
+Removing bin/shards.o
+Removing lib/
+
+ ╰─ $ shards build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
+++ mktemp -d
++ tmp_file=/tmp/tmp.6Bu17ka85O/521801
++ arg='build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s'
+++ echo build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
+++ sed 's#.*--target=\([a-z0-9_-]*\).*#\1#'
++ target=aarch64-linux-musl
++ echo aarch64-linux-musl
+aarch64-linux-musl
++ shards.binary build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
++ grep '^cc '
++ sed 's#^cc#zig cc -target aarch64-linux-musl#'
++ sed 's#-L[^ ]*#-L/home/zw963/Crystal/static_libraries/aarch64-linux-musl#'
++ sed 's#\(.*\)#\1 -lunwind#'
++ tee /tmp/tmp.6Bu17ka85O/521801
+zig cc -target aarch64-linux-musl /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/aarch64-linux-musl -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -lunwind
++ chmod +x /tmp/tmp.6Bu17ka85O/521801
++ sh -x /tmp/tmp.6Bu17ka85O/521801
++ zig cc -target aarch64-linux-musl /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/aarch64-linux-musl -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -lunwind
+
+ ╰─ $ file bin/shards
+bin/shards: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), static-pie linked, stripped
+
+ ╰─ $ 130  qemu-aarch64 bin/shards --version
+Shards 0.17.4 ()
+```
+
 ## build a macOS binary
 
 I tried build `shards` macoS binary, it failed, obviously, it caused by missing `libiconv`
@@ -526,7 +586,7 @@ error: unable to find Dynamic system library 'iconv' using strategy 'paths_first
   /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.so
   /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.a
 ``` 
- 
+
 # Caveats
 
 As described in [this forum](https://forum.crystal-lang.org/t/does-anyone-deploy-crystal-app-on-arm-based-linux-server-what-is-the-deployment-process-like/5588/5):
@@ -545,4 +605,5 @@ There are some other concerns:
 
 1. The llvm version used by the Crystal compiler not matched with static libraries(e.g. libgc-dev)?
 2. build windows binary? it should be possible, as the `hello.exe` showcase.
+
 
