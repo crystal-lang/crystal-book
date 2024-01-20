@@ -1,6 +1,6 @@
 # Use zig cc as an alternative linker
 
-This approach was originally verified by @luislavena and first posted [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/5), [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/8) and [here](https://forum.crystal-lang.org/t/does-anyone-deploy-crystal-app-on-arm-based-linux-server-what-is-the-deployment-process-like/5588/5), big thanks to him for proving this solutin work, and he showed a little bit of this in following videos:
+This approach was originally verified by @luislavena and first posted [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/5), [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/8) and [here](https://forum.crystal-lang.org/t/does-anyone-deploy-crystal-app-on-arm-based-linux-server-what-is-the-deployment-process-like/5588/5), big thanks to him for proving this solution work, and he showed a little bit of this in following videos:
 
     [Building CLIs with Crystal - Quick cross-compilation - Part 1](https://www.youtube.com/watch?v=ij7alYEvfTg)
     [Building CLIs with Crystal - Quick cross-compilation - Part 2](https://www.youtube.com/watch?v=LdVNqdf_kBI)
@@ -301,7 +301,8 @@ gc-dev
 
 ### Step 2. Prepare dependency libraries file.
 
-You can donwload both of them from https://dl-cdn.alpinelinux.org/alpine/v3.18/main/aarch64/, but thanks @@luislavena again, There is a [project](https://github.com/luislavena/magic-haversack) help us for this.
+You can download both of them from https://dl-cdn.alpinelinux.org/alpine/v3.18/main/aarch64/, but thanks @@luislavena again, There is a [ruby gem](https://github.com/luislavena/magic-haversack) help us for this.
+You need config ruby correctly to use this tool.
 
 
 ```sh
@@ -377,7 +378,7 @@ As of current version, only 4 targets and some of the most important packages su
 
 Check details on [libs.yml](https://github.com/luislavena/magic-haversack/blob/main/libs.yml)
 
-The final step is to copy all static library files to a directory.
+The final step is to copy all static library files to a lib folder.
 
 ```sh
  ╰─ $ rake package
@@ -453,7 +454,7 @@ aarch64-apple-darwin20.0/  aarch64-linux-musl/  x86_64-apple-darwin20.0/  x86_64
 
 We will continue the linking process in Step 1
 
-When run origial linking command, it not work obviously.
+When run origial linking command on X86_64 host, it not work obviously.
 
 ```
  ╰─ $ cd ~/Crystal/crystal-lang/shards
