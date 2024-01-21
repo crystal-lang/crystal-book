@@ -325,64 +325,7 @@ rake repackage                       # Force a rebuild of the package files
  
 ```
 
-After done `rake fetch:all`, all needs (same alpine version)static library pulled down into /tmp
-
-
-```sh
- ╰─ $ eza -T -L3 tmp/
-tmp
-└── ports
-   ├── aarch64-apple-darwin20.0
-   │  ├── gc
-   │  ├── gmp
-   │  ├── libevent
-   │  ├── openssl
-   │  ├── pcre
-   │  ├── pcre2
-   │  ├── sqlite
-   │  ├── yaml
-   │  └── zlib
-   ├── aarch64-linux-musl
-   │  ├── gc
-   │  ├── gmp
-   │  ├── libevent
-   │  ├── openssl
-   │  ├── pcre
-   │  ├── pcre2
-   │  ├── sqlite
-   │  ├── yaml
-   │  └── zlib
-   ├── x86_64-apple-darwin20.0
-   │  ├── gc
-   │  ├── gmp
-   │  ├── libevent
-   │  ├── openssl
-   │  ├── pcre
-   │  ├── pcre2
-   │  ├── sqlite
-   │  ├── yaml
-   │  └── zlib
-   └── x86_64-linux-musl
-      ├── gc
-      ├── gmp
-      ├── libevent
-      ├── openssl
-      ├── pcre
-      ├── pcre2
-      ├── sqlite
-      ├── yaml
-      └── zlib
-```
-
-As of current version, only 4 targets and some of the most important packages supported.
-
-Check details on [libs.yml](https://github.com/luislavena/magic-haversack/blob/main/libs.yml)
-
-The final step is to copy all static library files to a lib folder.
-
-```sh
- ╰─ $ rake package
-```
+After done `rake fetch:all`, all needs (same alpine version)static library pulled down into `lib` folder.
 
 You can find that all the required libraries file are ready to use.
 
@@ -442,6 +385,10 @@ lib
    ├── libz.a
    └── pkgconfig
 ```
+
+As of current version, only 4 targets and some of the most important packages supported.
+
+Check details on [libs.yml](https://github.com/luislavena/magic-haversack/blob/main/libs.yml)
 
 You can copy to whatever folder you wish, I copied it to `~/Crystal/static_libraries` personally.
 
@@ -503,89 +450,165 @@ Shards 0.17.4 ()
 
 ```
 
-### A bash script for make cross link `aarch64-linux-musl`/`x86_64-linux-musl` use `zig cc` automate
-It useful for the user(like me) often built ARM64 binary use docker buildx, docker is no longer needed anymore.
+built a binary for macOS is bascially same as above process, only two concerns
 
-We assume orignal shards rename to `shards.binary`, this script name is `shards`.
+1. you need compile-time tag `-Duse_libiconv` to allow developers to opt for libiconv variant instead of the built-in iconv support of their platform, check [Allow explicit usage of libiconv](https://github.com/crystal-lang/crystal/pull/11876) for more details.
+2. the zig support target name not same as Crystal. you probably need a hash map for handle this.
+
+# An bash script to automate the use of `zig cc` as the linker
+
+We assume that all static library files are stored in ~/Crystal/static_libraries, like this:
+
+```
+╰─ $ eza -T -L 2 ~/Crystal/static_libraries
+/home/zw963/Crystal/static_libraries
+├── aarch64-apple-darwin21.0
+│  ├── libcrypto.a
+│  ├── libevent.a
+│  ├── libevent_pthreads.a
+│  ├── libgc.a
+│  ├── libgmp.a
+│  ├── libiconv.a
+│  ├── libpcre.a
+│  ├── libpcre2-8.a
+│  ├── libsqlite3.a
+│  ├── libssl.a
+│  ├── libyaml.a
+│  ├── libz.a
+│  └── pkgconfig
+├── aarch64-linux-musl
+│  ├── libcrypto.a
+│  ├── libevent.a
+│  ├── libevent_pthreads.a
+│  ├── libgc.a
+│  ├── libgmp.a
+│  ├── libpcre.a
+│  ├── libpcre2-8.a
+│  ├── libsqlite3.a
+│  ├── libssl.a
+│  ├── libyaml.a
+│  ├── libz.a
+│  └── pkgconfig
+├── x86_64-apple-darwin21.0
+│  ├── libcrypto.a
+│  ├── libevent.a
+│  ├── libevent_pthreads.a
+│  ├── libgc.a
+│  ├── libgmp.a
+│  ├── libiconv.a
+│  ├── libpcre.a
+│  ├── libpcre2-8.a
+│  ├── libsqlite3.a
+│  ├── libssl.a
+│  ├── libyaml.a
+│  ├── libz.a
+│  └── pkgconfig
+└── x86_64-linux-musl
+   ├── libcrypto.a
+   ├── libevent.a
+   ├── libevent_pthreads.a
+   ├── libgc.a
+   ├── libgmp.a
+   ├── libpcre.a
+   ├── libpcre2-8.a
+   ├── libsqlite3.a
+   ├── libssl.a
+   ├── libyaml.a
+   ├── libz.a
+   └── pkgconfig
+```
+
+Following is the script, we name it as `shards`, orignal shards rename to `shards.binary`.
+
+You need at least BASH 4.0 to running this script, and some basic tools, grep, sed, tee, those should out of box on any linux distro, also install zig too.
+
 
 ```sh
 #!/usr/bin/env bash
 
 if [ "$1" == "build" ]; then
-    tmp_file="$(mktemp -d)/$$"
-    target=$(echo $* |sed 's#.*--target=\([a-z0-9_-]*\).*#\1#')
-    shards.binary build "${@:2}" |
-        grep '^cc ' |
-        sed "s#^cc#zig cc -target ${target}#" |
-        sed "s#-L[^ ]*#-L$HOME/Crystal/static_libraries/${target}#" |
-        sed "s#\(.*\)#\1 -lunwind#" |
-        tee $tmp_file
-    chmod +x $tmp_file && sh -x $tmp_file
+if echo "$*" |grep -F -qs -e '--target='; then
+        # use hash map bash 4.0 is requried.
+        declare -A zig_target_map=(
+            ["x86_64-linux-musl"]="x86_64-linux-musl"
+            ["aarch64-linux-musl"]="aarch64-linux-musl"
+            ["x86_64-darwin"]="x86_64-macos-none"
+            ["aarch64-darwin"]="aarch64-macos-none"
+        )
+
+        declare -A libname_map=(
+            ["x86_64-linux-musl"]="x86_64-linux-musl"
+            ["aarch64-linux-musl"]="aarch64-linux-musl"
+            ["x86_64-darwin"]="x86_64-apple-darwin21.0"
+            ["aarch64-darwin"]="aarch64-apple-darwin21.0"
+        )
+
+        tmp_file="$(mktemp -d)/$$"
+
+        cr_target=$(echo $* |sed 's#.*--target=\([a-z0-9_-]*\).*#\1#')
+
+        if [[ "$cr_target" =~ -darwin ]]; then
+            build_args="${@:2} -Duse_libiconv"
+        else
+            build_args="${@:2}"
+        fi
+
+        shards.binary build ${build_args} |
+            grep '^cc ' |
+            sed "s#^cc#zig cc -target ${zig_target_map[$cr_target]}#" |
+            sed "s#-L[^ ]*#-L$HOME/Crystal/static_libraries/${libname_map[$cr_target]}#" |
+            sed "s#.*#& -lunwind#" |
+            tee $tmp_file
+        chmod +x $tmp_file && bash $tmp_file
+    else
+        shards.binary build "${@:2}"
+    fi
 else
     exec -a shards shards.binary "$@"
 fi
 ```
 
-Use it.
+## show case
 
 ```sh
  ╰─ $ cd ~/Crystal/crystal-lang/shards
-
- ╰─ $ git clean -fdx
+ 
+  ╰─ $ git clean -fdx && shards build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
 Removing bin/shards
 Removing bin/shards.o
 Removing lib/
-
- ╰─ $ shards build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
-++ mktemp -d
-+ tmp_file=/tmp/tmp.6Bu17ka85O/521801
-+ arg='build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s'
-++ echo build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
-++ sed 's#.*--target=\([a-z0-9_-]*\).*#\1#'
-+ target=aarch64-linux-musl
-+ echo aarch64-linux-musl
-aarch64-linux-musl
-+ shards.binary build --production --static --no-debug --cross-compile --target=aarch64-linux-musl --link-flags=-s
-+ grep '^cc '
-+ sed 's#^cc#zig cc -target aarch64-linux-musl#'
-+ sed 's#-L[^ ]*#-L/home/zw963/Crystal/static_libraries/aarch64-linux-musl#'
-+ sed 's#\(.*\)#\1 -lunwind#'
-+ tee /tmp/tmp.6Bu17ka85O/521801
 zig cc -target aarch64-linux-musl /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/aarch64-linux-musl -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -lunwind
-+ chmod +x /tmp/tmp.6Bu17ka85O/521801
-+ sh -x /tmp/tmp.6Bu17ka85O/521801
-+ zig cc -target aarch64-linux-musl /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/aarch64-linux-musl -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -lunwind
-
+ 
  ╰─ $ file bin/shards
 bin/shards: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), static-pie linked, stripped
 
- ╰─ $ 130  qemu-aarch64 bin/shards --version
-Shards 0.17.4 ()
+ ╰─ $ git clean -fdx && shards build --production --static --no-debug --cross-compile --target=x86_64-linux-musl --link-flags=-s
+Removing bin/shards
+Removing bin/shards.o
+Removing lib/
+zig cc -target x86_64-linux-musl /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/x86_64-linux-musl -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -lunwind
+
+ ╰─ $ file bin/shards
+bin/shards: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), static-pie linked, stripped
+
+ ╰─ $ git clean -fdx && shards build --production --static --no-debug --cross-compile --target=x86_64-darwin --link-flags=-s
+Removing bin/shards
+Removing bin/shards.o
+Removing lib/
+zig cc -target x86_64-macos-none /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/x86_64-apple-darwin21.0 -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -liconv -lunwind
+
+ ╰─ $ file bin/shards
+bin/shards: Mach-O 64-bit x86_64 executable, flags:<NOUNDEFS|DYLDLINK|TWOLEVEL|PIE|HAS_TLV_DESCRIPTORS>
+
+ ╰─ $ git clean -fdx && shards build --production --static --no-debug --cross-compile --target=aarch64-darwin --link-flags=-s
+Removing bin/shards
+Removing bin/shards.o
+Removing lib/
+zig cc -target aarch64-macos-none /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -static -L/home/zw963/Crystal/static_libraries/aarch64-apple-darwin21.0 -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -liconv -lunwind
+
+ ╰─ $ file bin/shards
+bin/shards: Mach-O 64-bit arm64 executable, flags:<NOUNDEFS|DYLDLINK|TWOLEVEL|PIE|HAS_TLV_DESCRIPTORS>
 ```
-
-## build a macOS binary
-
-I tried build `shards` macoS binary, it failed, obviously, it caused by missing `libiconv`
-
-
-```sh
- ╰─ $ shards build --production --release --no-debug --cross-compile --target=x86_64-darwin --link-flags=-s
-Resolving dependencies
-Fetching https://github.com/crystal-lang/crystal-molinillo.git
-Installing molinillo (0.2.0)
-Building: shards
-cc /home/zw963/Crystal/crystal-lang/shards/bin/shards.o -o /home/zw963/Crystal/crystal-lang/shards/bin/shards -s -rdynamic -L/home/zw963/Crystal/bin/../lib/crystal -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -liconv
-
- ╰─ $ file bin/shards.o
-bin/shards.o: Mach-O 64-bit x86_64 object, flags:<|SUBSECTIONS_VIA_SYMBOLS>
-
- ╰─ $ zig cc --target=x86_64-macos-none bin/shards.o -o bin/shards -s -rdynamic -L/home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0 -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent -liconv
-error: unable to find Dynamic system library 'iconv' using strategy 'paths_first'. searched paths:
-  /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.tbd
-  /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.dylib
-  /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.so
-  /home/zw963/Crystal/static_libraries/x86_64-apple-darwin20.0/libiconv.a
-``` 
 
 # Caveats
 
