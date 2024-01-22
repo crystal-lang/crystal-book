@@ -52,6 +52,7 @@ The target architecture is the first component of the target triple.
 | `aarch64` | AArch64 architecture
 | `arm`     | ARM architecture
 | `i386`    | x86 architecture (32-bit)
+| `wasm32`  | WebAssembly
 | `x86_64`  | x86-64 architecture
 | `bits32` *(derived)*  | 32-bit architecture
 | `bits64` *(derived)*  | 64-bit architecture
@@ -95,6 +96,7 @@ The ABI is derived from the last component of the target triple.
 | `gnueabihf` | GNU EABI with hard float
 | `msvc`    | Microsoft Visual C++
 | `musl`    | musl
+| `wasi`    | Web Assembly System Interface
 | `win32` *(derived)* | Windows API
 
 ### Compiler options
@@ -107,6 +109,7 @@ The compiler sets these flags based on compiler configuration.
 | `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option)
 | `static`  | Compiler creates a statically linked executable (`--static` CLI option)
 | `docs`    | Code is processed to generate API docs (`crystal docs` command)
+| `interpreted` | Running in the interpreter (`crystal i`)
 
 ## User-provided flags
 
@@ -129,19 +132,26 @@ true
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
 | `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation.
+| `use_libiconv` | Use `libiconv` instead of the `iconv` system library
 | `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0.
 | `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
+| `win7`     | Use Win32 WinNT API for Windows 7
+| `without_iconv` | Do not link `iconv`/`libiconv`
 
 ### Compiler features
 
 | Flag name | Description |
 |-----------|-------------|
+| `without_ffi`     | Build the compiler without `libffi`
+| `without_interpreter`  | Build the compiler without interpreter support
 | `without_openssl` | Build the compiler without OpenSSL support
 | `without_zlib` | Build the compiler without Zlib support
 | `without_playground` | Build the compiler without playground (`crystal play`)
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
+| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
 | `preview_dll` | Enable dynamic linking on Windows; experimental |
+| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
 | `preview_win32_delay_load` | Delay-load all DLLs on Windows; experimental |
 
 ### User code features
