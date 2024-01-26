@@ -46,6 +46,9 @@ jobs:
         run: crystal --version | tee crystal-version.txt
       - name: Build book
         run: LINT=true make build
+      - name: Override branch for "view source"
+        run: |
+          find site -type f -name '*.html' -exec sed -i -e 's#/raw/master/docs/#/blob/${{ github.ref_name }}/docs/#' '{}' '+'
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v2
