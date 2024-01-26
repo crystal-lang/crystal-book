@@ -21,6 +21,15 @@ https://github.com/crystal-lang/crystal-book
 
 Thank you very much!
 
+### Branches
+
+There is a separate branch for every minor Crystal release, all deployed alongside each other on https://crystal-lang.org/reference/
+Typically, only branches of maintained releases receive updates, i.e. the branch for the most recent Crystal release.
+
+* Changes that apply to the current Crystal release should go into the most recent `release/*` branch.
+* Changes that apply to yet unreleased features should go into `master`. They'll be part of the `release/*` branch for the next release.
+  The `master` branch is deployed at https://crystal-lang.org/reference/master/
+
 ### Building and Serving Locally
 
 ```console
