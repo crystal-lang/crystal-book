@@ -30,13 +30,13 @@ Each constant in the enum has the type of the enum:
 Color::Red # :: Color
 ```
 
-To get the underlying value you invoke `value` on it:
+To get the underlying value, you invoke `value` on it:
 
 ```crystal
 Color::Green.value # => 1
 ```
 
-The type of the value is `Int32` by default but can be changed:
+The type of the value is `Int32` by default, but can be changed:
 
 ```crystal
 enum Color : UInt8
