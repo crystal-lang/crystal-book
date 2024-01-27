@@ -27,6 +27,22 @@ Class methods can also be defined by [extending a `Module`](modules.md#extend-se
 A class method can be called under the same name as it was defined (`CaesarCipher.decrypt("HELLO")`).
 When called from within the same class or module scope the receiver can be `self` or implicit (like `encrypt(string)`).
 
+A class method is not in scope within an instance of the class; instead, access it through the class scope.
+
+```crystal
+class Foo
+  def self.shout(str : String)
+    puts str.upcase
+  end
+
+  def baz
+    self.class.shout("baz")
+  end
+end
+
+Foo.new.baz # => BAZ
+```
+
 ## Constructors
 
 Constructors are normal class methods which [create a new instance of the class](new,_initialize_and_allocate.md).
