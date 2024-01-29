@@ -41,6 +41,8 @@ An `else` branch completes immediately so there will not be any waiting.
 Execution continues in the completed branch.
 If the branch condition is an assignment, the result of the select call is assigned to the target variable.
 
+<!-- markdownlint-disable MD046 -->
+
 !!! info "Select actions in the standard library"
     The standard library provides the following select actions:
 
