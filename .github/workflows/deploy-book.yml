@@ -44,6 +44,9 @@ jobs:
           fi
       - name: Populate sample version of Crystal
         run: crystal --version | tee crystal-version.txt
+      - name: Set edit_uri branch
+        run: |
+          sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${{ github.ref_name }}/docs/#' mkdocs.yml
       - name: Build book
         run: LINT=true make build
       - name: Configure AWS Credentials
