@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: Deploy config
-    if: github.repository == 'crystal-lang/crystal-book'
+    if: github.repository == 'crystal-lang/crystal-book' && startsWith(github.ref_name, 'release/')
     runs-on: ubuntu-latest
     steps:
       - name: Download source
