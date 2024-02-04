@@ -552,6 +552,8 @@ if echo "$*" |grep -F -qs -e '--target='; then
         else
             build_args="${@:2}"
         fi
+		
+	    build_args=${build_args//--progress/}
 
         shards.binary build ${build_args} |
             grep '^cc ' |
