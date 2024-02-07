@@ -30,7 +30,8 @@ end
 
 ## Select actions
 
-A select action call calls a method with the implicit suffix "_select_action".
+A select action call calls a method with the implicit suffix `_select_action`,
+or `_select_action?` for a call with `?` suffix.
 This method returns an instance of the select action.
 
 The `select` expression initiates the select action associated with each branch. If either of them immediately returns, it proceeds with that.
