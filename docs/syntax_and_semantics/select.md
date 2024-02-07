@@ -19,9 +19,9 @@ Each condition is either a call to a select action or an assignment whose right-
 select
 when foo = foo_channel.receive
   puts foo
-when bar = bar_channel.receive
+when bar = bar_channel.receive?
   puts bar
-when exit_channel.receive
+when baz_channel.send
   exit
 when timeout(5.seconds)
   puts "Timeout"
