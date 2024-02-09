@@ -141,9 +141,9 @@ A guide on how to open issues and contribute code to the Crystal project.
   </div>
   <div class="card" markdown="1">
 
-### [Requests for Comments]([https://crystal-lang.org/community/governance.html](https://github.com/crystal-lang/rfcs/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc))
+### [Requests for Comments](https://github.com/crystal-lang/rfcs/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
 
-The RFC process provides a consistent and controlled path to discuss substantial changes in the Crystal project and form a community consensus.
+The [RFC process](https://github.com/crystal-lang/rfcs) provides a consistent and controlled path to discuss substantial changes in the Crystal project and form a community consensus.
 
   </div>
   <div class="card" markdown="1">
