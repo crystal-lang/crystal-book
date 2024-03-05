@@ -15,7 +15,7 @@ sizeof(Pointer(Int32)) # => 8
 sizeof(String)         # => 8
 ```
 
-This is because a reference's memory is allocated on the heap and a pointer to it is passed around. To get the effective size of a class, use [instance_sizeof](instance_sizeof.md).
+This is because `Reference`'s memory is allocated on the heap and a pointer to it is passed around. To get the effective size of a class, use [instance_sizeof](instance_sizeof.md).
 
 The argument to sizeof is a [type](type_grammar.md) and is often combined with [typeof](typeof.md):
 

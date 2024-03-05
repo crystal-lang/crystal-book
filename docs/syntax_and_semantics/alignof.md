@@ -30,7 +30,7 @@ alignof(Pointer(Int32)) # => 8
 alignof(String)         # => 8
 ```
 
-This is because a reference's memory is allocated on the heap and a pointer to it is passed around. To get the effective alignment of a class, use [instance_alignof](instance_alignof.md).
+This is because `Reference`'s memory is allocated on the heap and a pointer to it is passed around. To get the effective alignment of a class, use [instance_alignof](instance_alignof.md).
 
 The argument to alignof is a [type](type_grammar.md) and is often combined with [typeof](typeof.md):
 
