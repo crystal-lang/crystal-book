@@ -1,7 +1,11 @@
 # instance_sizeof
 
 The `instance_sizeof` expression returns an `Int32` with the instance size of a given class.
-It's the equivalent to [`sizeof`](sizeof.md) but for reference types.
+
+Unlike [`sizeof`](sizeof.md) which would return the size of the reference
+(pointer) to the allocated object, `instance_sizeof` returns the size of
+the allocated object itself.
+
 For example:
 
 ```crystal
