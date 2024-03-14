@@ -81,7 +81,8 @@ The operating system is derived from the third component of a the target triple.
 | `linux`   | Linux
 | `netbsd`  | NetBSD
 | `openbsd` | OpenBSD
-| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux)
+| `solaris` | Solaris/illumos
+| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris)
 | `windows` | Windows
 
 #### ABI
