@@ -138,6 +138,8 @@ true
 | `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
 | `win7`     | Use Win32 WinNT API for Windows 7
 | `without_iconv` | Do not link `iconv`/`libiconv`
+| `without_openssl` | Build without OpenSSL support
+| `without_zlib` | Build without Zlib support
 
 ### Compiler features
 
@@ -145,8 +147,6 @@ true
 |-----------|-------------|
 | `without_ffi`     | Build the compiler without `libffi`
 | `without_interpreter`  | Build the compiler without interpreter support
-| `without_openssl` | Build the compiler without OpenSSL support
-| `without_zlib` | Build the compiler without Zlib support
 | `without_playground` | Build the compiler without playground (`crystal play`)
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
