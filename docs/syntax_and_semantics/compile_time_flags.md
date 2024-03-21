@@ -126,6 +126,9 @@ true
 
 ### Stdlib features
 
+These flags enable or disable features in the standard library when building a
+Crystal program.
+
 | Flag name | Description |
 |-----------|-------------|
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314))
@@ -142,18 +145,27 @@ true
 
 ### Compiler features
 
+These flags enable or disable compiler features when building a Crystal program.
+
 | Flag name | Description |
 |-----------|-------------|
-| `without_ffi`     | Build the compiler without `libffi`
-| `without_interpreter`  | Build the compiler without interpreter support
-| `without_playground` | Build the compiler without playground (`crystal play`)
-| `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 | `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
 | `preview_dll` | Enable dynamic linking on Windows; experimental |
 | `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
 | `preview_win32_delay_load` | Delay-load all DLLs on Windows; experimental |
 | `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
+
+### Compiler build features
+
+These flags enable or disable features when building the Crystal compiler.
+
+| Flag name | Description |
+|-----------|-------------|
+| `without_ffi`     | Build the compiler without `libffi`
+| `without_interpreter`  | Build the compiler without interpreter support
+| `without_playground` | Build the compiler without playground (`crystal play`)
+| `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
 
 ### User code features
 
