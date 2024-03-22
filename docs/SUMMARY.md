@@ -37,6 +37,7 @@
             * [if !](syntax_and_semantics/not.md)
         * [unless](syntax_and_semantics/unless.md)
         * [case](syntax_and_semantics/case.md)
+        * [select](syntax_and_semantics/select.md)
         * [while](syntax_and_semantics/while.md)
             * [break](syntax_and_semantics/break.md)
             * [next](syntax_and_semantics/next.md)
