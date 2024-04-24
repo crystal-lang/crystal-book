@@ -114,7 +114,7 @@ Instructions on how to use the compiler and tools.
   </div>
   <div class="card" markdown="1">
 
-### Project News
+### Project and Releases Information
 
 Announcements about the language development.
 
