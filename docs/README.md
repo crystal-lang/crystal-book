@@ -118,7 +118,7 @@ Instructions on how to use the compiler and tools.
 
 Announcements about the language development.
 
-* [Release Notes](https://crystal-lang.org/blog/#release_notes)
+* [Release Notes](https://crystal-lang.org/releases)
 * [Release Policy](project/release-policy.md)
 * [Crystal Blog](https://crystal-lang.org/blog)
 
