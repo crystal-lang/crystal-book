@@ -295,8 +295,8 @@ crystal spec [<options>] [<file>[:line] | <folder>]... [-- [<runner_options>]]
 ```
 
 All `files` arguments are concatenated into a single Crystal source. If an argument points to a folder, all spec
-files inside that folder (and its recursive subfolders) named `*_spec.cr` are appended. 
-If no `files` argument is provided, the default is the `./spec` folder. 
+files inside that folder (and its recursive subfolders) named `*_spec.cr` are appended.
+If no `files` argument is provided, the default is the `./spec` folder.
 A filename can be suffixed by `:` and a line number, providing this location to the `--location` runner option (see below).
 
 Run `crystal spec --options` for available preceding options.
