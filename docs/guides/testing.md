@@ -196,6 +196,8 @@ crystal spec --tag 'fast'
 crystal spec --tag '~slow'
 ```
 
+There are additional options for running specs by name, adjusting output formats, doing dry-runs, etc, see [Using the compiler](../man/crystal/README.md#crystal-spec).
+
 ## Spec helper
 
 Many projects use a custom spec helper file, usually named `spec/spec_helper.cr`.
