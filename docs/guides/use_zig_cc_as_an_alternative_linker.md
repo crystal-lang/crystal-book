@@ -2,8 +2,8 @@
 
 This approach was originally verified by @luislavena and first posted [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/5), [here](https://forum.crystal-lang.org/t/a-github-action-template-for-do-release-assets-when-push-a-tag-it-should-fitable-for-any-shards/4635/8) and [here](https://forum.crystal-lang.org/t/does-anyone-deploy-crystal-app-on-arm-based-linux-server-what-is-the-deployment-process-like/5588/5), big thanks to him for proving this solution work, and he showed a little bit of this in following videos:
 
-    [Building CLIs with Crystal - Quick cross-compilation - Part 1](https://www.youtube.com/watch?v=ij7alYEvfTg)
-    [Building CLIs with Crystal - Quick cross-compilation - Part 2](https://www.youtube.com/watch?v=LdVNqdf_kBI)
+[Building CLIs with Crystal - Quick cross-compilation - Part 1](https://www.youtube.com/watch?v=ij7alYEvfTg)
+[Building CLIs with Crystal - Quick cross-compilation - Part 2](https://www.youtube.com/watch?v=LdVNqdf_kBI)
 
 Here are some links explain how `zig cc` link work:
 
@@ -105,9 +105,9 @@ The current version of zig is 0.11.0
 0.11.0
 ```
 
-## reproduces the example in `zig cc: a Powerful Drop-In Replacement for GCC/Clang`, but use the latest version of zig.
+## reproduces the example in the post `zig cc: a Powerful Drop-In Replacement for GCC/Clang`, but use the latest version of zig.
 
-generate a `hello.exe` can running on Win10
+generate a `hello.exe` can running on Win10 on my linux machine.
 
 ```sh
  ╰─ $ \cat hello.c
@@ -126,7 +126,7 @@ hello.exe: PE32+ executable (console) x86-64, for MS Windows, 7 sections
 
 --------------------
 
-generate luagit aarch64-linux-musl static binary
+generate luagit aarch64-linux-musl static binary on my linux machine.
 
 ```sh
  ╰─ $ git clone https://github.com/LuaJIT/LuaJIT
@@ -263,9 +263,9 @@ JIT: ON fold cse dce fwd dse narrow loop abc sink fuse
 
 ## build a crystal aarch64 binary use zig cc
 
-We choose `crystal-lang/shards` as an example, we will build `shards` for `aarch64-linux-musl` target.
+We will build `shards` binary for `aarch64-linux-musl` target.
 
-### Step 1. Build app use Crystal cross compile
+### Step 1. Build app use Crystal --cross-compile and --target=aarch64-linux-musl option.
 
 ```
  ╰─ $ git clone https://github.com/crystal-lang/shards
@@ -288,9 +288,9 @@ So far we have seen that the compiler outputs the linker command using CC like t
 
 cc bin/shards.o -o bin/shards -s -rdynamic -static -L/home/zw963/Crystal/bin/../lib/crystal -lyaml -lpcre2-8 -lgc -lpthread -ldl -levent
 
-Usually we will run it on the target platform, in this case, a ARM64 machine, now with `zig cc` magic, we want to link it directly on host platfrom instead.
+Usually we need linking it on the target platform, in our case, a ARM64 machine, 
 
-But, before that, you need to indicate where to find those static link libraries. for current case, following alpine package is needed.
+Now with `zig cc` magic, we will link it directly on host platfrom instead, but we still need following static link libraries:
 
 ```
 yaml-static
@@ -302,8 +302,8 @@ gc-dev
 ### Step 2. Prepare dependency libraries file.
 
 You can download both of them from https://dl-cdn.alpinelinux.org/alpine/v3.18/main/aarch64/, but thanks @@luislavena again, There is a [ruby gem](https://github.com/luislavena/magic-haversack) help us for this.
-You need config ruby correctly to use this tool.
 
+You need config ruby correctly to use this tool.
 
 ```sh
  ╰─ $ git clone https://github.com/luislavena/magic-haversack
@@ -311,28 +311,28 @@ You need config ruby correctly to use this tool.
  ╰─ $ cd magic-haversack
  
  ╰─ $ rake -T
-rake clobber_package                 # Remove package products
-rake fetch:aarch64-apple-darwin20.0  # Fetch all for 'aarch64-apple-darwin20.0'
-rake fetch:aarch64-linux-musl        # Fetch all for 'aarch64-linux-musl'
-rake fetch:all                       # Fetch all
-rake fetch:x86_64-apple-darwin20.0   # Fetch all for 'x86_64-apple-darwin20.0'
-rake fetch:x86_64-linux-musl         # Fetch all for 'x86_64-linux-musl'
-rake package                         # Build all the packages
-rake repackage                       # Force a rebuild of the package files
+rake clean                       # Remove any temporary products
+rake clobber                     # Remove any generated files
+rake clobber_package             # Remove package products
+rake fetch:aarch64-apple-darwin  # Fetch all for 'aarch64-apple-darwin'
+rake fetch:aarch64-linux-musl    # Fetch all for 'aarch64-linux-musl'
+rake fetch:all                   # Fetch all
+rake fetch:x86_64-apple-darwin   # Fetch all for 'x86_64-apple-darwin'
+rake fetch:x86_64-linux-musl     # Fetch all for 'x86_64-linux-musl'
+rake package                     # Build all the packages
+rake repackage                   # Force a rebuild of the package files
 
  ╰─ $ rake fetch:all
  ...
  
 ```
 
-After done `rake fetch:all`, all needs (same alpine version)static library pulled down into `lib` folder.
-
-You can find that all the required libraries file are ready to use.
+After done `rake fetch:all`, all required (same version for different target) static library download into `lib` folder and ready to use.
 
 ```sh
-╰─ $ eza -T -L2 lib
+ ╰─ $ eza -T -L2 lib
 lib
-├── aarch64-apple-darwin20.0
+├── aarch64-apple-darwin
 │  ├── libcrypto.a
 │  ├── libevent.a
 │  ├── libevent_pthreads.a
@@ -340,6 +340,7 @@ lib
 │  ├── libgmp.a
 │  ├── libpcre.a
 │  ├── libpcre2-8.a
+│  ├── libsodium.a
 │  ├── libsqlite3.a
 │  ├── libssl.a
 │  ├── libyaml.a
@@ -353,12 +354,13 @@ lib
 │  ├── libgmp.a
 │  ├── libpcre.a
 │  ├── libpcre2-8.a
+│  ├── libsodium.a
 │  ├── libsqlite3.a
 │  ├── libssl.a
 │  ├── libyaml.a
 │  ├── libz.a
 │  └── pkgconfig
-├── x86_64-apple-darwin20.0
+├── x86_64-apple-darwin
 │  ├── libcrypto.a
 │  ├── libevent.a
 │  ├── libevent_pthreads.a
@@ -366,6 +368,7 @@ lib
 │  ├── libgmp.a
 │  ├── libpcre.a
 │  ├── libpcre2-8.a
+│  ├── libsodium.a
 │  ├── libsqlite3.a
 │  ├── libssl.a
 │  ├── libyaml.a
@@ -379,6 +382,7 @@ lib
    ├── libgmp.a
    ├── libpcre.a
    ├── libpcre2-8.a
+   ├── libsodium.a
    ├── libsqlite3.a
    ├── libssl.a
    ├── libyaml.a
@@ -386,22 +390,22 @@ lib
    └── pkgconfig
 ```
 
-As of current version, only 4 targets and some of the most important packages supported.
+As of current version, only 4 targets and some of the most useful packages supported.
 
 Check details on [libs.yml](https://github.com/luislavena/magic-haversack/blob/main/libs.yml)
 
-You can copy to whatever folder you wish, I copied it to `~/Crystal/static_libraries` personally.
+You can copy those file into whatever folder you wish, I copied it to `~/Crystal/static_libraries` personally.
 
 ```
  ╰─ $ ls ~/Crystal/static_libraries
-aarch64-apple-darwin20.0/  aarch64-linux-musl/  x86_64-apple-darwin20.0/  x86_64-linux-musl/
+aarch64-apple-darwin/  aarch64-linux-musl/  x86_64-apple-darwin/  x86_64-linux-musl/
 ```
 
 ### Step 3: linking use `zig cc`
 
 We will continue the linking process in Step 1
 
-When run origial linking command on X86_64 host, it not work obviously.
+If try running the outputed link command on local X86_64 machine, it not work obviously.
 
 ```
  ╰─ $ cd ~/Crystal/crystal-lang/shards
@@ -421,12 +425,12 @@ collect2: error: ld returned 1 exit status
 
 ```
 
-Now the magic show begins, let us use `zig cc`, We need only do trivial to complete it.
+Now the magic show begins, if use `zig cc` instead `cc`, it works! with only trivial steps:
 
 
 1.  `cc` replace with `zig cc --target aarch64-linux-musl`
 2. `-L/home/zw963/Crystal/bin/../lib/crystal` replace with `/home/zw963/Crystal/static_libraries/aarch64-linux-musl`
-3. append a ` -lunwind` is ncessary, as mention by @luislavena in [this video](https://youtu.be/ij7alYEvfTg?si=YSfGlPssV3E-DY-h&t=521), which is something Crystal used to do backtrace.
+3. append a ` -lunwind` into link command is necessary, as mention by @luislavena in [this video](https://youtu.be/ij7alYEvfTg?si=YSfGlPssV3E-DY-h&t=521), which is something Crystal used to do backtrace.
 
 
 So. the new linker command is:
@@ -450,75 +454,27 @@ Shards 0.17.4 ()
 
 ```
 
+It works!
+
 built a binary for macOS is bascially same as above process, only two concerns
 
 1. you need compile-time tag `-Duse_libiconv` to allow developers to opt for libiconv variant instead of the built-in iconv support of their platform, check [Allow explicit usage of libiconv](https://github.com/crystal-lang/crystal/pull/11876) for more details.
-2. the zig support target name not same as Crystal. you probably need a hash map for handle this.
+2. the zig cc supported target name not same as Crystal. you need change it manually.
 
 # An bash script to automate the use of `zig cc` as the linker
 
 We assume that all static library files are stored in ~/Crystal/static_libraries, like this:
 
 ```
-╰─ $ eza -T -L 2 ~/Crystal/static_libraries
+ ╰─ $ eza -T -L 1 ~/Crystal/static_libraries
 /home/zw963/Crystal/static_libraries
-├── aarch64-apple-darwin21.0
-│  ├── libcrypto.a
-│  ├── libevent.a
-│  ├── libevent_pthreads.a
-│  ├── libgc.a
-│  ├── libgmp.a
-│  ├── libiconv.a
-│  ├── libpcre.a
-│  ├── libpcre2-8.a
-│  ├── libsqlite3.a
-│  ├── libssl.a
-│  ├── libyaml.a
-│  ├── libz.a
-│  └── pkgconfig
+├── aarch64-apple-darwin
 ├── aarch64-linux-musl
-│  ├── libcrypto.a
-│  ├── libevent.a
-│  ├── libevent_pthreads.a
-│  ├── libgc.a
-│  ├── libgmp.a
-│  ├── libpcre.a
-│  ├── libpcre2-8.a
-│  ├── libsqlite3.a
-│  ├── libssl.a
-│  ├── libyaml.a
-│  ├── libz.a
-│  └── pkgconfig
-├── x86_64-apple-darwin21.0
-│  ├── libcrypto.a
-│  ├── libevent.a
-│  ├── libevent_pthreads.a
-│  ├── libgc.a
-│  ├── libgmp.a
-│  ├── libiconv.a
-│  ├── libpcre.a
-│  ├── libpcre2-8.a
-│  ├── libsqlite3.a
-│  ├── libssl.a
-│  ├── libyaml.a
-│  ├── libz.a
-│  └── pkgconfig
+├── x86_64-apple-darwin
 └── x86_64-linux-musl
-   ├── libcrypto.a
-   ├── libevent.a
-   ├── libevent_pthreads.a
-   ├── libgc.a
-   ├── libgmp.a
-   ├── libpcre.a
-   ├── libpcre2-8.a
-   ├── libsqlite3.a
-   ├── libssl.a
-   ├── libyaml.a
-   ├── libz.a
-   └── pkgconfig
 ```
 
-Following is the script, we name it as `shards`, orignal shards rename to `shards.binary`.
+Following is the script, we name it as `shards`, and rename orignal shards binary to `shards.binary`.
 
 You need at least BASH 4.0 to running this script, and some basic tools, grep, sed, tee, those should out of box on any linux distro, also install zig too.
 
@@ -539,8 +495,8 @@ if echo "$*" |grep -F -qs -e '--target='; then
         declare -A libname_map=(
             ["x86_64-linux-musl"]="x86_64-linux-musl"
             ["aarch64-linux-musl"]="aarch64-linux-musl"
-            ["x86_64-darwin"]="x86_64-apple-darwin21.0"
-            ["aarch64-darwin"]="aarch64-apple-darwin21.0"
+            ["x86_64-darwin"]="x86_64-apple-darwin"
+            ["aarch64-darwin"]="aarch64-apple-darwin"
         )
 
         tmp_file="$(mktemp -d)/$$"
