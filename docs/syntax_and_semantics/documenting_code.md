@@ -206,7 +206,7 @@ Following comment lines can be used for internal documentation.
 
 ### `inherit`
 
-See [*Inheriting Documentation*](#Inheriting Documentation).
+See [*Inheriting Documentation*](#inheriting-documentation).
 
 ## Inheriting Documentation
 

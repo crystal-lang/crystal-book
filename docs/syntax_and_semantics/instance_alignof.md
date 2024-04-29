@@ -1,6 +1,12 @@
 # instance_alignof
 
-The `instance_alignof` expression returns an `Int32` with the instance alignment of a given class. For example:
+The `instance_alignof` expression returns an `Int32` with the instance alignment of a given class.
+
+Unlike [`alignof`](alignof.md) which would return the alignment of the reference
+(pointer) to the allocated object, `instance_alignof` returns the alignment of
+the allocated object itself.
+
+For example:
 
 ```crystal
 class Foo

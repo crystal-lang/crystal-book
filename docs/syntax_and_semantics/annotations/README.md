@@ -270,25 +270,34 @@ WARNING: Annotations can only be read off of typed block parameters. See https:/
 
 ### Reading Multiple Annotations
 
-If there are multiple annotations of the same type applied to the same instance variable/method/type, the `.annotations(type : TypeNode)` method can be used.  This will work on anything that `.annotation(type : TypeNode)` would, but instead returns an `ArrayLiteral(Annotation)`.
+The `#annotations` method returns an `ArrayLiteral` of *all* annotations on a type. Optionally, a `TypeNode` argument with the `#annotations(type : TypeNode)` method filters only annotations of the provided *type*.
 
 ```crystal
-annotation MyAnnotation
-end
+annotation MyAnnotation; end
+annotation OtherAnnotation; end
 
 @[MyAnnotation("foo")]
 @[MyAnnotation(123)]
-@[MyAnnotation(123)]
+@[OtherAnnotation(456)]
 def annotation_read
-  {% for ann, idx in @def.annotations(MyAnnotation) %}
-    pp "Annotation {{ idx }} = {{ ann[0].id }}"
+  {% for ann in @def.annotations(MyAnnotation) %}
+    pp "{{ann.name}}: {{ ann[0].id }}"
+  {% end %}
+
+  puts
+
+  {% for ann in @def.annotations %}
+    pp "{{ann.name}}: {{ ann[0].id }}"
   {% end %}
 end
 
 annotation_read
 
-# Which would print
-"Annotation 0 = foo"
-"Annotation 1 = 123"
-"Annotation 2 = 123"
+# Which would print:
+"MyAnnotation: foo"
+"MyAnnotation: 123"
+
+"MyAnnotation: foo"
+"MyAnnotation: 123"
+"OtherAnnotation: 456"
 ```

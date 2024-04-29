@@ -365,6 +365,7 @@ crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 * `crystal tool context`: Show context for given location
 * [`crystal tool dependencies`](#crystal-tool-dependencies): Show tree of required source files
 * `crystal tool expand`: Show macro expansion for given location
+* `crystal tool flags`: Print all macro `flag?` values
 * [`crystal tool format`](#crystal-tool-format): Format Crystal files
 * `crystal tool hierarchy`: Show type hierarchy
 * `crystal tool implementations`: Show implementations for given call in location

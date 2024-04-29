@@ -59,6 +59,7 @@ Most typically, some parts of the standard library are not supported completely.
 | `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `x86_64-unknown-netbsd` | x64 NetBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
+| `x86_64-solaris` | Solaris/illumos | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 
 !!! info "Legend"
     <ul>
