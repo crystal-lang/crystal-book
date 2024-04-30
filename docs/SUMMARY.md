@@ -100,6 +100,7 @@
         * [instance_alignof](syntax_and_semantics/instance_alignof.md)
         * [offsetof](syntax_and_semantics/offsetof.md)
         * [Uninitialized variable declaration](syntax_and_semantics/declare_var.md)
+        * [asm](syntax_and_semantics/asm.md)
     * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
         * [Cross-compilation](syntax_and_semantics/cross-compilation.md)
         * [Platform Support](syntax_and_semantics/platform_support.md)

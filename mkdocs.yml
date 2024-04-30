@@ -40,6 +40,7 @@ validation:
   omitted_files: warn
   absolute_links: warn
   unrecognized_links: warn
+  anchors: warn
 
 exclude_docs: |
   SUMMARY.md
@@ -80,9 +81,9 @@ plugins:
           validators:
             - crystal tool format --check -
             - crystal build --no-codegen $<
-  - mkdocs-simple-hooks:
-      hooks:
-        on_page_markdown: 'hooks:on_page_markdown'
+
+hooks:
+  - hooks.py
 
 markdown_extensions:
   - admonition
@@ -91,8 +92,8 @@ markdown_extensions:
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.magiclink
   - pymdownx.superfences
