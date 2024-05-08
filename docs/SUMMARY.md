@@ -103,7 +103,6 @@
         * [asm](syntax_and_semantics/asm.md)
     * [Compile-time flags](syntax_and_semantics/compile_time_flags.md)
         * [Cross-compilation](syntax_and_semantics/cross-compilation.md)
-        * [Platform Support](syntax_and_semantics/platform_support.md)
     * [C bindings](syntax_and_semantics/c_bindings/README.md)
         * [lib](syntax_and_semantics/c_bindings/lib.md)
         * [fun](syntax_and_semantics/c_bindings/fun.md)
@@ -151,3 +150,5 @@
     * [Using the Compiler](man/crystal/README.md)
     * [The Shards Command](man/shards/README.md)
     * [Required libraries](man/required_libraries.md)
+    * [Platform Support](syntax_and_semantics/platform_support.md)
+    * [Release Policy](project/release-policy.md)
