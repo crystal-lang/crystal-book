@@ -50,6 +50,7 @@ The target architecture is the first component of the target triple.
 | Flag name | Description |
 |-----------|-------------|
 | `aarch64` | AArch64 architecture
+| `avr`     | AVR architecture
 | `arm`     | ARM architecture
 | `i386`    | x86 architecture (32-bit)
 | `wasm32`  | WebAssembly
