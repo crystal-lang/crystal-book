@@ -25,3 +25,27 @@ The traces are printed to the standard error by default.
 This can be changed at runtime with the `CRYSTAL_TRACE_FILE` environment variable.
 
 For example, `CRYSTAL_TRACE_FILE=trace.log` prints all tracing output to a file `trace.log`.
+
+## Tracing Format
+
+Each trace entry stands on a single line, terminated by linefeed, and is at most 512 bytes long.
+
+Each entry starts with an identifier consisting of section and operation names, separated by a dot (e.g. `gc.malloc`).
+Then comes a timestamp represented as an integer in nanoseconds.
+Finally, a list of metadata properties in the form `key=value` separated by single spaces.
+
+The first two properties are always the originating `thread` and `fiber`. Both are identified by id and name, separated by a colon (e.g `0x7f48d7cd0f00:main`).
+
+* The thread id is the OS handle, so we can match a thread to a debugger session for example.
+* The fiber id is an internal address in the Crystal runtime. Names are optional and not necessarily unique.
+
+Trace items from early in the runtime startup may be missing fiber metadata and thread names.
+
+More metadata properties can follow depending on the specific trace entry.
+
+For example, `gc.malloc` indicates how much memory is being allocated.
+
+Reported values are typically represented as integers with the following semantics:
+
+* Times and durations are in nanoseconds as per the monotonic clock of the operating system (e.g. `123` is `123ns`, `5000000000` is `5s`).
+* Memory sizes are in bytes (e.g. `1024` is `1KB`).
