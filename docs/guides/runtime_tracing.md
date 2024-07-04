@@ -5,11 +5,11 @@ The Crystal runtime has a tracing feature for low level functionality. It prints
 A program must be built with the flag `-Dtracing` to support tracing.
 At runtime, the individual tracing components can be enabled via the environment variable `CRYSTAL_TRACE`. It receives a comma separated list of sections to enable.
 
-- `CRYSTAL_TRACE=none` Disable tracing (default)
-- `CRYSTAL_TRACE=gc`: Enable tracing for the garbage collector
-- `CRYSTAL_TRACE=sched`: Enalbe tracing for the scheduler
-- `CRYSTAL_TRACE=gc,sched`: Enable tracing for the garbage collector and scheduler
-- `CRYSTAL_TRACE=all` Enable all tracing
+* `CRYSTAL_TRACE=none` Disable tracing (default)
+* `CRYSTAL_TRACE=gc`: Enable tracing for the garbage collector
+* `CRYSTAL_TRACE=sched`: Enalbe tracing for the scheduler
+* `CRYSTAL_TRACE=gc,sched`: Enable tracing for the garbage collector and scheduler
+* `CRYSTAL_TRACE=all` Enable all tracing
 
 Example:
 
