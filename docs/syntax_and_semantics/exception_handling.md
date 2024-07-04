@@ -67,6 +67,8 @@ end
 # Output: Rescued MyException
 ```
 
+Valid type restrictions are subclasses of `::Exception`, module types and unions of these.
+
 And to access it, use a syntax similar to type restrictions:
 
 ```crystal
