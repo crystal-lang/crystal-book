@@ -7,7 +7,7 @@ At runtime, the individual tracing components can be enabled via the environment
 
 * `CRYSTAL_TRACE=none` Disable tracing (default)
 * `CRYSTAL_TRACE=gc`: Enable tracing for the garbage collector
-* `CRYSTAL_TRACE=sched`: Enalbe tracing for the scheduler
+* `CRYSTAL_TRACE=sched`: Enable tracing for the scheduler
 * `CRYSTAL_TRACE=gc,sched`: Enable tracing for the garbage collector and scheduler
 * `CRYSTAL_TRACE=all` Enable all tracing (equivalent to `gc,sched`)
 
