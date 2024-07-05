@@ -135,6 +135,7 @@
         * [Connection pool](database/connection_pool.md)
         * [Transactions](database/transactions.md)
     * [Coding style](conventions/coding_style.md)
+    * [Runtime Tracing](guides/runtime_tracing.md)
 * [Tutorials](tutorials/README.md)
     * [Getting started](getting_started/README.md)
         * [An HTTP Server](getting_started/http_server.md)
