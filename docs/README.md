@@ -114,11 +114,12 @@ Instructions on how to use the compiler and tools.
   </div>
   <div class="card" markdown="1">
 
-### Developer News
+### Project and Releases Information
 
 Announcements about the language development.
 
-* [Release Notes](https://crystal-lang.org/blog/#release_notes)
+* [Release Notes](https://crystal-lang.org/releases)
+* [Release Policy](project/release-policy.md)
 * [Crystal Blog](https://crystal-lang.org/blog)
 
   </div>

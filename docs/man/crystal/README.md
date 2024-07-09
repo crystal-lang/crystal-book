@@ -291,14 +291,15 @@ $ crystal env CRYSTAL_VERSION
 The `crystal spec` command compiles and runs a Crystal spec suite.
 
 ```
-crystal spec [<options>] [<file>...] [-- [<runner_options>]]
+crystal spec [<options>] [<file>[:line] | <folder>]... [-- [<runner_options>]]
 ```
 
 All `files` arguments are concatenated into a single Crystal source. If an argument points to a folder, all spec
-files inside that folder are appended. If no `files` argument is provided, the default is `./spec`. A filename can be suffixed by `:`
-and a line number, providing this location to the `--location` runner option (see below).
+files inside that folder (and its recursive subfolders) named `*_spec.cr` are appended.
+If no `files` argument is provided, the default is the `./spec` folder.
+A filename can be suffixed by `:` and a line number, providing this location to the `--location` runner option (see below).
 
-Run `crystal spec --options` for available options.
+Run `crystal spec --options` for available preceding options.
 
 **Runner options:**
 
@@ -316,7 +317,7 @@ the other arguments by a double dash (`--`).
 * `--dry-run`: Passes all tests without actually executing them.
 * `--help`, `-h`: Prints help and exits.
 
-The following options can be combined to filter the list of specs to run.
+The following runner options can be combined to filter the list of specs to run.
 
 * `--example <name>`, `-e <name>`: Runs examples whose full nested names include `<name>`.
 * `--line <line>`, `-l <line>`: Runs examples whose line matches `<line>`.
