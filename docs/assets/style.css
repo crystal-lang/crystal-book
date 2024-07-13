@@ -1,53 +1,133 @@
-.md-header, .md-sidebar--primary {
-    /* pull z-index up to be above the codemirror gutters (z-index: 3).
+:root {
+  --white: #e8e8e8;
+  --black: #1a1a1a;
+  --blue: #007acc;
+  --bright-blue: #00aaff;
+  --dark-blue: #004e8c;
+  --green: #00a86b;
+  --dark-green: #007a4d;
+  --red: #ff5a5f;
+  --dark-red: #d00;
+  --yellow: #ffcc00;
+  --dark-yellow: #e6b800;
+
+  --text-color: var(--black);
+  --bg-color: var(--white);
+  --link-color: var(--blue);
+  --link-hover-color: var(--dark-blue);
+  --link-active-color: var(--bright-blue);
+
+  --success-color: var(--dark-green);
+  --info-color: var(--dark-blue);
+  --warning-color: var(--dark-yellow);
+  --danger-color: var(--dark-red);
+
+  color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--white);
+    --bg-color: var(--black);
+    --link-color: var(--blue);
+    --link-hover-color: var(--bright-blue);
+    --link-active-color: var(--dark-blue);
+
+    --success-color: var(--green);
+    --info-color: var(--blue);
+    --warning-color: var(--yellow);
+    --danger-color: var(--red);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: var(--black);
+    --bg-color: var(--white);
+    --link-color: var(--blue);
+    --link-hover-color: var(--dark-blue);
+    --link-active-color: var(--bright-blue);
+
+    --success-color: var(--dark-green);
+    --info-color: var(--dark-blue);
+    --warning-color: var(--dark-yellow);
+    --danger-color: var(--dark-red);
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+#crystal-book {
+  color: var(--text-color) !important;
+}
+
+.headerlink {
+  color: var(--text-color) !important;
+
+  &:hover {
+    color: var(--link-color) !important;
+  }
+}
+
+.md-header,
+.md-sidebar--primary {
+  /* pull z-index up to be above the codemirror gutters (z-index: 3).
      * original value is z-index: 2 */
-    z-index: 20;
+  z-index: 20;
 }
 .md-overlay {
-    z-index: 15;
+  z-index: 15;
 }
 
 .md-header__button.md-logo {
-    padding: 0;
-    margin: 0.4rem;
+  padding: 0;
+  margin: 0.4rem;
 }
 .md-header__button.md-logo img {
-    width: 1.6rem;
-    height: 1.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .md-typeset .admonition {
-    font-size: 0.72rem;
+  font-size: 0.72rem;
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1.5em;
-    margin: 2em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5em;
+  margin: 2em 0;
 }
 .cards .card {
-    display: block;
+  display: block;
 }
 .cards .card > h3 {
-    margin: 0;
+  margin: 0;
 }
 .cards .card > p {
-    color: var(--md-default-fg-color--light);
-    margin: 0;
+  color: var(--text-color);
+  margin: 0;
 }
 .cards .card > ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .cards .card > ul > li {
-    margin: 0;
+  margin: 0;
 }
 
 .cards .card > ul > li:not(:last-child)::after {
-    content: "·";
-    margin: 0 0.3em;
+  content: "·";
+  margin: 0 0.3em;
 }
