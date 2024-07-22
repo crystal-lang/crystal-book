@@ -42,6 +42,7 @@ Details are described in the *Comment* column.
 | `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `x86_64-openbsd` | x64 OpenBSD | 6+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `x86_64-freebsd` | x64 FreeBSD | 12+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
 
 ***
 
@@ -54,7 +55,6 @@ Most typically, some parts of the standard library are not supported completely.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
 | `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 24+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `x86_64-unknown-netbsd` | x64 NetBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
