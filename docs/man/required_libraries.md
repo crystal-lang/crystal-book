@@ -15,13 +15,13 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [glibc][glibc] | standard C library for Linux | [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) |
-| [musl libc][musl-libc] | standard C library for Linux | [MIT](https://git.musl-libc.org/cgit/musl/tree/COPYRIGHT) |
-| [FreeBSD libc][freebsd-libc] | standard C library for FreeBSD | [BSD](https://www.freebsd.org/copyright/freebsd-license/) |
+| [glibc][glibc] | standard C library for Linux <br>**Supported versions:** GNU libc 2.26+ | [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) |
+| [musl libc][musl-libc] | standard C library for Linux <br>**Supported versions:** MUSL libc 1.2+ | [MIT](https://git.musl-libc.org/cgit/musl/tree/COPYRIGHT) |
+| [FreeBSD libc][freebsd-libc] | standard C library for FreeBSD <br>**Supported versions:** 12+ | [BSD](https://www.freebsd.org/copyright/freebsd-license/) |
 | [NetBSD libc][netbsd-libc] | standard C library for NetBSD | [BSD](http://www.netbsd.org/about/redistribution.html) |
-| [OpenBSD libc][openbsd-libc] | standard C library for OpenBSD | [BSD](https://www.openbsd.org/policy.html) |
+| [OpenBSD libc][openbsd-libc] | standard C library for OpenBSD <br>**Supported versions:** 6+ | [BSD](https://www.openbsd.org/policy.html) |
 | [Dragonfly libc][dragonfly-libc] | standard C library for DragonflyBSD | [BSD](https://www.dragonflybsd.org/docs/developer/DragonFly_BSD_License/) |
-| [macOS libsystem][macos-libsystem] | standard C library for macOS | [Apple](https://github.com/apple-oss-distributions/Libsystem/blob/main/APPLE_LICENSE) |
+| [macOS libsystem][macos-libsystem] | standard C library for macOS <br>**Supported versions:** 11+ | [Apple](https://github.com/apple-oss-distributions/Libsystem/blob/main/APPLE_LICENSE) |
 | [MSVCRT][msvcrt] | standard C library for MSVC compiler (Windows) | |
 | [WASI][wasi] | WebAssembly System Interface | [Apache v2 and others](https://github.com/WebAssembly/wasi-libc/blob/main/LICENSE) |
 | [bionic libc][bionic-libc] | C library for Android | [BSD-like](https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/NOTICE) |
@@ -30,7 +30,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [Boehm GC][libgc] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management. | [MIT-style](https://github.com/ivmai/bdwgc/blob/master/LICENSE) |
+| [Boehm GC][libgc] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style](https://github.com/ivmai/bdwgc/blob/master/LICENSE) |
 | [Libevent][libevent] | An event notification library. Implements concurrency features such as [`Fiber`](https://crystal-lang.org/api/Fiber.html) and the event loop on POSIX platforms. Not used on Windows. | [Modified BSD](https://github.com/libevent/libevent/blob/master/LICENSE) |
 | [compiler-rt builtins][compiler-rt] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt] |
 
@@ -45,7 +45,7 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [PCRE2][libpcre] | Perl Compatible Regular Expressions, version 2. | [BSD](http://www.pcre.org/licence.txt) |
+| [PCRE2][libpcre] | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD](http://www.pcre.org/licence.txt) |
 | [PCRE][libpcre] | Perl Compatible Regular Expressions. | [BSD](http://www.pcre.org/licence.txt) |
 
 ### Big Numbers
@@ -74,8 +74,8 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [OpenSSL][openssl] | Implementation of the SSL and TLS protocols | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
-| [LibreSSL][libressl] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014  | [ISC / OpenSSL / SSLeay](https://github.com/libressl-portable/openbsd/blob/master/src/lib/libssl/LICENSE) |
+| [OpenSSL][openssl] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.0+–3.3+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
+| [LibreSSL][libressl] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 2.0–4.0+ | [ISC / OpenSSL / SSLeay](https://github.com/libressl-portable/openbsd/blob/master/src/lib/libssl/LICENSE) |
 
 ### Other stdlib libraries
 
@@ -84,7 +84,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 | [LibXML2][libxml2] | XML parser developed for the Gnome project. Implements the [`XML`](https://crystal-lang.org/api/XML.html) module. | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
 | [LibYAML][libyaml] | YAML parser and emitter library. Implements the [`YAML`](https://crystal-lang.org/api/YAML.html) module. | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
 | [zlib][zlib] | Lossless data compression library. Implements the [`Compress`](https://crystal-lang.org/api/Compress.html) module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib](http://zlib.net/zlib_license.html) |
-| [LLVM][libllvm] | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+| [LLVM][libllvm] | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. <br>**Supported versions:** LLVM 8-19 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
 
 ## Compiler dependencies
 
