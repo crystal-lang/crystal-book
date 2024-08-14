@@ -24,7 +24,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 | [macOS libsystem][macos-libsystem] | standard C library for macOS <br>**Supported versions:** 11+ | [Apple](https://github.com/apple-oss-distributions/Libsystem/blob/main/APPLE_LICENSE) |
 | [MSVCRT][msvcrt] | standard C library for MSVC compiler (Windows) | |
 | [WASI][wasi] | WebAssembly System Interface | [Apache v2 and others](https://github.com/WebAssembly/wasi-libc/blob/main/LICENSE) |
-| [bionic libc][bionic-libc] | C library for Android | [BSD-like](https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/NOTICE) |
+| [bionic libc][bionic-libc] | C library for Android <br>**Supported versions:** ABI Level 24+ | [BSD-like](https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/NOTICE) |
 
 ### Other runtime libraries
 
@@ -74,7 +74,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [OpenSSL][openssl] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.0+–3.3+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
+| [OpenSSL][openssl] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.0+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
 | [LibreSSL][libressl] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 2.0–4.0+ | [ISC / OpenSSL / SSLeay](https://github.com/libressl-portable/openbsd/blob/master/src/lib/libssl/LICENSE) |
 
 ### Other stdlib libraries
