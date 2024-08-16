@@ -61,6 +61,14 @@ Most typically, some parts of the standard library are not supported completely.
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
 | `x86_64-solaris` | Solaris/illumos | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 
+## Compiler support
+
+The compiler can target these platforms but there is no support for the standard library (i.e. must compile with `--prelude=empty`).
+
+| Target | Description | Supported versions | Comment |
+| ------ | ----------- | ------------------ | ------- |
+| `avr-unknown-unknown` | AVR (Atmel) CPU architecture (Arduino)<br>This target requires declaration of a CPU model (e.g. `--mcpu=atmega328`) | | |
+
 !!! info "Legend"
     <ul>
     <li>:material-selection-ellipse: means automated tests or builds are not available</li>
