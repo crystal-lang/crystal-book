@@ -19,7 +19,7 @@ and drop into *Tier 2*.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `aarch64-darwin` | Aarch64 macOS<br> (Apple Silicon) | 11+ *(testing only on 14)* | :material-selection-circle: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-darwin` | Aarch64 macOS<br> (Apple Silicon) | 11+ *(testing only on 14)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 | `x86_64-darwin` | x64 macOS<br> (Intel) | 11+<br> *(testing only on 13; expected to work on 10.7+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 | `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 | `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
