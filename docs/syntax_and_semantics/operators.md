@@ -292,7 +292,7 @@ literals.
 
 | Operator | Description | Example | Overloadable |
 |---|---|---|---|
-| `..` | range | `1..10` | no |
+| `..` | inclusive range | `1..10` | no |
 | `...` | exclusive range | `1...10` | no |
 
 ### Splats
