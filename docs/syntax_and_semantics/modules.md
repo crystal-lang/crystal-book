@@ -147,8 +147,8 @@ class Two
   include B
 end
 
-class Three < Two
-  include A
+class Three < One
+  include B
 end
 ```
 
@@ -175,8 +175,8 @@ two = Two.new
 three = Three.new
 
 new_array = Array(A).new
-new_array << one   # Ok, One inherits module A
-new_array << three # Ok, Three includes module A
+new_array << one   # Ok, One includes module A
+new_array << three # Ok, Three inherits module A
 
-new_array << two # Error, because Two does not inherit module A
+new_array << two # Error, because Two neither inherits nor includes module A
 ```
