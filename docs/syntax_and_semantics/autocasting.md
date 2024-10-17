@@ -20,7 +20,7 @@ def bar64(x : Float64) : Float64
 end
 
 foo 0xFFFF_u16 # OK, an UInt16 always fit an Int32
-foo 0xFFFF_u64 # OK, this particular Uint64 fit in an Int32
+foo 0xFFFF_u64 # OK, this particular UInt64 fit in an Int32
 bar(foo 1)     # Fails, casting an Int32 to a Float32 might lose precision
 bar64(bar 1)   # OK, a Float32 can be autocasted to a Float64
 ```
