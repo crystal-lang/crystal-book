@@ -107,7 +107,7 @@ The `print_methods` macro will be run as soon as it is encountered - and will pr
 Depending on the macro hook used, a hook can either be stacked or overridden. 
 
 ## Stacking
-When stacked, a hook is executed multiple times in it's defined context for as many times as the hook is defined. Consider the following example:
+When stacked, a hook is executed multiple times in its defined context for as many times as the hook is defined. Consider the following example:
 ```crystal
 # Stack the top-level finished macro
 macro finished
@@ -121,7 +121,7 @@ end
 In the above example, both `finished` macros will execute. Stacking works for the following hooks: `inherited`, `included`, `extended`, `method_added`, `finished`
 
 ## Overriding
-Overriding can only be used with the `method_missing` macro. This will only execute the last defined macro `method_missing` in a context. For example:
+A definition of the `method_missing` macro hook overrides any previous definition of this hook in the same context. Only the last defined macro executes. For example:
 ```crystal
 macro method_missing(name)
   {% puts "I didnt run! :(" %}
