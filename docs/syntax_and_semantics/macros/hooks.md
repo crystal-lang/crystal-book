@@ -103,3 +103,45 @@ Foo.new.bar
 ```
 
 The `print_methods` macro will be run as soon as it is encountered - and will print an empty list as there are no methods defined at that point. Once the second declaration of `Foo` is compiled the `finished` macro will be run, which will print `[bar]`.
+
+Depending on the macro hook used, a hook can either be stacked or overridden. 
+
+## Stacking
+When stacked a hook is executed multiple times in it's defined context for every time the hook is defined. Consider the following example:
+```crystal
+# Stack the top-level finished macro
+macro finished
+  {% puts "I will execute!" %}
+end
+
+macro finished
+  {% puts "I will also execute!" %}
+end
+```
+In the above example, both `finished` macros will execute. Stacking works for the following hooks: `inherited`, `included`, `extended`, `method_added`, `finished`
+
+## Overriding
+Overriding can only be used with the `method_missing` macro. This will only execute the last defined macro `method_missing` in a context. For example:
+```crystal
+macro method_missing(name)
+  {% puts "I didnt run! :(" %}
+end
+class Example
+  macro method_missing(name)
+    {% puts "I didnt run! :(" %}
+  end
+  
+  macro method_missing(name)
+    {% puts "I am the only one that will run! :D" %}
+  end
+end
+
+macro method_missing(name)
+  {% puts "I am the only one that will run! :D 2" %}
+end
+
+Example.new.call_a_missing_method # => I am the only one that will run! :D
+
+call_a_missing_method # => I am the only one that will run! :D 2
+```
+
