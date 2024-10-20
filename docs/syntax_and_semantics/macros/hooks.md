@@ -132,16 +132,16 @@ class Example
   end
   
   macro method_missing(name)
-    {% puts "I am the only one that will run! :D" %}
+    {% puts "I am the only one that will run!" %}
   end
 end
 
 macro method_missing(name)
-  {% puts "I am the only one that will run! :D 2" %}
+  {% puts "I am the only one that will run!" %}
 end
 
-Example.new.call_a_missing_method # => I am the only one that will run! :D
+Example.new.call_a_missing_method # => I am the only one that will run!
 
-call_a_missing_method # => I am the only one that will run! :D 2
+call_a_missing_method # => I am the only one that will run!
 ```
 
