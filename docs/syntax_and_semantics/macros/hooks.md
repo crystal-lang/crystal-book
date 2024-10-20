@@ -107,7 +107,7 @@ The `print_methods` macro will be run as soon as it is encountered - and will pr
 Depending on the macro hook used, a hook can either be stacked or overridden. 
 
 ## Stacking
-When stacked, a hook is executed multiple times in its defined context for as many times as the hook is defined. Consider the following example:
+When stacked, a hook is executed multiple times in its defined context for as many times as the hook is defined. Hooks executed in this way will execute in order of definition. Consider the following example:
 ```crystal
 # Stack the top-level finished macro
 macro finished
