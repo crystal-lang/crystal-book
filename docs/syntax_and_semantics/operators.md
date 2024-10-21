@@ -63,7 +63,7 @@ v1 = Vector2.new(1, 2)
 -v1 # => Vector2(@x=-1, @y=-2)
 ```
 
-## Binary operators
+### Binary operators
 
 Binary operators have two operands. Thus, a method implementation receives
 exactly one argument representing the second operand. The first operand is the
@@ -98,7 +98,7 @@ There can be reasonable exceptions though. For example in the standard library
 the float division operator `/` on integer types always returns `Float64`,
 because the quotient must not be limited to the value range of integers.
 
-## Ternary operators
+### Ternary operators
 
 The [conditional operator (`? :`)](./ternary_if.md) is the only ternary
 operator. It not parsed as a method, and its meaning cannot be changed.
