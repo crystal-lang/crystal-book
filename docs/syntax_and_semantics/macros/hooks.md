@@ -131,11 +131,12 @@ A definition of the `method_missing` macro hook overrides any previous definitio
 macro method_missing(name)
   {% puts "I didnt run! :(" %}
 end
+
 class Example
   macro method_missing(name)
     {% puts "I didnt run! :(" %}
   end
-  
+
   macro method_missing(name)
     {% puts "I am the only one that will run!" %}
   end
