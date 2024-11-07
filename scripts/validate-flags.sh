@@ -1,6 +1,6 @@
-#! /bin/sh
+#! /bin/bash
 
-set -eu
+set -eu -o pipefail
 
 CRYSTAL=${CRYSTAL:-crystal}
 if [ -z "${STDLIB_SRC-}" ]; then
