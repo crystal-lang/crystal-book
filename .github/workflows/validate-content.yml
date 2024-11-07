@@ -23,6 +23,8 @@ jobs:
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: nightly
+      - run: echo "${{ github.base_ref }}"
+      - run: echo "${{ startsWith(github.base_ref, 'release/') }}"
       - name: Download crystal repo
         uses: actions/checkout@v4
         with:
