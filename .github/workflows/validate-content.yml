@@ -24,5 +24,12 @@ jobs:
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: nightly
+      - name: Download crystal repo
+        uses: actions/checkout@v4
+        with:
+          repository: crystal-lang/crystal
+          path: crystal
       - name: Run test script
         run: scripts/validate-flags.sh
+        env:
+          STDLIB_SRC: ./crystal/src
