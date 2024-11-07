@@ -29,6 +29,9 @@ jobs:
         with:
           repository: crystal-lang/crystal
           path: crystal
+          # If the PR goes against a release branch, we checkout that same release
+          # branch in the Crystal repo (names are identical).
+          ref: ${{ (startsWith(github.base_ref, 'release/') && github.base_ref) || 'master' }}
       - name: Run test script
         run: scripts/validate-flags.sh
         env:
