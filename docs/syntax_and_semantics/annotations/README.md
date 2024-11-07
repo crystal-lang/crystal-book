@@ -38,7 +38,7 @@ end
 
 def method2(
   @[MyAnnotation]
-  bar
+  bar,
 )
 end
 
