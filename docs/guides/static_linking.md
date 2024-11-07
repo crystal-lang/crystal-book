@@ -60,9 +60,9 @@ macOS doesn't [officially support fully static linking](https://developer.apple.
 
 Windows doesn't support fully static linking because the Win32 libraries are not available as static libraries.
 
-Currently, static linking is the default mode of linking on Windows, and dynamic linking can be opted in via the `-Dpreview_dll` compile-time flag. In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM.
+In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows MSVC packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM, which is only available as an import library.
 
-Static linking implies using the static version of Microsoft's C runtime library (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+Static linking implies using the static version of Microsoft's Universal C Runtime (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
 
 ## Identifying Static Dependencies
 
