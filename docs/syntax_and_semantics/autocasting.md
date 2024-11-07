@@ -27,7 +27,7 @@ bar64(bar 1)   # OK, a Float32 can be autocasted to a Float64
 
 Number literals are always casted when the actual value of the literal fits the target type, despite of its type.
 
-Expressions are casted (like in the last example above), unless the flag `no_number_autocast` is passed to the compiler (see [Compiler features](compile_time_flags.md#compiler-features)).
+Expressions are casted (like in the last example above), unless the flag `no_number_autocast` is passed to the compiler (see [Compiler features](compile_time_flags.md#language-features)).
 
 If there is ambiguity, for instance, because there is more than one option, the compiler throws an error:
 
