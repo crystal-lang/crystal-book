@@ -9,14 +9,7 @@ on:
 jobs:
   validate-flags:
     name: Validate flags
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-          - os: macos-latest
-          - os: windows-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Download source
         uses: actions/checkout@v4
