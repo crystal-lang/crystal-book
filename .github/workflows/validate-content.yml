@@ -1,8 +1,14 @@
 name: Validate content
 on:
   push:
+    paths:
+    - docs/syntax_and_semantics/compile_time_flags.md
+    - .github/workflows/validate-content.yml
   pull_request:
     branches: [master, release/*]
+    paths:
+    - docs/syntax_and_semantics/compile_time_flags.md
+    - .github/workflows/validate-content.yml
   schedule:
     - cron: '0 5 * * 1'  # Every Monday 5 AM UTC
 
