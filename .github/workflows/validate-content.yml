@@ -1,22 +1,21 @@
 name: Validate content
 on:
   push:
+    paths:
+    - docs/syntax_and_semantics/compile_time_flags.md
+    - .github/workflows/validate-content.yml
   pull_request:
     branches: [master, release/*]
+    paths:
+    - docs/syntax_and_semantics/compile_time_flags.md
+    - .github/workflows/validate-content.yml
   schedule:
     - cron: '0 5 * * 1'  # Every Monday 5 AM UTC
 
 jobs:
   validate-flags:
     name: Validate flags
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-          - os: macos-latest
-          - os: windows-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Download source
         uses: actions/checkout@v4
@@ -24,5 +23,15 @@ jobs:
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: nightly
+      - name: Download crystal repo
+        uses: actions/checkout@v4
+        with:
+          repository: crystal-lang/crystal
+          path: crystal
+          # If the PR goes against a release branch, we checkout that same release
+          # branch in the Crystal repo (names are identical).
+          ref: ${{ (startsWith(github.base_ref, 'release/') && github.base_ref) || 'master' }}
       - name: Run test script
         run: scripts/validate-flags.sh
+        env:
+          STDLIB_SRC: ./crystal/src
