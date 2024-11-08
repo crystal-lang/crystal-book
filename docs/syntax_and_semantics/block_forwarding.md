@@ -49,7 +49,7 @@ end
 Or, combining the `&` and `->` syntaxes:
 
 ```crystal
-twice &->{ puts "Hello" }
+twice &-> { puts "Hello" }
 ```
 
 Or:
