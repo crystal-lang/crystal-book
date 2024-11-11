@@ -58,11 +58,19 @@ macOS doesn't [officially support fully static linking](https://developer.apple.
 
 ### Windows
 
+#### MSVC
+
 Windows doesn't support fully static linking because the Win32 libraries are not available as static libraries.
 
 Currently, static linking is the default mode of linking on Windows, and dynamic linking can be opted in via the `-Dpreview_dll` compile-time flag. In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM.
 
 Static linking implies using the static version of Microsoft's C runtime library (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+
+#### MinGW-w64
+
+MinGW-w64 provides import libraries for the Win32 APIs and the C runtimes; therefore, unlike the MSVC toolchain, all libraries link against the C runtime dynamically, even for static builds.
+
+The default C runtime depends on MinGW-w64's build-time configuration, and this default is always called `libmsvcrt.a`. On an MSYS2 UCRT64 environment, this is a copy of `libucrt.a`, the Universal C Runtime, whereas on a MINGW64 environment, this is a copy of `libmsvcrt-os.a` instead, the old system MSVCRT runtime. This can be overridden using `--link-flags=-mcrtdll=ucrt` or `--link-flags=-mcrtdll=msvcrt-os`, provided the MinGW-w64 installation understands it.
 
 ## Identifying Static Dependencies
 
@@ -71,7 +79,7 @@ Most systems don't install static libraries by default, so you need to install t
 First you have to know which libraries your program links against.
 
 NOTE:
-Static libraries have the file extension `.a` on POSIX and `.lib` on Windows. DLL import libraries on Windows also have the `.lib` extension.
+Static libraries have the file extension `.a` on POSIX (including MinGW-w64) and `.lib` on Windows MSVC. DLL import libraries on Windows have the `.dll.a` extension for MinGW-w64 and `.lib` for MSVC.
 Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
 
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
