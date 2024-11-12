@@ -4,7 +4,7 @@ Captured blocks and proc literals closure local variables and `self`. This is be
 
 ```crystal
 x = 0
-proc = ->{ x += 1; x }
+proc = -> { x += 1; x }
 proc.call # => 1
 proc.call # => 2
 x         # => 2
@@ -15,7 +15,7 @@ Or with a proc returned from a method:
 ```crystal
 def counter
   x = 0
-  ->{ x += 1; x }
+  -> { x += 1; x }
 end
 
 proc = counter
@@ -76,7 +76,7 @@ This also happens with regular proc literals, even if it's evident that the proc
 
 ```crystal
 x = 1
-->{ x = "hello" }
+-> { x = "hello" }
 
 x = 'a'
 x # : Int32 | String | Char

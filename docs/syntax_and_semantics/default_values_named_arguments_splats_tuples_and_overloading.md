@@ -22,7 +22,7 @@ def foo(
   # These are the named parameters:
   a, b, c = 2,
   # This is the double splat parameter:
-  **options
+  **options,
 )
 end
 ```

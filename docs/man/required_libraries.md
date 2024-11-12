@@ -55,7 +55,7 @@ Implementations for `Big` types such as [`BigInt`](https://crystal-lang.org/api/
 | Library | Description | License |
 |---------|-------------|---------|
 | [GMP][libgmp] | GNU multiple precision arithmetic library. | [LGPL v3+ / GPL v2+](https://gmplib.org/manual/Copying)
-| [MPIR][libmpir] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows. | [GPL-3.0](https://github.com/wbhart/mpir/blob/master/COPYING) and [LGPL-3.0](https://github.com/wbhart/mpir/blob/master/COPYING.LIB) |
+| [MPIR][libmpir] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows MSVC. | [GPL-3.0](https://github.com/wbhart/mpir/blob/master/COPYING) and [LGPL-3.0](https://github.com/wbhart/mpir/blob/master/COPYING.LIB) |
 
 ### Internationalization conversion
 

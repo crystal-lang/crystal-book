@@ -99,7 +99,7 @@ lib LibFoo
   fun execute_callback
 end
 
-LibFoo.store_callback ->{ raise "OH NO!" }
+LibFoo.store_callback -> { raise "OH NO!" }
 LibFoo.execute_callback
 ```
 

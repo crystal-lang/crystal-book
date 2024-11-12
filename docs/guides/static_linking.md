@@ -58,11 +58,19 @@ macOS doesn't [officially support fully static linking](https://developer.apple.
 
 ### Windows
 
+#### MSVC
+
 Windows doesn't support fully static linking because the Win32 libraries are not available as static libraries.
 
-Currently, static linking is the default mode of linking on Windows, and dynamic linking can be opted in via the `-Dpreview_dll` compile-time flag. In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM.
+In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows MSVC packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM, which is only available as an import library.
 
-Static linking implies using the static version of Microsoft's C runtime library (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+Static linking implies using the static version of Microsoft's Universal C Runtime (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+
+#### MinGW-w64
+
+MinGW-w64 provides import libraries for the Win32 APIs and the C runtimes; therefore, unlike the MSVC toolchain, all libraries link against the C runtime dynamically, even for static builds.
+
+The default C runtime depends on MinGW-w64's build-time configuration, and this default is always called `libmsvcrt.a`. On an MSYS2 UCRT64 environment, this is a copy of `libucrt.a`, the Universal C Runtime, whereas on a MINGW64 environment, this is a copy of `libmsvcrt-os.a` instead, the old system MSVCRT runtime. This can be overridden using `--link-flags=-mcrtdll=ucrt` or `--link-flags=-mcrtdll=msvcrt-os`, provided the MinGW-w64 installation understands it.
 
 ## Identifying Static Dependencies
 
@@ -71,7 +79,7 @@ Most systems don't install static libraries by default, so you need to install t
 First you have to know which libraries your program links against.
 
 NOTE:
-Static libraries have the file extension `.a` on POSIX and `.lib` on Windows. DLL import libraries on Windows also have the `.lib` extension.
+Static libraries have the file extension `.a` on POSIX (including MinGW-w64) and `.lib` on Windows MSVC. DLL import libraries on Windows have the `.dll.a` extension for MinGW-w64 and `.lib` for MSVC.
 Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` on macOS and `.dll` on Windows.
 
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
@@ -116,21 +124,3 @@ In order to link this program statically, we need static versions of these three
 NOTE:
 The `*-alpine` docker images ship with static versions of all libraries used by the standard library.
 If your program links no other libraries then adding the `--static` flag to the build command is all you need to link fully statically.
-
-## Dynamic library lookup
-
-The lookup paths of dynamic libraries at runtime can be controlled by the `CRYSTAL_LIBRARY_RPATH` environment variable during compilation. Currently this is supported on Linux and Windows.
-
-### Linux
-
-If `CRYSTAL_LIBRARY_RPATH` is defined during compilation, it is passed unmodified to the linker via an `-Wl,rpath` option. The exact behavior depends on the linker; usually, this is appended to the ELF executable's `DT_RUNPATH` or `DT_RPATH` dynamic tag entry. The special `$ORIGIN` / `$LIB` / `$PLATFORM` variables might not be supported on all platforms.
-
-### Windows
-
-The standard library supports experimental [DLL delay loading](https://learn.microsoft.com/en-us/cpp/build/reference/linker-support-for-delay-loaded-dlls), and may alter the search order of DLLs by using delay loading.
-
-If a `/DELAYLOAD` linker flag is passed for a given DLL, then the first time an executable loads a symbol from that DLL, it will attempt the semicolon-separated paths in the executable's `CRYSTAL_LIBRARY_RPATH` first, in the order they are declared, before the [default lookup order](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order#search-order-for-unpackaged-apps). `$ORIGIN` inside `CRYSTAL_LIBRARY_RPATH` expands into the path of the running executable itself. For example, if `CRYSTAL_LIBRARY_RPATH=$ORIGIN\mylibs;C:\bar` during compilation, `--link-flags=/DELAYLOAD:calc.dll` is supplied, and the executable is located at `C:\foo\test.exe`, then the executable searches for `C:\foo\mylibs\calc.dll`, then `C:\bar\calc.dll`, and uses the default order afterwards.
-
-Non-delay-loaded DLLs are loaded immediately upon program startup, and do not respect `CRYSTAL_LIBRARY_RPATH`.
-
-By default, no DLLs are delay-loaded. However, if the `-Dpreview_win32_delay_load` compile-time flag is specified at compilation time, the compiler will detect all DLL dependencies from their import libraries, inserting a `/DELAYLOAD` linker flag per DLL during compilation.
