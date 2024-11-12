@@ -153,9 +153,7 @@ These flags enable or disable compiler features when building a Crystal program.
 |-----------|-------------|
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 | `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
-| `preview_dll` | Enable dynamic linking on Windows; experimental |
 | `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
-| `preview_win32_delay_load` | Delay-load all DLLs on Windows; experimental |
 | `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
 
 ### Compiler build features
