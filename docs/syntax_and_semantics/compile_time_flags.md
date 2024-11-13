@@ -145,9 +145,9 @@ Crystal program.
 | `without_openssl` | Build without OpenSSL support
 | `without_zlib` | Build without Zlib support
 
-### Compiler features
+### Language features
 
-These flags enable or disable compiler features when building a Crystal program.
+These flags enable or disable language features when building a Crystal program.
 
 | Flag name | Description |
 |-----------|-------------|
@@ -155,6 +155,15 @@ These flags enable or disable compiler features when building a Crystal program.
 | `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
 | `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
 | `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
+
+### Codegen features
+
+These flags enable or disable codegen features when building a Crystal program.
+
+| Flag name | Description |
+|-----------|-------------|
+| `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122))
+| `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122))
 
 ### Compiler build features
 

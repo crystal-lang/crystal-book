@@ -68,7 +68,7 @@ Using a standalone library over the system library implementation can be enforce
 
 ### TLS
 
-TLS protocol implementation and general-purpose cryptographic routines for the [`OpenSSL`](https://crystal-lang.org/api/OpenSSL.html) API. May be disabled with the `-Dwithout_openssl` [compile-time flag](../syntax_and_semantics/compile_time_flags.md#compiler-features).
+TLS protocol implementation and general-purpose cryptographic routines for the [`OpenSSL`](https://crystal-lang.org/api/OpenSSL.html) API. May be disabled with the `-Dwithout_openssl` [compile-time flag](../syntax_and_semantics/compile_time_flags.md#stdlib-features).
 
 Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detect which library and API version is available on the host system.
 
