@@ -48,11 +48,11 @@ The type of an enum member is `Int32` by default, even if you specify a differen
 ```crystal
 lib X
   enum SomeEnum
-    A = 1_u32
+    A = 1_u32 # => Error: enum value must be an Int32
   end
 end
 
-X::SomeEnum # => 1_i32
+X::SomeEnum 
 ```
 
 However, you can change this default type:
@@ -65,8 +65,8 @@ lib X
   end
 end
 
-X::SomeEnum::Zero # => 0_i8
-X::SomeEnum::Two  # => 2_i8
+puts X::SomeEnum::Zero.value # => 0_i8
+puts X::SomeEnum::Two.value  # => 2_i8
 ```
 
 You can use an enum as a type in a `fun` parameter or `struct` or `union` members:
