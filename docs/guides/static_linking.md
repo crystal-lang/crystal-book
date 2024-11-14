@@ -60,11 +60,7 @@ macOS doesn't [officially support fully static linking](https://developer.apple.
 
 #### MSVC
 
-Windows doesn't support fully static linking because the Win32 libraries are not available as static libraries.
-
-In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows MSVC packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM, which is only available as an import library.
-
-Static linking implies using the static version of Microsoft's Universal C Runtime (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+Windows fully supports static linking using the `--static` option. 
 
 #### MinGW-w64
 
