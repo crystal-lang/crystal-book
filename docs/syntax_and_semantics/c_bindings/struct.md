@@ -41,7 +41,7 @@ lib C
 end
 ```
 
-Structs that are defined inside a `lib` can be included as modules internally in other `lib` defined structs, for example:
+Structs that are defined inside a `lib` can be included, like modules, internally in other `lib` defined structs, for example:
 
 ```crystal
 lib Lib
