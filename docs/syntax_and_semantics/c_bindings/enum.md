@@ -51,8 +51,6 @@ lib X
     A = 1_u32 # Error: enum value must be an Int32
   end
 end
-
-X::SomeEnum 
 ```
 
 However, you can change this default type:
