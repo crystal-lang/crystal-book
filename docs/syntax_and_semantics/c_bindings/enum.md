@@ -43,12 +43,12 @@ end
 
 As you can see, some basic math is allowed for a member value: `+`, `-`, `*`, `/`, `&`, `|`, `<<`, `>>` and `%`.
 
-The type of an enum member is `Int32` by default, even if you specify a different type in a constant value:
+The type of an enum member is `Int32` by default.  It's an error to specify a different type in a constant value.
 
 ```crystal
 lib X
   enum SomeEnum
-    A = 1_u32 # => Error: enum value must be an Int32
+    A = 1_u32 # Error: enum value must be an Int32
   end
 end
 
