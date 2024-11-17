@@ -107,6 +107,7 @@ rescue
 end
 ```
 
+
 ## else
 
 An `else` clause is executed only if no exceptions were rescued:
@@ -204,6 +205,38 @@ else
   # ..
 ensure
   # ..
+end
+```
+
+## Suffix forms of `rescue` and `ensure`
+
+You can use the suffix form of `rescue` to create one-liner exception handling.
+
+```crystal
+text = File.get_to_end("this_file_may_not_exist") rescue "File not found"
+```
+
+This is equal to:
+```crystal
+text = begin
+  File.get_to_end("this_file_may_not_exist")
+rescue
+  "File not found"
+end
+```
+
+You may also use the suffix form of `ensure` to create one-liner guarantees similar to `rescue`.
+
+```crystal
+x ensure y
+```
+
+This is equal to:
+```crystal
+begin
+  x
+ensure
+  y
 end
 ```
 
