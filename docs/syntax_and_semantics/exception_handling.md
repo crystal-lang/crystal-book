@@ -107,7 +107,6 @@ rescue
 end
 ```
 
-
 ## else
 
 An `else` clause is executed only if no exceptions were rescued:
@@ -217,6 +216,7 @@ text = File.get_to_end("this_file_may_not_exist") rescue "File not found"
 ```
 
 This is equal to:
+
 ```crystal
 text = begin
   File.get_to_end("this_file_may_not_exist")
@@ -232,6 +232,7 @@ x ensure y
 ```
 
 This is equal to:
+
 ```crystal
 begin
   x
