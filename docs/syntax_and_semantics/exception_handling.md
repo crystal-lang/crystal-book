@@ -212,14 +212,14 @@ end
 You can use the suffix form of `rescue` to create one-liner exception handling.
 
 ```crystal
-text = File.get_to_end("this_file_may_not_exist") rescue "File not found"
+text = File.gets_to_end("this_file_may_not_exist") rescue "File not found"
 ```
 
 This is equal to:
 
 ```crystal
 text = begin
-  File.get_to_end("this_file_may_not_exist")
+  File.gets_to_end("this_file_may_not_exist")
 rescue
   "File not found"
 end
