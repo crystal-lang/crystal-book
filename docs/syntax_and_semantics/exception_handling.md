@@ -212,7 +212,7 @@ end
 You can use the suffix form of `rescue` to create one-liner exception handling.
 
 ```crystal
-text = File.read("this_file_may_not_exist") rescue "File not found"
+text = File.read("this_file_may_not_exist") rescue nil
 ```
 
 This is equal to:
@@ -221,7 +221,7 @@ This is equal to:
 text = begin
   File.read("this_file_may_not_exist")
 rescue
-  "File not found"
+  nil
 end
 ```
 
