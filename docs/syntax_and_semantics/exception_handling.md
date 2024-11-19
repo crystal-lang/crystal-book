@@ -209,7 +209,7 @@ end
 
 ## Suffix forms of `rescue` and `ensure`
 
-You can use the suffix form of `rescue` to create one-liner catch-all exception handling. You cannot specify an Exception type to `rescue`.
+You can use the suffix form of `rescue` to create one-liner catch-all exception handling. You cannot specify an Exception type to `rescue` when using it's suffix form.
 
 ```crystal
 text = File.read("this_file_may_not_exist") rescue nil
