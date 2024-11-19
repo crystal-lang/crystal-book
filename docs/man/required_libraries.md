@@ -5,7 +5,7 @@ This is a list of third-party libraries used by the Crystal compiler and the sta
 ## Core runtime dependencies
 
 The libraries in this section are always required by Crystal's stdlib runtime. They must be present for building or running any Crystal program that uses the standard library.
-Avoiding these dependencies is only possible when not using the standard library (`--prelude=none` compiler option).
+Avoiding these dependencies is only possible when not using the standard library (`--prelude=empty` compiler option).
 
 ### System library
 
@@ -22,7 +22,8 @@ which may be part of the C library or standalone libraries. On most platforms al
 | [OpenBSD libc][openbsd-libc] | standard C library for OpenBSD | [BSD](https://www.openbsd.org/policy.html) |
 | [Dragonfly libc][dragonfly-libc] | standard C library for DragonflyBSD | [BSD](https://www.dragonflybsd.org/docs/developer/DragonFly_BSD_License/) |
 | [macOS libsystem][macos-libsystem] | standard C library for macOS | [Apple](https://github.com/apple-oss-distributions/Libsystem/blob/main/APPLE_LICENSE) |
-| [MSVCRT][msvcrt] | standard C library for MSVC compiler (Windows) | |
+| [MSVCRT][msvcrt] | standard C library for Visual Studio 2013 or below | |
+| [UCRT][ucrt] | Universal CRT for Windows / Visual Studio 2015+ | [MIT subset available](https://www.nuget.org/packages/Microsoft.Windows.SDK.CRTSource/10.0.22621.3/License) |
 | [WASI][wasi] | WebAssembly System Interface | [Apache v2 and others](https://github.com/WebAssembly/wasi-libc/blob/main/LICENSE) |
 | [bionic libc][bionic-libc] | C library for Android | [BSD-like](https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/NOTICE) |
 
@@ -113,10 +114,11 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 [libxml2]: http://xmlsoft.org/
 [libyaml]: https://pyyaml.org/wiki/LibYAML
 [macos-libsystem]: https://github.com/apple-oss-distributions/Libsystem
-[msvcrt]: https://learn.microsoft.com/en-us/cpp/c-runtime-library/crt-library-features?view=msvc-170
+[msvcrt]: https://web.archive.org/web/20150630135610/https://msdn.microsoft.com/en-us/library/abx4dbyh.aspx
 [musl-libc]: https://musl.libc.org/
 [netbsd-libc]: http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/?only_with_tag=MAIN
 [openbsd-libc]: http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libc/
 [openssl]: https://www.openssl.org/
+[ucrt]: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
 [wasi]: https://wasi.dev/
 [zlib]: http://zlib.net/
