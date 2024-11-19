@@ -64,11 +64,11 @@ Windows doesn't support fully static linking because the Win32 libraries are not
 
 In order to distinguish static libraries from DLL import libraries, when the compiler searches for a library `foo.lib` in a given directory, `foo-static.lib` will be attempted first while linking statically, and `foo-dynamic.lib` will be attempted first while linking dynamically. The official Windows MSVC packages are distributed with both static and DLL import libraries for all third-party dependencies, except for LLVM, which is only available as an import library.
 
-Static linking implies using the static version of Microsoft's Universal C Runtime (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. There is currently no way to use the dynamic CRT while linking statically.
+Static linking implies using the static version of Microsoft's Universal C Runtime (`/MT`), and dynamic linking implies the dynamic version (`/MD`); extra C libraries should be built with this in mind to avoid linker warnings about mixing CRT versions. All dynamically linked binaries, including the Crystal compiler itself, also require the [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-microsoft-visual-c-redistributable-version) to be installed. There is currently no way to use the dynamic CRT while linking statically.
 
 #### MinGW-w64
 
-MinGW-w64 provides import libraries for the Win32 APIs and the C runtimes; therefore, unlike the MSVC toolchain, all libraries link against the C runtime dynamically, even for static builds.
+MinGW-w64 provides only import libraries for the Win32 APIs and the C runtimes; therefore, unlike the MSVC toolchain, all libraries link against the C runtime dynamically, even for static builds. These binaries do not require the VC++ Redistributable since they use GCC's C++ ABI instead.
 
 The default C runtime depends on MinGW-w64's build-time configuration, and this default is always called `libmsvcrt.a`. On an MSYS2 UCRT64 environment, this is a copy of `libucrt.a`, the Universal C Runtime, whereas on a MINGW64 environment, this is a copy of `libmsvcrt-os.a` instead, the old system MSVCRT runtime. This can be overridden using `--link-flags=-mcrtdll=ucrt` or `--link-flags=-mcrtdll=msvcrt-os`, provided the MinGW-w64 installation understands it.
 
