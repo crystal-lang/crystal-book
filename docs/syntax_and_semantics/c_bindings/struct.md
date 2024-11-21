@@ -41,6 +41,24 @@ lib C
 end
 ```
 
+Structs that are defined inside a `lib` can be included, like modules, internally in other `lib` defined structs, for example:
+
+```crystal
+lib Lib
+  struct Foo
+    x : Int32
+    y : Int16
+  end
+
+  struct Bar
+    include Foo
+    z : Int8
+  end
+end
+
+Lib::Bar.new # => Lib::Bar(@x=0, @y=0, @z=0)
+```
+
 To create an instance of a struct use `new`:
 
 ```crystal
