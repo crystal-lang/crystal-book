@@ -207,6 +207,40 @@ ensure
 end
 ```
 
+## Suffix forms of `rescue` and `ensure`
+
+You can use the suffix form of `rescue` to create one-liner catch-all exception handling. You cannot specify an Exception type to `rescue` when using its suffix form.
+
+```crystal
+text = File.read("this_file_may_not_exist") rescue nil
+```
+
+This is equal to:
+
+```crystal
+text = begin
+  File.read("this_file_may_not_exist")
+rescue
+  nil
+end
+```
+
+You may also use the suffix form of `ensure` to create one-liner guarantees similar to `rescue`.
+
+```crystal
+x ensure y
+```
+
+This is equal to:
+
+```crystal
+begin
+  x
+ensure
+  y
+end
+```
+
 ## Type inference
 
 Variables declared inside the `begin` part of an exception handler also get the `Nil` type when considered inside a `rescue` or `ensure` body. For example:
