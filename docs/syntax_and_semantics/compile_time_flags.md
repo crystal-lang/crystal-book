@@ -49,14 +49,14 @@ The target architecture is the first component of the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
-| `aarch64` | AArch64 architecture
-| `avr`     | AVR architecture
-| `arm`     | ARM architecture
-| `i386`    | x86 architecture (32-bit)
-| `wasm32`  | WebAssembly
-| `x86_64`  | x86-64 architecture
-| `bits32` *(derived)*  | 32-bit architecture
-| `bits64` *(derived)*  | 64-bit architecture
+| `aarch64` | AArch64 architecture |
+| `avr`     | AVR architecture |
+| `arm`     | ARM architecture |
+| `i386`    | x86 architecture (32-bit) |
+| `wasm32`  | WebAssembly |
+| `x86_64`  | x86-64 architecture |
+| `bits32` *(derived)*  | 32-bit architecture |
+| `bits64` *(derived)*  | 64-bit architecture |
 
 #### Vendor
 
@@ -65,9 +65,9 @@ so the most common vendor is `unknown`.
 
 | Flag name | Description |
 |-----------|-------------|
-| `macosx`  | Apple
-| `portbld` | FreeBSD variant
-| `unknown` | Unknown vendor
+| `macosx`  | Apple |
+| `portbld` | FreeBSD variant |
+| `unknown` | Unknown vendor |
 
 #### Operating System
 
@@ -75,16 +75,16 @@ The operating system is derived from the third component of a the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
-| `bsd` *(derived)* | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD)
-| `darwin`  | Darwin (MacOS)
-| `dragonfly` | DragonFlyBSD
-| `freebsd` | FreeBSD
-| `linux`   | Linux
-| `netbsd`  | NetBSD
-| `openbsd` | OpenBSD
-| `solaris` | Solaris/illumos
-| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris)
-| `windows` | Windows
+| `bsd` *(derived)* | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD) |
+| `darwin`  | Darwin (MacOS) |
+| `dragonfly` | DragonFlyBSD |
+| `freebsd` | FreeBSD |
+| `linux`   | Linux |
+| `netbsd`  | NetBSD |
+| `openbsd` | OpenBSD |
+| `solaris` | Solaris/illumos |
+| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris) |
+| `windows` | Windows |
 
 #### ABI
 
@@ -92,14 +92,14 @@ The ABI is derived from the last component of the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
-| `android` | Android (Bionic C runtime)
-| `armhf` *(derived)* | ARM EABI with hard float
-| `gnu`     | GNU
-| `gnueabihf` | GNU EABI with hard float
-| `msvc`    | Microsoft Visual C++
-| `musl`    | musl
-| `wasi`    | Web Assembly System Interface
-| `win32` *(derived)* | Windows API
+| `android` | Android (Bionic C runtime) |
+| `armhf` *(derived)* | ARM EABI with hard float |
+| `gnu`     | GNU |
+| `gnueabihf` | GNU EABI with hard float |
+| `msvc`    | Microsoft Visual C++ |
+| `musl`    | musl |
+| `wasi`    | Web Assembly System Interface |
+| `win32` *(derived)* | Windows API |
 
 ### Compiler options
 
@@ -107,11 +107,11 @@ The compiler sets these flags based on compiler configuration.
 
 | Flag name | Description |
 |-----------|-------------|
-| `release` | Compiler operates in release mode (`--release` or `-O3 --single-module` CLI option)
-| `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option)
-| `static`  | Compiler creates a statically linked executable (`--static` CLI option)
-| `docs`    | Code is processed to generate API docs (`crystal docs` command)
-| `interpreted` | Running in the interpreter (`crystal i`)
+| `release` | Compiler operates in release mode (`--release` or `-O3 --single-module` CLI option) |
+| `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option) |
+| `static`  | Compiler creates a statically linked executable (`--static` CLI option) |
+| `docs`    | Code is processed to generate API docs (`crystal docs` command) |
+| `interpreted` | Running in the interpreter (`crystal i`) |
 
 ## User-provided flags
 
@@ -132,18 +132,18 @@ Crystal program.
 
 | Flag name | Description |
 |-----------|-------------|
-| `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314))
-| `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising.
-| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546))
-| `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation.
-| `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md).
-| `use_libiconv` | Use `libiconv` instead of the `iconv` system library
-| `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0.
-| `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
-| `win7`     | Use Win32 WinNT API for Windows 7
-| `without_iconv` | Do not link `iconv`/`libiconv`
-| `without_openssl` | Build without OpenSSL support
-| `without_zlib` | Build without Zlib support
+| `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314)) |
+| `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
+| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546)) |
+| `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation. |
+| `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md). |
+| `use_libiconv` | Use `libiconv` instead of the `iconv` system library |
+| `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0. |
+| `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0. |
+| `win7`     | Use Win32 WinNT API for Windows 7 |
+| `without_iconv` | Do not link `iconv`/`libiconv` |
+| `without_openssl` | Build without OpenSSL support |
+| `without_zlib` | Build without Zlib support |
 
 ### Language features
 
@@ -152,9 +152,9 @@ These flags enable or disable language features when building a Crystal program.
 | Flag name | Description |
 |-----------|-------------|
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
-| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)).
-| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)).
-| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545))
+| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)). |
+| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)). |
+| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545)) |
 
 ### Codegen features
 
@@ -171,10 +171,10 @@ These flags enable or disable features when building the Crystal compiler.
 
 | Flag name | Description |
 |-----------|-------------|
-| `without_ffi`     | Build the compiler without `libffi`
-| `without_interpreter`  | Build the compiler without interpreter support
-| `without_playground` | Build the compiler without playground (`crystal play`)
-| `i_know_what_im_doing` | Safety guard against involuntarily building the compiler
+| `without_ffi`     | Build the compiler without `libffi` |
+| `without_interpreter`  | Build the compiler without interpreter support |
+| `without_playground` | Build the compiler without playground (`crystal play`) |
+| `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
 
 ### User code features
 
