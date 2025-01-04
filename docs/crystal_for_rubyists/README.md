@@ -382,16 +382,16 @@ Crystal added some new keywords, these can still be used as method names, but ne
 #### Available keywords
 
 ```text
-abstract   do       if                nil?           select          union
-alias      else     in                of             self            unless
-as         elsif    include           out            sizeof          until
-as?        end      instance_sizeof   pointerof      struct          verbatim
-asm        ensure   is_a?             private        super           when
-begin      enum     lib               protected      then            while
-break      extend   macro             require        true            with
-case       false    module            rescue         type            yield
-class      for      next              responds_to?   typeof
-def        fun      nil               return         uninitialized
+abstract   do       if                nil?            return      uninitialized
+alias      else     in                of              select      union
+as         elsif    include           out             self        unless
+as?        end      instance_sizeof   pointerof       sizeof      until
+asm        ensure   is_a?             previous_def    struct      verbatim
+begin      enum     lib               private         super       when
+break      extend   macro             protected       then        while
+case       false    module            require         true        with
+class      for      next              rescue          type        yield
+def        fun      nil               responds_to?    typeof
 ```
 
 ### Private methods
