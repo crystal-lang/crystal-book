@@ -163,8 +163,8 @@ These flags enable or disable codegen features when building a Crystal program.
 
 | Flag name | Description |
 |-----------|-------------|
-| `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122))
-| `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122))
+| `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
+| `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
 
 ### Compiler build features
 
