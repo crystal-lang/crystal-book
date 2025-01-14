@@ -13,3 +13,4 @@ Contents:
 * [Strings](40_strings.md) – Examples on how to modify strings
 * [Control Flow](50_control_flow.md) – How to structure a program with conditionals and loops
 * [Methods](60_methods.md) – Introduction to methods, arguments and type restrictions
+* [Blocks](70_blocks.md) – Introduction to blocks
