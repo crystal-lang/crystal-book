@@ -2,7 +2,7 @@
 
 OUTPUT_DIR ?= ./site ## Build directory (default: ./site)
 
-MKDOCS ?= mkdocs
+MKDOCS ?= poetry run mkdocs
 
 DOCS_FILES := $(shell find docs -type f)
 

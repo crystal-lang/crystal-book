@@ -6,3 +6,4 @@ __pycache__/
 .devenv*
 devenv.local.nix
 .pre-commit-config.yaml
+.direnv/*
