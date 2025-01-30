@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
-  "enabledManagers": ["pip-compile", "github-actions"],
+  "enabledManagers": ["poetry", "github-actions"],
   "separateMajorMinor": false,
-  "pip-compile": {
-    "fileMatch": ["(^|/)requirements\\.in$"]
+  "poetry": {
+    "fileMatch": ["pyproject\\.toml$"]
   },
   "packageRules": [
     {
@@ -14,8 +14,8 @@
     },
     {
       "groupName": "Docs Python deps",
-      "matchManagers": ["pip-compile"],
-      "matchFiles": ["requirements.in"],
+      "matchManagers": ["poetry"],
+      "matchFiles": ["pyproject.toml"],
       "schedule": ["after 5am and before 8am on the first day of the month"]
     }
   ]

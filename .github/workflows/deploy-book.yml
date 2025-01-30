@@ -1,9 +1,10 @@
 name: Deploy book
+
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 6 * * 1'  # Every Monday 6 AM UTC
+    - cron: '0 6 * * 1' # Every Monday 6 AM UTC
 
 jobs:
   build:
@@ -12,6 +13,7 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v4
+
       - name: Extract branch name to deploy
         id: branch
         shell: bash -x {0}
@@ -19,36 +21,52 @@ jobs:
           if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(master|release/[0-9][0-9.]+)$ ]]; then
             echo "branch=${BASH_REMATCH[2]#release/}" >> ${GITHUB_OUTPUT}
           fi
+
       - name: Install Crystal
         id: crystal
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{ steps.branch.outputs.branch }}
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - name: Cache dependencies
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Cache Poetry dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip
-          key: pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: pip-
+          path: .venv
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: poetry-
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: poetry install --no-interaction
+
       - name: Determine a version for API doc links
         shell: bash -x {0}
         run: |
           if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
             echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
           fi
+
       - name: Populate sample version of Crystal
         run: crystal --version | tee crystal-version.txt
+
       - name: Set edit_uri branch
         run: |
           sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${{ github.ref_name }}/docs/#' mkdocs.yml
+
       - name: Build book
         run: LINT=true make build
+
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v4
@@ -56,6 +74,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
       - name: Deploy book
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         run: aws s3 sync ./site s3://crystal-book/reference/${{ steps.branch.outputs.branch }} --delete
@@ -66,11 +85,14 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v4
+
       - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 14
+
       - name: Install dependencies
         run: npm install -g markdownlint-cli@0.32.1
+
       - name: Check Markdown style
         run: markdownlint docs

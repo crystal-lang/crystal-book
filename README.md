@@ -35,7 +35,10 @@ Typically, only branches of maintained releases receive updates, i.e. the branch
 ```console
 $ git clone https://github.com/crystal-lang/crystal-book
 $ cd crystal-book
-$ pip install -r requirements.txt
+$ poetry env remove --all
+$ poetry env use python$(PYTHON_VERSION)
+$ poetry install
+$ poetry run pre-commit install
 ```
 
 Live preview (at http://127.0.0.1:8000):
