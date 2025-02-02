@@ -101,8 +101,9 @@ This method is mainly intended to convert integers from C to enums in Crystal.
 
 An enum automatically defines question methods for each member, using
 `String#underscore` for the method name.
-* In the case of regular enums, this compares by equality (`==`).
-* In the case of flags enums, this invokes `includes?`.
+
+!!! note
+    In the case of regular enums, this compares by equality (`==`). In the case of flags enums, this invokes `includes?`.
 
 For example:
 
