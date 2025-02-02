@@ -141,20 +141,16 @@ enum ButtonSize
   Md
   Lg
 
-  def to_html_class
+  def label
     case self
-    in .sm?
-      "px-3 py-2 text-sm"
-    in .md?
-      "px-5 py-2.5 text-sm"
-    in .lg?
-      "px-5 py-3 text-base"
-    end
+    in .sm? then "small"
+    in .md? then "medium"
+    in .lg? then "large"
   end
 end
 
-ButtonSize::Sm.to_html_class # => "px-3 py-2 text-sm"
-ButtonSize::Lg.to_html_class # => "px-5 py-3 text-base"
+ButtonSize::Sm.label # => "small"
+ButtonSize::Lg.label # => "large"
 ```
 
 Class variables are allowed, but instance variables are not.
