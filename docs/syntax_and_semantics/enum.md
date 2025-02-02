@@ -97,23 +97,63 @@ puts Color.new(10) # => prints "10"
 
 This method is mainly intended to convert integers from C to enums in Crystal.
 
-## Methods
+### Question methods
 
-Just like a class or a struct, you can define methods for enums:
+An enum automatically defines question methods for each member, using
+`String#underscore` for the method name.
+* In the case of regular enums, this compares by equality (`==`).
+* In the case of flags enums, this invokes `includes?`.
+
+For example:
 
 ```crystal
 enum Color
   Red
   Green
   Blue
+end
 
-  def red?
-    self == Color::Red
+color = Color::Blue
+color.red?  # => false
+color.blue? # => true
+
+@[Flags]
+enum IOMode
+  Read
+  Write
+  Async
+end
+
+mode = IOMode::Read | IOMode::Async
+mode.read?  # => true
+mode.write? # => false
+mode.async? # => true
+```
+
+## Methods
+
+Just like a class or a struct, you can define methods for enums:
+
+```crystal
+enum ButtonSize
+  Sm
+  Md
+  Lg
+
+  def to_html_class
+    case self
+    in .sm?
+      "px-3 py-2 text-sm"
+    in .md?
+      "px-5 py-2.5 text-sm"
+    in .lg?
+      "px-5 py-3 text-base"
+    end
   end
 end
 
-Color::Red.red?  # => true
-Color::Blue.red? # => false
+ButtonSize::Sm.to_html_class # => "px-3 py-2 text-sm"
+ButtonSize::Lg.to_html_class # => "px-5 py-3 text-base"
 ```
 
 Class variables are allowed, but instance variables are not.
