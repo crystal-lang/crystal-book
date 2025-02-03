@@ -146,6 +146,7 @@ enum ButtonSize
     in .sm? then "small"
     in .md? then "medium"
     in .lg? then "large"
+    end
   end
 end
 
