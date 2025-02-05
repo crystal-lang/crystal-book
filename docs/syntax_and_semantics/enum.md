@@ -97,9 +97,9 @@ puts Color.new(10) # => prints "10"
 
 This method is mainly intended to convert integers from C to enums in Crystal.
 
-## Question methods
+## Predicate methods
 
-An enum automatically defines question methods for each member, using
+An enum automatically defines predicate methods for each member, using
 `String#underscore` for the method name.
 
 !!! note
