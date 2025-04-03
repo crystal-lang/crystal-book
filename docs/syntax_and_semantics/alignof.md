@@ -38,3 +38,5 @@ The argument to alignof is a [type](type_grammar.md) and is often combined with 
 a = 1
 alignof(typeof(a)) # => 4
 ```
+
+`sizeof` can be used in the macro language, but only on types with stable size and alignment. See the API docs of [`alignof`](https://crystal-lang.org/api/Crystal/Macros.html#alignof(type):NumberLiteral-instance-method) for details.
