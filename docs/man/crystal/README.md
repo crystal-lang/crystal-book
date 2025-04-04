@@ -142,7 +142,7 @@ Hello Crystal!
 
 * `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
 * `-D FLAG, --define FLAG`: Define a compile-time flag.
-* `-o <output_file>`: Define the name of the binary executable.
+* `-o <path>`, `--output <path>`: Path to the output file. If a directory, the filename is derived from the first source file (default: current directory).
 * `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
 * `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
 * `--link-flags FLAGS`: Additional flags to pass to the linker.
