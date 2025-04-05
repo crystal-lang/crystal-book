@@ -4,7 +4,9 @@ Documentation for API features can be written in code comments directly
 preceding the definition of the respective feature.
 
 By default, all public methods, macros, types and constants are
-considered part of the API documentation.
+considered part of the API documentation. Lib types and non-public features
+are excluded by default. Inclusion is configurable with the [`:nodoc:`](#nodoc)
+and [`:showdoc:`](#showdoc) directives.
 
 TIP:
 The compiler command [`crystal docs`](../man/crystal/README.md#crystal-docs)
@@ -203,6 +205,74 @@ end
 This directive needs to be the first line in a doc comment. Leading whitespace is
 optional.
 Following comment lines can be used for internal documentation.
+
+### `showdoc`
+
+The `:showdoc:` directive includes normally undocumented types and methods in
+the API documentation.
+It can be applied to private and protected features, as well as lib types to have
+them show up in API documentation.
+
+In the following example, the API docs for `Foo` include `Foo.foo` even though it is a private method.
+
+```crystal
+module Foo
+  # :showdoc:
+  #
+  # This private method is part of the API docs.
+  private def self.foo
+  end
+end
+```
+
+This directive needs to be the first line in a doc comment. Leading whitespace is
+optional.
+Following comment lines are used as the documentation content.
+
+When applied to a lib type, all features inside the lib namespace (funs, types,
+variables, etc.) are also included in the API docs.
+Individual features can be explicitly excluded with `:nodoc:`, though.
+
+```crystal
+# :showdoc:
+#
+# This lib type and all features inside are part of the API docs.
+lib FooLib
+  # Documentation for bar
+  fun bar : Void
+
+  # :nodoc:
+  # baz is not part of the API docs
+  fun baz : Void
+
+  # Documentation for FooEnum
+  enum FooEnum
+    Member1
+    Member1
+    Member3
+  end
+
+  # Documentation for FooStruct
+  struct FooStruct
+    var_1 : Int32
+    var_2 : Int32
+  end
+end
+```
+
+If a parent namespace has the `:nodoc:` directive, ahy nested `:showdoc:` directive
+has no effect.
+
+```crystal
+# :nodoc:
+struct MyStruct
+  # :showdoc:
+  #
+  # This will not show up in API docs because the MyStruct namespace is nodoc.
+  struct MyStructChild
+  end
+end
+```
 
 ### `inherit`
 
