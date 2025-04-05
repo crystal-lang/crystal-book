@@ -85,7 +85,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 | [LibXML2][libxml2] | XML parser developed for the Gnome project. Implements the [`XML`](https://crystal-lang.org/api/XML.html) module. | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
 | [LibYAML][libyaml] | YAML parser and emitter library. Implements the [`YAML`](https://crystal-lang.org/api/YAML.html) module. | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
 | [zlib][zlib] | Lossless data compression library. Implements the [`Compress`](https://crystal-lang.org/api/Compress.html) module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib](http://zlib.net/zlib_license.html) |
-| [LLVM][libllvm] | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. <br>**Supported versions:** LLVM 8-19 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+| [LLVM][libllvm] | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. <br>**Supported versions:** LLVM 8-20 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
 
 ## Compiler dependencies
 
