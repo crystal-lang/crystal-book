@@ -260,7 +260,7 @@ lib FooLib
 end
 ```
 
-If a parent namespace has the `:nodoc:` directive, ahy nested `:showdoc:` directive
+If a parent namespace has the `:nodoc:` directive, any nested `:showdoc:` directive
 has no effect.
 
 ```crystal
