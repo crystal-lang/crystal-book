@@ -237,7 +237,7 @@ Individual features can be explicitly excluded with `:nodoc:`, though.
 # :showdoc:
 #
 # This lib type and all features inside are part of the API docs.
-lib FooLib
+lib LibFoo
   # Documentation for bar
   fun bar : Void
 
@@ -260,7 +260,7 @@ lib FooLib
 end
 ```
 
-If a parent namespace has the `:nodoc:` directive, any nested `:showdoc:` directive
+If a parent namespace is undocumented, any nested `:showdoc:` directive
 has no effect.
 
 ```crystal
@@ -268,9 +268,18 @@ has no effect.
 struct MyStruct
   # :showdoc:
   #
-  # This will not show up in API docs because the MyStruct namespace is nodoc.
+  # This showdoc directive has no effect because the MyStruct namespace is nodoc.
   struct MyStructChild
   end
+end
+
+# Implicitly nodoc
+lib LibFoo
+  # :showdoc:
+  #
+  # This showdoc directive has no effect because the LibFoo namespace is implicitly undocumented.
+  # If LibFoo had a showdoc directive, the showdoc directive here would be redundant.
+  fun bar : Void
 end
 ```
 
