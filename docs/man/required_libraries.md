@@ -32,7 +32,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 | Library | Description | License |
 |---------|-------------|---------|
 | [Boehm GC][libgc] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style](https://github.com/ivmai/bdwgc/blob/master/LICENSE) |
-| [Libevent][libevent] | An event notification library. Implements concurrency features such as [`Fiber`](https://crystal-lang.org/api/Fiber.html) and the event loop on POSIX platforms. Not used on Windows. | [Modified BSD](https://github.com/libevent/libevent/blob/master/LICENSE) |
+| [Libevent][libevent] | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Never used on Windows or WASI. | [Modified BSD](https://github.com/libevent/libevent/blob/master/LICENSE) |
 | [compiler-rt builtins][compiler-rt] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt] |
 
 ## Optional standard library dependencies
