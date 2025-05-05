@@ -36,7 +36,7 @@ A few operators are defined directly by the compiler and cannot be redefined
 in user code. Examples for this are the inversion operator `!`, the assignment
 operator `=`, [combined assignment operators](#combined-assignments) such as
 `||=` and [range operators](#range). Whether a method can be redefined is
-indicated by the colum *Overloadable* in the below operator tables.
+indicated by the column *Overloadable* in the below operator tables.
 
 ### Unary operators
 
