@@ -21,7 +21,7 @@ if a = some_expression
 end
 ```
 
-This logic also applies if there are ands (`&&`) in the condition:
+This logic also applies if there are `&&` operators in the condition:
 
 ```crystal
 if a && b
