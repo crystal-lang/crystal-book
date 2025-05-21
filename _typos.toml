@@ -1,0 +1,14 @@
+[default.extend-words]
+contextful = "contextful"
+"ACM Comput" = "ACM Comput"
+
+[default.extend-identifiers]
+
+[default]
+extend-ignore-re = [
+]
+
+[files]
+extend-exclude = [
+  "/docs/assets/vendor/"
+]
