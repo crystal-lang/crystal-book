@@ -1,0 +1,21 @@
+name: Lint
+on:
+  push:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+      - run: git fetch origin ${{ github.base_ref || 'master' }}
+      - run: devenv shell -- pre-commit run --from-ref "origin/${{ github.base_ref || 'master' }}" --to-ref HEAD
