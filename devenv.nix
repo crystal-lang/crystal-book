@@ -20,5 +20,6 @@
 
   git-hooks.hooks = {
     markdownlint.enable = true;
+    typos.enable = true;
   };
 }
