@@ -14,7 +14,7 @@ The annotation can then be applied to various items, including:
 * Instance and class methods
 * Instance variables
 * Classes, structs, enums, and modules
-* Method and macro parameters (though the latter are currently unaccessable)
+* Method and macro parameters (though the latter are currently inaccessible)
 
 ```crystal
 annotation MyAnnotation
@@ -65,7 +65,7 @@ An annotation could be used to designate a property as an ORM column. The name a
 Data can be stored within an annotation.
 
 ```crystal
-annotation MyAnnotaion
+annotation MyAnnotation
 end
 
 # The fields can either be a key/value pair

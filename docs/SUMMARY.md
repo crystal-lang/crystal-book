@@ -1,6 +1,6 @@
 # Summary
 
-* [Welcome](README.md)
+* [Index](README.md)
 * Specification
     * [About this guide](syntax_and_semantics/README.md)
     * [The Program](syntax_and_semantics/the_program.md)

@@ -162,7 +162,7 @@ In this case, leading whitespace is not included in the resulting string.
 ## Heredoc
 
 A *here document* or *heredoc* can be useful for writing strings spanning over multiple lines.
-A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optionally preceeded by whitespace.
+A heredoc is denoted by `<<-` followed by an heredoc identifier which is an alphanumeric sequence starting with a letter (and may include underscores). The heredoc starts in the following line and ends with the next line that contains *only* the heredoc identifier, optionally preceded by whitespace.
 
 ```crystal
 <<-XML

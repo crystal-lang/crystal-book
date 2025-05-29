@@ -25,7 +25,7 @@ As a result, migrating to a new minor release is usually seamless.
 Although we expect the vast majority of programs to remain compatible over time,
 it is impossible to guarantee that no future change will break any program.
 Under some unlikely circumstances, we may introduce changes that break existing code.
-Rest assured we are commited to keep the impact as minimal as possible.
+Rest assured we are committed to keep the impact as minimal as possible.
 
 * Security: a security issue in the implementation may arise whose resolution requires backwards incompatible changes. We reserve the right to address such security issues.
 
