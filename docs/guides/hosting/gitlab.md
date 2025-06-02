@@ -82,7 +82,7 @@ A badge is just a link with an image. So let's create a link to our pipeline and
 
 In the *Badges* section of the *General* settings, we'll first add a release badge. The link is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/pipelines` and the *Badge Image URL* is: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/badges/master/pipeline.svg`.
 
-And now if the pipleline has finished we'll have docs and we can link to them with a generic badge from `shields.io`.
+And now if the pipeline has finished we'll have docs and we can link to them with a generic badge from `shields.io`.
 
 * Link: `https://<YOUR-GITLAB-USERNAME>.gitlab.io/<YOUR-REPOSITORY-NAME>`
 * Image: `https://img.shields.io/badge/docs-available-brightgreen.svg`

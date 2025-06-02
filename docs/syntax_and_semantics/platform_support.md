@@ -30,7 +30,7 @@ and drop into *Tier 2*.
 
 Tier 2 platforms can be thought of as “expected to work”.
 
-The requirements for *Tier 1* may be partially fulfilled, but are lacking in some way that prevents a solid gurantee.
+The requirements for *Tier 1* may be partially fulfilled, but are lacking in some way that prevents a solid guarantee.
 Details are described in the *Comment* column.
 
 | Target | Description | Supported versions | Comment |
@@ -81,4 +81,4 @@ The compiler can target these platforms but there is no support for the standard
 
 !!! note
     Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
-    that we used as insipration for ours.
+    that we used as inspiration for ours.

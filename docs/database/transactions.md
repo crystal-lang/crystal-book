@@ -16,8 +16,6 @@ create_account db, "Sarah", amount: 100
 
 In one moment a transfer is made from one account to the other. For example, *John transfers $50 to Sarah*
 
-We have two accounts (each represented by a name and an amount of money).
-
 ```crystal
 deposit db, "Sarah", 50
 withdraw db, "John", 50

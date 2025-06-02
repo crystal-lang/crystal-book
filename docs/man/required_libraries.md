@@ -31,8 +31,8 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [Boehm GC][libgc]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/boehm-gc.svg?header=latest)](https://repology.org/project/boehm-gc/versions) | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support <br> | [MIT-style](https://github.com/ivmai/bdwgc/blob/master/LICENSE) |
-| [Libevent][libevent]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/llvm.svg?header=latest)](https://repology.org/project/llvm/versions) | An event notification library. Implements concurrency features such as [`Fiber`](https://crystal-lang.org/api/Fiber.html) and the event loop on POSIX platforms. Not used on Windows. <br> | [Modified BSD](https://github.com/libevent/libevent/blob/master/LICENSE) |
+| [Boehm GC][libgc]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/boehm-gc.svg?header=latest)](https://repology.org/project/boehm-gc/versions) | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style](https://github.com/ivmai/bdwgc/blob/master/LICENSE) |
+| [Libevent][libevent]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/llvm.svg?header=latest)](https://repology.org/project/llvm/versions) | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Never used on Windows or WASI. | [Modified BSD](https://github.com/libevent/libevent/blob/master/LICENSE) |
 | [compiler-rt builtins][compiler-rt] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt] |
 
 ## Optional standard library dependencies
@@ -46,7 +46,7 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [PCRE2][libpcre]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/pcre2.svg?header=latest)](https://repology.org/project/pcre2/versions) | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) <br> | [BSD](http://www.pcre.org/licence.txt) |
+| [PCRE2][libpcre]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/pcre2.svg?header=latest)](https://repology.org/project/pcre2/versions) | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD](http://www.pcre.org/licence.txt) |
 | [PCRE][libpcre]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/pcre.svg?header=latest)](https://repology.org/project/pcre/versions) | Perl Compatible Regular Expressions. | [BSD](http://www.pcre.org/licence.txt) |
 
 ### Big Numbers
@@ -65,7 +65,7 @@ Using a standalone library over the system library implementation can be enforce
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [libiconv][libiconv-gnu] (GNU)<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libiconv.svg?header=latest)](https://repology.org/project/libiconv/versions) | Internationalization conversion library. <br> | [LGPL-3.0](https://www.gnu.org/licenses/lgpl.html) |
+| [libiconv][libiconv-gnu] (GNU)<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libiconv.svg?header=latest)](https://repology.org/project/libiconv/versions) | Internationalization conversion library. | [LGPL-3.0](https://www.gnu.org/licenses/lgpl.html) |
 
 ### TLS
 
@@ -82,10 +82,12 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 |---------|-------------|---------|
-| [LibXML2][libxml2]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libxml2.svg?header=latest)](https://repology.org/project/libxml2/versions) | XML parser developed for the Gnome project. Implements the [`XML`](https://crystal-lang.org/api/XML.html) module. <br> | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
-| [LibYAML][libyaml]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libyaml.svg?header=latest)](https://repology.org/project/libyaml/versions) | YAML parser and emitter library. Implements the [`YAML`](https://crystal-lang.org/api/YAML.html) module. <br> | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
-| [zlib][zlib]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/zlib.svg?header=latest)](https://repology.org/project/zlib/versions) | Lossless data compression library. Implements the [`Compress`](https://crystal-lang.org/api/Compress.html) module. May be disabled with the `-Dwithout_zlib` compile-time flag. <br> | [zlib](http://zlib.net/zlib_license.html) |
+| [LibXML2][libxml2]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libxml2.svg?header=latest)](https://repology.org/project/libxml2/versions) | XML parser developed for the Gnome project. Implements the [`XML`](https://crystal-lang.org/api/XML.html) module.<br>⚠️ The library included in macOS has [incompatible changes][#15619] from upstream `libxml2` and is not supported. | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
+| [LibYAML][libyaml]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libyaml.svg?header=latest)](https://repology.org/project/libyaml/versions) | YAML parser and emitter library. Implements the [`YAML`](https://crystal-lang.org/api/YAML.html) module. | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
+| [zlib][zlib]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/zlib.svg?header=latest)](https://repology.org/project/zlib/versions) | Lossless data compression library. Implements the [`Compress`](https://crystal-lang.org/api/Compress.html) module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib](http://zlib.net/zlib_license.html) |
 | [LLVM][libllvm]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/llvm.svg?header=latest)](https://repology.org/project/llvm/versions) | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. <br>**Supported versions:** LLVM 8-20 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+
+[#15619]: https://github.com/crystal-lang/crystal/issues/15619
 
 ## Compiler dependencies
 
@@ -95,7 +97,7 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 |---------|-------------|---------|
 | [PCRE2][libpcre] | See above. | |
 | [LLVM][libllvm] | See above. | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
-| [libffi][libffi]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libffi.svg?header=latest)](https://repology.org/project/libffi/versions) | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. <br> | [MIT](https://github.com/libffi/libffi/blob/master/LICENSE) |
+| [libffi][libffi]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libffi.svg?header=latest)](https://repology.org/project/libffi/versions) | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT](https://github.com/libffi/libffi/blob/master/LICENSE) |
 
 [bionic-libc]: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/
 [compiler-rt]: https://compiler-rt.llvm.org/
