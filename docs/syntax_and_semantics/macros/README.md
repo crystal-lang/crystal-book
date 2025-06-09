@@ -273,11 +273,11 @@ baz # => 2
 
 The arguments are packed into a [`TupleLiteral`](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) and passed to the macro.
 
-Additionally, using `*` when interpolating a [`TupleLiteral`](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) interpolates the elements separated by commas:
+Additionally, using `#splat` method when interpolating a [`TupleLiteral`](https://crystal-lang.org/api/Crystal/Macros/TupleLiteral.html) interpolates the elements separated by commas:
 
 ```crystal
 macro println(*values)
-  print {{*values}}, '\n'
+  print {{values.splat}}, '\n'
 end
 
 println 1, 2, 3 # outputs 123\n
