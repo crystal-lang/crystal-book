@@ -4,7 +4,11 @@ The Crystal standard library includes some pre-defined annotations:
 
 ## Link
 
-Tells the compiler how to link a C library. This is explained in the [lib](../c_bindings/lib.md) section.
+Tells the compiler how to link a C library. This is explained in the
+[lib](../c_bindings/lib.md) section.
+
+!!! info
+    See the [API docs for `Link`](https://crystal-lang.org/api/Link.html) for more details.
 
 ## Extern
 
@@ -108,11 +112,16 @@ The list of valid call conventions is:
 * X86_StdCall
 * X86_FastCall
 
-They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions).
+!!! info
+    See [LLVM
+    documentation](http://llvm.org/docs/LangRef.html#calling-conventions) for more details.
 
 ## Flags
 
 Marks an [enum](../enum.md) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+
+!!! info
+    See the [API docs for `Flags`](https://crystal-lang.org/api/Flags.html) for more details.
 
 ## Deprecated
 
@@ -120,3 +129,6 @@ Marks a feature (e.g. a method, type or parameter) as deprecated.
 
 Deprecations are shown in the API docs and the compiler prints a warning when
 using a deprecated feature.
+
+!!! info
+    See the [API docs for `Deprecated`](https://crystal-lang.org/api/Deprecated.html) for more details.
