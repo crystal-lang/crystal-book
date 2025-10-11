@@ -113,3 +113,10 @@ They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions)
 ## Flags
 
 Marks an [enum](../enum.md) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+
+## Deprecated
+
+Marks a feature (e.g. a method, type or parameter) as deprecated.
+
+Deprecations are shown in the API docs and the compiler prints a warning when
+using a deprecated feature.
