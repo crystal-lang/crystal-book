@@ -131,7 +131,7 @@ prepared_statement.close
 
 ## Reading Query Results
 
-When reading values from the database there is no type information during compile time that crystal can use. You will need to call `rs.read(T)` with the type `T` you expect to get from the database.
+When reading values from the database there is no type information during compile time that Crystal can use. You will need to call `rs.read(T)` with the type `T` you expect to get from the database.
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|

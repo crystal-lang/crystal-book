@@ -81,7 +81,7 @@ Not all of these files are required for every project, and some might need more 
 * [`crystal docs`](#crystal-docs): generate documentation
 * [`crystal env`](#crystal-env): print Crystal environment information
 * [`crystal eval`](#crystal-eval): eval code from args or standard input
-* [`crystal play`](#crystal-play): starts crystal playground server
+* [`crystal play`](#crystal-play): starts Crystal playground server
 * [`crystal run`](#crystal-run): build and run program
 * [`crystal spec`](#crystal-spec): build and run specs
 * [`crystal tool`](#crystal-tool): run a compiler tool
