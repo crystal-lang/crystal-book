@@ -31,7 +31,7 @@ This runs on GitHub's [default](https://docs.github.com/en/actions/using-github-
 If any step fails, the build will show up as failed, notify the author and, if it's a push, set the overall build status of the project to failing.
 
 TIP:
-For a healthier codebase, consider these flags for `crystal spec`:  
+For a healthier codebase, consider these flags for `crystal spec`:
 `--order=random` `--error-on-warnings`
 
 ### No specs?
@@ -204,10 +204,10 @@ jobs:
 
 These steps would be followed by some action to publish the produced executable (`bin/*`), in one of the two ways (or both of them):
 
-* As part of a release: [see complete example](https://github.com/Blacksmoke16/oq/blob/56bd3d306ede15e86481d7b5db4af7f89b85a37f/.github/workflows/deployment.yml).  
+* As part of a release: [see complete example](https://github.com/Blacksmoke16/oq/blob/56bd3d306ede15e86481d7b5db4af7f89b85a37f/.github/workflows/deployment.yml).
     Then in your README you can link to the latest release using a URL such as https://github.com/:username/:reponame/releases/latest
 
-* As part of the CI done for every commit, via [actions/upload-artifact](https://github.com/actions/upload-artifact).  
+* As part of the CI done for every commit, via [actions/upload-artifact](https://github.com/actions/upload-artifact).
     Then consider linking to the latest "nightly" build using the external service https://nightly.link/
 
 Distributing executables for macOS ([search for examples](https://github.com/search?q=%22macos-latest%22+%22shards+build%22+%22--release%22+dylib+path%3A.github%2Fworkflows&type=Code)) and Windows ([search for examples](https://github.com/search?l=YAML&q=%22windows-latest%22+%22shards+build%22+%22--release%22+path%3A.github%2Fworkflows&type=Code)) is also possible.

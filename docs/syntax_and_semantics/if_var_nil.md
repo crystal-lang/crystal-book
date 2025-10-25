@@ -18,7 +18,7 @@ Type restriction through `if var.nil?` only occurs with local variables. The typ
 ```crystal
 class Person
   property name : String?
-  
+
   def greet
     unless @name.nil?
       puts "Hello, #{@name.upcase}" # Error: undefined method 'upcase' for Nil (compile-time type is (String | Nil))

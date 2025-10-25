@@ -412,7 +412,7 @@ Typically in Ruby you can define a Hash with several syntaxes:
 
 ```ruby
 # A valid Ruby Hash declaration
-{ 
+{
   key1: "some value",
   some_key2: "second value"
 }
