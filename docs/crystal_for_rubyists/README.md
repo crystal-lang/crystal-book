@@ -235,7 +235,7 @@ The reason behind this change is that it would be very annoying to program in th
 ```crystal
 # Crystal
 a = [1, 2, 3]
-a[10] + a[1] # => Error: undefined method `+` for Nil
+a[0] + a[1] # => Error: undefined method `+` for Nil
 ```
 
 If you do want to get `nil` if the index/key is not found, you can use the `[]?` method:
