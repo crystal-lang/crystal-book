@@ -282,7 +282,7 @@ For other methods, it depends. If there's a method named `foo` and another `foo?
 Examples for all of the above:
 
 * `Array#[](index)` raises on out of bounds, `Array#[]?(index)` returns nil in that case.
-* `Hash#[](key)` raises if the key is not in the Hash, `Hash#[]?(key)` returns nil in that case.
+* `Hash#[](key)` raises if the key is not in the hash, `Hash#[]?(key)` returns nil in that case.
 * `Array#first` raises if the array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
 * There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
 
@@ -408,7 +408,7 @@ end
 
 Crystal introduces a data type that is not available in Ruby, the [`NamedTuple`](https://crystal-lang.org/api/NamedTuple.html).
 
-Typically in Ruby you can define a Hash with several syntaxes:
+Typically in Ruby you can define a hash with several syntaxes:
 
 ```ruby
 # A valid Ruby Hash declaration
@@ -417,14 +417,14 @@ Typically in Ruby you can define a Hash with several syntaxes:
   some_key2: "second value"
 }
 
-# This syntax in Ruby is shorthand for the Hash rocket => syntax
+# This syntax in Ruby is shorthand for the hash rocket => syntax
 {
   :key1 => "some value",
   :some_key2 => "second value"
 }
 ```
 
-In Crystal, this is not the case. The `Hash` rocket `=>` syntax is required to declare a Hash in Crystal.
+In Crystal, this is not the case. The `Hash` rocket `=>` syntax is required to declare a hash in Crystal.
 
 However, the `Hash` shorthand syntax in Ruby creates a `NamedTuple` in Crystal.
 
