@@ -26,6 +26,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 | [UCRT][ucrt] | Universal CRT for Windows / Visual Studio 2015+ | [MIT subset available](https://www.nuget.org/packages/Microsoft.Windows.SDK.CRTSource/10.0.22621.3/License) |
 | [WASI][wasi]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/wasi-libc.svg?header=latest)](https://repology.org/project/wasi-libc/versions) | WebAssembly System Interface | [Apache v2 and others](https://github.com/WebAssembly/wasi-libc/blob/main/LICENSE) |
 | [bionic libc][bionic-libc] | C library for Android <br>**Supported versions:** ABI Level 24+ | [BSD-like](https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/NOTICE) |
+| [illumos libc][illumos-libc] | System library for Illumos | [CDDL](https://illumos.org/license/CDDL) |
 
 ### Other runtime libraries
 
@@ -102,6 +103,7 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 [dragonfly-libc]: http://gitweb.dragonflybsd.org/dragonfly.git/tree/refs/heads/master:/lib/libc
 [freebsd-libc]: https://svn.freebsd.org/base/head/lib/libc/
 [glibc]: https://www.gnu.org/software/libc/
+[illumos-libc]: https://code.illumos.org/plugins/gitiles/illumos-gate
 [libevent]: https://libevent.org/
 [libffi]: https://sourceware.org/libffi/
 [libgc]: https://github.com/ivmai/bdwgc
