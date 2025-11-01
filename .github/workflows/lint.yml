@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
       - uses: cachix/cachix-action@v16
         with:
