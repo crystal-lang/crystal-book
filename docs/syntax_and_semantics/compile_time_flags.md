@@ -174,6 +174,7 @@ These flags enable or disable features when building the Crystal compiler.
 |-----------|-------------|
 | `without_ffi`     | Build the compiler without `libffi` |
 | `without_interpreter`  | Build the compiler without interpreter support |
+| `without_libxml2`       | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
 | `without_playground` | Build the compiler without playground (`crystal play`) |
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
 
