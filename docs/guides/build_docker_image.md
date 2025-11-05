@@ -82,7 +82,7 @@ COPY --from=build /app/program /usr/local/bin/program
 CMD ["bin/program"]
 ```
 
-# Build with `docker build`
+## Build with `docker build`
 
 Once the Dockerfile is configured, we can now build a Docker image by running the command:
 
