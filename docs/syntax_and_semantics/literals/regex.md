@@ -28,8 +28,8 @@ Regular expressions support the same [escape sequences as String literals](./str
 /\r/         # carriage return
 /\t/         # tab
 /\v/         # vertical tab
-/\NNN/       # octal ASCII character
-/\xNN/       # hexadecimal ASCII character
+/\N88/       # octal ASCII character
+/\xFF/       # hexadecimal ASCII character
 /\x{FFFF}/   # hexadecimal unicode character
 /\x{10FFFF}/ # hexadecimal unicode character
 ```

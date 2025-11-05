@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Extract branch name to deploy
         id: branch
         shell: bash -x {0}
@@ -25,9 +25,9 @@ jobs:
         with:
           crystal: ${{ steps.branch.outputs.branch }}
       - name: Install Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
@@ -51,7 +51,7 @@ jobs:
         run: LINT=true make build
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -65,11 +65,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 14
+          node-version: 24
       - name: Install dependencies
         run: npm install -g markdownlint-cli@0.32.1
       - name: Check Markdown style
