@@ -127,6 +127,7 @@
     * [Continuous Integration](guides/ci/README.md)
         * [GitHub Actions](guides/ci/gh-actions.md)
         * [CircleCI](guides/ci/circleci.md)
+    * [Build Docker Image](guides/build_docker_image.md)
     * [Static Linking](guides/static_linking.md)
     * [Crystal for Rubyists](crystal_for_rubyists/README.md)
         * [Metaprogramming Help](crystal_for_rubyists/metaprogramming_help.md)
