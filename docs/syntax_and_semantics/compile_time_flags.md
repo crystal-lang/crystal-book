@@ -135,6 +135,7 @@ Crystal program.
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314)) |
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Introduced in 1.15 |
+| `execution_context` | Enable execution contexts preview ([RFC 0002](https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md)). [Introduced in 1.16](https://github.com/crystal-lang/crystal/issues/15350) |
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546)) |
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation. |
 | `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md). |
