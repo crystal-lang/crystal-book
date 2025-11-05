@@ -465,6 +465,8 @@ Best results are achieved with `--release` which also implies `--single-module`.
 * `-O1`: Low optimization
 * `-O2`: Middle optimization
 * `-O3`: High optimization
+* `-Os`: Middle optimization with focus on file size
+* `-Oz`: Middle optimization aggressively focused on file size
 
 ## Environment variables
 
