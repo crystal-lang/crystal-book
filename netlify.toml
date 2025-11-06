@@ -4,3 +4,5 @@
   command = "mkdocs build -d site --strict"
   publish = "site/"
 
+[context.deploy-preview.environment]
+  LINT = "false"
