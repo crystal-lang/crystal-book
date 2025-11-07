@@ -41,18 +41,22 @@ program      latest    fd8159825ab7   5 seconds ago   471MB
 
 The disadvantage is that the size of this Docker image is large, which leads to things that are not really useful for running a program, such as the Crystal compiler and the `shards` binary. It is possible to optimize the image size by using a multi-step build.
 
+## Multi-stage builds
+
+The Multi-stage builds consist to compile the program in the first image and copying it to another image adapted for production mode.
+
 ```dockerfile
 # Build stage
-FROM crystallang/crystal:1-alpine AS build
+FROM crystallang/crystal:1 AS build
 
 COPY . /app
 WORKDIR /app
 
-RUN shards build program --release --static --progress \
-    --stats --no-debug
+RUN crystal build program.cr -o program --release --static \
+--progress --stats --no-debug
 
 # Prod stage
-FROM alpine:3.20 AS prod
+FROM ubuntu AS prod
 
 WORKDIR /usr/local
 
@@ -61,17 +65,15 @@ COPY --from=build /app/program /usr/local/bin/program
 CMD ["bin/program"]
 ```
 
-## Build with `docker build`
+The advantage is that the production image will be less heavy, containing only the programs and libraries necessary for it to be operational.
 
-Once the Dockerfile is configured, we can now build a Docker image by running the command:
-
-In both cases, you get a Docker image with a reasonable size.
+Result: you will get the Docker image with a reasonable size.
 
 ```sh
 $ docker image ls program
 REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
-program      latest    0c5c52c894ba   5 minutes ago   9.52MB
+program      latest    42a3633f95c9   4 seconds ago   79.7MB
 ```
 
 !!! note
-    The image size depends on the size of the executable and the libraries if you don't use the `--static` option.
+    The image size depends on the size of the executable and the libraries.
