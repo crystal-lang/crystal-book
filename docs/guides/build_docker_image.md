@@ -8,38 +8,38 @@ For example, let's suppose we create a simple program that displays "Hello World
 puts "Hello World"
 ```
 
-To proceed to the compilation of your program, we can use the Dockerfile and there are two ways. That's what we will look at in this guide.
-
-## With the `crystal build` command
-
-The first way to compile your program is to use the `crystal build` command.
+To proceed to the compilation of your program, we can use the Dockerfile and that's what we will look at in this guide.
 
 ```dockerfile
-# Build stage
-FROM crystallang/crystal:1-alpine AS build
+FROM crystallang/crystal:1
 
-COPY ./program.cr /app
 WORKDIR /app
+COPY ./program.cr /app
 
 RUN crystal build program.cr -o program --release --static \
     --progress --stats --no-debug
-
-# Prod stage
-FROM alpine:3.20 AS prod
-
-WORKDIR /usr/local
-
-COPY --from=build /app/program /usr/local/bin/program
 
 CMD ["bin/program"]
 ```
 
 !!!info
-    You can replace `/usr/local` by the executable path where you want to place the program.
+    You can also use `shards build` to compile the program.
 
-## With the `shards` command
+Once the Dockerfile is configured, we can now build a Docker image by running the command:
 
-By default, the Crystal Docker image includes the `shards` package manager. This is useful for compiling your program.
+```cr
+docker build -t program:latest .
+```
+
+Finally, the Docker image is built with the matched name.
+
+```sh
+$ docker image ls program
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+program      latest    fd8159825ab7   5 seconds ago   471MB
+```
+
+The disadvantage is that the size of this Docker image is large, which leads to things that are not really useful for running a program, such as the Crystal compiler and the `shards` binary. It is possible to optimize the image size by using a multi-step build.
 
 ```dockerfile
 # Build stage
