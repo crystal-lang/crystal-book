@@ -1,8 +1,6 @@
 # Build Docker Image
 
-When your Crystal application is developed, you can build a Docker image for using it portably.
-
-If you build your program in the production mode, it is recommended to use the Crystal's Docker Image with the Alpine version. You can find a set of images on the [Docker hub](https://hub.docker.com/r/crystallang/crystal/tags?name=1-alpine).
+When your Crystal application is developed, you can build a Docker image for using it portably. To do this, you can use the Crystal's Docker Image that are available on the [Docker hub](https://hub.docker.com/r/crystallang/crystal/tags?name=1).
 
 For example, let's suppose we create a simple program that displays "Hello World":
 
