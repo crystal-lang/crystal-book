@@ -4,29 +4,10 @@ When your Crystal application is developed, you can build a Docker image for usi
 
 If you build your program in the production mode, it is recommended to use the Crystal's Docker Image with the Alpine version. You can find a set of images on the [Docker hub](https://hub.docker.com/r/crystallang/crystal/tags?name=1-alpine).
 
-For example, let's suppose we create a simple program that lists the persons:
+For example, let's suppose we create a simple program that displays "Hello World":
 
 ```cr title="program.cr"
-class Person
-  def initialize(@first_name : String, @last_name : String); end
-
-  def full_name : String
-    [@first_name, @last_name].join(' ')
-  end
-end
-
-class People
-  class_getter persons = [] of Person
-end
-
-People.persons << Person.new("John", "Doe")
-People.persons << Person.new("Jane", "Doe")
-
-puts "There are #{People.persons.size} persons:"
-
-People.persons.each do |person|
-  puts "- #{person.full_name}"
-end
+puts "Hello World"
 ```
 
 To proceed to the compilation of your program, we can use the Dockerfile and there are two ways. That's what we will look at in this guide.
