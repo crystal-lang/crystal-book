@@ -121,6 +121,7 @@
     * [Performance](guides/performance.md)
     * [Concurrency](guides/concurrency.md)
     * [Testing](guides/testing.md)
+        * [Code Coverage](guides/testing/code_coverage.md)
     * [Writing Shards](guides/writing_shards.md)
         * [Hosting on GitHub](guides/hosting/github.md)
         * [Hosting on GitLab](guides/hosting/gitlab.md)
