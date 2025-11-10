@@ -28,15 +28,15 @@ Because there is not single entrypoint into your specs, the easiest way to do th
 Something like this, from the root of your shard:
 
 ```sh
-echo 'require "./spec/**"' > './coverage.cr'
+echo 'require "./spec/**"' > './all_specs.cr'
 mkdir ./bin
-crystal build './coverage.cr' -o './bin/coverage'
+crystal build './all_specs.cr' -o './bin/all_specs'
 ```
 
-From here you can run `kcov` against `./bin/coverage`:
+From here you can run `kcov` against `./bin/all_specs`:
 
 ```sh
-kcov --clean --include-path="./src" ./coverage ./bin/coverage --order=random
+kcov --clean --include-path="./src" ./coverage ./bin/all_specs --order=random
 ```
 
 Let’s break this down:
@@ -62,7 +62,7 @@ Additionally, `kcov` is entirely unaware these methods exist and as such do not 
 Fortunately for us, there is a built-in tool we can use to identify these unused methods:
 
 ```sh
-crystal tool unreachable --no-color --format=codecov ./coverage.cr > "./coverage/unreachable.codecov.json"
+crystal tool unreachable --format=codecov ./all_specs.cr > ./coverage/unreachable.codecov.json
 ```
 
 This will output a report marking unreachable methods as missed.
@@ -76,7 +76,7 @@ We can leverage another `crystal tool` to generate a coverage report for your pr
 This step can be skipped of course if you don’t use any custom macros at all.
 
 ```sh
-crystal tool macro_code_coverage --no-color "./coverage.cr" > "./coverage/macro_coverage.root.codecov.json"
+crystal tool macro_code_coverage ./all_specs.cr > ./coverage/macro_coverage.root.codecov.json
 ```
 
 ## Tooling
