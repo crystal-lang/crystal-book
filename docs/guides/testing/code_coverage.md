@@ -92,7 +92,7 @@ As such, we can upload all of them and Codecov will take care of merging them to
 This is as simple as setting up the [Codecov Action](https://github.com/codecov/codecov-action) if you’re using GitHub Actions.
 For our case, the key thing we need to set is what files to upload, setting the `files` input to `'**/cov.xml,**/unreachable.codecov.json,**/macro_coverage.*.codecov.json'` to ensure all the files are uploaded.
 
-There is a lot more nuance to code coverage than what I covered here.
+There is a lot more nuance to code coverage than what is covered here.
 The big one being that having 100% test coverage does not imply that your code is bug free, or that it’s even worth trying to get to that level.
 Instead a good middle ground, for Codecov at least, is to set the target `patch` percentage to `100%` and set `project` target to `auto`.
 These will ensure that all *new* code is fully covered and does not reduce the overall coverage of the codebase.
