@@ -65,7 +65,7 @@ COPY --from=build /app/program /usr/local/bin/program
 CMD ["bin/program"]
 ```
 
-The advantage is that the production image will be less heavy, containing only the programs and libraries necessary for it to be operational.
+The advantage is that Docker image will be less heavy, containing only the programs and libraries necessary for it to be operational.
 
 Result: you will get the Docker image with a reasonable size.
 
