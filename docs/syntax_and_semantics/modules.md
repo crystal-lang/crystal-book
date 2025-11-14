@@ -2,8 +2,8 @@
 
 Modules serve two purposes:
 
-* as namespaces for defining other types, methods and constants
-* as partial types that can be mixed in other types
+- as namespaces for defining other types, methods and constants
+- as partial types that can be mixed in other types
 
 An example of a module as a namespace:
 
@@ -17,6 +17,8 @@ Curses::Window.new
 ```
 
 Library authors are advised to put their definitions inside a module to avoid name clashes. The standard library usually doesn't have a namespace as its types and methods are very common, to avoid writing long names.
+
+## `extend` and `include`
 
 To use a module as a partial type you use `include` or `extend`.
 
