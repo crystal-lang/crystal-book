@@ -65,6 +65,7 @@
             * [Class methods](syntax_and_semantics/class_methods.md)
             * [Class variables](syntax_and_semantics/class_variables.md)
             * [finalize](syntax_and_semantics/finalize.md)
+            * [Naming conflicts](syntax_and_semantics/naming_conflicts.md)
         * [Modules](syntax_and_semantics/modules.md)
         * [Generics](syntax_and_semantics/generics.md)
         * [Structs](syntax_and_semantics/structs.md)
