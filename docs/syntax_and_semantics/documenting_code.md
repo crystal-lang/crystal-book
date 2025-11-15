@@ -248,7 +248,7 @@ lib LibFoo
   # Documentation for FooEnum
   enum FooEnum
     Member1
-    Member1
+    Member2
     Member3
   end
 
