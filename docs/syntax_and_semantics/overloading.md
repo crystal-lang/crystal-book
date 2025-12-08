@@ -125,3 +125,58 @@ person.become_older "12"
 ```
 
 However, the compiler cannot always figure out the order because there isn't always a total ordering, so it's always better to put less restrictive methods at the end.
+
+## Caveats
+
+There are some known compiler bugs where overloading order is not as it's supposed to be.
+Unfortunately, fixing these bugs would break existing code that relies on this specific, but unintended overload order.
+We try to avoid breaking existing code, so it's not easy to roll out the fixes.
+
+### Preview flag
+
+Some bug fixes are already available with the compiler flag `-Dpreview_overload_order` (introduced in Crystal 1.6.0).
+
+Consider using this flag when writing new Crystal code.
+
+It's expected that this flag will be enabled by default in some future version.
+At that point, all Crystal code is expected to use the correct overload ordering
+and code which still depends on the incorrect ordering can use an opt-out feature flag for a transition period.
+
+### Known bugs
+
+* Overloads without a parameter override ones with a default value ([#10231](https://github.com/
+crystal-lang/crystal/issues/10231))
+
+  ```cr
+  def bar(x = true)
+  end
+
+  def bar
+  end
+
+  bar 1 # Error: wrong number of arguments for 'bar' (given 1, expected 0)
+  ```
+
+  This issue is fixed with `-Dpreview_overload_order`.
+
+* Overload ordering depends on the definition order of types used in type restrictions ([#7579](https://github.com/crystal-lang/crystal/issues/7579), [#4897](https://github.com/crystal-lang/crystal/issues/4897))
+
+  ```cr
+  class Foo
+  end
+
+  def foo(a : Bar)
+    1
+  end
+
+  def foo(a : Foo)
+    true
+  end
+
+  class Bar < Foo
+  end
+
+  foo(Bar.new) # => 1 # This should be true
+  ```
+
+  As a workaround, we can move the declaration of `Bar` before of `def foo`.
