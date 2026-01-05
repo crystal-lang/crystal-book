@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Extract branch name to deploy
         id: branch
         shell: bash -x {0}
@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: '3.14'
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/pip
           key: pip-${{ hashFiles('requirements.txt') }}
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Node
         uses: actions/setup-node@v6
         with:
