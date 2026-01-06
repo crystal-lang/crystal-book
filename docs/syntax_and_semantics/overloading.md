@@ -176,7 +176,7 @@ crystal-lang/crystal/issues/10231))
   class Bar < Foo
   end
 
-  foo(Bar.new) # => 1 # This should be true
+  foo(Bar.new) # => true # This should be 1
   ```
 
   As a workaround, we can move the declaration of `Bar` before of `def foo`.
