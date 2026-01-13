@@ -10,7 +10,7 @@ User-provided flags are passed to the compiler, which allow them to be used as f
 
 A flag is a named identifier which is either set or not.
 The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
-literal and returns a bool literal indicating the flag's state. A flag can have an optional value, in which cas the macro method `flag?` returns a string literal instead of a bool literal.
+literal and returns a bool literal indicating the flag's state. A flag can have an optional value, in which case the macro method `flag?` returns a string literal instead of a bool literal.
 
 The following program shows the use of compile-time flags by printing the target OS family.
 
@@ -115,7 +115,7 @@ The compiler sets these flags based on compiler configuration.
 
 ## User-provided flags
 
-User-provided flags are not defined automatically. They can be passed to the compiler via the `--define` or `-D` command line options. A flag can have an explicit string value when defined in the form `-D foo=bar`.
+User-provided flags are not defined automatically. They can be passed to the compiler via the `--define` or `-D` command line options. A flag can have an explicit string value when defined in the form `foo=bar`.
 
 These flags usually enable certain features which activate breaking new or legacy functionality,
 a preview for a new feature, or entirely alternative behaviour (e.g. for debugging purposes).
