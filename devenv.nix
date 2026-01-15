@@ -22,7 +22,7 @@
     serve.exec = "make serve";
   };
 
-  pre-commit.hooks = {
+  git-hooks.hooks = {
     markdownlint.enable = true;
   };
 }

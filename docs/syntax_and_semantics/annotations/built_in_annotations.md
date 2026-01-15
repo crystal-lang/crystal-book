@@ -1,6 +1,9 @@
 # Built-in annotations
 
-The Crystal standard library includes some pre-defined annotations:
+The language comes with some pre-defined annotations listed here.
+The compiler uses them for code generation and other purposes such as deprecation warnings.
+
+The Crystal standard library defines more annotations.
 
 ## Link
 
