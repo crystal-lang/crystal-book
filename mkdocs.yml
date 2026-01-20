@@ -72,7 +72,7 @@ plugins:
         governance.md: https://crystal-lang.org/community/governance.html
         platform_support.md: syntax_and_semantics/platform_support.md
   - code-validator:
-      enabled: !ENV [LINT, false]
+      enabled: !ENV [LINT, true]
       identifiers:
         crystal:
           validators:

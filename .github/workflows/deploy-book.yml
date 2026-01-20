@@ -48,7 +48,7 @@ jobs:
         run: |
           sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${{ github.ref_name }}/docs/#' mkdocs.yml
       - name: Build book
-        run: LINT=true make build
+        run: make build
       - name: Configure AWS Credentials
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@v5
