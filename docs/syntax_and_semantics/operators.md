@@ -339,7 +339,7 @@ Exceptions to the general expansion formula are the logical operators:
 * `a &&= b` transforms to `a && (a = b)`
 
 There is another special case when `a` is an index accessor (`[]`), it is
-changed to the nilable variant (`[]?` on the left hand side:
+changed to the nilable variant (`[]?`) on the left hand side:
 
 * `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
 * `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
