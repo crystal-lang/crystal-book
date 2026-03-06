@@ -339,10 +339,10 @@ Exceptions to the general expansion formula are the logical operators:
 * `a &&= b` transforms to `a && (a = b)`
 
 There is another special case when `a` is an index accessor (`[]`), it is
-changed to the nilable variant (`[]?` on the right hand side:
+changed to the nilable variant (`[]?`) on the left hand side:
 
-* `a[i] ||= b` transforms to `a[i] = (a[i]? || b)`
-* `a[i] &&= b` transforms to `a[i] = (a[i]? && b)`
+* `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
+* `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
 
 All transformations assume the receiver (`a`) is a variable. If it is a call,
 the replacements are semantically equivalent but the implementation is a bit
