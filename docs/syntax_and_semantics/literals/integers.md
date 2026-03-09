@@ -2,8 +2,8 @@
 
 There are five signed integer types, and five unsigned integer types:
 
-| Type | Length  | Minimum Value | Maximum Value |
-| ---------- | -----------: | -----------: |-----------: |
+| Type | Length | Minimum Value | Maximum Value |
+| ---- | -----: | ------------: | ------------: |
 | [Int8](http://crystal-lang.org/api/Int8.html) | 8 | -128 | 127 |
 | [Int16](http://crystal-lang.org/api/Int16.html) | 16 | −32,768 | 32,767 |
 | [Int32](http://crystal-lang.org/api/Int32.html) | 32 | −2,147,483,648 | 2,147,483,647 |
