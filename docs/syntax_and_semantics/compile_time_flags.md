@@ -50,13 +50,13 @@ The target architecture is the first component of the target triple.
 | Flag name | Description |
 |-----------|-------------|
 | `aarch64` | AArch64 architecture |
-| `avr`     | AVR architecture |
-| `arm`     | ARM architecture |
-| `i386`    | x86 architecture (32-bit) |
-| `wasm32`  | WebAssembly |
-| `x86_64`  | x86-64 architecture |
-| `bits32` *(derived)*  | 32-bit architecture |
-| `bits64` *(derived)*  | 64-bit architecture |
+| `avr` | AVR architecture |
+| `arm` | ARM architecture |
+| `i386` | x86 architecture (32-bit) |
+| `wasm32` | WebAssembly |
+| `x86_64` | x86-64 architecture |
+| `bits32` *(derived)* | 32-bit architecture |
+| `bits64` *(derived)* | 64-bit architecture |
 
 #### Vendor
 
@@ -65,7 +65,7 @@ so the most common vendor is `unknown`.
 
 | Flag name | Description |
 |-----------|-------------|
-| `macosx`  | Apple |
+| `macosx` | Apple |
 | `portbld` | FreeBSD variant |
 | `unknown` | Unknown vendor |
 
@@ -76,11 +76,11 @@ The operating system is derived from the third component of a the target triple.
 | Flag name | Description |
 |-----------|-------------|
 | `bsd` *(derived)* | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD) |
-| `darwin`  | Darwin (MacOS) |
+| `darwin` | Darwin (MacOS) |
 | `dragonfly` | DragonFlyBSD |
 | `freebsd` | FreeBSD |
-| `linux`   | Linux |
-| `netbsd`  | NetBSD |
+| `linux` | Linux |
+| `netbsd` | NetBSD |
 | `openbsd` | OpenBSD |
 | `solaris` | Solaris/illumos |
 | `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris) |
@@ -94,11 +94,11 @@ The ABI is derived from the last component of the target triple.
 |-----------|-------------|
 | `android` | Android (Bionic C runtime) |
 | `armhf` *(derived)* | ARM EABI with hard float |
-| `gnu`     | GNU |
+| `gnu` | GNU |
 | `gnueabihf` | GNU EABI with hard float |
-| `msvc`    | Microsoft Visual C++ |
-| `musl`    | musl |
-| `wasi`    | Web Assembly System Interface |
+| `msvc` | Microsoft Visual C++ |
+| `musl` | musl |
+| `wasi` | Web Assembly System Interface |
 | `win32` *(derived)* | Windows API |
 
 ### Compiler options
@@ -108,9 +108,9 @@ The compiler sets these flags based on compiler configuration.
 | Flag name | Description |
 |-----------|-------------|
 | `release` | Compiler operates in release mode (`--release` or `-O3 --single-module` CLI option) |
-| `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option) |
-| `static`  | Compiler creates a statically linked executable (`--static` CLI option) |
-| `docs`    | Code is processed to generate API docs (`crystal docs` command) |
+| `debug` | Compiler generates debug symbols (without `--no-debug` CLI option) |
+| `static` | Compiler creates a statically linked executable (`--static` CLI option) |
+| `docs` | Code is processed to generate API docs (`crystal docs` command) |
 | `interpreted` | Running in the interpreter (`crystal i`) |
 
 ## User-provided flags
@@ -144,7 +144,7 @@ Crystal program.
 | `use_libiconv` | Use `libiconv` instead of the `iconv` system library |
 | `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0. |
 | `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0. |
-| `win7`     | Use Win32 WinNT API for Windows 7 |
+| `win7` | Use Win32 WinNT API for Windows 7 |
 | `without_iconv` | Do not link `iconv`/`libiconv` |
 | `without_openssl` | Build without OpenSSL support |
 | `without_zlib` | Build without Zlib support |
@@ -175,9 +175,9 @@ These flags enable or disable features when building the Crystal compiler.
 
 | Flag name | Description |
 |-----------|-------------|
-| `without_ffi`     | Build the compiler without `libffi` |
-| `without_interpreter`  | Build the compiler without interpreter support |
-| `without_libxml2`       | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
+| `without_ffi` | Build the compiler without `libffi` |
+| `without_interpreter` | Build the compiler without interpreter support |
+| `without_libxml2` | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
 | `without_playground` | Build the compiler without playground (`crystal play`) |
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
 
