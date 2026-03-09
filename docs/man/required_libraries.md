@@ -42,8 +42,11 @@ These libraries are required by different parts of the standard library, only wh
 
 ### Regular Expression engine
 
-Engine implementation for the [`Regex`](https://crystal-lang.org/api/Regex.html) class.
-PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Regex documentation](../syntax_and_semantics/literals/regex.md)).
+Engine implementation for the [`Regex`][Regex] class.
+PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Regex documentation]).
+
+[Regex]: https://crystal-lang.org/api/Regex.html
+[Regex documentation]: ../syntax_and_semantics/literals/regex.md
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
@@ -52,7 +55,9 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 
 ### Big Numbers
 
-Implementations for `Big` types such as [`BigInt`](https://crystal-lang.org/api/BigInt.html).
+Implementations for `Big` types such as [`BigInt`][BigInt].
+
+[BigInt]: https://crystal-lang.org/api/BigInt.html
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
@@ -70,23 +75,31 @@ Using a standalone library over the system library implementation can be enforce
 
 ### TLS
 
-TLS protocol implementation and general-purpose cryptographic routines for the [`OpenSSL`](https://crystal-lang.org/api/OpenSSL.html) API. May be disabled with the `-Dwithout_openssl` [compile-time flag](../syntax_and_semantics/compile_time_flags.md#stdlib-features).
+TLS protocol implementation and general-purpose cryptographic routines for the [`OpenSSL`][OpenSSL] API. May be disabled with the `-Dwithout_openssl` [compile-time flag][stdlib-features].
 
 Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detect which library and API version is available on the host system.
 
+[OpenSSL]:https://crystal-lang.org/api/OpenSSL.html
+[stdlib-features]: ../syntax_and_semantics/compile_time_flags.md#stdlib-features
+
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [OpenSSL][openssl]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/openssl.svg?header=latest)](https://repology.org/project/openssl/versions) | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
+| [OpenSSL][openssl.org]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/openssl.svg?header=latest)](https://repology.org/project/openssl/versions) | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)](https://www.openssl.org/source/license.html) |
 | [LibreSSL][libressl]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libressl.svg?header=latest)](https://repology.org/project/libressl/versions) | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay](https://github.com/libressl-portable/openbsd/blob/master/src/lib/libssl/LICENSE) |
 
 ### Other stdlib libraries
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [LibXML2][libxml2]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libxml2.svg?header=latest)](https://repology.org/project/libxml2/versions) | XML parser developed for the Gnome project. Implements the [`XML`](https://crystal-lang.org/api/XML.html) module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
-| [LibYAML][libyaml]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libyaml.svg?header=latest)](https://repology.org/project/libyaml/versions) | YAML parser and emitter library. Implements the [`YAML`](https://crystal-lang.org/api/YAML.html) module. | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
-| [zlib][zlib]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/zlib.svg?header=latest)](https://repology.org/project/zlib/versions) | Lossless data compression library. Implements the [`Compress`](https://crystal-lang.org/api/Compress.html) module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib](http://zlib.net/zlib_license.html) |
-| [LLVM][libllvm]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/llvm.svg?header=latest)](https://repology.org/project/llvm/versions) | Target-independent code generator and optimizer. Implements the [`LLVM`](https://crystal-lang.org/api/LLVM.html) API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+| [LibXML2][libxml2]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libxml2.svg?header=latest)](https://repology.org/project/libxml2/versions) | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
+| [LibYAML][libyaml]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libyaml.svg?header=latest)](https://repology.org/project/libyaml/versions) | YAML parser and emitter library. Implements the [`YAML`][YAML] module. | [MIT](https://github.com/yaml/libyaml/blob/master/License) |
+| [zlib][zlib]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/zlib.svg?header=latest)](https://repology.org/project/zlib/versions) | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib](http://zlib.net/zlib_license.html) |
+| [LLVM][libllvm]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/llvm.svg?header=latest)](https://repology.org/project/llvm/versions) | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+
+[XML]: https://crystal-lang.org/api/XML.html
+[YAML]: https://crystal-lang.org/api/YAML.html
+[Compress]: https://crystal-lang.org/api/Compress.html
+[LLVM]: https://crystal-lang.org/api/LLVM.html
 
 ## Compiler dependencies
 
@@ -94,10 +107,13 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [PCRE2][libpcre] | See [*Regular expression engine*](#regular-expression-engine) | |
-| [LLVM][libllvm] | See [*Other stdlib libraries*](#other-stdlib-libraries) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+| [PCRE2][libpcre] | See [*Regular expression engine*] | |
+| [LLVM][libllvm] | See [*Other stdlib libraries*] | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
 | [libffi][libffi]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libffi.svg?header=latest)](https://repology.org/project/libffi/versions) | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT](https://github.com/libffi/libffi/blob/master/LICENSE) |
-| [libxml2][libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*](#other-stdlib-libraries) | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
+| [libxml2][libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*] | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
+
+[*Other stdlib libraries*]: #other-stdlib-libraries
+[*Regular expression engine*]: #regular-expression-engine
 
 [bionic-libc]: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/
 [compiler-rt]: https://compiler-rt.llvm.org/
@@ -121,7 +137,7 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 [musl-libc]: https://musl.libc.org/
 [netbsd-libc]: http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/?only_with_tag=MAIN
 [openbsd-libc]: http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libc/
-[openssl]: https://www.openssl.org/
+[openssl.org]: https://www.openssl.org/
 [ucrt]: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
 [wasi]: https://wasi.dev/
 [zlib]: http://zlib.net/
