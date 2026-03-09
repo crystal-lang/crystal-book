@@ -15,18 +15,18 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [glibc][glibc]<br>[![latest packaged version(s)][repology:glibc.svg]][repology:glibc/versions] | standard C library for Linux <br>**Supported versions:** GNU libc 2.26+ | [LGPL 3.0] |
-| [musl libc][musl-libc]<br>[![latest packaged version(s)][repology:musl.svg]][repology:musl/versions] | standard C library for Linux <br>**Supported versions:** MUSL libc 1.2+ | [MIT][musl-copyright] |
-| [FreeBSD libc][freebsd-libc]<br>[![latest packaged version(s)][repology:freebsd.svg]][repology:freebsd/versions] | standard C library for FreeBSD <br>**Supported versions:** 12+ | [BSD][freebsd-license] |
-| [NetBSD libc][netbsd-libc] | standard C library for NetBSD | [BSD][netbsd-license] |
-| [OpenBSD libc][openbsd-libc]<br>[![latest packaged version(s)][repology:openbsd.svg]][repology:openbsd/versions] | standard C library for OpenBSD <br>**Supported versions:** 6+ | [BSD][openbsd-policy] |
-| [Dragonfly libc][dragonfly-libc] | standard C library for DragonflyBSD | [BSD][dragonfly-license] |
-| [macOS libsystem][macos-libsystem] | standard C library for macOS <br>**Supported versions:** 11+ | [Apple][APPLE_LICENSE] |
-| [MSVCRT][msvcrt] | standard C library for Visual Studio 2013 or below | |
-| [UCRT][ucrt] | Universal CRT for Windows / Visual Studio 2015+ | [MIT subset available][MIT-windows] |
-| [WASI][wasi]<br>[![latest packaged version(s)][repology:wasi-libc.svg]][repology:wasi-libc/versions] | WebAssembly System Interface | [Apache v2 and others][wasi-license] |
-| [bionic libc][bionic-libc] | C library for Android <br>**Supported versions:** ABI Level 24+ | [BSD-like][android-notice] |
-| [illumos libc][illumos-libc] | System library for Illumos | [CDDL] |
+| [glibc]<br>[![latest packaged version(s)][repology:glibc.svg]][repology:glibc/versions] | standard C library for Linux <br>**Supported versions:** GNU libc 2.26+ | [LGPL 3.0] |
+| [musl libc]<br>[![latest packaged version(s)][repology:musl.svg]][repology:musl/versions] | standard C library for Linux <br>**Supported versions:** MUSL libc 1.2+ | [MIT][musl-copyright] |
+| [FreeBSD libc]<br>[![latest packaged version(s)][repology:freebsd.svg]][repology:freebsd/versions] | standard C library for FreeBSD <br>**Supported versions:** 12+ | [BSD][freebsd-license] |
+| [NetBSD libc] | standard C library for NetBSD | [BSD][netbsd-license] |
+| [OpenBSD libc]<br>[![latest packaged version(s)][repology:openbsd.svg]][repology:openbsd/versions] | standard C library for OpenBSD <br>**Supported versions:** 6+ | [BSD][openbsd-policy] |
+| [Dragonfly libc] | standard C library for DragonflyBSD | [BSD][dragonfly-license] |
+| [macOS libsystem] | standard C library for macOS <br>**Supported versions:** 11+ | [Apple][APPLE_LICENSE] |
+| [MSVCRT] | standard C library for Visual Studio 2013 or below | |
+| [UCRT] | Universal CRT for Windows / Visual Studio 2015+ | [MIT subset available][MIT-windows] |
+| [WASI]<br>[![latest packaged version(s)][repology:wasi-libc.svg]][repology:wasi-libc/versions] | WebAssembly System Interface | [Apache v2 and others][wasi-license] |
+| [bionic libc] | C library for Android <br>**Supported versions:** ABI Level 24+ | [BSD-like][android-notice] |
+| [illumos libc] | System library for Illumos | [CDDL] |
 
 [repology:glibc/versions]: https://repology.org/project/glibc/versions
 [repology:glibc.svg]: https://repology.org/badge/latest-versions/glibc.svg?header=latest
@@ -55,9 +55,9 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [Boehm GC][libgc]<br>[![latest packaged version(s)][repology:boehm-gc.svg]][repology:boehm-gc/versions] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style][bdwgc-license] |
-| [Libevent][libevent]<br>[![latest packaged version(s)][repology:llvm.svg]][repology:llvm/versions] | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license] |
-| [compiler-rt builtins][compiler-rt] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt] |
+| [Boehm GC]<br>[![latest packaged version(s)][repology:boehm-gc.svg]][repology:boehm-gc/versions] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style][bdwgc-license] |
+| [Libevent]<br>[![latest packaged version(s)][repology:llvm.svg]][repology:llvm/versions] | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license] |
+| [compiler-rt builtins] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt builtins] |
 
 [repology:boehm-gc/versions]: https://repology.org/project/boehm-gc/versions
 [repology:boehm-gc.svg]: https://repology.org/badge/latest-versions/boehm-gc.svg?header=latest
@@ -83,8 +83,8 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [PCRE2][libpcre]<br>[![latest packaged version(s)][repology:pcre2.svg]][repology:pcre2/versions] | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license] |
-| [PCRE][libpcre]<br>[![latest packaged version(s)][repology:pcre.svg]][repology:pcre/versions] | Perl Compatible Regular Expressions. | [BSD][pcre-license] |
+| [PCRE2]<br>[![latest packaged version(s)][repology:pcre2.svg]][repology:pcre2/versions] | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license] |
+| [PCRE][PCRE2]<br>[![latest packaged version(s)][repology:pcre.svg]][repology:pcre/versions] | Perl Compatible Regular Expressions. | [BSD][pcre-license] |
 
 [repology:pcre2/versions]: https://repology.org/project/pcre2/versions
 [repology:pcre2.svg]: https://repology.org/badge/latest-versions/pcre2.svg?header=latest
@@ -101,8 +101,8 @@ Implementations for `Big` types such as [`BigInt`][BigInt].
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [GMP][libgmp]<br>[![latest packaged version(s)][repology:gmp.svg]][repology:gmp/versions] | GNU multiple precision arithmetic library. | [LGPL v3+ / GPL v2+][gmp-license] |
-| [MPIR][libmpir]<br>[![latest packaged version(s)][repology:mpir.svg]][repology:mpir/versions] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows MSVC. | [GPL-3.0][mpir-copying] and [LGPL-3.0][mpir-copying.lib] |
+| [GMP]<br>[![latest packaged version(s)][repology:gmp.svg]][repology:gmp/versions] | GNU multiple precision arithmetic library. | [LGPL v3+ / GPL v2+][gmp-license] |
+| [MPIR]<br>[![latest packaged version(s)][repology:mpir.svg]][repology:mpir/versions] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows MSVC. | [GPL-3.0][mpir-copying] and [LGPL-3.0][mpir-copying.lib] |
 
 [repology:gmp/versions]: https://repology.org/project/gmp/versions
 [repology:gmp.svg]: https://repology.org/badge/latest-versions/gmp.svg?header=latest
@@ -120,7 +120,7 @@ Using a standalone library over the system library implementation can be enforce
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [libiconv][libiconv-gnu] (GNU)<br>[![latest packaged version(s)][repology:libiconv.svg]][repology:libiconv/versions] | Internationalization conversion library. | [LGPL 3.0] |
+| [libiconv] (GNU)<br>[![latest packaged version(s)][repology:libiconv.svg]][repology:libiconv/versions] | Internationalization conversion library. | [LGPL 3.0] |
 
 [repology:libiconv/versions]: https://repology.org/project/libiconv/versions
 [repology:libiconv.svg]: https://repology.org/badge/latest-versions/libiconv.svg?header=latest
@@ -137,7 +137,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 | Library | Description | License |
 | ------- | ----------- | ------- |
 | [OpenSSL][openssl.org]<br>[![latest packaged version(s)][repology:openssl.svg]][repology:openssl/versions] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)] |
-| [LibreSSL][libressl]<br>[![latest packaged version(s)][repology:libressl.svg]][repology:libressl/versions] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay] |
+| [LibreSSL]<br>[![latest packaged version(s)][repology:libressl.svg]][repology:libressl/versions] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay] |
 
 [repology:openssl/versions]: https://repology.org/project/openssl/versions
 [repology:openssl.svg]: https://repology.org/badge/latest-versions/openssl.svg?header=latest
@@ -151,9 +151,9 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [LibXML2][libxml2]<br>[![latest packaged version(s)][repology:libxml2.svg]][repology:libxml2/versions] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT][gnome-license] |
-| [LibYAML][libyaml]<br>[![latest packaged version(s)][repology:libyaml.svg]][repology:libyaml/versions] | YAML parser and emitter library. Implements the [`YAML`][YAML] module. | [MIT][yaml-license] |
-| [zlib][zlib]<br>[![latest packaged version(s)][repology:zlib.svg]][repology:zlib/versions] | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib][zlib-license] |
+| [LibXML2]<br>[![latest packaged version(s)][repology:libxml2.svg]][repology:libxml2/versions] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT][gnome-license] |
+| [LibYAML]<br>[![latest packaged version(s)][repology:libyaml.svg]][repology:libyaml/versions] | YAML parser and emitter library. Implements the [`YAML`][YAML] module. | [MIT][yaml-license] |
+| [zlib]<br>[![latest packaged version(s)][repology:zlib.svg]][repology:zlib/versions] | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib][zlib-license] |
 | [LLVM][libllvm]<br>[![latest packaged version(s)][repology:llvm.svg]][repology:llvm/versions] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions] |
 
 [repology:libxml2/versions]: https://repology.org/project/libxml2/versions
@@ -179,10 +179,10 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [PCRE2][libpcre] | See [*Regular expression engine*] | |
+| [PCRE2] | See [*Regular expression engine*] | |
 | [LLVM][libllvm] | See [*Other stdlib libraries*] | [Apache v2 with LLVM exceptions] |
-| [libffi][libffi]<br>[![latest packaged version(s)][repology:libffi.svg]][repology:libffi/versions] | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT][ffi-license] |
-| [libxml2][libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*] | [MIT][gnome-license] |
+| [libffi]<br>[![latest packaged version(s)][repology:libffi.svg]][repology:libffi/versions] | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT][ffi-license] |
+| [libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*] | [MIT][gnome-license] |
 
 [*Other stdlib libraries*]: #other-stdlib-libraries
 [*Regular expression engine*]: #regular-expression-engine
@@ -192,29 +192,29 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 
 [ffi-license]: https://github.com/libffi/libffi/blob/master/LICENSE
 
-[bionic-libc]: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/
-[compiler-rt]: https://compiler-rt.llvm.org/
-[dragonfly-libc]: http://gitweb.dragonflybsd.org/dragonfly.git/tree/refs/heads/master:/lib/libc
-[freebsd-libc]: https://svn.freebsd.org/base/head/lib/libc/
+[bionic libc]: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/
+[compiler-rt builtins]: https://compiler-rt.llvm.org/
+[Dragonfly libc]: http://gitweb.dragonflybsd.org/dragonfly.git/tree/refs/heads/master:/lib/libc
+[FreeBSD libc]: https://svn.freebsd.org/base/head/lib/libc/
 [glibc]: https://www.gnu.org/software/libc/
-[illumos-libc]: https://code.illumos.org/plugins/gitiles/illumos-gate
-[libevent]: https://libevent.org/
+[illumos libc]: https://code.illumos.org/plugins/gitiles/illumos-gate
+[Libevent]: https://libevent.org/
 [libffi]: https://sourceware.org/libffi/
-[libgc]: https://github.com/ivmai/bdwgc
-[libgmp]: https://gmplib.org/
-[libiconv-gnu]: https://www.gnu.org/software/libiconv/
+[Boehm GC]: https://github.com/ivmai/bdwgc
+[GMP]: https://gmplib.org/
+[libiconv]: https://www.gnu.org/software/libiconv/
 [libllvm]: https://llvm.org/
-[libmpir]: https://github.com/wbhart/mpir
-[libpcre]: http://www.pcre.org/
-[libressl]: https://www.libressl.org/
-[libxml2]: http://xmlsoft.org/
-[libyaml]: https://pyyaml.org/wiki/LibYAML
-[macos-libsystem]: https://github.com/apple-oss-distributions/Libsystem
-[msvcrt]: https://web.archive.org/web/20150630135610/https://msdn.microsoft.com/en-us/library/abx4dbyh.aspx
-[musl-libc]: https://musl.libc.org/
-[netbsd-libc]: http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/?only_with_tag=MAIN
-[openbsd-libc]: http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libc/
+[MPIR]: https://github.com/wbhart/mpir
+[PCRE2]: http://www.pcre.org/
+[LibreSSL]: https://www.libressl.org/
+[LibXML2]: http://xmlsoft.org/
+[LibYAML]: https://pyyaml.org/wiki/LibYAML
+[macOS libsystem]: https://github.com/apple-oss-distributions/Libsystem
+[MSVCRT]: https://web.archive.org/web/20150630135610/https://msdn.microsoft.com/en-us/library/abx4dbyh.aspx
+[musl libc]: https://musl.libc.org/
+[NetBSD libc]: http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/?only_with_tag=MAIN
+[OpenBSD libc]: http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libc/
 [openssl.org]: https://www.openssl.org/
-[ucrt]: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
-[wasi]: https://wasi.dev/
+[UCRT]: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
+[WASI]: https://wasi.dev/
 [zlib]: http://zlib.net/
