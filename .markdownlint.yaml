@@ -21,3 +21,6 @@ no-bare-urls: false
 
 fenced-code-language: false
 commands-show-output: false
+
+table-column-style:
+  aligned_delimiter: true
