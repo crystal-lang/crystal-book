@@ -8,9 +8,9 @@ User-provided flags are passed to the compiler, which allow them to be used as f
 
 ## Querying flags
 
-A flag is just a named identifier which is either set or not.
+A flag is a named identifier which is either set or not.
 The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
-literal and returns a bool literal indicating the flag's state.
+literal and returns a bool literal indicating the flag's state. A flag can have an optional value, in which case the macro method `flag?` returns a string literal instead of a bool literal.
 
 The following program shows the use of compile-time flags by printing the target OS family.
 
@@ -115,14 +115,16 @@ The compiler sets these flags based on compiler configuration.
 
 ## User-provided flags
 
-User-provided flags are not defined automatically. They can be passed to the compiler via the `--define` or `-D` command line options.
+User-provided flags are not defined automatically. They can be passed to the compiler via the `--define` or `-D` command line options. A flag can have an explicit string value when defined in the form `foo=bar`.
 
 These flags usually enable certain features which activate breaking new or legacy functionality,
 a preview for a new feature, or entirely alternative behaviour (e.g. for debugging purposes).
 
 ```console
-$ crystal eval -Dfoo 'puts {{ flag?(:foo) }}'
+$ crystal eval -Dfoo 'p {{ flag?(:foo) }}'
 true
+$ crystal eval -Dfoo=bar 'p {{ flag?(:foo) }}'
+"bar"
 ```
 
 ### Stdlib features
@@ -135,6 +137,7 @@ Crystal program.
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314)) |
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Introduced in 1.15 |
+| `execution_context` | Enable execution contexts preview ([RFC 0002](https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md)). [Introduced in 1.16](https://github.com/crystal-lang/crystal/issues/15350) |
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546)) |
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation. |
 | `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md). |
@@ -174,6 +177,7 @@ These flags enable or disable features when building the Crystal compiler.
 |-----------|-------------|
 | `without_ffi`     | Build the compiler without `libffi` |
 | `without_interpreter`  | Build the compiler without interpreter support |
+| `without_libxml2`       | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
 | `without_playground` | Build the compiler without playground (`crystal play`) |
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
 

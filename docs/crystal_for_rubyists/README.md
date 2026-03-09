@@ -50,9 +50,9 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 ### Integers
 
-For Ruby's `Fixnum` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
+For Ruby's `Integer` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
 
-If any operation on a Ruby `Fixnum` exceeds its range, the value is automatically converted to a `Bignum`.
+If any operation on a Ruby immediate integer value exceeds machine's native word size, the value is automatically converted to a heap-allocated arbitrary-precision integer object.
 Crystal will instead raise an `OverflowError` on overflow. For example:
 
 ```crystal
@@ -191,7 +191,7 @@ In sum:
 
 ```ruby
 X = "ho"
-puts '"cute"' # Not valid in crystal, use "\"cute\"", %{"cute"}, or %("cute")
+puts '"cute"' # Not valid in Crystal, use "\"cute\"", %{"cute"}, or %("cute")
 puts "Interpolate #{X}"  # works the same in Ruby and Crystal.
 ```
 
@@ -305,7 +305,7 @@ end
 
 ### Methods
 
-In ruby, the following will raise an argument error:
+In Ruby, the following will raise an argument error:
 
 ```ruby
 def process_data(a, b)
@@ -315,13 +315,13 @@ end
 process_data(b: 2, a: "one")
 ```
 
-This is because, in ruby, `process_data(b: 2, a: "one")` is syntax sugar for `process_data({b: 2, a: "one"})`.
+This is because, in Ruby, `process_data(b: 2, a: "one")` is syntax sugar for `process_data({b: 2, a: "one"})`.
 
-In crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `process_data` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
+In Crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `process_data` with the named arguments `b: 2` and `a: "one"`, which is the same as `process_data("one", 2)`.
 
 ### Properties
 
-The ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced by macros with different names:
+The Ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced by macros with different names:
 
 | Ruby Keyword    | Crystal    |
 |-----------------|------------|
@@ -411,13 +411,13 @@ Crystal introduces a data type that is not available in Ruby, the [`NamedTuple`]
 Typically in Ruby you can define a hash with several syntaxes:
 
 ```ruby
-# A valid ruby hash declaration
-{ 
+# A valid Ruby Hash declaration
+{
   key1: "some value",
   some_key2: "second value"
 }
 
-# This syntax in ruby is shorthand for the hash rocket => syntax
+# This syntax in Ruby is shorthand for the hash rocket => syntax
 {
   :key1 => "some value",
   :some_key2 => "second value"
@@ -452,9 +452,9 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 
 | Crystal | Ruby | Description |
 | ------- | ---- | ----------- |
-| `__FILE__` | `__FILE__` | The full path to the currently executing crystal file. |
-| `__DIR__` | `__dir__` | The full path to the directory where the currently executing crystal file is located. |
-| `__LINE__` | `__LINE__` | The current line number in the currently executing crystal file. |
+| `__FILE__` | `__FILE__` | The full path to the currently executing Crystal file. |
+| `__DIR__` | `__dir__` | The full path to the directory where the currently executing Crystal file is located. |
+| `__LINE__` | `__LINE__` | The current line number in the currently executing Crystal file. |
 | `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
 
 > TIP: Further reading about `__DIR__` vs. `__dir__`:

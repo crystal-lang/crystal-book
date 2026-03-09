@@ -8,7 +8,7 @@ lib C
 end
 
 class IntWrapper
-  def initialize(@value)
+  def initialize(@value : Int32)
   end
 
   def to_unsafe
