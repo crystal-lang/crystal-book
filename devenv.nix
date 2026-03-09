@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  enterShell = ''
-    pip install -q -q --no-deps -r requirements.txt
-    '';
-
   packages = [
     pkgs.gnumake
   ];
