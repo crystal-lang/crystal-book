@@ -21,6 +21,6 @@ jobs:
         with:
           name: devenv
       - name: Install devenv.sh
-        run: nix profile install nixpkgs#devenv
+        run: nix profile add nixpkgs#devenv
       - run: git fetch origin ${{ github.base_ref || 'master' }}
       - run: devenv shell -- prek run --from-ref "origin/${{ github.base_ref || 'master' }}" --to-ref HEAD
