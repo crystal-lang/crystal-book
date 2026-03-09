@@ -450,12 +450,12 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 
 > [Read more about Pseudo Constants in the Crystal documentation.](../syntax_and_semantics/constants.md#pseudo-constants)
 
-| Crystal | Ruby | Description |
-| ------- | ---- | ----------- |
-| `__FILE__` | `__FILE__` | The full path to the currently executing Crystal file. |
-| `__DIR__` | `__dir__` | The full path to the directory where the currently executing Crystal file is located. |
-| `__LINE__` | `__LINE__` | The current line number in the currently executing Crystal file. |
-| `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
+| Crystal        | Ruby       | Description                                                                                                 |
+| -------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
+| `__FILE__`     | `__FILE__` | The full path to the currently executing Crystal file.                                                      |
+| `__DIR__`      | `__dir__`  | The full path to the directory where the currently executing Crystal file is located.                       |
+| `__LINE__`     | `__LINE__` | The current line number in the currently executing Crystal file.                                            |
+| `__END_LINE__` | -          | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
 
 > TIP: Further reading about `__DIR__` vs. `__dir__`:
 >

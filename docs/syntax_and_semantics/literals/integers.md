@@ -2,18 +2,18 @@
 
 There are five signed integer types, and five unsigned integer types:
 
-| Type | Length | Minimum Value | Maximum Value |
-| ---- | -----: | ------------: | ------------: |
-| [Int8] | 8 | -128 | 127 |
-| [Int16] | 16 | −32,768 | 32,767 |
-| [Int32] | 32 | −2,147,483,648 | 2,147,483,647 |
-| [Int64] | 64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
-| [Int128] | 128 | −2<sup>127</sup> | 2<sup>127</sup> - 1 |
-| [UInt8] | 8 | 0 | 255 |
-| [UInt16] | 16 | 0 | 65,535 |
-| [UInt32] | 32 | 0 | 4,294,967,295 |
-| [UInt64] | 64 | 0 | 2<sup>64</sup> - 1 |
-| [UInt128] | 128 | 0 | 2<sup>128</sup> - 1 |
+| Type      | Length |    Minimum Value |       Maximum Value |
+| --------- | -----: | ---------------: | ------------------: |
+| [Int8]    |      8 |             -128 |                 127 |
+| [Int16]   |     16 |          −32,768 |              32,767 |
+| [Int32]   |     32 |   −2,147,483,648 |       2,147,483,647 |
+| [Int64]   |     64 |  −2<sup>63</sup> |  2<sup>63</sup> - 1 |
+| [Int128]  |    128 | −2<sup>127</sup> | 2<sup>127</sup> - 1 |
+| [UInt8]   |      8 |                0 |                 255 |
+| [UInt16]  |     16 |                0 |              65,535 |
+| [UInt32]  |     32 |                0 |       4,294,967,295 |
+| [UInt64]  |     64 |                0 |  2<sup>64</sup> - 1 |
+| [UInt128] |    128 |                0 | 2<sup>128</sup> - 1 |
 
 [Int8]: https://crystal-lang.org/api/Int8.html
 [Int16]: https://crystal-lang.org/api/Int16.html
