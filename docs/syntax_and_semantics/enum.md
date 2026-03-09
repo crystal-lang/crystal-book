@@ -97,23 +97,61 @@ puts Color.new(10) # => prints "10"
 
 This method is mainly intended to convert integers from C to enums in Crystal.
 
-## Methods
+## Predicate methods
 
-Just like a class or a struct, you can define methods for enums:
+An enum automatically defines predicate methods for each member, using
+`String#underscore` for the method name.
+
+!!! note
+    In the case of regular enums, this compares by equality (`==`). In the case of flags enums, this invokes `includes?`.
+
+For example:
 
 ```crystal
 enum Color
   Red
   Green
   Blue
+end
 
-  def red?
-    self == Color::Red
+color = Color::Blue
+color.red?  # => false
+color.blue? # => true
+
+@[Flags]
+enum IOMode
+  Read
+  Write
+  Async
+end
+
+mode = IOMode::Read | IOMode::Async
+mode.read?  # => true
+mode.write? # => false
+mode.async? # => true
+```
+
+## Methods
+
+Just like a class or a struct, you can define methods for enums:
+
+```crystal
+enum ButtonSize
+  Sm
+  Md
+  Lg
+
+  def label
+    case self
+    in .sm? then "small"
+    in .md? then "medium"
+    in .lg? then "large"
+    end
   end
 end
 
-Color::Red.red?  # => true
-Color::Blue.red? # => false
+ButtonSize::Sm.label # => "small"
+ButtonSize::Lg.label # => "large"
 ```
 
 Class variables are allowed, but instance variables are not.

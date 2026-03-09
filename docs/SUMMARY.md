@@ -1,6 +1,6 @@
 # Summary
 
-* [Welcome](README.md)
+* [Index](README.md)
 * Specification
     * [About this guide](syntax_and_semantics/README.md)
     * [The Program](syntax_and_semantics/the_program.md)
@@ -121,12 +121,14 @@
     * [Performance](guides/performance.md)
     * [Concurrency](guides/concurrency.md)
     * [Testing](guides/testing.md)
+        * [Code Coverage](guides/testing/code_coverage.md)
     * [Writing Shards](guides/writing_shards.md)
         * [Hosting on GitHub](guides/hosting/github.md)
         * [Hosting on GitLab](guides/hosting/gitlab.md)
     * [Continuous Integration](guides/ci/README.md)
         * [GitHub Actions](guides/ci/gh-actions.md)
         * [CircleCI](guides/ci/circleci.md)
+    * [Build Docker Image](guides/build_docker_image.md)
     * [Static Linking](guides/static_linking.md)
     * [Crystal for Rubyists](crystal_for_rubyists/README.md)
         * [Metaprogramming Help](crystal_for_rubyists/metaprogramming_help.md)
@@ -135,6 +137,7 @@
         * [Connection pool](database/connection_pool.md)
         * [Transactions](database/transactions.md)
     * [Coding style](conventions/coding_style.md)
+    * [Runtime Tracing](guides/runtime_tracing.md)
 * [Tutorials](tutorials/README.md)
     * [Getting started](getting_started/README.md)
         * [An HTTP Server](getting_started/http_server.md)

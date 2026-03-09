@@ -19,9 +19,10 @@ and drop into *Tier 2*.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `x86_64-darwin` | x64 macOS<br> (Intel) | 11+<br> *(testing only on 11; expected to work on 10.7+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
-| `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
-| `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-darwin` | Aarch64 macOS<br> (Apple Silicon) | 11+ *(testing only on 14)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds |
+| `x86_64-darwin` | x64 macOS<br> (Intel) | 11+<br> *(testing only on 13; expected to work on 10.7+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds |
+| `x86_64-linux-gnu` | x64 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.22+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds |
+| `x86_64-linux-musl` | x64 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.22+)* | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds |
 
 ***
 
@@ -29,19 +30,18 @@ and drop into *Tier 2*.
 
 Tier 2 platforms can be thought of as “expected to work”.
 
-The requirements for *Tier 1* may be partially fulfilled, but are lacking in some way that prevents a solid gurantee.
+The requirements for *Tier 1* may be partially fulfilled, but are lacking in some way that prevents a solid guarantee.
 Details are described in the *Comment* column.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `aarch64-darwin` | Aarch64 macOS<br> (Apple Silicon) | 11+ | :material-selection-ellipse: tests<br> :material-checkbox-marked-circle: builds
-| `aarch64-linux-gnu` | Aarch64 Linux | GNU libc 2.26+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
-| `aarch64-linux-musl` | Aarch64 Linux | MUSL libc 1.2+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
-| `arm-linux-gnueabihf` | Aarch32 Linux<br> (hardfloat) | GNU libc 2.26+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `i386-linux-gnu` | x86 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.18+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.18+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `x86_64-openbsd` | x64 OpenBSD | 6+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `x86_64-freebsd` | x64 FreeBSD | 12+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `aarch64-linux-gnu` | Aarch64 Linux | GNU libc 2.26+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds |
+| `aarch64-linux-musl` | Aarch64 Linux | MUSL libc 1.2+ | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds |
+| `arm-linux-gnueabihf` | Aarch32 Linux<br> (hardfloat) | GNU libc 2.26+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `i386-linux-gnu` | x86 Linux | kernel 4.14+, GNU libc 2.26+<br> *(expected to work on kernel 2.6.22+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `i386-linux-musl` | x86 Linux | kernel 4.14+, MUSL libc 1.2+<br> *(expected to work on kernel 2.6.22+)* | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `x86_64-openbsd` | x64 OpenBSD | 6+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `x86_64-freebsd` | x64 FreeBSD | 12+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 
 ***
 
@@ -54,12 +54,23 @@ Most typically, some parts of the standard library are not supported completely.
 
 | Target | Description | Supported versions | Comment |
 | ------ | ----------- | ------------------ | ------- |
-| `x86_64-windows-msvc` | x64 Windows (MSVC ) | 7+ | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
+| `x86_64-windows-msvc` | x64 Windows (MSVC) | 7+ | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
+| `x86_64-windows-gnu` | x64 Windows (MinGW-w64) | 7+, MSYS2 `UCRT64` / `MINGW64` / `CLANG64` environment | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
+| `aarch64-windows-msvc` | ARM64 Windows (MSVC) | 11+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+| `aarch64-windows-gnu` | ARM64 Windows (MinGW-w64) | 11+, MSYS2 `CLANGARM64` environment | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds |
 | `aarch64-linux-android` | aarch64 Android  | Bionic C runtime, API level 24+ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `x86_64-unknown-dragonfly` | x64 DragonFlyBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `x86_64-unknown-netbsd` | x64 NetBSD | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
 | `wasm32-unknown-wasi` | WebAssembly (WASI libc) | Wasmtime 2+ | :material-circle-slice-5: tests |
 | `x86_64-solaris` | Solaris/illumos | | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds |
+
+## Compiler support
+
+The compiler can target these platforms but there is no support for the standard library (i.e. must compile with `--prelude=empty`).
+
+| Target | Description | Supported versions | Comment |
+| ------ | ----------- | ------------------ | ------- |
+| `avr-unknown-unknown` | AVR (Atmel) CPU architecture (Arduino)<br>This target requires declaration of a CPU model (e.g. `--mcpu=atmega328`) | | |
 
 !!! info "Legend"
     <ul>
@@ -70,4 +81,4 @@ Most typically, some parts of the standard library are not supported completely.
 
 !!! note
     Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
-    that we used as insipration for ours.
+    that we used as inspiration for ours.

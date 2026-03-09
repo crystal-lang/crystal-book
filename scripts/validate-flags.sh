@@ -1,10 +1,14 @@
-#! /bin/sh
+#! /bin/bash
 
-set -eu
+set -eu -o pipefail
 
 CRYSTAL=${CRYSTAL:-crystal}
-CRYSTAL_PATH="$($CRYSTAL env CRYSTAL_PATH)"
-STDLIB_SRC="${CRYSTAL_PATH#*:}" # stdlib source directory is the last entry in CRYSTAL_PATH
+if [ -z "${STDLIB_SRC-}" ]; then
+  CRYSTAL_PATH="$($CRYSTAL env CRYSTAL_PATH)"
+  STDLIB_SRC="${CRYSTAL_PATH#*:}" # stdlib source directory is the last entry in CRYSTAL_PATH
+fi
+
+echo "Validating flags for stdlib source ${STDLIB_SRC} ($(cat "${STDLIB_SRC}/VERSION"))"
 
 filter_missing() {
   missing=0

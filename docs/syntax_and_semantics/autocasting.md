@@ -20,14 +20,14 @@ def bar64(x : Float64) : Float64
 end
 
 foo 0xFFFF_u16 # OK, an UInt16 always fit an Int32
-foo 0xFFFF_u64 # OK, this particular Int64 fit in an Int32
+foo 0xFFFF_u64 # OK, this particular UInt64 fit in an Int32
 bar(foo 1)     # Fails, casting an Int32 to a Float32 might lose precision
 bar64(bar 1)   # OK, a Float32 can be autocasted to a Float64
 ```
 
 Number literals are always casted when the actual value of the literal fits the target type, despite of its type.
 
-Expressions are casted (like in the last example above), unless the flag `no_number_autocast` is passed to the compiler (see [Compiler features](compile_time_flags.md#compiler-features)).
+Expressions are casted (like in the last example above), unless the flag `no_number_autocast` is passed to the compiler (see [Compiler features](compile_time_flags.md#language-features)).
 
 If there is ambiguity, for instance, because there is more than one option, the compiler throws an error:
 

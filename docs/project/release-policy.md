@@ -9,7 +9,7 @@ New features are added in minor releases (`1.x.0`) which are regularly scheduled
 Patch releases contain only important bug fixes and are released when necessary.
 They usually only appear for the latest minor branch.
 
-New releases are announced at [crystal-lang.org/releases](https://crystal-lang.org/releases) ([RSS feed](https://crystal-lang.org/releases)).
+New releases are announced at [crystal-lang.org/releases](https://crystal-lang.org/releases) ([RSS feed](https://crystal-lang.org/releases/feed.xml)).
 
 There are currently no plans for a new major release.
 
@@ -25,7 +25,7 @@ As a result, migrating to a new minor release is usually seamless.
 Although we expect the vast majority of programs to remain compatible over time,
 it is impossible to guarantee that no future change will break any program.
 Under some unlikely circumstances, we may introduce changes that break existing code.
-Rest assured we are commited to keep the impact as minimal as possible.
+Rest assured we are committed to keep the impact as minimal as possible.
 
 * Security: a security issue in the implementation may arise whose resolution requires backwards incompatible changes. We reserve the right to address such security issues.
 

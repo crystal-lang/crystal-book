@@ -4,7 +4,7 @@ Metaprogramming in Crystal is not the same as in Ruby. The links on this page wi
 
 ## Differences between Ruby and Crystal
 
-Ruby makes heavy use of `send`, `method_missing`, `instance_eval`, `class_eval`, `eval`, `define_method`, `remove_method`, and others for making code modifications at runtime. It also supports `include` and `extend` for adding modules to other modules to create new class or instance methods at runtime. Herein lies the biggest difference between the two languages: Crystal does not allow for runtime code generation. All Crystal code must be generated and compiled prior to executing the final binary.
+Ruby makes heavy use of `send`, `method_missing`, `instance_eval`, `class_eval`, `eval`, `define_method`, `remove_method`, and others for making code modifications at runtime. It also supports `include`, `prepend` and `extend` for adding modules to other modules to create new class or instance methods at runtime. Herein lies the biggest difference between the two languages: Crystal does not allow for runtime code generation. All Crystal code must be generated and compiled prior to executing the final binary.
 
 Therefore, many of those mechanisms listed above do not even exist. Of the methods listed above, Crystal has some support only for `method_missing` via a macro facility. Read the official docs on macros to understand them, but note that the macro is used to define valid Crystal methods during the compile step, so all receivers and method names must be known ahead of time. You can't build a method name from a string or symbol and `send` it to a receiver; there is no support for `send` and the compile will fail.
 

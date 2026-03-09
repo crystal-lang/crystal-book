@@ -36,7 +36,7 @@ A few operators are defined directly by the compiler and cannot be redefined
 in user code. Examples for this are the inversion operator `!`, the assignment
 operator `=`, [combined assignment operators](#combined-assignments) such as
 `||=` and [range operators](#range). Whether a method can be redefined is
-indicated by the colum *Overloadable* in the below operator tables.
+indicated by the column *Overloadable* in the below operator tables.
 
 ### Unary operators
 
@@ -63,7 +63,7 @@ v1 = Vector2.new(1, 2)
 -v1 # => Vector2(@x=-1, @y=-2)
 ```
 
-## Binary operators
+### Binary operators
 
 Binary operators have two operands. Thus, a method implementation receives
 exactly one argument representing the second operand. The first operand is the
@@ -98,7 +98,7 @@ There can be reasonable exceptions though. For example in the standard library
 the float division operator `/` on integer types always returns `Float64`,
 because the quotient must not be limited to the value range of integers.
 
-## Ternary operators
+### Ternary operators
 
 The [conditional operator (`? :`)](./ternary_if.md) is the only ternary
 operator. It not parsed as a method, and its meaning cannot be changed.
@@ -120,14 +120,14 @@ ones.
 | Additive | `+`, `&+`, `-`, `&-` |
 | Shift | `<<`, `>>` |
 | Binary AND | `&` |
-| Binary OR/XOR | `|`,`^` |
+| Binary OR/XOR | <code>\|</code>,`^` |
 | Equality and Subsumption | `==`, `!=`, `=~`, `!~`, `===` |
 | Comparison | `<`, `<=`, `>`, `>=`, `<=>` |
 | Logical AND | `&&` |
-| Logical OR | `||` |
+| Logical OR | <code>\|\|</code> |
 | Range | `..`, `...` |
 | Conditional | `?:` |
-| Assignment | `=`, `[]=`, `+=`, `&+=`, `-=`, `&-=`, `*=`, `&*=`, `/=`, `//=`, `%=`, `|=`, `&=`,`^=`,`**=`,`<<=`,`>>=`, `||=`, `&&=` |
+| Assignment | `=`, `[]=`, `+=`, `&+=`, `-=`, `&-=`, `*=`, `&*=`, `/=`, `//=`, `%=`, <code>\|=</code>, `&=`,`^=`,`**=`,`<<=`,`>>=`, <code>\|\|=</code>, `&&=` |
 | Splat | `*`, `**` |
 
 <!-- markdownlint-enable no-space-in-code -->
@@ -185,7 +185,7 @@ ones.
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
 | `&` | binary AND | `1 & 2` | yes | left |
-| `|` | binary OR | `1 | 2` | yes | left |
+| <code>\|</code> | binary OR | <code>1 \| 2</code> | yes | left |
 | `^` | binary XOR | `1 ^ 2` | yes | left |
 
 ### Relational operators
@@ -283,7 +283,7 @@ For instance, `a == b <= c` is equivalent to `a == b && b <= c`, while `a <= b =
 | Operator | Description | Example | Overloadable | Associativity |
 |---|---|---|---|---|
 | `&&` | [logical AND](and.md) | `true && false` | no | left |
-| `||` | [logical OR](or.md) | `true || false` | no | left |
+| <code>\|\|</code> | [logical OR](or.md) | <code>true \|\| false</code> | no | left |
 
 ### Range
 
@@ -292,7 +292,7 @@ literals.
 
 | Operator | Description | Example | Overloadable |
 |---|---|---|---|
-| `..` | range | `1..10` | no |
+| `..` | inclusive range | `1..10` | no |
 | `...` | exclusive range | `1...10` | no |
 
 ### Splats
@@ -339,10 +339,10 @@ Exceptions to the general expansion formula are the logical operators:
 * `a &&= b` transforms to `a && (a = b)`
 
 There is another special case when `a` is an index accessor (`[]`), it is
-changed to the nilable variant (`[]?` on the right hand side:
+changed to the nilable variant (`[]?`) on the left hand side:
 
-* `a[i] ||= b` transforms to `a[i] = (a[i]? || b)`
-* `a[i] &&= b` transforms to `a[i] = (a[i]? && b)`
+* `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
+* `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
 
 All transformations assume the receiver (`a`) is a variable. If it is a call,
 the replacements are semantically equivalent but the implementation is a bit
@@ -362,13 +362,13 @@ The receiver can't be anything else than a variable or call.
 | `/=` | division *and* assignment | `i /= 1` | no | right |
 | `//=` | floor division *and* assignment | `i //= 1` | no | right |
 | `%=` | modulo *and* assignment | `i %= 1` | yes | right |
-| `|=` | binary or *and* assignment | `i |= 1` | no | right |
+| <code>\|=</code> | binary or *and* assignment | <code>i \|= 1</code> | no | right |
 | `&=` | binary and *and* assignment | `i &= 1` | no | right |
 | `^=` | binary xor *and* assignment | `i ^= 1` | no | right |
 | `**=` | exponential *and* assignment | `i **= 1` | no | right |
 | `<<=` | left shift *and* assignment | `i <<= 1` | no | right |
 | `>>=` | right shift *and* assignment | `i >>= 1` | no | right |
-| `||=` | logical or *and* assignment | `i ||= true` | no | right |
+| <code>\|\|=</code> | logical or *and* assignment | <code>i \|\|= true</code> | no | right |
 | `&&=` | logical and *and* assignment | `i &&= true` | no | right |
 
 ### Index Accessors

@@ -4,7 +4,7 @@ A [Proc](https://crystal-lang.org/api/Proc.html) represents a function pointer w
 
 ```crystal
 # A proc without parameters
-->{ 1 } # Proc(Int32)
+-> { 1 } # Proc(Int32)
 
 # A proc with one parameter
 ->(x : Int32) { x.to_s } # Proc(Int32, String)

@@ -62,6 +62,10 @@ clean_all: clean clean_vendor
 format_api_docs_links:
 	echo $(DOCS_FILES) | xargs sed -i -E -e 's@\bhttps?://(www\.)?crystal-lang\.org/api/([0-9]+(\.[0-9]+)+|latest|master)/([^ )]+\.html)\b@https://crystal-lang.org/api/\4@g'
 
+.PHONY: format_code_blocks
+format_code_blocks:
+	NO_COLOR=1 LINT=true make clean build 2>&1 | ./scripts/format-code-blocks.cr
+
 .PHONY: help
 help: ## Show this help
 	@echo

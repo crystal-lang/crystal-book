@@ -9,7 +9,7 @@ There are five signed integer types, and five unsigned integer types:
 | [Int32](http://crystal-lang.org/api/Int32.html) | 32  | −2,147,483,648 | 2,147,483,647 |
 | [Int64](http://crystal-lang.org/api/Int64.html)   |  64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
 | [Int128](https://crystal-lang.org/api/Int128.html) | 128 | −2<sup>127</sup> | 2<sup>127</sup> - 1 |
-| [UInt8](http://crystal-lang.org/api/UInt8.html) | 8 |  0 | 255 |  
+| [UInt8](http://crystal-lang.org/api/UInt8.html) | 8 |  0 | 255 |
 | [UInt16](http://crystal-lang.org/api/UInt16.html) | 16 | 0 | 65,535 |
 | [UInt32](http://crystal-lang.org/api/UInt32.html) | 32 |  0 | 4,294,967,295 |
 | [UInt64](http://crystal-lang.org/api/UInt64.html) | 64 | 0 | 2<sup>64</sup> - 1 |
