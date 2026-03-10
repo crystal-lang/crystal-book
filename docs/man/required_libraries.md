@@ -94,9 +94,10 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [PCRE2][libpcre] | See above. | |
-| [LLVM][libllvm] | See above. | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
+| [PCRE2][libpcre] | See [*Regular expression engine*](#regular-expression-engine) | |
+| [LLVM][libllvm] | See [*Other stdlib libraries*](#other-stdlib-libraries) | [Apache v2 with LLVM exceptions](https://llvm.org/docs/DeveloperPolicy.html#new-llvm-project-license-framework) |
 | [libffi][libffi]<br>[![latest packaged version(s)](https://repology.org/badge/latest-versions/libffi.svg?header=latest)](https://repology.org/project/libffi/versions) | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT](https://github.com/libffi/libffi/blob/master/LICENSE) |
+| [libxml2][libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*](#other-stdlib-libraries) | [MIT](https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright) |
 
 [bionic-libc]: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/
 [compiler-rt]: https://compiler-rt.llvm.org/
