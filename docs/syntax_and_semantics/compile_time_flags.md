@@ -71,7 +71,7 @@ so the most common vendor is `unknown`.
 
 #### Operating System
 
-The operating system is derived from the third component of a the target triple.
+The operating system is derived from the third component of the target triple.
 
 | Flag name | Description |
 |-----------|-------------|
@@ -85,6 +85,15 @@ The operating system is derived from the third component of a the target triple.
 | `solaris` | Solaris/illumos |
 | `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris) |
 | `windows` | Windows |
+
+#### Operating System versions
+
+The version of the operating is derived from the third component of the target triple if available.
+
+| Flag name | Description |
+|-----------|-------------|
+| `freebsd12` | FreeBSD version 12 |
+| `freebsd13` | FreeBSD version 13 |
 
 #### ABI
 
@@ -138,6 +147,7 @@ Crystal program.
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Introduced in 1.15 |
 | `execution_context` | Enable execution contexts preview ([RFC 0002](https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md)). [Introduced in 1.16](https://github.com/crystal-lang/crystal/issues/15350) |
+| `execvpe_impl` | Experimental flag for choosing the custom `execvpe` implementation instead of the system function. Introduced in 1.19 |
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546)) |
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation. |
 | `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md). |
