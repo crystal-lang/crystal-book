@@ -5,6 +5,8 @@ on:
   schedule:
     - cron: '0 6 * * 1'  # Every Monday 6 AM UTC
 
+permissions: {}
+
 jobs:
   build:
     name: Deploy book
@@ -12,6 +14,8 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Extract branch name to deploy
         id: branch
         shell: bash -x {0}
@@ -39,14 +43,17 @@ jobs:
       - name: Determine a version for API doc links
         shell: bash -x {0}
         run: |
-          if [[ '${{ steps.branch.outputs.branch }}' =~ ^[0-9] ]]; then
-            echo "CRYSTAL_VERSION=${{ steps.crystal.outputs.crystal }}" >> ${GITHUB_ENV}
+          if [[ '${STEPS_BRANCH_OUTPUTS_BRANCH}' =~ ^[0-9] ]]; then
+            echo "CRYSTAL_VERSION=${STEPS_CRYSTAL_OUTPUTS_CRYSTAL}" >> ${GITHUB_ENV}
           fi
+        env:
+          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
+          STEPS_CRYSTAL_OUTPUTS_CRYSTAL: ${{ steps.crystal.outputs.crystal }}
       - name: Populate sample version of Crystal
         run: crystal --version | tee crystal-version.txt
       - name: Set edit_uri branch
         run: |
-          sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${{ github.ref_name }}/docs/#' mkdocs.yml
+          sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${GITHUB_REF_NAME}/docs/#' mkdocs.yml
       - name: Build book
         run: LINT=true make build
       - name: Configure AWS Credentials
@@ -58,7 +65,9 @@ jobs:
           aws-region: us-east-1
       - name: Deploy book
         if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
-        run: aws s3 sync ./site s3://crystal-book/reference/${{ steps.branch.outputs.branch }} --delete
+        run: aws s3 sync ./site s3://crystal-book/reference/${STEPS_BRANCH_OUTPUTS_BRANCH} --delete
+        env:
+          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
 
   lint:
     name: Check style issues
@@ -66,6 +75,8 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Install Node
         uses: actions/setup-node@v6
         with:

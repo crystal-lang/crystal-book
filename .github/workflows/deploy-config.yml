@@ -3,6 +3,8 @@ on:
   - create
   - workflow_dispatch
 
+permissions: {}
+
 jobs:
   build:
     name: Deploy config
@@ -11,6 +13,8 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Build versions files
         run: |
           scripts/docs-versions.sh origin
