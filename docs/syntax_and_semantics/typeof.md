@@ -26,11 +26,11 @@ recursively forms a union type out of nested generic types:
 
 ```crystal
 class Array
-  def self.elem_type(typ)
-    if typ.is_a?(Array)
-      elem_type(typ.first)
+  def self.elem_type(ary)
+    if ary.is_a?(Array)
+      elem_type(ary.first)
     else
-      typ
+      ary
     end
   end
 end

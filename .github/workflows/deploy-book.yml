@@ -69,19 +69,3 @@ jobs:
         env:
           STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
 
-  lint:
-    name: Check style issues
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download source
-        uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-      - name: Install Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-      - name: Install dependencies
-        run: npm install -g markdownlint-cli@0.32.1
-      - name: Check Markdown style
-        run: markdownlint docs
