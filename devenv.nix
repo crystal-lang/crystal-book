@@ -22,6 +22,12 @@
     actionlint.enable = true;
     check-toml.enable = true;
     markdownlint.enable = true;
+    shellcheck = {
+      enable = true;
+      excludes = [
+        ".*\.zsh$"
+      ];
+    };
     typos.enable = true;
     zizmor.enable = true;
   };
