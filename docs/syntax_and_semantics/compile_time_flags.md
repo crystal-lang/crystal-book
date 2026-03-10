@@ -48,15 +48,15 @@ The flags in each of the following tables are mutually exclusive, except for tho
 The target architecture is the first component of the target triple.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `aarch64` | AArch64 architecture |
-| `avr`     | AVR architecture |
-| `arm`     | ARM architecture |
-| `i386`    | x86 architecture (32-bit) |
-| `wasm32`  | WebAssembly |
-| `x86_64`  | x86-64 architecture |
-| `bits32` *(derived)*  | 32-bit architecture |
-| `bits64` *(derived)*  | 64-bit architecture |
+| `avr` | AVR architecture |
+| `arm` | ARM architecture |
+| `i386` | x86 architecture (32-bit) |
+| `wasm32` | WebAssembly |
+| `x86_64` | x86-64 architecture |
+| `bits32` *(derived)* | 32-bit architecture |
+| `bits64` *(derived)* | 64-bit architecture |
 
 #### Vendor
 
@@ -64,8 +64,8 @@ The vendor is the second component of the target triple. This is typically unuse
 so the most common vendor is `unknown`.
 
 | Flag name | Description |
-|-----------|-------------|
-| `macosx`  | Apple |
+| --------- | ----------- |
+| `macosx` | Apple |
 | `portbld` | FreeBSD variant |
 | `unknown` | Unknown vendor |
 
@@ -74,13 +74,13 @@ so the most common vendor is `unknown`.
 The operating system is derived from the third component of the target triple.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `bsd` *(derived)* | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD) |
-| `darwin`  | Darwin (MacOS) |
+| `darwin` | Darwin (MacOS) |
 | `dragonfly` | DragonFlyBSD |
 | `freebsd` | FreeBSD |
-| `linux`   | Linux |
-| `netbsd`  | NetBSD |
+| `linux` | Linux |
+| `netbsd` | NetBSD |
 | `openbsd` | OpenBSD |
 | `solaris` | Solaris/illumos |
 | `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris) |
@@ -91,7 +91,7 @@ The operating system is derived from the third component of the target triple.
 The version of the operating is derived from the third component of the target triple if available.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `freebsd12` | FreeBSD version 12 |
 | `freebsd13` | FreeBSD version 13 |
 
@@ -100,14 +100,14 @@ The version of the operating is derived from the third component of the target t
 The ABI is derived from the last component of the target triple.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `android` | Android (Bionic C runtime) |
 | `armhf` *(derived)* | ARM EABI with hard float |
-| `gnu`     | GNU |
+| `gnu` | GNU |
 | `gnueabihf` | GNU EABI with hard float |
-| `msvc`    | Microsoft Visual C++ |
-| `musl`    | musl |
-| `wasi`    | Web Assembly System Interface |
+| `msvc` | Microsoft Visual C++ |
+| `musl` | musl |
+| `wasi` | Web Assembly System Interface |
 | `win32` *(derived)* | Windows API |
 
 ### Compiler options
@@ -115,11 +115,11 @@ The ABI is derived from the last component of the target triple.
 The compiler sets these flags based on compiler configuration.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `release` | Compiler operates in release mode (`--release` or `-O3 --single-module` CLI option) |
-| `debug`   | Compiler generates debug symbols (without `--no-debug` CLI option) |
-| `static`  | Compiler creates a statically linked executable (`--static` CLI option) |
-| `docs`    | Code is processed to generate API docs (`crystal docs` command) |
+| `debug` | Compiler generates debug symbols (without `--no-debug` CLI option) |
+| `static` | Compiler creates a statically linked executable (`--static` CLI option) |
+| `docs` | Code is processed to generate API docs (`crystal docs` command) |
 | `interpreted` | Running in the interpreter (`crystal i`) |
 
 ## User-provided flags
@@ -142,7 +142,7 @@ These flags enable or disable features in the standard library when building a
 Crystal program.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314)) |
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Introduced in 1.15 |
@@ -154,7 +154,7 @@ Crystal program.
 | `use_libiconv` | Use `libiconv` instead of the `iconv` system library |
 | `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0. |
 | `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0. |
-| `win7`     | Use Win32 WinNT API for Windows 7 |
+| `win7` | Use Win32 WinNT API for Windows 7 |
 | `without_iconv` | Do not link `iconv`/`libiconv` |
 | `without_openssl` | Build without OpenSSL support |
 | `without_zlib` | Build without Zlib support |
@@ -164,7 +164,7 @@ Crystal program.
 These flags enable or disable language features when building a Crystal program.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
 | `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)). |
 | `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)). |
@@ -175,7 +175,7 @@ These flags enable or disable language features when building a Crystal program.
 These flags enable or disable codegen features when building a Crystal program.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
 | `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
 
@@ -184,10 +184,10 @@ These flags enable or disable codegen features when building a Crystal program.
 These flags enable or disable features when building the Crystal compiler.
 
 | Flag name | Description |
-|-----------|-------------|
-| `without_ffi`     | Build the compiler without `libffi` |
-| `without_interpreter`  | Build the compiler without interpreter support |
-| `without_libxml2`       | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
+| --------- | ----------- |
+| `without_ffi` | Build the compiler without `libffi` |
+| `without_interpreter` | Build the compiler without interpreter support |
+| `without_libxml2` | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
 | `without_playground` | Build the compiler without playground (`crystal play`) |
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
 

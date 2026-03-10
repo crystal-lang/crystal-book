@@ -75,7 +75,7 @@ In Ruby where there are several methods for doing the same thing, in Crystal the
 Specifically:
 
 | Ruby Method               | Crystal Method        |
-|---------------------------|-----------------------|
+| ------------------------- | --------------------- |
 | `Enumerable#detect`       | `Enumerable#find`     |
 | `Enumerable#collect`      | `Enumerable#map`      |
 | `Object#respond_to?`      | `Object#responds_to?` |
@@ -324,7 +324,7 @@ In Crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `p
 The Ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced by macros with different names:
 
 | Ruby Keyword    | Crystal    |
-|-----------------|------------|
+| --------------- | ---------- |
 | `attr_accessor` | `property` |
 | `attr_reader`   | `getter`   |
 | `attr_writer`   | `setter`   |
@@ -338,7 +338,7 @@ getter :name, :bday
 In addition, Crystal added accessor macros for nilable or boolean instance variables. They have a question mark (`?`) in the name:
 
 | Crystal     |
-|-------------|
+| ----------- |
 | `property?` |
 | `getter?`   |
 
