@@ -15,16 +15,16 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [glibc]<br>[![latest packaged version(s)][repology:glibc.svg]][repology:glibc/versions] | standard C library for Linux <br>**Supported versions:** GNU libc 2.26+ | [LGPL 3.0] |
-| [musl libc]<br>[![latest packaged version(s)][repology:musl.svg]][repology:musl/versions] | standard C library for Linux <br>**Supported versions:** MUSL libc 1.2+ | [MIT][musl-copyright] |
-| [FreeBSD libc]<br>[![latest packaged version(s)][repology:freebsd.svg]][repology:freebsd/versions] | standard C library for FreeBSD <br>**Supported versions:** 12+ | [BSD][freebsd-license] |
+| [glibc]<br>[![latest packaged version(s)][r:glibc]][r:glibc/v] | standard C library for Linux <br>**Supported versions:** GNU libc 2.26+ | [LGPL 3.0] |
+| [musl libc]<br>[![latest packaged version(s)][r:musl]][r:musl/v] | standard C library for Linux <br>**Supported versions:** MUSL libc 1.2+ | [MIT][musl-copyright] |
+| [FreeBSD libc]<br>[![latest packaged version(s)][r:freebsd]][r:freebsd/v] | standard C library for FreeBSD <br>**Supported versions:** 12+ | [BSD][freebsd-license] |
 | [NetBSD libc] | standard C library for NetBSD | [BSD][netbsd-license] |
-| [OpenBSD libc]<br>[![latest packaged version(s)][repology:openbsd.svg]][repology:openbsd/versions] | standard C library for OpenBSD <br>**Supported versions:** 6+ | [BSD][openbsd-policy] |
+| [OpenBSD libc]<br>[![latest packaged version(s)][r:openbsd]][r:openbsd/v] | standard C library for OpenBSD <br>**Supported versions:** 6+ | [BSD][openbsd-policy] |
 | [Dragonfly libc] | standard C library for DragonflyBSD | [BSD][dragonfly-license] |
 | [macOS libsystem] | standard C library for macOS <br>**Supported versions:** 11+ | [Apple][APPLE_LICENSE] |
 | [MSVCRT] | standard C library for Visual Studio 2013 or below | |
 | [UCRT] | Universal CRT for Windows / Visual Studio 2015+ | [MIT subset available][MIT-windows] |
-| [WASI]<br>[![latest packaged version(s)][repology:wasi-libc.svg]][repology:wasi-libc/versions] | WebAssembly System Interface | [Apache v2 and others][wasi-license] |
+| [WASI]<br>[![latest packaged version(s)][r:wasi-libc]][r:wasi-libc/v] | WebAssembly System Interface | [Apache v2 and others][wasi-license] |
 | [bionic libc] | C library for Android <br>**Supported versions:** ABI Level 24+ | [BSD-like][android-notice] |
 | [illumos libc] | System library for Illumos | [CDDL] |
 
@@ -44,8 +44,8 @@ which may be part of the C library or standalone libraries. On most platforms al
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [Boehm GC]<br>[![latest packaged version(s)][repology:boehm-gc.svg]][repology:boehm-gc/versions] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style][bdwgc-license] |
-| [Libevent]<br>[![latest packaged version(s)][repology:llvm.svg]][repology:llvm/versions] | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license] |
+| [Boehm GC]<br>[![latest packaged version(s)][r:boehm-gc]][r:boehm-gc/v] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support | [MIT-style][bdwgc-license] |
+| [Libevent]<br>[![latest packaged version(s)][r:llvm]][r:llvm/v] | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license] |
 | [compiler-rt builtins] | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly. | [MIT / UIUC][compiler-rt builtins] |
 
 [bdwgc-license]: https://github.com/ivmai/bdwgc/blob/master/LICENSE
@@ -67,8 +67,8 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [PCRE2]<br>[![latest packaged version(s)][repology:pcre2.svg]][repology:pcre2/versions] | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license] |
-| [PCRE][PCRE2]<br>[![latest packaged version(s)][repology:pcre.svg]][repology:pcre/versions] | Perl Compatible Regular Expressions. | [BSD][pcre-license] |
+| [PCRE2]<br>[![latest packaged version(s)][r:pcre2]][r:pcre2/v] | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license] |
+| [PCRE][PCRE2]<br>[![latest packaged version(s)][r:pcre]][r:pcre/v] | Perl Compatible Regular Expressions. | [BSD][pcre-license] |
 
 [pcre-license]: http://www.pcre.org/licence.txt
 
@@ -80,8 +80,8 @@ Implementations for `Big` types such as [`BigInt`][BigInt].
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [GMP]<br>[![latest packaged version(s)][repology:gmp.svg]][repology:gmp/versions] | GNU multiple precision arithmetic library. | [LGPL v3+ / GPL v2+][gmp-license] |
-| [MPIR]<br>[![latest packaged version(s)][repology:mpir.svg]][repology:mpir/versions] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows MSVC. | [GPL-3.0][mpir-copying] and [LGPL-3.0][mpir-copying.lib] |
+| [GMP]<br>[![latest packaged version(s)][r:gmp]][r:gmp/v] | GNU multiple precision arithmetic library. | [LGPL v3+ / GPL v2+][gmp-license] |
+| [MPIR]<br>[![latest packaged version(s)][r:mpir]][r:mpir/v] | Multiple Precision Integers and Rationals, forked from GMP. Used on Windows MSVC. | [GPL-3.0][mpir-copying] and [LGPL-3.0][mpir-copying.lib] |
 
 [gmp-license]: https://gmplib.org/manual/Copying
 [mpir-copying]: https://github.com/wbhart/mpir/blob/master/COPYING
@@ -94,7 +94,7 @@ Using a standalone library over the system library implementation can be enforce
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [libiconv] (GNU)<br>[![latest packaged version(s)][repology:libiconv.svg]][repology:libiconv/versions] | Internationalization conversion library. | [LGPL 3.0] |
+| [libiconv] (GNU)<br>[![latest packaged version(s)][r:libiconv]][r:libiconv/v] | Internationalization conversion library. | [LGPL 3.0] |
 
 ### TLS
 
@@ -107,8 +107,8 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [OpenSSL][openssl.org]<br>[![latest packaged version(s)][repology:openssl.svg]][repology:openssl/versions] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)] |
-| [LibreSSL]<br>[![latest packaged version(s)][repology:libressl.svg]][repology:libressl/versions] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay] |
+| [OpenSSL][openssl.org]<br>[![latest packaged version(s)][r:openssl]][r:openssl/v] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+ | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)] |
+| [LibreSSL]<br>[![latest packaged version(s)][r:libressl]][r:libressl/v] | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay] |
 
 [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]: https://www.openssl.org/source/license.html
 [ISC / OpenSSL / SSLeay]: https://github.com/libressl-portable/openbsd/blob/master/src/lib/libssl/LICENSE
@@ -117,10 +117,10 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library | Description | License |
 | ------- | ----------- | ------- |
-| [LibXML2]<br>[![latest packaged version(s)][repology:libxml2.svg]][repology:libxml2/versions] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT][gnome-license] |
-| [LibYAML]<br>[![latest packaged version(s)][repology:libyaml.svg]][repology:libyaml/versions] | YAML parser and emitter library. Implements the [`YAML`][YAML] module. | [MIT][yaml-license] |
-| [zlib]<br>[![latest packaged version(s)][repology:zlib.svg]][repology:zlib/versions] | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib][zlib-license] |
-| [LLVM][libllvm]<br>[![latest packaged version(s)][repology:llvm.svg]][repology:llvm/versions] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions] |
+| [LibXML2]<br>[![latest packaged version(s)][r:libxml2]][r:libxml2/v] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14 | [MIT][gnome-license] |
+| [LibYAML]<br>[![latest packaged version(s)][r:libyaml]][r:libyaml/v] | YAML parser and emitter library. Implements the [`YAML`][YAML] module. | [MIT][yaml-license] |
+| [zlib]<br>[![latest packaged version(s)][r:zlib]][r:zlib/v] | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag. | [zlib][zlib-license] |
+| [LLVM][libllvm]<br>[![latest packaged version(s)][r:llvm]][r:llvm/v] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions] |
 
 [gnome-license]: https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright
 [yaml-license]: https://github.com/yaml/libyaml/blob/master/License
@@ -140,7 +140,7 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 | ------- | ----------- | ------- |
 | [PCRE2] | See [*Regular expression engine*] | |
 | [LLVM][libllvm] | See [*Other stdlib libraries*] | [Apache v2 with LLVM exceptions] |
-| [libffi]<br>[![latest packaged version(s)][repology:libffi.svg]][repology:libffi/versions] | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT][ffi-license] |
+| [libffi]<br>[![latest packaged version(s)][r:libffi]][r:libffi/v] | Foreign function interface. Used for implementing binary interfaces in the interpreter. May be disabled with the `-Dwithout_interpreter` compile-time flag. | [MIT][ffi-license] |
 | [libxml2] | Optional dependency for docs sanitizer. May be disabled with the `-Dwithout_libxml2` compile-time flag. See [*Other stdlib libraries*] | [MIT][gnome-license] |
 
 [*Other stdlib libraries*]: #other-stdlib-libraries
@@ -175,39 +175,39 @@ In addition to the [core runtime dependencies](#core-runtime-dependencies), thes
 [WASI]: https://wasi.dev/
 [zlib]: http://zlib.net/
 
-[repology:boehm-gc.svg]: https://repology.org/badge/latest-versions/boehm-gc.svg?header=latest
-[repology:boehm-gc/versions]: https://repology.org/project/boehm-gc/versions
-[repology:freebsd.svg]: https://repology.org/badge/latest-versions/freebsd.svg?header=latest
-[repology:freebsd/versions]: https://repology.org/project/freebsd/versions
-[repology:glibc.svg]: https://repology.org/badge/latest-versions/glibc.svg?header=latest
-[repology:glibc/versions]: https://repology.org/project/glibc/versions
-[repology:gmp.svg]: https://repology.org/badge/latest-versions/gmp.svg?header=latest
-[repology:gmp/versions]: https://repology.org/project/gmp/versions
-[repology:libffi.svg]: https://repology.org/badge/latest-versions/libffi.svg?header=latest
-[repology:libffi/versions]: https://repology.org/project/libffi/versions
-[repology:libiconv.svg]: https://repology.org/badge/latest-versions/libiconv.svg?header=latest
-[repology:libiconv/versions]: https://repology.org/project/libiconv/versions
-[repology:libressl.svg]: https://repology.org/badge/latest-versions/libressl.svg?header=latest
-[repology:libressl/versions]: https://repology.org/project/libressl/versions
-[repology:libxml2.svg]: https://repology.org/badge/latest-versions/libxml2.svg?header=latest
-[repology:libxml2/versions]: https://repology.org/project/libxml2/versions
-[repology:libyaml.svg]: https://repology.org/badge/latest-versions/libyaml.svg?header=latest
-[repology:libyaml/versions]: https://repology.org/project/libyaml/versions
-[repology:llvm.svg]: https://repology.org/badge/latest-versions/llvm.svg?header=latest
-[repology:llvm/versions]: https://repology.org/project/llvm/versions
-[repology:mpir.svg]: https://repology.org/badge/latest-versions/mpir.svg?header=latest
-[repology:mpir/versions]: https://repology.org/project/mpir/versions
-[repology:musl.svg]: https://repology.org/badge/latest-versions/musl.svg?header=latest
-[repology:musl/versions]: https://repology.org/project/musl/versions
-[repology:openbsd.svg]: https://repology.org/badge/latest-versions/openbsd.svg?header=latest
-[repology:openbsd/versions]: https://repology.org/project/openbsd/versions
-[repology:openssl.svg]: https://repology.org/badge/latest-versions/openssl.svg?header=latest
-[repology:openssl/versions]: https://repology.org/project/openssl/versions
-[repology:pcre.svg]: https://repology.org/badge/latest-versions/pcre.svg?header=latest
-[repology:pcre/versions]: https://repology.org/project/pcre/versions
-[repology:pcre2.svg]: https://repology.org/badge/latest-versions/pcre2.svg?header=latest
-[repology:pcre2/versions]: https://repology.org/project/pcre2/versions
-[repology:wasi-libc.svg]: https://repology.org/badge/latest-versions/wasi-libc.svg?header=latest
-[repology:wasi-libc/versions]: https://repology.org/project/wasi-libc/versions
-[repology:zlib.svg]: https://repology.org/badge/latest-versions/zlib.svg?header=latest
-[repology:zlib/versions]: https://repology.org/project/zlib/versions
+[r:boehm-gc]: https://repology.org/badge/latest-versions/boehm-gc.svg?header=latest
+[r:boehm-gc/v]: https://repology.org/project/boehm-gc/versions
+[r:freebsd]: https://repology.org/badge/latest-versions/freebsd.svg?header=latest
+[r:freebsd/v]: https://repology.org/project/freebsd/versions
+[r:glibc]: https://repology.org/badge/latest-versions/glibc.svg?header=latest
+[r:glibc/v]: https://repology.org/project/glibc/versions
+[r:gmp]: https://repology.org/badge/latest-versions/gmp.svg?header=latest
+[r:gmp/v]: https://repology.org/project/gmp/versions
+[r:libffi]: https://repology.org/badge/latest-versions/libffi.svg?header=latest
+[r:libffi/v]: https://repology.org/project/libffi/versions
+[r:libiconv]: https://repology.org/badge/latest-versions/libiconv.svg?header=latest
+[r:libiconv/v]: https://repology.org/project/libiconv/versions
+[r:libressl]: https://repology.org/badge/latest-versions/libressl.svg?header=latest
+[r:libressl/v]: https://repology.org/project/libressl/versions
+[r:libxml2]: https://repology.org/badge/latest-versions/libxml2.svg?header=latest
+[r:libxml2/v]: https://repology.org/project/libxml2/versions
+[r:libyaml]: https://repology.org/badge/latest-versions/libyaml.svg?header=latest
+[r:libyaml/v]: https://repology.org/project/libyaml/versions
+[r:llvm]: https://repology.org/badge/latest-versions/llvm.svg?header=latest
+[r:llvm/v]: https://repology.org/project/llvm/versions
+[r:mpir]: https://repology.org/badge/latest-versions/mpir.svg?header=latest
+[r:mpir/v]: https://repology.org/project/mpir/versions
+[r:musl]: https://repology.org/badge/latest-versions/musl.svg?header=latest
+[r:musl/v]: https://repology.org/project/musl/versions
+[r:openbsd]: https://repology.org/badge/latest-versions/openbsd.svg?header=latest
+[r:openbsd/v]: https://repology.org/project/openbsd/versions
+[r:openssl]: https://repology.org/badge/latest-versions/openssl.svg?header=latest
+[r:openssl/v]: https://repology.org/project/openssl/versions
+[r:pcre]: https://repology.org/badge/latest-versions/pcre.svg?header=latest
+[r:pcre/v]: https://repology.org/project/pcre/versions
+[r:pcre2]: https://repology.org/badge/latest-versions/pcre2.svg?header=latest
+[r:pcre2/v]: https://repology.org/project/pcre2/versions
+[r:wasi-libc]: https://repology.org/badge/latest-versions/wasi-libc.svg?header=latest
+[r:wasi-libc/v]: https://repology.org/project/wasi-libc/versions
+[r:zlib]: https://repology.org/badge/latest-versions/zlib.svg?header=latest
+[r:zlib/v]: https://repology.org/project/zlib/versions
