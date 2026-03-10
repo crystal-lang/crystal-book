@@ -38,11 +38,11 @@ jobs:
       - name: Run prek on all files
         id: run_full
         run: prek run --all-files
-        shell: devenv --profile lint shell bash -- -e {0}
+        shell: devenv shell bash -- -e {0}
         if: ${{ github.event_name == 'workflow_dispatch' || steps.test_full_run.outputs.test_full_run == 'true' }}
       - name: Run prek hooks for changes against target branch (${{ github.base_ref || 'master' }})
         run: prek run --from-ref "origin/${TARGET_BRANCH}" --to-ref HEAD
-        shell: devenv --profile lint shell bash -- -e {0}
+        shell: devenv shell bash -- -e {0}
         if: "${{ steps.run_full.outcome == 'skipped' }}"
     env:
       TARGET_BRANCH: "${{ github.base_ref || 'master' }}"
