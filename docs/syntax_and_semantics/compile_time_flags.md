@@ -91,7 +91,7 @@ The operating system is derived from the third component of the target triple.
 The version of the operating is derived from the third component of the target triple if available.
 
 | Flag name | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | `freebsd12` | FreeBSD version 12 |
 | `freebsd13` | FreeBSD version 13 |
 
