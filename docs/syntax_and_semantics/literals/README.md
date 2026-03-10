@@ -3,7 +3,7 @@
 Crystal provides several literals for creating values of some basic types.
 
 | Literal                                        | Sample values                                           |
-|---                                             |---                                                      |
+| ---------------------------------------------- | ------------------------------------------------------- |
 | [Nil](nil.md)                                  | `nil`                                                   |
 | [Bool](bool.md)                                | `true`, `false`                                         |
 | [Integers](integers.md)                        | `18`, `-12`, `19_i64`, `14_u32`,`64_u8`                 |
