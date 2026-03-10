@@ -186,7 +186,7 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-After the heredoc identifier, and in that same line, anything that follows continues the original expression that came before the heredoc. It's as if the end of the starting heredoc identifier is the end of the string. However, the string contents come in subsequent lines until the ending heredoc idenfitier which must be on its own line.
+After the heredoc identifier, and in that same line, anything that follows continues the original expression that came before the heredoc. It's as if the end of the starting heredoc identifier is the end of the string. However, the string contents come in subsequent lines until the ending heredoc identifier which must be on its own line.
 
 ```crystal
 <<-STRING.upcase # => "HELLO"
