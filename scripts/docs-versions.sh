@@ -16,4 +16,4 @@ latest_version="${branches[0]}"
   test -z "$latest"  # Check that we wrote at least one version
 } > versions.json
 
-sed 's/\${LATEST_VERSION}/'"${latest_version}"'/g' "$(dirname "$0")/aws-config.json" > aws-config.json
+sed "s/\${LATEST_VERSION}/${latest_version}/g" "$(dirname "$0")/aws-config.json" > aws-config.json
