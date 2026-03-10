@@ -19,6 +19,7 @@
   };
 
   git-hooks.hooks = {
+    actionlint.enable = true;
     check-toml.enable = true;
     markdownlint.enable = true;
     typos.enable = true;
