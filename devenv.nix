@@ -22,5 +22,6 @@
     check-toml.enable = true;
     markdownlint.enable = true;
     typos.enable = true;
+    zizmor.enable = true;
   };
 }
