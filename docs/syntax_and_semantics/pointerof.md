@@ -1,8 +1,8 @@
 # pointerof
 
-The `pointerof` expression returns a [Pointer](https://crystal-lang.org/api/Pointer.html) that points to the contents of a variable or instance variable.
+The `pointerof` expression returns a [Pointer](https://crystal-lang.org/api/Pointer.html) that points to the contents of a variable or constant.
 
-An example with a variable:
+An example with a local variable:
 
 ```crystal
 a = 1
