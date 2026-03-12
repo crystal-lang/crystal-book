@@ -85,5 +85,5 @@ jobs:
       - name: Deploy book
         run: aws s3 sync ./site s3://crystal-book/reference/${STEPS_BRANCH_OUTPUTS_BRANCH} --delete
         env:
-          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
+          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ needs.build.outputs.branch }}
 
