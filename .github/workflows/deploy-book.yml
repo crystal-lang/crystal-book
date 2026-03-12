@@ -9,7 +9,9 @@ permissions: {}
 
 jobs:
   build:
-    name: Deploy book
+    name: Build book
+    outputs:
+      branch: ${{ steps.branch.outputs.branch }}
     runs-on: ubuntu-latest
     steps:
       - name: Download source
@@ -58,15 +60,31 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Build book
         run: LINT=true make build
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy book
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && needs.build.outputs.branch != '' && github.repository == 'crystal-lang/crystal-book'
+    steps:
       - name: Configure AWS Credentials
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         uses: aws-actions/configure-aws-credentials@8df5847569e6427dd6c4fb1cf565c83acfa8afa7 #v6
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site/
       - name: Deploy book
-        if: github.event_name == 'push' && steps.branch.outputs.branch != null && github.repository == 'crystal-lang/crystal-book'
         run: aws s3 sync ./site "s3://crystal-book/reference/${STEPS_BRANCH_OUTPUTS_BRANCH}" --delete
         env:
           STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
