@@ -24,7 +24,28 @@ Counter.instances # => 3
 
 Class variables can be read and written from class methods or instance methods.
 
-Their type is inferred using the [global type inference algorithm](type_inference.md).
+When initialized with a default value, the [type inference algorithm](type_inference.md) can often implicitly determine the type of the variable.
+
+```cr
+module InferredTypes
+  @@integer = 1 # : Int32
+  @@string = "" # : String
+end
+```
+
+It won't be able to infer the type of complex expressions involving methods calls, for example.
+In these cases, the variable needs to be typed explicitly.
+
+```cr
+def generate_foo
+  1
+end
+
+module NonInferrableType
+  @@untyped = generate_foo() # Error: can't infer the type of class variable '@@foo' of NonInferrableTypes
+  @@typed : Int32 = generate_foo()
+end
+```
 
 Class variables are inherited by subclasses with this meaning: their type is the same, but each class has a different runtime value. For example:
 

@@ -34,7 +34,7 @@ If a connection can't be created, or if a connection loss occurs while the state
 The behavior of the pool can be configured from a set of parameters that can appear as query string in the connection URI.
 
 | Name | Default value |
-| :--- | :--- |
+| :--- | :------------ |
 | initial\_pool\_size | 1 |
 | max\_pool\_size | 0 \(unlimited\) |
 | max\_idle\_pool\_size | 1 |

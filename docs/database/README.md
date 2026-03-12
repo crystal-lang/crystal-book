@@ -8,7 +8,7 @@ The following packages are compliant with crystal-db
 * [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) for mysql & mariadb
 * [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
 
-And several [more](https://github.com/crystal-lang/crystal-db).
+And several more are listed on [crystal-db](https://github.com/crystal-lang/crystal-db).
 
 This guide presents the api of crystal-db, the sql commands might need to be adapted for the concrete driver due to differences between postgres, mysql and sqlite.
 

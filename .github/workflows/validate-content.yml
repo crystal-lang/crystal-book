@@ -12,6 +12,8 @@ on:
   schedule:
     - cron: '0 5 * * 1'  # Every Monday 5 AM UTC
 
+permissions: {}
+
 jobs:
   validate-flags:
     name: Validate flags
@@ -19,6 +21,8 @@ jobs:
     steps:
       - name: Download source
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Install Crystal
         uses: crystal-lang/install-crystal@v1
         with:
@@ -31,6 +35,7 @@ jobs:
           # If the PR goes against a release branch, we checkout that same release
           # branch in the Crystal repo (names are identical).
           ref: ${{ (startsWith(github.base_ref, 'release/') && github.base_ref) || 'master' }}
+          persist-credentials: false
       - name: Run test script
         run: scripts/validate-flags.sh
         env:

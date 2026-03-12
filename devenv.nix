@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  enterShell = ''
-    pip install -q -q --no-deps -r requirements.txt
-    '';
-
   packages = [
     pkgs.gnumake
   ];
@@ -23,6 +19,8 @@
   };
 
   git-hooks.hooks = {
+    check-toml.enable = true;
     markdownlint.enable = true;
+    typos.enable = true;
   };
 }

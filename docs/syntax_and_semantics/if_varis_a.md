@@ -27,7 +27,7 @@ end
 
 Note that you can use any type as an `is_a?` test, like abstract classes and modules.
 
-The above also works if there are ands (`&&`) in the condition:
+The above also works if there are `&&` operators in the condition:
 
 ```crystal
 if a.is_a?(String) && b.is_a?(Number)

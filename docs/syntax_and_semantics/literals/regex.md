@@ -21,7 +21,6 @@ Regular expressions support the same [escape sequences as String literals](./str
 ```crystal
 /\//         # slash
 /\\/         # backslash
-/\b/         # backspace
 /\e/         # escape
 /\f/         # form feed
 /\n/         # newline
