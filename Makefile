@@ -11,7 +11,7 @@ DOCS_FILES := $(shell find docs -type f)
 build: ## Build website into build directory
 build: $(OUTPUT_DIR)
 
-$(OUTPUT_DIR): $(DOCS_FILES) $(MKDOCS) mkdocs.yml
+$(OUTPUT_DIR): $(DOCS_FILES) mkdocs.yml
 	$(MKDOCS) build -d $(OUTPUT_DIR) --strict
 
 .PHONY: serve
