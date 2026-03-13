@@ -4,16 +4,27 @@ There are five signed integer types, and five unsigned integer types:
 
 | Type | Length | Minimum Value | Maximum Value |
 | ---- | -----: | ------------: | ------------: |
-| [Int8](http://crystal-lang.org/api/Int8.html) | 8 | -128 | 127 |
-| [Int16](http://crystal-lang.org/api/Int16.html) | 16 | −32,768 | 32,767 |
-| [Int32](http://crystal-lang.org/api/Int32.html) | 32 | −2,147,483,648 | 2,147,483,647 |
-| [Int64](http://crystal-lang.org/api/Int64.html) | 64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
-| [Int128](https://crystal-lang.org/api/Int128.html) | 128 | −2<sup>127</sup> | 2<sup>127</sup> - 1 |
-| [UInt8](http://crystal-lang.org/api/UInt8.html) | 8 | 0 | 255 |
-| [UInt16](http://crystal-lang.org/api/UInt16.html) | 16 | 0 | 65,535 |
-| [UInt32](http://crystal-lang.org/api/UInt32.html) | 32 | 0 | 4,294,967,295 |
-| [UInt64](http://crystal-lang.org/api/UInt64.html) | 64 | 0 | 2<sup>64</sup> - 1 |
-| [UInt128](https://crystal-lang.org/api/UInt128.html) | 128 | 0 | 2<sup>128</sup> - 1 |
+| [Int8] | 8 | -128 | 127 |
+| [Int16] | 16 | −32,768 | 32,767 |
+| [Int32] | 32 | −2,147,483,648 | 2,147,483,647 |
+| [Int64] | 64 | −2<sup>63</sup> | 2<sup>63</sup> - 1 |
+| [Int128] | 128 | −2<sup>127</sup> | 2<sup>127</sup> - 1 |
+| [UInt8] | 8 | 0 | 255 |
+| [UInt16] | 16 | 0 | 65,535 |
+| [UInt32] | 32 | 0 | 4,294,967,295 |
+| [UInt64] | 64 | 0 | 2<sup>64</sup> - 1 |
+| [UInt128] | 128 | 0 | 2<sup>128</sup> - 1 |
+
+[Int8]: https://crystal-lang.org/api/Int8.html
+[Int16]: https://crystal-lang.org/api/Int16.html
+[Int32]: https://crystal-lang.org/api/Int32.html
+[Int64]: https://crystal-lang.org/api/Int64.html
+[Int128]: https://crystal-lang.org/api/Int128.html
+[UInt8]: https://crystal-lang.org/api/UInt8.html
+[UInt16]: https://crystal-lang.org/api/UInt16.html
+[UInt32]: https://crystal-lang.org/api/UInt32.html
+[UInt64]: https://crystal-lang.org/api/UInt64.html
+[UInt128]: https://crystal-lang.org/api/UInt128.html
 
 An integer literal is an optional `+` or `-` sign, followed by
 a sequence of digits and underscores, optionally followed by a suffix.

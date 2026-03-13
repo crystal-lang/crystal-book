@@ -9,7 +9,7 @@ User-provided flags are passed to the compiler, which allow them to be used as f
 ## Querying flags
 
 A flag is a named identifier which is either set or not.
-The status can be queried from code via the macro method [`flag?`](https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method). It receives the name of a flag as a string or symbol
+The status can be queried from code via the macro method [`flag?`][flag?]. It receives the name of a flag as a string or symbol
 literal and returns a bool literal indicating the flag's state. A flag can have an optional value, in which case the macro method `flag?` returns a string literal instead of a bool literal.
 
 The following program shows the use of compile-time flags by printing the target OS family.
@@ -26,9 +26,12 @@ The following program shows the use of compile-time flags by printing the target
 {% end %}
 ```
 
-There's also the macro method [`host_flag?`](https://crystal-lang.org/api/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method)
+There's also the macro method [`host_flag?`][host_flag?]
 which returns whether a flag is set for the *host* platform, which can differ
 from the target platform (queried by `flag?`) during cross-compilation.
+
+[flag?]: https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method
+[host_flag?]: https://crystal-lang.org/api/Crystal/Macros.html#host_flag%3F%28name%29%3ABoolLiteral-instance-method
 
 ## Compiler-provided flags
 
@@ -36,12 +39,15 @@ The compiler defines a couple of implicit flags. They describe either the target
 
 ### Target platform flags
 
-Platform-specific flags derive from the [target triple](http://llvm.org/docs/LangRef.html#target-triple).
-See [Platform Support](platform_support.md) for a list of supported target platforms.
+Platform-specific flags derive from the [target triple].
+See [Platform Support] for a list of supported target platforms.
 
 `crystal --version` shows the default target triple of the compiler. It can be changed with the `--target` option.
 
 The flags in each of the following tables are mutually exclusive, except for those marked as *(derived)*.
+
+[target triple]: http://llvm.org/docs/LangRef.html#target-triple
+[Platform Support]: platform_support.md
 
 #### Architecture
 
@@ -143,14 +149,14 @@ Crystal program.
 
 | Flag name | Description |
 | --------- | ----------- |
-| `gc_none` | Disables garbage collection ([#5314](https://github.com/crystal-lang/crystal/pull/5314)) |
+| `gc_none` | Disables garbage collection ([#5314]) |
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
-| `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009](https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability)). Introduced in 1.15 |
-| `execution_context` | Enable execution contexts preview ([RFC 0002](https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md)). [Introduced in 1.16](https://github.com/crystal-lang/crystal/issues/15350) |
+| `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009]). Introduced in 1.15 |
+| `execution_context` | Enable execution contexts preview ([RFC 0002]). [Introduced in 1.16][#15350] |
 | `execvpe_impl` | Experimental flag for choosing the custom `execvpe` implementation instead of the system function. Introduced in 1.19 |
-| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546](https://github.com/crystal-lang/crystal/pull/7546)) |
+| `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546]) |
 | `skip_crystal_compiler_rt` | Exclude Crystal's native `compiler-rt` implementation. |
-| `tracing` | Build with support for [runtime tracing](../guides/runtime_tracing.md). |
+| `tracing` | Build with support for [runtime tracing]. |
 | `use_libiconv` | Use `libiconv` instead of the `iconv` system library |
 | `use_pcre2` | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0. |
 | `use_pcre` | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0. |
@@ -159,16 +165,30 @@ Crystal program.
 | `without_openssl` | Build without OpenSSL support |
 | `without_zlib` | Build without Zlib support |
 
+[#5314]: https://github.com/crystal-lang/crystal/pull/5314
+[RFC 0009]: https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability
+[RFC 0002]: https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md
+[#15350]: https://github.com/crystal-lang/crystal/issues/15350
+[#7546]: https://github.com/crystal-lang/crystal/pull/7546
+[runtime tracing]: ../guides/runtime_tracing.md
+
 ### Language features
 
 These flags enable or disable language features when building a Crystal program.
 
 | Flag name | Description |
 | --------- | ----------- |
-| `no_number_autocast` | Will not [autocast](autocasting.md#number-autocasting) numeric expressions, only literals |
-| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103](https://github.com/crystal-lang/crystal/pull/12103)). |
-| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711](https://github.com/crystal-lang/crystal/issues/10711)). |
-| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment](assignment.md#one-to-many-assignment). Introduced in 1.3.0 ([#11145](https://github.com/crystal-lang/crystal/pull/11145), [#11545](https://github.com/crystal-lang/crystal/pull/11545)) |
+| `no_number_autocast` | Will not [autocast] numeric expressions, only literals |
+| `no_restrictions_augmenter` | Disable enhanced restrictions augmenter. Introduced in 1.5 ([#12103]). |
+| `preview_overload_order` | Enable more robust ordering between def overloads. Introduced in 1.6 ([#10711]). |
+| `strict_multi_assign` | Enable strict semantics for [one-to-many assignment]. Introduced in 1.3.0 ([#11145], [#11545]) |
+
+[autocast]: autocasting.md#number-autocasting
+[#12103]: https://github.com/crystal-lang/crystal/pull/12103
+[#10711]: https://github.com/crystal-lang/crystal/issues/10711
+[one-to-many assignment]: assignment.md#one-to-many-assignment
+[#11145]: https://github.com/crystal-lang/crystal/pull/11145
+[#11545]: https://github.com/crystal-lang/crystal/pull/11545
 
 ### Codegen features
 
@@ -176,8 +196,10 @@ These flags enable or disable codegen features when building a Crystal program.
 
 | Flag name | Description |
 | --------- | ----------- |
-| `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
-| `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122](https://github.com/crystal-lang/crystal/pull/15122)) |
+| `cf-protection=branch`, `cf-protection=return`, `cf-protection=full` | Indirect branch tracking for x86 and x86_64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122]) |
+| `branch-protection=bti` | Indirect branch tracking for aarch64. Implicitly set on OpenBSD. Introduced in 1.15.0 ([#15122]) |
+
+[#15122]: https://github.com/crystal-lang/crystal/pull/15122
 
 ### Compiler build features
 
@@ -187,9 +209,11 @@ These flags enable or disable features when building the Crystal compiler.
 | --------- | ----------- |
 | `without_ffi` | Build the compiler without `libffi` |
 | `without_interpreter` | Build the compiler without interpreter support |
-| `without_libxml2` | Build the compiler without sanitization for the doc generator. [Introduced in 1.19](https://github.com/crystal-lang/crystal/pull/14646).<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
+| `without_libxml2` | Build the compiler without sanitization for the doc generator. [Introduced in 1.19][#14646].<br> Note: The default `Makefile` passes this flag unless `docs_sanitizer=1` |
 | `without_playground` | Build the compiler without playground (`crystal play`) |
 | `i_know_what_im_doing` | Safety guard against involuntarily building the compiler |
+
+[#14646]: https://github.com/crystal-lang/crystal/pull/14646
 
 ### User code features
 
