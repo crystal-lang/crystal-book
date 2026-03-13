@@ -36,6 +36,8 @@ jobs:
           restore-keys: pip-
       - name: Install dependencies
         run: make deps
+        env:
+          PIP_USE_PEP517: "1"
       - name: Determine a version for API doc links
         shell: bash -x {0}
         run: |
