@@ -23,7 +23,7 @@ jobs:
         shell: bash -x {0}
         run: |
           if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(master|release/[0-9][0-9.]+)$ ]]; then
-            echo "branch=${BASH_REMATCH[2]#release/}" >> ${GITHUB_OUTPUT}
+            echo "branch=${BASH_REMATCH[2]#release/}" >> "${GITHUB_OUTPUT}"
           fi
       - name: Install Crystal
         id: crystal
@@ -45,8 +45,8 @@ jobs:
       - name: Determine a version for API doc links
         shell: bash -x {0}
         run: |
-          if [[ '${STEPS_BRANCH_OUTPUTS_BRANCH}' =~ ^[0-9] ]]; then
-            echo "CRYSTAL_VERSION=${STEPS_CRYSTAL_OUTPUTS_CRYSTAL}" >> ${GITHUB_ENV}
+          if [[ "${STEPS_BRANCH_OUTPUTS_BRANCH}" =~ ^[0-9] ]]; then
+            echo "CRYSTAL_VERSION=${STEPS_CRYSTAL_OUTPUTS_CRYSTAL}" >> "${GITHUB_ENV}"
           fi
         env:
           STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
@@ -55,7 +55,9 @@ jobs:
         run: crystal --version | tee crystal-version.txt
       - name: Set edit_uri branch
         run: |
-          sed -i -e 's#^edit_uri:.*#edit_uri: https://github.com/${{ github.repository }}/edit/${GITHUB_REF_NAME}/docs/#' mkdocs.yml
+          sed -i -e "s#^edit_uri:.*#edit_uri: https://github.com/${GITHUB_REPOSITORY}/edit/${GITHUB_REF_NAME}/docs/#" mkdocs.yml
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Build book
         run: LINT=true make build
       - name: Upload site
@@ -83,7 +85,7 @@ jobs:
           name: site
           path: site/
       - name: Deploy book
-        run: aws s3 sync ./site s3://crystal-book/reference/${STEPS_BRANCH_OUTPUTS_BRANCH} --delete
+        run: aws s3 sync ./site "s3://crystal-book/reference/${STEPS_BRANCH_OUTPUTS_BRANCH}" --delete
         env:
-          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ steps.branch.outputs.branch }}
+          STEPS_BRANCH_OUTPUTS_BRANCH: ${{ needs.build.outputs.branch }}
 
