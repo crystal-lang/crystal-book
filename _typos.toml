@@ -1,11 +1,11 @@
 [default.extend-words]
 contextful = "contextful"
-"ACM Comput" = "ACM Comput"
 
 [default.extend-identifiers]
 
 [default]
 extend-ignore-re = [
+  "ACM Comput\\. Surv\\.",
 ]
 
 [files]

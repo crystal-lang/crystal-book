@@ -41,8 +41,8 @@ def generate_foo
   1
 end
 
-module NonInferrableType
-  @@untyped = generate_foo() # Error: can't infer the type of class variable '@@foo' of NonInferrableTypes
+module NonInferableType
+  @@untyped = generate_foo() # Error: can't infer the type of class variable '@@foo' of NonInferableTypes
   @@typed : Int32 = generate_foo()
 end
 ```
