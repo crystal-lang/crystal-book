@@ -33,14 +33,14 @@ If a connection can't be created, or if a connection loss occurs while the state
 
 The behavior of the pool can be configured from a set of parameters that can appear as query string in the connection URI.
 
-| Name                  | Default value   |
-| :-------------------- | :-------------- |
-| initial\_pool\_size   | 1               |
-| max\_pool\_size       | 0 \(unlimited\) |
-| max\_idle\_pool\_size | 1               |
-| checkout\_timeout     | 5.0 \(seconds\) |
-| retry\_attempts       | 1               |
-| retry\_delay          | 1.0 \(seconds\) |
+| Name                  | Default value
+| :-------------------- | :------------
+| initial\_pool\_size   | 1
+| max\_pool\_size       | 0 \(unlimited\)
+| max\_idle\_pool\_size | 1
+| checkout\_timeout     | 5.0 \(seconds\)
+| retry\_attempts       | 1
+| retry\_delay          | 1.0 \(seconds\)
 
 When `DB::Database` is opened an initial number of `initial_pool_size` connections will be created. The pool will never hold more than `max_pool_size` connections. When returning/releasing a connection to the pool it will be closed if there are already `max_idle_pool_size` idle connections.
 
