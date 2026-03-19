@@ -74,12 +74,12 @@ Global variables ``$` `` and `$'` are not supported (yet `$~` and `$1`, `$2`, ..
 In Ruby where there are several methods for doing the same thing, in Crystal there may be only one.
 Specifically:
 
-| Ruby Method               | Crystal Method        |
-| ------------------------- | --------------------- |
-| `Enumerable#detect`       | `Enumerable#find`     |
-| `Enumerable#collect`      | `Enumerable#map`      |
-| `Object#respond_to?`      | `Object#responds_to?` |
-| `length`, `size`, `count` | `size`                |
+| Ruby Method               | Crystal Method
+| ------------------------- | --------------
+| `Enumerable#detect`       | `Enumerable#find`
+| `Enumerable#collect`      | `Enumerable#map`
+| `Object#respond_to?`      | `Object#responds_to?`
+| `length`, `size`, `count` | `size`
 
 ## Omitted Language Constructs
 
@@ -323,11 +323,11 @@ In Crystal, the compiler will treat `process_data(b: 2, a: "one")` as calling `p
 
 The Ruby `attr_accessor`, `attr_reader` and `attr_writer` methods are replaced by macros with different names:
 
-| Ruby Keyword    | Crystal    |
-| --------------- | ---------- |
-| `attr_accessor` | `property` |
-| `attr_reader`   | `getter`   |
-| `attr_writer`   | `setter`   |
+| Ruby Keyword    | Crystal
+| --------------- | -------
+| `attr_accessor` | `property`
+| `attr_reader`   | `getter`
+| `attr_writer`   | `setter`
 
 Example:
 
@@ -337,10 +337,10 @@ getter :name, :bday
 
 In addition, Crystal added accessor macros for nilable or boolean instance variables. They have a question mark (`?`) in the name:
 
-| Crystal     |
-| ----------- |
-| `property?` |
-| `getter?`   |
+| Crystal
+| -----------
+| `property?`
+| `getter?`
 
 Example:
 
@@ -450,12 +450,12 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 
 > [Read more about Pseudo Constants in the Crystal documentation.](../syntax_and_semantics/constants.md#pseudo-constants)
 
-| Crystal | Ruby | Description |
-| ------- | ---- | ----------- |
-| `__FILE__` | `__FILE__` | The full path to the currently executing Crystal file. |
-| `__DIR__` | `__dir__` | The full path to the directory where the currently executing Crystal file is located. |
-| `__LINE__` | `__LINE__` | The current line number in the currently executing Crystal file. |
-| `__END_LINE__` | - | The line number of the end of the calling block. Can only be used as a default value to a method parameter. |
+| Crystal        | Ruby       | Description
+| -------------- | ---------- | -----------
+| `__FILE__`     | `__FILE__` | The full path to the currently executing Crystal file.
+| `__DIR__`      | `__dir__`  | The full path to the directory where the currently executing Crystal file is located.
+| `__LINE__`     | `__LINE__` | The current line number in the currently executing Crystal file.
+| `__END_LINE__` | -          | The line number of the end of the calling block. Can only be used as a default value to a method parameter.
 
 > TIP: Further reading about `__DIR__` vs. `__dir__`:
 >
