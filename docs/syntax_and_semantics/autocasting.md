@@ -49,7 +49,7 @@ Autocasting at the moment works only in two scenarios: at function calls, as sho
 class Foo
   @x : Int64 = 10 # OK, 10 fits in an Int64
 
-  def set_x(y)
+  def set_x(y : Int32)
     @x = y
   end
 end
