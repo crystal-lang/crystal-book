@@ -152,6 +152,8 @@ Crystal program.
 | `gc_none` | Disables garbage collection ([#5314]) |
 | `debug_raise` | Debugging flag for `raise` logic. Prints the backtrace before raising. |
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009]). Introduced in 1.15 |
+| `evloop=io_uring` | Select experimental io_uring event loop driver. Introduced in 1.20 [#16264] |
+| `io_uring_sq_thread_idle=<milliseconds>` | Enable SQPOLL mode and set idle time for io_uring event loop. Introduced in 1.20 [#16264] |
 | `execution_context` | Enable execution contexts preview ([RFC 0002]). [Introduced in 1.16][#15350] |
 | `execvpe_impl` | Experimental flag for choosing the custom `execvpe` implementation instead of the system function. Introduced in 1.19 |
 | `preview_mt` | Enables multithreading preview. Introduced in 0.28.0 ([#7546]) |
@@ -170,6 +172,7 @@ Crystal program.
 [RFC 0002]: https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md
 [#15350]: https://github.com/crystal-lang/crystal/issues/15350
 [#7546]: https://github.com/crystal-lang/crystal/pull/7546
+[#16264]: https://github.com/crystal-lang/crystal/pull/16264
 [runtime tracing]: ../guides/runtime_tracing.md
 
 ### Language features
