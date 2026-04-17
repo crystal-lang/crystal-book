@@ -135,3 +135,20 @@ using a deprecated feature.
 
 !!! info
     See the [API docs for `Deprecated`](https://crystal-lang.org/api/Deprecated.html) for more details.
+
+## TargetFeature
+
+Enables specific CPU features or a CPU model scoped to a `def` or `fun`, so we can compile a
+single executable with optimized functions for different features, such as SIMD instructions.
+For example:
+
+```crystal
+{% if flag?(:x86_64) %}
+  @[TargetFeature("+avx2")]
+  def foo_avx2
+  end
+{% end %}
+```
+
+!!! info
+    See the [API docs for `TargetFeature`](https://crystal-lang.org/api/TargetFeature.html) for more details.

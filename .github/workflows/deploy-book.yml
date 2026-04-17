@@ -22,7 +22,9 @@ jobs:
         id: branch
         shell: bash -x {0}
         run: |
-          if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(master|release/[0-9][0-9.]+)$ ]]; then
+          if [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(next|master)$ ]]; then
+            echo "branch=master" >> "${GITHUB_OUTPUT}"
+          elif [[ ${GITHUB_BASE_REF:-$GITHUB_REF} =~ ^(refs/heads/)?(release/[0-9][0-9.]+)$ ]]; then
             echo "branch=${BASH_REMATCH[2]#release/}" >> "${GITHUB_OUTPUT}"
           fi
       - name: Install Crystal
