@@ -116,7 +116,7 @@ puts foo.class # Foo
 
 This example makes use of the `macro extended` hook. This hook is called whenever a class body executes the `extend` method. We are able to use this macro to write a replacement `new` method.
 
-(Need clarity on the method signature details. Removing the @number type declaration Foo  causes the override to silently fail. Adding "number : Int32" to the Foo class initialize signature also causes the override to fail. There are some subtleties here with method overloads that I am missing. Need more experimentation. Examples above still work though...)
+(Need clarity on the method signature details. Removing the @number type declaration Foo causes the override to silently fail. Adding "number : Int32" to the Foo class initialize signature also causes the override to fail. There are some subtleties here with method overloads that I am missing. Need more experimentation. Examples above still work though...)
 
 ### Generating Methods via `method_missing` Macro
 
