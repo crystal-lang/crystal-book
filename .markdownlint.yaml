@@ -24,3 +24,6 @@ commands-show-output: false
 
 table-column-style:
   style: aligned
+
+no-multiple-consecutive-spaces:
+  allow-sentence-double-space: true
