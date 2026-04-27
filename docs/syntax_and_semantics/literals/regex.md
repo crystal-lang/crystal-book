@@ -44,7 +44,7 @@ Interpolation works in regular expression literals just as it does in [string li
 
 The closing delimiter may be followed by a number of optional modifiers to adjust the matching behaviour of the regular expression.
 
-* `i`: case-insensitive matching (`PCRE_CASELESS`):  Unicode letters in the pattern match both upper and lower case letters in the subject string.
+* `i`: case-insensitive matching (`PCRE_CASELESS`): Unicode letters in the pattern match both upper and lower case letters in the subject string.
 * `m`: multiline matching (`PCRE_MULTILINE`): The *start of line* (`^`) and *end of line* (`$`) metacharacters match immediately following or immediately before internal newlines in the subject string, respectively, as well as at the very start and end.
 * `x`: extended whitespace matching (`PCRE_EXTENDED`): Most white space characters in the pattern are totally ignored except when ignore or inside a character class. Unescaped hash characters `#` denote the start of a comment ranging to the end of the line.
 
