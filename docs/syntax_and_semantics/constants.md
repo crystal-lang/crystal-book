@@ -29,7 +29,7 @@ end
 TEN # => 10
 ```
 
-When initialized, the [type inference algorithm](type_inference.md) can often implicitly determine the type of the variable:
+When initialized, the [type inference algorithm](type_inference.md) can often implicitly determine the type of the constants:
 
 ```cr
 module InferredTypes
