@@ -161,3 +161,6 @@ end
 This is just one type (Array) and one operation (assignment), the logic of the above will be applied differently for other types and assignments, in general [Covariance and Contravariance][1] is not fully supported.
 
 [1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29
+
+## Non-inheritable types
+Some types in the standard library (such as `String`) cannot be inherited from. This is due to them being LLVM-backed types, which makes them structs at the compiler level, and thus makes them not inheritable.
