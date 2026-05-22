@@ -163,4 +163,4 @@ This is just one type (Array) and one operation (assignment), the logic of the a
 [1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29
 
 ## Non-inheritable types
-Some types in the standard library (such as `String`) cannot be inherited from. This is due to them being LLVM-backed types, which makes them structs at the compiler level, and thus makes them not inheritable.
+Some types in the standard library (such as `String`) cannot be inherited from and generate a compiler error if inherited. This is due to them being LLVM-backed types, which makes them structs at the compiler level, and thus makes them not inheritable.
