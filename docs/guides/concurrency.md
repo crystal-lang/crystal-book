@@ -10,7 +10,7 @@ Crystal supports both concurrency and parallelism: several tasks can be executed
 
 A Crystal program by default executes a single fiber at a time, thus concurrent only, while parallelism is opt-in. See the [documentation about parallelism](./parallelism.md) for details.
 
-The examples on this page assume that the runtime is concurrent only and that the program didn't opt-in to MT. The demonstrated properties are still valid with MT enabled, but the order of operations and the expected output may be sligthly different because fibers may not run sequentially anymore.
+The examples on this page assume that the runtime is concurrent only and that the program didn't opt-in to MT. The demonstrated properties are still valid with MT enabled, but the order of operations and the expected output may be slightly different because fibers may not run sequentially anymore.
 
 ### Fibers
 
