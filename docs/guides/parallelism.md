@@ -10,14 +10,13 @@ additional execution contexts for example.
 This guide assumes you are already familiar with the [concurrency
 model](./concurrency.md) of Crystal.
 
-
 ## Execution contexts
 
 There are different ways to spread an application to leverage many CPU cores.
 
-- Sometimes we need a fiber to own a thread, notably GUI and game loops.
-- Sometimes we need a set of fibers to run concurrently.
-- Sometimes we need fibers to autoscale to has many CPU cores as possible.
+* Sometimes we need a fiber to own a thread, notably GUI and game loops.
+* Sometimes we need a set of fibers to run concurrently.
+* Sometimes we need fibers to autoscale to has many CPU cores as possible.
 
 Hence came **Execution Contexts**. Plural, because there are multiple ways to
 orchestrate fibers across one to many threads. Ultimately we plan to make the
@@ -35,7 +34,6 @@ The overall interface is merely:
 
 There are three built‑in execution context types: concurrent, parallel, and
 isolated.
-
 
 ### Concurrent
 
@@ -74,7 +72,7 @@ fibers in the context from progressing.
 
 That being said, many blocking fibers running at the same time can reach the
 maximum parallelism of the context, and will start blocking other fibers from
-progressing! We recomment to not create more blocking fibers than necessary,
+progressing! We recommend to not create more blocking fibers than necessary,
 to use counting semaphores, and to keep some room if other fibers must still
 run in the context, or to start more contexts.
 
@@ -150,14 +148,14 @@ and instead start additional contexts.
 
 ### Relationship with system threads
 
-_TODO: parallelism is num. of schedulers, not num. of system threads_
-_TODO: threads can switch contexts (thread pool)_
-_TODO: schedulers can jump to another thread during blocking syscalls (except isolated)_
-_TODO: warning: be careful with thread locals_
+*TODO: parallelism is num. of schedulers, not num. of system threads*
+*TODO: threads can switch contexts (thread pool)*
+*TODO: schedulers can jump to another thread during blocking syscalls (except isolated)*
+*TODO: warning: be careful with thread locals*
 
 ## Perf tools
 
-_TODO: scheduler trace_
+*TODO: scheduler trace*
 
 ## Thread safety issues
 
@@ -294,7 +292,6 @@ end
 
 ## Going further
 
-- The [Concurrency guide](./concurrency.md).
-- The [Channel](https://crystal-lang.org/api/Channel.html) type.
-- The [Sync](https://crystal-lang.org/api/Sync.html) module.
-
+* The [Concurrency guide](./concurrency.md).
+* The [Channel](https://crystal-lang.org/api/Channel.html) type.
+* The [Sync](https://crystal-lang.org/api/Sync.html) module.
