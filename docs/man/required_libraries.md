@@ -68,7 +68,7 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 | Library                                          | Description                                                                                          | License
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | -------
 | [PCRE2]<br>[![repology][r:pcre2]][r:pcre2/v]     | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license]
-| [PCRE][PCRE2]<br>[![repology][r:pcre]][r:pcre/v] | Perl Compatible Regular Expressions.                                                                 | [BSD][pcre-license]
+| [PCRE][PCRE2]<br>[![repology][r:pcre]][r:pcre/v] | Perl Compatible Regular Expressions (requires `-Duse_pcre` flag or `USE_PCRE1=1` env var)            | [BSD][pcre-license]
 
 [pcre-license]: http://www.pcre.org/licence.txt
 
