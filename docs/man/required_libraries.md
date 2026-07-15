@@ -107,7 +107,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library                                                         | Description                                                                                                   | License
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------
-| [OpenSSL][openssl.org]<br>[![repology][r:openssl]][r:openssl/v] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+                           | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]
+| [OpenSSL][openssl.org]<br>[![repology][r:openssl]][r:openssl/v] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–4.0+                           | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]
 | [LibreSSL]<br>[![repology][r:libressl]][r:libressl/v]           | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay]
 
 [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]: https://www.openssl.org/source/license.html
