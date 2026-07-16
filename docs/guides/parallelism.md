@@ -139,7 +139,9 @@ Fiber::ExecutionContext.default.resize(4)
 Instead of hardcoding `4` you may use a CLI argument such as `--threads 4` or
 default to how many logical CPU the current system has (`System.cpu_count`).
 
-Once resized, the default context ... TODO ...
+Once resized to a parallelism greater than 1, the default context will no longer
+behave like a concurrent, but be a truly parallel context. Parallelism won't
+increase immediately, but will start increasing and decreasing as needed.
 
 Resizing the default context is optional. You may prefer to keep it concurrent
 and instead start additional contexts.
