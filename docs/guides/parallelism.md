@@ -90,7 +90,7 @@ schedulers, and is capable to run four fibers at the same time (parallelism of
 
 Everything stated in the [Concurrency guide](./concurrency.md) is true inside
 a parallel context, with slight differences in the actual runtime due to
-fibers not running sequentially anymore.
+fibers running in parallel to each other.
 
 ### Isolated
 
