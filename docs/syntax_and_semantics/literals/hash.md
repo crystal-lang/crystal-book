@@ -27,7 +27,7 @@ Empty hash literals always need type specifications:
 
 ## Hash-like Type Literal
 
-Crystal supports an additional literal for hashes and hash-like types. It consists of the name of the type followed by a list of  comma separated key-value pairs enclosed in curly braces (`{}`).
+Crystal supports an additional literal for hashes and hash-like types. It consists of the name of the type followed by a list of comma separated key-value pairs enclosed in curly braces (`{}`).
 
 ```crystal
 Hash{"one" => 1, "two" => 2}

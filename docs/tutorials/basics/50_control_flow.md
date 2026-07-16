@@ -120,7 +120,7 @@ if message.starts_with?("Hello") || message.starts_with?("Hi")
 end
 ```
 
-Let's turn the condition around: Only print the message if it does *not*  start with `Hello`.
+Let's turn the condition around: Only print the message if it does *not* start with `Hello`.
 That's just a minor deviation from the previous example: We can use the negation operator (`!`) to turn the condition
 into the opposite expression.
 
