@@ -1,8 +1,8 @@
 # Parallelism
 
-Parallelism in Crystal is the ability to run multiple fibers at the same time.
+Parallelism in Crystal is the ability to run multiple fibers simultaneously.
 
-In Crystal, a program is concurrent by default, which runs multiple fibers
+In Crystal, a program is concurrent by default, hence runs multiple fibers
 sequentially, one at a time. Parallelism is opt‑in and manually enabled by
 resizing the default execution context or starting additional contexts.
 
@@ -22,7 +22,7 @@ Ultimately, we plan to make the interface public, so you may write your own mode
 
 Execution contexts are the runtime's building block for orchestrating how a set
 of fibers will run through a common interface. Contexts run in parallel of each
-others, and each context has its own rules to run fibers.
+other, and each context has its own rules to run fibers.
 
 The overall interface is merely:
 
@@ -35,9 +35,9 @@ isolated.
 
 ### Concurrent
 
-Fibers spawned into a concurrent context run concurrently to
-each others, and will never run in parallel. Keep in mind that they will run
-in parallel to fibers running in other contexts!
+Fibers spawned into a concurrent context run concurrently to each other, and
+will never run in parallel. Keep in mind that they will run in parallel with
+fibers running in other contexts!
 
 A fiber doing CPU heavy computation in a concurrent context will block other
 fibers in the same context from progressing, but doesn't impact fibers in
@@ -56,9 +56,9 @@ a concurrent context due to fibers only running sequentially.
 
 ### Parallel
 
-Fibers spawned in a parallel context run both concurrently and
-in parallel to each others (if parallelism is greater than 1), in addition to
-fibers running in other contexts.
+Fibers spawned in a parallel context run both concurrently and in parallel with
+each other (if parallelism is greater than 1), in addition to fibers running in
+other contexts.
 
 Parallel contexts auto-scale up to their maximum parallelism. The execution
 will remain sequential until there are blocked fibers, which will start more
@@ -68,11 +68,11 @@ schedulers (parallelism increases) until they have nothing left to do
 A fiber doing CPU heavy computation in a parallel context won't block other
 fibers in the context from progressing.
 
-That being said, many blocking fibers running at the same time can reach the
-maximum parallelism of the context, and will start blocking other fibers from
-progressing! We recommend to not create more blocking fibers than necessary,
-to use counting semaphores, and to keep some room if other fibers must still
-run in the context, or to start more contexts.
+That said, many simultaneously blocking fibers can reach the maximum parallelism
+of the context, and will start blocking other fibers from progressing! We
+recommend not creating more blocking fibers than necessary, to use counting
+semaphores, and to keep some room for other fibers that still need to run in the
+context, or start more contexts.
 
 Example:
 
@@ -127,8 +127,8 @@ main.wait
 ### Default
 
 All programs run in the *default* context, which is a parallel context with a
-default parallelism of 1 so it behaves as a concurrent context until programs opt-in to
-multithreading at runtime.
+default parallelism of 1 so it behaves like a concurrent context until programs
+opt-in to multithreading at runtime.
 
 Example:
 
@@ -139,7 +139,7 @@ Fiber::ExecutionContext.default.resize(4)
 Instead of hardcoding `4` you may use a CLI argument such as `--threads 4` or
 default to how many logical CPU the current system has (`System.cpu_count`).
 
-Once resized, the default context
+Once resized, the default context ... TODO ...
 
 Resizing the default context is optional. You may prefer to keep it concurrent
 and instead start additional contexts.
@@ -164,13 +164,13 @@ concurrent or parallel scheduler or to start an isolated context.
 
 > **NOTE:**
 > The isolated context owns its system thread for its lifetime only. The thread
-> may have been taken from the theaad pool and will return to the thread pool
-> when the context terminates.
+> may have been taken from the thread pool and will return to it when the
+> context terminates.
 
-These behaviors mean thread locals must be avoided. We can't recommend enough to
-never use the `@[ThreadLocal]` annotation (stdlib barely does), and to be very
-careful when integrating with an external C library, where you may consider to
-start an isolated context or to back up and restore the thread local state
+These behaviors mean thread locals must be avoided. We cannot recommend enough
+to never use the `@[ThreadLocal]` annotation (stdlib barely does), and to be
+very careful when integrating with an external C library, where you may consider
+to start an isolated context or to back up and restore the thread local state
 around lib calls.
 
 ## Thread safety issues
@@ -183,8 +183,8 @@ parallel environment.
 ### Shared variables
 
 When we think of shared variables to be protected, we mostly think of globals as
-detailed in the next sections, but a simple local variable may be accessible
-from multiple fibers, making it a shared variable. For example:
+detailed in the next sections, but a simple local variable may be accessed from
+multiple fibers, making it a shared variable. For example:
 
 ```
 foo = 1
@@ -247,7 +247,7 @@ foo = [] of Int32
 end
 ```
 
-That being said, the proper solution for a multiple producers & consumers
+That being said, the proper solution for a multiple producers and consumers
 problem, is to just use a `Channel` instead:
 
 ```
@@ -274,7 +274,7 @@ Constants are always safely initialized once. You don't have to protect their
 initialization. Crystal takes care of that.
 
 Constants can't be replaced after initialization (unique value), but the value
-itself can be mutable, for example be an `Array` or a `Hash`.
+itself can be mutable, for example an `Array` or a `Hash`.
 
 A constant value must either be read-only after its initialization, or be
 protected by a [`Sync`] object, for example [`Sync::Mutex`] or [`Sync::RWLock`].
@@ -294,7 +294,7 @@ protected by a [`Sync`] object, for example [`Sync::Exclusive(T)`] or
 If a class variable is larger than a register (e.g. `Int128`), a mixed union
 (e.g. `Int32 | Int64 | Nil`) or is a struct with more than one property (or a
 property larger than a register), then writing to the class variable must be
-protected, otherwise different threads may read incomplete, and thus invalid,
+protected, otherwise different threads may read incomplete, and thus invalid
 values. For example:
 
 ```
@@ -302,7 +302,7 @@ module Foo
   @@bar = Sync::Shared(Int128).new(Int128::MIN)
 
   spawn { loop { @@bar.set(rand(Int128)) } }
-  spawn { loop { puts @@bar.get }
+  spawn { loop { puts @@bar.get } }
 end
 ```
 
