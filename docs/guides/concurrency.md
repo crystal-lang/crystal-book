@@ -91,7 +91,7 @@ spawn do
 end
 ```
 
-Running the above code will usually produce no output and exit immediately. In rare cases another thread may be the fiber and resume it when MT is enabled.
+Running the above code will usually produce no output and exit immediately. In rare cases, another thread may resume the fiber when parallelism is enabled.
 
 The reason for this is that a fiber is not executed as soon as it is spawned. So, the main fiber, the one that spawns the above fiber, finishes its execution and the program exits.
 
@@ -121,7 +121,7 @@ end
 Fiber.yield
 ```
 
-This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will usually print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever. In rare cases another thread might resume the fiber when MT is enabled, or another fiber be resumed and the program will exit normally, possibly printing nothing.
+This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will usually print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever. In rare cases, another thread might resume the fiber when parallelism is enabled, or another fiber be resumed and the program will exit normally, possibly printing nothing.
 
 If we want to execute the spawned fiber for ever, we can use `sleep` without arguments:
 

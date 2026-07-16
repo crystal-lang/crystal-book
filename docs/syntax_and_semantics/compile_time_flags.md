@@ -169,7 +169,7 @@ These flags select the concurrency and parallel runtime:
 
 | Flag name           | Description
 | --------------------| -----------
-| `execution_context` | Enable execution contexts ([RFC 0002]). [Introduced in 1.16][#15350]. Default since 1.21 [#17100].
+| `execution_context` | Enable execution contexts ([RFC 0002]). Introduced in 1.16 ([#15350]). Obsolete since 1.21 ([#17100]).
 | `preview_mt`        | Revert to legacy multithreading runtime. Introduced in 0.28 ([#7546]). Deprecated since 1.21 [#17100].
 | `without_mt`        | Revert to legacy singlethreading runtime. Introduced in 1.21 [#17100].
 

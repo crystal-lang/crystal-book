@@ -1,11 +1,10 @@
 # Parallelism
 
-Parallelism in Crystal is the ability to run multiple fibers simultaneously,
-multiple fibers at a time, not just sequentially, one fiber at a time.
+Parallelism in Crystal is the ability to run multiple fibers at the same time.
 
-In Crystal, a program is concurrent by default. Parallelism is opt‑in and
-manually enabled by resizing the default execution contexts or starting
-additional execution contexts for example.
+In Crystal, a program is concurrent by default, which runs multiple fibers
+sequentially, one at a time. Parallelism is opt‑in and manually enabled by
+resizing the default execution context or starting additional contexts.
 
 This guide assumes you are already familiar with the [concurrency
 model](./concurrency.md) of Crystal.
@@ -16,11 +15,10 @@ There are different ways to spread an application to leverage many CPU cores.
 
 * Sometimes we need a fiber to own a thread, notably GUI and game loops.
 * Sometimes we need a set of fibers to run concurrently.
-* Sometimes we need fibers to autoscale to has many CPU cores as possible.
+* Sometimes we need fibers to autoscale to as many CPU cores as possible.
 
-Hence came **Execution Contexts**. Plural, because there are multiple ways to
-orchestrate fibers across one to many threads. Ultimately we plan to make the
-interface public, so you may write your own models.
+*Execution Contexts* define how to orchestrate fibers across one or many threads.
+Ultimately, we plan to make the interface public, so you may write your own models.
 
 Execution contexts are the runtime's building block for orchestrating how a set
 of fibers will run through a common interface. Contexts run in parallel of each
@@ -54,7 +52,7 @@ ctx.spawn { puts "fiber 2" }
 ```
 
 Everything stated in the [Concurrency guide](./concurrency.md) is true inside
-a concurrent context dur to fibers only running sequentially.
+a concurrent context due to fibers only running sequentially.
 
 ### Parallel
 
@@ -129,7 +127,7 @@ main.wait
 ### Default
 
 All programs run in the *default* context, which is a parallel context with a
-parallelism of 1 so it behaves as a concurrent context until programs opt-in to
+default parallelism of 1 so it behaves as a concurrent context until programs opt-in to
 multithreading at runtime.
 
 Example:
@@ -148,25 +146,25 @@ and instead start additional contexts.
 
 ### Relationship with system threads
 
-*TODO: parallelism is num. of schedulers, not num. of system threads*
-*TODO: threads can switch contexts (thread pool)*
-*TODO: schedulers can jump to another thread during blocking syscalls (except isolated)*
-*TODO: warning: be careful with thread locals*
+* TODO: parallelism is num. of schedulers, not num. of system threads
+* TODO: threads can switch contexts (thread pool)
+* TODO: schedulers can jump to another thread during blocking syscalls (except isolated)
+* TODO: warning: be careful with thread locals
 
 ## Perf tools
 
-*TODO: scheduler trace*
+* TODO: scheduler trace
 
 ## Thread safety issues
 
 Ideally an application would use communication only (e.g. `Channel`) but
 sometimes an application needs global and shared data. The problem is that
-accessing, replacing and mutating shared data will quickly corrupt this data in
-a parallel environment.
+accessing, replacing and mutating shared data will corrupt this data in a
+parallel environment.
 
 ### Shared variables
 
-When we think or shared variables to be protected, we mostly think of globals as
+When we think of shared variables to be protected, we mostly think of globals as
 detailed in the next sections, but a simple local variable may be accessible
 from multiple fibers, making it a shared variable. For example:
 
@@ -206,10 +204,10 @@ that can mutate the array from another context.
 
 You can't parallelize the execution, though, which is likely fine for I/O bound
 fibers, but CPU bound fibers would benefit from parallelism. In that case you
-may protect the variable with a `Sync::Exclusive(T)` object. I'm using an
+may protect the variable with a [`Sync::Exclusive(T)`] object. I'm using an
 exclusive lock rather than a shared lock because we only mutate the array (i.e.
 only writes), but if the usage was more towards regular reads and seldom writes,
-then a `Sync::Shared(T)` would be a much more efficient choice.
+then a [`Sync::Shared(T)`] would be a much more efficient choice.
 
 ```
 foo = [] of Int32
@@ -261,19 +259,19 @@ Constants can't be replaced after initialization (unique value), but the value
 itself can be mutable, for example be an `Array` or a `Hash`.
 
 A constant value must either be read-only after its initialization, or be
-protected by a `Sync` object, for example `Sync::Mutex` or `Sync::RWLock`.
+protected by a [`Sync`] object, for example [`Sync::Mutex`] or [`Sync::RWLock`].
 
 ### Class variables
 
 Class variables are always safely initialized once. You don't have to protect
 their initialization. Crystal takes care of that.
 
-Unlike constants class variables can be replaced by another value at runtime,
+Unlike constants, class variables can be replaced by another value at runtime,
 and the value itself may be mutable, for example be an `Array` or a `Hash`.
 
 A class variable must either be read-only after its initialization, or be
-protected by a `Sync` object, for example `Sync::Exclusive(T)` or
-`Sync::Shared(T)`.
+protected by a [`Sync`] object, for example [`Sync::Exclusive(T)`] or
+[`Sync::Shared(T)`].
 
 If a class variable is larger than a register (e.g. `Int128`), a mixed union
 (e.g. `Int32 | Int64 | Nil`) or is a struct with more than one property (or a
@@ -295,3 +293,9 @@ end
 * The [Concurrency guide](./concurrency.md).
 * The [Channel](https://crystal-lang.org/api/Channel.html) type.
 * The [Sync](https://crystal-lang.org/api/Sync.html) module.
+
+[`Sync`]: https://crystal-lang.org/api/Sync.html
+[`Sync::Mutex`]: https://crystal-lang.org/api/Sync/Mutex.html
+[`Sync::Exclusive(T)`]: https://crystal-lang.org/api/Sync/Exclusive.html
+[`Sync::RWLock`]: https://crystal-lang.org/api/Sync/RWLock.html
+[`Sync::Shared(T)`]: https://crystal-lang.org/api/Sync/Shared.html
