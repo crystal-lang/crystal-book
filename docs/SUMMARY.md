@@ -120,6 +120,7 @@
 * [Guides](guides/README.md)
     * [Performance](guides/performance.md)
     * [Concurrency](guides/concurrency.md)
+    * [Parallelism](guides/parallelism.md)
     * [Testing](guides/testing.md)
         * [Code Coverage](guides/testing/code_coverage.md)
     * [Writing Shards](guides/writing_shards.md)
