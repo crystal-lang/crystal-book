@@ -144,6 +144,35 @@ Once resized, the default context
 Resizing the default context is optional. You may prefer to keep it concurrent
 and instead start additional contexts.
 
+### Relationship with system threads
+
+The term "parallelism" doesn't refer to how many system threads have been
+started and are currently running, or waiting. The term refers to the maximum
+number of fibers that can run Crystal code in parallel. Said differently, there
+can only be up to *parallelism* schedulers running, but there can be more
+threads.
+
+For example, one thread can be waiting on a blocking system call while the
+scheduler continues to run in another thread. Parallelism is still one because
+only one fiber is running Crystal code, though there are two system threads.
+
+When the thread waiting on the system call returns, or when an isolated context
+terminates, the thread doesn't exit immediately, but enters the thread pool and
+suspends itself for a few minutes, after which it will finally exit. During that
+time window, the thread may be picked by any execution context to resume a
+concurrent or parallel scheduler or to start an isolated context.
+
+> **NOTE:**
+> The isolated context owns its system thread for its lifetime only. The thread
+> may have been taken from the theaad pool and will return to the thread pool
+> when the context terminates.
+
+These behaviors mean thread locals must be avoided. We can't recommend enough to
+never use the `@[ThreadLocal]` annotation (stdlib barely does), and to be very
+careful when integrating with an external C library, where you may consider to
+start an isolated context or to back up and restore the thread local state
+around lib calls.
+
 ## Thread safety issues
 
 Ideally an application would use communication only (e.g. `Channel`) but
