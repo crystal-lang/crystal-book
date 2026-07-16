@@ -144,17 +144,6 @@ Once resized, the default context
 Resizing the default context is optional. You may prefer to keep it concurrent
 and instead start additional contexts.
 
-### Relationship with system threads
-
-* TODO: parallelism is num. of schedulers, not num. of system threads
-* TODO: threads can switch contexts (thread pool)
-* TODO: schedulers can jump to another thread during blocking syscalls (except isolated)
-* TODO: warning: be careful with thread locals
-
-## Perf tools
-
-* TODO: scheduler trace
-
 ## Thread safety issues
 
 Ideally an application would use communication only (e.g. `Channel`) but
