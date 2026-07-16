@@ -163,6 +163,7 @@ Crystal program.
 | `use_pcre`                                         | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
 | `win7`                                             | Use Win32 WinNT API for Windows 7
 | `without_iconv`                                    | Do not link `iconv`/`libiconv`
+| `without_main`                                     | Do not generate a `main` function. Introduced in 1.21 [#17074]
 | `without_openssl`                                  | Build without OpenSSL support
 | `without_zlib`                                     | Build without Zlib support
 
@@ -172,6 +173,7 @@ Crystal program.
 [#15350]: https://github.com/crystal-lang/crystal/issues/15350
 [#7546]: https://github.com/crystal-lang/crystal/pull/7546
 [#16264]: https://github.com/crystal-lang/crystal/pull/16264
+[#17074]: https://github.com/crystal-lang/crystal/pull/17074
 [runtime tracing]: ../guides/runtime_tracing.md
 
 ### Language features
