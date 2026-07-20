@@ -14,7 +14,11 @@ filter_missing() {
   missing=0
 
   while read -r word; do
-      grep -q "\`$word\`" docs/syntax_and_semantics/compile_time_flags.md || {
+      case "$word" in
+        *=*) query="$word" ;;
+        *) query="${word}(=.*)?" ;;
+      esac
+      grep -q -P "\`$query\`" docs/syntax_and_semantics/compile_time_flags.md || {
         [ ${missing} -eq 0 ] && echo "# Missing ${1} flags:"
         echo "$word"
         missing=1

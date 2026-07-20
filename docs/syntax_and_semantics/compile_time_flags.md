@@ -158,10 +158,10 @@ Crystal program.
 | `skip_crystal_compiler_rt`                         | Exclude Crystal's native `compiler-rt` implementation.
 | `tracing`                                          | Build with support for [runtime tracing].
 | `use_libiconv`                                     | Use `libiconv` instead of the `iconv` system library
-| `use_pcre2`                                        | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0.
 | `use_pcre`                                         | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
 | `win7`                                             | Use Win32 WinNT API for Windows 7
 | `without_iconv`                                    | Do not link `iconv`/`libiconv`
+| `without_main`                                     | Do not generate a `main` function. Introduced in 1.21 ([#17074])
 | `without_openssl`                                  | Build without OpenSSL support
 | `without_zlib`                                     | Build without Zlib support
 
@@ -179,6 +179,7 @@ These flags select the concurrency and parallel runtime:
 [#15350]: https://github.com/crystal-lang/crystal/issues/15350
 [#7546]: https://github.com/crystal-lang/crystal/pull/7546
 [#16264]: https://github.com/crystal-lang/crystal/pull/16264
+[#17074]: https://github.com/crystal-lang/crystal/pull/17074
 [#17100]: https://github.com/crystal-lang/crystal/pull/17100
 [runtime tracing]: ../guides/runtime_tracing.md
 

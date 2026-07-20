@@ -65,10 +65,10 @@ PCRE2 support was added in Crystal 1.7 and it's the default since 1.8 (see [Rege
 [Regex]: https://crystal-lang.org/api/Regex.html
 [Regex documentation]: ../syntax_and_semantics/literals/regex.md
 
-| Library                                          | Description                                                                                          | License
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | -------
-| [PCRE2]<br>[![repology][r:pcre2]][r:pcre2/v]     | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+) | [BSD][pcre-license]
-| [PCRE][PCRE2]<br>[![repology][r:pcre]][r:pcre/v] | Perl Compatible Regular Expressions.                                                                 | [BSD][pcre-license]
+| Library                                          | Description                                                                                               | License
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------
+| [PCRE2]<br>[![repology][r:pcre2]][r:pcre2/v]     | Perl Compatible Regular Expressions, version 2.<br>**Supported versions:** all (recommended: 10.36+)      | [BSD][pcre-license]
+| [PCRE][PCRE2]<br>[![repology][r:pcre]][r:pcre/v] | Perl Compatible Regular Expressions (**deprecated**, requires `-Duse_pcre` flag or `USE_PCRE1=1` env var) | [BSD][pcre-license]
 
 [pcre-license]: http://www.pcre.org/licence.txt
 
@@ -107,7 +107,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 
 | Library                                                         | Description                                                                                                   | License
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------
-| [OpenSSL][openssl.org]<br>[![repology][r:openssl]][r:openssl/v] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–3.4+                           | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]
+| [OpenSSL][openssl.org]<br>[![repology][r:openssl]][r:openssl/v] | Implementation of the SSL and TLS protocols <br>**Supported versions:** 1.1.1+–4.0+                           | [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]
 | [LibreSSL]<br>[![repology][r:libressl]][r:libressl/v]           | Implementation of the SSL and TLS protocols; forked from OpenSSL in 2014 <br>**Supported versions:** 3.0–4.0+ | [ISC / OpenSSL / SSLeay]
 
 [Apache v2 (3.0+), OpenSSL / SSLeay (1.x)]: https://www.openssl.org/source/license.html

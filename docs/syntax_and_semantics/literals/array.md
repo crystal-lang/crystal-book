@@ -39,6 +39,7 @@ Empty array literals always need a type specification:
 
 ```crystal
 %w(one two three) # => ["one", "two", "three"]
+%W(one two three) # => ["one", "two", "three"]
 %i(one two three) # => [:one, :two, :three]
 ```
 

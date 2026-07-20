@@ -16,7 +16,7 @@ There are however some special rules regarding operator syntax:
   `1 * 2 + 3 * 4` is parsed as `(1 * 2) + (2 * 3)` to honour regular math rules.
 * Regular method names must start with a letter or underscore, but operators
   only consist of special characters. Any method not starting with a letter or
-  underscore is an operator  method.
+  underscore is an operator method.
 * Available operators are whitelisted in the compiler (see
   [List of Operators](#list-of-operators) below) which allows symbol-only method
   names and treats them as operators, including their precedence rules.
