@@ -45,7 +45,7 @@ other contexts.
 
 Example:
 
-```
+```cr
 ctx = Fiber::ExecutionContext::Concurrent.new("SINGLE")
 ctx.spawn { puts "fiber 1" }
 ctx.spawn { puts "fiber 2" }
@@ -76,7 +76,7 @@ context, or start more contexts.
 
 Example:
 
-```
+```cr
 ctx = Fiber::ExecutionContext::Parallel.new("MULTI", maximum: 4)
 ctx.spawn { puts "fiber 1" }
 ctx.spawn { puts "fiber 2" }
@@ -101,7 +101,7 @@ your application. The OS will preempt the thread as needed.
 
 Example:
 
-```
+```cr
 ctx = Fiber::ExecutionContext::Isolated.new("GUI") do
   GUI.blocking_main_loop
 end
@@ -114,7 +114,7 @@ complex and cumbersome to retain a reference to a specific context, fibers
 will be spawned into the default context or a "spawn context" defined at
 creation:
 
-```
+```cr
 workers = Fiber::ExecutionContext::Concurrent.new("workers")
 
 main = Fiber::ExecutionContext::Isolated.new("GUI", spawn_context: workers) do
@@ -132,7 +132,7 @@ opt-in to multithreading at runtime.
 
 Example:
 
-```crystal
+```cr
 Fiber::ExecutionContext.default.resize(4)
 ```
 
@@ -188,7 +188,7 @@ When we think of shared variables to be protected, we mostly think of globals as
 detailed in the next sections, but a simple local variable may be accessed from
 multiple fibers, making it a shared variable. For example:
 
-```
+```cr
 foo = 1
 
 5.times do
@@ -202,7 +202,7 @@ nor its value is mutated. The following example, however, will eventually
 corrupt the variable's value, because multiple fibers mutate the array, possibly
 in parallel:
 
-```
+```cr
 foo = [] of Int32
 
 5.times do
@@ -229,7 +229,7 @@ exclusive lock rather than a shared lock because we only mutate the array (i.e.
 only writes), but if the usage was more towards regular reads and seldom writes,
 then a [`Sync::Shared(T)`] would be a much more efficient choice.
 
-```
+```cr
 foo = [] of Int32
 
 5.times do
@@ -252,7 +252,7 @@ end
 That being said, the proper solution for a multiple producers and consumers
 problem, is to just use a `Channel` instead:
 
-```
+```cr
 channel = Channel(Int32).new(16)
 
 5.times do
@@ -299,7 +299,7 @@ property larger than a register), then writing to the class variable must be
 protected, otherwise different threads may read incomplete, and thus invalid
 values. For example:
 
-```
+```cr
 module Foo
   @@bar = Sync::Shared(Int128).new(Int128::MIN)
 
