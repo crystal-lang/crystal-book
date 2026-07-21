@@ -1,6 +1,6 @@
 # Parallelism
 
-Parallelism in Crystal is the ability to run multiple fibers simultaneously.
+Parallelism is the ability to run multiple fibers simultaneously.
 
 In Crystal, a program is concurrent by default, hence runs multiple fibers
 sequentially, one at a time. Parallelism is opt‑in and manually enabled by
