@@ -32,10 +32,10 @@ That is, you can have different methods with the same name and different number 
 
 Methods overload by several criteria:
 
-* The number of parameters
-* The type restrictions applied to parameters
-* The names of required named parameters
-* Whether the method accepts a [block](blocks_and_procs.md) or not
+- The number of parameters
+- The type restrictions applied to parameters
+- The names of required named parameters
+- Whether the method accepts a [block](blocks_and_procs.md) or not
 
 For example, we can define four different `become_older` methods:
 
@@ -144,7 +144,7 @@ and code which still depends on the incorrect ordering can use an opt-out featur
 
 ### Known bugs
 
-* Overloads without a parameter override ones with a default value ([#10231](https://github.com/
+- Overloads without a parameter override ones with a default value ([#10231](https://github.com/
 crystal-lang/crystal/issues/10231))
 
   ```cr
@@ -159,7 +159,7 @@ crystal-lang/crystal/issues/10231))
 
   This issue is fixed with `-Dpreview_overload_order`.
 
-* Overload ordering depends on the definition order of types used in type restrictions ([#7579](https://github.com/crystal-lang/crystal/issues/7579), [#4897](https://github.com/crystal-lang/crystal/issues/4897))
+- Overload ordering depends on the definition order of types used in type restrictions ([#7579](https://github.com/crystal-lang/crystal/issues/7579), [#4897](https://github.com/crystal-lang/crystal/issues/4897))
 
   ```cr
   class Foo

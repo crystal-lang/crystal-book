@@ -4,15 +4,15 @@ Programming Command Line Interface applications (CLI applications) is one of the
 
 There are two main topics when building a CLI application:
 
-* [input](#input)
-* [output](#output)
+- [input](#input)
+- [output](#output)
 
 ## Input
 
 This topic covers all things related to:
 
-* [options passed to the app](#options)
-* [request for user input](#request-for-user-input)
+- [options passed to the app](#options)
+- [request for user input](#request-for-user-input)
 
 ### Options
 
@@ -29,8 +29,8 @@ So now the question would be: **do we need to implement an options parser?** No 
 
 At the start our CLI application has two options:
 
-* `-v` / `--version`: it will display the application version.
-* `-h` / `--help`: it will display the application help.
+- `-v` / `--version`: it will display the application version.
+- `-h` / `--help`: it will display the application help.
 
 ```crystal title="help.cr"
 require "option_parser"

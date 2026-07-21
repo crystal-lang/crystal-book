@@ -73,14 +73,14 @@ This can also be used to give shorter, nicer names to C functions, as these tend
 
 The valid types to use in C bindings are:
 
-* Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
-* Pointer types (`Pointer(Int32)`, which can also be written as `Int32*`)
-* Static arrays (`StaticArray(Int32, 8)`, which can also be written as `Int32[8]`)
-* Function types (`Proc(Int32, Int32)`, which can also be written as `Int32 -> Int32`)
-* Other `struct`, `union`, `enum`, `type` or `alias` declared previously.
-* `Void`: the absence of a return value.
-* `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
-* Crystal structs marked with the `@[Extern]` annotation
+- Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
+- Pointer types (`Pointer(Int32)`, which can also be written as `Int32*`)
+- Static arrays (`StaticArray(Int32, 8)`, which can also be written as `Int32[8]`)
+- Function types (`Proc(Int32, Int32)`, which can also be written as `Int32 -> Int32`)
+- Other `struct`, `union`, `enum`, `type` or `alias` declared previously.
+- `Void`: the absence of a return value.
+- `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
+- Crystal structs marked with the `@[Extern]` annotation
 
 Refer to the [type grammar](../type_grammar.md) for the notation used in fun types.
 

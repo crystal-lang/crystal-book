@@ -10,9 +10,9 @@ Platforms are identified by their “target triple” which is the string to inf
 
 Tier 1 platforms can be thought of as “guaranteed to work”. Specifically they will each satisfy the following requirements:
 
-* Official binary releases are provided for the platform.
-* Automated testing is set up to run tests for the platform.
-* Documentation for how to use and how to build the platform is available.
+- Official binary releases are provided for the platform.
+- Automated testing is set up to run tests for the platform.
+- Documentation for how to use and how to build the platform is available.
 
 Only maintained operating system versions are fully supported. Obsolete versions are not guaranteed to work
 and drop into *Tier 2*.

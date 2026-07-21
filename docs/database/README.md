@@ -4,9 +4,9 @@ To access a relational database you will need a shard designed for the database 
 
 The following packages are compliant with crystal-db
 
-* [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) for sqlite
-* [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) for mysql & mariadb
-* [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
+- [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) for sqlite
+- [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) for mysql & mariadb
+- [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
 
 And several more are listed on [crystal-db](https://github.com/crystal-lang/crystal-db).
 
@@ -43,9 +43,9 @@ end
 
 Other connection uris are
 
-* `sqlite3:///path/to/data.db`
-* `mysql://user:password@server:port/database`
-* `postgres://user:password@server:port/database`
+- `sqlite3:///path/to/data.db`
+- `mysql://user:password@server:port/database`
+- `postgres://user:password@server:port/database`
 
 Alternatively you can use a non yielding `DB.open` method as long as `Database#close` is called at the end.
 

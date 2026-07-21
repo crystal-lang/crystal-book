@@ -8,16 +8,16 @@ argument `b`.
 
 There are however some special rules regarding operator syntax:
 
-* The dot (`.`) usually put between receiver and method name
+- The dot (`.`) usually put between receiver and method name
   (i.e. the *operator*) can be omitted.
-* Chained sequences of operator calls are restructured by the compiler in order
+- Chained sequences of operator calls are restructured by the compiler in order
   to implement [operator precedence](#operator-precedence).
   Enforcing operator precedence makes sure that an expression such as
   `1 * 2 + 3 * 4` is parsed as `(1 * 2) + (2 * 3)` to honour regular math rules.
-* Regular method names must start with a letter or underscore, but operators
+- Regular method names must start with a letter or underscore, but operators
   only consist of special characters. Any method not starting with a letter or
   underscore is an operator method.
-* Available operators are whitelisted in the compiler (see
+- Available operators are whitelisted in the compiler (see
   [List of Operators](#list-of-operators) below) which allows symbol-only method
   names and treats them as operators, including their precedence rules.
 
@@ -335,14 +335,14 @@ transform that into `a = a <op> b`.
 
 Exceptions to the general expansion formula are the logical operators:
 
-* `a ||= b` transforms to `a || (a = b)`
-* `a &&= b` transforms to `a && (a = b)`
+- `a ||= b` transforms to `a || (a = b)`
+- `a &&= b` transforms to `a && (a = b)`
 
 There is another special case when `a` is an index accessor (`[]`), it is
 changed to the nilable variant (`[]?`) on the left hand side:
 
-* `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
-* `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
+- `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
+- `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
 
 All transformations assume the receiver (`a`) is a variable. If it is a call,
 the replacements are semantically equivalent but the implementation is a bit

@@ -11,10 +11,10 @@ end
 
 The annotation can then be applied to various items, including:
 
-* Instance and class methods
-* Instance variables
-* Classes, structs, enums, and modules
-* Method and macro parameters (though the latter are currently inaccessible)
+- Instance and class methods
+- Instance variables
+- Classes, structs, enums, and modules
+- Method and macro parameters (though the latter are currently inaccessible)
 
 ```crystal
 annotation MyAnnotation

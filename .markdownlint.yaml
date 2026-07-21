@@ -20,9 +20,8 @@ ol-prefix:
   style: "ordered"
 
 # MD004 - Unordered list style should be consistent
-# TODO: Should be `dash` for consistency
 ul-style:
-  style: "asterisk"
+  style: "dash"
 
 # MD007 - Keep list indentation consistent
 ul-indent:

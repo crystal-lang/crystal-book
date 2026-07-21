@@ -41,9 +41,9 @@ kcov --clean --include-path="./src" ./coverage ./bin/all_specs --order=random
 
 Let’s break this down:
 
-* `--clean` makes it so only the latest run is kept
-* `--include-path` will only include `src/` in the report. I.e. we don’t want code from Crystal’s stdlib or external dependencies to be included
-* `./coverage` represents the directory the report will be written to
+- `--clean` makes it so only the latest run is kept
+- `--include-path` will only include `src/` in the report. I.e. we don’t want code from Crystal’s stdlib or external dependencies to be included
+- `./coverage` represents the directory the report will be written to
 
 The second argument is our built spec binary, which can still accept spec runner options like `--order=random`.
 

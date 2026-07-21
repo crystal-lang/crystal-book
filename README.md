@@ -4,11 +4,11 @@ This is the language reference for the Crystal programming language.
 
 Crystal is a programming language with the following goals:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal).
-* Be statically type-checked, but without having to specify the type of variables or method parameters.
-* Be able to call C code by writing bindings to it in Crystal.
-* Have compile-time evaluation and generation of code, to avoid boilerplate code.
-* Compile to efficient native code.
+- Have a syntax similar to Ruby (but compatibility with it is not a goal).
+- Be statically type-checked, but without having to specify the type of variables or method parameters.
+- Be able to call C code by writing bindings to it in Crystal.
+- Have compile-time evaluation and generation of code, to avoid boilerplate code.
+- Compile to efficient native code.
 
 **Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
 
@@ -26,8 +26,8 @@ Thank you very much!
 There is a separate branch for every minor Crystal release, all deployed alongside each other on https://crystal-lang.org/reference/
 Typically, only branches of maintained releases receive updates, i.e. the branch for the most recent Crystal release.
 
-* Changes that apply to the current Crystal release should go into the most recent `release/*` branch.
-* Changes that apply to yet unreleased features should go into `next`. They'll be part of the `release/*` branch for the next release.
+- Changes that apply to the current Crystal release should go into the most recent `release/*` branch.
+- Changes that apply to yet unreleased features should go into `next`. They'll be part of the `release/*` branch for the next release.
   The `next` branch is deployed at https://crystal-lang.org/reference/master/
 
 ### Building and Serving Locally

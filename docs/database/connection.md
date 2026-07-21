@@ -156,9 +156,9 @@ When using an `uri` to create a connection, we can specify not only the user, pa
 
 To mention a few examples:
 
-* [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) allows specifying `?journal_mode=WAL` to setup the [journal_mode](https://www.sqlite.org/pragma.html#pragma_journal_mode) to `WAL`.
-* [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) allows specifying `?encoding=utf8mb4_unicode_ci` to setup the collation & charset to `utf8mb4_unicode_ci`.
-* [will/crystal-pg](https://github.com/will/crystal-pg) allows specifying `?auth_methods=scram-sha-256` to allow only `scram-sha-256` authentication method.
+- [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) allows specifying `?journal_mode=WAL` to setup the [journal_mode](https://www.sqlite.org/pragma.html#pragma_journal_mode) to `WAL`.
+- [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) allows specifying `?encoding=utf8mb4_unicode_ci` to setup the collation & charset to `utf8mb4_unicode_ci`.
+- [will/crystal-pg](https://github.com/will/crystal-pg) allows specifying `?auth_methods=scram-sha-256` to allow only `scram-sha-256` authentication method.
 
 ### Advanced Connection Setup
 

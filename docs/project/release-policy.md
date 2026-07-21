@@ -27,13 +27,13 @@ it is impossible to guarantee that no future change will break any program.
 Under some unlikely circumstances, we may introduce changes that break existing code.
 Rest assured we are committed to keep the impact as minimal as possible.
 
-* Security: a security issue in the implementation may arise whose resolution requires backwards incompatible changes. We reserve the right to address such security issues.
+- Security: a security issue in the implementation may arise whose resolution requires backwards incompatible changes. We reserve the right to address such security issues.
 
-* Bugs: if an API has undesired behaviour, a program that depends on the buggy behaviour may break if the bug is fixed. We reserve the right to fix such bugs.
+- Bugs: if an API has undesired behaviour, a program that depends on the buggy behaviour may break if the bug is fixed. We reserve the right to fix such bugs.
 
-* Compiler front-end: improvements may be done to the compiler, introducing new warnings for ambiguous modes and providing more detailed error messages. Those can lead to compilation errors (when building with `--error-on-warnings`) or tooling failures when asserting on specific error messages (although one should avoid such). We reserve the right to do such improvements.
+- Compiler front-end: improvements may be done to the compiler, introducing new warnings for ambiguous modes and providing more detailed error messages. Those can lead to compilation errors (when building with `--error-on-warnings`) or tooling failures when asserting on specific error messages (although one should avoid such). We reserve the right to do such improvements.
 
-* Feature additions: When introducing new features into the language or core library, there can be collisions with the names of types, methods, etc. defined in user code. We reserve the right to add new names when necessary.
+- Feature additions: When introducing new features into the language or core library, there can be collisions with the names of types, methods, etc. defined in user code. We reserve the right to add new names when necessary.
 
 The changelog and release notes highlight any changes that have a considerable potential for breaking existing code, even if it uses experimental, undocumented or unsupported features.
 

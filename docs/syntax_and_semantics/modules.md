@@ -2,8 +2,8 @@
 
 Modules serve two purposes:
 
-* as namespaces for defining other types, methods and constants
-* as partial types that can be mixed in other types
+- as namespaces for defining other types, methods and constants
+- as partial types that can be mixed in other types
 
 An example of a module as a namespace:
 

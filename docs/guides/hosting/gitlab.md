@@ -1,14 +1,14 @@
 # Hosting on GitLab
 
-* Add and commit everything:
+- Add and commit everything:
 
     ```console
     $ git add -A && git commit -am "shard complete"
     ```
 
-* Create a GitLab project with the same `name` and `description` as specified in your `shard.yml`.
+- Create a GitLab project with the same `name` and `description` as specified in your `shard.yml`.
 
-* Add the remote: (Be sure to replace `<YOUR-GITLAB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
+- Add the remote: (Be sure to replace `<YOUR-GITLAB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
     ```console
     $ git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
@@ -20,7 +20,7 @@
     $ git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
-* Push it:
+- Push it:
 
     ```console
     $ git push origin master
@@ -84,8 +84,8 @@ In the *Badges* section of the *General* settings, we'll first add a release bad
 
 And now if the pipeline has finished we'll have docs and we can link to them with a generic badge from `shields.io`.
 
-* Link: `https://<YOUR-GITLAB-USERNAME>.gitlab.io/<YOUR-REPOSITORY-NAME>`
-* Image: `https://img.shields.io/badge/docs-available-brightgreen.svg`
+- Link: `https://<YOUR-GITLAB-USERNAME>.gitlab.io/<YOUR-REPOSITORY-NAME>`
+- Image: `https://img.shields.io/badge/docs-available-brightgreen.svg`
 
 ## Releases
 
@@ -117,15 +117,15 @@ and then use the UI to add/edit the release note and attach files.
 
 **Best Practices:**
 
-* Use the `-a` option to create an annotated tag for releases.
-* Follow [Semantic Versioning](http://semver.org/).
+- Use the `-a` option to create an annotated tag for releases.
+- Follow [Semantic Versioning](http://semver.org/).
 
 ### Release Badge
 
 If you'd like you can also add a `shields.io` badge for the release. GitLab doesn't have full support for this kind of thing, and until someone adds a [version badge for gitlab](https://github.com/badges/shields/blob/master/doc/TUTORIAL.md) to shields.io, we'll have to just code in the version number in the URLs directly.
 
-* Link: `https://img.shields.io/badge/release-<VERSION>-brightgreen.svg`
-* Image: `https://img.shields.io/badge/release-<VERSION>-brightgreen.svg`
+- Link: `https://img.shields.io/badge/release-<VERSION>-brightgreen.svg`
+- Image: `https://img.shields.io/badge/release-<VERSION>-brightgreen.svg`
 
 where `<VERSION>` is the version number prefixed with a `v` like this: `v0.1.0`.
 
@@ -136,7 +136,7 @@ Projects on GitHub have typically more exposure and better integration with othe
 1. Create a GitHub repository with the same name as your project.
 2. Follow the instructions here: https://docs.gitlab.com/ee/workflow/repository_mirroring.html#setting-up-a-push-mirror-from-gitlab-to-github-core
 3. Edit your GitHub description. You could use the following
-    * Description: Words that are the same forwards and backwards. This is a mirror of:
-    * Link: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/`
+    - Description: Words that are the same forwards and backwards. This is a mirror of:
+    - Link: `https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>/`
 
 This is a push mirror and that means changes will only propagate one way. So be sure to let potential collaborators know that pull requests and issues should be submitted to your GitLab project.

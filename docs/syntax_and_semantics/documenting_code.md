@@ -70,9 +70,9 @@ end
 The same lookup rules apply as in Crystal code. Features in the currently
 documented namespace can be accessed with relative names:
 
-* Instance methods are referenced with a hash prefix: `#horns`.
-* Class methods are referenced with a dot prefix: `.new`.
-* Constants and types are referenced by their name: `Unicorn`.
+- Instance methods are referenced with a hash prefix: `#horns`.
+- Class methods are referenced with a dot prefix: `.new`.
+- Constants and types are referenced by their name: `Unicorn`.
 
 Features in other namespaces are referenced with the fully-qualified type path: `Unicorn#horns`, `Unicorn.new`, `Unicorn::CONST`.
 
@@ -129,14 +129,14 @@ Unicorn.new.speak # => "I'm a unicorn"
 
 Several admonition keywords are supported to visually highlight problems, notes and/or possible issues.
 
-* `BUG`
-* `DEPRECATED`
-* `EXPERIMENTAL`
-* `FIXME`
-* `NOTE`
-* `OPTIMIZE`
-* `TODO`
-* `WARNING`
+- `BUG`
+- `DEPRECATED`
+- `EXPERIMENTAL`
+- `FIXME`
+- `NOTE`
+- `OPTIMIZE`
+- `TODO`
+- `WARNING`
 
 Admonition keywords must be the first word in their respective line and must be in all caps. An optional trailing colon is preferred for readability.
 
@@ -160,9 +160,9 @@ end
 
 The compiler implicitly adds some admonitions to doc comments:
 
-* The [`@[Deprecated]`](https://crystal-lang.org/api/Deprecated.html) annotation
+- The [`@[Deprecated]`](https://crystal-lang.org/api/Deprecated.html) annotation
   adds a `DEPRECATED` admonition.
-* The [`@[Experimental]`](https://crystal-lang.org/api/Experimental.html) annotation
+- The [`@[Experimental]`](https://crystal-lang.org/api/Experimental.html) annotation
   adds an `EXPERIMENTAL` admonition.
 
 ## Directives

@@ -28,10 +28,10 @@ Crystal has Channels inspired by [CSP](https://en.wikipedia.org/wiki/Communicati
 
 When a program starts, it fires up a main fiber that will execute your top-level code. There, one can spawn many other fibers. The components of a program are:
 
-* The Runtime Scheduler(s), in charge of executing all fibers when the time is right.
-* The Event Loop, being in charge of async tasks, like for example files, sockets, pipes, signals and timers (like doing a `sleep`).
-* Channels, to communicate data between fibers. The Runtime Scheduler will coordinate fibers and channels for their communication.
-* Garbage Collector: to clean up "no longer used" memory.
+- The Runtime Scheduler(s), in charge of executing all fibers when the time is right.
+- The Event Loop, being in charge of async tasks, like for example files, sockets, pipes, signals and timers (like doing a `sleep`).
+- Channels, to communicate data between fibers. The Runtime Scheduler will coordinate fibers and channels for their communication.
+- Garbage Collector: to clean up "no longer used" memory.
 
 ### A Fiber
 
@@ -49,9 +49,9 @@ On a 64-bit machine it lets us spawn millions and millions of fibers. In a 32-bi
 
 Each scheduler has a queue of:
 
-* Fibers ready to be executed: for example when you spawn a fiber, it's ready to be executed.
-* The event loop: when there are no other fibers ready to be executed, the event loop checks if there is any async operation that is ready, and then executes the fiber waiting for that operation.
-* Fibers that voluntarily asked to wait: this is done with `Fiber.yield`, which means "I can continue executing, but I'll give you some time to execute other fibers if you want".
+- Fibers ready to be executed: for example when you spawn a fiber, it's ready to be executed.
+- The event loop: when there are no other fibers ready to be executed, the event loop checks if there is any async operation that is ready, and then executes the fiber waiting for that operation.
+- Fibers that voluntarily asked to wait: this is done with `Fiber.yield`, which means "I can continue executing, but I'll give you some time to execute other fibers if you want".
 
 ### Communicating data
 

@@ -18,9 +18,9 @@ In this tutorial, we'll be making a Crystal library called *palindrome-example*.
 
 In order to release a Crystal Shard, and follow along with this tutorial, you will need the following:
 
-* A working installation of the [Crystal compiler](../man/crystal/README.md)
-* A working installation of [Git](https://git-scm.com)
-* A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account
+- A working installation of the [Crystal compiler](../man/crystal/README.md)
+- A working installation of [Git](https://git-scm.com)
+- A [GitHub](https://github.com) or [GitLab](https://gitlab.com/) account
 
 ### Creating the Project
 
@@ -74,13 +74,13 @@ The code you write is up to you, but how you write it impacts whether people wan
 
 #### Testing the Code
 
-* Test your code. All of it. It's the only way for anyone, including you, to know if it works.
-* Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
+- Test your code. All of it. It's the only way for anyone, including you, to know if it works.
+- Crystal has [a built-in testing library](https://crystal-lang.org/api/Spec.html). Use it!
 
 #### Documentation
 
-* Document your code with comments. All of it. Even the private methods.
-* Crystal has [a built-in documentation generator](../syntax_and_semantics/documenting_code.md). Use it!
+- Document your code with comments. All of it. Even the private methods.
+- Crystal has [a built-in documentation generator](../syntax_and_semantics/documenting_code.md). Use it!
 
 Run `crystal docs` to convert your code and comments into interlinking API documentation. Open the files in the `/docs/` directory with a web browser to see how your documentation is looking along the way.
 
@@ -110,8 +110,8 @@ NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-ge
 
 #### Coding Style
 
-* It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
-* Utilize Crystal's [built-in code formatter](../syntax_and_semantics/documenting_code.md) to automatically format all `.cr` files in a directory.
+- It's fine to have your own style, but sticking to [some core rubrics defined by the Crystal team](../conventions/coding_style.md) can help keep your code consistent, readable and usable for other developers.
+- Utilize Crystal's [built-in code formatter](../syntax_and_semantics/documenting_code.md) to automatically format all `.cr` files in a directory.
 
 e.g.
 
@@ -137,7 +137,7 @@ This check is good to add as a step in [continuous integration](ci/README.md).
 
 Your `shard.yml`'s `name` property should be concise and descriptive.
 
-* Search any of the available [shard databases](https://crystal-lang.org/community/#shards) to check if your name is already taken.
+- Search any of the available [shard databases](https://crystal-lang.org/community/#shards) to check if your name is already taken.
 
 e.g.
 
@@ -175,5 +175,5 @@ description: |
 
 From here the guide differs depending on whether you are hosting your repo on GitHub or GitLab. If you're hosting somewhere else, please feel free to write up a guide and add it to this book!
 
-* [Hosting on GitHub](./hosting/github.md)
-* [Hosting on GitLab](./hosting/gitlab.md)
+- [Hosting on GitHub](./hosting/github.md)
+- [Hosting on GitLab](./hosting/gitlab.md)

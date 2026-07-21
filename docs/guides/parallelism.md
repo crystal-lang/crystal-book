@@ -13,9 +13,9 @@ model](./concurrency.md) of Crystal.
 
 There are different ways to spread an application to leverage many CPU cores.
 
-* Sometimes we need a fiber to own a thread, notably GUI and game loops.
-* Sometimes we need a set of fibers to run concurrently.
-* Sometimes we need fibers to autoscale to as many CPU cores as possible.
+- Sometimes we need a fiber to own a thread, notably GUI and game loops.
+- Sometimes we need a set of fibers to run concurrently.
+- Sometimes we need fibers to autoscale to as many CPU cores as possible.
 
 *Execution Contexts* define how to orchestrate fibers across one or many threads.
 Ultimately, we plan to make the interface public, so you may write your own models.
@@ -310,9 +310,9 @@ end
 
 ## Going further
 
-* The [Concurrency guide](./concurrency.md).
-* The [Channel](https://crystal-lang.org/api/Channel.html) type.
-* The [Sync](https://crystal-lang.org/api/Sync.html) module.
+- The [Concurrency guide](./concurrency.md).
+- The [Channel](https://crystal-lang.org/api/Channel.html) type.
+- The [Sync](https://crystal-lang.org/api/Sync.html) module.
 
 [Channel]: https://crystal-lang.org/api/Channel.html
 [context.spawn]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#spawn(*,name:String|Nil=nil,&block:-%3E):Fiber-instance-method
