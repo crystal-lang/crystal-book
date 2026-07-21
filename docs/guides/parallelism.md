@@ -20,22 +20,22 @@ There are different ways to spread an application to leverage many CPU cores.
 *Execution Contexts* define how to orchestrate fibers across one or many threads.
 Ultimately, we plan to make the interface public, so you may write your own models.
 
-Execution contexts are the runtime's building block for orchestrating how a set
+[Execution contexts] are the runtime's building block for orchestrating how a set
 of fibers will run through a common interface. Contexts run in parallel of each
 other, and each context has its own rules to run fibers.
 
 The overall interface is merely:
 
 1. Start context(s);
-2. Spawn fibers inside a specific context (`context.spawn`), or into the current
-   context (`spawn`);
+2. Spawn fibers inside a specific context ([`context.spawn`]), or into the current
+   context ([`spawn`]);
 
 There are three built‑in execution context types: concurrent, parallel, and
 isolated.
 
 ### Concurrent
 
-Fibers spawned into a concurrent context run concurrently to each other, and
+Fibers spawned into a [concurrent context] run concurrently to each other, and
 will never run in parallel. Keep in mind that they will run in parallel with
 fibers running in other contexts!
 
@@ -56,7 +56,7 @@ a concurrent context due to fibers only running sequentially.
 
 ### Parallel
 
-Fibers spawned in a parallel context run both concurrently and in parallel with
+Fibers spawned in a [parallel context] run both concurrently and in parallel with
 each other (if parallelism is greater than 1), in addition to fibers running in
 other contexts.
 
@@ -94,7 +94,7 @@ fibers running in parallel to each other.
 
 ### Isolated
 
-Spawn a single fiber to a thread. The fiber owns the thread for
+An [isolated context] spawns a single fiber to a thread. The fiber owns the thread for
 its whole lifetime — the thread may be reused after the fiber terminates. The
 fiber can block the thread however it wants (it owns it) with no impact on
 your application. The OS will preempt the thread as needed.
@@ -126,7 +126,7 @@ main.wait
 
 ### Default
 
-All programs run in the *default* context, which is a parallel context with a
+All programs run in the [*default* context][`ExecutionContext.default`], which is a parallel context with a
 default parallelism of 1 so it behaves like a concurrent context until programs
 opt-in to multithreading at runtime.
 
@@ -137,7 +137,7 @@ Fiber::ExecutionContext.default.resize(4)
 ```
 
 Instead of hardcoding `4` you may use a CLI argument such as `--threads 4` or
-default to how many logical CPU the current system has (`System.cpu_count`).
+default to how many logical CPU the current system has ([`System.cpu_count`]).
 
 Once resized to a parallelism greater than 1, the default context will no longer
 behave like a concurrent, but be a truly parallel context. Parallelism won't
@@ -177,7 +177,7 @@ around lib calls.
 
 ## Thread safety issues
 
-Ideally an application would use communication only (e.g. `Channel`) but
+Ideally an application would use communication only (e.g. [`Channel`]) but
 sometimes an application needs global and shared data. The problem is that
 accessing, replacing and mutating shared data will corrupt this data in a
 parallel environment.
@@ -250,7 +250,7 @@ end
 ```
 
 That being said, the proper solution for a multiple producers and consumers
-problem, is to just use a `Channel` instead:
+problem, is to just use a [`Channel`] instead:
 
 ```cr
 channel = Channel(Int32).new(16)
@@ -314,8 +314,17 @@ end
 * The [Channel](https://crystal-lang.org/api/Channel.html) type.
 * The [Sync](https://crystal-lang.org/api/Sync.html) module.
 
-[`Sync`]: https://crystal-lang.org/api/Sync.html
-[`Sync::Mutex`]: https://crystal-lang.org/api/Sync/Mutex.html
+[`Channel`]: https://crystal-lang.org/api/Channel.html
+[`context.spawn`]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#spawn(*,name:String|Nil=nil,&block:-%3E):Fiber-instance-method
+[`ExecutionContext.default`]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#default%3AExecutionContext%3A%3AParallel-class-method
+[`spawn`]: https://crystal-lang.org/api/toplevel.html#spawn(*,name:String|Nil=nil,same_thread=false,&block)-class-method
 [`Sync::Exclusive(T)`]: https://crystal-lang.org/api/Sync/Exclusive.html
+[`Sync::Mutex`]: https://crystal-lang.org/api/Sync/Mutex.html
 [`Sync::RWLock`]: https://crystal-lang.org/api/Sync/RWLock.html
 [`Sync::Shared(T)`]: https://crystal-lang.org/api/Sync/Shared.html
+[`Sync`]: https://crystal-lang.org/api/Sync.html
+[`System.cpu_count`]: https://crystal-lang.org/api/System.html#cpu_count:Int32-class-method
+[concurrent context]: https://crystal-lang.org/api/Fiber/ExecutionContext/Concurrent.html
+[execution contexts]: https://crystal-lang.org/api/Fiber/ExecutionContext.html
+[isolated context]: https://crystal-lang.org/api/Fiber/ExecutionContext/Isolated.html
+[parallel context]: https://crystal-lang.org/api/Fiber/ExecutionContext/Parallel.html
