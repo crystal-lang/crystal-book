@@ -81,7 +81,7 @@ $ devenv shell build
 Building shell ...
 pre-commit-hooks.nix: hooks up to date
 rm -rf ./site
-mkdocs build -d ./site  --strict
+properdocs build -d ./site  --strict
 INFO     -  Cleaning site directory
 INFO     -  Building documentation to directory: ./site
 INFO     -  Documentation built in 2.43 seconds
@@ -96,7 +96,7 @@ Entering shell ...
 
 pre-commit-hooks.nix: hooks up to date
 $(devenv) make build
-mkdocs build -d ./site  --strict
+properdocs build -d ./site  --strict
 INFO     -  Cleaning site directory
 INFO     -  Building documentation to directory: ./site
 INFO     -  Documentation built in 2.43 seconds
