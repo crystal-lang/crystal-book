@@ -80,7 +80,7 @@ Different overloads of a method can be identified by the full signature `.new(na
 
 ### Parameters
 
-When referring to parameters, it is recommended to write their name *italicized* (`*italicized*`):
+When referring to parameters, it is recommended to write their name _italicized_ (`*italicized*`):
 
 ```crystal
 # Creates a unicorn with the specified number of *horns*.
@@ -342,7 +342,7 @@ Some documentation specific to *id*'s usage within `Child`.
 Some documentation common to every *id*.
 ```
 
-NOTE: Inheriting documentation only works on *instance*, non-constructor methods.
+NOTE: Inheriting documentation only works on _instance_, non-constructor methods.
 
 ## A Complete Example
 

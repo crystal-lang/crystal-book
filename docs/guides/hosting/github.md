@@ -33,7 +33,7 @@ Add the following markdown build badge below the description in your README to i
 [![GitHub release](https://img.shields.io/github/release/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg)](https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>/releases)
 ```
 
-Start by navigating to your repository's *releases* page.
+Start by navigating to your repository's _releases_ page.
 This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
 
 Click "Create a new release".
@@ -71,7 +71,7 @@ As an extension of the GitHub Actions config, you can add the steps to build the
           ...
 ```
 
--- where the latter `...` placeholder is any of the generic GitHub Actions to push a directory to the *gh-pages* branch. Some options are:
+-- where the latter `...` placeholder is any of the generic GitHub Actions to push a directory to the _gh-pages_ branch. Some options are:
 
 - [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) [[Search](https://github.com/search?q=JamesIves+crystal+path%3A.github%2Fworkflows&type=Code)]
 - [crazy-max/ghaction-github-pages](https://github.com/crazy-max/ghaction-github-pages) [[Search](https://github.com/search?q=%22ghaction-github-pages%22+crystal+path%3A.github%2Fworkflows&type=Code)]

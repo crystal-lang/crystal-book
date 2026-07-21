@@ -1,6 +1,6 @@
 # if
 
-An `if` evaluates the given branch if its condition is *truthy*. Otherwise, it
+An `if` evaluates the given branch if its condition is _truthy_. Otherwise, it
 evaluates the `else` branch if present.
 
 ```crystal

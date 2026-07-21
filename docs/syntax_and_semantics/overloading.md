@@ -28,7 +28,7 @@ john.become_older 5
 john.age # => 6
 ```
 
-That is, you can have different methods with the same name and different number of parameters and they will be considered as separate methods. This is called *method overloading*.
+That is, you can have different methods with the same name and different number of parameters and they will be considered as separate methods. This is called _method overloading_.
 
 Methods overload by several criteria:
 

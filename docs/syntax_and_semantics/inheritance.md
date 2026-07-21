@@ -138,9 +138,9 @@ class Test
 end
 ```
 
-we've declared `@arr` as type `Array(Foo)` so we may be tempted to think that we can start putting `Bar`s in there. Not quite. In the `initialize`, the type of the `[Bar.new]` expression is `Array(Bar)`, period. And `Array(Bar)` is *not* assignable to an `Array(Foo)` instance var.
+we've declared `@arr` as type `Array(Foo)` so we may be tempted to think that we can start putting `Bar`s in there. Not quite. In the `initialize`, the type of the `[Bar.new]` expression is `Array(Bar)`, period. And `Array(Bar)` is _not_ assignable to an `Array(Foo)` instance var.
 
-What's the right way to do this? Change the expression so that it *is* of the right type: `Array(Foo)` (see example above).
+What's the right way to do this? Change the expression so that it _is_ of the right type: `Array(Foo)` (see example above).
 
 ```crystal
 class Foo

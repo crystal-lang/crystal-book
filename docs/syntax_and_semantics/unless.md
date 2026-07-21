@@ -1,6 +1,6 @@
 # unless
 
-An `unless` evaluates the then branch if its condition is *falsey*, and evaluates the `else branch`, if there’s any, otherwise. That is, it behaves in the opposite way of an `if`:
+An `unless` evaluates the then branch if its condition is _falsey_, and evaluates the `else branch`, if there’s any, otherwise. That is, it behaves in the opposite way of an `if`:
 
 ```crystal
 unless some_condition

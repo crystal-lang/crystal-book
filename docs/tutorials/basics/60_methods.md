@@ -86,7 +86,7 @@ Try `say_hello "6"` for example.
 ## Overloading
 
 Restricting the type of an argument can be used for positional overloading.
-When a method has an unrestricted argument like `say_hello(recipient)`, *all* calls to a method `say_hello` go to that method.
+When a method has an unrestricted argument like `say_hello(recipient)`, _all_ calls to a method `say_hello` go to that method.
 But with overloading several methods of the same name can exist with different argument type restrictions. Each call is routed
 to the most fitting overload.
 
@@ -122,7 +122,7 @@ puts adds_2 40
 
 A method can return at any place in its body using the `return` statement. The argument passed to `return` becomes the method's return value. If there is no argument, it's `nil`.
 
-The following example illustrates the use of an *explicit* and an *implicit* `return`:
+The following example illustrates the use of an _explicit_ and an _implicit_ `return`:
 
 ```crystal-play
 # This method returns:

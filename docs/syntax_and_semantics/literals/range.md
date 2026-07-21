@@ -13,7 +13,7 @@ A [Range](https://crystal-lang.org/api/Range.html) represents an interval betwee
 NOTE:
 Range literals are often wrapped in parentheses, for example if it is meant to be used as the receiver of a call. `0..5.to_a` without parentheses would be semantically equivalent to `0..(5.to_a)` because method calls and other operators have higher precedence than the range literal.
 
-An easy way to remember which one is inclusive and which one is exclusive it to think of the extra dot as if it pushes *y* further away, thus leaving it outside of the range.
+An easy way to remember which one is inclusive and which one is exclusive it to think of the extra dot as if it pushes _y_ further away, thus leaving it outside of the range.
 
 The literal `x..y` is semantically equivalent to the explicit constructor `Range.new(x, y)` and `x...y` to `Range.new(x, y, true)`.
 

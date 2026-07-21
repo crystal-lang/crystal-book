@@ -17,7 +17,7 @@ There are different ways to spread an application to leverage many CPU cores.
 - Sometimes we need a set of fibers to run concurrently.
 - Sometimes we need fibers to autoscale to as many CPU cores as possible.
 
-*Execution Contexts* define how to orchestrate fibers across one or many threads.
+_Execution Contexts_ define how to orchestrate fibers across one or many threads.
 Ultimately, we plan to make the interface public, so you may write your own models.
 
 [Execution contexts] are the runtime's building block for orchestrating how a set
@@ -151,7 +151,7 @@ and instead start additional contexts.
 The term "parallelism" doesn't refer to how many system threads have been
 started and are currently running, or waiting. The term refers to the maximum
 number of fibers that can run Crystal code in parallel. Said differently, there
-can only be up to *parallelism* schedulers running, but there can be more
+can only be up to _parallelism_ schedulers running, but there can be more
 threads.
 
 For example, one thread can be waiting on a blocking system call while the

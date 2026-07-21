@@ -49,7 +49,7 @@ You can try flicking the values of `a` and `b` to see the operator behaviour for
 ### Truthiness
 
 Boolean algebra isn't limited to just boolean types, though. All values have an implicit truthiness: `nil`, `false`,
-and null pointers (just for completeness, we cover that later) are *falsey*. Any other value (including `0`) is *truthy*.
+and null pointers (just for completeness, we cover that later) are _falsey_. Any other value (including `0`) is _truthy_.
 
 Let's replace `true` and `false` in the above example with other values, for example `"foo"` and `nil`.
 
@@ -87,7 +87,7 @@ Now this is going to change.
 A conditional clause puts a branch of code behind a gate that only opens if the condition is met.
 
 In the most basic form, it consists of a keyword `if` followed by an expression serving as the condition.
-The condition is met when the return value of the expression is *truthy*.
+The condition is met when the return value of the expression is _truthy_.
 All subsequent expressions are part of the branch until it closes with the keyword `end`.
 
 Per convention, we indent nested branches by two spaces.
@@ -120,7 +120,7 @@ if message.starts_with?("Hello") || message.starts_with?("Hi")
 end
 ```
 
-Let's turn the condition around: Only print the message if it does *not* start with `Hello`.
+Let's turn the condition around: Only print the message if it does _not_ start with `Hello`.
 That's just a minor deviation from the previous example: We can use the negation operator (`!`) to turn the condition
 into the opposite expression.
 
@@ -249,7 +249,7 @@ This section introduces the basics of repeated execution of code.
 The basic feature is the `while` clause. Its structured quite similar to an `if` clause:
 The keyword `while` designates the beginning and is followed by an expression serving as the loop condition.
 All subsequent expressions are part of the loop until the closing keyword `end`.
-The loop continues to repeat itself as long as the return value of the condition is *truthy*.
+The loop continues to repeat itself as long as the return value of the condition is _truthy_.
 
 Let's try a simple program for counting from 1 to 10:
 
@@ -282,7 +282,7 @@ TIP: You can find more details on these expressions in the language specificatio
 
 ### Infinite loops
 
-When working with loops, it's important to care about the loop condition being *falsey* at some point.
+When working with loops, it's important to care about the loop condition being _falsey_ at some point.
 Otherwise, it would continue forever or until you stop the program externally (for example <kbd>Ctrl+C</kbd>, `kill`, pull the plug or when armageddon arrives).
 
 In this example, not incrementing the counter it would be the same as writing:

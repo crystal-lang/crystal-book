@@ -48,9 +48,8 @@ no-inline-html: false
 no-space-in-code: false
 
 # MD049 - Keep italic text formatting consistent
-# TODO: Should be `underscore` for consistency
 emphasis-style:
-  style: "asterisk"
+  style: "underscore"
 
 # MD050 - Keep bold text formatting consistent
 strong-style:

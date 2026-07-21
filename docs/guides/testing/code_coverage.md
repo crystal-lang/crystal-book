@@ -17,7 +17,7 @@ But the overall process is not overly complex, just consists of a few steps:
 
 ### Core Report
 
-*The process for this section all was inspired from a [blog post](https://hannes.kaeufler.net/posts/measuring-code-coverage-in-crystal-with-kcov) by* @hanneskaeufler
+_The process for this section all was inspired from a [blog post](https://hannes.kaeufler.net/posts/measuring-code-coverage-in-crystal-with-kcov) by_ @hanneskaeufler
 
 Given there is no internal way to generate this report within Crystal itself, we need to look for alternatives.
 The simplest of which is to make use of the fact Crystal uses [DWARF](https://dwarfstd.org/) for its debug information (the internal data used to power stack traces and such).
@@ -95,4 +95,4 @@ For our case, the key thing we need to set is what files to upload, setting the 
 There is a lot more nuance to code coverage than what is covered here.
 The big one being that having 100% test coverage does not imply that your code is bug free, or that it’s even worth trying to get to that level.
 Instead a good middle ground, for Codecov at least, is to set the target `patch` percentage to `100%` and set `project` target to `auto`.
-These will ensure that all *new* code is fully covered and does not reduce the overall coverage of the codebase.
+These will ensure that all _new_ code is fully covered and does not reduce the overall coverage of the codebase.

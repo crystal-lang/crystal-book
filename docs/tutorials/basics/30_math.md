@@ -49,7 +49,7 @@ p! 2 > 1,
   1 <= 2
 ```
 
-The universal comparison operator is `<=>`, also called *Spaceship operator* for its appearance. It compares its operands and returns a value that is either zero (both operands are equal),
+The universal comparison operator is `<=>`, also called _Spaceship operator_ for its appearance. It compares its operands and returns a value that is either zero (both operands are equal),
 a positive value (the first operand is bigger), or a negative value (the second operand is bigger). It combines the behaviour of all other comparison operators.
 
 ```crystal-play
@@ -60,8 +60,8 @@ p! 1 <=> 1,
 
 ### Operators
 
-Basic arithmetic operations can be performed with operators. Most operators are *binary* (i.e. two operands), and
-written in infix notation (i.e. between the operands). Some operators are *unary* (i.e. one operand), and written in prefix
+Basic arithmetic operations can be performed with operators. Most operators are _binary_ (i.e. two operands), and
+written in infix notation (i.e. between the operands). Some operators are _unary_ (i.e. one operand), and written in prefix
 notation (i.e. before the operand).
 The value of the expression is the result of the operation.
 
