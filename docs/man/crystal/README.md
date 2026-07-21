@@ -28,8 +28,8 @@ Hello World!
 
 By default, the generated executables are not fully optimized. The `--release` flag can be used to enable optimizations.
 
-```console
-$ crystal build hello_world.cr --release
+```shell
+crystal build hello_world.cr --release
 ```
 
 Compiling without release mode is much faster and the resulting binaries still offer pretty good performance.
@@ -43,8 +43,8 @@ To reduce the binary size for distributable files, the `--no-debug` flag can be 
 
 The `--static` flag can be used to build a statically-linked executable:
 
-```console
-$ crystal build hello_world.cr --release --static
+```shell
+crystal build hello_world.cr --release --static
 ```
 
 NOTE: Building fully statically linked executables is currently only supported on Alpine Linux.

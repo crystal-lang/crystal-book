@@ -32,10 +32,10 @@ Typically, only branches of maintained releases receive updates, i.e. the branch
 
 ### Building and Serving Locally
 
-```console
-$ git clone https://github.com/crystal-lang/crystal-book
-$ cd crystal-book
-$ pip install -r requirements.txt
+```shell
+git clone https://github.com/crystal-lang/crystal-book
+cd crystal-book
+pip install -r requirements.txt
 ```
 
 Live preview (at http://127.0.0.1:8000):
@@ -51,8 +51,8 @@ INFO    -  Serving on http://127.0.0.1:8000
 
 Build into the `site` directory (some functionality won't work if opening the files locally):
 
-```console
-$ make build
+```shell
+make build
 ```
 
 ### devenv environment
@@ -104,8 +104,8 @@ INFO     -  Documentation built in 2.43 seconds
 
 Run pre-commit checks on the entire repository:
 
-```console
-$ devenv ci
+```shell
+devenv ci
 ```
 
 ### Adding a page

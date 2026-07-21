@@ -62,10 +62,6 @@ no-bare-urls: false
 
 ## Code Block Rules
 
-# MD014 - Show command output in documentation
-# TODO: Fix command output
-commands-show-output: false
-
 # MD040 - Code blocks should have a language specified
 # FIXME: We should always specify a language for proper syntax highlighting.
 fenced-code-language: false
