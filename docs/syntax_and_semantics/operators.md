@@ -190,7 +190,7 @@ ones.
 
 ### Relational operators
 
-<span id="equality-and-comparison" />
+<a id="equality-and-comparison" />
 
 Relational operators test a relation between two values.
 They include _equality_, _inequalities_, and _subsumption_.
@@ -223,7 +223,7 @@ take care themselves.
 
 #### Inequalities
 
-<span id="comparison" />
+<a id="comparison" />
 
 Inequality operators describe the order between values.
 
@@ -266,7 +266,7 @@ There is no inverse operator.
 
 #### Chaining relational operators
 
-<span id="chaining-equality-and-comparison" />
+<a id="chaining-equality-and-comparison" />
 
 Relational operators `==`, `!=`, `===`, `<`, `>`, `<=`, and `>=`
 can be chained together and are interpreted as a compound expression.

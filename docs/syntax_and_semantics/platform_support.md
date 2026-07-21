@@ -73,11 +73,9 @@ The compiler can target these platforms but there is no support for the standard
 | `avr-unknown-unknown` | AVR (Atmel) CPU architecture (Arduino)<br>This target requires declaration of a CPU model (e.g. `--mcpu=atmega328`) |                    | &nbsp;
 
 !!! info "Legend"
-    <ul>
-    <li>:material-selection-ellipse: means automated tests or builds are not available</li>
-    <li>:material-checkbox-marked-circle: means automated tests or builds are available</li>
-    <li>:material-circle-slice-5: means automated test are available, but the implementation is incomplete</li>
-    </li>
+    * :material-selection-ellipse: means automated tests or builds are not available
+    * :material-checkbox-marked-circle: means automated tests or builds are available
+    * :material-circle-slice-5: means automated test are available, but the implementation is incomplete
 
 !!! note
     Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
