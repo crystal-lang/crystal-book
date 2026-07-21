@@ -1,3 +1,12 @@
+# Environment configuration
+/Makefile.local
+/Makefile.win.local
+.env
+.env.*
+.envrc
+.envrc.*
+
+# Build artifacts
 site/
 .venv/
 __pycache__/
@@ -5,4 +14,5 @@ __pycache__/
 # Devenv
 .devenv*
 devenv.local.nix
+devenv.local.yaml
 .pre-commit-config.yaml
