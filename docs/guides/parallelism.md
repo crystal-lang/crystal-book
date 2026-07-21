@@ -27,8 +27,8 @@ other, and each context has its own rules to run fibers.
 The overall interface is merely:
 
 1. Start context(s);
-2. Spawn fibers inside a specific context ([`context.spawn`]), or into the current
-   context ([`spawn`]);
+2. Spawn fibers inside a specific context ([`context.spawn`][context.spawn]), or into the current
+   context ([`spawn`][spawn]);
 
 There are three built‑in execution context types: concurrent, parallel, and
 isolated.
@@ -126,7 +126,7 @@ main.wait
 
 ### Default
 
-All programs run in the [*default* context][`ExecutionContext.default`], which is a parallel context with a
+All programs run in the [*default* context][ExecutionContext.default], which is a parallel context with a
 default parallelism of 1 so it behaves like a concurrent context until programs
 opt-in to multithreading at runtime.
 
@@ -137,7 +137,7 @@ Fiber::ExecutionContext.default.resize(4)
 ```
 
 Instead of hardcoding `4` you may use a CLI argument such as `--threads 4` or
-default to how many logical CPU the current system has ([`System.cpu_count`]).
+default to how many logical CPU the current system has ([`System.cpu_count`][System.cpu_count]).
 
 Once resized to a parallelism greater than 1, the default context will no longer
 behave like a concurrent, but be a truly parallel context. Parallelism won't
@@ -170,14 +170,14 @@ concurrent or parallel scheduler or to start an isolated context.
 > context terminates.
 
 These behaviors mean thread locals must be avoided. We cannot recommend enough
-to never use the `@[ThreadLocal]` annotation (stdlib barely does), and to be
+to never use the [`@[ThreadLocal]`][ThreadLocal] annotation (stdlib barely does), and to be
 very careful when integrating with an external C library, where you may consider
 to start an isolated context or to back up and restore the thread local state
 around lib calls.
 
 ## Thread safety issues
 
-Ideally an application would use communication only (e.g. [`Channel`]) but
+Ideally an application would use communication only (e.g. [`Channel`][Channel]) but
 sometimes an application needs global and shared data. The problem is that
 accessing, replacing and mutating shared data will corrupt this data in a
 parallel environment.
@@ -224,10 +224,10 @@ that can mutate the array from another context.
 
 You can't parallelize the execution, though, which is likely fine for I/O bound
 fibers, but CPU bound fibers would benefit from parallelism. In that case you
-may protect the variable with a [`Sync::Exclusive(T)`] object. I'm using an
+may protect the variable with a [`Sync::Exclusive(T)`][Sync::Exclusive(T)] object. I'm using an
 exclusive lock rather than a shared lock because we only mutate the array (i.e.
 only writes), but if the usage was more towards regular reads and seldom writes,
-then a [`Sync::Shared(T)`] would be a much more efficient choice.
+then a [`Sync::Shared(T)`][Sync::Shared(T)] would be a much more efficient choice.
 
 ```cr
 foo = [] of Int32
@@ -250,7 +250,7 @@ end
 ```
 
 That being said, the proper solution for a multiple producers and consumers
-problem, is to just use a [`Channel`] instead:
+problem, is to just use a [`Channel`][Channel] instead:
 
 ```cr
 channel = Channel(Int32).new(16)
@@ -279,7 +279,7 @@ Constants can't be replaced after initialization (unique value), but the value
 itself can be mutable, for example an `Array` or a `Hash`.
 
 A constant value must either be read-only after its initialization, or be
-protected by a [`Sync`] object, for example [`Sync::Mutex`] or [`Sync::RWLock`].
+protected by a [`Sync`][Sync] object, for example [`Sync::Mutex`][Sync::Mutex] or [`Sync::RWLock`][Sync::RWLock].
 
 ### Class variables
 
@@ -290,8 +290,8 @@ Unlike constants, class variables can be replaced by another value at runtime,
 and the value itself may be mutable, for example be an `Array` or a `Hash`.
 
 A class variable must either be read-only after its initialization, or be
-protected by a [`Sync`] object, for example [`Sync::Exclusive(T)`] or
-[`Sync::Shared(T)`].
+protected by a [`Sync`][Sync] object, for example [`Sync::Exclusive(T)`][Sync::Exclusive(T)] or
+[`Sync::Shared(T)`][Sync::Shared(T)].
 
 If a class variable is larger than a register (e.g. `Int128`), a mixed union
 (e.g. `Int32 | Int64 | Nil`) or is a struct with more than one property (or a
@@ -314,16 +314,17 @@ end
 * The [Channel](https://crystal-lang.org/api/Channel.html) type.
 * The [Sync](https://crystal-lang.org/api/Sync.html) module.
 
-[`Channel`]: https://crystal-lang.org/api/Channel.html
-[`context.spawn`]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#spawn(*,name:String|Nil=nil,&block:-%3E):Fiber-instance-method
-[`ExecutionContext.default`]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#default%3AExecutionContext%3A%3AParallel-class-method
-[`spawn`]: https://crystal-lang.org/api/toplevel.html#spawn(*,name:String|Nil=nil,same_thread=false,&block)-class-method
-[`Sync::Exclusive(T)`]: https://crystal-lang.org/api/Sync/Exclusive.html
-[`Sync::Mutex`]: https://crystal-lang.org/api/Sync/Mutex.html
-[`Sync::RWLock`]: https://crystal-lang.org/api/Sync/RWLock.html
-[`Sync::Shared(T)`]: https://crystal-lang.org/api/Sync/Shared.html
-[`Sync`]: https://crystal-lang.org/api/Sync.html
-[`System.cpu_count`]: https://crystal-lang.org/api/System.html#cpu_count:Int32-class-method
+[Channel]: https://crystal-lang.org/api/Channel.html
+[context.spawn]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#spawn(*,name:String|Nil=nil,&block:-%3E):Fiber-instance-method
+[ExecutionContext.default]: https://crystal-lang.org/api/Fiber/ExecutionContext.html#default%3AExecutionContext%3A%3AParallel-class-method
+[spawn]: https://crystal-lang.org/api/toplevel.html#spawn(*,name:String|Nil=nil,same_thread=false,&block)-class-method
+[Sync::Exclusive(T)]: https://crystal-lang.org/api/Sync/Exclusive.html
+[Sync::Mutex]: https://crystal-lang.org/api/Sync/Mutex.html
+[Sync::RWLock]: https://crystal-lang.org/api/Sync/RWLock.html
+[Sync::Shared(T)]: https://crystal-lang.org/api/Sync/Shared.html
+[Sync]: https://crystal-lang.org/api/Sync.html
+[System.cpu_count]: https://crystal-lang.org/api/System.html#cpu_count:Int32-class-method
+[ThreadLocal]: https://crystal-lang.org/api/ThreadLocal.html
 [concurrent context]: https://crystal-lang.org/api/Fiber/ExecutionContext/Concurrent.html
 [execution contexts]: https://crystal-lang.org/api/Fiber/ExecutionContext.html
 [isolated context]: https://crystal-lang.org/api/Fiber/ExecutionContext/Isolated.html
