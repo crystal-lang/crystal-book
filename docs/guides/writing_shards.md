@@ -115,7 +115,7 @@ NOTE: Be sure to replace all instances of `[your-github-name]` in the Crystal-ge
 
 e.g.
 
-```
+```shell
 crystal tool format
 ```
 
@@ -123,7 +123,7 @@ To check if your code is formatted correctly, or to check if using the formatter
 
 e.g.
 
-```
+```shell
 crystal tool format --check
 ```
 

@@ -59,9 +59,3 @@ strong-style:
 
 # MD034 - Bare URL used
 no-bare-urls: false
-
-## Code Block Rules
-
-# MD040 - Code blocks should have a language specified
-# FIXME: We should always specify a language for proper syntax highlighting.
-fenced-code-language: false

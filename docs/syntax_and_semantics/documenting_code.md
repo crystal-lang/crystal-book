@@ -308,7 +308,7 @@ end
 
 The documentation for `Unicorn#name` would be:
 
-```
+```md
 Description copied from class `Animal`
 
 Returns the name of `self`.
@@ -336,10 +336,10 @@ end
 
 The documentation for `Child#id` would be:
 
-```
-Some documentation specific to *id*'s usage within `Child`.
+```md
+Some documentation specific to _id_'s usage within `Child`.
 
-Some documentation common to every *id*.
+Some documentation common to every _id_.
 ```
 
 NOTE: Inheriting documentation only works on _instance_, non-constructor methods.

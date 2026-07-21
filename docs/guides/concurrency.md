@@ -218,7 +218,7 @@ puts "After receive"
 
 This prints:
 
-```
+```text
 Before receive
 Before send
 After send
@@ -252,7 +252,7 @@ puts value # => 2
 
 Output:
 
-```
+```text
 Before first receive
 Before first send
 Before second send
@@ -334,7 +334,7 @@ puts "After yield"
 
 Output:
 
-```
+```text
 Before yield
 Before send
 Before receive
@@ -373,7 +373,7 @@ end
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3
@@ -408,7 +408,7 @@ end
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3
@@ -444,7 +444,7 @@ Fiber.yield
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3

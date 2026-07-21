@@ -26,7 +26,7 @@ add true, false
 
 The above code gives this compile error:
 
-```
+```text
 Error in foo.cr:6: instantiating 'add(Bool, Bool)'
 
 add true, false
@@ -96,7 +96,7 @@ In this case we know that the parameter `x` from the initialization function mus
 
 When the compiler finds an assignment from a method parameter to an instance variable, then it inserts such a restriction. In the example above, calling `Foo.new "hi"` fails with (note the type restriction):
 
-```
+```text
 Error: no overload matches 'Foo.new' with type String
 
 Overloads are:
