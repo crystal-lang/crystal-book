@@ -52,17 +52,17 @@ Tier 3 platforms can be thought of as “partially works”.
 The Crystal codebase has support for these platforms, but there are some major limitations.
 Most typically, some parts of the standard library are not supported completely.
 
-| Target                     | Description               | Supported versions                                     | Comment
-| -------------------------- | ------------------------- | ------------------------------------------------------ | -------
-| `x86_64-windows-msvc`      | x64 Windows (MSVC)        | 7+                                                     | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
-| `x86_64-windows-gnu`       | x64 Windows (MinGW-w64)   | 7+, MSYS2 `UCRT64` / `MINGW64` / `CLANG64` environment | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
-| `aarch64-windows-msvc`     | ARM64 Windows (MSVC)      | 11+                                                    | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `aarch64-windows-gnu`      | ARM64 Windows (MinGW-w64) | 11+, MSYS2 `CLANGARM64` environment                    | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
-| `aarch64-linux-android`    | aarch64 Android           | Bionic C runtime, API level 24+                        | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD          |                                                        | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `x86_64-unknown-netbsd`    | x64 NetBSD                |                                                        | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `wasm32-unknown-wasi`      | WebAssembly (WASI libc)   | Wasmtime 2+                                            | :material-circle-slice-5: tests
-| `x86_64-solaris`           | Solaris/illumos           |                                                        | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| Target                     | Description               | Supported versions                                                                         | Comment
+| -------------------------- | ------------------------- | ------------------------------------------------------------------------------------------ | -------
+| `x86_64-windows-msvc`      | x64 Windows (MSVC)        | 10+ *(expected to work on Windows 7+)*                                                     | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
+| `x86_64-windows-gnu`       | x64 Windows (MinGW-w64)   | 10+, MSYS2 `UCRT64` / `MINGW64` / `CLANG64` environment *(expected to work on Windows 7+)* | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-windows-msvc`     | ARM64 Windows (MSVC)      | 11+                                                                                        | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `aarch64-windows-gnu`      | ARM64 Windows (MinGW-w64) | 11+, MSYS2 `CLANGARM64` environment                                                        | :material-circle-slice-7: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-linux-android`    | aarch64 Android           | Bionic C runtime, API level 24+                                                            | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-unknown-dragonfly` | x64 DragonFlyBSD          |                                                                                            | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-unknown-netbsd`    | x64 NetBSD                |                                                                                            | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `wasm32-unknown-wasi`      | WebAssembly (WASI libc)   | Wasmtime 2+                                                                                | :material-circle-slice-5: tests
+| `x86_64-solaris`           | Solaris/illumos           |                                                                                            | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 
 ## Compiler support
 
