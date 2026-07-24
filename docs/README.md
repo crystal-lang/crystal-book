@@ -96,6 +96,7 @@ Detailed examples for practical applications.
 
 * [Performance](guides/performance.md)
 * [Concurrency](guides/concurrency.md)
+* [Parallelism](guides/parallelism.md)
 * [Testing](guides/testing.md)
 * [Database](database/README.md)
 

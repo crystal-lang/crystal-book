@@ -154,9 +154,7 @@ Crystal program.
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009]). Introduced in 1.15
 | `evloop=io_uring`                                  | Select experimental io_uring event loop driver. Introduced in 1.20 [#16264]
 | `io_uring_sq_thread_idle=<milliseconds>`           | Enable SQPOLL mode and set idle time for io_uring event loop. Introduced in 1.20 [#16264]
-| `execution_context`                                | Enable execution contexts preview ([RFC 0002]). [Introduced in 1.16][#15350]
 | `execvpe_impl`                                     | Experimental flag for choosing the custom `execvpe` implementation instead of the system function. Introduced in 1.19
-| `preview_mt`                                       | Enables multithreading preview. Introduced in 0.28.0 ([#7546])
 | `skip_crystal_compiler_rt`                         | Exclude Crystal's native `compiler-rt` implementation.
 | `tracing`                                          | Build with support for [runtime tracing].
 | `use_libiconv`                                     | Use `libiconv` instead of the `iconv` system library
@@ -167,6 +165,14 @@ Crystal program.
 | `without_openssl`                                  | Build without OpenSSL support
 | `without_zlib`                                     | Build without Zlib support
 
+These flags select the concurrency and parallel runtime:
+
+| Flag name           | Description
+| --------------------| -----------
+| `execution_context` | Enable execution contexts ([RFC 0002]). Introduced in 1.16 ([#15350]). Obsolete since 1.21 ([#17100]).
+| `preview_mt`        | Revert to legacy multithreading runtime. Introduced in 0.28 ([#7546]). Deprecated since 1.21 [#17100].
+| `without_mt`        | Revert to legacy singlethreading runtime. Introduced in 1.21 [#17100].
+
 [#5314]: https://github.com/crystal-lang/crystal/pull/5314
 [RFC 0009]: https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability
 [RFC 0002]: https://github.com/crystal-lang/rfcs/blob/main/text/0002-execution-contexts.md
@@ -174,6 +180,7 @@ Crystal program.
 [#7546]: https://github.com/crystal-lang/crystal/pull/7546
 [#16264]: https://github.com/crystal-lang/crystal/pull/16264
 [#17074]: https://github.com/crystal-lang/crystal/pull/17074
+[#17100]: https://github.com/crystal-lang/crystal/pull/17100
 [runtime tracing]: ../guides/runtime_tracing.md
 
 ### Language features
