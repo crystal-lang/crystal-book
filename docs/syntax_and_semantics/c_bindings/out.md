@@ -10,10 +10,8 @@ end
 
 The documentation of the function says:
 
-```
-The status information from the child process is stored in the object
-that status_ptr points to, unless status_ptr is a null pointer.
-```
+> The status information from the child process is stored in the object
+> that status_ptr points to, unless status_ptr is a null pointer.
 
 We can use this function like this:
 

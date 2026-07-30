@@ -31,7 +31,7 @@ peter = Person.new "Peter", Cat.new
 
 If you compile the above program with the `tool hierarchy` command you will see this for `Person`:
 
-```
+```text
 - class Object
   |
   +- class Reference

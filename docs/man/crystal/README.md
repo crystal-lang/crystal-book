@@ -95,7 +95,7 @@ To see the available options for a particular command, use `--help` after a comm
 
 The `run` command compiles a source file to a binary executable and immediately runs it.
 
-```
+```text
 crystal [run] [<options>] <programfile> [-- <argument>...]
 ```
 
@@ -123,7 +123,7 @@ More options are described in the integrated help: `crystal run --help` or man p
 
 The `crystal build` command builds a dynamically-linked binary executable.
 
-```
+```text
 crystal build [<options>] <programfile>
 ```
 
@@ -157,7 +157,7 @@ More options are described in the integrated help: `crystal build --help` or man
 
 The `crystal eval` command reads Crystal source code from command line or stdin, compiles it to a binary executable and immediately runs it.
 
-```
+```text
 crystal eval [<options>] [<source>]
 ```
 
@@ -189,7 +189,7 @@ More options are described in the integrated help: `crystal eval --help` or man 
 
 The `crystal version` command prints the Crystal version, LLVM version and default target triple.
 
-```
+```text
 crystal version
 ```
 
@@ -204,7 +204,7 @@ $ crystal version
 
 The `crystal init` command initializes a Crystal project folder.
 
-```
+```text
 crystal init (lib|app) <name> [<dir>]
 ```
 
@@ -290,7 +290,7 @@ $ crystal env CRYSTAL_VERSION
 
 The `crystal spec` command compiles and runs a Crystal spec suite.
 
-```
+```text
 crystal spec [<options>] [<file>[:line] | <folder>]... [-- [<runner_options>]]
 ```
 
@@ -355,7 +355,7 @@ crystal spec spec/myapp_spec.cr:6 # Myapp works
 
 The `crystal play` command starts a webserver serving an interactive Crystal playground.
 
-```
+```text
 crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 ```
 
@@ -377,7 +377,7 @@ crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 
 Show tree of required source files.
 
-```
+```text
 crystal tool dependencies [options] [programfile]
 ```
 
@@ -405,7 +405,7 @@ Options:
 
 The `crystal tool format` command applies default format to Crystal source files.
 
-```
+```text
 crystal tool format [--check] [<path>...]
 ```
 
@@ -418,7 +418,7 @@ The formatter also applies to Crystal code blocks in comments (see [*Documenting
 
 Show methods that are never called.
 
-```
+```text
 crystal tool unreachable [options] [programfile]
 ```
 

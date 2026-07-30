@@ -287,7 +287,7 @@ Otherwise, it would continue forever or until you stop the program externally (f
 
 In this example, not incrementing the counter it would be the same as writing:
 
-```
+```crystal
 while true
   puts "Counter: #{counter}"
 end

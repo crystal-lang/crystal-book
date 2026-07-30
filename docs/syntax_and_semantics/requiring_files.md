@@ -35,7 +35,7 @@ The lookup goes like this:
 
 The second rule means that in addition to having this:
 
-```
+```text
 - project
   - src
     - file
@@ -46,7 +46,7 @@ The second rule means that in addition to having this:
 
 you can have it like this:
 
-```
+```text
 - project
   - src
     - file
@@ -59,7 +59,7 @@ which might be a bit cleaner depending on your taste.
 
 The third rule is very convenient because of the typical directory structure of a project:
 
-```
+```text
 - project
   - lib
     - foo
