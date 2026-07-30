@@ -4,22 +4,22 @@
 
 - Add and commit everything:
 
-    ```console
-    $ git add -A && git commit -am "shard complete"
+    ```shell
+    git add -A && git commit -am "shard complete"
     ```
 
 - Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
   NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
 
-    ```console
-    $ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
+    ```shell
+    git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
 - Push it:
 
-    ```console
-    $ git push public master
+    ```shell
+    git push public master
     ```
 
 ## GitHub Releases

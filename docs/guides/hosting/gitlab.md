@@ -2,28 +2,28 @@
 
 - Add and commit everything:
 
-    ```console
-    $ git add -A && git commit -am "shard complete"
+    ```shell
+    git add -A && git commit -am "shard complete"
     ```
 
 - Create a GitLab project with the same `name` and `description` as specified in your `shard.yml`.
 
 - Add the remote: (Be sure to replace `<YOUR-GITLAB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
-    ```console
-    $ git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
+    ```shell
+    git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
   or if you use SSH
 
-    ```console
-    $ git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
+    ```shell
+    git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
 - Push it:
 
-    ```console
-    $ git push origin master
+    ```shell
+    git push origin master
     ```
 
 ## Pipelines
@@ -70,8 +70,8 @@ The `before_script` and `cache` keys in the file are for running the same script
 
 If you commit the above file to your project and push, you'll trigger your first run of the new pipeline.
 
-```console
-$ git add -A && git commit -am 'Add .gitlab-ci.yml' && git push origin master
+```shell
+git add -A && git commit -am 'Add .gitlab-ci.yml' && git push origin master
 ```
 
 ### Some Badges
@@ -103,14 +103,14 @@ As you'll see from the [releases docs](https://docs.gitlab.com/ee/workflow/relea
 
 or you can create the tag from the command line like so:
 
-```console
-$ git tag -a v0.1.0 -m "Release v0.1.0"
+```shell
+git tag -a v0.1.0 -m "Release v0.1.0"
 ```
 
 push it up
 
-```console
-$ git push origin master --follow-tags
+```shell
+git push origin master --follow-tags
 ```
 
 and then use the UI to add/edit the release note and attach files.

@@ -26,16 +26,16 @@ It looks like `crystal` interprets the file, but what actually happens is that t
 
 If you just want to compile it you can use the `build` command:
 
-```console
-$ crystal build foo.cr
+```shell
+crystal build foo.cr
 ```
 
 This creates a `foo` executable, which you can then run with `./foo`.
 
 Note that this creates an executable that is not optimized. To optimize it, pass the `--release` flag:
 
-```console
-$ crystal build foo.cr --release
+```shell
+crystal build foo.cr --release
 ```
 
 When writing benchmarks or testing performance, always remember to compile in release mode.
