@@ -6,6 +6,7 @@
 # * TODO: The rule might be useful, but we need to investigate whether we want to use it or not.
 
 [global]
+flavor = "mkdocs"
 disable = [
   # FIXME: We should always specify a language for proper syntax highlighting.
   "fenced-code-language",

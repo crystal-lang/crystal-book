@@ -14,7 +14,7 @@
     git remote add origin https://gitlab.com/<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
-  or if you use SSH
+    or if you use SSH
 
     ```shell
     git remote add origin git@gitlab.com:<YOUR-GITLAB-USERNAME>/<YOUR-REPOSITORY-NAME>.git
