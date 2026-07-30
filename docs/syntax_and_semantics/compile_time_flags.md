@@ -27,7 +27,7 @@ The following program shows the use of compile-time flags by printing the target
 ```
 
 There's also the macro method [`host_flag?`][host_flag?]
-which returns whether a flag is set for the *host* platform, which can differ
+which returns whether a flag is set for the _host_ platform, which can differ
 from the target platform (queried by `flag?`) during cross-compilation.
 
 [flag?]: https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method
@@ -44,7 +44,7 @@ See [Platform Support] for a list of supported target platforms.
 
 `crystal --version` shows the default target triple of the compiler. It can be changed with the `--target` option.
 
-The flags in each of the following tables are mutually exclusive, except for those marked as *(derived)*.
+The flags in each of the following tables are mutually exclusive, except for those marked as _(derived)_.
 
 [target triple]: http://llvm.org/docs/LangRef.html#target-triple
 [Platform Support]: platform_support.md
@@ -61,8 +61,8 @@ The target architecture is the first component of the target triple.
 | `i386`               | x86 architecture (32-bit)
 | `wasm32`             | WebAssembly
 | `x86_64`             | x86-64 architecture
-| `bits32` *(derived)* | 32-bit architecture
-| `bits64` *(derived)* | 64-bit architecture
+| `bits32` _(derived)_ | 32-bit architecture
+| `bits64` _(derived)_ | 64-bit architecture
 
 #### Vendor
 
@@ -81,7 +81,7 @@ The operating system is derived from the third component of the target triple.
 
 | Flag name          | Description
 | ------------------ | ---------------------------------------------------
-| `bsd` *(derived)*  | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD)
+| `bsd` _(derived)_  | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD)
 | `darwin`           | Darwin (MacOS)
 | `dragonfly`        | DragonFlyBSD
 | `freebsd`          | FreeBSD
@@ -89,7 +89,7 @@ The operating system is derived from the third component of the target triple.
 | `netbsd`           | NetBSD
 | `openbsd`          | OpenBSD
 | `solaris`          | Solaris/illumos
-| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris)
+| `unix` _(derived)_ | UNIX-like (BSD, Darwin, Linux, Solaris)
 | `windows`          | Windows
 
 #### Operating System versions
@@ -108,13 +108,13 @@ The ABI is derived from the last component of the target triple.
 | Flag name           | Description
 | ------------------- | -----------
 | `android`           | Android (Bionic C runtime)
-| `armhf` *(derived)* | ARM EABI with hard float
+| `armhf` _(derived)_ | ARM EABI with hard float
 | `gnu`               | GNU
 | `gnueabihf`         | GNU EABI with hard float
 | `msvc`              | Microsoft Visual C++
 | `musl`              | musl
 | `wasi`              | Web Assembly System Interface
-| `win32` *(derived)* | Windows API
+| `win32` _(derived)_ | Windows API
 
 ### Compiler options
 

@@ -20,9 +20,8 @@ ol-prefix:
   style: "ordered"
 
 # MD004 - Unordered list style should be consistent
-# TODO: Should be `dash` for consistency
 ul-style:
-  style: "asterisk"
+  style: "dash"
 
 # MD007 - Keep list indentation consistent
 ul-indent:
@@ -49,9 +48,8 @@ no-inline-html: false
 no-space-in-code: false
 
 # MD049 - Keep italic text formatting consistent
-# TODO: Should be `underscore` for consistency
 emphasis-style:
-  style: "asterisk"
+  style: "underscore"
 
 # MD050 - Keep bold text formatting consistent
 strong-style:

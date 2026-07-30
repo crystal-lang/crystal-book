@@ -107,13 +107,13 @@ end
 
 The list of valid call conventions is:
 
-* C (the default)
-* Fast
-* Cold
-* WebKit_JS
-* AnyReg
-* X86_StdCall
-* X86_FastCall
+- C (the default)
+- Fast
+- Cold
+- WebKit_JS
+- AnyReg
+- X86_StdCall
+- X86_FastCall
 
 !!! info
     See [LLVM

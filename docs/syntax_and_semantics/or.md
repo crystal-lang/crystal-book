@@ -1,6 +1,6 @@
 # || - Logical OR Operator
 
-An `||` (or) evaluates its left hand side. If it's *falsey*, it evaluates its right hand side and has that value. Otherwise it has the value of the left hand side. Its type is the union of the types of both sides.
+An `||` (or) evaluates its left hand side. If it's _falsey_, it evaluates its right hand side and has that value. Otherwise it has the value of the left hand side. Its type is the union of the types of both sides.
 
 You can think an `||` as syntax sugar of an `if`:
 

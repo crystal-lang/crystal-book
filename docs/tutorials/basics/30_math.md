@@ -4,8 +4,8 @@
 
 The two most common number types are `Int32` and `Float64`. The number in the name denotes the size in bits: `Int32` is a 32-bit [integer type](https://en.wikipedia.org/wiki/Integer_(computer_science)), `Float64` is a 64-bit [floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic).
 
-* An integer literal is written as a series of one or more base-10 digits (`0-9`) without leading zeros. The default type is `Int32`.
-* A floating-point literal is written as a series of two or more base-10 digits (`0-9`) with a point (`.`) somewhere in the middle,
+- An integer literal is written as a series of one or more base-10 digits (`0-9`) without leading zeros. The default type is `Int32`.
+- A floating-point literal is written as a series of two or more base-10 digits (`0-9`) with a point (`.`) somewhere in the middle,
   indicating the decimal point. The default type is `Float64`.
 
 All numeric types allow underscores at any place in the middle. This is useful to write large numbers in a more readable way: `100000` can be written as `100_000`.
@@ -49,7 +49,7 @@ p! 2 > 1,
   1 <= 2
 ```
 
-The universal comparison operator is `<=>`, also called *Spaceship operator* for its appearance. It compares its operands and returns a value that is either zero (both operands are equal),
+The universal comparison operator is `<=>`, also called _Spaceship operator_ for its appearance. It compares its operands and returns a value that is either zero (both operands are equal),
 a positive value (the first operand is bigger), or a negative value (the second operand is bigger). It combines the behaviour of all other comparison operators.
 
 ```crystal-play
@@ -60,8 +60,8 @@ p! 1 <=> 1,
 
 ### Operators
 
-Basic arithmetic operations can be performed with operators. Most operators are *binary* (i.e. two operands), and
-written in infix notation (i.e. between the operands). Some operators are *unary* (i.e. one operand), and written in prefix
+Basic arithmetic operations can be performed with operators. Most operators are _binary_ (i.e. two operands), and
+written in infix notation (i.e. between the operands). Some operators are _unary_ (i.e. one operand), and written in prefix
 notation (i.e. before the operand).
 The value of the expression is the result of the operation.
 

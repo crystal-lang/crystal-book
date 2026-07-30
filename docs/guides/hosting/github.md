@@ -1,14 +1,14 @@
 # Hosting on GitHub
 
-* Create a repository with the same `name` and `description` as specified in your `shard.yml`.
+- Create a repository with the same `name` and `description` as specified in your `shard.yml`.
 
-* Add and commit everything:
+- Add and commit everything:
 
     ```console
     $ git add -A && git commit -am "shard complete"
     ```
 
-* Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
+- Add the remote: (Be sure to replace `<YOUR-GITHUB-USERNAME>` and `<YOUR-REPOSITORY-NAME>` accordingly)
 
     NOTE: If you like, feel free to replace `public` with `origin`, or a remote name of your choosing.
 
@@ -16,7 +16,7 @@
     $ git remote add public https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>.git
     ```
 
-* Push it:
+- Push it:
 
     ```console
     $ git push public master
@@ -33,7 +33,7 @@ Add the following markdown build badge below the description in your README to i
 [![GitHub release](https://img.shields.io/github/release/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>.svg)](https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPOSITORY-NAME>/releases)
 ```
 
-Start by navigating to your repository's *releases* page.
+Start by navigating to your repository's _releases_ page.
 This can be found at `https://github.com/<YOUR-GITHUB-NAME>/<YOUR-REPOSITORY-NAME>/releases`
 
 Click "Create a new release".
@@ -71,12 +71,12 @@ As an extension of the GitHub Actions config, you can add the steps to build the
           ...
 ```
 
--- where the latter `...` placeholder is any of the generic GitHub Actions to push a directory to the *gh-pages* branch. Some options are:
+-- where the latter `...` placeholder is any of the generic GitHub Actions to push a directory to the _gh-pages_ branch. Some options are:
 
-* [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) [[Search](https://github.com/search?q=JamesIves+crystal+path%3A.github%2Fworkflows&type=Code)]
-* [crazy-max/ghaction-github-pages](https://github.com/crazy-max/ghaction-github-pages) [[Search](https://github.com/search?q=%22ghaction-github-pages%22+crystal+path%3A.github%2Fworkflows&type=Code)]
-* [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) [[Search](https://github.com/search?q=peaceiris%2Factions-gh-pages+crystal+path%3A.github%2Fworkflows&type=Code)]
-* [oprypin/push-to-gh-pages](https://github.com/oprypin/push-to-gh-pages) [[Search](https://github.com/search?q=%22oprypin%2Fpush-to-gh-pages%22+crystal+path%3A.github%2Fworkflows&type=Code)]
+- [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) [[Search](https://github.com/search?q=JamesIves+crystal+path%3A.github%2Fworkflows&type=Code)]
+- [crazy-max/ghaction-github-pages](https://github.com/crazy-max/ghaction-github-pages) [[Search](https://github.com/search?q=%22ghaction-github-pages%22+crystal+path%3A.github%2Fworkflows&type=Code)]
+- [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) [[Search](https://github.com/search?q=peaceiris%2Factions-gh-pages+crystal+path%3A.github%2Fworkflows&type=Code)]
+- [oprypin/push-to-gh-pages](https://github.com/oprypin/push-to-gh-pages) [[Search](https://github.com/search?q=%22oprypin%2Fpush-to-gh-pages%22+crystal+path%3A.github%2Fworkflows&type=Code)]
 
 This uses Crystal's built-in API doc generator to make a generic site based on your code and comments to the items in it.
 

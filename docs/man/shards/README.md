@@ -21,7 +21,7 @@ Running [`shards install`](#shards-install) resolves and installs the specified 
 The installed versions are written into a `shard.lock` file for using the exact same dependency versions when running `shards install` again.
 
 If your shard builds an application, both `shard.yml` and `shard.lock` should be checked into version control to provide reproducible dependency installs.
-If it is only a library for other shards to depend on, `shard.lock` should *not* be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../crystal/README.md#crystal-init) does this automatically when initializing a `lib` repository).
+If it is only a library for other shards to depend on, `shard.lock` should _not_ be checked in, only `shard.yml`. It's good advice to add it to `.gitignore` (the [`crystal init`](../crystal/README.md#crystal-init) does this automatically when initializing a `lib` repository).
 
 ## Shards commands
 
@@ -31,25 +31,25 @@ shards [<options>...] [<command>]
 
 If no command is given, `install` will be run by default.
 
-* [`shards build`](#shards-build): Builds an executable
-* [`shards check`](#shards-check): Verifies dependencies are installed
-* [`shards init`](#shards-init): Generates a new `shard.yml`
-* [`shards install`](#shards-install): Resolves and installs dependencies
-* [`shards list`](#shards-list): Lists installed dependencies
-* [`shards prune`](#shards-prune): Removes unused dependencies
-* [`shards update`](#shards-update): Resolves and updates dependencies
-* [`shards version`](#shards-version): Shows version of a shard
+- [`shards build`](#shards-build): Builds an executable
+- [`shards check`](#shards-check): Verifies dependencies are installed
+- [`shards init`](#shards-init): Generates a new `shard.yml`
+- [`shards install`](#shards-install): Resolves and installs dependencies
+- [`shards list`](#shards-list): Lists installed dependencies
+- [`shards prune`](#shards-prune): Removes unused dependencies
+- [`shards update`](#shards-update): Resolves and updates dependencies
+- [`shards version`](#shards-version): Shows version of a shard
 
 To see the available options for a particular command, use `--help` after a command.
 
 **Common options:**
 
-* `--version`: Prints the version of `shards`.
-* `-h, --help`: Prints usage synopsis.
-* `--no-color`: Disabled colored output.
-* `--production`: Runs in release mode. Development dependencies won't be installed and only locked dependencies will be installed. Commands will fail if dependencies in `shard.yml` and `shard.lock` are out of sync (used by `install`, `update`, `check` and `list` command)
-* `-q, --quiet`: Decreases the log verbosity, printing only warnings and errors.
-* `-v, --verbose`: Increases the log verbosity, printing all debug statements.
+- `--version`: Prints the version of `shards`.
+- `-h, --help`: Prints usage synopsis.
+- `--no-color`: Disabled colored output.
+- `--production`: Runs in release mode. Development dependencies won't be installed and only locked dependencies will be installed. Commands will fail if dependencies in `shard.yml` and `shard.lock` are out of sync (used by `install`, `update`, `check` and `list` command)
+- `-q, --quiet`: Decreases the log verbosity, printing only warnings and errors.
+- `-v, --verbose`: Increases the log verbosity, printing all debug statements.
 
 ### `shards build`
 
@@ -72,8 +72,8 @@ Verifies that all dependencies are installed and requirements are satisfied.
 
 Exit status:
 
-* `0`: Dependencies are satisfied.
-* `1`: Dependencies are not satisfied.
+- `0`: Dependencies are satisfied.
+- `1`: Dependencies are not satisfied.
 
 ### `shards init`
 

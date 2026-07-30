@@ -2,12 +2,12 @@
 
 Special macros exist that are invoked in some situations as hooks, at compile time:
 
-* `inherited` is invoked when a subclass is defined. `@type` is the inheriting type.
-* `included` is invoked when a module is included. `@type` is the including type.
-* `extended` is invoked when a module is extended. `@type` is the extending type.
-* `method_missing` is invoked when a method is not found.
-* `method_added` is invoked when a new method is defined in the current scope.
-* `finished` is invoked after parsing finished, so all types and their methods are known.
+- `inherited` is invoked when a subclass is defined. `@type` is the inheriting type.
+- `included` is invoked when a module is included. `@type` is the including type.
+- `extended` is invoked when a module is extended. `@type` is the extending type.
+- `method_missing` is invoked when a method is not found.
+- `method_added` is invoked when a new method is defined in the current scope.
+- `finished` is invoked after parsing finished, so all types and their methods are known.
 
 Example of `inherited`:
 

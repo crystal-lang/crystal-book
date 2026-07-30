@@ -85,10 +85,10 @@ Specifically:
 
 Where Ruby has a a couple of alternative constructs, Crystal has one.
 
-* trailing `while`/`until` are missing. Note however that [if as a suffix](../syntax_and_semantics/as_a_suffix.md) is still available
-* `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
-* Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->` (see [this](../syntax_and_semantics/blocks_and_procs.md) for reference).
-* For `require_relative "foo"` use `require "./foo"`
+- trailing `while`/`until` are missing. Note however that [if as a suffix](../syntax_and_semantics/as_a_suffix.md) is still available
+- `and` and `or`: use `&&` and `||` instead with suitable parentheses to indicate precedence
+- Ruby has `Kernel#proc`, `Kernel#lambda`, `Proc#new` and `->`, while Crystal uses `Proc(*T, R).new` and `->` (see [this](../syntax_and_semantics/blocks_and_procs.md) for reference).
+- For `require_relative "foo"` use `require "./foo"`
 
 ## No autosplat for arrays and enforced maximum block arity
 
@@ -281,10 +281,10 @@ For other methods, it depends. If there's a method named `foo` and another `foo?
 
 Examples for all of the above:
 
-* `Array#[](index)` raises on out of bounds, `Array#[]?(index)` returns nil in that case.
-* `Hash#[](key)` raises if the key is not in the hash, `Hash#[]?(key)` returns nil in that case.
-* `Array#first` raises if the array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
-* There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
+- `Array#[](index)` raises on out of bounds, `Array#[]?(index)` returns nil in that case.
+- `Hash#[](key)` raises if the key is not in the hash, `Hash#[]?(key)` returns nil in that case.
+- `Array#first` raises if the array is empty (there's no "first", so "first" is missing), while `Array#first?` returns nil in that case. Same goes for pop/pop?, shift/shift?, last/last?
+- There's `String#includes?(obj)`, `Enumerable#includes?(obj)` and `Enumerable#all?`, all of which don't have a non-question variant. The previous methods do indeed return true or false, but that is not a necessary condition.
 
 ### `for` loops
 
@@ -459,8 +459,8 @@ Crystal provides a few pseudo-constants which provide reflective data about the 
 
 > TIP: Further reading about `__DIR__` vs. `__dir__`:
 >
-> * [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
-> * [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
+> - [Add an alias for `__dir__` [to Crystal]?](https://github.com/crystal-lang/crystal/issues/8546#issuecomment-561245178)
+> - [Stack Overflow: Why is `__FILE__` uppercase and `__dir__` lowercase [in Ruby]?](https://stackoverflow.com/questions/15190700/why-is-file-uppercase-and-dir-lowercase)
 
 ## Crystal Shards for Ruby Gems
 

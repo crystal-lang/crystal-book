@@ -38,7 +38,7 @@ Official [Docker Images based on Alpine Linux](https://crystal-lang.org/2020/02/
 
 With pre-installed `crystal` compiler, `shards`, and static libraries of all of stdlib's dependencies these Docker images allow to easily build static Crystal binaries even from `glibc`-based systems. The official Crystal compiler builds for Linux are created using these images.
 
-Here's an example how the Docker image can be used to build a statically linked *Hello World* program:
+Here's an example how the Docker image can be used to build a statically linked _Hello World_ program:
 
 ```console
 $ echo 'puts "Hello World!"' > hello-world.cr
@@ -85,7 +85,7 @@ Dynamic libraries have `.so` on Linux and most other POSIX platforms, `.dylib` o
 On most POSIX systems the tool `ldd` shows which dynamic libraries an executable links to. The equivalent
 on macOS is `otool -L` and the equivalent on Windows is `dumpbin /dependents`.
 
-The following example shows the output of `ldd` for a simple *Hello World* program built with Crystal 0.36.1 and LLVM 10.0 on Ubuntu 18.04 LTS (in the `crystallang/crystal:0.36.1` docker image). The result varies on other systems and versions.
+The following example shows the output of `ldd` for a simple _Hello World_ program built with Crystal 0.36.1 and LLVM 10.0 on Ubuntu 18.04 LTS (in the `crystallang/crystal:0.36.1` docker image). The result varies on other systems and versions.
 
 ```console
 $ ldd hello-world_glibc

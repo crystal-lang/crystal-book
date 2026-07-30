@@ -2,16 +2,16 @@
 
 When:
 
-* specifying [type restrictions](type_restrictions.md)
-* specifying [type arguments](generics.md)
-* [declaring variables](declare_var.md)
-* declaring [aliases](alias.md)
-* declaring [typedefs](c_bindings/type.md)
-* the argument of an [is_a?](is_a.md) pseudo-call
-* the argument of an [as](as.md) expression
-* the argument of a [sizeof](sizeof.md) or [instance_sizeof](instance_sizeof.md) expression
-* the argument of an [alignof](alignof.md) or [instance_alignof](instance_alignof.md) expression
-* a method's [return type](return_types.md)
+- specifying [type restrictions](type_restrictions.md)
+- specifying [type arguments](generics.md)
+- [declaring variables](declare_var.md)
+- declaring [aliases](alias.md)
+- declaring [typedefs](c_bindings/type.md)
+- the argument of an [is_a?](is_a.md) pseudo-call
+- the argument of an [as](as.md) expression
+- the argument of a [sizeof](sizeof.md) or [instance_sizeof](instance_sizeof.md) expression
+- the argument of an [alignof](alignof.md) or [instance_alignof](instance_alignof.md) expression
+- a method's [return type](return_types.md)
 
 a convenient syntax is provided for some common types. These are especially useful when writing [C bindings](c_bindings/README.md), but can be used in any of the above locations.
 

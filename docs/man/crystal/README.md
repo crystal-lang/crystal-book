@@ -76,18 +76,18 @@ Not all of these files are required for every project, and some might need more 
 
 ## Compiler commands
 
-* [`crystal init`](#crystal-init): generate a new project
-* [`crystal build`](#crystal-build): build an executable
-* [`crystal docs`](#crystal-docs): generate documentation
-* [`crystal env`](#crystal-env): print Crystal environment information
-* [`crystal eval`](#crystal-eval): eval code from args or standard input
-* [`crystal play`](#crystal-play): starts Crystal playground server
-* [`crystal run`](#crystal-run): build and run program
-* [`crystal spec`](#crystal-spec): build and run specs
-* [`crystal tool`](#crystal-tool): run a compiler tool
-* [`crystal clear_cache`](#crystal-clear_cache): clear the compiler cache
-* `crystal help`: show help about commands and options
-* [`crystal version`](#crystal-version): show version
+- [`crystal init`](#crystal-init): generate a new project
+- [`crystal build`](#crystal-build): build an executable
+- [`crystal docs`](#crystal-docs): generate documentation
+- [`crystal env`](#crystal-env): print Crystal environment information
+- [`crystal eval`](#crystal-eval): eval code from args or standard input
+- [`crystal play`](#crystal-play): starts Crystal playground server
+- [`crystal run`](#crystal-run): build and run program
+- [`crystal spec`](#crystal-spec): build and run specs
+- [`crystal tool`](#crystal-tool): run a compiler tool
+- [`crystal clear_cache`](#crystal-clear_cache): clear the compiler cache
+- `crystal help`: show help about commands and options
+- [`crystal version`](#crystal-version): show version
 
 To see the available options for a particular command, use `--help` after a command:
 
@@ -112,10 +112,10 @@ Hello Crystal!
 
 **Common options:**
 
-* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
-* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
-* `--progress`: Show progress during compilation.
-* `--static`: Link statically.
+- `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+- `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
+- `--progress`: Show progress during compilation.
+- `--static`: Link statically.
 
 More options are described in the integrated help: `crystal run --help` or man page `man crystal`.
 
@@ -140,16 +140,16 @@ Hello Crystal!
 
 **Common options:**
 
-* `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
-* `-D FLAG, --define FLAG`: Define a compile-time flag.
-* `-o <path>`, `--output <path>`: Path to the output file. If a directory, the filename is derived from the first source file (default: current directory).
-* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
-* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
-* `--link-flags FLAGS`: Additional flags to pass to the linker.
-* `--no-debug`: Skip any symbolic debug info, reducing the output file size.
-* `--progress`: Show progress during compilation.
-* `--static`: Link statically.
-* `--verbose`: Display executed commands.
+- `--cross-compile`: Generate a .o file, and print the command to generate an executable to stdout.
+- `-D FLAG, --define FLAG`: Define a compile-time flag.
+- `-o <path>`, `--output <path>`: Path to the output file. If a directory, the filename is derived from the first source file (default: current directory).
+- `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+- `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
+- `--link-flags FLAGS`: Additional flags to pass to the linker.
+- `--no-debug`: Skip any symbolic debug info, reducing the output file size.
+- `--progress`: Show progress during compilation.
+- `--static`: Link statically.
+- `--verbose`: Display executed commands.
 
 More options are described in the integrated help: `crystal build --help` or man page `man crystal`.
 
@@ -176,12 +176,12 @@ NOTE: When running interactively, stdin can usually be closed by typing the end 
 
 **Common options:**
 
-* `-o <output_file>`: Define the name of the binary executable.
-* `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
-* `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
-* `--no-debug`: Skip any symbolic debug info, reducing the output file size.
-* `--progress`: Show progress during compilation.
-* `--static`: Link statically.
+- `-o <output_file>`: Define the name of the binary executable.
+- `-O LEVEL`: Define optimization level: 0 (default), 1, 2, 3. See [Optimizations](#optimizations) for details.
+- `--release`: Compile in release mode. Equivalent to `-O3 --single-module`.
+- `--no-debug`: Skip any symbolic debug info, reducing the output file size.
+- `--progress`: Show progress during compilation.
+- `--static`: Link statically.
 
 More options are described in the integrated help: `crystal eval --help` or man page `man crystal`.
 
@@ -249,10 +249,10 @@ crystal docs src/my_app.cr
 
 **Common options:**
 
-* `--project-name=NAME`: Set the project name. The default value is extracted from `shard.yml` if available. In case no default can be found, this option is mandatory.
-* `--project-version=VERSION`: Set the project version. The default value is extracted from current git commit or `shard.yml` if available. In case no default can be found, this option is mandatory.
-* `--output=DIR, -o DIR`: Set the output directory (default: `./docs`)
-* `--canonical-base-url=URL, -b URL`: Set the [canonical base url](https://en.wikipedia.org/wiki/Canonical_link_element)
+- `--project-name=NAME`: Set the project name. The default value is extracted from `shard.yml` if available. In case no default can be found, this option is mandatory.
+- `--project-version=VERSION`: Set the project version. The default value is extracted from current git commit or `shard.yml` if available. In case no default can be found, this option is mandatory.
+- `--output=DIR, -o DIR`: Set the output directory (default: `./docs`)
+- `--canonical-base-url=URL, -b URL`: Set the [canonical base url](https://en.wikipedia.org/wiki/Canonical_link_element)
 
 For the above example to output the docs at `public` with custom canonical base url, and entrypoint `src/my_app.cr`,
 the following arguments can be used:
@@ -306,26 +306,26 @@ Run `crystal spec --options` for available preceding options.
 `runner_options` are provided to the compiled binary executable which runs the specs. They should be separated from
 the other arguments by a double dash (`--`).
 
-* `--verbose`, `-v`: Prints verbose output, including all example names.
-* `--profile`, `-p`: Prints the 10 slowest specs.
-* `--fail-fast`: Abort the spec run on first failure.
-* `--junit_output <output_dir>`: Generates JUnit XML output.
-* `--tap`: Generates output for the [*Test Anything Protocol* (TAP)](https://testanything.org/).
-* `--(no-)color`: Enables ANSI colored output. The default mode automatically enables color if STDOUT is a TTY.
-* `--order <mode>`: Run examples in the given order. `<mode>` is either `default` (definition order), `random`, or a numeric seed value. Default value is `default`.
-* `--list-tags`: Lists all defined tags and exits.
-* `--dry-run`: Passes all tests without actually executing them.
-* `--help`, `-h`: Prints help and exits.
+- `--verbose`, `-v`: Prints verbose output, including all example names.
+- `--profile`, `-p`: Prints the 10 slowest specs.
+- `--fail-fast`: Abort the spec run on first failure.
+- `--junit_output <output_dir>`: Generates JUnit XML output.
+- `--tap`: Generates output for the [*Test Anything Protocol* (TAP)](https://testanything.org/).
+- `--(no-)color`: Enables ANSI colored output. The default mode automatically enables color if STDOUT is a TTY.
+- `--order <mode>`: Run examples in the given order. `<mode>` is either `default` (definition order), `random`, or a numeric seed value. Default value is `default`.
+- `--list-tags`: Lists all defined tags and exits.
+- `--dry-run`: Passes all tests without actually executing them.
+- `--help`, `-h`: Prints help and exits.
 
 The following runner options can be combined to filter the list of specs to run.
 
-* `--example <name>`, `-e <name>`: Runs examples whose full nested names include `<name>`.
-* `--line <line>`, `-l <line>`: Runs examples whose line matches `<line>`.
-* `--location <file>:<line>`: Runs example(s) at `<line>` in `<file>` (multiple options allowed).
-* `--tag <tag>`: Runs examples with the specified tag, or excludes examples by adding `~` before the tag (multiple options allowed).
-    * `--tag a --tag b` will include specs tagged with `a` OR `b`.
-    * `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
-    * `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
+- `--example <name>`, `-e <name>`: Runs examples whose full nested names include `<name>`.
+- `--line <line>`, `-l <line>`: Runs examples whose line matches `<line>`.
+- `--location <file>:<line>`: Runs example(s) at `<line>` in `<file>` (multiple options allowed).
+- `--tag <tag>`: Runs examples with the specified tag, or excludes examples by adding `~` before the tag (multiple options allowed).
+    - `--tag a --tag b` will include specs tagged with `a` OR `b`.
+    - `--tag ~a --tag ~b` will include specs not tagged with `a` AND not tagged with `b`.
+    - `--tag a --tag ~b` will include specs tagged with `a`, but not tagged with `b`
 
 Example:
 
@@ -363,15 +363,15 @@ crystal play [--port <port>] [--binding <host>] [--verbose] [file]
 
 ### `crystal tool`
 
-* `crystal tool context`: Show context for given location
-* [`crystal tool dependencies`](#crystal-tool-dependencies): Show tree of required source files
-* `crystal tool expand`: Show macro expansion for given location
-* `crystal tool flags`: Print all macro `flag?` values
-* [`crystal tool format`](#crystal-tool-format): Format Crystal files
-* `crystal tool hierarchy`: Show type hierarchy
-* `crystal tool implementations`: Show implementations for given call in location
-* `crystal tool types`: Show types of main variables
-* [`crystal tool unreachable`](#crystal-tool-unreachable): Show methods that are never called.
+- `crystal tool context`: Show context for given location
+- [`crystal tool dependencies`](#crystal-tool-dependencies): Show tree of required source files
+- `crystal tool expand`: Show macro expansion for given location
+- `crystal tool flags`: Print all macro `flag?` values
+- [`crystal tool format`](#crystal-tool-format): Format Crystal files
+- `crystal tool hierarchy`: Show type hierarchy
+- `crystal tool implementations`: Show implementations for given call in location
+- `crystal tool types`: Show types of main variables
+- [`crystal tool unreachable`](#crystal-tool-unreachable): Show methods that are never called.
 
 ### `crystal tool dependencies`
 
@@ -383,23 +383,23 @@ crystal tool dependencies [options] [programfile]
 
 Options:
 
-* `-D FLAG`, `--define FLAG`: Define a compile-time flag. This is useful to
+- `-D FLAG`, `--define FLAG`: Define a compile-time flag. This is useful to
   conditionally define types, methods, or commands based on flags available at
   compile time. The default flags are from the target triple given with
   `--target-triple` or the hosts default, if none is given.
-* `-f FORMAT`, `--format FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
-* `-i PATH`, `--include PATH`: Include path in output.
-* `-e PATH`, `--exclude PATH`: Exclude path in output.
-* `--verbose`: Show skipped and heads of filtered paths
-* `--error-trace`: Show full error trace.
-* `-h`, `--help`: Show this message
-* `--prelude PATH`: Specify prelude to use. The default one initializes the garbage
+- `-f FORMAT`, `--format FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
+- `-i PATH`, `--include PATH`: Include path in output.
+- `-e PATH`, `--exclude PATH`: Exclude path in output.
+- `--verbose`: Show skipped and heads of filtered paths
+- `--error-trace`: Show full error trace.
+- `-h`, `--help`: Show this message
+- `--prelude PATH`: Specify prelude to use. The default one initializes the garbage
   collector. You can also use `--prelude=empty` to use no preludes. This can be
   useful for checking code generation for a specific source code file.
-* `-s`, `--stats`: Enable statistics output
-* `-p`, `--progress`: Enable progress output
-* `-t`, `--time`: Enable execution time output
-* `--stdin-filename`: Source file name to be read from STDIN
+- `-s`, `--stats`: Enable statistics output
+- `-p`, `--progress`: Enable progress output
+- `-t`, `--time`: Enable execution time output
+- `--stdin-filename`: Source file name to be read from STDIN
 
 ### `crystal tool format`
 
@@ -426,28 +426,28 @@ The text output is a list of lines with columns separated by tab.
 
 Output fields:
 
-* `count`: sum of all calls to this method (only with `--tallies` option; otherwise skipped)
-* `location`: pathname, line and column, all separated by colon
-* `name`
-* `lines`: length of the def in lines
-* `annotations`
+- `count`: sum of all calls to this method (only with `--tallies` option; otherwise skipped)
+- `location`: pathname, line and column, all separated by colon
+- `name`
+- `lines`: length of the def in lines
+- `annotations`
 
 Options:
 
-* `-D FLAG`, `--define FLAG`: Define a compile-time flag
-* `-f FORMAT`, `--format FORMAT`: Output format `text` (default), `json`, or `csv`
-* `--tallies`: Print reachable methods and their call counts as well.
-* `--check`: Exit with error if there is any unreachable code.
-* `--error-trace`: Show full error trace
-* `-h`, `--help`: Show this message
-* `-i PATH`, `--include PATH`: Include path
-* `-e PATH`, `--exclude PATH`: Exclude path (default: `lib`)
-* `--no-color`: Disable colored output
-* `--prelude PATH`: Use given file as prelude
-* `-s`, `--stats`: Enable statistics output
-* `-p`, `--progress`: Enable progress output
-* `-t`, `--time`: Enable execution time output
-* `--stdin-filename`: Source file name to be read from STDIN
+- `-D FLAG`, `--define FLAG`: Define a compile-time flag
+- `-f FORMAT`, `--format FORMAT`: Output format `text` (default), `json`, or `csv`
+- `--tallies`: Print reachable methods and their call counts as well.
+- `--check`: Exit with error if there is any unreachable code.
+- `--error-trace`: Show full error trace
+- `-h`, `--help`: Show this message
+- `-i PATH`, `--include PATH`: Include path
+- `-e PATH`, `--exclude PATH`: Exclude path (default: `lib`)
+- `--no-color`: Disable colored output
+- `--prelude PATH`: Use given file as prelude
+- `-s`, `--stats`: Enable statistics output
+- `-p`, `--progress`: Enable progress output
+- `-t`, `--time`: Enable execution time output
+- `--stdin-filename`: Source file name to be read from STDIN
 
 ### `crystal clear_cache`
 
@@ -461,22 +461,22 @@ It's a trade-off between compilation performance (decreasing per optimization le
 Production builds should usually have the highest optimization level.
 Best results are achieved with `--release` which also implies `--single-module`.
 
-* `-O0`: No optimization (default)
-* `-O1`: Low optimization
-* `-O2`: Middle optimization
-* `-O3`: High optimization
-* `-Os`: Middle optimization with focus on file size
-* `-Oz`: Middle optimization aggressively focused on file size
+- `-O0`: No optimization (default)
+- `-O1`: Low optimization
+- `-O2`: Middle optimization
+- `-O3`: High optimization
+- `-Os`: Middle optimization with focus on file size
+- `-Oz`: Middle optimization aggressively focused on file size
 
 ## Environment variables
 
 The following environment variables are used by the Crystal compiler if set in the environment. Otherwise the compiler will populate them with default values. Their values can be inspected using [`crystal env`](#crystal-env).
 
-* `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with [`crystal run`](#crystal-run) rather than [`crystal build`](#crystal-build).
+- `CRYSTAL_CACHE_DIR`: Defines path where Crystal caches partial compilation results for faster subsequent builds. This path is also used to temporarily store executables when Crystal programs are run with [`crystal run`](#crystal-run) rather than [`crystal build`](#crystal-build).
   Default value is the first directory that either exists or can be created of `${XDG_CACHE_HOME}/crystal` (if `XDG_CACHE_HOME` is defined), `${HOME}/.cache/crystal`, `${HOME}/.crystal`, `./.crystal`. If `CRYSTAL_CACHE_DIR` is set but points to a path that is not writeable, the default values are used instead.
-* `CRYSTAL_EXEC_PATH`: Determines the path where *crystal* looks for external sub-commands.
-* `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
-* `CRYSTAL_VERSION` is only available as output of [`crystal env`](#crystal-env). The compiler neither sets nor reads it.
-* `CRYSTAL_LIBRARY_PATH`: The compiler uses the paths in this variable as a first lookup destination for static and dynamic libraries that are to be linked. For example, if static libraries are put in `build/libs`, setting the environment variable accordingly will tell the compiler to look for libraries there.
+- `CRYSTAL_EXEC_PATH`: Determines the path where _crystal_ looks for external sub-commands.
+- `CRYSTAL_PATH`: Defines paths where Crystal searches for required files.
+- `CRYSTAL_VERSION` is only available as output of [`crystal env`](#crystal-env). The compiler neither sets nor reads it.
+- `CRYSTAL_LIBRARY_PATH`: The compiler uses the paths in this variable as a first lookup destination for static and dynamic libraries that are to be linked. For example, if static libraries are put in `build/libs`, setting the environment variable accordingly will tell the compiler to look for libraries there.
 
 The compiler conforms to [`NO_COLOR`](https://no-color.org/) and turns off ANSI color escapes in the terminal when the environment variable `NO_COLOR` is present (has a value other than the empty string).

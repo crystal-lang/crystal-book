@@ -38,24 +38,24 @@ Test cases that have been defined or outlined but are not yet expected to work c
 
 An `it` block contains an example that should invoke the code to be tested and define what is expected of it. Each example can contain multiple expectations, but it should test only one specific behaviour.
 
-When `spec` is included, every object has the instance methods `#should` and `#should_not`. These methods are invoked on the value being tested with an expectation as argument. If the expectation is met, code execution continues. Otherwise the example has *failed* and other code in this block will not be executed.
+When `spec` is included, every object has the instance methods `#should` and `#should_not`. These methods are invoked on the value being tested with an expectation as argument. If the expectation is met, code execution continues. Otherwise the example has _failed_ and other code in this block will not be executed.
 
 In test files, specs are structured by example groups which are defined by `describe` and `context` sections. Typically a top level `describe` defines the outer unit (such as a class) to be tested by the spec. Further `describe` sections can be nested within the outer unit to specify smaller units under test (such as individual methods).
 
 For unit tests, it is recommended to follow the conventions for method names: Outer `describe` is the name of the class, inner `describe` targets methods. Instance methods are prefixed with `#`, class methods with `.`.
 
-To establish certain contexts - think *empty array* versus *array with elements* - the `context` method may be used to communicate this to the reader. It has a different name, but behaves exactly like `describe`.
+To establish certain contexts - think _empty array_ versus _array with elements_ - the `context` method may be used to communicate this to the reader. It has a different name, but behaves exactly like `describe`.
 
 `describe` and `context` take a description as argument (which should usually be a string) and a block containing the individual specs or nested groupings.
 
 ## Expectations
 
-Expectations define if the value being tested (*actual*) matches a certain value or specific criteria.
+Expectations define if the value being tested (_actual_) matches a certain value or specific criteria.
 
 ### Equivalence, Identity and Type
 
 There are methods to create expectations which test for equivalence (`eq`), identity (`be`), type (`be_a`), and nil (`be_nil`).
-Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to *the same object* instead of *an equivalent one*. This is only possible for reference types and won't work for value types like structs or numbers.
+Note that the identity expectation uses `.same?` which tests if [`#object_id`](https://crystal-lang.org/api/Reference.html#object_id%3AUInt64-instance-method) are identical. This is only true if the expected value points to _the same object_ instead of _an equivalent one_. This is only possible for reference types and won't work for value types like structs or numbers.
 
 ```crystal
 actual.should eq(expected)   # passes if actual == expected

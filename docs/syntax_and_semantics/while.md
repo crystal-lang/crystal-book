@@ -1,6 +1,6 @@
 # while
 
-A `while` executes its body as long as its condition is *truthy*.
+A `while` executes its body as long as its condition is _truthy_.
 
 ```crystal
 while some_condition
@@ -8,7 +8,7 @@ while some_condition
 end
 ```
 
-The condition is first tested and, if *truthy*, the body is executed. That is, the body might never be executed.
+The condition is first tested and, if _truthy_, the body is executed. That is, the body might never be executed.
 
 Similar to an `if`, if a `while`'s condition is a variable, the variable is guaranteed to not be `nil` inside the body. If the condition is an `var.is_a?(Type)` test, `var` is guaranteed to be of type `Type` inside the body. And if the condition is a `var.responds_to?(:method)`, `var` is guaranteed to be of a type that responds to that method.
 
