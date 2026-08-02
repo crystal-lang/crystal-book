@@ -27,7 +27,7 @@ The following program shows the use of compile-time flags by printing the target
 ```
 
 There's also the macro method [`host_flag?`][host_flag?]
-which returns whether a flag is set for the *host* platform, which can differ
+which returns whether a flag is set for the _host_ platform, which can differ
 from the target platform (queried by `flag?`) during cross-compilation.
 
 [flag?]: https://crystal-lang.org/api/Crystal/Macros.html#flag%3F%28name%29%3ABoolLiteral-instance-method
@@ -44,7 +44,7 @@ See [Platform Support] for a list of supported target platforms.
 
 `crystal --version` shows the default target triple of the compiler. It can be changed with the `--target` option.
 
-The flags in each of the following tables are mutually exclusive, except for those marked as *(derived)*.
+The flags in each of the following tables are mutually exclusive, except for those marked as _(derived)_.
 
 [target triple]: http://llvm.org/docs/LangRef.html#target-triple
 [Platform Support]: platform_support.md
@@ -61,8 +61,8 @@ The target architecture is the first component of the target triple.
 | `i386`               | x86 architecture (32-bit)
 | `wasm32`             | WebAssembly
 | `x86_64`             | x86-64 architecture
-| `bits32` *(derived)* | 32-bit architecture
-| `bits64` *(derived)* | 64-bit architecture
+| `bits32` _(derived)_ | 32-bit architecture
+| `bits64` _(derived)_ | 64-bit architecture
 
 #### Vendor
 
@@ -81,7 +81,7 @@ The operating system is derived from the third component of the target triple.
 
 | Flag name          | Description
 | ------------------ | ---------------------------------------------------
-| `bsd` *(derived)*  | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD)
+| `bsd` _(derived)_  | BSD family (DragonFlyBSD, FreeBSD, NetBSD, OpenBSD)
 | `darwin`           | Darwin (MacOS)
 | `dragonfly`        | DragonFlyBSD
 | `freebsd`          | FreeBSD
@@ -89,7 +89,7 @@ The operating system is derived from the third component of the target triple.
 | `netbsd`           | NetBSD
 | `openbsd`          | OpenBSD
 | `solaris`          | Solaris/illumos
-| `unix` *(derived)* | UNIX-like (BSD, Darwin, Linux, Solaris)
+| `unix` _(derived)_ | UNIX-like (BSD, Darwin, Linux, Solaris)
 | `windows`          | Windows
 
 #### Operating System versions
@@ -108,13 +108,13 @@ The ABI is derived from the last component of the target triple.
 | Flag name           | Description
 | ------------------- | -----------
 | `android`           | Android (Bionic C runtime)
-| `armhf` *(derived)* | ARM EABI with hard float
+| `armhf` _(derived)_ | ARM EABI with hard float
 | `gnu`               | GNU
 | `gnueabihf`         | GNU EABI with hard float
 | `msvc`              | Microsoft Visual C++
 | `musl`              | musl
 | `wasi`              | Web Assembly System Interface
-| `win32` *(derived)* | Windows API
+| `win32` _(derived)_ | Windows API
 
 ### Compiler options
 
@@ -154,18 +154,24 @@ Crystal program.
 | `evloop=epoll`, `evloop=kqueue`, `evloop=libevent` | Select event loop driver ([RFC 0009]). Introduced in 1.15
 | `evloop=io_uring`                                  | Select experimental io_uring event loop driver. Introduced in 1.20 [#16264]
 | `io_uring_sq_thread_idle=<milliseconds>`           | Enable SQPOLL mode and set idle time for io_uring event loop. Introduced in 1.20 [#16264]
-| `execution_context`                                | Enable execution contexts preview ([RFC 0002]). [Introduced in 1.16][#15350]
 | `execvpe_impl`                                     | Experimental flag for choosing the custom `execvpe` implementation instead of the system function. Introduced in 1.19
-| `preview_mt`                                       | Enables multithreading preview. Introduced in 0.28.0 ([#7546])
 | `skip_crystal_compiler_rt`                         | Exclude Crystal's native `compiler-rt` implementation.
 | `tracing`                                          | Build with support for [runtime tracing].
 | `use_libiconv`                                     | Use `libiconv` instead of the `iconv` system library
-| `use_pcre2`                                        | Use PCRE2 as regex engine (instead of legacy PCRE). Introduced in 1.7.0.
 | `use_pcre`                                         | Use PCRE as regex engine (instead of PCRE2). Introduced in 1.8.0.
 | `win7`                                             | Use Win32 WinNT API for Windows 7
 | `without_iconv`                                    | Do not link `iconv`/`libiconv`
+| `without_main`                                     | Do not generate a `main` function. Introduced in 1.21 ([#17074])
 | `without_openssl`                                  | Build without OpenSSL support
 | `without_zlib`                                     | Build without Zlib support
+
+These flags select the concurrency and parallel runtime:
+
+| Flag name           | Description
+| --------------------| -----------
+| `execution_context` | Enable execution contexts ([RFC 0002]). Introduced in 1.16 ([#15350]). Obsolete since 1.21 ([#17100]).
+| `preview_mt`        | Revert to legacy multithreading runtime. Introduced in 0.28 ([#7546]). Deprecated since 1.21 [#17100].
+| `without_mt`        | Revert to legacy singlethreading runtime. Introduced in 1.21 [#17100].
 
 [#5314]: https://github.com/crystal-lang/crystal/pull/5314
 [RFC 0009]: https://github.com/crystal-lang/rfcs/blob/main/text/0009-lifetime-event_loop.md#availability
@@ -173,6 +179,8 @@ Crystal program.
 [#15350]: https://github.com/crystal-lang/crystal/issues/15350
 [#7546]: https://github.com/crystal-lang/crystal/pull/7546
 [#16264]: https://github.com/crystal-lang/crystal/pull/16264
+[#17074]: https://github.com/crystal-lang/crystal/pull/17074
+[#17100]: https://github.com/crystal-lang/crystal/pull/17100
 [runtime tracing]: ../guides/runtime_tracing.md
 
 ### Language features

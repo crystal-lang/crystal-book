@@ -7,7 +7,10 @@
 
   languages.python = {
     enable = true;
-    venv.enable = true;
+    venv = {
+      enable = true;
+      requirements = ./requirements.txt;
+    };
   };
 
   scripts = {
@@ -22,7 +25,7 @@
     actionlint.enable = true;
     check-toml.enable = true;
     check-vcs-permalinks.enable = true;
-    markdownlint.enable = true;
+    rumdl.enable = true;
     shellcheck = {
       enable = true;
       excludes = [

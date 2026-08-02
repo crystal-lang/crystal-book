@@ -40,7 +40,7 @@ The behavior of the pool can be configured from a set of parameters that can app
 | max\_idle\_pool\_size | 1
 | checkout\_timeout     | 5.0 \(seconds\)
 | retry\_attempts       | 1
-| retry\_delay          | 1.0 \(seconds\)
+| retry\_delay          | 0.2 \(seconds\)
 
 When `DB::Database` is opened an initial number of `initial_pool_size` connections will be created. The pool will never hold more than `max_pool_size` connections. When returning/releasing a connection to the pool it will be closed if there are already `max_idle_pool_size` idle connections.
 

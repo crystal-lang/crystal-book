@@ -74,9 +74,9 @@ jobs:
       - ...
 ```
 
-All those versions will be tested for *in parallel*.
+All those versions will be tested for _in parallel_.
 
-By specifying the version of Crystal you could even opt *out* of supporting the latest version (which *is* a moving target), and only support particular ones.
+By specifying the version of Crystal you could even opt _out_ of supporting the latest version (which _is_ a moving target), and only support particular ones.
 
 ### Testing on multiple operating systems
 
@@ -127,7 +127,7 @@ If you want to verify that all your code has been formatted with [`crystal tool 
         run: crystal tool format --check
 ```
 
-Consider also adding this check as a *Git pre-commit hook* for yourself.
+Consider also adding this check as a _Git pre-commit hook_ for yourself.
 
 ## Using the official Docker image
 
@@ -171,7 +171,7 @@ The safe approach is to add the [actions/cache](https://github.com/actions/cache
 DANGER: **Important.**
 You **must** use the separate [`key` and `restore-keys`](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#matching-a-cache-key). With just a static key, the cache would save only the state after the very first run and then keep reusing it forever, regardless of any changes.
 
-But this saves us only the time spent *downloading* the repositories initially.
+But this saves us only the time spent _downloading_ the repositories initially.
 
 A "braver" approach is to cache the `lib` directory itself, but that works only if you fully rely on `shard.lock` (see [Latest or locked dependencies?](#latest-or-locked-dependencies)):
 
@@ -189,7 +189,7 @@ Note that we also made the installation conditional on `shards check`. That save
 
 ## Publishing executables
 
-If your project is an application, you likely want to distribute it as an executable ("binary") file. For the case of Linux x86_64, by far the most popular option is to build and [link statically](../static_linking.md) [on Alpine Linux](../static_linking.md#linux). This means that you *cannot* use GitHub's default Ubuntu container and the install action. Instead, just use the official container:
+If your project is an application, you likely want to distribute it as an executable ("binary") file. For the case of Linux x86_64, by far the most popular option is to build and [link statically](../static_linking.md) [on Alpine Linux](../static_linking.md#linux). This means that you _cannot_ use GitHub's default Ubuntu container and the install action. Instead, just use the official container:
 
 ```yaml title=".github/workflows/release.yml" hl_lines="5 8"
 jobs:
@@ -204,10 +204,10 @@ jobs:
 
 These steps would be followed by some action to publish the produced executable (`bin/*`), in one of the two ways (or both of them):
 
-* As part of a release: [see complete example](https://github.com/Blacksmoke16/oq/blob/56bd3d306ede15e86481d7b5db4af7f89b85a37f/.github/workflows/deployment.yml).
+- As part of a release: [see complete example](https://github.com/Blacksmoke16/oq/blob/56bd3d306ede15e86481d7b5db4af7f89b85a37f/.github/workflows/deployment.yml).
   Then in your README you can link to the latest release using a URL such as https://github.com/:username/:reponame/releases/latest
 
-* As part of the CI done for every commit, via [actions/upload-artifact](https://github.com/actions/upload-artifact).
+- As part of the CI done for every commit, via [actions/upload-artifact](https://github.com/actions/upload-artifact).
   Then consider linking to the latest "nightly" build using the external service https://nightly.link/
 
 Distributing executables for macOS ([search for examples](https://github.com/search?q=%22macos-latest%22+%22shards+build%22+%22--release%22+dylib+path%3A.github%2Fworkflows&type=Code)) and Windows ([search for examples](https://github.com/search?l=YAML&q=%22windows-latest%22+%22shards+build%22+%22--release%22+path%3A.github%2Fworkflows&type=Code)) is also possible.

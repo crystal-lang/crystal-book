@@ -8,16 +8,16 @@ argument `b`.
 
 There are however some special rules regarding operator syntax:
 
-* The dot (`.`) usually put between receiver and method name
-  (i.e. the *operator*) can be omitted.
-* Chained sequences of operator calls are restructured by the compiler in order
+- The dot (`.`) usually put between receiver and method name
+  (i.e. the _operator_) can be omitted.
+- Chained sequences of operator calls are restructured by the compiler in order
   to implement [operator precedence](#operator-precedence).
   Enforcing operator precedence makes sure that an expression such as
   `1 * 2 + 3 * 4` is parsed as `(1 * 2) + (2 * 3)` to honour regular math rules.
-* Regular method names must start with a letter or underscore, but operators
+- Regular method names must start with a letter or underscore, but operators
   only consist of special characters. Any method not starting with a letter or
   underscore is an operator method.
-* Available operators are whitelisted in the compiler (see
+- Available operators are whitelisted in the compiler (see
   [List of Operators](#list-of-operators) below) which allows symbol-only method
   names and treats them as operators, including their precedence rules.
 
@@ -36,7 +36,7 @@ A few operators are defined directly by the compiler and cannot be redefined
 in user code. Examples for this are the inversion operator `!`, the assignment
 operator `=`, [combined assignment operators](#combined-assignments) such as
 `||=` and [range operators](#range). Whether a method can be redefined is
-indicated by the column *Overloadable* in the below operator tables.
+indicated by the column _Overloadable_ in the below operator tables.
 
 ### Unary operators
 
@@ -193,7 +193,7 @@ ones.
 <span id="equality-and-comparison" />
 
 Relational operators test a relation between two values.
-They include *equality*, *inequalities*, and *subsumption*.
+They include _equality_, _inequalities_, and _subsumption_.
 
 #### Equality
 
@@ -227,7 +227,7 @@ take care themselves.
 
 Inequality operators describe the order between values.
 
-The **three-way comparison operator** `<=>` (also known as *spaceship operator*)
+The **three-way comparison operator** `<=>` (also known as _spaceship operator_)
 expresses the order between two elements expressed by the sign of its
 return value.
 
@@ -250,7 +250,7 @@ matches the value of the second operand with pattern matching.
 The **no pattern match operator** `!~` expresses the inverse.
 
 The **case subsumption operator** `===` (also, imprecisely called
-*case equality operator* or *triple equals*) checks whether the right hand
+_case equality operator_ or _triple equals_) checks whether the right hand
 operand is a member of the set described by the left hand operator.
 The exact interpretation varies depending on the involved data types.
 
@@ -335,14 +335,14 @@ transform that into `a = a <op> b`.
 
 Exceptions to the general expansion formula are the logical operators:
 
-* `a ||= b` transforms to `a || (a = b)`
-* `a &&= b` transforms to `a && (a = b)`
+- `a ||= b` transforms to `a || (a = b)`
+- `a &&= b` transforms to `a && (a = b)`
 
 There is another special case when `a` is an index accessor (`[]`), it is
 changed to the nilable variant (`[]?`) on the left hand side:
 
-* `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
-* `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
+- `a[i] ||= b` transforms to `a[i]? || (a[i] = b)`
+- `a[i] &&= b` transforms to `a[i]? && (a[i] = b)`
 
 All transformations assume the receiver (`a`) is a variable. If it is a call,
 the replacements are semantically equivalent but the implementation is a bit
@@ -353,23 +353,23 @@ The receiver can't be anything else than a variable or call.
 
 | Operator           | Description                              | Example                   | Overloadable | Associativity
 | ------------------ | ---------------------------------------- | ------------------------- | ------------ | -------------
-| `+=`               | addition *and* assignment                | `i += 1`                  | no           | right
-| `&+=`              | wrapping addition *and* assignment       | `i &+= 1`                 | no           | right
-| `-=`               | subtraction *and* assignment             | `i -= 1`                  | no           | right
-| `&-=`              | wrapping subtraction *and* assignment    | `i &-= 1`                 | no           | right
-| `*=`               | multiplication *and* assignment          | `i *= 1`                  | no           | right
-| `&*=`              | wrapping multiplication *and* assignment | `i &*= 1`                 | no           | right
-| `/=`               | division *and* assignment                | `i /= 1`                  | no           | right
-| `//=`              | floor division *and* assignment          | `i //= 1`                 | no           | right
-| `%=`               | modulo *and* assignment                  | `i %= 1`                  | yes          | right
-| <code>\|=</code>   | binary or *and* assignment               | <code>i \|= 1</code>      | no           | right
-| `&=`               | binary and *and* assignment              | `i &= 1`                  | no           | right
-| `^=`               | binary xor *and* assignment              | `i ^= 1`                  | no           | right
-| `**=`              | exponential *and* assignment             | `i **= 1`                 | no           | right
-| `<<=`              | left shift *and* assignment              | `i <<= 1`                 | no           | right
-| `>>=`              | right shift *and* assignment             | `i >>= 1`                 | no           | right
-| <code>\|\|=</code> | logical or *and* assignment              | <code>i \|\|= true</code> | no           | right
-| `&&=`              | logical and *and* assignment             | `i &&= true`              | no           | right
+| `+=`               | addition _and_ assignment                | `i += 1`                  | no           | right
+| `&+=`              | wrapping addition _and_ assignment       | `i &+= 1`                 | no           | right
+| `-=`               | subtraction _and_ assignment             | `i -= 1`                  | no           | right
+| `&-=`              | wrapping subtraction _and_ assignment    | `i &-= 1`                 | no           | right
+| `*=`               | multiplication _and_ assignment          | `i *= 1`                  | no           | right
+| `&*=`              | wrapping multiplication _and_ assignment | `i &*= 1`                 | no           | right
+| `/=`               | division _and_ assignment                | `i /= 1`                  | no           | right
+| `//=`              | floor division _and_ assignment          | `i //= 1`                 | no           | right
+| `%=`               | modulo _and_ assignment                  | `i %= 1`                  | yes          | right
+| <code>\|=</code>   | binary or _and_ assignment               | <code>i \|= 1</code>      | no           | right
+| `&=`               | binary and _and_ assignment              | `i &= 1`                  | no           | right
+| `^=`               | binary xor _and_ assignment              | `i ^= 1`                  | no           | right
+| `**=`              | exponential _and_ assignment             | `i **= 1`                 | no           | right
+| `<<=`              | left shift _and_ assignment              | `i <<= 1`                 | no           | right
+| `>>=`              | right shift _and_ assignment             | `i >>= 1`                 | no           | right
+| <code>\|\|=</code> | logical or _and_ assignment              | <code>i \|\|= true</code> | no           | right
+| `&&=`              | logical and _and_ assignment             | `i &&= true`              | no           | right
 
 ### Index Accessors
 

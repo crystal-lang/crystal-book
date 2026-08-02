@@ -6,9 +6,11 @@ The definitions of "concurrency" and "parallelism" sometimes get mixed up, but t
 
 A concurrent system is one that can be in charge of many tasks, although not necessarily executing them at the same time. You can think of yourself being in the kitchen cooking: you chop an onion, put it to fry, and while it's being fried you chop a tomato, but you are not doing all of those things at the same time: you distribute your time between those tasks. Parallelism would be to stir fry onions with one hand while with the other one you chop a tomato.
 
-At the moment of this writing, Crystal has concurrency support but not parallelism: several tasks can be executed, and a bit of time will be spent on each of these, but two code paths are never executed at the same exact time.
+Crystal supports both concurrency and parallelism: several tasks can be executed, and a bit of time will be spent on each of these, and two code paths may be executed at the same exact time.
 
-A Crystal program by default executes in a single operating system thread, except for the garbage collector (currently [Boehm GC](http://www.hboehm.info/gc/)). Parallelism is supported, but it is currently considered experimental. Check out [this Crystal Blog post about parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html) for more information.
+A Crystal program by default executes a single fiber at a time, thus concurrent only, while parallelism is opt-in. See the [documentation about parallelism](./parallelism.md) for details.
+
+The examples on this page assume that the runtime is concurrent only and that the program didn't opt-in to MT. The demonstrated properties are still valid with MT enabled, but the order of operations and the expected output may be slightly different because fibers may not run sequentially anymore.
 
 ### Fibers
 
@@ -26,10 +28,10 @@ Crystal has Channels inspired by [CSP](https://en.wikipedia.org/wiki/Communicati
 
 When a program starts, it fires up a main fiber that will execute your top-level code. There, one can spawn many other fibers. The components of a program are:
 
-* The Runtime Scheduler, in charge of executing all fibers when the time is right.
-* The Event Loop, which is just another fiber, being in charge of async tasks, like for example files, sockets, pipes, signals and timers (like doing a `sleep`).
-* Channels, to communicate data between fibers. The Runtime Scheduler will coordinate fibers and channels for their communication.
-* Garbage Collector: to clean up "no longer used" memory.
+- The Runtime Scheduler(s), in charge of executing all fibers when the time is right.
+- The Event Loop, being in charge of async tasks, like for example files, sockets, pipes, signals and timers (like doing a `sleep`).
+- Channels, to communicate data between fibers. The Runtime Scheduler will coordinate fibers and channels for their communication.
+- Garbage Collector: to clean up "no longer used" memory.
 
 ### A Fiber
 
@@ -43,17 +45,17 @@ A Fiber is much more lightweight than a thread: even though it's assigned 8MB, i
 
 On a 64-bit machine it lets us spawn millions and millions of fibers. In a 32-bit machine we can only spawn 512 fibers, which is not a lot. But because 32-bit machines are starting to become obsolete, we'll bet on the future and focus more on 64-bit machines.
 
-### The Runtime Scheduler
+### The Runtime Scheduler(s)
 
-The scheduler has a queue of:
+Each scheduler has a queue of:
 
-* Fibers ready to be executed: for example when you spawn a fiber, it's ready to be executed.
-* The event loop: which is another fiber. When there are no other fibers ready to be executed, the event loop checks if there is any async operation that is ready, and then executes the fiber waiting for that operation. The event loop is currently implemented with `libevent`, which is an abstraction of other event mechanisms like `epoll` and `kqueue`.
-* Fibers that voluntarily asked to wait: this is done with `Fiber.yield`, which means "I can continue executing, but I'll give you some time to execute other fibers if you want".
+- Fibers ready to be executed: for example when you spawn a fiber, it's ready to be executed.
+- The event loop: when there are no other fibers ready to be executed, the event loop checks if there is any async operation that is ready, and then executes the fiber waiting for that operation.
+- Fibers that voluntarily asked to wait: this is done with `Fiber.yield`, which means "I can continue executing, but I'll give you some time to execute other fibers if you want".
 
 ### Communicating data
 
-Because at this moment there's only a single thread executing your code, accessing and modifying a class variable in different fibers will work just fine. However, once multiple threads (parallelism) is introduced in the language, it might break. That's why the recommended mechanism to communicate data is using channels and sending messages between them. Internally, a channel implements all the locking mechanisms to avoid data races, but from the outside you use them as communication primitives, so you (the user) don't have to use locks.
+Accessing and modifying global data (constants, class variables) and shared data (closured variables) is unsafe. That's why the recommended mechanism to communicate data is using channels and sending messages between them. Internally, a channel implements all the locking mechanisms to avoid data races, but from the outside you use them as communication primitives, so you (the user) don't have to use locks.
 
 ## Sample code
 
@@ -89,7 +91,7 @@ spawn do
 end
 ```
 
-Running the above code will produce no output and exit immediately.
+Running the above code will usually produce no output and exit immediately. In rare cases, another thread may resume the fiber when parallelism is enabled.
 
 The reason for this is that a fiber is not executed as soon as it is spawned. So, the main fiber, the one that spawns the above fiber, finishes its execution and the program exits.
 
@@ -119,7 +121,7 @@ end
 Fiber.yield
 ```
 
-This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output *might* never block so the program will continue executing forever.
+This time `Fiber.yield` will tell the scheduler to execute the other fiber. This will usually print "Hello!" until the standard output blocks (the system call will tell us we have to wait until the output is ready), and then execution continues with the main fiber and the program exits. Here the standard output _might_ never block so the program will continue executing forever. In rare cases, another thread might resume the fiber when parallelism is enabled, or another fiber be resumed and the program will exit normally, possibly printing nothing.
 
 If we want to execute the spawned fiber for ever, we can use `sleep` without arguments:
 
@@ -216,7 +218,7 @@ puts "After receive"
 
 This prints:
 
-```
+```text
 Before receive
 Before send
 After send
@@ -227,7 +229,7 @@ First, the program spawns a fiber but doesn't execute it yet. When we invoke `ch
 
 The main fiber then resumes at `channel.receive`, which was waiting for a value. Then the main fiber continues executing and finishes.
 
-In the above example we used `nil` just to communicate that the fiber ended. We can also use channels to communicate values between fibers:
+In the above example we used `nil` just to communicate that the fiber ended, a scenario where `WaitGroup` would have been a more efficient choice. A better use of channels is to send values between fibers:
 
 ```crystal
 channel = Channel(Int32).new
@@ -250,7 +252,7 @@ puts value # => 2
 
 Output:
 
-```
+```text
 Before first receive
 Before first send
 Before second send
@@ -332,7 +334,7 @@ puts "After yield"
 
 Output:
 
-```
+```text
 Before yield
 Before send
 Before receive
@@ -371,7 +373,7 @@ end
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3
@@ -406,7 +408,7 @@ end
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3
@@ -442,7 +444,7 @@ Fiber.yield
 
 Output:
 
-```
+```text
 Before send 1
 Before send 2
 Before send 3

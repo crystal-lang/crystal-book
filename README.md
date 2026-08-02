@@ -4,11 +4,11 @@ This is the language reference for the Crystal programming language.
 
 Crystal is a programming language with the following goals:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal).
-* Be statically type-checked, but without having to specify the type of variables or method parameters.
-* Be able to call C code by writing bindings to it in Crystal.
-* Have compile-time evaluation and generation of code, to avoid boilerplate code.
-* Compile to efficient native code.
+- Have a syntax similar to Ruby (but compatibility with it is not a goal).
+- Be statically type-checked, but without having to specify the type of variables or method parameters.
+- Be able to call C code by writing bindings to it in Crystal.
+- Have compile-time evaluation and generation of code, to avoid boilerplate code.
+- Compile to efficient native code.
 
 **Crystal's standard library is documented in the [API docs](https://crystal-lang.org/api).**
 
@@ -26,16 +26,16 @@ Thank you very much!
 There is a separate branch for every minor Crystal release, all deployed alongside each other on https://crystal-lang.org/reference/
 Typically, only branches of maintained releases receive updates, i.e. the branch for the most recent Crystal release.
 
-* Changes that apply to the current Crystal release should go into the most recent `release/*` branch.
-* Changes that apply to yet unreleased features should go into `next`. They'll be part of the `release/*` branch for the next release.
+- Changes that apply to the current Crystal release should go into the most recent `release/*` branch.
+- Changes that apply to yet unreleased features should go into `next`. They'll be part of the `release/*` branch for the next release.
   The `next` branch is deployed at https://crystal-lang.org/reference/master/
 
 ### Building and Serving Locally
 
-```console
-$ git clone https://github.com/crystal-lang/crystal-book
-$ cd crystal-book
-$ pip install -r requirements.txt
+```shell
+git clone https://github.com/crystal-lang/crystal-book
+cd crystal-book
+pip install -r requirements.txt
 ```
 
 Live preview (at http://127.0.0.1:8000):
@@ -51,8 +51,8 @@ INFO    -  Serving on http://127.0.0.1:8000
 
 Build into the `site` directory (some functionality won't work if opening the files locally):
 
-```console
-$ make build
+```shell
+make build
 ```
 
 ### devenv environment
@@ -81,7 +81,7 @@ $ devenv shell build
 Building shell ...
 pre-commit-hooks.nix: hooks up to date
 rm -rf ./site
-mkdocs build -d ./site  --strict
+properdocs build -d ./site  --strict
 INFO     -  Cleaning site directory
 INFO     -  Building documentation to directory: ./site
 INFO     -  Documentation built in 2.43 seconds
@@ -96,7 +96,7 @@ Entering shell ...
 
 pre-commit-hooks.nix: hooks up to date
 $(devenv) make build
-mkdocs build -d ./site  --strict
+properdocs build -d ./site  --strict
 INFO     -  Cleaning site directory
 INFO     -  Building documentation to directory: ./site
 INFO     -  Documentation built in 2.43 seconds
@@ -104,8 +104,8 @@ INFO     -  Documentation built in 2.43 seconds
 
 Run pre-commit checks on the entire repository:
 
-```console
-$ devenv ci
+```shell
+devenv ci
 ```
 
 ### Adding a page

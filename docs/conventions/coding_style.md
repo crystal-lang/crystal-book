@@ -75,9 +75,9 @@ raise RuntimeError.new("getpeername failed")
 
 ### Acronyms
 
-In class names, acronyms are *all-uppercase*. For example, `HTTP`, and `LibXML`.
+In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
 
-In method names, acronyms are *all-lowercase*. For example `#from_json`, `#to_io`.
+In method names, acronyms are _all-lowercase_. For example `#from_json`, `#to_io`.
 
 ### Libs
 
@@ -87,12 +87,12 @@ In method names, acronyms are *all-lowercase*. For example `#from_json`, `#to_io
 
 Within a project:
 
-* `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
-* `src/` contains the project's source code.
-* `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
-* `bin/` contains any executables.
+- `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
+- `src/` contains the project's source code.
+- `spec/` contains the [project's specs](../guides/testing.md), which can be run with `crystal spec`.
+- `bin/` contains any executables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with *snake_case*.
+File paths match the namespace of their contents. Files are named after the class or namespace they define, with _snake_case_.
 
 For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
 

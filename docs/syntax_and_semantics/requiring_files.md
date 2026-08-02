@@ -12,8 +12,8 @@ This looks up "filename" in the require path.
 
 By default, the require path includes two locations:
 
-* the `lib` directory relative to the current working directory (this is where dependencies are looked up)
-* the location of the standard library that comes with the compiler
+- the `lib` directory relative to the current working directory (this is where dependencies are looked up)
+- the location of the standard library that comes with the compiler
 
 These are the only places that are looked up.
 
@@ -28,14 +28,14 @@ These lookup paths can be overridden by defining the [`CRYSTAL_PATH` environment
 
 The lookup goes like this:
 
-* If a file named "filename.cr" is found in the require path, it is required.
-* If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
-* If a directory named "filename" is found with a directory "src" in it and it contains a file named "filename.cr" directly underneath it, it is required.
-* Otherwise a compile-time error is issued.
+- If a file named "filename.cr" is found in the require path, it is required.
+- If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
+- If a directory named "filename" is found with a directory "src" in it and it contains a file named "filename.cr" directly underneath it, it is required.
+- Otherwise a compile-time error is issued.
 
 The second rule means that in addition to having this:
 
-```
+```text
 - project
   - src
     - file
@@ -46,7 +46,7 @@ The second rule means that in addition to having this:
 
 you can have it like this:
 
-```
+```text
 - project
   - src
     - file
@@ -59,7 +59,7 @@ which might be a bit cleaner depending on your taste.
 
 The third rule is very convenient because of the typical directory structure of a project:
 
-```
+```text
 - project
   - lib
     - foo
@@ -88,9 +88,9 @@ This looks up "filename" relative to the file containing the require expression.
 
 The lookup goes like this:
 
-* If a file named "filename.cr" is found relative to the current file, it is required.
-* If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
-* Otherwise a compile-time error is issued.
+- If a file named "filename.cr" is found relative to the current file, it is required.
+- If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
+- Otherwise a compile-time error is issued.
 
 This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from [specs](../guides/testing.md):
 
@@ -102,12 +102,12 @@ require "../src/project"
 
 In both cases you can use nested names and they will be looked up in nested directories:
 
-* `require "foo/bar/baz"` will lookup "foo/bar/baz.cr", "foo/bar/baz/baz.cr", "foo/src/bar/baz.cr" or "foo/src/bar/baz/baz.cr" in the require path.
-* `require "./foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" relative to the current file.
+- `require "foo/bar/baz"` will lookup "foo/bar/baz.cr", "foo/bar/baz/baz.cr", "foo/src/bar/baz.cr" or "foo/src/bar/baz/baz.cr" in the require path.
+- `require "./foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" relative to the current file.
 
 You can also use "../" to access parent directories relative to the current file, so `require "../../foo/bar"` works as well.
 
 In all of these cases you can use the special `*` and `**` suffixes:
 
-* `require "foo/*"` will require all ".cr" files below the "foo" directory, but not below directories inside "foo".
-* `require "foo/**"` will require all ".cr" files below the "foo" directory, and below directories inside "foo", recursively.
+- `require "foo/*"` will require all ".cr" files below the "foo" directory, but not below directories inside "foo".
+- `require "foo/**"` will require all ".cr" files below the "foo" directory, and below directories inside "foo", recursively.

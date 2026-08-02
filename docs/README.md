@@ -21,9 +21,9 @@ These instructions and courses help you get to know the language and how to use 
 
 Install Crystal and get it running.
 
-* [Install](https://crystal-lang.org/install)
-* [Try Online](https://play.crystal-lang.org/#/cr)
-* [Crystal for Rubyists](crystal_for_rubyists/README.md)
+- [Install](https://crystal-lang.org/install)
+- [Try Online](https://play.crystal-lang.org/#/cr)
+- [Crystal for Rubyists](crystal_for_rubyists/README.md)
 
   </div>
   <div class="card" markdown="1">
@@ -32,16 +32,16 @@ Install Crystal and get it running.
 
 Introductory material for beginners.
 
-* [Language introduction](tutorials/basics/README.md)
+- [Language introduction](tutorials/basics/README.md)
 
   </div>
   <div class="card" markdown="1">
 
 ### Tools
 
-* [Online Playgrounds](https://github.com/crystal-lang/crystal/wiki/Online-playgrounds)
-* [IDE Integrations](https://github.com/veelenga/awesome-crystal#editor-plugins)
-* [CI Integrations](guides/ci/README.md)
+- [Online Playgrounds](https://github.com/crystal-lang/crystal/wiki/Online-playgrounds)
+- [IDE Integrations](https://github.com/veelenga/awesome-crystal#editor-plugins)
+- [CI Integrations](guides/ci/README.md)
 
   </div>
 
@@ -82,10 +82,10 @@ Documentation of the standard library.
 
 Discover the ecosystem of Crystal libraries.
 
-* [Discovering Shards](https://crystal-lang.org/community/#shards)
-* [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
-* [Shards Manual](man/shards/README.md)
-* [Writing Shards](guides/writing_shards.md)
+- [Discovering Shards](https://crystal-lang.org/community/#shards)
+- [Specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc)
+- [Shards Manual](man/shards/README.md)
+- [Writing Shards](guides/writing_shards.md)
 
   </div>
   <div class="card" markdown="1">
@@ -94,10 +94,11 @@ Discover the ecosystem of Crystal libraries.
 
 Detailed examples for practical applications.
 
-* [Performance](guides/performance.md)
-* [Concurrency](guides/concurrency.md)
-* [Testing](guides/testing.md)
-* [Database](database/README.md)
+- [Performance](guides/performance.md)
+- [Concurrency](guides/concurrency.md)
+- [Parallelism](guides/parallelism.md)
+- [Testing](guides/testing.md)
+- [Database](database/README.md)
 
   </div>
   <div class="card" markdown="1">
@@ -106,10 +107,10 @@ Detailed examples for practical applications.
 
 Instructions on how to use the compiler and tools.
 
-* [Compiler manual](man/crystal/README.md)
-* [Required libraries](man/required_libraries.md)
-* [Platform Support](syntax_and_semantics/platform_support.md)
-* [Static linking](guides/static_linking.md)
+- [Compiler manual](man/crystal/README.md)
+- [Required libraries](man/required_libraries.md)
+- [Platform Support](syntax_and_semantics/platform_support.md)
+- [Static linking](guides/static_linking.md)
 
   </div>
   <div class="card" markdown="1">
@@ -118,9 +119,9 @@ Instructions on how to use the compiler and tools.
 
 Announcements about the language development.
 
-* [Release Notes](https://crystal-lang.org/releases)
-* [Release Policy](project/release-policy.md)
-* [Crystal Blog](https://crystal-lang.org/blog)
+- [Release Notes](https://crystal-lang.org/releases)
+- [Release Policy](project/release-policy.md)
+- [Crystal Blog](https://crystal-lang.org/blog)
 
   </div>
 
@@ -165,9 +166,9 @@ How we take the decisions that guide the language and its community.
 
 ### Developer resources
 
-* [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
-* [Coding style](conventions/coding_style.md)
-* [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
+- [Compiler internals](https://github.com/crystal-lang/crystal/wiki/Compiler-internals)
+- [Coding style](conventions/coding_style.md)
+- [Merging PRs](https://github.com/crystal-lang/crystal/wiki/Merging-PRs)
 
   </div>
 

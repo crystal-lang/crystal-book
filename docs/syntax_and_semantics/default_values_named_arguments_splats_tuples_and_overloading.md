@@ -6,10 +6,10 @@ This is the formal specification of method parameters and call arguments.
 
 A method definition consists of:
 
-* required and optional positional parameters
-* an optional splat parameter, whose name can be empty
-* required and optional named parameters
-* an optional double splat parameter
+- required and optional positional parameters
+- an optional splat parameter, whose name can be empty
+- required and optional named parameters
+- an optional double splat parameter
 
 For example:
 
@@ -48,9 +48,9 @@ Additionally, a call argument can have a splat (`*`) or double splat (`**`). A s
 
 When invoking a method, the algorithm to match call arguments to method parameters is:
 
-* First positional call arguments are matched with positional method parameters. The number of these must be at least the number of positional parameters without a default value. If there's a splat parameter with a name (the case without a name is explained below), more positional arguments are allowed and they are captured as a tuple. Positional arguments never match past the splat parameter.
-* Then named arguments are matched, by name, with any parameter in the method (it can be before or after the splat parameter). If a parameter was already filled by a positional argument then it's an error.
-* Extra named arguments are placed in the double splat method parameter, as a [NamedTuple](literals/named_tuple.md), if it exists, otherwise it's an error.
+- First positional call arguments are matched with positional method parameters. The number of these must be at least the number of positional parameters without a default value. If there's a splat parameter with a name (the case without a name is explained below), more positional arguments are allowed and they are captured as a tuple. Positional arguments never match past the splat parameter.
+- Then named arguments are matched, by name, with any parameter in the method (it can be before or after the splat parameter). If a parameter was already filled by a positional argument then it's an error.
+- Extra named arguments are placed in the double splat method parameter, as a [NamedTuple](literals/named_tuple.md), if it exists, otherwise it's an error.
 
 When a splat parameter has no name, it means no more positional arguments can be passed, and any following parameters must be passed as named arguments. For example:
 

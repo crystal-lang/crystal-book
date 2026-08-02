@@ -28,14 +28,14 @@ john.become_older 5
 john.age # => 6
 ```
 
-That is, you can have different methods with the same name and different number of parameters and they will be considered as separate methods. This is called *method overloading*.
+That is, you can have different methods with the same name and different number of parameters and they will be considered as separate methods. This is called _method overloading_.
 
 Methods overload by several criteria:
 
-* The number of parameters
-* The type restrictions applied to parameters
-* The names of required named parameters
-* Whether the method accepts a [block](blocks_and_procs.md) or not
+- The number of parameters
+- The type restrictions applied to parameters
+- The names of required named parameters
+- Whether the method accepts a [block](blocks_and_procs.md) or not
 
 For example, we can define four different `become_older` methods:
 
@@ -144,39 +144,39 @@ and code which still depends on the incorrect ordering can use an opt-out featur
 
 ### Known bugs
 
-* Overloads without a parameter override ones with a default value ([#10231](https://github.com/
+- Overloads without a parameter override ones with a default value ([#10231](https://github.com/
 crystal-lang/crystal/issues/10231))
 
-  ```cr
-  def bar(x = true)
-  end
+    ```cr
+    def bar(x = true)
+    end
 
-  def bar
-  end
+    def bar
+    end
 
-  bar 1 # Error: wrong number of arguments for 'bar' (given 1, expected 0)
-  ```
+    bar 1 # Error: wrong number of arguments for 'bar' (given 1, expected 0)
+    ```
 
-  This issue is fixed with `-Dpreview_overload_order`.
+    This issue is fixed with `-Dpreview_overload_order`.
 
-* Overload ordering depends on the definition order of types used in type restrictions ([#7579](https://github.com/crystal-lang/crystal/issues/7579), [#4897](https://github.com/crystal-lang/crystal/issues/4897))
+- Overload ordering depends on the definition order of types used in type restrictions ([#7579](https://github.com/crystal-lang/crystal/issues/7579), [#4897](https://github.com/crystal-lang/crystal/issues/4897))
 
-  ```cr
-  class Foo
-  end
+    ```cr
+    class Foo
+    end
 
-  def foo(a : Bar)
+    def foo(a : Bar)
     1
-  end
+    end
 
-  def foo(a : Foo)
+    def foo(a : Foo)
     true
-  end
+    end
 
-  class Bar < Foo
-  end
+    class Bar < Foo
+    end
 
-  foo(Bar.new) # => true # This should be 1
-  ```
+    foo(Bar.new) # => true # This should be 1
+    ```
 
-  As a workaround, we can move the declaration of `Bar` before of `def foo`.
+    As a workaround, we can move the declaration of `Bar` before of `def foo`.

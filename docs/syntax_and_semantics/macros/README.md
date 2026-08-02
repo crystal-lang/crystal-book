@@ -173,7 +173,7 @@ bar # => two
 baz # => 3
 ```
 
-Similar to regular code, [`Nop`](https://crystal-lang.org/api/Crystal/Macros/Nop.html), [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html) and a false [`BoolLiteral`](https://crystal-lang.org/api/Crystal/Macros/BoolLiteral.html) are considered *falsey*, while everything else is considered *truthy*.
+Similar to regular code, [`Nop`](https://crystal-lang.org/api/Crystal/Macros/Nop.html), [`NilLiteral`](https://crystal-lang.org/api/Crystal/Macros/NilLiteral.html) and a false [`BoolLiteral`](https://crystal-lang.org/api/Crystal/Macros/BoolLiteral.html) are considered _falsey_, while everything else is considered _truthy_.
 
 Macro conditionals can be used outside a macro definition:
 
@@ -287,7 +287,7 @@ println 1, 2, 3 # outputs 123\n
 
 When a macro is invoked you can access the current scope, or type, with a special instance variable: `@type`. The type of this variable is [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), which gives you access to type information at compile time.
 
-Note that `@type` is always the *instance* type, even when the macro is invoked in a class method.
+Note that `@type` is always the _instance_ type, even when the macro is invoked in a class method.
 
 For example:
 

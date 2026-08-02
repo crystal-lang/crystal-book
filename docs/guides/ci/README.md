@@ -3,7 +3,7 @@
 The ability of having immediate feedback on what we are working should be one of the most important characteristics in software development. Imagine making one change to our source code and having to wait 2 weeks to see if it broke something? oh! That would be a nightmare! For this, Continuous Integration will help a team to have immediate and frequent feedback about the status of what they are building.
 
 Martin Fowler [defines Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) as
-*a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.*
+_a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly._
 
 In the next subsections, we are going to present two continuous integration tools: [GitHub Actions](https://docs.github.com/actions) and [Circle CI](https://circleci.com/), and use them with a Crystal example application.
 
@@ -81,9 +81,9 @@ And this is all we need for our continuous integration examples! Let's start!
 Here's the list of items we want to achieve:
 
 1. Build and run specs using 3 different Crystal's versions:
-    * latest
-    * nightly
-    * 0.31.1 (using a Docker image)
+    - latest
+    - nightly
+    - 0.31.1 (using a Docker image)
 2. Install shards packages
 3. Install binary dependencies
 4. Use a database (for example MySQL)
@@ -91,5 +91,5 @@ Here's the list of items we want to achieve:
 
 From here choose your next steps:
 
-* I want to use [GitHub Actions](gh-actions.md)
-* I want to use [CircleCI](circleci.md)
+- I want to use [GitHub Actions](gh-actions.md)
+- I want to use [CircleCI](circleci.md)

@@ -11,10 +11,10 @@ end
 
 The annotation can then be applied to various items, including:
 
-* Instance and class methods
-* Instance variables
-* Classes, structs, enums, and modules
-* Method and macro parameters (though the latter are currently inaccessible)
+- Instance and class methods
+- Instance variables
+- Classes, structs, enums, and modules
+- Method and macro parameters (though the latter are currently inaccessible)
 
 ```crystal
 annotation MyAnnotation
@@ -192,7 +192,7 @@ annotation_read
 
 Annotations can be read off of a [`TypeNode`](https://crystal-lang.org/api/Crystal/Macros/TypeNode.html), [`Def`](https://crystal-lang.org/api/Crystal/Macros/Def.html), [`MetaVar`](https://crystal-lang.org/api/Crystal/Macros/MetaVar.html), or [`Arg`](https://crystal-lang.org/api/Crystal/Macros/Arg.html) using the `.annotation(type : TypeNode)` method.  This method return an [`Annotation`](https://crystal-lang.org/api/Crystal/Macros/Annotation.html) object representing the applied annotation of the supplied type.
 
-NOTE: If multiple annotations of the same type are applied, the `.annotation` method will return the *last* one.
+NOTE: If multiple annotations of the same type are applied, the `.annotation` method will return the _last_ one.
 
 The [`@type`](../macros/README.md#type-information) and [`@def`](../macros/README.md#method-information) variables can be used to get a `TypeNode` or `Def` object to use the `.annotation` method on.  However, it is also possible to get `TypeNode`/`Def` types using other methods on `TypeNode`.  For example `TypeNode.all_subclasses` or `TypeNode.methods`, respectively.
 
@@ -270,7 +270,7 @@ WARNING: Annotations can only be read off of typed block parameters. See https:/
 
 ### Reading Multiple Annotations
 
-The `#annotations` method returns an `ArrayLiteral` of *all* annotations on a type. Optionally, a `TypeNode` argument with the `#annotations(type : TypeNode)` method filters only annotations of the provided *type*.
+The `#annotations` method returns an `ArrayLiteral` of _all_ annotations on a type. Optionally, a `TypeNode` argument with the `#annotations(type : TypeNode)` method filters only annotations of the provided _type_.
 
 ```crystal
 annotation MyAnnotation; end

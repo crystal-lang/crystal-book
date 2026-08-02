@@ -4,8 +4,8 @@ Crystal supports a basic form of [cross compilation](http://en.wikipedia.org/wik
 
 In order to achieve this, the compiler executable provides two flags:
 
-* `--cross-compile`: When given enables cross compilation mode
-* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.md) from
+- `--cross-compile`: When given enables cross compilation mode
+- `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.md) from
 
 To get the `--target` flags you can execute `llvm-config --host-target` using an installed LLVM on the target system. For example on a Linux it could say "x86_64-unknown-linux-gnu".
 
@@ -27,8 +27,8 @@ You must copy this `.o` file to that system and execute those commands. Once you
 
 This procedure is usually done with the compiler itself to port it to new platforms where a compiler is not yet available. Because in order to compile a Crystal compiler we need an older Crystal compiler, the only two ways to generate a compiler for a system where there isn't a compiler yet are:
 
-* We checkout the latest version of the compiler written in Ruby, and from that compiler we compile the next versions until the current one.
-* We create a `.o` file in the target system and from that file we create a compiler.
+- We checkout the latest version of the compiler written in Ruby, and from that compiler we compile the next versions until the current one.
+- We create a `.o` file in the target system and from that file we create a compiler.
 
 The first alternative is long and cumbersome, while the second one is much easier.
 

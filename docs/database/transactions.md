@@ -14,7 +14,7 @@ create_account db, "John", amount: 100
 create_account db, "Sarah", amount: 100
 ```
 
-In one moment a transfer is made from one account to the other. For example, *John transfers $50 to Sarah*
+In one moment a transfer is made from one account to the other. For example, _John transfers $50 to Sarah_
 
 ```crystal
 deposit db, "Sarah", 50
