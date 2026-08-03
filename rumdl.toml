@@ -12,9 +12,6 @@ disable = [
   "fenced-code-language",
   # TODO: We might want to consider automatic wrapping (maybe with https://github.com/razziel89/mdslw ?)
   "line-length",
-  # MD033 - Inline HTML
-  # TODO: We shouldn't need inline HTML
-  "no-inline-html",
   # MD034 - Bare URL used
   "no-bare-urls",
 ]
@@ -47,6 +44,20 @@ style = "fixed"
 allow-sentence-double-space = true
 
 ## Formatting Rules
+
+# MD033 - No HTML tags
+[MD033]
+allowed-elements = [
+  # Link targets
+  "a",
+  # Line format inside tables
+  "br",
+  # Inline code format including `|` inside tables
+  "code",
+  # Formatting details
+  "kbd",
+  "sup",
+]
 
 # MD049 - Keep italic text formatting consistent
 [MD049]
