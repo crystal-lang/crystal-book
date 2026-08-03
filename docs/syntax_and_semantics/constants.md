@@ -29,6 +29,29 @@ end
 TEN # => 10
 ```
 
+When initialized, the [type inference algorithm](type_inference.md) can often implicitly determine the type of the constants:
+
+```cr
+module InferredTypes
+  INTEGER = 1 # : Int32
+  STRING = "" # : String
+end
+```
+
+Constants can be typed explicitly, which can make use of [autocasting](autocasting.md):
+
+```cr
+module ExplicitType
+  INTEGER : Int32 = 1
+  STRING : String = ""
+end
+
+module AutocastTypes
+  FOO : Int64 = 123       # autocasts 123 to Int64
+  FOO : LibC::SizeT = 123 # autocasts 123 to platform SizeT
+end
+```
+
 ## Pseudo Constants
 
 Crystal provides a few pseudo-constants which provide reflective data about the source code being executed.
