@@ -8,13 +8,20 @@
 [global]
 flavor = "mkdocs"
 disable = [
-  # FIXME: We should always specify a language for proper syntax highlighting.
-  "fenced-code-language",
   # TODO: We might want to consider automatic wrapping (maybe with https://github.com/razziel89/mdslw ?)
   "line-length",
   # MD034 - Bare URL used
   "no-bare-urls",
 ]
+
+[per-file-ignores]
+# MD040: Code blocks should have a language specified
+# TODO: Some files contain unrecognized code blocks such as `{.crystal nocheck}`
+"docs/syntax_and_semantics/assignment.md" = ["MD040"]
+"docs/syntax_and_semantics/case.md" = ["MD040"]
+"docs/syntax_and_semantics/constants.md" = ["MD040"]
+"docs/syntax_and_semantics/macros/README.md" = ["MD040"]
+"docs/tutorials/basics/50_control_flow.md" = ["MD040"]
 
 ## Heading Rules
 
