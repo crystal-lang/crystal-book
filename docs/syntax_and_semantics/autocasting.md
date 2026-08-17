@@ -57,6 +57,9 @@ end
 Foo.new.set_x 1 # Error: "at line 5: instance variable '@x' of Foo must be Int64, not Int32"
 ```
 
+Arguments in lib calls have implicit [matching and conversion rules](../syntax_and_semantics/c_bindings/fun.md#argument-matching-and-conversions),
+with similar effects to autocasting. They can even be more extensive.
+
 ## Symbol autocasting
 
 Symbols are autocasted as enum members, therefore enabling to write them more succinctly:

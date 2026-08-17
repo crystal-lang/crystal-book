@@ -45,7 +45,22 @@ end
 X.variadic(1, 2, 3, 4)
 ```
 
-Note that there are no implicit conversions (except `to_unsafe`, which is explained later) when invoking a C function: you must pass the exact type that is expected. For integers and floats you can use the various `to_...` methods.
+## Argument matching and conversions
+
+There are some special rules about matching argument types for lib types,
+as well as some implicit conversions.
+
+- `Nil` matches any pointer or proc type.
+- Any proc type matches the same proc type with `Nil` output type.
+- Any pointer type matches a void pointer type.
+- Number literals autocast to any primitive number type.
+- Primitive number types automatically converts to any other primitive number
+  type if a respective `#to_#{kind}!` method exists (such as `Float64#to_i64!`).
+  In contrast to [number autocasting](../autocasting.md), these implicit
+  conversions are unsafe and can lose significant information.
+- Any type that implements [`#to_unsafe`](./to_unsafe.md) automatically converts
+  to the return value of that method. The above mentioned matching rules apply to
+  the result.
 
 ## Function names
 
