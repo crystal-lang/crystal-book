@@ -115,29 +115,29 @@ name = "world"
 
 ### Percent string array literal
 
-Besides single string literals, there are also percent literals to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` or `%W` followed by a pair of delimiters. Valid delimiters are as same as [percent string literals](#percent-string-literals).
-Inside the delimiters, white space separates individual string values.
+Besides single string literals, there are also percent literals to create an [Array](https://crystal-lang.org/api/Array.html) of strings. It is indicated by `%w` or `%W` followed by a pair of delimiters. Valid delimiters are the same as [percent string literals](#percent-string-literals).
+Inside the delimiters, whitespace characters (spaces, tabs, newlines) separate individual string values.
 
-The `%w` literal contains static string values without interpolation or escape sequences except escaping white space.
+The `%w` literal contains static string values without interpolation or escape sequences except escaping whitespace and unpaired delimiters.
 The `%W` literal allows interpolation and escape sequences.
 
-Case indication is analogue to the percent string literals `%q` and `%Q`.
+Case indication is analogous to the percent string literals `%q` and `%Q`.
 
-Interpolation syntax works similar to interpolation in string literals.
-The interpolated values gets stringified and inserted into the current array element.
-An array element can consist of an combination of interpolations and static components.
+Paired delimiters nest automatically inside the literal. Unpaired opening or closing delimiters must be escaped with a backslash `\`. Note that nested delimiters do not prevent element separation on whitespace:
 
 ```crystal
-%w(foo bar baz)  # => ["foo", "bar", "baz"]
-%w(foo\nbar baz) # => ["foo\\nbar", "baz"]
-%w(foo(bar) baz) # => ["foo(bar)", "baz"]
+%w(foo bar baz)   # => ["foo", "bar", "baz"]
+%w(foo(bar) baz)  # => ["foo(bar)", "baz"]
+%w(foo\( bar)     # => ["foo(", "bar"]
+%w((foo bar) baz) # => ["(foo", "bar)", "baz"]
 
-# escapes white space
+# escapes whitespace
 %w(foo\ bar baz) # => ["foo bar", "baz"]
+%w(foo\tbar baz) # => ["foo\\tbar", "baz"]
 
 %W(foo bar baz)  # => ["foo", "bar", "baz"]
-%W(foo\nbar baz) # => ["foo\\nbar", "baz"]
 %W(foo(bar) baz) # => ["foo(bar)", "baz"]
+%W(foo\nbar baz) # => ["foo\nbar", "baz"]
 
 # escapes
 %W(foo\ bar baz)  # => ["foo bar", "baz"]
@@ -145,8 +145,8 @@ An array element can consist of an combination of interpolations and static comp
 %W(foo "bar baz") # => ["foo", "\"bar", "baz\""]
 ```
 
-Interpolation syntax works similar to interpolation in string literals.
-The interpolated values gets stringified and inserted into the current array element.
+Interpolation syntax works similarly to interpolation in string literals.
+The interpolated value gets stringified and inserted into the current array element.
 An array element can consist of a combination of interpolations and static components.
 
 ```cr
@@ -160,7 +160,7 @@ An array element can consist of a combination of interpolations and static compo
 Interpolation syntax also supports splat expansion which inserts multiple elements into the array at the respective position.
 Splat interpolation does not support static prefix or suffix strings, i.e. it must be surrounded by whitespace or be anchored at the begin or end of the literal.
 
-```cr
+```crystal
 %W[foo #{*%w[bar baz]} qux] # => ["foo", "bar", "baz", "qux"]
 ```
 
