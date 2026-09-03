@@ -56,7 +56,7 @@ An example with a constant:
 ```cr
 FOO = 1
 
-pointerof(FOO).value = 1
+pointerof(FOO).value # => 1
 ```
 
 It's not possible to change the value of a constant via pointer assignment because a constant's memory is read-only.
