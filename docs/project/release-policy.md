@@ -41,3 +41,13 @@ The changelog and release notes highlight any changes that have a considerable p
 
 The only exception to the compatibility guarantees are experimental features, which are explicitly designated as such with the [`@[Experimental]`](https://crystal-lang.org/api/Experimental.html) annotation.
 There is no compatibility guarantee until they are stabilized (at which point the annotation is dropped).
+
+## Forward Compatibility
+
+The Crystal compiler maintains forward compatibility with previous compiler releases in the same major release series for at least 2 years or 8 minor releases (whichever is shorter).
+
+That means, for example, a 1.14 compiler is guaranteed to be able to bootstrap a 1.22 compiler. But it might not be able to build a 1.23 compiler.
+
+The compiler uses an in-tree version of the standard library, so this policy also constrains which language features the standard library itself may use.
+
+We still encourage package maintainers to bootstrap from the most recently available compiler to benefit from improvements in code generation and optimization. But it is technically possible to pin the stage 0 compiler and only advance it every 2 years. In that case, we strongly recommend building a stage 2 compiler.
