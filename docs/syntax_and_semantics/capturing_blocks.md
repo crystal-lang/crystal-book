@@ -62,9 +62,27 @@ proc = some_proc { |x| x.to_s }
 proc.call(1) # "1"
 ```
 
-## break and next
+## break, next, return, and yield
 
-`return` and `break` can't be used inside a captured block. `next` can be used and will exit and give the value of the captured block.
+`return`, `break`, and `yield` cannot be used inside a captured block or proc literal:
+
+- `return`: Returning from a captured block is not allowed (`Error: can't return from captured block, use next`).
+- `break`: Breaking from a captured block is not allowed (`Error: can't break from captured block, try using next.`).
+- `yield`: `yield` is only allowed directly within a method body to invoke a non-captured block. Because captured blocks and proc literals are converted into `Proc` objects that can be stored and invoked outside the caller's stack frame, they cannot `yield` (`Error: can't use yield inside a proc literal or captured block`).
+
+`next` can be used inside a captured block to exit early and give the value of the block:
+
+```crystal
+def capture(&block : -> Int32)
+  block
+end
+
+fn = capture do
+  next 42
+end
+
+fn.call # => 42
+```
 
 ## with ... yield
 
