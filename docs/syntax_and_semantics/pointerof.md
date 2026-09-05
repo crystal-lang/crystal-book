@@ -37,4 +37,28 @@ ptr.value = 10
 point.x # => 10
 ```
 
+In a nested structure, variable names can be chained in the same manner as accessing nested variables:
+
+```crystal
+record Foo, bar : Bar
+record Bar, baz : String
+
+foo = Foo.new(Bar.new("baz"))
+
+pointerof(foo.@bar.@baz).value # => "baz"
+
+pointerof(foo.@bar.@baz).value = "qux"
+foo.bar.baz # => "qux"
+```
+
+An example with a constant:
+
+```cr
+FOO = 1
+
+pointerof(FOO).value # => 1
+```
+
+It's not possible to change the value of a constant via pointer assignment because a constant's memory is read-only.
+
 Because `pointerof` involves pointers, it is considered [unsafe](unsafe.md).
