@@ -592,3 +592,21 @@ end
 ```
 
 Have no fear using blocks for readability or code reuse, it won't affect the resulting executable performance.
+
+## Blocks vs. `Proc`s
+
+Although blocks and procs are closely related, they have distinct semantics, memory characteristics, and runtime performance:
+
+- **Block**:
+    - A syntactic construct passed to a method via `{ ... }` or `do ... end`.
+    - Not an object. A block cannot be assigned to a local variable, passed as a regular argument, or stored in a data structure.
+    - Executed via `yield`.
+    - **Zero overhead**: Non-captured blocks are always inlined by the compiler at the call site, incurring zero heap allocations.
+
+- **`Proc`**:
+    - A first-class Crystal object (`Proc(*T, R)`) representing a typed function pointer or closure with an associated execution context.
+    - Can be stored in variables, passed to methods, and invoked at any time with `#call`.
+    - Created using a [Proc literal](proc_literal.md) (`->(x : Int32) { x * 2 }`) or by [capturing a block](capturing_blocks.md) (`&block : Int32 -> Int32`).
+    - **Allocation overhead**: When a `Proc` closes over local variables, it allocates memory on the heap to preserve the captured scope.
+
+In summary, prefer using **blocks** with `yield` for inline iteration, filtering, and resource management without allocation overhead. Use **procs** (or captured blocks) when you need callbacks, deferred execution, or need to store executable routines as first-class objects.
