@@ -18,6 +18,8 @@ Curses::Window.new
 
 Library authors are advised to put their definitions inside a module to avoid name clashes. The standard library usually doesn't have a namespace as its types and methods are very common, to avoid writing long names.
 
+## `extend` and `include`
+
 To use a module as a partial type you use `include` or `extend`.
 
 An `include` makes a type include methods defined in that module as instance methods:
