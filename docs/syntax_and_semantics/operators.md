@@ -166,6 +166,8 @@ ones.
 | `-`      | subtraction          | `1 - 2`  | yes          | left
 | `&-`     | wrapping subtraction | `1 &- 2` | yes          | left
 
+Wrapping arithmetic operators prefixed with `&` (`&+`, `&-`, `&*`, `&**`, and unary `&-`) perform unchecked modulo arithmetic instead of raising `OverflowError` on integer overflow. See [Integers](literals/integers.md#overflow-behavior) for details.
+
 ### Other unary operators
 
 | Operator | Description       | Example | Overloadable | Associativity
