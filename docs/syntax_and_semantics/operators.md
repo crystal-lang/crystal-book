@@ -223,7 +223,7 @@ take care themselves.
 
 #### Inequalities
 
-<a id="comparison" />
+<a id="comparison"></a>
 
 Inequality operators describe the order between values.
 
