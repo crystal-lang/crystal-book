@@ -70,7 +70,7 @@ Static linking implies using the static version of Microsoft's Universal C Runti
 
 MinGW-w64 provides only import libraries for the Win32 APIs and the C runtimes; therefore, unlike the MSVC toolchain, all libraries link against the C runtime dynamically, even for static builds. These binaries do not require the VC++ Redistributable since they use GCC's C++ ABI instead.
 
-The default C runtime depends on MinGW-w64's build-time configuration, and this default is always called `libmsvcrt.a`. On an MSYS2 UCRT64 environment, this is a copy of `libucrt.a`, the Universal C Runtime, whereas on a MINGW64 environment, this is a copy of `libmsvcrt-os.a` instead, the old system MSVCRT runtime. This can be overridden using `--link-flags=-mcrtdll=ucrt` or `--link-flags=-mcrtdll=msvcrt-os`, provided the MinGW-w64 installation understands it.
+The default C runtime depends on MinGW-w64's build-time configuration, and this default is always called `libmsvcrt.a`. Usually, this library is a copy of `libucrt.a`, the Universal C Runtime, but some MinGW-w64 distributions such as WinLibs also provide alternatives where it is a copy of `libmsvcrt-os.a` instead, the old system MSVCRT runtime. The runtime library can be overridden using `--link-flags=-mcrtdll=ucrt` or `--link-flags=-mcrtdll=msvcrt-os`, provided the MinGW-w64 installation understands it.
 
 ## Identifying Static Dependencies
 
