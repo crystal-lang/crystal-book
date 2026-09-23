@@ -192,6 +192,7 @@ Alternatively, a backslash followed by a newline can be inserted inside the stri
 ```
 
 In this case, leading whitespace is not included in the resulting string.
+However, it is easy for code to be re-indented, which can accidentally reintroduce or remove spaces. For this reason, using a [heredoc](#heredoc) is recommended instead.
 
 ## Heredoc
 
