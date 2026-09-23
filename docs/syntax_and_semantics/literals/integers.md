@@ -87,3 +87,37 @@ Hexadecimal numbers start with `0x`:
 0xFE012D # == 16646445
 0xfe012d # == 16646445
 ```
+
+## Overflow behavior
+
+Standard integer arithmetic operations (`+`, `-`, `*`, `**`, and unary `-`)
+raise an `OverflowError` exception when the result would exceed the minimum
+or maximum value representable by that integer size:
+
+```crystal
+Int32::MAX + 1 # => OverflowError: Arithmetic overflow
+Int32::MIN - 1 # => OverflowError: Arithmetic overflow
+255_u8 + 1     # => OverflowError: Arithmetic overflow
+0_u8 - 1       # => OverflowError: Arithmetic overflow
+-1_u32         # => Invalid negative value -1 for UInt32
+```
+
+For algorithms where modular wrapping arithmetic is desired, or for performance-sensitive code where overflow checking is intentionally bypassed, Crystal provides wrapping arithmetic operators prefixed with `&`:
+
+- `&+` (wrapping addition)
+- `&-` (wrapping subtraction)
+- `&*` (wrapping multiplication)
+- `&**` (wrapping exponentiation)
+- `&-` (unary wrapping negation on unsigned integer types)
+
+These operators wrap around according to two's complement modulo arithmetic:
+
+```crystal
+Int32::MAX &+ 1 # => -2147483648
+Int32::MIN &- 1 # => 2147483647
+255_u8 &+ 1     # => 0_u8
+0_u8 &- 1       # => 255_u8
+&-1_u32         # => 4294967295
+```
+
+Combined assignment variants (`&+=`, `&-=`, `&*=`) are also available. See [Operators](../operators.md) for details.
