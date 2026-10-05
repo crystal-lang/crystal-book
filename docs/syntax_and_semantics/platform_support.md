@@ -35,8 +35,8 @@ Details are described in the _Comment_ column.
 
 | Target                | Description                   | Supported versions                                                      | Comment
 | --------------------- | ----------------------------- | ----------------------------------------------------------------------- | -------
-| `aarch64-linux-gnu`   | Aarch64 Linux                 | GNU libc 2.26+                                                          | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
-| `aarch64-linux-musl`  | Aarch64 Linux                 | MUSL libc 1.2+                                                          | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
+| `aarch64-linux-gnu`   | Aarch64 Linux                 | GNU libc 2.26+                                                          | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-linux-musl`  | Aarch64 Linux                 | MUSL libc 1.2+                                                          | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 | `arm-linux-gnueabihf` | Aarch32 Linux<br> (hardfloat) | GNU libc 2.26+                                                          | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `i386-linux-gnu`      | x86 Linux                     | kernel 4.14+, GNU libc 2.26+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `i386-linux-musl`     | x86 Linux                     | kernel 4.14+, MUSL libc 1.2+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
