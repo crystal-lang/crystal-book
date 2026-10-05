@@ -35,8 +35,8 @@ Details are described in the _Comment_ column.
 
 | Target                | Description                   | Supported versions                                                      | Comment
 | --------------------- | ----------------------------- | ----------------------------------------------------------------------- | -------
-| `aarch64-linux-gnu`   | Aarch64 Linux                 | GNU libc 2.26+                                                          | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
-| `aarch64-linux-musl`  | Aarch64 Linux                 | MUSL libc 1.2+                                                          | :material-checkbox-marked-circle: tests<br> :material-selection-ellipse: builds
+| `aarch64-linux-gnu`   | Aarch64 Linux                 | GNU libc 2.26+                                                          | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
+| `aarch64-linux-musl`  | Aarch64 Linux                 | MUSL libc 1.2+                                                          | :material-checkbox-marked-circle: tests<br> :material-checkbox-marked-circle: builds
 | `arm-linux-gnueabihf` | Aarch32 Linux<br> (hardfloat) | GNU libc 2.26+                                                          | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `i386-linux-gnu`      | x86 Linux                     | kernel 4.14+, GNU libc 2.26+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `i386-linux-musl`     | x86 Linux                     | kernel 4.14+, MUSL libc 1.2+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
@@ -73,11 +73,9 @@ The compiler can target these platforms but there is no support for the standard
 | `avr-unknown-unknown` | AVR (Atmel) CPU architecture (Arduino)<br>This target requires declaration of a CPU model (e.g. `--mcpu=atmega328`) |                    | &nbsp;
 
 !!! info "Legend"
-    <ul>
-    <li>:material-selection-ellipse: means automated tests or builds are not available</li>
-    <li>:material-checkbox-marked-circle: means automated tests or builds are available</li>
-    <li>:material-circle-slice-5: means automated test are available, but the implementation is incomplete</li>
-    </li>
+    * :material-selection-ellipse: means automated tests or builds are not available
+    * :material-checkbox-marked-circle: means automated tests or builds are available
+    * :material-circle-slice-5: means automated test are available, but the implementation is incomplete
 
 !!! note
     Big thanks go to the Rust team for putting together such a clear [document on Rust's platform support](https://forge.rust-lang.org/platform-support.html)
