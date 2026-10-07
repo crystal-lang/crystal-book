@@ -41,7 +41,7 @@ Details are described in the _Comment_ column.
 | `i386-linux-gnu`      | x86 Linux                     | kernel 4.14+, GNU libc 2.26+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `i386-linux-musl`     | x86 Linux                     | kernel 4.14+, MUSL libc 1.2+<br> _(expected to work on kernel 2.6.22+)_ | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
 | `x86_64-openbsd`      | x64 OpenBSD                   | 7.8+                                                                    | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
-| `x86_64-freebsd`      | x64 FreeBSD                   | 12+                                                                     | :material-selection-ellipse: tests<br> :material-selection-ellipse: builds
+| `x86_64-freebsd`      | x64 FreeBSD                   | 12+                                                                     | :material-circle-slice-5: tests<br> :material-selection-ellipse: builds
 
 ***
 
