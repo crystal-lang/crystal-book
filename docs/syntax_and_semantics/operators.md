@@ -166,6 +166,38 @@ ones.
 | `-`      | subtraction          | `1 - 2`  | yes          | left
 | `&-`     | wrapping subtraction | `1 &- 2` | yes          | left
 
+#### Overflow behavior
+
+Standard integer arithmetic operations (`+`, `-`, `*`, `**`, and unary `-`)
+raise an `OverflowError` exception when the resulting value is not representable in the result type:
+
+```crystal
+Int32::MAX + 1 # raises OverflowError: Arithmetic overflow
+Int32::MIN - 1 # raises OverflowError: Arithmetic overflow
+255_u8 + 1     # raises OverflowError: Arithmetic overflow
+0_u8 - 1       # raises OverflowError: Arithmetic overflow
+-Int32::MIN    # raises OverflowError: Arithmetic overflow
+```
+
+Wrapping arithmetic operators are prefixed with `&`.
+They can be useful for algorithms where modular wrapping arithmetic is desired, or to intentionally bypass overflow checking in performance-sensitive code:
+
+- `&+` (wrapping addition)
+- `&-` (wrapping subtraction)
+- `&*` (wrapping multiplication)
+- `&**` (wrapping exponentiation)
+- `&-` (unary wrapping negation on unsigned integer types)
+
+These operators wrap around according to two's complement modulo arithmetic:
+
+```crystal
+Int32::MAX &+ 1 # => -2147483648
+Int32::MIN &- 1 # => 2147483647
+255_u8 &+ 1     # => 0_u8
+0_u8 &- 1       # => 255_u8
+&-1_u32         # => 4294967295
+```
+
 ### Other unary operators
 
 | Operator | Description       | Example | Overloadable | Associativity
