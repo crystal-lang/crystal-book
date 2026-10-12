@@ -45,7 +45,7 @@ which may be part of the C library or standalone libraries. On most platforms al
 | Library                                               | Description                                                                                                                                                                                                                        | License
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------
 | [Boehm GC]<br>[![repology][r:boehm-gc]][r:boehm-gc/v] | The Boehm-Demers-Weiser conservative garbage collector. Performs automatic memory management.<br>**Supported versions:** 8.2.0+; earlier versions require a patch for MT support                                                   | [MIT-style][bdwgc-license]
-| [Libevent]<br>[![repology][r:llvm]][r:llvm/v]         | An event notification library. Implements the event loop on OpenBSD, NetBSD, DragonflyBSD and Solaris by default and on other Unix-like systems with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license]
+| [Libevent]<br>[![repology][r:llvm]][r:llvm/v]         | An event notification library. Legacy alternative to the system selector on Unix-like systems, opt-in with `-Devloop=libevent` ([availability][RFC0009]). Never used on Windows or WASI. | [Modified BSD][libevent-license]
 | [compiler-rt builtins]                                | Provides optimized implementations for low-level routines required by code generation, such as integer multiplication. Several of these routines are ported to Crystal directly.                                                   | [MIT / UIUC][compiler-rt builtins]
 
 [bdwgc-license]: https://github.com/ivmai/bdwgc/blob/master/LICENSE
@@ -120,7 +120,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 | [LibXML2]<br>[![repology][r:libxml2]][r:libxml2/v] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14                           | [MIT][gnome-license]
 | [LibYAML]<br>[![repology][r:libyaml]][r:libyaml/v] | YAML parser and emitter library. Implements the [`YAML`][YAML] module.                                                                                | [MIT][yaml-license]
 | [zlib]<br>[![repology][r:zlib]][r:zlib/v]          | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag.         | [zlib][zlib-license]
-| [LLVM][libllvm]<br>[![repology][r:llvm]][r:llvm/v] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions]
+| [LLVM][libllvm]<br>[![repology][r:llvm]][r:llvm/v] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-24 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions]
 
 [gnome-license]: https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright
 [yaml-license]: https://github.com/yaml/libyaml/blob/master/License
