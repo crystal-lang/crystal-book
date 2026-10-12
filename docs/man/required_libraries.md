@@ -120,7 +120,7 @@ Both `OpenSSL` and `LibreSSL` are supported and the bindings automatically detec
 | [LibXML2]<br>[![repology][r:libxml2]][r:libxml2/v] | XML parser developed for the Gnome project. Implements the [`XML`][XML] module.<br>**Supported versions:** LibXML2 2.9–2.14                           | [MIT][gnome-license]
 | [LibYAML]<br>[![repology][r:libyaml]][r:libyaml/v] | YAML parser and emitter library. Implements the [`YAML`][YAML] module.                                                                                | [MIT][yaml-license]
 | [zlib]<br>[![repology][r:zlib]][r:zlib/v]          | Lossless data compression library. Implements the [`Compress`][Compress] module. May be disabled with the `-Dwithout_zlib` compile-time flag.         | [zlib][zlib-license]
-| [LLVM][libllvm]<br>[![repology][r:llvm]][r:llvm/v] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-22 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions]
+| [LLVM][libllvm]<br>[![repology][r:llvm]][r:llvm/v] | Target-independent code generator and optimizer. Implements the [`LLVM`][LLVM] API. <br>**Supported versions:** LLVM 8-24 (aarch64 requires LLVM 13+) | [Apache v2 with LLVM exceptions]
 
 [gnome-license]: https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright
 [yaml-license]: https://github.com/yaml/libyaml/blob/master/License
