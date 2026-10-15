@@ -112,11 +112,11 @@ end
 # After foo
 ```
 
-Try to avoid forwarding blocks like this if doing `yield` is enough. There's also the issue that `break` and `next` are not allowed inside captured blocks, so the following won't work when using `&block` forwarding:
+Try to avoid forwarding blocks like this if doing `yield` is enough. There's also the issue that `break`, `return`, and `yield` are not allowed inside captured blocks (only `next` is allowed), so the following won't work when using `&block` forwarding:
 
 ```crystal
-foo_forward do |i|
-  break # error
+wrap_foo do |i|
+  break # Error: can't break from captured block, try using `next`.
 end
 ```
 
