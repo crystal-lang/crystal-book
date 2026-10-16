@@ -2,8 +2,10 @@
 
 Local variables are declared when you first assign them a value.
 
-The name always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter,
-or an underscore, but that's reserved for special use cases such as indicating that the value is unused.
+The name always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter.
+It can also start with an underscore, which usually indicates that the value is unused.
+Names starting with two underscores are reserved by the compiler.
+
 The following characters are Unicode alphanumeric or underscores.
 
 As a typical convention, upper-case letters are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
