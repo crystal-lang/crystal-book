@@ -1,6 +1,14 @@
 # Local variables
 
-Local variables start with lowercase letters. They are declared when you first assign them a value.
+Local variables are declared when you first assign them a value.
+
+The name always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter.
+It can also start with an underscore, which usually indicates that the value is unused.
+Names starting with two underscores are reserved by the compiler.
+
+The following characters are Unicode alphanumeric or underscores.
+
+As a typical convention, upper-case letters are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
 ```crystal
 name = "Crystal"
@@ -18,5 +26,3 @@ flower = "Tulip"
 flower = 1
 # At this point 'flower' is an Int32
 ```
-
-Underscores are allowed at the beginning of a variable name, but these names are reserved for the compiler, so their use is not recommended (and it also makes the code uglier to read).
