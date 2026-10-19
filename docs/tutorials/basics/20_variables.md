@@ -18,8 +18,10 @@ This program prints the string `Hello Penny!` three times to the standard output
 The name of a variable always starts with a lowercase [Unicode](https://en.wikipedia.org/wiki/Unicode) letter (or an underscore, but that's reserved for special use cases) and can otherwise consist of alphanumeric characters or underscores. As a typical convention, upper-case letters are avoided and names are written in [`snake_case`](https://en.wikipedia.org/wiki/Snake_case).
 
 NOTE:
-The kind of variables this lesson discusses is called _local variables_.
+The kind of variables this lesson discusses is called [_local variables_].
 Other kinds will be introduced later. For now, we focus on local variables only.
+
+[_local variables_]: ../../syntax_and_semantics/local_variables.md
 
 ## Type
 
