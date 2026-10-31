@@ -50,7 +50,9 @@ You can check other commands and flags by invoking `crystal` without arguments, 
 
 ### Integers
 
-For Ruby's `Integer` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, or `UInt64`.
+For Ruby's `Integer` type, use one of Crystal's integer types `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, or `UInt128`.
+
+Integer literals without a type suffix default to `Int32`, or automatically widen to `Int64`, `UInt64`, or `Int128` if the literal exceeds `Int32::MAX`. `Int32` is standard for most counters and indices, while `Int64` is used for larger values such as database IDs, file sizes, and timestamps.
 
 If any operation on a Ruby immediate integer value exceeds machine's native word size, the value is automatically converted to a heap-allocated arbitrary-precision integer object.
 Crystal will instead raise an `OverflowError` on overflow. For example:
@@ -61,7 +63,21 @@ x          # => 127
 x += 1     # Unhandled exception: Arithmetic overflow (OverflowError)
 ```
 
+For wrapping arithmetic without raising `OverflowError`, use wrapping operators such as `&+`, `&-`, and `&*`, typically with unsigned integers. See [Overflow behavior](../syntax_and_semantics/operators.md#overflow-behavior) for details:
+
+```crystal
+x = 255_u8
+x &+= 1 # => 0
+```
+
 Crystal's standard library provides number types with arbitrary size and precision: [`BigDecimal`](https://crystal-lang.org/api/BigDecimal.html), [`BigFloat`](https://crystal-lang.org/api/BigFloat.html), [`BigInt`](https://crystal-lang.org/api/BigInt.html), [`BigRational`](https://crystal-lang.org/api/BigRational.html).
+
+```crystal
+require "big"
+
+x = 127.to_big_i
+x += 1 # => 128
+```
 
 See the language reference on [Integers](../syntax_and_semantics/literals/integers.md).
 
