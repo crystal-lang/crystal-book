@@ -592,3 +592,13 @@ end
 ```
 
 Have no fear using blocks for readability or code reuse, it won't affect the resulting executable performance.
+
+## Blocks vs. `Proc`s
+
+A block is a syntactic construct passed to a method call with `do ... end` or `{ ... }` and executed via `yield`. It is not an object; it cannot be assigned to a variable, passed as a regular argument, or returned from a method. Non-captured blocks are always inlined at the call site with zero heap allocation.
+
+A [`Proc`](literals/proc.md) is a first-class callable object that can be stored in variables, passed to methods, returned as a value, and invoked with `#call` or `[]`. Internally, it holds a function pointer and optional [closured data](closures.md) for any shared local variables allocated on the GC heap.
+
+A block becomes a `Proc` when a method [captures it](capturing_blocks.md) by referencing its named `&block` parameter as a value in the method body. You can also create a `Proc` directly with a [proc literal](literals/proc.md) or `Proc.new`.
+
+Prefer blocks with `yield` for iteration, transformation, and scoped resource management where inlining avoids allocation overhead. Use a `Proc` or a captured block when you need to store a callback or defer execution beyond the method call.
