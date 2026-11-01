@@ -120,6 +120,75 @@ end
 ex.my_error_value.should eq "foo"
 ```
 
+## Hooks
+
+Spec hooks run setup and teardown logic around examples or example groups. Inside a `describe` or `context` block, [`Spec::Methods`](https://crystal-lang.org/api/Spec/Methods.html) provides `before_each`, `after_each`, `before_all`, `after_all`, `around_each`, and `around_all`.
+
+### `before_each`, `after_each`, `before_all`, and `after_all`
+
+`before_each` and `after_each` run before and after every example in the current group and any nested groups. `after_each` runs even when an example fails or raises an exception. `before_all` and `after_all` run once before the first example and once after the last example in the group.
+
+Because `describe`, `context`, and `it` blocks are lexical closures, state is shared through local variables declared in the enclosing group:
+
+```crystal
+require "spec"
+
+describe Array do
+  numbers = [] of Int32
+
+  before_each do
+    numbers = [1, 2]
+  end
+
+  after_each do
+    numbers.clear
+  end
+
+  it "appends an element" do
+    numbers << 3
+    numbers.should eq [1, 2, 3]
+  end
+
+  it "starts each example with a fresh array" do
+    numbers.should eq [1, 2]
+  end
+end
+```
+
+### `around_each` and `around_all`
+
+`around_each` wraps each example and `around_all` wraps the entire example group in a single block, which is useful when setup and cleanup share local resources or an `ensure` clause. The block receives a proxy object and must call `.run` on it to execute the wrapped example or group:
+
+```crystal
+require "spec"
+
+describe File do
+  temp_file : File? = nil
+
+  around_each do |example|
+    File.tempfile("spec") do |file|
+      temp_file = file
+      example.run
+    ensure
+      file.delete
+    end
+  end
+
+  it "writes content to the temporary file" do
+    file = temp_file.should_not be_nil
+    file.print "hello"
+    file.rewind
+    file.gets_to_end.should eq "hello"
+  end
+end
+```
+
+### Execution order and suite hooks
+
+Nested `describe` and `context` groups inherit `before_each`, `after_each`, and `around_each` hooks from outer groups. For each example, `around_each` hooks run from outermost to innermost and wrap `before_each` and `after_each`. `before_each` hooks run from outermost to innermost in definition order, while `after_each` hooks run from innermost to outermost in reverse definition order. Within a group, `around_all` wraps `before_all` and `after_all`, and multiple `after_all` hooks run in reverse definition order.
+
+Unqualified hook methods can only be called inside a `describe` or `context` block. To register hooks across the entire spec suite, for instance in [a spec helper](#spec-helper), use `Spec.before_suite`, `Spec.after_suite`, `Spec.before_each`, `Spec.after_each`, and `Spec.around_each`.
+
 ## Focusing on a group of specs
 
 `describe`, `context` and `it` blocks can be marked with `focus: true`, like this:
