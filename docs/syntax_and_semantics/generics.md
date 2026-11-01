@@ -1,5 +1,8 @@
 # Generics
 
+!!! note
+    This page is about generic types. For type variables in methods, see [Free variables](./type_restrictions.md#free-variables).
+
 Generics allow you to parameterize a type based on another type. Generics provide type-polymorphism. Consider a Box type:
 
 ```crystal
@@ -39,7 +42,7 @@ end
 
 ## Generic class methods
 
-Type restrictions in a generic type's class method become free variables when the receiver's type arguments were not specified. Those free variables are then inferred from a call's arguments. For example, one can also write:
+Type restrictions in a generic type's class method become [free variables](./type_restrictions.md#free-variables) when the receiver's type arguments were not specified. Those free variables are then inferred from a call's arguments. For example, one can also write:
 
 ```crystal
 int_box = MyBox.new(1)          # : MyBox(Int32)
