@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Install Crystal
@@ -28,7 +28,7 @@ jobs:
         with:
           crystal: nightly
       - name: Download crystal repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: crystal-lang/crystal
           path: crystal
