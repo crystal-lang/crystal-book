@@ -163,12 +163,13 @@ This is just one type (Array) and one operation (assignment), the logic of the a
 [1]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29
 
 ## Non-inheritable types
+
 Some types cannot be inherited from due to domain restrictions or issues with memory representation. A prominent example is `String` from stdlib.
 
 Such types can trigger a compiler error from the `inherited` macro:
-```cr
-  macro inherited
-    {{ raise "Cannot inherit from String" }}
-  end
-```
 
+```cr
+macro inherited
+  {{ raise "Cannot inherit from String" }}
+end
+```
