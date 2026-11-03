@@ -9,7 +9,7 @@ installs across computers and systems.
 
 Shards is usually distributed with Crystal itself. Alternatively, a separate `shards` package may be available for your system.
 
-To install from source, download or clone [the repository](https://github.com/crystal-lang/shards) and run `make CRFLAGS=--release`. The compiled binary is in `bin/shards` and should be added to `PATH`.
+To install from source, download or clone [the repository](https://github.com/crystal-lang/shards) and follow the [build instructions](https://github.com/crystal-lang/shards#install).
 
 ## Usage
 
