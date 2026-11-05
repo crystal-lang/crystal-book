@@ -27,6 +27,8 @@ end
 
 The block parameter name is irrelevant in this example, but will be relevant in more advanced uses.
 
+Note that `yield` can only be called directly within a method body. It is not allowed outside a method, nor inside a proc literal or [captured block](capturing_blocks.md).
+
 To invoke a method and pass a block, you use `do ... end` or `{ ... }`. All of these are equivalent:
 
 ```crystal
