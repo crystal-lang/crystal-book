@@ -14,7 +14,7 @@ To install from source, download or clone [the repository](https://github.com/cr
 ## Usage
 
 `shards` requires the presence of a `shard.yml` file in the project folder (working directory). This file describes the project and lists dependencies that are required to build it.
-A default file can be created by running [`shards init`](#shards-install).
+A default file can be created by running [`shards init`](#shards-init).
 The file's contents are explained in the [*Writing a Shard* guide](../../guides/writing_shards.md) and a detailed description of the file format is provided by the [shard.yml specification](https://github.com/crystal-lang/shards/blob/master/docs/shard.yml.adoc).
 
 Running [`shards install`](#shards-install) resolves and installs the specified dependencies.
@@ -36,7 +36,10 @@ If no command is given, `install` will be run by default.
 - [`shards init`](#shards-init): Generates a new `shard.yml`
 - [`shards install`](#shards-install): Resolves and installs dependencies
 - [`shards list`](#shards-list): Lists installed dependencies
+- [`shards lock`](#shards-lock): Locks dependencies in `shard.lock` without installing them
+- [`shards outdated`](#shards-outdated): Lists dependencies that are outdated
 - [`shards prune`](#shards-prune): Removes unused dependencies
+- [`shards run`](#shards-run): Builds and runs an executable
 - [`shards update`](#shards-update): Resolves and updates dependencies
 - [`shards version`](#shards-version): Shows version of a shard
 
@@ -46,7 +49,7 @@ To see the available options for a particular command, use `--help` after a comm
 
 - `--version`: Prints the version of `shards`.
 - `-h, --help`: Prints usage synopsis.
-- `--no-color`: Disabled colored output.
+- `--no-color`: Disables colored output.
 - `--production`: Runs in release mode. Development dependencies won't be installed and only locked dependencies will be installed. Commands will fail if dependencies in `shard.yml` and `shard.lock` are out of sync (used by `install`, `update`, `check` and `list` command)
 - `-q, --quiet`: Decreases the log verbosity, printing only warnings and errors.
 - `-v, --verbose`: Increases the log verbosity, printing all debug statements.
@@ -102,6 +105,22 @@ shards list
 
 Lists the installed dependencies and their versions.
 
+### `shards lock`
+
+```bash
+shards lock [--print] [--update [<shards>...]]
+```
+
+Resolves dependencies and creates or updates the `shard.lock` file as per the `install` command, but never installs the dependencies.
+
+### `shards outdated`
+
+```bash
+shards outdated [--pre]
+```
+
+Lists dependencies that are outdated.
+
 ### `shards prune`
 
 ```bash
@@ -109,6 +128,17 @@ shards prune
 ```
 
 Removes unused dependencies from lib folder.
+
+### `shards run`
+
+```bash
+shards run [<target>] [-- <options>...]
+```
+
+Builds and runs the specified `<target>`. If no target is specified and `shard.yml` defines only one target, that target is run.
+This command ensures all dependencies are installed, so it is not necessary to run `shards install` before.
+
+Arguments following `--` are passed directly to the target process.
 
 ### `shards update`
 
