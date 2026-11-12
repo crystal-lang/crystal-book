@@ -385,8 +385,7 @@ Options:
 
 - `-D FLAG`, `--define FLAG`: Define a compile-time flag. This is useful to
   conditionally define types, methods, or commands based on flags available at
-  compile time. The default flags are from the target triple given with
-  `--target-triple` or the hosts default, if none is given.
+  compile time. The default flags are from the host's target triple.
 - `-f FORMAT`, `--format FORMAT`: Output format `tree` (default), `flat`, `dot`, or `mermaid`.
 - `-i PATH`, `--include PATH`: Include path in output.
 - `-e PATH`, `--exclude PATH`: Exclude path in output.
@@ -435,7 +434,7 @@ Output fields:
 Options:
 
 - `-D FLAG`, `--define FLAG`: Define a compile-time flag
-- `-f FORMAT`, `--format FORMAT`: Output format `text` (default), `json`, or `csv`
+- `-f FORMAT`, `--format FORMAT`: Output format `text` (default), `json`, `codecov`, or `csv`
 - `--tallies`: Print reachable methods and their call counts as well.
 - `--check`: Exit with error if there is any unreachable code.
 - `--error-trace`: Show full error trace
